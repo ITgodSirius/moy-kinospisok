@@ -3,6 +3,9 @@ import { hosted, marked, markTime, busy, refreshHistory, setMark } from './histo
 const el = id => document.getElementById(id);
 const editAccessKey = 'film-list:edit-unlocked';
 const viewKey = 'film-list:view:' + location.pathname;
+const layoutKey = viewKey + ':layout';
+let layout = 'list';
+let detailItem;
 const state = { list: 'waiting', type: 'all', genres: new Set(), catalog: [], day: null };
 const sortChoices = { available: 'release-new', other: 'added-new' };
 const filterIds = ['origin', 'studio', 'period', 'minimum'];
@@ -11,7 +14,7 @@ const originLabels = { russian: 'Российское', foreign: 'Зарубеж
 const collator = new Intl.Collator('ru', { numeric: true });
 const formatDate = new Intl.DateTimeFormat('ru-RU', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
 const formatMarkDate = new Intl.DateTimeFormat('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' });
-const desktopSchedule = window.matchMedia('(min-width: 821px)');
+const desktop = window.matchMedia('(min-width: 821px)');
 let scheduleItem;
 const studioChoices = ['Apple', 'Amazon', 'Netflix', 'Disney', 'HBO'];
 const listNames = { waiting: 'Жду', available: 'Новинки', backlog: 'Старое', watching: 'Смотрю сейчас', watched: 'Просмотрено', favorite: 'Любимые' };
@@ -21,6 +24,8 @@ const markActions = [
   { kind: 'watching', add: 'Смотрю сейчас', remove: 'Отложить просмотр', icon: 'play' }
 ];
 const iconPaths = {
+  list: '<rect x="3.5" y="4.5" width="17" height="5" rx="1"/><rect x="3.5" y="14.5" width="17" height="5" rx="1"/>',
+  grid: '<rect x="3.5" y="3.5" width="6" height="6" rx="1"/><rect x="14.5" y="3.5" width="6" height="6" rx="1"/><rect x="3.5" y="14.5" width="6" height="6" rx="1"/><rect x="14.5" y="14.5" width="6" height="6" rx="1"/>',
   chevron: '<path d="m6 9 6 6 6-6"/>', close: '<path d="m6 6 12 12M18 6 6 18"/>',
   calendar: '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 10h18"/>',
   search: '<circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/>',
@@ -117,14 +122,14 @@ function announce(msg) {
   toastTimer = setTimeout(() => { el('notice').textContent = ''; }, 4500);
 }
 function renderSeasons(item, openSeason = item.season) {
-  const desktop = desktopSchedule.matches;
+  const expanded = desktop.matches;
   const blocks = (item.seasons || []).map(season => {
-    const block = node(desktop ? 'section' : 'details', 'season');
-    const header = node(desktop ? 'h3' : 'summary');
+    const block = node(expanded ? 'section' : 'details', 'season');
+    const header = node(expanded ? 'h3' : 'summary');
     const label = node('span', '', 'Сезон ' + season.number);
     label.append(node('small', '', (season.releaseDate ? 'Премьера · ' : '') + dateText(season.releaseDate)));
     header.append(label);
-    if (!desktop) {
+    if (!expanded) {
       block.name = 'season-choice';
       block.dataset.season = season.number;
       block.open = season.number === openSeason;
@@ -143,7 +148,7 @@ function renderSeasons(item, openSeason = item.season) {
         list.append(li);
       }
       block.append(list);
-    } else if (season.releaseDate || !desktop) {
+    } else if (season.releaseDate || !expanded) {
       block.append(node('p', 'no-dates', 'Расписание серий пока не объявлено.'));
     }
     return block;
@@ -318,46 +323,57 @@ function yandexSearchUrl(item) {
   url.searchParams.set('text', terms.join(' '));
   return url.href;
 }
-function externalLink(label, symbol, href, title) {
+function externalLink(label, symbol, href, title, compact) {
   const link = node('a', 'btn');
   link.href = href;
   link.target = '_blank';
   link.rel = 'noopener noreferrer';
   link.title = title;
-  link.append(icon(symbol), label);
+  link.append(icon(symbol));
+  if (compact) link.setAttribute('aria-label', title);
+  else link.append(label);
   return link;
 }
-function card(item) {
-  const section = node('article', 'entry');
+function isRecent(item) {
+  const age = daysSince(item.releaseDate);
+  return age >= 0 && age < 10;
+}
+function entryFrame(item, className) {
+  const section = node('article', className);
   section.dataset.id = item.id;
-  const copy = node('div', 'copy');
-  copy.append(cardHeader(item));
-  const date = node('div', 'date');
+  section.classList.toggle('recent-release', isRecent(item));
+  return section;
+}
+function releaseDate(item, compact = false) {
+  const date = node('div', compact ? 'poster-date' : 'date');
   date.append(icon('calendar'));
-  if (item.releaseDate) {
-    const daysSinceRelease = daysSince(item.releaseDate);
-    if (daysSinceRelease >= 0 && daysSinceRelease < 10) {
-      section.classList.add('recent-release');
-      date.append(node('span', 'sr', 'Недавняя премьера.'));
-    }
-    const time = node('time', '', dateText(item.releaseDate));
-    time.dateTime = item.releaseDate;
-    const strong = node('strong'); strong.append(time);
-    date.append(node('span', '', 'Дата выхода'), strong);
-  } else date.append(node('strong', '', 'Дата выхода уточняется'));
-  const actions = node('div', 'actions');
-  const mediaLinks = node('div', 'media-actions');
-  mediaLinks.setAttribute('role', 'group');
-  mediaLinks.setAttribute('aria-label', 'Информация о проекте');
-  if (item.type === 'series') {
+  if (!item.releaseDate) {
+    date.append(node(compact ? 'span' : 'strong', '', dateText(null)));
+    return date;
+  }
+  if (isRecent(item)) date.append(node('span', 'sr', 'Недавняя премьера.'));
+  const value = node(compact ? 'span' : 'strong');
+  value.append(dated(item.releaseDate, dateText(item.releaseDate)));
+  date.append(node('span', compact ? 'sr' : '', 'Дата выхода'), value);
+  return date;
+}
+function mediaActions(item, compact = false) {
+  const links = node('div', compact ? 'poster-actions' : 'media-actions');
+  links.setAttribute('role', 'group');
+  links.setAttribute('aria-label', 'Информация о проекте');
+  if (!compact && item.type === 'series') {
     const calendar = button('Сезоны и серии', '', 'calendar', () => showSchedule(item));
     calendar.setAttribute('aria-haspopup', 'dialog');
-    mediaLinks.append(calendar);
+    calendar.setAttribute('aria-controls', 'schedule');
+    links.append(calendar);
   }
   if (item.trailer) {
-    mediaLinks.append(externalLink('Трейлер', 'play', item.trailer, 'Открыть трейлер на YouTube в новой вкладке'));
+    links.append(externalLink('Трейлер', 'play', item.trailer, 'Трейлер «' + item.title + '» на YouTube в новой вкладке', compact));
   }
-  mediaLinks.append(externalLink('Найти', 'search', yandexSearchUrl(item), 'Найти «' + item.title + '» в Яндексе в новой вкладке'));
+  links.append(externalLink('Найти', 'search', yandexSearchUrl(item), 'Найти «' + item.title + '» в Яндексе в новой вкладке', compact));
+  return links;
+}
+function cardMarks(item) {
   const marks = node('div', 'card-marks');
   marks.setAttribute('role', 'group');
   marks.setAttribute('aria-label', 'Мои отметки');
@@ -372,10 +388,57 @@ function card(item) {
     mark.setAttribute('aria-pressed', String(active));
     marks.append(mark);
   }
-  actions.append(mediaLinks, marks);
-  copy.append(date, synopsis(item), metadata(item), cardHistory(item), actions);
+  return marks;
+}
+function card(item) {
+  const section = entryFrame(item, 'entry');
+  const copy = node('div', 'copy');
+  const actions = node('div', 'actions');
+  actions.append(mediaActions(item), cardMarks(item));
+  copy.append(cardHeader(item), releaseDate(item), synopsis(item), metadata(item), cardHistory(item), actions);
   section.append(gallery(item), copy);
   return section;
+}
+function posterCard(item) {
+  const section = entryFrame(item, 'poster-card');
+  const image = node('div', 'poster-image');
+  const src = item.poster || item.gallery?.[0];
+  if (src) {
+    const img = node('img');
+    img.alt = '';
+    img.decoding = 'async';
+    img.src = src;
+    image.append(img);
+  }
+  const caption = node('div', 'poster-caption');
+  const heading = node('h2');
+  const open = node('button', 'poster-open');
+  open.type = 'button';
+  open.setAttribute('aria-haspopup', 'dialog');
+  open.setAttribute('aria-controls', 'film-details');
+  const title = item.type === 'series' ? item.title + ' · Сезон ' + item.season : item.title;
+  open.append(node('span', '', title), icon('chevron'));
+  open.onclick = () => showDetails(item);
+  heading.append(open);
+  const meta = node('div', 'poster-meta');
+  meta.append(releaseDate(item, true), mediaActions(item, true));
+  caption.append(heading, node('p', 'poster-genres', item.genres.join(' · ')), meta);
+  section.append(image, caption);
+  return section;
+}
+function showDetails(item) {
+  const dialog = el('film-details');
+  detailItem = item;
+  const head = cardHeader(item);
+  head.querySelector('h2').id = 'film-title';
+  el('film-heading').replaceChildren(head);
+  const copy = node('div', 'copy');
+  copy.append(releaseDate(item), node('p', 'synopsis', item.description), metadata(item), cardHistory(item));
+  const body = dialog.querySelector('.film-body');
+  body.replaceChildren(gallery(item), copy);
+  dialog.querySelector('.film-foot').replaceChildren(mediaActions(item), cardMarks(item));
+  dialog.showModal();
+  body.scrollTop = 0;
 }
 function resetFilters() {
   for (const id of filterIds) el(id).value = '';
@@ -436,9 +499,11 @@ function saveView() {
     filters: Object.fromEntries(filterIds.map(id => [id, el(id).value])),
     expanded: [...expandedDescriptions], scrollTop: feed.scrollTop, listScroll: el('lists').scrollLeft,
     card: first?.dataset.id, offset: first ? top - first.getBoundingClientRect().top : 0,
+    detail: el('film-details').open ? detailItem.id : undefined,
+    detailScroll: el('film-details').querySelector('.film-body').scrollTop,
     dialog: dialog?.id, dialogScroll: dialog?.querySelector('.dialog-body').scrollTop,
     series: dialog?.id === 'schedule' ? scheduleItem.id : undefined,
-    season: desktopSchedule.matches ? undefined : Number(openSeason?.dataset.season) || null
+    season: desktop.matches ? undefined : Number(openSeason?.dataset.season) || null
   };
   try { sessionStorage.setItem(viewKey, JSON.stringify(view)); }
   catch { /* The catalog also works without browser storage. */ }
@@ -496,17 +561,25 @@ function restoreFeed(view) {
 }
 function restorePosition(view) {
   el('lists').scrollLeft = view.listScroll || 0;
+  if (view.detail && desktop.matches && layout === 'grid') {
+    const item = state.catalog.find(item => item.id === view.detail);
+    if (item) {
+      showDetails(item);
+      el('film-details').querySelector('.film-body').scrollTop = view.detailScroll || 0;
+    }
+  }
   if (view.dialog === 'filters') {
     el('filters-open').focus({preventScroll:true});
     el('filters').showModal();
   } else if (view.dialog === 'schedule') {
     const item = state.catalog.find(item => item.id === view.series && item.type === 'series');
     if (item) {
-      el('records').querySelector('[data-id="' + CSS.escape(item.id) + '"] [aria-haspopup="dialog"]')?.focus({preventScroll:true});
+      const section = el('film-details').open ? el('film-details') : el('records').querySelector('[data-id="' + CSS.escape(item.id) + '"]');
+      section?.querySelector('[aria-controls="schedule"]')?.focus({preventScroll:true});
       showSchedule(item, view.season);
     }
   }
-  const body = document.querySelector('dialog[open] .dialog-body');
+  const body = el(view.dialog)?.querySelector('.dialog-body');
   if (body) body.scrollTop = view.dialogScroll || 0;
   restoreFeed(view);
 }
@@ -520,12 +593,62 @@ function render() {
   el('filter-count').hidden = !count; el('filter-count').textContent = count;
   el('apply').textContent = 'Показать (' + result.length + ')';
   synopsisObserver.disconnect();
-  el('records').replaceChildren(...(result.length ? result.map(card) : [empty()]));
+  const grid = desktop.matches && layout === 'grid';
+  const records = el('records');
+  records.classList.toggle('poster-grid', grid && result.length > 0);
+  records.replaceChildren(...(result.length ? result.map(grid ? posterCard : card) : [empty()]));
+  const dialog = el('film-details');
+  if (dialog.open) {
+    dialog.querySelector('.card-history').replaceWith(cardHistory(detailItem));
+    const marks = cardMarks(detailItem);
+    dialog.querySelector('.card-marks').replaceWith(marks);
+    if (kind && focused.closest('dialog') === dialog) {
+      marks.querySelector('[data-kind="' + kind + '"]:not(:disabled)')?.focus({preventScroll:true});
+    }
+  }
   if (kind && id) {
     const same = [...el('records').querySelectorAll('.entry')].find(entry => entry.dataset.id === id);
     const activeList = [...document.querySelectorAll('[data-list][aria-pressed="true"]')].find(button => button.getClientRects().length);
     (same?.querySelector('[data-kind="' + kind + '"]') || activeList)?.focus({ preventScroll: true });
   }
+}
+function setupLayouts() {
+  try { if (localStorage.getItem(layoutKey) === 'grid') layout = 'grid'; }
+  catch { /* The view switch also works without storage. */ }
+  const controls = el('layouts');
+  function reflectLayout() {
+    for (const button of controls.children) button.setAttribute('aria-pressed', String(button.dataset.layout === layout));
+  }
+  reflectLayout();
+  controls.onclick = event => {
+    const choice = event.target.closest('button')?.dataset.layout;
+    if (!choice || layout === choice) return;
+    const feed = el('feed');
+    const top = feed.getBoundingClientRect().top;
+    const anchor = feed.scrollTop > 0 && [...el('records').children].find(card => card.getBoundingClientRect().bottom > top)?.dataset.id;
+    layout = choice;
+    try { localStorage.setItem(layoutKey, layout); } catch { /* Use the in-memory choice. */ }
+    reflectLayout();
+    render();
+    if (anchor) {
+      const card = el('records').querySelector('[data-id="' + CSS.escape(anchor) + '"]');
+      if (card) feed.scrollTop += card.getBoundingClientRect().top - top;
+    }
+  };
+  const dialog = el('film-details');
+  dialog.addEventListener('close', () => {
+    if (dialog.open || !detailItem) return;
+    const tile = el('records').querySelector('[data-id="' + CSS.escape(detailItem.id) + '"] .poster-open');
+    detailItem = undefined;
+    if (!document.querySelector('dialog[open]') && desktop.matches) {
+      (tile || controls.querySelector('[aria-pressed=true]')).focus({preventScroll:true});
+    }
+  });
+  desktop.addEventListener('change', () => {
+    if (!desktop.matches && dialog.open) dialog.close();
+    if (layout === 'grid') render();
+    if (el('schedule').open) renderSeasons(scheduleItem);
+  });
 }
 function trackCalendarDay() {
   let timer;
@@ -651,6 +774,7 @@ async function start() {
   for (const studio of studios) el('studio').add(new Option(studio, studio));
   const availableGenres = new Set(state.catalog.flatMap(item => item.genres).filter(Boolean));
   setupGenres(availableGenres);
+  setupLayouts();
   const view = readReloadView();
   if (view) restoreChoices(view, availableGenres);
   else reflectControls();
@@ -662,11 +786,17 @@ async function start() {
     render(); el('feed').scrollTop = 0;
   };
   el('filters-open').onclick = () => el('filters').showModal();
-  desktopSchedule.addEventListener('change', () => {
-    if (el('schedule').open) renderSeasons(scheduleItem);
-  });
   el('clear').onclick = resetFilters;
   el('apply').onclick = () => { el('filters').close(); el('feed').scrollTop = 0; };
+  // A restored pair of dialogs can share one native Escape dismissal.
+  for (const child of [el('schedule'), el('edit-dialog')]) {
+    child.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && el('film-details').open) {
+        event.preventDefault();
+        child.close();
+      }
+    });
+  }
   for (const dialog of document.querySelectorAll('dialog')) dialog.addEventListener('click', e => {
     if (e.target !== dialog) return;
     const r = dialog.getBoundingClientRect();
