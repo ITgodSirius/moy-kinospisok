@@ -21,11 +21,15 @@ const temp = new URL('catalog.' + randomUUID() + '.tmp', root);
 try {
   const entries = JSON.parse(await readFile(file, 'utf8'));
   const ix = entries.findIndex(i => i.id === entry.id);
-  if (entry.dorama === undefined && entries[ix]?.dorama === true) entry.dorama = true;
-  if (entry.origin === undefined) entry.origin = entries[ix]?.origin ?? null;
+  const existing = entries[ix];
+  if (!entry.trailer && (!existing || existing.trailer)) {
+    throw new Error('В карточке обязательна ссылка на трейлер или тизер.');
+  }
+  if (entry.dorama === undefined && existing?.dorama === true) entry.dorama = true;
+  if (entry.origin === undefined) entry.origin = existing?.origin ?? null;
   const now = new Date();
   const localDate = new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().slice(0,10);
-  entry.addedDate = ix < 0 ? localDate : entries[ix].addedDate;
+  entry.addedDate = existing ? existing.addedDate : localDate;
   if (ix < 0) entries.unshift(entry); else entries[ix] = entry;
   await writeFile(temp, JSON.stringify(entries, null, 2) + '\n', {flag:'wx'});
   await rename(temp,file);

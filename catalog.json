@@ -2563,7 +2563,7 @@
     "rating": null,
     "ratingSource": null,
     "status": "waiting",
-    "trailer": "",
+    "trailer": "https://rutube.ru/video/72da41051bd3c3f54cff3412f4668566/",
     "sources": {
       "tmdb": "https://www.themoviedb.org/movie/1700884?language=ru-RU",
       "releaseRussia": "https://www.kinometro.ru/release/card/id/56435",
@@ -3577,7 +3577,7 @@
     "rating": null,
     "ratingSource": null,
     "status": "waiting",
-    "trailer": "",
+    "trailer": "https://rutube.ru/video/df0c4063ce89332654f68a88abd7176b/",
     "sources": {
       "tmdb": "https://www.themoviedb.org/movie/1736032?language=ru-RU",
       "releaseRussia": "https://rutube.ru/video/df0c4063ce89332654f68a88abd7176b/",
@@ -4367,11 +4367,12 @@
     "rating": 6.5,
     "ratingSource": "IMDb",
     "status": "backlog",
-    "trailer": "",
+    "trailer": "https://www.youtube.com/watch?v=_12J_tojZVc",
     "sources": {
       "tmdb": "https://www.themoviedb.org/movie/16318?language=ru-RU",
       "official": "https://www.koreanfilm.or.kr/eng/films/index/filmsView.jsp?movieCd=20020236",
-      "imdb": "https://www.imdb.com/title/tt0341555/"
+      "imdb": "https://www.imdb.com/title/tt0341555/",
+      "trailer": "https://www.youtube.com/watch?v=_12J_tojZVc"
     },
     "platforms": [],
     "origin": "foreign",
@@ -4396,11 +4397,12 @@
     "rating": 5.2,
     "ratingSource": "IMDb",
     "status": "backlog",
-    "trailer": "",
+    "trailer": "https://www.youtube.com/watch?v=3thvTddSWOM",
     "sources": {
       "tmdb": "https://www.themoviedb.org/movie/13969?language=ru-RU",
       "official": "https://moviesanywhere.com/movie/first-daughter",
-      "imdb": "https://www.imdb.com/title/tt0361620/"
+      "imdb": "https://www.imdb.com/title/tt0361620/",
+      "trailer": "https://www.youtube.com/watch?v=3thvTddSWOM"
     },
     "platforms": [],
     "origin": "foreign",
