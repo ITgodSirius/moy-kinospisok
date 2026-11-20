@@ -1,6 +1,7 @@
-import { guest, hosted, marked, markTime, busy, refreshHistory, setMark } from './history.js?v=d7981e5f46c6';
+import { hosted, marked, markTime, busy, refreshHistory, setMark } from './history.js?v=6a7130caa3ee';
 
 const el = id => document.getElementById(id);
+const editAccessKey = 'film-list:edit-unlocked';
 const state = { list: 'waiting', type: 'all', catalog: [] };
 const filterIds = ['genre', 'studio', 'period', 'minimum'];
 const collator = new Intl.Collator('ru', { numeric: true });
@@ -96,7 +97,7 @@ async function shareSite() {
   }
   try {
     await navigator.clipboard.writeText(url);
-    announce('Гостевая ссылка скопирована');
+    announce('Ссылка скопирована');
   } catch {
     el('share-dialog').showModal();
     field.focus();
@@ -155,8 +156,47 @@ function showSchedule(item) {
   el('seasons').scrollTop = 0;
   el('schedule').showModal();
 }
+function requestEditAccess() {
+  if (hosted) return true;
+  try {
+    if (localStorage.getItem(editAccessKey) === '1') return true;
+  } catch { /* The dialog will report a storage error on confirmation. */ }
+
+  const dialog = el('edit-dialog');
+  if (dialog.open) return false;
+  dialog.returnValue = '';
+  dialog.showModal();
+  el('edit-pin').focus();
+  return new Promise(resolve => {
+    dialog.addEventListener('close', () => {
+      el('edit-form').reset();
+      el('edit-error').textContent = '';
+      el('edit-pin').removeAttribute('aria-invalid');
+      resolve(dialog.returnValue === 'confirmed');
+    }, { once: true });
+  });
+}
+function confirmEdit(event) {
+  event.preventDefault();
+  const pin = el('edit-pin');
+  if (pin.value !== '5972') {
+    el('edit-error').textContent = pin.value ? 'Неверный пароль. Попробуй ещё раз.' : 'Введи пароль.';
+    pin.setAttribute('aria-invalid', 'true');
+    pin.focus();
+    pin.select();
+    return;
+  }
+  try {
+    localStorage.setItem(editAccessKey, '1');
+  } catch {
+    el('edit-error').textContent = 'Браузеру нужен доступ к данным сайта, чтобы сохранить отметку.';
+    return;
+  }
+  el('edit-dialog').close('confirmed');
+}
 async function toggleMark(item, kind) {
   const value = !marked(item.id, kind);
+  if (!await requestEditAccess() || marked(item.id, kind) === value || busy(item.id, kind)) return;
   try {
     await setMark(item.id, kind, value, render);
     const list = kind === 'watched' ? 'Просмотрено' : 'Любимые';
@@ -287,15 +327,13 @@ function card(item) {
     trailer.title = 'Открыть трейлер на YouTube в новой вкладке';
     trailer.append(icon('play'), 'Посмотреть трейлер'); actions.append(trailer);
   }
-  if (!guest) {
-    for (const kind of ['watched', 'favorite']) {
-      const active = marked(item.id, kind);
-      const watch = kind === 'watched';
-      const label = watch ? (active ? 'Снять отметку' : 'Отметить просмотренным') : (active ? 'Убрать из любимых' : 'В любимые');
-      const mark = button(label, 'mark ' + (active ? 'chosen' : watch ? 'primary' : 'outline'), watch ? 'check' : 'heart', () => toggleMark(item, kind));
-      mark.dataset.kind = kind; mark.disabled = busy(item.id, kind);
-      mark.setAttribute('aria-pressed', String(active)); actions.append(mark);
-    }
+  for (const kind of ['watched', 'favorite']) {
+    const active = marked(item.id, kind);
+    const watch = kind === 'watched';
+    const label = watch ? (active ? 'Снять отметку' : 'Отметить просмотренным') : (active ? 'Убрать из любимых' : 'В любимые');
+    const mark = button(label, 'mark ' + (active ? 'chosen' : watch ? 'primary' : 'outline'), watch ? 'check' : 'heart', () => toggleMark(item, kind));
+    mark.dataset.kind = kind; mark.disabled = busy(item.id, kind);
+    mark.setAttribute('aria-pressed', String(active)); actions.append(mark);
   }
   copy.append(date, synopsis(item), metadata(item), cardHistory(item), actions);
   section.append(gallery(item), copy);
@@ -348,13 +386,15 @@ function wireGroup(id, key) {
   });
 }
 async function start() {
-  if (guest) {
-    for (const tab of document.querySelectorAll('#lists [data-list="watched"], #lists [data-list="favorite"]')) tab.remove();
-  }
   document.querySelectorAll('[data-icon]').forEach(holder => holder.replaceWith(icon(holder.dataset.icon)));
   theme(document.documentElement.dataset.theme === 'dark', false);
   el('theme').onclick = () => theme(document.documentElement.dataset.theme !== 'dark');
   el('share').onclick = shareSite;
+  el('edit-form').onsubmit = confirmEdit;
+  el('edit-pin').oninput = () => {
+    el('edit-error').textContent = '';
+    el('edit-pin').removeAttribute('aria-invalid');
+  };
   document.querySelectorAll('[data-close]').forEach(b => b.onclick = () => b.closest('dialog').close());
   const embedded = document.getElementById('offline-catalog');
   if (embedded) state.catalog = JSON.parse(embedded.textContent);
@@ -386,7 +426,7 @@ async function start() {
   });
   window.addEventListener('storage', e => {
     if (e.key === 'film-list:theme') theme(e.newValue === 'dark', false);
-    else if (!hosted && !guest) render();
+    else if (!hosted) render();
   });
   render();
   if (hosted) {

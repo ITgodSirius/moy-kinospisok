@@ -1,7 +1,6 @@
 // The original per-card keys preserve marks on the same browser origin.
 const prefixes = { watched: 'film-list:watched:', favorite: 'film-list:favorite:' };
-export const guest = new URLSearchParams(location.search).get('view') === 'guest';
-export const hosted = !guest && document.querySelector('meta[name="history-mode"]').content === 'server';
+export const hosted = document.querySelector('meta[name="history-mode"]').content === 'server';
 const remote = new Map();
 const inFlight = new Set();
 let revision = 0;
@@ -9,7 +8,6 @@ let loaded = false;
 
 // null means no mark; an empty string represents an older mark with no known date.
 export function markTime(id, kind) {
-  if (guest) return null;
   if (hosted) return remote.get(id + '/' + kind) ?? null;
   try { return localStorage.getItem(prefixes[kind] + id); }
   catch { return null; }
@@ -37,7 +35,6 @@ export async function refreshHistory() {
   return changed;
 }
 export async function setMark(id, kind, value, update) {
-  if (guest) throw new Error('Гостевая ссылка доступна только для просмотра.');
   if (!hosted) {
     if (value) localStorage.setItem(prefixes[kind] + id, new Date().toISOString());
     else localStorage.removeItem(prefixes[kind] + id);

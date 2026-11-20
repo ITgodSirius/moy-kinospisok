@@ -88,8 +88,11 @@ dialog::backdrop{background:rgba(12,15,23,.52)}
 .dialog-foot{border:0;border-top:1px solid var(--line);justify-content:flex-end}.dialog-foot .btn{min-width:100px}
 .filters-body{display:grid;gap:14px;padding-block:18px}.filters-body label{display:grid;gap:4px;font-size:.9rem;font-weight:600}
 .filters-body select{background:var(--paper);border:1px solid var(--line);border-radius:7px;color:var(--ink);padding:8px;min-height:42px;font-weight:400}
-.share-body{display:grid;gap:8px;padding-block:16px}
-.share-body input{width:100%;min-width:0;padding:10px;border:1px solid var(--line);border-radius:7px;background:var(--paper);color:var(--ink);font:inherit}
+.field-body{display:grid;gap:8px;padding-block:16px}
+.field-body input{width:100%;min-width:0;padding:10px;border:1px solid var(--line);border-radius:7px;background:var(--paper);color:var(--ink);font:inherit}
+#edit-error{color:#a42334;font-size:.9rem}
+:root[data-theme=dark] #edit-error{color:#ffacb8}
+#edit-error:empty{display:none}
 details{border-bottom:1px solid var(--line)}
 summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 0;font-weight:650}
 summary::-webkit-details-marker{display:none}.season small{display:block;color:var(--muted);font-size:.875rem;font-weight:450}
