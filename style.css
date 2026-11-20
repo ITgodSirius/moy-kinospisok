@@ -33,6 +33,7 @@ h1{font-size:clamp(1.5rem,2.55vw,2.25rem);font-weight:730;white-space:nowrap}
 .type-switch button{padding:6px 14px;border-radius:7px;font-size:.9375rem;min-height:36px}
 .type-switch button:is([aria-pressed=true],:active){background:var(--tint);color:var(--blue);font-weight:680}
 .genre-switch{grid-area:genres;display:flex;min-width:0;gap:3px;border-top:1px solid var(--line);margin-block-start:4px;padding-block:6px 3px}
+.mobile-genres,.genre-done,#genre-options .genre-count,#genre-options .ico{display:none}
 .genre-chip{flex:none;min-height:24px;padding:2px 5px;border:1px solid var(--line);border-radius:999px;color:var(--muted);font-size:.75rem;line-height:1.2;white-space:nowrap}
 .genre-chip[aria-pressed=true],.genre-switch:has([hidden][aria-pressed=true]) #genre-more{background:var(--tint);border-color:var(--blue);color:var(--blue)}
 .genre-chip:focus-visible{outline-offset:-2px}
@@ -150,11 +151,32 @@ details[open] summary svg{transform:rotate(180deg)}
  .mobile-lists button{display:grid;place-items:center;width:44px;height:44px;border-radius:8px;font-size:1.25rem;line-height:1}
  .mobile-lists button:is([aria-pressed=true],:active){background:var(--tint);color:var(--blue);box-shadow:inset 0 0 0 1px var(--blue)}
  #lists{grid-column:1/-1;min-width:0;overflow-x:auto;gap:clamp(4px,1.5vw,9px);scrollbar-width:thin}
+ #lists [data-list=watching]{margin-inline-end:auto}
  .list-divider{margin-inline:clamp(9px,3vw,18px)}
  #lists [data-list=favorite],#lists [data-list=watched],.list-divider--personal{display:none}
  #lists button{flex:none;min-height:42px;font-size:.875rem}
  #lists button:focus-visible{outline-offset:-3px}
  .toolbar{display:grid;grid-template-columns:minmax(0,1fr);gap:0;padding:3px 0}.type-switch button{padding:4px 12px;min-height:32px;font-size:.875rem}
+ .genre-switch{display:none}
+ .mobile-genres{grid-area:genres;display:flex;align-items:flex-start;gap:8px;margin-top:4px;padding-block:5px;border-top:1px solid var(--line)}
+ #genre-open,.selected-genre:not([hidden]){display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:34px;padding:5px 10px;border:1px solid var(--line);border-radius:9px;font-size:.875rem}
+ #genre-open{flex:none;background:var(--surface)}
+ #genre-open .ico,.selected-genre .ico{width:14px;height:14px}
+ #selected-genres{display:flex;flex-wrap:wrap;gap:4px;min-width:0;max-height:min(24dvh,110px);overflow-y:auto}
+ .selected-genre:not([hidden]){max-width:100%;overflow-wrap:anywhere;border-radius:999px;border-color:var(--tint);background:var(--tint);color:var(--blue)}
+ #genre-picker{border-radius:20px 20px 0 0}
+ #genre-picker::before{content:"";flex:none;width:36px;height:4px;margin:8px auto 0;border-radius:9px;background:var(--line)}
+ #genre-picker .dialog-head{position:relative;justify-content:center;min-height:48px;padding-inline:80px}
+ #genre-title{font-size:1.125rem;letter-spacing:normal}
+ #genre-picker .dialog-head button{position:absolute;inset-inline-end:12px;width:auto;min-height:44px;padding-inline:4px;color:var(--blue);font-size:1rem}
+ #genre-picker .dialog-head button .ico,#genre-picker .genre-close-label,#genre-picker .dialog-foot{display:none}
+ .genre-done{display:inline}
+ #genre-options{display:block;padding:0 16px 8px}
+ #genre-options .genre-chip{display:grid;grid-template-columns:minmax(0,1fr) auto 20px;align-items:center;gap:12px;width:100%;min-height:44px;padding:9px 2px;text-align:start;font-size:1rem;border:0;border-bottom:1px solid var(--line);border-radius:0;background:transparent;color:var(--ink)}
+ #genre-options .genre-chip:last-child{border-bottom:0}
+ #genre-options .genre-count{display:block;color:var(--muted);font-size:.875rem;font-variant-numeric:tabular-nums}
+ #genre-options .ico{display:block;visibility:hidden;color:var(--blue)}
+ #genre-options [aria-pressed=true] .ico{visibility:visible}
  .tools{justify-content:space-between;gap:6px;min-width:0}.quiet,.sort select{font-size:.875rem}.quiet{padding:6px 4px;flex:none}
  .sort{border:0;padding-left:0;min-width:0;flex-shrink:1;overflow:hidden}.sort select{padding-block:6px;min-width:0;text-overflow:ellipsis}
  .entry{grid-template-columns:minmax(0,1fr);gap:14px;padding:14px 0 22px}

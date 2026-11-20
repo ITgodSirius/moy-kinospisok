@@ -82,11 +82,10 @@ function matchesCategory(item) {
   if (state.type === 'animation') return isAnimated(item);
   return state.type === 'all' || item.type === state.type;
 }
-function matches(item) {
+function matchesOtherFilters(item) {
   const ageDays = daysSince(item.addedDate);
   return listMatches(item) && matchesCategory(item)
     && (!el('origin').value || item.origin === el('origin').value)
-    && (!state.genres.size || item.genres.some(genre => state.genres.has(genre)))
     && (!el('studio').value || item.studios.includes(el('studio').value) || item.platforms?.includes(el('studio').value))
     && (!el('minimum').value || (item.rating != null && item.rating >= Number(el('minimum').value)))
     && (!el('period').value || (ageDays >= 0 && ageDays < Number(el('period').value)));
@@ -223,13 +222,14 @@ function gallery(item) {
   return gallery;
 }
 const expandedDescriptions = new Set();
-const synopsisObserver = new ResizeObserver(entries => {
+const synopsisObserver = new ResizeObserver(entries => requestAnimationFrame(() => {
   for (const { target } of entries) {
+    if (!target.isConnected) continue;
     const limit = getComputedStyle(target);
     const maxHeight = parseFloat(limit.lineHeight) * Number(limit.getPropertyValue('--synopsis-lines'));
     target.nextElementSibling.hidden = target.scrollHeight <= Math.ceil(maxHeight);
   }
-});
+}));
 function synopsis(item) {
   const box = node('div', 'synopsis');
   const paragraph = node('p', '', item.description);
@@ -405,7 +405,9 @@ function reflectControls() {
   for (const b of document.querySelectorAll('[data-type]')) b.setAttribute('aria-pressed', String(b.dataset.type === state.type));
   for (const b of document.querySelectorAll('[data-genre]')) {
     const genre = b.dataset.genre;
-    b.setAttribute('aria-pressed', String(genre ? state.genres.has(genre) : !state.genres.size));
+    const active = genre ? state.genres.has(genre) : !state.genres.size;
+    b.setAttribute('aria-pressed', String(active));
+    if (b.classList.contains('selected-genre')) b.hidden = !active;
   }
   el('feed').setAttribute('aria-label', 'Лента · ' + listNames[state.list]);
   reflectSort();
@@ -488,9 +490,12 @@ function restoreFeed(view) {
 }
 function restorePosition(view) {
   el('lists').scrollLeft = view.listScroll || 0;
-  if (view.dialog === 'genre-picker' && !el('genre-more').hidden) {
-    el('genre-more').focus({preventScroll:true});
-    el('genre-picker').showModal();
+  if (view.dialog === 'genre-picker') {
+    const trigger = el('genre-open').getClientRects().length ? el('genre-open') : el('genre-more');
+    if (!trigger.hidden) {
+      trigger.focus({preventScroll:true});
+      el('genre-picker').showModal();
+    }
   } else if (view.dialog === 'filters') {
     el('filters-open').focus({preventScroll:true});
     el('filters').showModal();
@@ -510,7 +515,9 @@ function render() {
   const focused = document.activeElement;
   const kind = focused?.dataset.kind;
   const id = focused?.closest('.entry')?.dataset.id;
-  const result = state.catalog.filter(matches).sort(compare);
+  const candidates = state.catalog.filter(matchesOtherFilters);
+  updateGenreCounts(candidates);
+  const result = candidates.filter(item => !state.genres.size || item.genres.some(genre => state.genres.has(genre))).sort(compare);
   const count = filterIds.filter(id => el(id).value).length;
   el('filter-count').hidden = !count; el('filter-count').textContent = count;
   el('apply').textContent = 'Показать (' + result.length + ')';
@@ -550,6 +557,15 @@ function wireGroup(id, key) {
     reflectControls(); render(); el('feed').scrollTop = 0;
   });
 }
+function updateGenreCounts(candidates) {
+  const counts = new Map([['', candidates.length]]);
+  for (const item of candidates) {
+    for (const genre of new Set(item.genres.filter(Boolean))) counts.set(genre, (counts.get(genre) || 0) + 1);
+  }
+  for (const option of el('genre-options').children) {
+    option.querySelector('.genre-count').textContent = counts.get(option.dataset.genre) || 0;
+  }
+}
 function setupGenres(availableGenres) {
   const group = el('genres');
   const more = el('genre-more');
@@ -562,23 +578,40 @@ function setupGenres(availableGenres) {
     toggle.dataset.genre = genre;
     group.insertBefore(toggle, more);
     chips.push(toggle);
-    options.append(toggle.cloneNode(true));
+    const option = toggle.cloneNode(true);
+    option.append(node('span', 'genre-count'), icon('check'));
+    options.append(option);
+    if (genre) {
+      const badge = toggle.cloneNode(true);
+      badge.className = 'selected-genre';
+      badge.hidden = true;
+      badge.setAttribute('aria-label', 'Снять фильтр «' + genre + '»');
+      badge.append(icon('close'));
+      el('selected-genres').append(badge);
+    }
   }
   function selectGenre(event) {
-    const genre = event.target.closest('[data-genre]')?.dataset.genre;
+    const toggle = event.target.closest('[data-genre]');
+    const genre = toggle?.dataset.genre;
     if (genre === undefined) return;
     if (!genre) state.genres.clear();
     else if (state.genres.has(genre)) state.genres.delete(genre);
     else state.genres.add(genre);
     reflectControls();
+    if (toggle.classList.contains('selected-genre')) {
+      const next = el('selected-genres').querySelector('button:not([hidden])');
+      (next || el('genre-open')).focus({preventScroll:true});
+    }
     render();
     el('feed').scrollTop = 0;
   }
   group.addEventListener('click', selectGenre);
   options.addEventListener('click', selectGenre);
-  more.onclick = () => picker.showModal();
+  el('selected-genres').addEventListener('click', selectGenre);
+  more.onclick = el('genre-open').onclick = () => picker.showModal();
 
   function fitGenres() {
+    if (!group.clientWidth) return;
     const focused = document.activeElement;
     for (const chip of chips) chip.hidden = false;
     more.hidden = false;
