@@ -1,5 +1,349 @@
 [
   {
+    "id": "tmdb-movie-16318",
+    "title": "Секса круглый ноль",
+    "type": "movie",
+    "genres": [
+      "Комедия",
+      "Мелодрама"
+    ],
+    "studios": [
+      "FilmZ"
+    ],
+    "description": "Неуклюжий студент Ын Сик влюбляется в Ын Хё, которая занимается спортивной аэробикой. Пока она увлечена другим, он пытается найти своё место в её жизни.",
+    "poster": "assets/sex-is-zero-poster.jpg",
+    "gallery": [],
+    "releaseDate": "2002-12-11",
+    "rating": 6.5,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/16318?language=ru-RU",
+      "official": "https://www.koreanfilm.or.kr/eng/films/index/filmsView.jsp?movieCd=20020236",
+      "imdb": "https://www.imdb.com/title/tt0341555/"
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-20"
+  },
+  {
+    "id": "tmdb-movie-13969",
+    "title": "Первая дочь",
+    "type": "movie",
+    "genres": [
+      "Комедия",
+      "Мелодрама",
+      "Драма"
+    ],
+    "studios": [
+      "Regency Enterprises"
+    ],
+    "description": "Саманта, дочь президента США, поступает в колледж и надеется пожить как обычная студентка. Она влюбляется в однокурсника, который скрывает причину их знакомства.",
+    "poster": "assets/first-daughter-poster.jpg",
+    "gallery": [],
+    "releaseDate": "2004-09-24",
+    "rating": 5.2,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/13969?language=ru-RU",
+      "official": "https://moviesanywhere.com/movie/first-daughter",
+      "imdb": "https://www.imdb.com/title/tt0361620/"
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-20"
+  },
+  {
+    "id": "tmdb-movie-261768",
+    "title": "Колыбельная",
+    "type": "movie",
+    "genres": [
+      "Драма"
+    ],
+    "studios": [
+      "Avenue Pictures"
+    ],
+    "description": "Джонатан возвращается в Нью-Йорк, узнав, что его тяжело больной отец решил отказаться от лечения. За оставшееся время им предстоит поговорить о том, что они годами откладывали.",
+    "poster": "assets/lullaby-poster.jpg",
+    "gallery": [],
+    "releaseDate": "2014-06-13",
+    "rating": 6.1,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=JyyjACPQgLE",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/261768?language=ru-RU",
+      "official": "https://westendfilms.com/library/lullaby",
+      "imdb": "https://www.imdb.com/title/tt2210781/"
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-20"
+  },
+  {
+    "id": "tmdb-movie-575417",
+    "title": "Последняя капля",
+    "type": "movie",
+    "genres": [
+      "Комедия",
+      "Драма"
+    ],
+    "studios": [
+      "A24",
+      "American Zoetrope"
+    ],
+    "description": "Нью-йоркская писательница Лора подозревает мужа в измене. Её обаятельный отец Феликс предлагает проследить за ним, и это расследование заставляет их разобраться в собственных отношениях.",
+    "poster": "assets/on-the-rocks-poster.jpg",
+    "gallery": [],
+    "releaseDate": "2020-10-23",
+    "rating": 6.4,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=5pdnAQBq3jo",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/575417?language=ru-RU",
+      "official": "https://www.apple.com/tv-pr/originals/on-the-rocks/",
+      "imdb": "https://www.imdb.com/title/tt9606374/"
+    },
+    "platforms": [
+      "Apple"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-20"
+  },
+  {
+    "id": "tmdb-movie-758009",
+    "title": "Моя пиратская свадьба",
+    "type": "movie",
+    "genres": [
+      "Боевик",
+      "Комедия",
+      "Мелодрама"
+    ],
+    "studios": [
+      "Lionsgate",
+      "Mandeville Films",
+      "Nuyorican Productions"
+    ],
+    "description": "Дарси и Том собирают семьи на свадьбу на тропическом острове. Когда вооружённые пираты берут гостей в заложники, жениху и невесте приходится вместе искать способ их освободить.",
+    "poster": "assets/shotgun-wedding-poster.jpg",
+    "gallery": [],
+    "releaseDate": "2022-12-28",
+    "rating": 5.5,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=qNVwRHQL8jw",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/758009?language=ru-RU",
+      "official": "https://www.primevideo.com/detail/0H51VJ6W7DPNUPB1EPM5OTOFT9",
+      "imdb": "https://www.imdb.com/title/tt9686790/",
+      "release": "https://media.gv.com.sg/imagesresize/GVPMovieLineupasof2Dec2022.pdf"
+    },
+    "platforms": [
+      "Amazon"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-20"
+  },
+  {
+    "id": "tmdb-movie-458109",
+    "title": "На грани безумия",
+    "type": "movie",
+    "genres": [
+      "Триллер",
+      "Детектив",
+      "Драма"
+    ],
+    "studios": [
+      "Film Bridge International"
+    ],
+    "description": "После исчезновения студентки подозрение падает на профессора философии Эвана Бёрча. Детектив изучает его прошлое, а профессор пытается разобраться в собственных воспоминаниях.",
+    "poster": "assets/spinning-man-poster.jpg",
+    "gallery": [],
+    "releaseDate": "2018-04-06",
+    "rating": 5.7,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=syitpT-swzE",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/458109?language=ru-RU",
+      "official": "https://www.filmbridgeinternational.com/film-collection/spinning-man",
+      "imdb": "https://www.imdb.com/title/tt5616294/"
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-20"
+  },
+  {
+    "id": "tmdb-tv-132016-s1",
+    "title": "Замкнутый круг",
+    "type": "series",
+    "season": 1,
+    "genres": [
+      "Криминал",
+      "Драма",
+      "Детектив",
+      "Триллер"
+    ],
+    "studios": [
+      "Casey Silver Productions"
+    ],
+    "description": "Неудачное похищение подростка в Нью-Йорке связывает несколько семей. Расследование заставляет их раскрыть давние тайны, след которых ведёт в Гайану.",
+    "poster": "assets/full-circle-poster.jpg",
+    "gallery": [],
+    "releaseDate": "2023-07-13",
+    "rating": 6.3,
+    "ratingSource": "IMDb сериала",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=IZh4E9ICcI4",
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2023-07-13",
+        "episodes": [
+          {
+            "number": 1,
+            "title": "Something Different",
+            "date": "2023-07-13"
+          },
+          {
+            "number": 2,
+            "title": "Charger",
+            "date": "2023-07-13"
+          },
+          {
+            "number": 3,
+            "title": "Jared's Body",
+            "date": "2023-07-20"
+          },
+          {
+            "number": 4,
+            "title": "Safe in the Circle",
+            "date": "2023-07-20"
+          },
+          {
+            "number": 5,
+            "title": "Loyalty",
+            "date": "2023-07-27"
+          },
+          {
+            "number": 6,
+            "title": "Essequibo",
+            "date": "2023-07-27"
+          }
+        ]
+      }
+    ],
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/132016/season/1?language=ru-RU",
+      "official": "https://www.hbomax.com/show/8996a19c-8e8b-4d8b-8f1a-fa146751d544",
+      "imdb": "https://www.imdb.com/title/tt15303234/",
+      "schedule": "https://press.wbd.com/us/media-release/hbo-max/max-original-limited-series-full-circle-debuts-july-13"
+    },
+    "platforms": [
+      "HBO"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-20"
+  },
+  {
+    "id": "tmdb-movie-340485",
+    "title": "Американская милашка",
+    "type": "movie",
+    "genres": [
+      "Драма",
+      "Мелодрама"
+    ],
+    "studios": [
+      "Parts & Labor",
+      "Pulse Films",
+      "Film4",
+      "BFI",
+      "Maven Pictures"
+    ],
+    "description": "Восемнадцатилетняя Стар бросает привычную жизнь и присоединяется к компании молодых продавцов журналов. Путешествуя с ними по американскому Среднему Западу, она сближается с Джейком и пробует жить на своих условиях.",
+    "poster": "assets/american-honey-poster.jpg",
+    "gallery": [],
+    "releaseDate": "2016-09-30",
+    "rating": 7,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=y1SpWZm1PLc",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/340485?language=ru-RU",
+      "official": "https://a24films.com/films/american-honey",
+      "imdb": "https://www.imdb.com/title/tt3721936/",
+      "release": "https://catalog.afi.com/Film/71025-AMERICAN-HONEY"
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-20"
+  },
+  {
+    "id": "tmdb-movie-539892",
+    "title": "Иные",
+    "type": "movie",
+    "genres": [
+      "Фантастика",
+      "Триллер",
+      "Драма"
+    ],
+    "studios": [
+      "Amazing Incorporated",
+      "Wise Daughter Films"
+    ],
+    "description": "Семилетняя Хлоя живёт взаперти. Отец убеждает её, что снаружи опасно. Когда она впервые выходит из дома, ей открывается мир, о котором он рассказывал лишь часть правды.",
+    "poster": "assets/freaks-poster.jpg",
+    "gallery": [],
+    "releaseDate": "2018-09-08",
+    "rating": 6.7,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=BEEVk3jkyFc",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/539892?language=ru-RU",
+      "official": "https://www.wellgousa.com/films/freaks",
+      "imdb": "https://www.imdb.com/title/tt8781414/",
+      "festival": "https://assets.ctfassets.net/22n7d68fswlw/28iJImKJ1CcU0g0EYwws2c/bd001acdb143c61565dc8d90a6baea33/FREAKS_PressKit_Final.pdf"
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-20"
+  },
+  {
+    "id": "tmdb-movie-376540",
+    "title": "Матильда",
+    "type": "movie",
+    "genres": [
+      "Драма",
+      "Мелодрама",
+      "История"
+    ],
+    "studios": [
+      "ТПО «РОК»"
+    ],
+    "description": "Наследник российского престола Николай Александрович влюбляется в балерину Матильду Кшесинскую. По мере приближения коронации от него ждут выбора между чувством и династическим долгом.",
+    "poster": "assets/mathilde-poster.jpg",
+    "gallery": [],
+    "releaseDate": "2017-10-26",
+    "rating": 5.3,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=EhJK2qo9Cxw",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/376540?language=ru-RU",
+      "official": "https://www.kinostar.com/filmverleih/en/mathilde/",
+      "imdb": "https://www.imdb.com/title/tt4419196/",
+      "release": "https://www.kinometro.ru/release/card/id/16095"
+    },
+    "platforms": [],
+    "origin": "russian",
+    "addedDate": "2026-11-20"
+  },
+  {
     "id": "tmdb-tv-108545-s2",
     "title": "Задача трёх тел",
     "type": "series",
