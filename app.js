@@ -414,6 +414,7 @@ function reflectControls() {
     if (option.value) option.disabled = state.genres.has(option.value);
   }
   el('picker-badges').hidden = !state.genres.size;
+  el('selected-genres').hidden = !state.genres.size;
   el('feed').setAttribute('aria-label', 'Лента · ' + listNames[state.list]);
   reflectSort();
 }
