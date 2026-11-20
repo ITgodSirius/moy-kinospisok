@@ -5,6 +5,7 @@ const editAccessKey = 'film-list:edit-unlocked';
 const viewKey = 'film-list:view:' + location.pathname;
 const state = { list: 'waiting', type: 'all', catalog: [], day: null };
 const filterIds = ['origin', 'genre', 'studio', 'period', 'minimum'];
+const animationGenres = new Set(['мультфильм', 'мультсериал', 'анимация', 'мультипликация']);
 const originLabels = { russian: 'Российское', foreign: 'Зарубежное' };
 const collator = new Intl.Collator('ru', { numeric: true });
 const formatDate = new Intl.DateTimeFormat('ru-RU', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
@@ -73,9 +74,16 @@ function listMatches(item) {
   const released = item.status === 'available' || daysSince(item.releaseDate) >= 0;
   return released ? state.list === 'available' : state.list === 'waiting' && !favorite;
 }
+function isAnimated(item) {
+  return item.genres.some(genre => animationGenres.has(genre.trim().toLowerCase()));
+}
+function matchesCategory(item) {
+  if (state.type === 'animation') return isAnimated(item);
+  return state.type === 'all' || item.type === state.type;
+}
 function matches(item) {
   const ageDays = daysSince(item.addedDate);
-  return listMatches(item) && (state.type === 'all' || item.type === state.type)
+  return listMatches(item) && matchesCategory(item)
     && (!el('origin').value || item.origin === el('origin').value)
     && (!el('genre').value || item.genres.includes(el('genre').value))
     && (!el('studio').value || item.studios.includes(el('studio').value) || item.platforms?.includes(el('studio').value))
@@ -243,7 +251,10 @@ function synopsis(item) {
 function cardHeader(item) {
   const header = node('div', 'card-heading');
   const title = node('div');
-  title.append(node('h2', '', item.title), node('p', 'kind', item.type === 'series' ? 'Сериал · Сезон ' + item.season : 'Фильм'));
+  const animated = isAnimated(item);
+  let format = animated ? 'Мультфильм' : 'Фильм';
+  if (item.type === 'series') format = (animated ? 'Мультсериал' : 'Сериал') + ' · Сезон ' + item.season;
+  title.append(node('h2', '', item.title), node('p', 'kind', format));
   header.append(title);
   if (item.rating != null) {
     const score = node('div', 'rating');
@@ -419,7 +430,7 @@ function readReloadView() {
 }
 function restoreChoices(view) {
   if (Object.hasOwn(listNames, view.list)) state.list = view.list;
-  if (['all', 'movie', 'series'].includes(view.type)) state.type = view.type;
+  if ([...el('types').children].some(button => button.dataset.type === view.type)) state.type = view.type;
   for (const id of [...filterIds, 'sort']) {
     const select = el(id);
     const value = id === 'sort' ? view.sort : view.filters?.[id];

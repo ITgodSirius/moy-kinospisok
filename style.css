@@ -24,7 +24,7 @@ h1{font-size:clamp(1.5rem,2.55vw,2.25rem);font-weight:730;white-space:nowrap}
 #lists button[aria-pressed=true]::after{content:"";position:absolute;bottom:0;left:0;right:0;height:3px;border-radius:3px;background:var(--blue)}
 .icon-button{border-radius:8px;display:grid;place-items:center;width:42px;height:42px;flex:none;font-size:21px}
 .icon-button:active,.quiet:active,.sort:active{background:var(--tint);color:var(--blue)}
-.toolbar{min-height:67px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:12px}
+.toolbar{min-height:67px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:4px 12px}
 .type-switch,.tools,.quiet,.sort{display:flex;align-items:center}
 .type-switch{gap:3px}
 .type-switch button{padding:6px 14px;border-radius:7px;font-size:.9375rem;min-height:36px}
@@ -153,6 +153,7 @@ details[open] summary svg{transform:rotate(180deg)}
  .dialog-head,.dialog-foot{padding:12px 15px}.dialog-body{padding-inline:15px}
 }
 @media(max-width:389px){
+ .type-switch button{padding-inline:7px}
  #lists{margin-inline:-10px;gap:4px}
  #lists button{font-family:Arial,sans-serif;letter-spacing:-.018em}
 }
