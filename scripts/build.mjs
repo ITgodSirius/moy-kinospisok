@@ -6,6 +6,10 @@ const path = name => new URL(name, root);
 const catalog = JSON.parse(await readFile(path('catalog.json'), 'utf8'));
 const files = await publicFiles();
 const ids = new Set();
+const trailerUrls = [
+  /^https:\/\/(www\.youtube\.com\/watch\?v=|youtu\.be\/)[\w-]{11}$/,
+  /^https:\/\/rutube\.ru\/video\/[a-f0-9]{32}\/?$/
+];
 for (const item of catalog) {
   if (!item.id || ids.has(item.id) || !['movie','series'].includes(item.type) || !['available','waiting','backlog'].includes(item.status)) throw new Error('Проверьте ID, тип и статус: ' + item.title);
   ids.add(item.id);
@@ -14,7 +18,7 @@ for (const item of catalog) {
   for (const img of [item.poster,...(item.gallery || [])].filter(Boolean)) {
     if (!files.includes(img) && !/^https:\/\//.test(img)) throw new Error('Изображение не найдено: ' + img);
   }
-  if (item.trailer && !/^https:\/\/(www\.youtube\.com\/watch\?v=|youtu\.be\/)[\w-]{11}$/.test(item.trailer)) throw new Error('Проверьте ссылку на трейлер: ' + item.title);
+  if (item.trailer && !trailerUrls.some(pattern => pattern.test(item.trailer))) throw new Error('Проверьте ссылку на трейлер: ' + item.title);
 }
 // Pages serves the repository root. Update its asset URLs before making the other builds.
 const [history, css, originalApp, originalPage] = await Promise.all(

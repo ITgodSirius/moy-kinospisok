@@ -411,7 +411,8 @@ function mediaActions(item, compact = false) {
     links.append(calendar);
   }
   if (item.trailer) {
-    links.append(externalLink('Трейлер', 'play', item.trailer, 'Трейлер «' + item.title + '» на YouTube в новой вкладке', compact));
+    const platform = item.trailer.startsWith('https://rutube.ru/') ? 'Rutube' : 'YouTube';
+    links.append(externalLink('Трейлер', 'play', item.trailer, 'Трейлер «' + item.title + '» на ' + platform + ' в новой вкладке', compact));
   }
   links.append(externalLink('Найти', 'search', yandexSearchUrl(item), 'Найти «' + item.title + '» в Яндексе в новой вкладке', compact));
   return links;
