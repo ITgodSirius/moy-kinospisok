@@ -104,6 +104,7 @@ function isAnimated(item) {
   return item.genres.some(genre => animationGenres.has(genre.trim().toLowerCase()));
 }
 function matchesCategory(item) {
+  if (state.type === 'dorama') return item.type === 'series' && item.dorama === true;
   if (state.type === 'animation') return isAnimated(item);
   return state.type === 'all' || item.type === state.type;
 }
@@ -283,7 +284,11 @@ function cardHeader(item) {
   const title = node('div');
   const animated = isAnimated(item);
   let format = animated ? 'Мультфильм' : 'Фильм';
-  if (item.type === 'series') format = (animated ? 'Мультсериал' : 'Сериал') + ' · Сезон ' + item.season;
+  if (item.type === 'series') {
+    format = animated ? 'Мультсериал' : 'Сериал';
+    if (item.dorama === true) format = 'Дорама';
+    format += ' · Сезон ' + item.season;
+  }
   title.append(node('h2', '', item.title), node('p', 'kind', format));
   header.append(title);
   if (item.rating != null) header.append(cardRating(item));
@@ -489,6 +494,10 @@ function resetFilters() {
 }
 function empty() {
   const box = node('section', 'empty');
+  if (state.type === 'dorama' && !state.catalog.some(item => listMatches(item) && matchesCategory(item))) {
+    box.append(node('h2', '', 'В этой ленте пока нет дорам'));
+    return box;
+  }
   const hints = {
     waiting: 'Здесь появятся будущие премьеры.',
     available: 'Здесь появятся фильмы и сезоны, которые уже вышли.',

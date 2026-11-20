@@ -21,6 +21,7 @@ const temp = new URL('catalog.' + randomUUID() + '.tmp', root);
 try {
   const entries = JSON.parse(await readFile(file, 'utf8'));
   const ix = entries.findIndex(i => i.id === entry.id);
+  if (entry.dorama === undefined && entries[ix]?.dorama === true) entry.dorama = true;
   if (entry.origin === undefined) entry.origin = entries[ix]?.origin ?? null;
   const now = new Date();
   const localDate = new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().slice(0,10);
