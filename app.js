@@ -490,12 +490,9 @@ function restoreFeed(view) {
 }
 function restorePosition(view) {
   el('lists').scrollLeft = view.listScroll || 0;
-  if (view.dialog === 'genre-picker') {
-    const trigger = el('genre-open').getClientRects().length ? el('genre-open') : el('genre-more');
-    if (!trigger.hidden) {
-      trigger.focus({preventScroll:true});
-      el('genre-picker').showModal();
-    }
+  if (view.dialog === 'genre-picker' && el('genre-open').getClientRects().length) {
+    el('genre-open').focus({preventScroll:true});
+    el('genre-picker').showModal();
   } else if (view.dialog === 'filters') {
     el('filters-open').focus({preventScroll:true});
     el('filters').showModal();
@@ -568,16 +565,16 @@ function updateGenreCounts(candidates) {
 }
 function setupGenres(availableGenres) {
   const group = el('genres');
-  const more = el('genre-more');
+  const strip = el('genre-strip');
   const picker = el('genre-picker');
   const options = el('genre-options');
-  const chips = [];
   for (const genre of ['', ...[...availableGenres].sort(collator.compare)]) {
-    const toggle = node('button', 'genre-chip', genre || 'Все жанры');
+    const label = genre || 'Все жанры';
+    const toggle = node('button', 'genre-chip');
+    toggle.append(node('span', '', label));
     toggle.type = 'button';
     toggle.dataset.genre = genre;
-    group.insertBefore(toggle, more);
-    chips.push(toggle);
+    strip.append(toggle);
     const option = toggle.cloneNode(true);
     option.append(node('span', 'genre-count'), icon('check'));
     options.append(option);
@@ -589,6 +586,7 @@ function setupGenres(availableGenres) {
       badge.append(icon('close'));
       el('selected-genres').append(badge);
     }
+    toggle.title = label;
   }
   function selectGenre(event) {
     const toggle = event.target.closest('[data-genre]');
@@ -608,33 +606,23 @@ function setupGenres(availableGenres) {
   group.addEventListener('click', selectGenre);
   options.addEventListener('click', selectGenre);
   el('selected-genres').addEventListener('click', selectGenre);
-  more.onclick = el('genre-open').onclick = () => picker.showModal();
+  el('genre-open').onclick = () => picker.showModal();
 
   function fitGenres() {
-    if (!group.clientWidth) return;
-    const focused = document.activeElement;
-    for (const chip of chips) chip.hidden = false;
-    more.hidden = false;
-    const widths = chips.map(chip => chip.getBoundingClientRect().width);
-    const gap = parseFloat(getComputedStyle(group).columnGap);
     const available = group.getBoundingClientRect().width;
-    const total = widths.reduce((sum, width) => sum + width, gap * (chips.length - 1));
-    more.hidden = total <= available;
-    if (more.hidden) {
-      if (picker.open) picker.close();
-      if (focused === more || picker.contains(focused)) chips[0].focus({preventScroll:true});
-      return;
-    }
-    let used = more.getBoundingClientRect().width;
-    for (const [index, chip] of chips.entries()) {
-      used += widths[index] + gap;
-      chip.hidden = used > available;
-      if (chip.hidden && chip === focused) more.focus({preventScroll:true});
+    if (!available) return;
+    // The max-content layout width stays at natural size when the strip is scaled.
+    const natural = parseFloat(getComputedStyle(strip).width);
+    strip.style.setProperty('--genre-fit', Math.min(1, available / natural));
+    if (picker.open) {
+      picker.close();
+      strip.querySelector('[aria-pressed="true"]')?.focus({preventScroll:true});
     }
   }
   fitGenres();
-  new ResizeObserver(fitGenres).observe(group);
-  document.fonts.ready.then(fitGenres);
+  const observer = new ResizeObserver(fitGenres);
+  observer.observe(group);
+  observer.observe(strip);
 }
 function showLastUpdate(modified) {
   const time = el('site-updated');
