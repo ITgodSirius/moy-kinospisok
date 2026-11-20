@@ -1,5 +1,283 @@
 [
   {
+    "id": "tmdb-tv-335783-s1",
+    "title": "Истребители",
+    "type": "series",
+    "season": 1,
+    "genres": [
+      "Драма",
+      "Военный"
+    ],
+    "studios": [
+      "Студия Чехов"
+    ],
+    "description": "На исходе 1980-х военный лётчик Сергей Денисов получает назначение на авианесущий крейсер «Адмирал Кузнецов». Распад СССР раскалывает гарнизон, и Сергей оказывается между близкими людьми и товарищами по службе.",
+    "releaseDate": "2026-09-17",
+    "status": "available",
+    "trailer": "https://www.youtube.com/watch?v=ZyGsvMB-qsY",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/335783/season/1?language=ru-RU",
+      "release": "https://www.youtube.com/watch?v=ZyGsvMB-qsY",
+      "official": "https://premier.one/show/istrebiteli-2026",
+      "schedule": "https://serial-data.ru/series/istrebiteli-94473",
+      "kinopoisk": "https://www.kinopoisk.ru/series/10086817/",
+      "poster": "https://fast.ntvplus.tv/files/image/12/02/355/--kino-poster!7yz.jpg",
+      "gallery1": "https://fast.ntvplus.tv/files/image/12/02/360/-list-xs!3fj.jpg",
+      "gallery2": "https://fast.ntvplus.tv/files/image/12/02/413/-list-xs!hlu.png"
+    },
+    "platforms": [
+      "Premier"
+    ],
+    "origin": "russian",
+    "poster": "assets/tmdb-tv-335783-s1-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-335783-s1-gallery-1.jpg",
+      "assets/tmdb-tv-335783-s1-gallery-2.jpg"
+    ],
+    "rating": null,
+    "ratingSource": null,
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2026-09-17",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2026-09-17"
+          },
+          {
+            "number": 2,
+            "date": "2026-09-17"
+          },
+          {
+            "number": 3,
+            "date": "2026-09-18"
+          },
+          {
+            "number": 4,
+            "date": "2026-09-19"
+          }
+        ]
+      }
+    ],
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-tv-292741-s1",
+    "title": "Ноктюрн",
+    "type": "series",
+    "season": 1,
+    "genres": [
+      "Триллер",
+      "Криминал",
+      "Драма"
+    ],
+    "studios": [
+      "A+E Studios",
+      "Range Studios"
+    ],
+    "description": "Детектив Джона Линн переезжает из Филадельфии в небольшой город в Пенсильвании, рассчитывая на спокойную жизнь. Поиски пропавшего человека вновь сводят его с серийным убийцей Юреком Уолтером. Чтобы найти жертву, агент ФБР Сага Бауэр, приёмная дочь Джоны, берётся за работу под прикрытием.",
+    "releaseDate": "2026-10-30",
+    "status": "available",
+    "trailer": "https://www.youtube.com/watch?v=AaEy1f2Dgys",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/292741/season/1?language=ru-RU",
+      "release": "https://www.apple.com/tv-pr/news/2026/09/apple-tv-unveils-trailer-for-nocturne-the-gripping-new-drama-led-by-liev-schreiber-and-zazie-beetz-and-stars-stephen-graham/",
+      "official": "https://www.apple.com/tv-pr/originals/nocturne/",
+      "schedule": "https://www.tvmaze.com/shows/66811/nocturne",
+      "poster": "https://image.tmdb.org/t/p/w780/cfOQYtWFf2Ypc7tOT6rv1KKqLlD.jpg",
+      "gallery1": "https://static.tvmaze.com/uploads/images/original_untouched/648/1621819.jpg",
+      "gallery2": "https://static.tvmaze.com/uploads/images/original_untouched/651/1628504.jpg"
+    },
+    "platforms": [
+      "Apple"
+    ],
+    "origin": "foreign",
+    "poster": "assets/tmdb-tv-292741-s1-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-292741-s1-gallery-1.jpg",
+      "assets/tmdb-tv-292741-s1-gallery-2.jpg"
+    ],
+    "rating": null,
+    "ratingSource": null,
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2026-10-30",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2026-10-30"
+          },
+          {
+            "number": 2,
+            "date": "2026-10-30"
+          },
+          {
+            "number": 3,
+            "date": "2026-11-06"
+          },
+          {
+            "number": 4,
+            "date": "2026-11-13"
+          },
+          {
+            "number": 5,
+            "date": "2026-11-20"
+          },
+          {
+            "number": 6,
+            "date": "2026-11-25"
+          },
+          {
+            "number": 7,
+            "date": "2026-12-04"
+          },
+          {
+            "number": 8,
+            "date": "2026-12-11"
+          },
+          {
+            "number": 9,
+            "date": "2026-12-18"
+          },
+          {
+            "number": 10,
+            "date": "2026-12-25"
+          }
+        ]
+      }
+    ],
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-tv-337738-s1",
+    "title": "Тяжёлый люкс",
+    "type": "series",
+    "season": 1,
+    "genres": [
+      "Драма",
+      "Криминал"
+    ],
+    "studios": [
+      "INEY Productions",
+      "НМГ Студия"
+    ],
+    "description": "Ксения, жена состоятельного девелопера, покупает поддельную люксовую сумку и пытается выяснить, кто её обманул. После трагической встречи с продавщицей она вместе с братом Сергеем оказывается втянута в подпольную торговлю брендовой «палью».",
+    "releaseDate": "2026-11-13",
+    "status": "available",
+    "trailer": null,
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/337738/season/1?language=ru-RU",
+      "release": "https://wink.ru/press/oni-postroyat-imperiyu-pali-kriminalnaya-drama-tyazhelyy-lyuks-na-wink-s-13-noyabrya",
+      "official": "https://wink.ru/series/tyazhelyy-lyuks-year-2026",
+      "schedule": "https://wink.ru/blog/serial-tyazhelyy-lyuks-data-vyhoda-seriy-na-wink",
+      "kinopoisk": "https://www.kinopoisk.ru/series/12643436/",
+      "trailer": "https://rutube.ru/video/d1d04f84318d653bbe484fd50c039ee9/",
+      "poster": "https://static.tvmaze.com/uploads/images/original_untouched/648/1621312.jpg",
+      "gallery1": "https://wink.ru/api/media/file/0049-1400x935.jpg?v=mw0srswl",
+      "gallery2": "https://wink.ru/api/media/file/a11-1400x933.jpg?v=mw0qgacc"
+    },
+    "platforms": [
+      "Wink"
+    ],
+    "origin": "russian",
+    "poster": "assets/tmdb-tv-337738-s1-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-337738-s1-gallery-1.jpg",
+      "assets/tmdb-tv-337738-s1-gallery-2.jpg"
+    ],
+    "rating": null,
+    "ratingSource": null,
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2026-11-13",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2026-11-13"
+          },
+          {
+            "number": 2,
+            "date": "2026-11-20"
+          },
+          {
+            "number": 3,
+            "date": "2026-11-27"
+          },
+          {
+            "number": 4,
+            "date": "2026-12-04"
+          },
+          {
+            "number": 5,
+            "date": "2026-12-11"
+          },
+          {
+            "number": 6,
+            "date": "2026-12-18"
+          },
+          {
+            "number": 7,
+            "date": "2026-12-25"
+          },
+          {
+            "number": 8,
+            "date": "2027-01-01"
+          }
+        ]
+      }
+    ],
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-tv-222766-s2",
+    "title": "День Шакала",
+    "type": "series",
+    "season": 2,
+    "genres": [
+      "Триллер",
+      "Драма",
+      "Криминал"
+    ],
+    "studios": [
+      "Carnival Films"
+    ],
+    "description": "Александр Дагган по прозвищу Шакал возвращается к работе после событий первого сезона. Эдди Редмэйн снова играет главную роль, а к актёрскому составу присоединяются Мэтт Бомер, Веруче Опиа и Пабло Шрайбер. Премьера заявлена на март 2027 года.",
+    "releaseDate": null,
+    "status": "waiting",
+    "trailer": "https://www.youtube.com/watch?v=eD7PKEOKGDI",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/222766/season/2?language=ru-RU",
+      "release": "https://www.skygroup.sky/en-gb/article/the-day-of-the-jackal-eddie-redmayne-returns-in-first-look-teaser-for-series-2",
+      "official": "https://www.peacocktv.com/blog/eddie-redmaynes-the-day-of-the-jackal-reveals-march-2027-return",
+      "poster": "https://image.tmdb.org/t/p/w780/tYLecM3WSEjlkKhkGiH5G68Dprm.jpg",
+      "gallery1": "https://images.contentstack.io/v3/assets/blt4b099fa9cc3801a6/blt63146eccc846aa78/6afedf274780233b71c83f46/FLTease_01_TheDayoftheJackal_S02.jpg",
+      "gallery2": "https://i.ytimg.com/vi/eD7PKEOKGDI/sd2.jpg"
+    },
+    "platforms": [
+      "Sky",
+      "Peacock"
+    ],
+    "origin": "foreign",
+    "poster": "assets/tmdb-tv-222766-s2-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-222766-s2-gallery-1.jpg",
+      "assets/tmdb-tv-222766-s2-gallery-2.jpg"
+    ],
+    "rating": null,
+    "ratingSource": null,
+    "seasons": [
+      {
+        "number": 2,
+        "releaseDate": null,
+        "episodes": []
+      }
+    ],
+    "addedDate": "2026-11-21"
+  },
+  {
     "id": "tmdb-tv-250670-s3",
     "title": "Макстон-холл",
     "type": "series",
