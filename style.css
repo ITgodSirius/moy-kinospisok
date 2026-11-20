@@ -255,6 +255,10 @@ details[open] summary svg{transform:rotate(180deg)}
  .type-switch{gap:2px}
  .type-switch button{padding-inline:clamp(2px,calc(10vw - 30px),10px);font-size:clamp(.8125rem,3.82vw,.875rem)}
 }
+@media(max-width:520px){
+ .type-switch:has(#announcements-type:not([hidden])){flex-wrap:wrap;justify-content:space-between;gap:clamp(0px,calc(4vw - 12.8px),2px)}
+ .type-switch:has(#announcements-type:not([hidden])) button{padding-inline:clamp(0px,calc(8.33vw - 31px),8px);font-size:clamp(.75rem,3.42vw,.875rem)}
+}
 @media(max-height:480px) and (orientation:landscape){
  .topline{min-height:0;padding-top:0}.toolbar{min-height:36px}
  #lists{min-height:30px}#lists button{min-height:28px}.entry{padding-top:12px}

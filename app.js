@@ -105,6 +105,7 @@ function isAnimated(item) {
   return item.genres.some(genre => animationGenres.has(genre.trim().toLowerCase()));
 }
 function matchesCategory(item) {
+  if (state.type === 'announcements') return !item.releaseDate;
   if (state.type === 'dorama') return item.type === 'series' && item.dorama === true;
   if (state.type === 'animation') return isAnimated(item);
   return state.type === 'all' || item.type === state.type;
@@ -502,6 +503,10 @@ function resetFilters() {
 }
 function empty() {
   const box = node('section', 'empty');
+  if (state.type === 'announcements' && !state.catalog.some(item => listMatches(item) && matchesCategory(item))) {
+    box.append(node('h2', '', 'Пока нет анонсов'), node('p', '', 'Здесь появятся фильмы и сезоны без точной даты выхода.'));
+    return box;
+  }
   if (state.type === 'dorama' && !state.catalog.some(item => listMatches(item) && matchesCategory(item))) {
     box.append(node('h2', '', 'В этой ленте пока нет дорам'));
     return box;
@@ -521,6 +526,9 @@ function empty() {
   return box;
 }
 function reflectControls() {
+  const showAnnouncements = state.list === 'waiting';
+  el('announcements-type').hidden = !showAnnouncements;
+  if (!showAnnouncements && state.type === 'announcements') state.type = 'all';
   for (const b of document.querySelectorAll('[data-list]')) b.setAttribute('aria-pressed', String(b.dataset.list === state.list));
   for (const b of document.querySelectorAll('[data-type]')) b.setAttribute('aria-pressed', String(b.dataset.type === state.type));
   for (const b of document.querySelectorAll('[data-genre]')) {
