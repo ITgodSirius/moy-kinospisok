@@ -361,11 +361,20 @@ function resetFilters() {
   reflectControls();
   render();
 }
-function empty(hasFilters) {
-  if (hasFilters || state.list === 'backlog' || state.list === 'watching') return node('p', 'empty', 'пусто');
+function empty() {
   const box = node('section', 'empty');
-  const text = {waiting:'Здесь появятся будущие премьеры.',available:'Здесь появятся фильмы и сезоны, которые уже вышли.',watched:'Нажмите галочку на карточке просмотренного фильма или сезона.',favorite:'Нажмите сердце на карточке фильма или сезона.'};
-  box.append(node('h2', '', 'В списке пока пусто'), node('p', '', text[state.list]));
+  const hints = {
+    waiting: 'Здесь появятся будущие премьеры.',
+    available: 'Здесь появятся фильмы и сезоны, которые уже вышли.',
+    backlog: 'Здесь появятся фильмы и сезоны прошлых лет, отложенные на потом.',
+    watching: 'Нажмите «Смотрю сейчас» на карточке фильма или сезона, который начали смотреть.',
+    watched: 'Нажмите галочку на карточке просмотренного фильма или сезона.',
+    favorite: 'Нажмите сердце на карточке фильма или сезона.'
+  };
+  const filteredOut = state.catalog.some(listMatches);
+  const title = filteredOut ? 'Нет совпадений' : 'В списке пока пусто';
+  const hint = filteredOut ? 'Попробуйте изменить фильтры или выбрать другую категорию.' : hints[state.list];
+  box.append(node('h2', '', title), node('p', '', hint));
   return box;
 }
 function reflectControls() {
@@ -382,7 +391,7 @@ function render() {
   el('filter-count').hidden = !count; el('filter-count').textContent = count;
   el('apply').textContent = 'Показать (' + result.length + ')';
   synopsisObserver.disconnect();
-  el('records').replaceChildren(...(result.length ? result.map(card) : [empty(Boolean(count || state.type !== 'all'))]));
+  el('records').replaceChildren(...(result.length ? result.map(card) : [empty()]));
   if (kind && id) {
     const same = [...el('records').querySelectorAll('.entry')].find(entry => entry.dataset.id === id);
     const activeList = [...document.querySelectorAll('[data-list][aria-pressed="true"]')].find(button => button.getClientRects().length);
