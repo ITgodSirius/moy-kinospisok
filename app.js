@@ -463,8 +463,14 @@ function posterCard(item) {
   open.type = 'button';
   open.setAttribute('aria-haspopup', 'dialog');
   open.setAttribute('aria-controls', 'film-details');
-  const title = item.type === 'series' ? item.title + ' · Сезон ' + item.season : item.title;
-  open.append(node('span', '', title), icon('chevron'));
+  if (item.type === 'series') {
+    const season = 'Сезон ' + item.season;
+    const badge = node('span', 'poster-season', season);
+    badge.setAttribute('aria-hidden', 'true');
+    image.append(badge);
+    open.setAttribute('aria-label', item.title + ' · ' + season);
+  }
+  open.append(node('span', '', item.title), icon('chevron'));
   open.onclick = () => showDetails(item);
   heading.append(open);
   const meta = node('div', 'poster-meta');
