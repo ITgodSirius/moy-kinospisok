@@ -113,7 +113,8 @@
     },
     "platforms": [
       "Netflix"
-    ]
+    ],
+    "origin": "foreign"
   },
   {
     "id": "tmdb-tv-254630-s1",
@@ -187,10 +188,12 @@
     "sources": {
       "tmdb": "https://www.themoviedb.org/tv/254630-12-12-12/season/1?language=ru-RU",
       "official": "https://www.apple.com/tv-pr/originals/12-12-12/",
-      "imdb": "https://www.imdb.com/title/tt32375763/"
+      "imdb": "https://www.imdb.com/title/tt32375763/",
+      "origin": "https://tv.apple.com/us/show/12-12-12/umc.cmc.2xeasogpeiwbaegczytrdg1uh"
     },
     "platforms": [
       "Apple"
-    ]
+    ],
+    "origin": "foreign"
   }
 ]

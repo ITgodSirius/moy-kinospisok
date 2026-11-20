@@ -3,7 +3,7 @@ import { hosted, marked, markTime, busy, refreshHistory, setMark } from './histo
 const el = id => document.getElementById(id);
 const editAccessKey = 'film-list:edit-unlocked';
 const state = { list: 'waiting', type: 'all', catalog: [] };
-const filterIds = ['genre', 'studio', 'period', 'minimum'];
+const filterIds = ['origin', 'genre', 'studio', 'period', 'minimum'];
 const collator = new Intl.Collator('ru', { numeric: true });
 const formatDate = new Intl.DateTimeFormat('ru-RU', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
 const formatMarkDate = new Intl.DateTimeFormat('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' });
@@ -63,13 +63,21 @@ function listMatches(item) {
 function matches(item) {
   const ageDays = (Date.parse(today()) - Date.parse(item.addedDate)) / 86400000;
   return listMatches(item) && (state.type === 'all' || item.type === state.type)
+    && (!el('origin').value || item.origin === el('origin').value)
     && (!el('genre').value || item.genres.includes(el('genre').value))
     && (!el('studio').value || item.studios.includes(el('studio').value) || item.platforms?.includes(el('studio').value))
     && (!el('minimum').value || (item.rating != null && item.rating >= Number(el('minimum').value)))
     && (!el('period').value || (ageDays >= 0 && ageDays < Number(el('period').value)));
 }
 function compare(a, b) {
-  const sort = el('sort').value;
+  let sort = el('sort').value;
+  if (sort === 'russian-first' || sort === 'foreign-first') {
+    const first = sort === 'russian-first' ? 'russian' : 'foreign';
+    const rank = origin => origin == null ? 2 : Number(origin !== first);
+    const difference = rank(a.origin) - rank(b.origin);
+    if (difference) return difference;
+    sort = 'added-new';
+  }
   const field = { 'added-new': 'addedDate', 'added-old': 'addedDate', 'release-new': 'releaseDate', 'release-old': 'releaseDate', rating: 'rating' }[sort];
   if (field) {
     if ((a[field] == null) !== (b[field] == null)) return a[field] == null ? 1 : -1;

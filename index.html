@@ -10,7 +10,7 @@
   <script>try { if (localStorage.getItem('film-list:theme') === 'dark') document.documentElement.dataset.theme = 'dark'; } catch {}</script>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%231443ef'/%3E%3Cpath d='M18 18h28v29L32 38l-14 9z' fill='white'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="./style.css?v=e67666412ed1">
-  <script type="module" src="./app.js?v=29d777869b0b"></script>
+  <script type="module" src="./app.js?v=33300f53db17"></script>
 </head>
 <body>
   <a class="skip" href="#feed">К фильмам и сериалам</a>
@@ -40,6 +40,10 @@
             <select id="sort">
               <option value="added-new">Сначала новые</option><option value="added-old">Сначала давние</option>
               <option value="rating">По рейтингу</option><option value="release-new">Сначала новые премьеры</option><option value="release-old">Сначала ранние премьеры</option><option value="title">По названию</option>
+              <optgroup label="По стране производства">
+                <option value="russian-first">Сначала российское</option>
+                <option value="foreign-first">Сначала зарубежное</option>
+              </optgroup>
             </select><span data-icon="chevron"></span>
           </label>
         </div>
@@ -72,6 +76,7 @@
   <dialog id="filters" aria-labelledby="filters-title">
     <div class="dialog-head"><h2 id="filters-title">Фильтры</h2><button class="icon-button" data-close aria-label="Закрыть фильтры"><span data-icon="close"></span></button></div>
     <div class="dialog-body filters-body">
+      <label>Страна производства<select id="origin"><option value="">Все страны</option><option value="russian">Российское</option><option value="foreign">Зарубежное</option></select></label>
       <label>Жанр<select id="genre"><option value="">Все</option></select></label>
       <label>Студия или платформа<select id="studio"><option value="">Все</option></select></label>
       <label>Период добавления<select id="period"><option value="">За всё время</option><option value="7">За 7 дней</option><option value="30">За 30 дней</option><option value="365">За год</option></select></label>

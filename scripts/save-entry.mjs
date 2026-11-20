@@ -5,6 +5,9 @@ import { root } from './public-files.mjs';
 let input = '';
 for await (const chunk of process.stdin) input += chunk;
 const entry = JSON.parse(input);
+if (entry.origin != null && !['russian', 'foreign'].includes(entry.origin)) {
+  throw new Error('Проверьте категорию страны производства.');
+}
 if (!/^tmdb-(movie-\d+|tv-\d+-s\d+)$/.test(entry.id) || !entry.title || !entry.description ||
     !['series','movie'].includes(entry.type) || !['waiting','available','backlog'].includes(entry.status) ||
     !Array.isArray(entry.genres) || !Array.isArray(entry.studios) || (entry.platforms != null && !Array.isArray(entry.platforms)) || !entry.poster ||
@@ -18,6 +21,7 @@ const temp = new URL('catalog.' + randomUUID() + '.tmp', root);
 try {
   const entries = JSON.parse(await readFile(file, 'utf8'));
   const ix = entries.findIndex(i => i.id === entry.id);
+  if (entry.origin === undefined) entry.origin = entries[ix]?.origin ?? null;
   const now = new Date();
   const localDate = new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().slice(0,10);
   entry.addedDate = ix < 0 ? localDate : entries[ix].addedDate;
