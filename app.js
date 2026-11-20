@@ -9,7 +9,7 @@ const formatMarkDate = new Intl.DateTimeFormat('ru-RU', { day: 'numeric', month:
 const desktopSchedule = window.matchMedia('(min-width: 821px)');
 let scheduleItem;
 const studioChoices = ['Apple', 'Amazon', 'Netflix', 'Disney', 'HBO'];
-const listNames = { waiting: 'Жду', available: 'Новое', backlog: 'Старое', watched: 'Просмотрено', favorite: 'Любимые' };
+const listNames = { waiting: 'Жду', available: 'Новинки', backlog: 'Старое', watched: 'Просмотрено', favorite: 'Любимые' };
 const iconPaths = {
   moon: '<path d="M20.5 14.4A8.7 8.7 0 0 1 9.6 3.5a9 9 0 1 0 10.9 10.9Z"/>',
   sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M19 5l-1.5 1.5m-11 11L5 19"/>',
