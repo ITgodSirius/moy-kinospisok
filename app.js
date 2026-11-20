@@ -21,7 +21,6 @@ const markActions = [
   { kind: 'watching', add: 'Смотрю сейчас', remove: 'Отложить просмотр', icon: 'play' }
 ];
 const iconPaths = {
-  sliders: '<path d="M3 7h4m5 0h9M3 17h10m5 0h3"/><circle cx="9.5" cy="7" r="2.5"/><circle cx="15.5" cy="17" r="2.5"/>',
   chevron: '<path d="m6 9 6 6 6-6"/>', close: '<path d="m6 6 12 12M18 6 6 18"/>',
   calendar: '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 10h18"/>',
   search: '<circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/>',
@@ -626,7 +625,9 @@ function showLastUpdate(modified) {
   });
   time.dateTime = date.toISOString();
   time.textContent = formatter.format(date) + ' МСК';
-  time.parentElement.hidden = false;
+  const updateLine = time.parentElement;
+  updateLine.hidden = false;
+  setTimeout(() => updateLine.classList.add('expired'), 5000);
 }
 async function start() {
   document.querySelectorAll('[data-icon]').forEach(holder => holder.replaceWith(icon(holder.dataset.icon)));
