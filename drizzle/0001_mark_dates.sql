@@ -1,0 +1,1 @@
+ALTER TABLE `marks` ADD `marked_at` text;

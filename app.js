@@ -1,10 +1,13 @@
-import { hosted, marked, busy, refreshHistory, setMark } from './history.js';
+import { hosted, marked, markTime, busy, refreshHistory, setMark } from './history.js';
 
 const el = id => document.getElementById(id);
 const state = { list: 'waiting', type: 'all', catalog: [] };
 const filterIds = ['genre', 'studio', 'period', 'minimum'];
 const collator = new Intl.Collator('ru', { numeric: true });
 const formatDate = new Intl.DateTimeFormat('ru-RU', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+const formatMarkDate = new Intl.DateTimeFormat('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' });
+const desktopSchedule = window.matchMedia('(min-width: 821px)');
+let scheduleItem;
 const studioChoices = ['Apple', 'Amazon', 'Netflix', 'Disney', 'HBO'];
 const listNames = { waiting: 'Жду', available: 'Можно смотреть', watched: 'Просмотрено', favorite: 'Любимые' };
 const iconPaths = {
@@ -57,7 +60,7 @@ function matches(item) {
   const ageDays = (Date.parse(today()) - Date.parse(item.addedDate)) / 86400000;
   return listMatches(item) && (state.type === 'all' || item.type === state.type)
     && (!el('genre').value || item.genres.includes(el('genre').value))
-    && (!el('studio').value || item.studios.includes(el('studio').value))
+    && (!el('studio').value || item.studios.includes(el('studio').value) || item.platforms?.includes(el('studio').value))
     && (!el('minimum').value || (item.rating != null && item.rating >= Number(el('minimum').value)))
     && (!el('period').value || (ageDays >= 0 && ageDays < Number(el('period').value)));
 }
@@ -89,32 +92,44 @@ function theme(dark, save = true) {
     catch { announce('Выбор темы сохранится только до закрытия страницы.'); }
   }
 }
-function showSchedule(item) {
-  el('series-title').textContent = item.title;
+function renderSeasons(item) {
+  const desktop = desktopSchedule.matches;
   const blocks = (item.seasons || []).map(season => {
-    const details = node('details');
-    details.name = 'season-choice';
-    details.open = season.number === item.season;
-    const summary = node('summary');
-    const header = node('span', '', 'Сезон ' + season.number);
-    header.append(node('small', '', dateText(season.releaseDate)));
-    summary.append(header, icon('chevron'));
-    details.append(summary);
-    if (!season.episodes?.length) details.append(node('p', 'no-dates', 'Расписание серий пока не объявлено.'));
-    else {
+    const block = node(desktop ? 'section' : 'details', 'season');
+    const header = node(desktop ? 'h3' : 'summary');
+    const label = node('span', '', 'Сезон ' + season.number);
+    label.append(node('small', '', (season.releaseDate ? 'Премьера · ' : '') + dateText(season.releaseDate)));
+    header.append(label);
+    if (!desktop) {
+      block.name = 'season-choice';
+      block.open = season.number === item.season;
+      header.append(icon('chevron'));
+    }
+    block.append(header);
+    if (season.episodes?.length) {
       const list = node('ol', 'episodes');
       for (const episode of season.episodes) {
         const li = node('li');
         const date = node(episode.date ? 'time' : 'span', episode.date ? '' : 'episode-unknown', episode.date ? dateText(episode.date) : 'Дата уточняется');
         if (episode.date) date.dateTime = episode.date;
-        li.append(node('span', 'num', episode.number), node('span', '', episode.title || 'Серия ' + episode.number), date);
+        if (episode.title) li.append(node('span', 'num', episode.number));
+        else li.className = 'untitled';
+        li.append(node('span', '', episode.title || 'Серия ' + episode.number), date);
         list.append(li);
       }
-      details.append(list);
+      block.append(list);
+    } else if (season.releaseDate || !desktop) {
+      block.append(node('p', 'no-dates', 'Расписание серий пока не объявлено.'));
     }
-    return details;
+    return block;
   });
   el('seasons').replaceChildren(...(blocks.length ? blocks : [node('p', 'no-dates', 'Расписание серий пока не объявлено.')]));
+}
+function showSchedule(item) {
+  scheduleItem = item;
+  el('series-title').textContent = item.title;
+  renderSeasons(item);
+  el('seasons').scrollTop = 0;
   el('schedule').showModal();
 }
 async function toggleMark(item, kind) {
@@ -142,11 +157,93 @@ function gallery(item) {
   });
   return gallery;
 }
+const expandedDescriptions = new Set();
+const synopsisObserver = new ResizeObserver(entries => {
+  for (const { target } of entries) {
+    const limit = getComputedStyle(target);
+    const maxHeight = parseFloat(limit.lineHeight) * Number(limit.getPropertyValue('--synopsis-lines'));
+    target.nextElementSibling.hidden = target.scrollHeight <= Math.ceil(maxHeight);
+  }
+});
+function synopsis(item) {
+  const box = node('div', 'synopsis');
+  const paragraph = node('p', '', item.description);
+  paragraph.id = 'description-' + item.id;
+  const toggle = button('', 'read-more', null, () => {
+    if (expandedDescriptions.has(item.id)) expandedDescriptions.delete(item.id);
+    else expandedDescriptions.add(item.id);
+    reflect();
+  });
+  function reflect() {
+    const expanded = expandedDescriptions.has(item.id);
+    paragraph.classList.toggle('clamped', !expanded);
+    toggle.textContent = expanded ? 'Свернуть' : 'Читать полностью';
+    toggle.setAttribute('aria-expanded', String(expanded));
+  }
+  toggle.setAttribute('aria-controls', paragraph.id);
+  toggle.hidden = true;
+  reflect();
+  box.append(paragraph, toggle);
+  synopsisObserver.observe(paragraph);
+  return box;
+}
+function cardHeader(item) {
+  const header = node('div', 'card-heading');
+  const title = node('div');
+  title.append(node('h2', '', item.title), node('p', 'kind', item.type === 'series' ? 'Сериал · Сезон ' + item.season : 'Фильм'));
+  header.append(title);
+  if (item.rating != null) {
+    const score = node('div', 'rating');
+    const source = item.ratingSource || 'Рейтинг';
+    const imdb = source.startsWith('IMDb');
+    score.append(node('span', 'rating-source', imdb ? 'IMDb' : source), node('strong', '', item.rating.toLocaleString('ru-RU')));
+    if (source === 'IMDb сериала') score.append(node('small', '', 'Оценка сериала'));
+    header.append(score);
+  }
+  return header;
+}
+function row(list, label, value) {
+  const dd = node('dd');
+  dd.append(value);
+  list.append(node('dt', '', label), dd);
+}
+function metadata(item) {
+  const list = node('dl', 'metadata');
+  if (item.genres.length) {
+    const badges = node('div', 'badges');
+    for (const genre of item.genres) badges.append(node('span', 'badge', genre));
+    row(list, 'Жанры', badges);
+  }
+  if (item.platforms?.length) row(list, item.platforms.length > 1 ? 'Платформы' : 'Платформа', item.platforms.map(name => name === 'Apple' ? 'Apple TV' : name).join(', '));
+  if (item.studios.length) {
+    const label = item.platforms ? (item.studios.length > 1 ? 'Студии' : 'Студия') : 'Студии и платформы';
+    row(list, label, item.studios.join(', '));
+  }
+  return list;
+}
+function dated(value, text) {
+  const time = node('time', '', text);
+  time.dateTime = value;
+  return time;
+}
+function cardHistory(item) {
+  const section = node('section', 'card-history');
+  const dates = node('dl');
+  row(dates, 'Добавлено в каталог', dated(item.addedDate, dateText(item.addedDate)));
+  for (const [kind, label] of [['watched', 'Отмечено просмотренным'], ['favorite', 'Добавлено в любимые']]) {
+    const stamp = markTime(item.id, kind);
+    if (stamp === null) continue;
+    const date = /^\d{4}-\d{2}-\d{2}T/.test(stamp) ? new Date(stamp) : null;
+    row(dates, label, date && Number.isFinite(date.getTime()) ? dated(stamp, formatMarkDate.format(date).replace(/\s*г\.$/, '')) : 'Дата неизвестна');
+  }
+  section.append(node('h3', '', 'История'), dates);
+  return section;
+}
 function card(item) {
   const section = node('article', 'entry');
   section.dataset.id = item.id;
   const copy = node('div', 'copy');
-  copy.append(node('h2', '', item.title));
+  copy.append(cardHeader(item));
   const date = node('div', 'date');
   date.append(icon('calendar'));
   if (item.releaseDate) {
@@ -155,12 +252,6 @@ function card(item) {
     const strong = node('strong'); strong.append(time);
     date.append(node('span', '', 'Дата выхода'), strong);
   } else date.append(node('strong', '', 'Дата выхода уточняется'));
-  const badges = node('div', 'badges');
-  const tags = [item.type === 'series' ? 'Сериал' : 'Фильм'];
-  if (item.type === 'series') tags.push('Сезон ' + item.season);
-  tags.push(...item.genres, ...item.studios.map(s => s === 'Apple' ? 'Apple TV' : s));
-  for (const tag of tags) badges.append(node('span', 'badge', tag));
-  if (item.rating != null) badges.append(node('span', 'badge score', item.ratingSource + ' ' + item.rating.toLocaleString('ru-RU')));
   const actions = node('div', 'actions');
   if (item.type === 'series') {
     const calendar = button('Сезоны и серии', 'utility', 'calendar', () => showSchedule(item));
@@ -181,7 +272,7 @@ function card(item) {
     mark.dataset.kind = kind; mark.disabled = busy(item.id, kind);
     mark.setAttribute('aria-pressed', String(active)); actions.append(mark);
   }
-  copy.append(date, badges, node('p', 'synopsis', item.description), actions);
+  copy.append(date, synopsis(item), metadata(item), cardHistory(item), actions);
   section.append(gallery(item), copy);
   return section;
 }
@@ -210,6 +301,7 @@ function render() {
   const count = filterIds.filter(id => el(id).value).length;
   el('filter-count').hidden = !count; el('filter-count').textContent = count;
   el('apply').textContent = 'Показать (' + result.length + ')';
+  synopsisObserver.disconnect();
   el('records').replaceChildren(...(result.length ? result.map(card) : [empty(Boolean(count || state.type !== 'all'))]));
   if (kind && id) {
     const same = [...el('records').querySelectorAll('.entry')].find(entry => entry.dataset.id === id);
@@ -241,7 +333,7 @@ async function start() {
     if (!response.ok) throw new Error('Каталог недоступен');
     state.catalog = await response.json();
   }
-  for (const [id, values] of [['genre', state.catalog.flatMap(i => i.genres)], ['studio', [...studioChoices,...state.catalog.flatMap(i => i.studios)]]]) {
+  for (const [id, values] of [['genre', state.catalog.flatMap(i => i.genres)], ['studio', [...studioChoices,...state.catalog.flatMap(i => [...i.studios, ...(i.platforms || [])])]]]) {
     for (const s of new Set(values)) el(id).add(new Option(s,s));
   }
   wireGroup('lists','list'); wireGroup('types','type');
@@ -252,6 +344,9 @@ async function start() {
     render(); el('feed').scrollTop = 0;
   };
   el('filters-open').onclick = () => el('filters').showModal();
+  desktopSchedule.addEventListener('change', () => {
+    if (el('schedule').open) renderSeasons(scheduleItem);
+  });
   el('clear').onclick = resetFilters;
   el('apply').onclick = () => { el('filters').close(); el('feed').scrollTop = 0; };
   document.querySelectorAll('[data-close]').forEach(b => b.onclick = () => b.closest('dialog').close());

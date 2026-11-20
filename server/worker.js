@@ -5,7 +5,7 @@ async function history(request, env, url) {
   const owner = request.headers.get('oai-authenticated-user-id');
   if (!owner) return json({ error: 'Требуется доступ владельца сайта.' }, 401);
   if (request.method === 'GET') {
-    const rows = await env.DB.prepare('SELECT card, kind FROM marks WHERE owner = ? AND marked = 1').bind(owner).all();
+    const rows = await env.DB.prepare('SELECT card, kind, marked_at AS markedAt FROM marks WHERE owner = ? AND marked = 1').bind(owner).all();
     return json(rows.results);
   }
   if (request.method !== 'PUT') return json({ error: 'Метод не поддерживается.' }, 405);
@@ -16,9 +16,14 @@ async function history(request, env, url) {
   if (!change || !CARD_IDS.includes(change.card) || !['watched', 'favorite'].includes(change.kind) || typeof change.marked !== 'boolean') {
     return json({ error: 'Некорректная отметка.' }, 400);
   }
-  await env.DB.prepare('INSERT INTO marks (owner, card, kind, marked) VALUES (?, ?, ?, ?) ON CONFLICT (owner, card, kind) DO UPDATE SET marked = excluded.marked')
-    .bind(owner, change.card, change.kind, Number(change.marked)).run();
-  return json({ saved: true });
+  const row = await env.DB.prepare(`
+    INSERT INTO marks (owner, card, kind, marked, marked_at) VALUES (?, ?, ?, ?, ?)
+    ON CONFLICT (owner, card, kind) DO UPDATE SET
+      marked_at = CASE WHEN marks.marked = excluded.marked THEN marks.marked_at ELSE excluded.marked_at END,
+      marked = excluded.marked
+    RETURNING marked_at AS markedAt
+  `).bind(owner, change.card, change.kind, Number(change.marked), change.marked ? new Date().toISOString() : null).first();
+  return json({ saved: true, markedAt: row.markedAt });
 }
 
 export default {

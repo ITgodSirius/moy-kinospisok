@@ -9,10 +9,9 @@
       "Драма"
     ],
     "studios": [
-      "Netflix",
       "Plan B"
     ],
-    "description": "Учёные ищут способ защитить Землю от вторжения Сан-Ти.",
+    "description": "До прибытия флота Сан-Ти ещё несколько веков. Пока учёные ищут способ защитить Землю, человечеству предстоит решить, кому доверить своё будущее.",
     "poster": "assets/3-body-poster.webp",
     "gallery": [
       "assets/3-body-visor.webp",
@@ -111,7 +110,10 @@
       "tmdb": "https://www.themoviedb.org/tv/108545-3-body-problem/season/2?language=ru-RU",
       "official": "https://www.netflix.com/tudum/articles/3-body-problem-renewed",
       "imdb": "https://www.imdb.com/title/tt13016388/"
-    }
+    },
+    "platforms": [
+      "Netflix"
+    ]
   },
   {
     "id": "tmdb-tv-254630-s1",
@@ -123,11 +125,10 @@
       "Триллер"
     ],
     "studios": [
-      "Apple",
       "Paramount Television Studios",
       "Anonymous Content"
     ],
-    "description": "После ограбления банка в Цюрихе агент ФБР охотится за организатором налёта по всей Европе.",
+    "description": "Агент ФБР идёт по следу преступника, который организовал налёт на банковское хранилище в Цюрихе. История погони складывается из трёх отрезков — двенадцати месяцев подготовки, двенадцати часов ограбления и двенадцати дней после него.",
     "poster": "assets/12-poster.webp",
     "gallery": [
       "assets/12-still-1.webp",
@@ -187,6 +188,9 @@
       "tmdb": "https://www.themoviedb.org/tv/254630-12-12-12/season/1?language=ru-RU",
       "official": "https://www.apple.com/tv-pr/originals/12-12-12/",
       "imdb": "https://www.imdb.com/title/tt32375763/"
-    }
+    },
+    "platforms": [
+      "Apple"
+    ]
   }
 ]

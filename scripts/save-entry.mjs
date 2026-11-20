@@ -7,7 +7,7 @@ for await (const chunk of process.stdin) input += chunk;
 const entry = JSON.parse(input);
 if (!/^tmdb-(movie-\d+|tv-\d+-s\d+)$/.test(entry.id) || !entry.title || !entry.description ||
     !['series','movie'].includes(entry.type) || !['waiting','available'].includes(entry.status) ||
-    !Array.isArray(entry.genres) || !Array.isArray(entry.studios) || !entry.poster ||
+    !Array.isArray(entry.genres) || !Array.isArray(entry.studios) || (entry.platforms != null && !Array.isArray(entry.platforms)) || !entry.poster ||
     (entry.type === 'series' && (!Number.isInteger(entry.season) || !entry.id.endsWith('-s' + entry.season)))) {
   throw new Error('Проверьте обязательные поля и стабильный ID карточки.');
 }
