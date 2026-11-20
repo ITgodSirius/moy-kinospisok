@@ -1,10 +1,13 @@
-import { hosted, marked, markTime, busy, refreshHistory, setMark } from './history.js?v=fcd635e64bcc';
+import { hosted, marked, markTime, busy, refreshHistory, setMark } from './history.js?v=7cebc47d4382';
 
 const el = id => document.getElementById(id);
 const editAccessKey = 'film-list:edit-unlocked';
 const viewKey = 'film-list:view:' + location.pathname;
 const persistentViewKey = viewKey.replace(/\/index\.html$/, '/');
 const layoutKey = viewKey + ':layout';
+const wishLayoutKey = persistentViewKey + ':wish-layout';
+const wishes = { items: null, loading: false, status: 'wanted', category: 'all', layout: 'grid', detail: null };
+const formatBudget = new Intl.NumberFormat('ru-RU', { style: 'currency', currency: 'RUB', maximumFractionDigits: 0 });
 let layout = 'list';
 let detailItem;
 const state = { list: 'waiting', type: 'all', genres: new Set(), catalog: [], day: null };
@@ -46,6 +49,8 @@ const markActions = [
   { kind: 'watching', add: 'Смотрю сейчас', remove: 'Отложить просмотр', icon: 'play' }
 ];
 const iconPaths = {
+  swap: '<path d="M4 8h15m-4-4 4 4-4 4M20 16H5m4-4-4 4 4 4"/>',
+  external: '<path d="M13 5h6v6m0-6-9 9m0-7H6a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-4"/>',
   list: '<rect x="3.5" y="4.5" width="17" height="5" rx="1"/><rect x="3.5" y="14.5" width="17" height="5" rx="1"/>',
   grid: '<rect x="3.5" y="3.5" width="6" height="6" rx="1"/><rect x="14.5" y="3.5" width="6" height="6" rx="1"/><rect x="3.5" y="14.5" width="6" height="6" rx="1"/><rect x="14.5" y="14.5" width="6" height="6" rx="1"/>',
   chevron: '<path d="m6 9 6 6 6-6"/>', close: '<path d="m6 6 12 12M18 6 6 18"/>',
@@ -494,6 +499,197 @@ function showDetails(item) {
   dialog.showModal();
   body.scrollTop = 0;
 }
+function wishImage(item) {
+  const frame = node('div', 'wish-image');
+  if (item.image) {
+    const image = node('img');
+    image.src = item.image;
+    image.alt = '';
+    image.decoding = 'async';
+    frame.append(image);
+  }
+  return frame;
+}
+async function toggleWish(item) {
+  const fulfilled = !marked(item.id, 'fulfilled');
+  if (!await requestEditAccess() || marked(item.id, 'fulfilled') === fulfilled || busy(item.id, 'fulfilled')) return;
+  try {
+    await setMark(item.id, 'fulfilled', fulfilled, renderWishlist);
+    announce(fulfilled ? 'Добавлено в «Сбылось»' : 'Возвращено в «Хочу»');
+  } catch {
+    announce('Не удалось сохранить отметку желания.');
+    if (hosted) sync();
+  }
+}
+function wishActions(item, compact) {
+  const actions = node('div', 'wish-actions');
+  const fulfilled = marked(item.id, 'fulfilled');
+  if (item.url) actions.append(externalLink('Открыть ссылку', 'external', item.url, 'Открыть ссылку на «' + item.title + '» в новой вкладке', compact));
+  const mark = button(fulfilled ? 'Вернуть в «Хочу»' : 'Отметить исполненным', '', 'check', () => toggleWish(item), compact);
+  mark.dataset.wishMark = item.id;
+  mark.setAttribute('aria-pressed', String(fulfilled));
+  mark.disabled = busy(item.id, 'fulfilled');
+  actions.append(mark);
+  return actions;
+}
+function wishCard(item) {
+  const card = node('article', 'wish-card');
+  const caption = node('div', 'wish-caption');
+  const title = node('h2');
+  const open = node('button', 'wish-open', item.title);
+  open.type = 'button';
+  open.setAttribute('aria-haspopup', 'dialog');
+  open.setAttribute('aria-controls', 'wish-details');
+  open.append(icon('chevron'));
+  open.onclick = () => showWishDetails(item);
+  title.append(open);
+  caption.append(title);
+  if (item.note) caption.append(node('p', 'wish-note', item.note));
+  const meta = node('div', 'wish-meta');
+  if (item.budget != null) meta.append(node('p', 'wish-budget', 'До ' + formatBudget.format(item.budget)));
+  meta.append(wishActions(item, true));
+  caption.append(meta);
+  if (item.image) card.append(wishImage(item));
+  card.append(caption);
+  return card;
+}
+function showWishDetails(item) {
+  const dialog = el('wish-details');
+  const opener = document.activeElement;
+  wishes.detail = item;
+  el('wish-title').textContent = item.title;
+  el('wish-category').textContent = el('wish-categories').querySelector('[data-wish-category="' + item.category + '"]').textContent;
+  const copy = node('div', 'wish-detail-copy');
+  if (item.note) copy.append(node('p', 'wish-detail-note', item.note));
+  if (item.description) copy.append(node('p', '', item.description));
+  if (item.budget != null) copy.append(node('p', 'wish-budget', 'До ' + formatBudget.format(item.budget)));
+  copy.append(node('p', 'wish-added', 'Добавлено ' + dateText(item.addedDate)));
+  const body = dialog.querySelector('.wish-detail-body');
+  body.replaceChildren(...(item.image ? [wishImage(item), copy] : [copy]));
+  dialog.querySelector('.wish-detail-foot').replaceChildren(wishActions(item, false));
+  dialog.addEventListener('close', () => {
+    const returnTo = opener.isConnected ? opener : el('wish-status').querySelector('[aria-pressed="true"]');
+    returnTo.focus({ preventScroll: true });
+  }, { once: true });
+  dialog.showModal();
+  body.scrollTop = 0;
+}
+function renderWishlist() {
+  if (!wishes.items) return;
+  const dialog = el('wish-details');
+  const focused = document.activeElement;
+  const markId = focused?.dataset.wishMark;
+  const fulfilled = wishes.status === 'fulfilled';
+  const records = el('wish-records');
+  const results = wishes.items.filter(item => marked(item.id, 'fulfilled') === fulfilled
+    && (wishes.category === 'all' || item.category === wishes.category));
+  const sort = el('wish-sort').value;
+  results.sort((a, b) => {
+    if (sort === 'budget') return (a.budget ?? Infinity) - (b.budget ?? Infinity) || collator.compare(a.title, b.title);
+    if (sort === 'title') return collator.compare(a.title, b.title);
+    return b.addedDate.localeCompare(a.addedDate);
+  });
+  records.classList.toggle('wish-list', wishes.layout === 'list');
+  const emptyMessage = wishes.category !== 'all' ? 'В этой категории пока нет желаний'
+    : fulfilled ? 'Пока нет исполненных желаний' : 'В вишлисте пока пусто';
+  records.replaceChildren(...(results.length ? results.map(wishCard) : [node('h2', 'empty wish-message', emptyMessage)]));
+  if (dialog.open) dialog.querySelector('.wish-detail-foot').replaceChildren(wishActions(wishes.detail, false));
+  if (markId) {
+    const scope = dialog.open ? dialog : records;
+    const mark = scope.querySelector('[data-wish-mark="' + markId + '"]:not(:disabled)');
+    if (mark) mark.focus({ preventScroll: true });
+    else if (!dialog.open && !el('wishlist').hidden) el('wish-status').querySelector('[aria-pressed="true"]').focus({ preventScroll: true });
+  }
+}
+async function loadWishlist() {
+  if (wishes.items || wishes.loading) return;
+  wishes.loading = true;
+  const records = el('wish-records');
+  records.replaceChildren(node('p', 'loading wish-message', 'Загрузка вишлиста…'));
+  try {
+    const embedded = el('offline-wishlist');
+    if (embedded) wishes.items = JSON.parse(embedded.textContent);
+    else {
+      const response = await fetch('./wishlist.json', { cache: 'no-cache' });
+      if (!response.ok) throw new Error('Вишлист недоступен');
+      wishes.items = await response.json();
+    }
+    renderWishlist();
+  } catch {
+    wishes.items = null;
+    const failure = node('section', 'empty wish-message');
+    failure.append(node('h2', '', 'Не удалось открыть вишлист'), button('Повторить', '', null, loadWishlist));
+    records.replaceChildren(failure);
+  } finally {
+    wishes.loading = false;
+  }
+}
+function setupWishlist() {
+  const panel = el('wishlist');
+  const feed = el('feed');
+  const header = el('cinema-header');
+  const skip = document.querySelector('.skip');
+  let filmScroll = 0;
+  let listScroll = 0;
+  try { if (localStorage.getItem(wishLayoutKey) === 'list') wishes.layout = 'list'; }
+  catch { /* The layout can still be changed for this tab. */ }
+  const controls = [
+    ['wish-status', 'wishStatus', 'status'],
+    ['wish-categories', 'wishCategory', 'category'],
+    ['wish-layouts', 'wishLayout', 'layout']
+  ];
+  for (const [id, attribute, key] of controls) {
+    const group = el(id);
+    const reflect = () => {
+      for (const button of group.children) button.setAttribute('aria-pressed', String(button.dataset[attribute] === wishes[key]));
+    };
+    reflect();
+    group.onclick = event => {
+      const value = event.target.closest('button')?.dataset[attribute];
+      if (!value || value === wishes[key]) return;
+      wishes[key] = value;
+      if (key === 'layout') {
+        try { localStorage.setItem(wishLayoutKey, value); }
+        catch { /* The layout can still be changed for this tab. */ }
+      }
+      reflect();
+      renderWishlist();
+      el('wish-feed').scrollTop = 0;
+    };
+  }
+  el('wish-sort').onchange = () => {
+    renderWishlist();
+    el('wish-feed').scrollTop = 0;
+  };
+  el('open-wishlist').onclick = () => {
+    if (state.catalog.length) saveView();
+    filmScroll = feed.scrollTop;
+    listScroll = el('lists').scrollLeft;
+    header.hidden = feed.hidden = true;
+    panel.hidden = false;
+    skip.href = '#wish-feed';
+    skip.textContent = 'К желаниям';
+    document.title = 'Мой вишлист';
+    el('open-cinema').focus({ preventScroll: true });
+    loadWishlist();
+  };
+  el('open-cinema').onclick = () => {
+    panel.hidden = true;
+    header.hidden = feed.hidden = false;
+    feed.scrollTop = filmScroll;
+    el('lists').scrollLeft = listScroll;
+    skip.href = '#feed';
+    skip.textContent = 'К фильмам и сериалам';
+    document.title = 'Мой киносписок';
+    el('open-wishlist').focus({ preventScroll: true });
+  };
+  el('edit-dialog').addEventListener('keydown', event => {
+    if (event.key === 'Escape' && el('wish-details').open) {
+      event.preventDefault();
+      el('edit-dialog').close();
+    }
+  });
+}
 function resetFilters() {
   for (const id of filterIds) el(id).value = '';
   state.type = 'all';
@@ -555,6 +751,7 @@ function reflectSort() {
 let lastSavedFeed;
 function saveView({ initial = false } = {}) {
   const feed = el('feed');
+  if (feed.hidden) return;
   const top = feed.getBoundingClientRect().top;
   const first = [...el('records').children].find(card => card.dataset.id && card.getBoundingClientRect().bottom > top);
   const dialog = document.querySelector('#filters[open], #schedule[open]');
@@ -771,7 +968,12 @@ function trackCalendarDay() {
 }
 async function sync() {
   if (!hosted) return;
-  try { if (await refreshHistory()) render(); }
+  try {
+    if (await refreshHistory()) {
+      render();
+      renderWishlist();
+    }
+  }
   catch { announce('Нет связи с историей просмотра. Повторим синхронизацию.'); }
 }
 function wireGroup(id, key) {
@@ -864,6 +1066,7 @@ async function start() {
     el('edit-pin').removeAttribute('aria-invalid');
   };
   document.querySelectorAll('[data-close]').forEach(b => b.onclick = () => b.closest('dialog').close());
+  setupWishlist();
   const embedded = document.getElementById('offline-catalog');
   let modified;
   if (embedded) state.catalog = JSON.parse(embedded.textContent);
@@ -907,7 +1110,9 @@ async function start() {
     if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) dialog.close();
   });
   if (!hosted) window.addEventListener('storage', event => {
-    if (!event.key?.startsWith('film-list:view:')) render();
+    const wishMark = event.key?.startsWith('wish-list:fulfilled:');
+    if (!event.key || wishMark) renderWishlist();
+    if (!wishMark && !event.key?.startsWith('film-list:view:')) render();
   });
   trackCalendarDay();
   if (view) restorePosition(view);

@@ -263,3 +263,101 @@ details[open] summary svg{transform:rotate(180deg)}
  .topline{min-height:0;padding-top:0}.toolbar{min-height:36px}
  #lists{min-height:30px}#lists button{min-height:28px}.entry{padding-top:12px}
 }
+
+.collection-switch{display:inline-flex;align-items:center;gap:12px;color:var(--ink);font:inherit;letter-spacing:inherit}
+.collection-destination{display:inline-flex;align-items:center;gap:6px;min-height:30px;padding:4px 8px;border:1px solid var(--line);border-radius:7px;background:var(--surface);color:var(--blue);font-size:.8125rem;font-weight:550;letter-spacing:normal}
+.collection-destination .ico{width:15px;height:15px}
+.collection-switch:hover .collection-destination{border-color:var(--blue);background:var(--tint)}
+#wishlist:not([hidden]){display:flex;flex:1;flex-direction:column;min-height:0}
+.wish-top{display:flex}
+.wish-status{display:flex;align-self:stretch;gap:24px;margin-inline-start:auto}
+.wish-status button{position:relative;font-size:1.05rem;font-weight:600}
+.wish-status button[aria-pressed=true]{color:var(--blue);font-weight:700}
+.wish-status button[aria-pressed=true]::after{content:"";position:absolute;inset:auto 0 0;height:3px;border-radius:3px;background:var(--blue)}
+.wish-toolbar{min-height:61px;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"types tools";padding-block:8px}
+.wish-tools{display:flex;gap:12px;margin:0;border:0}
+.wish-sort{padding-inline:10px 0}
+.wish-sort select{--sort-width:147px}
+.wish-view{display:inline-flex;flex:none;align-items:center;gap:2px;padding:3px;border:1px solid var(--line);border-radius:9px;background:var(--surface)}
+.wish-view button{display:flex;align-items:center;justify-content:center;gap:6px;min-height:32px;padding:0 9px;border-radius:5px;font-size:.875rem;font-weight:550}
+.wish-view button[aria-pressed=true]{background:var(--tint);color:var(--blue)}
+.wish-view .ico{width:16px;height:16px}
+#wish-feed{flex:1;min-height:0;overflow:auto;overscroll-behavior-y:contain;scrollbar-color:var(--line) transparent}
+#wish-feed>.wrap{width:min(100%,1264px);padding:20px 24px 28px}
+.wish-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.wish-card{position:relative;display:flex;min-width:0;flex-direction:column;overflow:hidden;border:1px solid var(--line);border-radius:13px;background:var(--surface)}
+.wish-image{display:grid;place-items:center;aspect-ratio:1;overflow:hidden;background:radial-gradient(ellipse at 50% 36%,#3a414f,#222630 76%)}
+.wish-image img{display:block;width:100%;height:100%;min-height:0;padding:14px;object-fit:contain}
+.wish-caption{display:flex;flex:1;min-width:0;flex-direction:column;padding:13px}
+.wish-caption h2{font-size:1.14rem;line-height:1.27;letter-spacing:-.025em}
+.wish-open{display:flex;justify-content:space-between;align-items:baseline;width:100%;gap:6px;text-align:start;overflow-wrap:anywhere;color:var(--ink);font-weight:680}
+.wish-open .ico{align-self:flex-start;width:17px;height:17px;margin-top:3px;transform:rotate(-90deg);color:var(--muted)}
+.wish-open::after{content:"";position:absolute;inset:0;border-radius:12px}
+.wish-open:hover,.wish-open:hover .ico{color:var(--blue)}
+.wish-open:focus-visible{outline:none}
+.wish-open:focus-visible::after{outline:3px solid var(--ink);outline-offset:-3px}
+.wish-note{margin-top:5px;color:var(--muted);font-size:.82rem}
+.wish-meta{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:11px}
+.wish-budget{color:var(--blue);font-size:.92rem;font-weight:600;font-variant-numeric:tabular-nums}
+.wish-actions{position:relative;display:flex;gap:6px}
+.wish-meta .wish-actions{margin-inline-start:auto}
+.wish-meta .btn{width:38px;min-height:36px;padding:0}
+.wish-meta .btn:hover{color:var(--blue);border-color:var(--blue)}
+.wish-message{grid-column:1/-1}
+.wish-message .btn{margin-top:15px}
+.wish-list{grid-template-columns:minmax(0,1fr);gap:10px}
+.wish-list .wish-card{flex-direction:row;align-items:stretch}
+.wish-list .wish-image{width:clamp(110px,20vw,170px);flex:none}
+#wish-details{width:min(740px,calc(100% - 48px))}
+.wish-detail-body{display:grid;gap:18px;align-items:start;padding-block:20px}
+.wish-detail-body:has(.wish-image){grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)}
+.wish-detail-body .wish-image{border-radius:10px}
+.wish-detail-copy{display:grid;gap:12px}
+.wish-detail-note{color:var(--blue);font-weight:650}
+.wish-added{color:var(--muted);font-size:.8125rem}
+.wish-detail-foot{justify-content:flex-start}
+.wish-detail-foot .wish-actions{flex-wrap:wrap}
+@media(max-width:1160px){
+ #open-wishlist .collection-destination>span:not(.ico){display:none}
+}
+@media(min-width:641px) and (max-width:1000px){
+ .wish-grid:not(.wish-list){grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:760px){
+ .wish-toolbar{grid-template-columns:minmax(0,1fr);grid-template-areas:"types" "tools";gap:3px}
+ .wish-tools .sort{justify-self:start}
+}
+@media(max-width:640px){
+ .collection-switch{gap:6px}
+ .collection-destination{min-height:26px;padding:3px 6px;font-size:.75rem}
+ .collection-destination .ico{width:13px;height:13px}
+ .wish-top{gap:0;flex-direction:column;align-items:flex-start}
+ .wish-status{min-height:44px;margin:0}
+ .wish-status button{font-size:.875rem}
+ #wish-categories{flex-wrap:wrap}
+ #wish-categories button{padding-inline:8px}
+ .wish-tools{min-height:40px}
+ .wish-view{padding:2px}
+ .wish-view button{width:39px;height:34px;padding:0}
+ .wish-view button>span:not(.ico){display:none}
+ .wish-sort{justify-self:start;min-height:38px;padding:0}
+ .wish-sort select{position:static;opacity:1;width:135px;height:auto;padding:4px 18px 4px 4px}
+ .wish-sort>.sr{position:absolute;width:1px;height:1px;clip-path:inset(50%);overflow:hidden}
+ #wish-feed>.wrap{padding:12px 14px 18px}
+ .wish-grid{gap:10px}
+ .wish-grid:not(.wish-list){grid-template-columns:repeat(2,minmax(0,1fr))}
+ .wish-card{border-radius:10px}
+ .wish-image img{padding:9px}
+ .wish-caption{padding:8px}
+ .wish-caption h2{font-size:.94rem;line-height:1.2}
+ .wish-open .ico{width:13px;height:13px;margin-top:2px}
+ .wish-note{font-size:.75rem}
+ .wish-meta .btn{min-height:44px;width:44px}
+ #wish-details{width:100%}
+ .wish-detail-body:has(.wish-image){grid-template-columns:minmax(0,1fr)}
+ .wish-detail-body .wish-image{width:min(100%,280px);justify-self:center}
+}
+@media(max-width:360px){
+ #open-wishlist{font-size:1.25rem}
+ #wish-categories button{padding-inline:6px}
+}

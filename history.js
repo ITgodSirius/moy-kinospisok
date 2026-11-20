@@ -1,5 +1,8 @@
 // The original per-card keys preserve marks on the same browser origin.
-const prefixes = { watching: 'film-list:watching:', watched: 'film-list:watched:', favorite: 'film-list:favorite:' };
+const prefixes = {
+  watching: 'film-list:watching:', watched: 'film-list:watched:', favorite: 'film-list:favorite:',
+  fulfilled: 'wish-list:fulfilled:'
+};
 export const hosted = document.querySelector('meta[name="history-mode"]').content === 'server';
 const remote = new Map();
 const inFlight = new Set();

@@ -9,15 +9,15 @@
   <meta name="history-mode" content="local">
   <title>Мой киносписок</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%231443ef'/%3E%3Cpath d='M18 18h28v29L32 38l-14 9z' fill='white'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./style.css?v=45ce768d7596">
-  <script type="module" src="./app.js?v=fa4d6164eb2b"></script>
+  <link rel="stylesheet" href="./style.css?v=81dcddf49a5c">
+  <script type="module" src="./app.js?v=ab74acca8428"></script>
 </head>
 <body>
   <a class="skip" href="#feed">К фильмам и сериалам</a>
-  <header class="masthead">
+  <header class="masthead" id="cinema-header">
     <div class="wrap">
       <div class="topline" id="list-navigation">
-        <h1>Мой киносписок</h1>
+        <h1><button class="collection-switch" id="open-wishlist" type="button" aria-label="Мой киносписок. Открыть вишлист" aria-controls="wishlist">Мой киносписок <span class="collection-destination"><span data-icon="swap"></span><span>Вишлист</span></span></button></h1>
         <nav class="mobile-lists" aria-label="Личные списки">
           <button type="button" data-list="favorite" aria-pressed="false" aria-label="Любимые" title="Любимые"><span data-icon="heart"></span></button>
           <button type="button" data-list="watched" aria-pressed="false" aria-label="Просмотрено" title="Просмотрено"><span data-icon="check"></span></button>
@@ -73,7 +73,52 @@
   <main id="feed" tabindex="-1" aria-label="Лента фильмов и сериалов">
     <div class="wrap"><div id="records"><p class="loading">Загрузка каталога…</p></div></div>
   </main>
+  <section id="wishlist" aria-label="Мой вишлист" hidden>
+    <header class="masthead">
+      <div class="wrap">
+        <div class="topline wish-top">
+          <h1><button class="collection-switch" id="open-cinema" type="button" aria-label="Мой вишлист. Открыть киносписок" aria-controls="feed">Мой вишлист <span class="collection-destination"><span data-icon="swap"></span><span>Киносписок</span></span></button></h1>
+          <nav class="wish-status" id="wish-status" aria-label="Статус желания">
+            <button type="button" data-wish-status="wanted" aria-pressed="true">Хочу</button>
+            <button type="button" data-wish-status="fulfilled" aria-pressed="false">Сбылось</button>
+          </nav>
+        </div>
+        <div class="toolbar wish-toolbar">
+          <div class="type-switch" id="wish-categories" role="group" aria-label="Категории желаний">
+            <button type="button" data-wish-category="all" aria-pressed="true">Всё</button>
+            <button type="button" data-wish-category="things" aria-pressed="false">Вещи</button>
+            <button type="button" data-wish-category="trips" aria-pressed="false">Поездки</button>
+            <button type="button" data-wish-category="experiences" aria-pressed="false">Впечатления</button>
+            <button type="button" data-wish-category="perfume" aria-pressed="false">Духи</button>
+          </div>
+          <div class="tools wish-tools">
+            <label class="sort wish-sort"><span class="sr">Сортировка желаний</span>
+              <select id="wish-sort">
+                <option value="added">Сначала новые</option><option value="title">По названию</option>
+                <option value="budget">По бюджету</option>
+              </select><span data-icon="chevron"></span>
+            </label>
+            <div id="wish-layouts" class="view-switch wish-view" role="group" aria-label="Вид вишлиста">
+              <button type="button" data-wish-layout="list" aria-label="Список" aria-pressed="false"><span data-icon="list"></span><span>Список</span></button>
+              <button type="button" data-wish-layout="grid" aria-label="Сетка" aria-pressed="true"><span data-icon="grid"></span><span>Сетка</span></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main id="wish-feed" tabindex="-1" aria-label="Лента желаний">
+      <div class="wrap"><div id="wish-records" class="wish-grid"></div></div>
+    </main>
+  </section>
   <div id="notice" role="status" aria-live="polite"></div>
+  <dialog id="wish-details" aria-labelledby="wish-title">
+    <div class="dialog-head">
+      <div><h2 id="wish-title"></h2><p id="wish-category"></p></div>
+      <button class="icon-button" data-close aria-label="Закрыть карточку желания" autofocus><span data-icon="close"></span></button>
+    </div>
+    <div class="dialog-body wish-detail-body"></div>
+    <div class="dialog-foot wish-detail-foot"></div>
+  </dialog>
   <dialog id="film-details" aria-labelledby="film-title">
     <div class="dialog-head"><div id="film-heading"></div><button class="icon-button" data-close aria-label="Закрыть карточку" autofocus><span data-icon="close"></span></button></div>
     <div class="dialog-body film-body"></div>
