@@ -82,9 +82,10 @@ function matchesCategory(item) {
   if (state.type === 'animation') return isAnimated(item);
   return state.type === 'all' || item.type === state.type;
 }
-function matchesOtherFilters(item) {
+function matchesFilters(item) {
   const ageDays = daysSince(item.addedDate);
   return listMatches(item) && matchesCategory(item)
+    && (!state.genres.size || item.genres.some(genre => state.genres.has(genre)))
     && (!el('origin').value || item.origin === el('origin').value)
     && (!el('studio').value || item.studios.includes(el('studio').value) || item.platforms?.includes(el('studio').value))
     && (!el('minimum').value || (item.rating != null && item.rating >= Number(el('minimum').value)))
@@ -409,6 +410,10 @@ function reflectControls() {
     b.setAttribute('aria-pressed', String(active));
     if (b.classList.contains('selected-genre')) b.hidden = !active;
   }
+  for (const option of el('genre-select').options) {
+    if (option.value) option.disabled = state.genres.has(option.value);
+  }
+  el('picker-badges').hidden = !state.genres.size;
   el('feed').setAttribute('aria-label', 'Лента · ' + listNames[state.list]);
   reflectSort();
 }
@@ -512,9 +517,7 @@ function render() {
   const focused = document.activeElement;
   const kind = focused?.dataset.kind;
   const id = focused?.closest('.entry')?.dataset.id;
-  const candidates = state.catalog.filter(matchesOtherFilters);
-  updateGenreCounts(candidates);
-  const result = candidates.filter(item => !state.genres.size || item.genres.some(genre => state.genres.has(genre))).sort(compare);
+  const result = state.catalog.filter(matchesFilters).sort(compare);
   const count = filterIds.filter(id => el(id).value).length;
   el('filter-count').hidden = !count; el('filter-count').textContent = count;
   el('apply').textContent = 'Показать (' + result.length + ')';
@@ -554,20 +557,12 @@ function wireGroup(id, key) {
     reflectControls(); render(); el('feed').scrollTop = 0;
   });
 }
-function updateGenreCounts(candidates) {
-  const counts = new Map([['', candidates.length]]);
-  for (const item of candidates) {
-    for (const genre of new Set(item.genres.filter(Boolean))) counts.set(genre, (counts.get(genre) || 0) + 1);
-  }
-  for (const option of el('genre-options').children) {
-    option.querySelector('.genre-count').textContent = counts.get(option.dataset.genre) || 0;
-  }
-}
 function setupGenres(availableGenres) {
   const group = el('genres');
   const strip = el('genre-strip');
   const picker = el('genre-picker');
-  const options = el('genre-options');
+  const select = el('genre-select');
+  const pickerBadges = el('picker-badges');
   for (const genre of ['', ...[...availableGenres].sort(collator.compare)]) {
     const label = genre || 'Все жанры';
     const toggle = node('button', 'genre-chip');
@@ -575,37 +570,44 @@ function setupGenres(availableGenres) {
     toggle.type = 'button';
     toggle.dataset.genre = genre;
     strip.append(toggle);
-    const option = toggle.cloneNode(true);
-    option.append(node('span', 'genre-count'), icon('check'));
-    options.append(option);
     if (genre) {
+      select.add(new Option(genre, genre));
       const badge = toggle.cloneNode(true);
       badge.className = 'selected-genre';
       badge.hidden = true;
       badge.setAttribute('aria-label', 'Снять фильтр «' + genre + '»');
       badge.append(icon('close'));
       el('selected-genres').append(badge);
+      pickerBadges.append(badge.cloneNode(true));
     }
     toggle.title = label;
   }
-  function selectGenre(event) {
-    const toggle = event.target.closest('[data-genre]');
-    const genre = toggle?.dataset.genre;
-    if (genre === undefined) return;
+  function toggleGenre(genre) {
     if (!genre) state.genres.clear();
     else if (state.genres.has(genre)) state.genres.delete(genre);
     else state.genres.add(genre);
     reflectControls();
-    if (toggle.classList.contains('selected-genre')) {
-      const next = el('selected-genres').querySelector('button:not([hidden])');
-      (next || el('genre-open')).focus({preventScroll:true});
-    }
     render();
     el('feed').scrollTop = 0;
   }
+  function selectGenre(event) {
+    const toggle = event.target.closest('[data-genre]');
+    if (!toggle) return;
+    toggleGenre(toggle.dataset.genre);
+    if (toggle.classList.contains('selected-genre')) {
+      const next = event.currentTarget.querySelector('button:not([hidden])');
+      const fallback = event.currentTarget === pickerBadges ? select : el('genre-open');
+      (next || fallback).focus({preventScroll:true});
+    }
+  }
   group.addEventListener('click', selectGenre);
-  options.addEventListener('click', selectGenre);
+  pickerBadges.addEventListener('click', selectGenre);
   el('selected-genres').addEventListener('click', selectGenre);
+  select.onchange = () => {
+    if (select.value) toggleGenre(select.value);
+    select.value = '';
+  };
+  el('clear-genres').onclick = () => toggleGenre('');
   el('genre-open').onclick = () => picker.showModal();
 
   function fitGenres() {
