@@ -1,5 +1,82 @@
 [
   {
+    "id": "tmdb-tv-224377-s1",
+    "title": "Гарри Поттер и философский камень",
+    "type": "series",
+    "season": 1,
+    "genres": [
+      "Фэнтези",
+      "Приключения"
+    ],
+    "studios": [
+      "HBO",
+      "Warner Bros. Television",
+      "Brontë Film and TV",
+      "Heyday Films"
+    ],
+    "description": "В одиннадцать лет Гарри Поттер узнаёт, что он волшебник. В Хогвартсе он находит друзей, осваивает магию и сталкивается с опасностью, связанной с его прошлым.",
+    "poster": "assets/harry-potter-philosophers-stone-poster.jpg",
+    "gallery": [],
+    "releaseDate": "2026-12-25",
+    "rating": null,
+    "ratingSource": null,
+    "status": "waiting",
+    "trailer": "https://www.youtube.com/watch?v=SJVmeJaS44s",
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2026-12-25",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2026-12-25"
+          },
+          {
+            "number": 2,
+            "date": null
+          },
+          {
+            "number": 3,
+            "date": null
+          },
+          {
+            "number": 4,
+            "date": null
+          },
+          {
+            "number": 5,
+            "date": null
+          },
+          {
+            "number": 6,
+            "date": null
+          },
+          {
+            "number": 7,
+            "date": null
+          },
+          {
+            "number": 8,
+            "date": null
+          }
+        ]
+      }
+    ],
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/224377/season/1?language=ru-RU",
+      "official": "https://www.hbomax.com/show/9d3f89d6-da94-4780-88d1-d12a36887992",
+      "release": "https://www.harrypotter.com/features/everything-we-know-about-the-harry-potter-tv-series-so-far",
+      "production": "https://press.wbd.com/us/media-release/hbo-0/harry-potter/hbo-original-harry-potter-series-releases-first-official-teaser-and-announces",
+      "clip": "https://www.youtube.com/watch?v=0Vs-fglKhpA",
+      "poster": "https://contentful.harrypotter.com/usf1vwtuqyxm/19implO0JiMm9vxzpEgchc/1a8c73d3cfadbd0488a81aefca36796e/HBO-harry-poster-close-up-eye-UK-date.jpg?fm=jpg&q=79&w=700"
+    },
+    "platforms": [
+      "HBO"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-20"
+  },
+  {
     "id": "tmdb-movie-16318",
     "title": "Секса круглый ноль",
     "type": "movie",
