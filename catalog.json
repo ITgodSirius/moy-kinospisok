@@ -1,5 +1,317 @@
 [
   {
+    "id": "tmdb-tv-250670-s3",
+    "title": "Макстон-холл",
+    "type": "series",
+    "season": 3,
+    "genres": [
+      "Мелодрама",
+      "Драма"
+    ],
+    "studios": [
+      "UFA Fiction"
+    ],
+    "description": "После отстранения от занятий Руби рискует потерять шанс поступить в Оксфорд. Вместе с Джеймсом она пытается доказать свою невиновность, но по мере расследования им приходится иметь дело с тайнами, которые ставят их отношения под угрозу.",
+    "releaseDate": "2026-12-09",
+    "status": "waiting",
+    "trailer": "https://www.youtube.com/watch?v=vPAoANfZ-ps",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/250670/season/3?language=ru-RU",
+      "release": "https://www.aboutamazon.com/news/entertainment/maxton-hall-prime-video",
+      "official": "https://www.ufa.de/en/productions/maxton-hall-die-welt-zwischen-uns",
+      "schedule": "https://www.aboutamazon.com/news/entertainment/maxton-hall-prime-video",
+      "kinopoisk": "https://www.kinopoisk.ru/series/5454228/",
+      "poster": "https://image.tmdb.org/t/p/w780/8bqb3Ql6bFYDcjUMyJWpi1Ll04N.jpg",
+      "gallery1": "https://assets.aboutamazon.com/e2/64/4e7065b44dfabad890c7a84ed281/untitled-26-june-2026-at-10-37-28.png",
+      "gallery2": "https://assets.aboutamazon.com/d4/f6/d16fc5994bceb820a3fb80d8af54/untitled-26-june-2026-at-10-48-54.png"
+    },
+    "platforms": [
+      "Amazon"
+    ],
+    "poster": "assets/tmdb-tv-250670-s3-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-250670-s3-gallery-1.jpg",
+      "assets/tmdb-tv-250670-s3-gallery-2.jpg"
+    ],
+    "rating": null,
+    "ratingSource": null,
+    "origin": "foreign",
+    "seasons": [
+      {
+        "number": 3,
+        "releaseDate": "2026-12-09",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2026-12-09"
+          },
+          {
+            "number": 2,
+            "date": "2026-12-09"
+          },
+          {
+            "number": 3,
+            "date": "2026-12-16"
+          },
+          {
+            "number": 4,
+            "date": "2026-12-16"
+          },
+          {
+            "number": 5,
+            "date": "2026-12-23"
+          },
+          {
+            "number": 6,
+            "date": "2026-12-23"
+          }
+        ]
+      }
+    ],
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-movie-1568060",
+    "title": "Идеальные лжецы",
+    "type": "movie",
+    "genres": [
+      "Триллер",
+      "Драма",
+      "Мелодрама"
+    ],
+    "studios": [
+      "Federation Spain",
+      "WEBTOON Productions",
+      "Amazon MGM Studios"
+    ],
+    "description": "Джуд Дерри поступает в элитный университет Тагус, чтобы выяснить, что случилось с её братом. Она сближается с тремя наследниками семьи Кэш, чьи тайны могут объяснить его гибель.",
+    "releaseDate": "2026-11-20",
+    "status": "available",
+    "trailer": "https://www.youtube.com/watch?v=50v6k3LUcxU",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/1568060?language=ru-RU",
+      "release": "https://www.aboutamazon.com/news/entertainment/prime-video-november-films-shows-sports-2026",
+      "official": "https://www.aboutamazon.com/news/entertainment/perfect-liars-prime-video",
+      "poster": "https://image.tmdb.org/t/p/w780/6bQ0YqBV61wlBHArIyksxs0FoT6.jpg",
+      "gallery1": "https://assets.aboutamazon.com/c9/91/928fbb23461eb053f5e5549d7fa6/perfect-liars-inline-2-amazon-news.png",
+      "gallery2": "https://assets.aboutamazon.com/4d/9a/bd9039f04819831287a0fdcc2d69/perfect-liars-inline-4-amazon-news.png"
+    },
+    "platforms": [
+      "Amazon"
+    ],
+    "poster": "assets/tmdb-movie-1568060-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-1568060-gallery-1.jpg",
+      "assets/tmdb-movie-1568060-gallery-2.jpg"
+    ],
+    "rating": null,
+    "ratingSource": null,
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-movie-1596275",
+    "title": "Драйв. Притворщики",
+    "type": "movie",
+    "genres": [
+      "Мелодрама",
+      "Драма"
+    ],
+    "studios": [
+      "Bavaria Fiction",
+      "Amazon MGM Studios"
+    ],
+    "description": "Автомеханик Сара Дженкинс соглашается на фиктивную помолвку с гонщиком Данте Аннунциатой. Ему это поможет спасти репутацию после скандала, а ей даст шанс самой выйти на трассу. Сделка становится рискованнее, когда между ними возникают чувства.",
+    "releaseDate": "2026-10-28",
+    "rating": 5.6,
+    "ratingSource": "IMDb",
+    "status": "available",
+    "trailer": "https://www.youtube.com/watch?v=-sV69CJwUwU",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/1596275?language=ru-RU",
+      "release": "https://www.bavaria-fiction.de/en/node/10284",
+      "official": "https://www.primevideo.com/detail/0QQB41W1D6OXPODUOSE4IYST7E",
+      "kinopoisk": "https://www.kinopoisk.ru/film/14861516/",
+      "rating": "https://www.primevideo.com/detail/0QQB41W1D6OXPODUOSE4IYST7E",
+      "poster": "https://image.tmdb.org/t/p/w780/s9syckECnUYhKePQ1A0DC0mFVZ9.jpg",
+      "gallery1": "https://www.bavaria-fiction.de/sites/bavaria-fernsehproduktion.de/files/styles/slider_enforce/public/2026-09/DRIVE_UT_021025_01478.jpeg?h=04ec9ced&itok=TuT-MZ36",
+      "gallery2": "https://www.bavaria-fiction.de/sites/bavaria-fernsehproduktion.de/files/styles/slider_enforce/public/2026-09/DRVE_SDR.0160463.jpg?h=eb58b4d6&itok=erATG-IU"
+    },
+    "platforms": [
+      "Amazon"
+    ],
+    "poster": "assets/tmdb-movie-1596275-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-1596275-gallery-1.jpg",
+      "assets/tmdb-movie-1596275-gallery-2.jpg"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-tv-284558-s1",
+    "title": "Убить Джеки",
+    "type": "series",
+    "season": 1,
+    "genres": [
+      "Триллер",
+      "Криминал",
+      "Драма"
+    ],
+    "studios": [
+      "Fremantle",
+      "Steel Springs Pictures"
+    ],
+    "description": "Джеки Прайс оставила контрабанду в прошлом и уже двадцать лет торгует произведениями искусства. Когда за ней отправляют группу наёмников, Джеки обращается к старым знакомым и пытается выяснить, кто её заказал.",
+    "releaseDate": "2026-10-02",
+    "status": "available",
+    "trailer": "https://www.youtube.com/watch?v=dKgTyq2-4w0",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/284558/season/1?language=ru-RU",
+      "release": "https://www.kinopoisk.ru/media/article/4013432/",
+      "official": "https://blog.amediateka.ru/longreads/kill-jackie/",
+      "schedule": "https://kanobu.ru/news/chto-smotret-v-onlajn-kinoteatre-amediateka-v-oktyabre-515995/",
+      "press": "https://www.amcglobalmedia.com/2026/08/19/amc-catherine-zeta-jones-revenge-thriller-kill-jackie-to-premiere-october-2/",
+      "poster": "https://image.tmdb.org/t/p/w780/xECrN4jpKMhTOxUbnCdiKo7QWdL.jpg",
+      "gallery1": "https://assets.aboutamazon.com/50/46/4c069efd448787fcf2f3724a388b/catherine-zeta-jones-as-jackie-price-unai-mateo-fremantle-and-steel-springs-pictures-2026-1-cropped.jpg",
+      "gallery2": "https://assets.aboutamazon.com/da/3a/51253770408695dffb28fb7792f8/sebastian-armesto-as-the-cuban-and-daniel-ings-as-sam-unai-mateo-fremantle-and-steel-springs-pictures-2026-cropped.jpg"
+    },
+    "platforms": [
+      "Амедиатека",
+      "Amazon",
+      "AMC+"
+    ],
+    "poster": "assets/tmdb-tv-284558-s1-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-284558-s1-gallery-1.jpg",
+      "assets/tmdb-tv-284558-s1-gallery-2.jpg"
+    ],
+    "rating": null,
+    "ratingSource": null,
+    "origin": "foreign",
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2026-10-02",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2026-10-02"
+          },
+          {
+            "number": 2,
+            "date": "2026-10-02"
+          },
+          {
+            "number": 3,
+            "date": "2026-10-02"
+          },
+          {
+            "number": 4,
+            "date": "2026-10-02"
+          },
+          {
+            "number": 5,
+            "date": "2026-10-02"
+          },
+          {
+            "number": 6,
+            "date": "2026-10-02"
+          },
+          {
+            "number": 7,
+            "date": "2026-10-02"
+          },
+          {
+            "number": 8,
+            "date": "2026-10-02"
+          }
+        ]
+      }
+    ],
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-tv-298852-s1",
+    "title": "Война",
+    "type": "series",
+    "season": 1,
+    "genres": [
+      "Драма",
+      "Триллер"
+    ],
+    "studios": [
+      "New Pictures",
+      "Observatory Pictures"
+    ],
+    "description": "Когда британский технологический магнат и кинозвезда начинают бракоразводный процесс, за их дело берутся две конкурирующие лондонские фирмы. По мере того как семейные тайны становятся достоянием публики, в борьбу за репутацию втягиваются и сами адвокаты.",
+    "releaseDate": "2026-10-01",
+    "status": "available",
+    "trailer": "https://www.youtube.com/watch?v=ZybkHGaoPvQ",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/298852/season/1?language=ru-RU",
+      "release": "https://www.youtube.com/watch?v=ZybkHGaoPvQ",
+      "official": "https://www.skygroup.sky/en-gb/article/dominic-west-and-sienna-miller-lead-sky-original-legal-drama-war",
+      "schedule": "https://okko.tv/media/news/razdelyai-a-zatem-vlastvui-grafik-vykhoda-epizodov-seriala-voina-24-09-2026",
+      "poster": "https://resizing.flixster.com/pXMMWpodRzA_t_8M83GM45IYdeQ=/ems.cHJkLWVtcy1hc3NldHMvdHZzZXJpZXMvMDU5MmEyMGYtNWNiNS00YjAzLTg3MmEtZDIwZjM0ZmNlYmNiLmpwZw==",
+      "gallery1": "https://images.contentstack.io/v3/assets/blt4b099fa9cc3801a6/blte545e8ba3fdfe029/6a7437630da673498057a052/war-01.jpg",
+      "gallery2": "https://rts.org.uk/sites/default/files/styles/9_column_landscape/public/gallery/Main%20body%20article%20page%20dimensions%20%281%29.png?itok=U8qGcref"
+    },
+    "platforms": [
+      "HBO",
+      "Sky"
+    ],
+    "poster": "assets/tmdb-tv-298852-s1-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-298852-s1-gallery-1.jpg",
+      "assets/tmdb-tv-298852-s1-gallery-2.jpg"
+    ],
+    "rating": null,
+    "ratingSource": null,
+    "origin": "foreign",
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2026-10-01",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2026-10-01"
+          },
+          {
+            "number": 2,
+            "date": "2026-10-08"
+          },
+          {
+            "number": 3,
+            "date": "2026-10-15"
+          },
+          {
+            "number": 4,
+            "date": "2026-10-22"
+          },
+          {
+            "number": 5,
+            "date": "2026-10-29"
+          },
+          {
+            "number": 6,
+            "date": "2026-11-05"
+          },
+          {
+            "number": 7,
+            "date": "2026-11-12"
+          },
+          {
+            "number": 8,
+            "date": "2026-11-19"
+          }
+        ]
+      }
+    ],
+    "addedDate": "2026-11-21"
+  },
+  {
     "id": "tmdb-movie-445466",
     "title": "Придурки",
     "type": "movie",
