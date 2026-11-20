@@ -1,5 +1,768 @@
 [
   {
+    "id": "tmdb-movie-445466",
+    "title": "Придурки",
+    "type": "movie",
+    "genres": [
+      "Комедия",
+      "Криминал"
+    ],
+    "studios": [
+      "Rough House Pictures"
+    ],
+    "description": "Два неудачника соглашаются отвезти избалованного подростка в реабилитационный центр. Простая подработка превращается в хаотичное путешествие, когда пассажир сбегает.",
+    "poster": "assets/tmdb-movie-445466-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-445466-gallery-1.jpg",
+      "assets/tmdb-movie-445466-gallery-2.jpg"
+    ],
+    "releaseDate": "2026-08-20",
+    "rating": null,
+    "ratingSource": null,
+    "status": "available",
+    "trailer": "https://www.youtube.com/watch?v=UoAf0LNAn30",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/445466?language=ru-RU",
+      "releaseRussia": "https://www.kinometro.ru/release/card/id/56995",
+      "official": "https://www.independentfilmco.com/films/idiots",
+      "imdb": "https://www.imdb.com/title/tt6628920/",
+      "poster": "https://image.tmdb.org/t/p/w780/l1JFNC1SdgyXVr7BaD5ehaYBvOC.jpg",
+      "gallery1": "https://image.tmdb.org/t/p/w780/lneqlgbg3XUjNaeGYk8arhgzczo.jpg",
+      "gallery2": "https://i.ytimg.com/vi/wxKPk3k_lP4/sd1.jpg"
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-tv-300507-s1",
+    "title": "Рулевая",
+    "type": "series",
+    "season": 1,
+    "genres": [
+      "Драма",
+      "Спорт"
+    ],
+    "studios": [
+      "Blue Ant Studios"
+    ],
+    "description": "После семейного скандала гребчиха Тиган переезжает с матерью в небольшой город и становится рулевой мужской команды частной школы.",
+    "poster": "assets/tmdb-tv-300507-s1-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-300507-s1-gallery-1.jpg",
+      "assets/tmdb-tv-300507-s1-gallery-2.jpg"
+    ],
+    "releaseDate": "2026-09-10",
+    "rating": null,
+    "ratingSource": null,
+    "status": "available",
+    "trailer": "https://www.youtube.com/watch?v=Xs5qsfqp-tA",
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2026-09-10",
+        "episodes": [
+          {
+            "number": 1,
+            "title": "The Catch",
+            "date": "2026-09-10"
+          },
+          {
+            "number": 2,
+            "title": "The Hateful Eight",
+            "date": "2026-09-10"
+          },
+          {
+            "number": 3,
+            "title": "Flight Crew",
+            "date": "2026-09-10"
+          },
+          {
+            "number": 4,
+            "title": "True Rowmance",
+            "date": "2026-09-10"
+          },
+          {
+            "number": 5,
+            "title": "Anatomy of a Fall Formal",
+            "date": "2026-09-10"
+          },
+          {
+            "number": 6,
+            "title": "Bad Break",
+            "date": "2026-09-10"
+          },
+          {
+            "number": 7,
+            "title": "Under Pressure",
+            "date": "2026-09-10"
+          },
+          {
+            "number": 8,
+            "title": "O Coxswain, My Coxswain",
+            "date": "2026-09-10"
+          }
+        ]
+      }
+    ],
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/300507/season/1?language=ru-RU",
+      "release": "https://blueantmedia.com/2026/07/netflix-sets-september-10-premiere-date-for-blue-ant-studios-crew-girl/",
+      "official": "https://www.netflix.com/title/81991578",
+      "imdb": "https://www.imdb.com/title/tt38218082/",
+      "schedule": "https://thetvdb.com/series/crew-girl/seasons/official/1",
+      "poster": "https://image.tmdb.org/t/p/w780/jkPZW1iHNvlI6077NxSxwITa1tj.jpg",
+      "gallery1": "https://image.tmdb.org/t/p/w780/lmtTtOjsIBxwKD7LsAD5eeyhq1g.jpg",
+      "gallery2": "https://i.ytimg.com/vi/Xs5qsfqp-tA/sd3.jpg"
+    },
+    "platforms": [
+      "Netflix"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-tv-87833-s1",
+    "title": "Орлы",
+    "type": "series",
+    "season": 1,
+    "genres": [
+      "Драма",
+      "Мелодрама",
+      "Спорт"
+    ],
+    "studios": [
+      "New Stories",
+      "SVT"
+    ],
+    "description": "Фелиция и её брат Элиас переезжают из Бостона в шведский Оскарсхамн. Элиас вступает в местную хоккейную команду, а Фелиция ищет своё место среди новых друзей.",
+    "poster": "assets/tmdb-tv-87833-s1-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-87833-s1-gallery-1.jpg",
+      "assets/tmdb-tv-87833-s1-gallery-2.jpg"
+    ],
+    "releaseDate": "2019-03-09",
+    "rating": null,
+    "ratingSource": null,
+    "status": "available",
+    "trailer": "https://www.youtube.com/watch?v=EpiKTLaOjgw",
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2019-03-09",
+        "episodes": [
+          {
+            "number": 1,
+            "title": "Homecoming",
+            "date": "2019-03-09"
+          },
+          {
+            "number": 2,
+            "title": "First Kiss",
+            "date": "2019-03-09"
+          },
+          {
+            "number": 3,
+            "title": "Sunday",
+            "date": "2019-03-09"
+          },
+          {
+            "number": 4,
+            "title": "Sleepover",
+            "date": "2019-03-17"
+          },
+          {
+            "number": 5,
+            "title": "Audition",
+            "date": "2019-03-17"
+          },
+          {
+            "number": 6,
+            "title": "Halloween",
+            "date": null
+          },
+          {
+            "number": 7,
+            "title": "Road Trip",
+            "date": null
+          },
+          {
+            "number": 8,
+            "title": "Lucia",
+            "date": null
+          }
+        ]
+      }
+    ],
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/87833/season/1?language=ru-RU",
+      "release": "https://www.svtplay.se/eagles",
+      "imdb": "https://www.imdb.com/title/tt8422802/",
+      "schedule": "https://thetvdb.com/series/eagles/seasons/official/1",
+      "poster": "https://image.tmdb.org/t/p/w780/y4NtJJMBFTtuBVaDEsuUfDvZ4TQ.jpg",
+      "gallery1": "https://www.svtstatic.se/image/custom/1144/31217038/1686135967?format=auto&chromaSubSampling=false&enableAvif=true&quality=85",
+      "gallery2": "https://i.ytimg.com/vi/EpiKTLaOjgw/sd2.jpg"
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-tv-83050-s1",
+    "title": "Цепляясь за лёд",
+    "type": "series",
+    "season": 1,
+    "genres": [
+      "Драма",
+      "Спорт"
+    ],
+    "studios": [
+      "Blue Ice Pictures",
+      "Safehouse Pictures"
+    ],
+    "description": "После травмы фигуристка Кэт Бейкер пытается вернуться на лёд в парном катании. Вместе с новым партнёром она борется за место в сборной и учится справляться с давлением спорта и семьи.",
+    "poster": "assets/tmdb-tv-83050-s1-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-83050-s1-gallery-1.jpg",
+      "assets/tmdb-tv-83050-s1-gallery-2.jpg"
+    ],
+    "releaseDate": "2020-01-01",
+    "rating": null,
+    "ratingSource": null,
+    "status": "available",
+    "trailer": "https://www.youtube.com/watch?v=AmdnhR1Ie7g",
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2020-01-01",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2020-01-01"
+          },
+          {
+            "number": 2,
+            "date": "2020-01-01"
+          },
+          {
+            "number": 3,
+            "date": "2020-01-01"
+          },
+          {
+            "number": 4,
+            "date": "2020-01-01"
+          },
+          {
+            "number": 5,
+            "date": "2020-01-01"
+          },
+          {
+            "number": 6,
+            "date": "2020-01-01"
+          },
+          {
+            "number": 7,
+            "date": "2020-01-01"
+          },
+          {
+            "number": 8,
+            "date": "2020-01-01"
+          },
+          {
+            "number": 9,
+            "date": "2020-01-01"
+          },
+          {
+            "number": 10,
+            "date": "2020-01-01"
+          }
+        ]
+      }
+    ],
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/83050/season/1?language=ru-RU",
+      "release": "https://media.netflix.com/en/only-on-netflix/80201590",
+      "official": "https://www.netflix.com/title/80201590",
+      "imdb": "https://www.imdb.com/title/tt9117054/",
+      "poster": "https://image.tmdb.org/t/p/w780/bAEGuEK0z4KTlrsx5UYpIvmPIPc.jpg",
+      "gallery1": "https://image.tmdb.org/t/p/w780/zLAANW5gTW6l2vbMPRmJasyI171.jpg",
+      "gallery2": "https://i.ytimg.com/vi/AmdnhR1Ie7g/sd3.jpg"
+    },
+    "platforms": [
+      "Netflix"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-movie-1641629",
+    "title": "Ты + Я — против всего мира",
+    "type": "movie",
+    "genres": [
+      "Драма",
+      "Мелодрама"
+    ],
+    "studios": [],
+    "description": "Студенты Альма и Вадим из совершенно разных семей вынуждены вместе снимать короткометражку. Работа над фильмом сближает их и заставляет обоих решать, чего они хотят от своей жизни.",
+    "poster": "assets/tmdb-movie-1641629-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-1641629-gallery-1.jpg",
+      "assets/tmdb-movie-1641629-gallery-2.jpg"
+    ],
+    "releaseDate": "2026-09-18",
+    "rating": 4.8,
+    "ratingSource": "IMDb",
+    "status": "available",
+    "trailer": "https://www.youtube.com/watch?v=CWvimo-5vDI",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/1641629?language=ru-RU",
+      "release": "https://www.aboutamazon.com/news/entertainment/you-me-toi-moi-prime-video",
+      "imdb": "https://www.imdb.com/title/tt43617372/",
+      "poster": "https://image.tmdb.org/t/p/w780/bAbBNVplg7h79sm94OyHeKk8Phz.jpg",
+      "gallery1": "https://image.tmdb.org/t/p/w780/nkEhDomjmPHJSA4Tx8pxv0NlKEy.jpg",
+      "gallery2": "https://i.ytimg.com/vi/CWvimo-5vDI/sd3.jpg"
+    },
+    "platforms": [
+      "Amazon"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-movie-1032863",
+    "title": "Гипотеза любви",
+    "type": "movie",
+    "genres": [
+      "Мелодрама",
+      "Комедия"
+    ],
+    "studios": [
+      "Amazon MGM Studios"
+    ],
+    "description": "Аспирантка Олив Смит и профессор Адам Карлсен договариваются притворяться парой. Когда договорённость становится всё менее убедительной для них самих, Олив приходится переосмыслить свои взгляды на отношения.",
+    "poster": "assets/tmdb-movie-1032863-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-1032863-gallery-1.jpg",
+      "assets/tmdb-movie-1032863-gallery-2.jpg"
+    ],
+    "releaseDate": "2026-09-23",
+    "rating": null,
+    "ratingSource": null,
+    "status": "available",
+    "trailer": "https://www.youtube.com/watch?v=mgQAAvitNN4",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/1032863?language=ru-RU",
+      "release": "https://www.aboutamazon.com/news/entertainment/love-hypothesis-prime-video",
+      "imdb": "https://www.imdb.com/title/tt22526100/",
+      "poster": "https://image.tmdb.org/t/p/w780/vfZxVHextAGC70zrNhS8lsROqP1.jpg",
+      "gallery1": "https://image.tmdb.org/t/p/w780/o7Oy9Gbx1CCyaweL8xUhtMW4Puq.jpg",
+      "gallery2": "https://i.ytimg.com/vi/mgQAAvitNN4/sd3.jpg"
+    },
+    "platforms": [
+      "Amazon"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-movie-1440098",
+    "title": "Слоновая кость",
+    "type": "movie",
+    "genres": [
+      "Мелодрама",
+      "Триллер",
+      "Драма"
+    ],
+    "studios": [
+      "Amazon MGM Studios"
+    ],
+    "description": "После похищения Марфиль Кортес к ней приставляют телохранителя Себастьяна. Пока они пытаются понять, кто ей угрожает, между ними возникает связь, которая усложняет его работу.",
+    "poster": "assets/tmdb-movie-1440098-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-1440098-gallery-1.jpg",
+      "assets/tmdb-movie-1440098-gallery-2.jpg"
+    ],
+    "releaseDate": "2026-09-09",
+    "rating": 5.4,
+    "ratingSource": "IMDb",
+    "status": "available",
+    "trailer": "https://www.youtube.com/watch?v=djLAS5I0fqQ",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/1440098?language=ru-RU",
+      "release": "https://createprimevideo.amazon/es_es/showDetails/B0HCJ2J3X6",
+      "official": "https://www.primevideo.com/-/es/detail/0GZ76HXP3TQS4E42G5JI9KQR6Q",
+      "imdb": "https://www.imdb.com/title/tt36073210/",
+      "poster": "https://image.tmdb.org/t/p/w780/6rpvddXbaQPOi0fB2HKWbZ3uUSg.jpg",
+      "gallery1": "https://i.ytimg.com/vi/djLAS5I0fqQ/sd1.jpg",
+      "gallery2": "https://i.ytimg.com/vi/djLAS5I0fqQ/sd2.jpg"
+    },
+    "platforms": [
+      "Amazon"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-tv-303044-s1",
+    "title": "Гонщики кампуса",
+    "type": "series",
+    "season": 1,
+    "genres": [
+      "Драма",
+      "Мелодрама"
+    ],
+    "studios": [
+      "Campus Entertainment",
+      "Empreinte Digitale"
+    ],
+    "description": "После расставания студентка Лоис остаётся без жилья и переезжает к Лейну, создателю приложения для поездок по кампусу. Вынужденное соседство постепенно меняет их отношения.",
+    "poster": "assets/tmdb-tv-303044-s1-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-303044-s1-gallery-1.jpg",
+      "assets/tmdb-tv-303044-s1-gallery-2.jpg"
+    ],
+    "releaseDate": "2026-11-06",
+    "rating": null,
+    "ratingSource": null,
+    "status": "available",
+    "trailer": "https://www.youtube.com/watch?v=xybsbjGt1KA",
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2026-11-06",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2026-11-06"
+          },
+          {
+            "number": 2,
+            "date": "2026-11-06"
+          },
+          {
+            "number": 3,
+            "date": "2026-11-06"
+          },
+          {
+            "number": 4,
+            "date": "2026-11-06"
+          },
+          {
+            "number": 5,
+            "date": "2026-11-06"
+          },
+          {
+            "number": 6,
+            "date": "2026-11-06"
+          }
+        ]
+      }
+    ],
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/303044/season/1?language=ru-RU",
+      "release": "https://www.kinopoisk.ru/series/14655815/",
+      "official": "https://www.primevideo.com/-/fr/detail/0LPJITUUG4OPFN23EQ16P5SH3I",
+      "poster": "https://image.tmdb.org/t/p/w780/kTgV6VLp70QOBpCZqvEuTWAA4Ng.jpg",
+      "gallery1": "https://image.tmdb.org/t/p/w780/oaWJm4brEMSWBmQIB73DFxsU683.jpg",
+      "gallery2": "https://image.tmdb.org/t/p/w1280/iUNnKNy6nDItXgwcVKQwsrDfjj5.jpg"
+    },
+    "platforms": [
+      "Amazon"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-tv-291507-s1",
+    "title": "Тело",
+    "type": "series",
+    "season": 1,
+    "genres": [
+      "Драма",
+      "Ужасы",
+      "Мистика"
+    ],
+    "studios": [
+      "Netflix"
+    ],
+    "description": "После неудачного обряда посвящения школьницы из танцевальной команды начинают видеть пугающие видения. В маленьком городе слухи о сверхъестественном быстро превращаются в обвинения.",
+    "poster": "assets/tmdb-tv-291507-s1-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-291507-s1-gallery-1.jpg",
+      "assets/tmdb-tv-291507-s1-gallery-2.jpg"
+    ],
+    "releaseDate": "2026-11-11",
+    "rating": null,
+    "ratingSource": null,
+    "status": "available",
+    "trailer": "https://www.youtube.com/watch?v=wl7uj7n7DoY",
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2026-11-11",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2026-11-11"
+          },
+          {
+            "number": 2,
+            "date": "2026-11-11"
+          },
+          {
+            "number": 3,
+            "date": "2026-11-11"
+          },
+          {
+            "number": 4,
+            "date": "2026-11-11"
+          },
+          {
+            "number": 5,
+            "date": "2026-11-11"
+          },
+          {
+            "number": 6,
+            "date": "2026-11-11"
+          },
+          {
+            "number": 7,
+            "date": "2026-11-11"
+          },
+          {
+            "number": 8,
+            "date": "2026-11-11"
+          }
+        ]
+      }
+    ],
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/291507/season/1?language=ru-RU",
+      "release": "https://media.netflix.com/en/only-on-netflix/81983578",
+      "official": "https://www.netflix.com/title/81983578",
+      "poster": "https://image.tmdb.org/t/p/w780/195kCuy2RqGaEAZDDpGTx7gBUBZ.jpg",
+      "gallery1": "https://i.ytimg.com/vi/wl7uj7n7DoY/sd1.jpg",
+      "gallery2": "https://i.ytimg.com/vi/wl7uj7n7DoY/sd3.jpg"
+    },
+    "platforms": [
+      "Netflix"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-tv-298168-s1",
+    "title": "Осколки",
+    "type": "series",
+    "season": 1,
+    "genres": [
+      "Драма",
+      "Триллер",
+      "Детектив"
+    ],
+    "studios": [
+      "FX Productions"
+    ],
+    "description": "Лос-Анджелес, 1981 год. Когда в элитной школе появляется новый ученик, Брет Истон Эллис начинает подозревать, что тот связан с преступлениями, пугающими город.",
+    "poster": "assets/tmdb-tv-298168-s1-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-298168-s1-gallery-1.jpg",
+      "assets/tmdb-tv-298168-s1-gallery-2.jpg"
+    ],
+    "releaseDate": "2026-08-05",
+    "rating": null,
+    "ratingSource": null,
+    "status": "available",
+    "trailer": "https://www.youtube.com/watch?v=Zpm9HUOrZIc",
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2026-08-05",
+        "episodes": [
+          {
+            "number": 1,
+            "title": "Pilot",
+            "date": "2026-08-05"
+          },
+          {
+            "number": 2,
+            "title": "Don’t You Want Me",
+            "date": "2026-08-05"
+          },
+          {
+            "number": 3,
+            "date": "2026-08-12"
+          },
+          {
+            "number": 4,
+            "date": "2026-08-19"
+          },
+          {
+            "number": 5,
+            "date": "2026-08-26"
+          },
+          {
+            "number": 6,
+            "date": "2026-09-02"
+          },
+          {
+            "number": 7,
+            "date": "2026-09-09"
+          },
+          {
+            "number": 8,
+            "date": "2026-09-16"
+          },
+          {
+            "number": 9,
+            "date": "2026-09-23"
+          }
+        ]
+      }
+    ],
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/298168/season/1?language=ru-RU",
+      "release": "https://abc.com/news/77cc426f-f0ec-4580-a56f-6362e409cccb/category/1138628",
+      "official": "https://www.fxnetworks.com/shows/the-shards",
+      "imdb": "https://www.imdb.com/title/tt27543562/",
+      "schedule": "https://www.hulu.com/guides/the-shards",
+      "poster": "https://image.tmdb.org/t/p/w780/wP0GdqwVu2g1y3q1KzBXuSrdTvX.jpg",
+      "gallery1": "https://i.ytimg.com/vi/Zpm9HUOrZIc/sd1.jpg",
+      "gallery2": "https://i.ytimg.com/vi/Zpm9HUOrZIc/sd2.jpg"
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-movie-845659",
+    "title": "Идеальная зависимость",
+    "type": "movie",
+    "genres": [
+      "Драма",
+      "Мелодрама",
+      "Спорт"
+    ],
+    "studios": [
+      "Constantin Film",
+      "Wattpad WEBTOON Studios"
+    ],
+    "description": "Тренер по единоборствам Сиенна узнаёт об измене своего бойфренда, действующего чемпиона. Она берётся тренировать его соперника Кайдена, чтобы помочь ему выиграть титул.",
+    "poster": "assets/tmdb-movie-845659-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-845659-gallery-1.jpg",
+      "assets/tmdb-movie-845659-gallery-2.jpg"
+    ],
+    "releaseDate": "2024-05-01",
+    "rating": 5.5,
+    "ratingSource": "IMDb",
+    "status": "available",
+    "trailer": "https://www.youtube.com/watch?v=bQmS6v241XE",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/845659?language=ru-RU",
+      "releaseRussia": "https://www.kinometro.ru/release/card/id/51370",
+      "imdb": "https://www.imdb.com/title/tt12965390/",
+      "poster": "https://image.tmdb.org/t/p/w780/ucO3NFIvMff71cBRR5EgYXPKWMC.jpg",
+      "gallery1": "https://image.tmdb.org/t/p/w780/sE6uilkTOIdg1zbZ3S8UKJ7Q9Av.jpg",
+      "gallery2": "https://i.ytimg.com/vi/bQmS6v241XE/sd1.jpg"
+    },
+    "platforms": [
+      "Amazon"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-tv-80054-s1",
+    "title": "По правде говоря",
+    "type": "series",
+    "season": 1,
+    "genres": [
+      "Драма",
+      "Криминал",
+      "Детектив"
+    ],
+    "studios": [
+      "Hello Sunshine",
+      "Chernin Entertainment",
+      "Endeavor Content"
+    ],
+    "description": "Ведущая подкаста Поппи Парнелл пересматривает дело об убийстве и снова встречается с человеком, которого помогла отправить в тюрьму.",
+    "poster": "assets/tmdb-tv-80054-s1-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-80054-s1-gallery-1.jpg",
+      "assets/tmdb-tv-80054-s1-gallery-2.jpg"
+    ],
+    "releaseDate": "2019-12-06",
+    "rating": null,
+    "ratingSource": null,
+    "status": "available",
+    "trailer": "https://www.youtube.com/watch?v=HjGm7JUc04E",
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2019-12-06",
+        "episodes": [
+          {
+            "number": 1,
+            "title": "Monster",
+            "date": "2019-12-06"
+          },
+          {
+            "number": 2,
+            "title": "Black People in the Neighborhood",
+            "date": "2019-12-06"
+          },
+          {
+            "number": 3,
+            "title": "Even Salt Looks Like Sugar",
+            "date": "2019-12-06"
+          },
+          {
+            "number": 4,
+            "title": "No Cross, No Crown",
+            "date": "2019-12-13"
+          },
+          {
+            "number": 5,
+            "title": "Graveyard Love",
+            "date": "2019-12-20"
+          },
+          {
+            "number": 6,
+            "title": "Not Buried, Planted",
+            "date": "2019-12-27"
+          },
+          {
+            "number": 7,
+            "title": "Live Thru This",
+            "date": "2020-01-03"
+          },
+          {
+            "number": 8,
+            "title": "All That Was Lost",
+            "date": "2020-01-10"
+          }
+        ]
+      }
+    ],
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/80054/season/1?language=ru-RU",
+      "release": "https://www.apple.com/newsroom/2019/11/apple-premieres-truth-be-told-coming-to-apple-tv-plus-december-6/",
+      "official": "https://tv.apple.com/ru/show/по-правде-говоря/umc.cmc.6hegr60w8pjyfcblgocjek7oo",
+      "imdb": "https://www.imdb.com/title/tt7821582/",
+      "schedule": "https://thetvdb.com/series/truth-be-told-2019/allseasons/official",
+      "poster": "https://image.tmdb.org/t/p/w780/3T2TJ61ems7ArVGwb6kiVuKcdUk.jpg",
+      "gallery1": "https://image.tmdb.org/t/p/w780/cXjRGoYFAFkwPzhOZXFARPuYQ00.jpg",
+      "gallery2": "https://i.ytimg.com/vi/HjGm7JUc04E/sd2.jpg"
+    },
+    "platforms": [
+      "Apple"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
     "id": "tmdb-movie-1458300",
     "title": "Комариный кубок",
     "type": "movie",
