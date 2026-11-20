@@ -73,7 +73,7 @@ select option{background:var(--paper);color:var(--ink)}
 .btn{padding:8px 11px;min-height:42px;display:inline-flex;align-items:center;justify-content:center;gap:7px;border-radius:7px;border:1px solid var(--button-border);background:var(--button-bg);color:var(--button-text);text-align:center;line-height:1.25;font-size:.9375rem;font-weight:580}
 .btn:is([aria-pressed=true],[aria-expanded=true],:active:not(:disabled)){background:var(--tint);border-color:var(--blue);color:var(--blue)}
 .btn:active:not(:disabled){transform:translateY(1px)}
-.mark[data-kind=favorite][aria-pressed=true] svg{fill:currentColor}
+.mark[data-kind=favorite][aria-pressed=true] svg,.mobile-lists [data-list=favorite][aria-pressed=true] svg{fill:currentColor}
 .empty,.loading{padding-block:clamp(38px,7vw,96px)}
 .empty h2{font-size:1.5rem}.empty p,.loading{color:var(--muted)}.empty p{margin:9px 0 18px}
 dialog{padding:0;border:1px solid var(--line);border-radius:16px;width:min(460px,calc(100% - 32px));max-height:86dvh;overflow:hidden;background:var(--surface);color:var(--ink);box-shadow:0 18px 64px #0003}
@@ -125,8 +125,7 @@ details[open] summary svg{transform:rotate(180deg)}
  .topline{min-height:0;grid-template-columns:minmax(0,1fr) auto}h1{font-size:1.48rem}.icon-button{width:40px;height:40px}
  .mobile-lists{display:flex;gap:4px}
  .mobile-lists button{display:grid;place-items:center;width:44px;height:44px;border-radius:8px;font-size:1.25rem;line-height:1}
- .mobile-lists button[aria-pressed=false]:not(:active){filter:grayscale(1)}
- .mobile-lists button:is([aria-pressed=true],:active){background:var(--tint);box-shadow:inset 0 0 0 1px var(--blue)}
+ .mobile-lists button:is([aria-pressed=true],:active){background:var(--tint);color:var(--blue);box-shadow:inset 0 0 0 1px var(--blue)}
  #lists{grid-column:1/-1;min-width:0;overflow-x:auto;gap:clamp(4px,1.5vw,9px);scrollbar-width:thin}
  #lists [data-list=favorite],#lists [data-list=watched]{display:none}
  #lists button{flex:none;min-height:42px;font-size:.875rem}
