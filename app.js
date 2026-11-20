@@ -1,4 +1,4 @@
-import { hosted, marked, markTime, busy, refreshHistory, setMark } from './history.js';
+import { hosted, marked, markTime, busy, refreshHistory, setMark } from './history.js?v=6a7130caa3ee';
 
 const el = id => document.getElementById(id);
 const state = { list: 'waiting', type: 'all', catalog: [] };

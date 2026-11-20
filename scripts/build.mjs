@@ -1,5 +1,6 @@
 import { mkdir, readFile, writeFile, copyFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { root, mime, publicFiles } from './public-files.mjs';
 const path = name => new URL(name, root);
 const catalog = JSON.parse(await readFile(path('catalog.json'), 'utf8'));
@@ -15,6 +16,22 @@ for (const item of catalog) {
   }
   if (item.trailer && !/^https:\/\/(www\.youtube\.com\/watch\?v=|youtu\.be\/)[\w-]{11}$/.test(item.trailer)) throw new Error('Проверьте ссылку на трейлер: ' + item.title);
 }
+// Pages serves the repository root. Update its asset URLs before making the other builds.
+const [history, css, originalApp, originalPage] = await Promise.all(
+  ['history.js', 'style.css', 'app.js', 'index.html'].map(name => readFile(path(name), 'utf8'))
+);
+function versionedUrl(name, content) {
+  return './' + name + '?v=' + createHash('sha256').update(content).digest('hex').slice(0, 12);
+}
+const historyUrl = versionedUrl('history.js', history);
+const app = originalApp.replace(/'\.\/history\.js(?:\?v=[a-f0-9]+)?'/, "'" + historyUrl + "'");
+const styleUrl = versionedUrl('style.css', css);
+const appUrl = versionedUrl('app.js', app);
+const page = originalPage
+  .replace(/href="\.\/style\.css(?:\?v=[a-f0-9]+)?"/, 'href="' + styleUrl + '"')
+  .replace(/src="\.\/app\.js(?:\?v=[a-f0-9]+)?"/, 'src="' + appUrl + '"');
+if (app !== originalApp) await writeFile(path('app.js'), app);
+if (page !== originalPage) await writeFile(path('index.html'), page);
 const assets = Object.create(null);
 await mkdir(path('dist/pages/assets/'), {recursive:true});
 for (const file of files) {
@@ -36,11 +53,10 @@ const dataUrl = file => {
   return asset ? 'data:' + asset[0] + ';base64,' + asset[1] : file;
 };
 const offline = catalog.map(item => ({ ...item, poster: dataUrl(item.poster), gallery: (item.gallery || []).map(dataUrl) }));
-const css = await readFile(path('style.css'), 'utf8');
-const code = (await readFile(path('app.js'), 'utf8')).replace("'./history.js'", () => "'" + dataUrl('history.js') + "'");
+const code = app.replace("'" + historyUrl + "'", () => "'" + dataUrl('history.js') + "'");
 const json = JSON.stringify(offline).replaceAll('<','\\u003c');
-const html = (await readFile(path('index.html'), 'utf8'))
-  .replace('<link rel="stylesheet" href="./style.css">', () => '<style>' + css + '</style>')
-  .replace('<script type="module" src="./app.js"></script>', () => '<script type="application/json" id="offline-catalog">' + json + '</script>\n<script type="module">' + code + '</script>');
+const html = page
+  .replace('<link rel="stylesheet" href="' + styleUrl + '">', () => '<style>' + css + '</style>')
+  .replace('<script type="module" src="' + appUrl + '"></script>', () => '<script type="application/json" id="offline-catalog">' + json + '</script>\n<script type="module">' + code + '</script>');
 await writeFile(path('dist/Мой киносписок.html'), html);
 console.log('Сборка готова. Записей в каталоге: ' + catalog.length);
