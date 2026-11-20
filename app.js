@@ -348,7 +348,8 @@ function render() {
   el('records').replaceChildren(...(result.length ? result.map(card) : [empty(Boolean(count || state.type !== 'all'))]));
   if (kind && id) {
     const same = [...el('records').querySelectorAll('.entry')].find(entry => entry.dataset.id === id);
-    (same?.querySelector('[data-kind="' + kind + '"]') || document.querySelector('#lists [aria-pressed="true"]')).focus({ preventScroll: true });
+    const activeList = [...document.querySelectorAll('[data-list][aria-pressed="true"]')].find(button => button.getClientRects().length);
+    (same?.querySelector('[data-kind="' + kind + '"]') || activeList)?.focus({ preventScroll: true });
   }
 }
 async function sync() {
@@ -383,7 +384,7 @@ async function start() {
   for (const [id, values] of [['genre', state.catalog.flatMap(i => i.genres)], ['studio', [...studioChoices,...state.catalog.flatMap(i => [...i.studios, ...(i.platforms || [])])]]]) {
     for (const s of new Set(values)) el(id).add(new Option(s,s));
   }
-  wireGroup('lists','list'); wireGroup('types','type');
+  wireGroup('list-navigation','list'); wireGroup('types','type');
   for (const id of filterIds) el(id).addEventListener('change', render);
   el('sort').onchange = () => {
     const chosen = el('sort').selectedOptions[0].textContent;

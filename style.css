@@ -14,6 +14,7 @@ svg,.ico{display:block;width:1.16em;height:1.16em;flex:none}
 .wrap{width:min(100%,1320px);margin-inline:auto;padding-inline:clamp(16px,4vw,64px)}
 .masthead{flex:none;background:var(--paper);z-index:2;border-bottom:1px solid var(--line);box-shadow:var(--shadow)}
 .topline{display:flex;align-items:center;gap:clamp(16px,3vw,54px);min-height:86px}
+.mobile-lists{display:none}
 h1{font-size:clamp(1.5rem,2.55vw,2.25rem);font-weight:730;white-space:nowrap}
 #lists{display:flex;align-self:stretch;align-items:stretch;gap:clamp(9px,1vw,16px)}
 #lists button{position:relative;white-space:nowrap;font-weight:520;color:var(--muted);font-size:clamp(.9375rem,1.3vw,1.08rem)}
@@ -123,8 +124,12 @@ details[open] summary svg{transform:rotate(180deg)}
 }
 @media(max-width:640px){
  .wrap{padding-inline:14px}
- .topline{min-height:0}h1{font-size:1.48rem}.icon-button{width:40px;height:40px}
- #lists{min-width:0;overflow-x:auto;gap:clamp(4px,1.5vw,9px);scrollbar-width:thin}
+ .topline{min-height:0;grid-template-columns:minmax(0,1fr) auto}h1{font-size:1.48rem}.icon-button{width:40px;height:40px}
+ .mobile-lists{display:flex;gap:4px}
+ .mobile-lists button{display:grid;place-items:center;width:44px;height:44px;border-radius:8px;font-size:1.25rem;line-height:1}
+ .mobile-lists button[aria-pressed=true]{background:var(--tint);box-shadow:inset 0 0 0 1px var(--blue)}
+ #lists{grid-column:1/-1;min-width:0;overflow-x:auto;gap:clamp(4px,1.5vw,9px);scrollbar-width:thin}
+ #lists [data-list=favorite],#lists [data-list=watched]{display:none}
  #lists button{flex:none;min-height:42px;font-size:.875rem}
  #lists button:focus-visible{outline-offset:-3px}
  .toolbar{display:grid;grid-template-columns:minmax(0,1fr);gap:0;padding:3px 0}.type-switch button{padding:4px 12px;min-height:32px;font-size:.875rem}
