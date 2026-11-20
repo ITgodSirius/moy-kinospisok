@@ -6,7 +6,7 @@ const catalog = JSON.parse(await readFile(path('catalog.json'), 'utf8'));
 const files = await publicFiles();
 const ids = new Set();
 for (const item of catalog) {
-  if (!item.id || ids.has(item.id) || !['movie','series'].includes(item.type) || !['available','waiting'].includes(item.status)) throw new Error('Проверьте ID, тип и статус: ' + item.title);
+  if (!item.id || ids.has(item.id) || !['movie','series'].includes(item.type) || !['available','waiting','backlog'].includes(item.status)) throw new Error('Проверьте ID, тип и статус: ' + item.title);
   ids.add(item.id);
   if (!/^\d{4}-\d{2}-\d{2}$/.test(item.addedDate)) throw new Error('Укажите дату добавления: ' + item.title);
   if (item.type === 'series' && !Number.isInteger(item.season)) throw new Error('Укажите номер сезона: ' + item.title);

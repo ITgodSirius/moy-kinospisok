@@ -9,7 +9,7 @@ const formatMarkDate = new Intl.DateTimeFormat('ru-RU', { day: 'numeric', month:
 const desktopSchedule = window.matchMedia('(min-width: 821px)');
 let scheduleItem;
 const studioChoices = ['Apple', 'Amazon', 'Netflix', 'Disney', 'HBO'];
-const listNames = { waiting: 'Жду', available: 'Можно смотреть', watched: 'Просмотрено', favorite: 'Любимые' };
+const listNames = { waiting: 'Жду', available: 'Новое', backlog: 'Старое', watched: 'Просмотрено', favorite: 'Любимые' };
 const iconPaths = {
   moon: '<path d="M20.5 14.4A8.7 8.7 0 0 1 9.6 3.5a9 9 0 1 0 10.9 10.9Z"/>',
   sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M19 5l-1.5 1.5m-11 11L5 19"/>',
@@ -53,8 +53,10 @@ function listMatches(item) {
   const favorite = marked(item.id, 'favorite');
   if (state.list === 'watched') return watched;
   if (state.list === 'favorite') return favorite;
+  if (watched) return false;
+  if (item.status === 'backlog') return state.list === 'backlog';
   const released = item.status === 'available' || (item.releaseDate && item.releaseDate <= today());
-  return state.list === 'waiting' ? !released && !watched && !favorite : released && !watched;
+  return released ? state.list === 'available' : state.list === 'waiting' && !favorite;
 }
 function matches(item) {
   const ageDays = (Date.parse(today()) - Date.parse(item.addedDate)) / 86400000;
@@ -283,7 +285,7 @@ function resetFilters() {
   render();
 }
 function empty(hasFilters) {
-  if (hasFilters) return node('p', 'empty', 'пусто');
+  if (hasFilters || state.list === 'backlog') return node('p', 'empty', 'пусто');
   const box = node('section', 'empty');
   const text = {waiting:'Здесь появятся будущие премьеры.',available:'Здесь появятся фильмы и сезоны, которые уже вышли.',watched:'Отметьте фильм или сезон просмотренным, и он появится здесь.',favorite:'Нажмите «В любимые» на карточке фильма или сезона.'};
   box.append(node('h2', '', 'В списке пока пусто'), node('p', '', text[state.list]));

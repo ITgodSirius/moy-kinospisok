@@ -19,6 +19,8 @@ h1{font-size:clamp(1.5rem,2.55vw,2.25rem);font-weight:730;white-space:nowrap}
 #lists{display:flex;align-self:stretch;align-items:stretch;gap:clamp(8px,2.4vw,38px)}
 #lists button{position:relative;white-space:nowrap;font-weight:520;color:var(--muted);font-size:clamp(.9375rem,1.3vw,1.08rem)}
 #lists button[aria-pressed=true]{font-weight:700;color:var(--ink)}
+#lists [data-list=backlog]{--extra-gap:clamp(14px,1.4vw,24px);margin-inline-start:var(--extra-gap)}
+#lists [data-list=backlog]::before{content:"";position:absolute;inset-inline-start:calc(-1 * var(--extra-gap));top:50%;transform:translateY(-50%);height:1.2em;border-inline-start:1px solid var(--line)}
 #lists button[aria-pressed=true]::after{content:"";position:absolute;bottom:0;left:0;right:0;height:3px;border-radius:3px;background:var(--blue)}
 .icon-button{border-radius:8px;display:grid;place-items:center;width:42px;height:42px;flex:none;font-size:21px}
 .icon-button:hover,.quiet:hover,.sort:hover{background:var(--hover)}
@@ -118,8 +120,10 @@ details[open] summary svg{transform:rotate(180deg)}
 @media(max-width:640px){
  .wrap{padding-inline:14px}
  .topline{min-height:0;padding-top:4px}h1{font-size:1.48rem}.icon-button{width:40px;height:40px}
- #lists{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 6px;min-height:0}
- #lists button{text-align:left;min-height:34px;font-size:.9375rem;padding-inline:4px}
+ #lists{min-width:0;overflow-x:auto;gap:clamp(5px,1.8vw,12px);scrollbar-width:thin}
+ #lists button{flex:none;min-height:42px;font-size:.875rem}
+ #lists button:focus-visible{outline-offset:-3px}
+ #lists [data-list=backlog]{--extra-gap:8px}
  .toolbar{display:grid;grid-template-columns:minmax(0,1fr);gap:0;padding:3px 0}.type-switch button{padding:4px 12px;min-height:32px;font-size:.875rem}
  .tools{justify-content:space-between;gap:6px;min-width:0}.quiet,.sort select{font-size:.875rem}.quiet{padding:6px 4px;flex:none}
  .sort{border:0;padding-left:0;min-width:0;flex-shrink:1;overflow:hidden}.sort select{padding-block:6px;min-width:0;text-overflow:ellipsis}
@@ -131,6 +135,11 @@ details[open] summary svg{transform:rotate(180deg)}
  .btn{min-height:44px;font-size:.875rem;padding-inline:7px}
  dialog{border-radius:16px 16px 0 0;margin:auto 0 0;width:100%;max-width:none;max-height:88dvh;padding-bottom:env(safe-area-inset-bottom)}
  .dialog-head,.dialog-foot{padding:12px 15px}.dialog-body{padding-inline:15px}
+}
+@media(max-width:359px){
+ #lists{margin-inline:-8px;gap:6px;justify-content:space-between}
+ #lists button{font-family:Arial,sans-serif}
+ #lists [data-list=backlog]{--extra-gap:8px}
 }
 @media(max-height:480px) and (orientation:landscape){
  .topline{min-height:0;padding-top:0}.toolbar{min-height:36px}
