@@ -1,13 +1,13 @@
-:root{color-scheme:dark;--paper:#15171d;--surface:#1c1f28;--ink:#f2f4fa;--muted:#b0b7c9;--line:#373c4a;--chip:#2c313d;--blue:#a7bcff;--onblue:#111c39;--tint:#26314b;--gold:#584923;--gold-ink:#ffe393;--hover:#232731;--shadow:0 3px 14px #0003;background:var(--paper)}
+:root{color-scheme:dark;--paper:#15171d;--surface:#1c1f28;--ink:#f2f4fa;--muted:#b0b7c9;--line:#373c4a;--chip:#2c313d;--blue:#a7bcff;--tint:#26314b;--gold:#584923;--gold-ink:#ffe393;--button-text:#ccc;--button-bg:#292929;--button-border:#454545;--shadow:0 3px 14px #0003;background:var(--paper)}
 *{box-sizing:border-box}
 html,body{height:100%;margin:0}
 body{display:flex;flex-direction:column;height:100dvh;overflow:hidden;background:var(--paper);color:var(--ink);font:16px/1.45 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;-webkit-font-smoothing:antialiased}
 button,select,a{font:inherit;color:inherit}
 button,select,summary{cursor:pointer}
-button{background:transparent;border:0;padding:0}
+button{background:transparent;border:0;padding:0;color:var(--button-text)}
 button:disabled{cursor:wait;opacity:.64}
 a{text-decoration:none}
-:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
 h1,h2,p{margin:0} h1,h2{line-height:1.12;letter-spacing:-.043em}
 button,a,select,summary{-webkit-tap-highlight-color:transparent}
 svg,.ico{display:block;width:1.16em;height:1.16em;flex:none}
@@ -17,24 +17,24 @@ svg,.ico{display:block;width:1.16em;height:1.16em;flex:none}
 .mobile-lists{display:none}
 h1{font-size:clamp(1.5rem,2.55vw,2.25rem);font-weight:730;white-space:nowrap}
 #lists{display:flex;align-self:stretch;align-items:stretch;gap:clamp(9px,1vw,16px)}
-#lists button{position:relative;white-space:nowrap;font-weight:520;color:var(--muted);font-size:clamp(.9375rem,1.3vw,1.08rem)}
-#lists button[aria-pressed=true]{font-weight:700;color:var(--ink)}
+#lists button{position:relative;white-space:nowrap;font-weight:520;font-size:clamp(.9375rem,1.3vw,1.08rem)}
+#lists button[aria-pressed=true]{font-weight:700}
+#lists button:is([aria-pressed=true],:active){color:var(--blue)}
 .list-divider{align-self:center;color:var(--muted);user-select:none}
 #lists button[aria-pressed=true]::after{content:"";position:absolute;bottom:0;left:0;right:0;height:3px;border-radius:3px;background:var(--blue)}
 .icon-button{border-radius:8px;display:grid;place-items:center;width:42px;height:42px;flex:none;font-size:21px}
-.icon-button:hover,.quiet:hover,.sort:hover{background:var(--hover)}
+.icon-button:active,.quiet:active,.sort:active{background:var(--tint);color:var(--blue)}
 .toolbar{min-height:67px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:12px}
 .type-switch,.tools,.quiet,.sort{display:flex;align-items:center}
 .type-switch{gap:3px}
 .type-switch button{padding:6px 14px;border-radius:7px;font-size:.9375rem;min-height:36px}
-.type-switch button[aria-pressed=true]{background:var(--chip);font-weight:680}
-.type-switch button:hover{background:var(--hover)}
+.type-switch button:is([aria-pressed=true],:active){background:var(--tint);color:var(--blue);font-weight:680}
 .tools{gap:14px}
 .quiet,.sort select{font-size:.9375rem}
 .quiet{gap:8px;padding:9px 10px;border-radius:7px}
 #filter-count:not([hidden]){font-size:.8125rem;font-weight:650;background:var(--tint);color:var(--blue);min-width:1.55em;border-radius:4px}
-.sort{border-left:1px solid var(--line);padding-left:13px;position:relative;border-radius:3px;min-width:0}
-.sort select{border:0;background:transparent;appearance:none;padding:9px 24px 9px 2px;max-width:100%;width:var(--sort-width,136px);color:var(--ink);font-weight:500}
+.sort{border-left:1px solid var(--line);padding-left:13px;position:relative;border-radius:3px;min-width:0;color:var(--button-text)}
+.sort select{border:0;background:transparent;appearance:none;padding:9px 24px 9px 2px;max-width:100%;width:var(--sort-width,136px);font-weight:500}
 .sort svg{position:absolute;right:4px;pointer-events:none;width:14px}
 select option{background:var(--paper);color:var(--ink)}
 #feed{flex:1;min-height:0;overflow:auto;overscroll-behavior-y:contain;scrollbar-color:var(--line) transparent}
@@ -58,7 +58,7 @@ select option{background:var(--paper);color:var(--ink)}
 .badge{padding:3px 9px;border-radius:6px;background:var(--chip);font-size:.875rem;font-weight:520;color:var(--ink)}
 .synopsis{--synopsis-lines:5;margin-block:14px;line-height:1.5;overflow-wrap:anywhere}
 .synopsis .clamped{display:-webkit-box;-webkit-line-clamp:var(--synopsis-lines);-webkit-box-orient:vertical;overflow:hidden}
-.synopsis .read-more{border:0;padding:4px 0;min-height:32px;color:var(--blue)}
+.synopsis .read-more{border:0;padding:4px 0;min-height:32px;background:transparent}
 .read-more[hidden]{display:none}
 .metadata,.card-history dl{display:grid;align-items:baseline;gap:6px 14px;margin:0;font-size:.9375rem;line-height:1.4}
 .metadata{grid-template-columns:minmax(80px,max-content) minmax(0,1fr)}
@@ -70,13 +70,10 @@ select option{background:var(--paper);color:var(--ink)}
 .card-history dd{text-align:right;font-variant-numeric:tabular-nums}
 .actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
 .actions [data-kind=watching]:last-child:nth-child(odd){grid-column:1/-1}
-.btn{padding:8px 11px;min-height:42px;display:inline-flex;align-items:center;justify-content:center;gap:7px;border-radius:7px;border:1px solid transparent;text-align:center;line-height:1.25;font-size:.9375rem;font-weight:580}
-.btn:hover{filter:brightness(.94)}.btn:active{transform:translateY(1px)}
-.utility{background:var(--tint);color:var(--blue)}
-.trailer{background:var(--hover);border-color:var(--line)}
-.primary{background:var(--blue);color:var(--onblue)}
-.outline{border-color:var(--blue);color:var(--blue)}
-.chosen{background:var(--tint);border-color:transparent;color:var(--blue)}
+.btn{padding:8px 11px;min-height:42px;display:inline-flex;align-items:center;justify-content:center;gap:7px;border-radius:7px;border:1px solid var(--button-border);background:var(--button-bg);color:var(--button-text);text-align:center;line-height:1.25;font-size:.9375rem;font-weight:580}
+.btn:is([aria-pressed=true],[aria-expanded=true],:active:not(:disabled)){background:var(--tint);border-color:var(--blue);color:var(--blue)}
+.btn:active:not(:disabled){transform:translateY(1px)}
+.mark[data-kind=favorite][aria-pressed=true] svg{fill:currentColor}
 .empty,.loading{padding-block:clamp(38px,7vw,96px)}
 .empty h2{font-size:1.5rem}.empty p,.loading{color:var(--muted)}.empty p{margin:9px 0 18px}
 dialog{padding:0;border:1px solid var(--line);border-radius:16px;width:min(460px,calc(100% - 32px));max-height:86dvh;overflow:hidden;background:var(--surface);color:var(--ink);box-shadow:0 18px 64px #0003}
@@ -93,7 +90,8 @@ dialog::backdrop{background:rgba(12,15,23,.52)}
 #edit-error{color:#ffacb8;font-size:.9rem}
 #edit-error:empty{display:none}
 details{border-bottom:1px solid var(--line)}
-summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 0;font-weight:650}
+summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 0;font-weight:650;color:var(--button-text)}
+details[open]>summary,summary:active{color:var(--blue)}
 summary::-webkit-details-marker{display:none}.season small{display:block;color:var(--muted);font-size:.875rem;font-weight:450}
 details[open] summary svg{transform:rotate(180deg)}
 .episodes{list-style:none;padding:0;margin:0 0 11px}
@@ -127,7 +125,8 @@ details[open] summary svg{transform:rotate(180deg)}
  .topline{min-height:0;grid-template-columns:minmax(0,1fr) auto}h1{font-size:1.48rem}.icon-button{width:40px;height:40px}
  .mobile-lists{display:flex;gap:4px}
  .mobile-lists button{display:grid;place-items:center;width:44px;height:44px;border-radius:8px;font-size:1.25rem;line-height:1}
- .mobile-lists button[aria-pressed=true]{background:var(--tint);box-shadow:inset 0 0 0 1px var(--blue)}
+ .mobile-lists button[aria-pressed=false]:not(:active){filter:grayscale(1)}
+ .mobile-lists button:is([aria-pressed=true],:active){background:var(--tint);box-shadow:inset 0 0 0 1px var(--blue)}
  #lists{grid-column:1/-1;min-width:0;overflow-x:auto;gap:clamp(4px,1.5vw,9px);scrollbar-width:thin}
  #lists [data-list=favorite],#lists [data-list=watched]{display:none}
  #lists button{flex:none;min-height:42px;font-size:.875rem}

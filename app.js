@@ -13,9 +13,9 @@ let scheduleItem;
 const studioChoices = ['Apple', 'Amazon', 'Netflix', 'Disney', 'HBO'];
 const listNames = { waiting: 'Жду', available: 'Новинки', backlog: 'Старое', watching: 'Смотрю сейчас', watched: 'Просмотрено', favorite: 'Любимые' };
 const markActions = [
-  { kind: 'watched', add: 'Отметить просмотренным', remove: 'Снять отметку', icon: 'check', style: 'primary' },
-  { kind: 'favorite', add: 'В любимые', remove: 'Убрать из любимых', icon: 'heart', style: 'outline' },
-  { kind: 'watching', add: 'Смотрю сейчас', remove: 'Отложить просмотр', icon: 'play', style: 'utility' }
+  { kind: 'watched', add: 'Отметить просмотренным', remove: 'Снять отметку', icon: 'check' },
+  { kind: 'favorite', add: 'В любимые', remove: 'Убрать из любимых', icon: 'heart' },
+  { kind: 'watching', add: 'Смотрю сейчас', remove: 'Отложить просмотр', icon: 'play' }
 ];
 const iconPaths = {
   sliders: '<path d="M3 7h4m5 0h9M3 17h10m5 0h3"/><circle cx="9.5" cy="7" r="2.5"/><circle cx="15.5" cy="17" r="2.5"/>',
@@ -31,16 +31,17 @@ function node(tag, className, text) {
   if (text !== undefined) element.textContent = text;
   return element;
 }
-function icon(name, filled = false) {
+function icon(name) {
   const box = node('span', 'ico');
   box.setAttribute('aria-hidden', 'true');
-  box.innerHTML = '<svg viewBox="0 0 24 24" fill="' + (filled ? 'currentColor' : 'none') + '" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round">' + iconPaths[name] + '</svg>';
+  box.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round">' + iconPaths[name] + '</svg>';
   return box;
 }
 function button(label, style, symbol, action) {
-  const b = node('button', 'btn ' + style);
+  const b = node('button', 'btn');
+  if (style) b.classList.add(style);
   b.type = 'button';
-  if (symbol) b.append(icon(symbol, symbol === 'heart' && style.includes('chosen')));
+  if (symbol) b.append(icon(symbol));
   b.append(label);
   b.addEventListener('click', action);
   return b;
@@ -298,20 +299,20 @@ function card(item) {
   } else date.append(node('strong', '', 'Дата выхода уточняется'));
   const actions = node('div', 'actions');
   if (item.type === 'series') {
-    const calendar = button('Сезоны и серии', 'utility', 'calendar', () => showSchedule(item));
+    const calendar = button('Сезоны и серии', '', 'calendar', () => showSchedule(item));
     calendar.setAttribute('aria-haspopup', 'dialog');
     actions.append(calendar);
   }
   if (item.trailer) {
-    const trailer = node('a', 'btn trailer'); trailer.href = item.trailer;
+    const trailer = node('a', 'btn'); trailer.href = item.trailer;
     trailer.target = '_blank'; trailer.rel = 'noopener noreferrer';
     trailer.title = 'Открыть трейлер на YouTube в новой вкладке';
     trailer.append(icon('play'), 'Посмотреть трейлер'); actions.append(trailer);
   }
-  for (const { kind, add, remove, icon, style } of markActions) {
+  for (const { kind, add, remove, icon } of markActions) {
     if (kind === 'watching' && marked(item.id, 'watched')) continue;
     const active = marked(item.id, kind);
-    const mark = button(active ? remove : add, 'mark ' + (active ? 'chosen' : style), icon, () => toggleMark(item, kind));
+    const mark = button(active ? remove : add, 'mark', icon, () => toggleMark(item, kind));
     mark.dataset.kind = kind; mark.disabled = busy(item.id, kind);
     mark.setAttribute('aria-pressed', String(active)); actions.append(mark);
   }
@@ -414,6 +415,6 @@ async function start() {
 }
 start().catch(() => {
   const failure = node('section','empty');
-  failure.append(node('h2','','Не удалось открыть каталог'),button('Повторить','outline',null,() => location.reload()));
+  failure.append(node('h2','','Не удалось открыть каталог'),button('Повторить','',null,() => location.reload()));
   el('records').replaceChildren(failure);
 });
