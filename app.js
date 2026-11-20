@@ -4,6 +4,7 @@ const el = id => document.getElementById(id);
 const editAccessKey = 'film-list:edit-unlocked';
 const state = { list: 'waiting', type: 'all', catalog: [] };
 const filterIds = ['origin', 'genre', 'studio', 'period', 'minimum'];
+const originLabels = { russian: 'Российское', foreign: 'Зарубежное' };
 const collator = new Intl.Collator('ru', { numeric: true });
 const formatDate = new Intl.DateTimeFormat('ru-RU', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
 const formatMarkDate = new Intl.DateTimeFormat('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' });
@@ -285,6 +286,7 @@ function metadata(item) {
     for (const genre of item.genres) badges.append(node('span', 'badge', genre));
     row(list, 'Жанры', badges);
   }
+  row(list, 'Производство', originLabels[item.origin] ?? 'Уточняется');
   if (item.platforms?.length) row(list, item.platforms.length > 1 ? 'Платформы' : 'Платформа', item.platforms.map(name => name === 'Apple' ? 'Apple TV' : name).join(', '));
   if (item.studios.length) {
     const label = item.platforms ? (item.studios.length > 1 ? 'Студии' : 'Студия') : 'Студии и платформы';
