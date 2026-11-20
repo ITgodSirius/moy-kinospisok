@@ -9,8 +9,8 @@
   <meta name="history-mode" content="local">
   <title>Мой киносписок</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%231443ef'/%3E%3Cpath d='M18 18h28v29L32 38l-14 9z' fill='white'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./style.css?v=e5c62b44217a">
-  <script type="module" src="./app.js?v=4cc5a45a9f74"></script>
+  <link rel="stylesheet" href="./style.css?v=089f6b0b3db7">
+  <script type="module" src="./app.js?v=9732edb143d7"></script>
 </head>
 <body>
   <a class="skip" href="#feed">К фильмам и сериалам</a>
@@ -53,6 +53,7 @@
             </select><span data-icon="chevron"></span>
           </label>
         </div>
+        <div id="genres" class="genre-switch" role="group" aria-label="Жанры"></div>
       </div>
     </div>
   </header>
@@ -76,7 +77,6 @@
     <div class="dialog-head"><h2 id="filters-title">Фильтры</h2><button class="icon-button" data-close aria-label="Закрыть фильтры"><span data-icon="close"></span></button></div>
     <div class="dialog-body filters-body">
       <label>Страна производства<select id="origin"><option value="">Все страны</option><option value="russian">Российское</option><option value="foreign">Зарубежное</option></select></label>
-      <label>Жанр<select id="genre"><option value="">Все</option></select></label>
       <label>Студия или платформа<select id="studio"><option value="">Все</option></select></label>
       <label>Период добавления<select id="period"><option value="">За всё время</option><option value="7">За 7 дней</option><option value="30">За 30 дней</option><option value="365">За год</option></select></label>
       <label>Минимальный рейтинг<select id="minimum"><option value="">Любой</option><option value="5">От 5</option><option value="6">От 6</option><option value="7">От 7</option><option value="8">От 8</option><option value="9">От 9</option></select></label>

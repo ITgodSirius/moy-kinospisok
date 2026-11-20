@@ -3,8 +3,8 @@ import { hosted, marked, markTime, busy, refreshHistory, setMark } from './histo
 const el = id => document.getElementById(id);
 const editAccessKey = 'film-list:edit-unlocked';
 const viewKey = 'film-list:view:' + location.pathname;
-const state = { list: 'waiting', type: 'all', catalog: [], day: null };
-const filterIds = ['origin', 'genre', 'studio', 'period', 'minimum'];
+const state = { list: 'waiting', type: 'all', genres: new Set(), catalog: [], day: null };
+const filterIds = ['origin', 'studio', 'period', 'minimum'];
 const animationGenres = new Set(['мультфильм', 'мультсериал', 'анимация', 'мультипликация']);
 const originLabels = { russian: 'Российское', foreign: 'Зарубежное' };
 const collator = new Intl.Collator('ru', { numeric: true });
@@ -85,7 +85,7 @@ function matches(item) {
   const ageDays = daysSince(item.addedDate);
   return listMatches(item) && matchesCategory(item)
     && (!el('origin').value || item.origin === el('origin').value)
-    && (!el('genre').value || item.genres.includes(el('genre').value))
+    && (!state.genres.size || item.genres.some(genre => state.genres.has(genre)))
     && (!el('studio').value || item.studios.includes(el('studio').value) || item.platforms?.includes(el('studio').value))
     && (!el('minimum').value || (item.rating != null && item.rating >= Number(el('minimum').value)))
     && (!el('period').value || (ageDays >= 0 && ageDays < Number(el('period').value)));
@@ -376,6 +376,8 @@ function card(item) {
 function resetFilters() {
   for (const id of filterIds) el(id).value = '';
   state.type = 'all';
+  state.genres.clear();
+  el('genres').scrollLeft = 0;
   reflectControls();
   render();
 }
@@ -398,6 +400,10 @@ function empty() {
 function reflectControls() {
   for (const b of document.querySelectorAll('[data-list]')) b.setAttribute('aria-pressed', String(b.dataset.list === state.list));
   for (const b of document.querySelectorAll('[data-type]')) b.setAttribute('aria-pressed', String(b.dataset.type === state.type));
+  for (const b of el('genres').children) {
+    const genre = b.dataset.genre;
+    b.setAttribute('aria-pressed', String(genre ? state.genres.has(genre) : !state.genres.size));
+  }
   el('feed').setAttribute('aria-label', 'Лента · ' + listNames[state.list]);
 }
 function sizeSortControl() {
@@ -413,6 +419,7 @@ function saveView() {
   const openSeason = el('seasons').querySelector('details[open]');
   const view = {
     list: state.list, type: state.type, sort: el('sort').value,
+    genres: [...state.genres], genreScroll: el('genres').scrollLeft,
     filters: Object.fromEntries(filterIds.map(id => [id, el(id).value])),
     expanded: [...expandedDescriptions], scrollTop: feed.scrollTop, listScroll: el('lists').scrollLeft,
     card: first?.dataset.id, offset: first ? top - first.getBoundingClientRect().top : 0,
@@ -428,9 +435,11 @@ function readReloadView() {
   try { return JSON.parse(sessionStorage.getItem(viewKey)); }
   catch { return null; }
 }
-function restoreChoices(view) {
+function restoreChoices(view, availableGenres) {
   if (Object.hasOwn(listNames, view.list)) state.list = view.list;
   if ([...el('types').children].some(button => button.dataset.type === view.type)) state.type = view.type;
+  const savedGenres = Array.isArray(view.genres) ? view.genres : [view.filters?.genre];
+  state.genres = new Set(savedGenres.filter(genre => availableGenres.has(genre)));
   for (const id of [...filterIds, 'sort']) {
     const select = el(id);
     const value = id === 'sort' ? view.sort : view.filters?.[id];
@@ -467,6 +476,7 @@ function restoreFeed(view) {
 }
 function restorePosition(view) {
   el('lists').scrollLeft = view.listScroll || 0;
+  el('genres').scrollLeft = view.genreScroll || 0;
   if (view.dialog === 'filters') {
     el('filters-open').focus({preventScroll:true});
     el('filters').showModal();
@@ -526,6 +536,23 @@ function wireGroup(id, key) {
     reflectControls(); render(); el('feed').scrollTop = 0;
   });
 }
+function setupGenres(availableGenres) {
+  const group = el('genres');
+  for (const genre of ['', ...[...availableGenres].sort(collator.compare)]) {
+    const toggle = node('button', '', genre || 'Все жанры');
+    toggle.type = 'button';
+    toggle.dataset.genre = genre;
+    toggle.addEventListener('click', () => {
+      if (!genre) state.genres.clear();
+      else if (state.genres.has(genre)) state.genres.delete(genre);
+      else state.genres.add(genre);
+      reflectControls();
+      render();
+      el('feed').scrollTop = 0;
+    });
+    group.append(toggle);
+  }
+}
 async function start() {
   document.querySelectorAll('[data-icon]').forEach(holder => holder.replaceWith(icon(holder.dataset.icon)));
   el('edit-form').onsubmit = confirmEdit;
@@ -541,11 +568,13 @@ async function start() {
     if (!response.ok) throw new Error('Каталог недоступен');
     state.catalog = await response.json();
   }
-  for (const [id, values] of [['genre', state.catalog.flatMap(i => i.genres)], ['studio', [...studioChoices,...state.catalog.flatMap(i => [...i.studios, ...(i.platforms || [])])]]]) {
-    for (const s of new Set(values)) el(id).add(new Option(s,s));
-  }
+  const studios = new Set([...studioChoices, ...state.catalog.flatMap(i => [...i.studios, ...(i.platforms || [])])]);
+  for (const studio of studios) el('studio').add(new Option(studio, studio));
+  const availableGenres = new Set(state.catalog.flatMap(item => item.genres).filter(Boolean));
+  setupGenres(availableGenres);
   const view = readReloadView();
-  if (view) restoreChoices(view);
+  if (view) restoreChoices(view, availableGenres);
+  else reflectControls();
   wireGroup('list-navigation','list'); wireGroup('types','type');
   for (const id of filterIds) el(id).addEventListener('change', render);
   el('sort').onchange = () => {
