@@ -1,4 +1,4 @@
-import { hosted, marked, markTime, busy, refreshHistory, setMark } from './history.js?v=6a7130caa3ee';
+import { hosted, marked, markTime, busy, refreshHistory, setMark } from './history.js?v=fcd635e64bcc';
 
 const el = id => document.getElementById(id);
 const editAccessKey = 'film-list:edit-unlocked';
@@ -11,7 +11,12 @@ const formatMarkDate = new Intl.DateTimeFormat('ru-RU', { day: 'numeric', month:
 const desktopSchedule = window.matchMedia('(min-width: 821px)');
 let scheduleItem;
 const studioChoices = ['Apple', 'Amazon', 'Netflix', 'Disney', 'HBO'];
-const listNames = { waiting: 'Жду', available: 'Новинки', backlog: 'Старое', watched: 'Просмотрено', favorite: 'Любимые' };
+const listNames = { waiting: 'Жду', available: 'Новинки', backlog: 'Старое', watching: 'Смотрю сейчас', watched: 'Просмотрено', favorite: 'Любимые' };
+const markActions = [
+  { kind: 'watched', add: 'Отметить просмотренным', remove: 'Снять отметку', icon: 'check', style: 'primary' },
+  { kind: 'favorite', add: 'В любимые', remove: 'Убрать из любимых', icon: 'heart', style: 'outline' },
+  { kind: 'watching', add: 'Смотрю сейчас', remove: 'Отложить просмотр', icon: 'play', style: 'utility' }
+];
 const iconPaths = {
   share: '<path d="M12 15V3m-4 4 4-4 4 4M7 10H5a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-9a1 1 0 0 0-1-1h-2"/>',
   moon: '<path d="M20.5 14.4A8.7 8.7 0 0 1 9.6 3.5a9 9 0 1 0 10.9 10.9Z"/>',
@@ -57,6 +62,7 @@ function listMatches(item) {
   if (state.list === 'watched') return watched;
   if (state.list === 'favorite') return favorite;
   if (watched) return false;
+  if (marked(item.id, 'watching')) return state.list === 'watching';
   if (item.status === 'backlog') return state.list === 'backlog';
   const released = item.status === 'available' || (item.releaseDate && item.releaseDate <= today());
   return released ? state.list === 'available' : state.list === 'waiting' && !favorite;
@@ -206,10 +212,10 @@ function confirmEdit(event) {
 async function toggleMark(item, kind) {
   const value = !marked(item.id, kind);
   if (!await requestEditAccess() || marked(item.id, kind) === value || busy(item.id, kind)) return;
+  if (kind === 'watching' && marked(item.id, 'watched')) return;
   try {
     await setMark(item.id, kind, value, render);
-    const list = kind === 'watched' ? 'Просмотрено' : 'Любимые';
-    announce((value ? 'Добавлено в «' : 'Убрано из «') + list + '»');
+    announce((value ? 'Добавлено в «' : 'Убрано из «') + listNames[kind] + '»');
   } catch {
     announce(hosted ? 'Не удалось подтвердить сохранение. Проверьте соединение.' : 'Не удалось сохранить отметку в этом браузере.');
     if (hosted) sync();
@@ -303,7 +309,7 @@ function cardHistory(item) {
   const section = node('section', 'card-history');
   const dates = node('dl');
   row(dates, 'Добавлено в каталог', dated(item.addedDate, dateText(item.addedDate)));
-  for (const [kind, label] of [['watched', 'Отмечено просмотренным'], ['favorite', 'Добавлено в любимые']]) {
+  for (const [kind, label] of [['watching', 'Начало просмотра'], ['watched', 'Отмечено просмотренным'], ['favorite', 'Добавлено в любимые']]) {
     const stamp = markTime(item.id, kind);
     if (stamp === null) continue;
     const date = /^\d{4}-\d{2}-\d{2}T/.test(stamp) ? new Date(stamp) : null;
@@ -337,11 +343,10 @@ function card(item) {
     trailer.title = 'Открыть трейлер на YouTube в новой вкладке';
     trailer.append(icon('play'), 'Посмотреть трейлер'); actions.append(trailer);
   }
-  for (const kind of ['watched', 'favorite']) {
+  for (const { kind, add, remove, icon, style } of markActions) {
+    if (kind === 'watching' && marked(item.id, 'watched')) continue;
     const active = marked(item.id, kind);
-    const watch = kind === 'watched';
-    const label = watch ? (active ? 'Снять отметку' : 'Отметить просмотренным') : (active ? 'Убрать из любимых' : 'В любимые');
-    const mark = button(label, 'mark ' + (active ? 'chosen' : watch ? 'primary' : 'outline'), watch ? 'check' : 'heart', () => toggleMark(item, kind));
+    const mark = button(active ? remove : add, 'mark ' + (active ? 'chosen' : style), icon, () => toggleMark(item, kind));
     mark.dataset.kind = kind; mark.disabled = busy(item.id, kind);
     mark.setAttribute('aria-pressed', String(active)); actions.append(mark);
   }
@@ -356,7 +361,7 @@ function resetFilters() {
   render();
 }
 function empty(hasFilters) {
-  if (hasFilters || state.list === 'backlog') return node('p', 'empty', 'пусто');
+  if (hasFilters || state.list === 'backlog' || state.list === 'watching') return node('p', 'empty', 'пусто');
   const box = node('section', 'empty');
   const text = {waiting:'Здесь появятся будущие премьеры.',available:'Здесь появятся фильмы и сезоны, которые уже вышли.',watched:'Отметьте фильм или сезон просмотренным, и он появится здесь.',favorite:'Нажмите «В любимые» на карточке фильма или сезона.'};
   box.append(node('h2', '', 'В списке пока пусто'), node('p', '', text[state.list]));

@@ -13,7 +13,7 @@ async function history(request, env, url) {
   if (!request.headers.get('Content-Type')?.startsWith('application/json')) return json({ error: 'Ожидается JSON.' }, 415);
   let change;
   try { change = await request.json(); } catch { return json({ error: 'Некорректные данные.' }, 400); }
-  if (!change || !CARD_IDS.includes(change.card) || !['watched', 'favorite'].includes(change.kind) || typeof change.marked !== 'boolean') {
+  if (!change || !CARD_IDS.includes(change.card) || !['watching', 'watched', 'favorite'].includes(change.kind) || typeof change.marked !== 'boolean') {
     return json({ error: 'Некорректная отметка.' }, 400);
   }
   const row = await env.DB.prepare(`
