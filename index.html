@@ -9,8 +9,8 @@
   <meta name="history-mode" content="local">
   <title>Мой киносписок</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%231443ef'/%3E%3Cpath d='M18 18h28v29L32 38l-14 9z' fill='white'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./style.css?v=5970d2c06151">
-  <script type="module" src="./app.js?v=2371a6c4995d"></script>
+  <link rel="stylesheet" href="./style.css?v=8d02f1f7d17b">
+  <script type="module" src="./app.js?v=f46143a76aeb"></script>
 </head>
 <body>
   <a class="skip" href="#feed">К фильмам и сериалам</a>
@@ -54,7 +54,9 @@
             </select><span data-icon="chevron"></span>
           </label>
         </div>
-        <div id="genres" class="genre-switch" role="group" aria-label="Жанры"></div>
+        <div id="genres" class="genre-switch" role="group" aria-label="Жанры">
+          <button id="genre-more" class="genre-chip" aria-haspopup="dialog" aria-controls="genre-picker" aria-label="Ещё жанры" hidden>Ещё</button>
+        </div>
       </div>
     </div>
   </header>
@@ -62,6 +64,11 @@
     <div class="wrap"><div id="records"><p class="loading">Загрузка каталога…</p></div></div>
   </main>
   <div id="notice" role="status" aria-live="polite"></div>
+  <dialog id="genre-picker" aria-labelledby="genre-title">
+    <div class="dialog-head"><h2 id="genre-title">Жанры</h2><button class="icon-button" data-close aria-label="Закрыть выбор жанров"><span data-icon="close"></span></button></div>
+    <div id="genre-options" class="dialog-body" role="group" aria-labelledby="genre-title"></div>
+    <div class="dialog-foot"><button class="btn" data-close>Готово</button></div>
+  </dialog>
   <dialog id="edit-dialog" aria-labelledby="edit-title">
     <div class="dialog-head"><h2 id="edit-title">Изменить отметку</h2><button class="icon-button" data-close aria-label="Закрыть"><span data-icon="close"></span></button></div>
     <form id="edit-form" class="dialog-body field-body">

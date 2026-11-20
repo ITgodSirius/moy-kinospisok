@@ -381,7 +381,6 @@ function resetFilters() {
   for (const id of filterIds) el(id).value = '';
   state.type = 'all';
   state.genres.clear();
-  el('genres').scrollLeft = 0;
   reflectControls();
   render();
 }
@@ -404,7 +403,7 @@ function empty() {
 function reflectControls() {
   for (const b of document.querySelectorAll('[data-list]')) b.setAttribute('aria-pressed', String(b.dataset.list === state.list));
   for (const b of document.querySelectorAll('[data-type]')) b.setAttribute('aria-pressed', String(b.dataset.type === state.type));
-  for (const b of el('genres').children) {
+  for (const b of document.querySelectorAll('[data-genre]')) {
     const genre = b.dataset.genre;
     b.setAttribute('aria-pressed', String(genre ? state.genres.has(genre) : !state.genres.size));
   }
@@ -421,11 +420,11 @@ function saveView() {
   const feed = el('feed');
   const top = feed.getBoundingClientRect().top;
   const first = [...el('records').children].find(card => card.dataset.id && card.getBoundingClientRect().bottom > top);
-  const dialog = document.querySelector('#filters[open], #schedule[open]');
+  const dialog = document.querySelector('#filters[open], #schedule[open], #genre-picker[open]');
   const openSeason = el('seasons').querySelector('details[open]');
   const view = {
     list: state.list, type: state.type, sorts: sortChoices,
-    genres: [...state.genres], genreScroll: el('genres').scrollLeft,
+    genres: [...state.genres],
     filters: Object.fromEntries(filterIds.map(id => [id, el(id).value])),
     expanded: [...expandedDescriptions], scrollTop: feed.scrollTop, listScroll: el('lists').scrollLeft,
     card: first?.dataset.id, offset: first ? top - first.getBoundingClientRect().top : 0,
@@ -489,8 +488,10 @@ function restoreFeed(view) {
 }
 function restorePosition(view) {
   el('lists').scrollLeft = view.listScroll || 0;
-  el('genres').scrollLeft = view.genreScroll || 0;
-  if (view.dialog === 'filters') {
+  if (view.dialog === 'genre-picker' && !el('genre-more').hidden) {
+    el('genre-more').focus({preventScroll:true});
+    el('genre-picker').showModal();
+  } else if (view.dialog === 'filters') {
     el('filters-open').focus({preventScroll:true});
     el('filters').showModal();
   } else if (view.dialog === 'schedule') {
@@ -551,20 +552,56 @@ function wireGroup(id, key) {
 }
 function setupGenres(availableGenres) {
   const group = el('genres');
+  const more = el('genre-more');
+  const picker = el('genre-picker');
+  const options = el('genre-options');
+  const chips = [];
   for (const genre of ['', ...[...availableGenres].sort(collator.compare)]) {
-    const toggle = node('button', '', genre || 'Все жанры');
+    const toggle = node('button', 'genre-chip', genre || 'Все жанры');
     toggle.type = 'button';
     toggle.dataset.genre = genre;
-    toggle.addEventListener('click', () => {
-      if (!genre) state.genres.clear();
-      else if (state.genres.has(genre)) state.genres.delete(genre);
-      else state.genres.add(genre);
-      reflectControls();
-      render();
-      el('feed').scrollTop = 0;
-    });
-    group.append(toggle);
+    group.insertBefore(toggle, more);
+    chips.push(toggle);
+    options.append(toggle.cloneNode(true));
   }
+  function selectGenre(event) {
+    const genre = event.target.closest('[data-genre]')?.dataset.genre;
+    if (genre === undefined) return;
+    if (!genre) state.genres.clear();
+    else if (state.genres.has(genre)) state.genres.delete(genre);
+    else state.genres.add(genre);
+    reflectControls();
+    render();
+    el('feed').scrollTop = 0;
+  }
+  group.addEventListener('click', selectGenre);
+  options.addEventListener('click', selectGenre);
+  more.onclick = () => picker.showModal();
+
+  function fitGenres() {
+    const focused = document.activeElement;
+    for (const chip of chips) chip.hidden = false;
+    more.hidden = false;
+    const widths = chips.map(chip => chip.getBoundingClientRect().width);
+    const gap = parseFloat(getComputedStyle(group).columnGap);
+    const available = group.getBoundingClientRect().width;
+    const total = widths.reduce((sum, width) => sum + width, gap * (chips.length - 1));
+    more.hidden = total <= available;
+    if (more.hidden) {
+      if (picker.open) picker.close();
+      if (focused === more || picker.contains(focused)) chips[0].focus({preventScroll:true});
+      return;
+    }
+    let used = more.getBoundingClientRect().width;
+    for (const [index, chip] of chips.entries()) {
+      used += widths[index] + gap;
+      chip.hidden = used > available;
+      if (chip.hidden && chip === focused) more.focus({preventScroll:true});
+    }
+  }
+  fitGenres();
+  new ResizeObserver(fitGenres).observe(group);
+  document.fonts.ready.then(fitGenres);
 }
 function showLastUpdate(modified) {
   const time = el('site-updated');
