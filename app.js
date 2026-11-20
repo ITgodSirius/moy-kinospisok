@@ -553,6 +553,19 @@ function setupGenres(availableGenres) {
     group.append(toggle);
   }
 }
+function showLastUpdate(modified) {
+  const time = el('site-updated');
+  const published = Date.parse(modified);
+  const date = new Date(Number.isFinite(published) ? published : time.dateTime);
+  if (!Number.isFinite(date.getTime())) return;
+  const formatter = new Intl.DateTimeFormat('ru-RU', {
+    day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit',
+    timeZone: 'Europe/Moscow'
+  });
+  time.dateTime = date.toISOString();
+  time.textContent = formatter.format(date) + ' МСК';
+  time.parentElement.hidden = false;
+}
 async function start() {
   document.querySelectorAll('[data-icon]').forEach(holder => holder.replaceWith(icon(holder.dataset.icon)));
   el('edit-form').onsubmit = confirmEdit;
@@ -562,12 +575,15 @@ async function start() {
   };
   document.querySelectorAll('[data-close]').forEach(b => b.onclick = () => b.closest('dialog').close());
   const embedded = document.getElementById('offline-catalog');
+  let modified;
   if (embedded) state.catalog = JSON.parse(embedded.textContent);
   else {
     const response = await fetch('./catalog.json', { cache: 'no-cache' });
     if (!response.ok) throw new Error('Каталог недоступен');
     state.catalog = await response.json();
+    modified = response.headers.get('Last-Modified');
   }
+  showLastUpdate(modified);
   const studios = new Set([...studioChoices, ...state.catalog.flatMap(i => [...i.studios, ...(i.platforms || [])])]);
   for (const studio of studios) el('studio').add(new Option(studio, studio));
   const availableGenres = new Set(state.catalog.flatMap(item => item.genres).filter(Boolean));

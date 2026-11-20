@@ -32,10 +32,12 @@ const page = originalPage
   .replace(/src="\.\/app\.js(?:\?v=[a-f0-9]+)?"/, 'src="' + appUrl + '"');
 if (app !== originalApp) await writeFile(path('app.js'), app);
 if (page !== originalPage) await writeFile(path('index.html'), page);
+// Bundles can also be opened without HTTP publication metadata.
+const builtPage = page.replace('<time id="site-updated">', '<time id="site-updated" datetime="' + new Date().toISOString() + '">');
 const assets = Object.create(null);
 await mkdir(path('dist/pages/assets/'), {recursive:true});
 for (const file of files) {
-  let bytes = await readFile(path(file));
+  let bytes = file === 'index.html' ? Buffer.from(builtPage) : await readFile(path(file));
   await writeFile(path('dist/pages/' + file), bytes);
   if (file === 'index.html') bytes = Buffer.from(bytes.toString().replace('name="history-mode" content="local"', 'name="history-mode" content="server"'));
   assets['/' + file] = [mime(file), bytes.toString('base64')];
@@ -55,7 +57,7 @@ const dataUrl = file => {
 const offline = catalog.map(item => ({ ...item, poster: dataUrl(item.poster), gallery: (item.gallery || []).map(dataUrl) }));
 const code = app.replace("'" + historyUrl + "'", () => "'" + dataUrl('history.js') + "'");
 const json = JSON.stringify(offline).replaceAll('<','\\u003c');
-const html = page
+const html = builtPage
   .replace('<link rel="stylesheet" href="' + styleUrl + '">', () => '<style>' + css + '</style>')
   .replace('<script type="module" src="' + appUrl + '"></script>', () => '<script type="application/json" id="offline-catalog">' + json + '</script>\n<script type="module">' + code + '</script>');
 await writeFile(path('dist/Мой киносписок.html'), html);
