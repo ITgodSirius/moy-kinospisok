@@ -70,8 +70,9 @@ select option{background:var(--paper);color:var(--ink)}
 .card-history h3{font-size:1rem;margin:0 0 6px}
 .card-history dl{grid-template-columns:minmax(0,1fr) auto}
 .card-history dd{text-align:right;font-variant-numeric:tabular-nums}
-.actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
-.actions [data-kind=watching]:last-child:nth-child(odd){grid-column:1/-1}
+.actions,.media-actions,.card-shortcuts{display:grid;gap:8px}
+.media-actions{grid-auto-flow:column;grid-auto-columns:minmax(0,1fr)}
+.card-shortcuts{grid-template-columns:minmax(0,1fr) 44px 44px;min-height:44px}
 .btn{padding:8px 11px;min-height:42px;display:inline-flex;align-items:center;justify-content:center;gap:7px;border-radius:7px;border:1px solid var(--button-border);background:var(--button-bg);color:var(--button-text);text-align:center;line-height:1.25;font-size:.9375rem;font-weight:580}
 .btn:is([aria-pressed=true],[aria-expanded=true],:active:not(:disabled)){background:var(--tint);border-color:var(--blue);color:var(--blue)}
 .btn:active:not(:disabled){transform:translateY(1px)}
@@ -139,7 +140,7 @@ details[open] summary svg{transform:rotate(180deg)}
  .entry{grid-template-columns:minmax(0,1fr);gap:14px;padding:14px 0 22px}
  .gallery{aspect-ratio:1.5;max-height:340px}.entry h2{font-size:1.85rem}
  .date{gap:7px;margin-top:9px;padding:7px 9px;font-size:.9375rem}
- .synopsis{--synopsis-lines:4;margin-block:10px 14px}.actions .mark{grid-column:1/-1}
+ .synopsis{--synopsis-lines:4;margin-block:10px 14px}
  .rating{padding-left:7px}.card-heading{gap:7px}
  .btn{min-height:44px;font-size:.875rem;padding-inline:7px}
  dialog{border-radius:16px 16px 0 0;margin:auto 0 0;width:100%;max-width:none;max-height:88dvh;padding-bottom:env(safe-area-inset-bottom)}

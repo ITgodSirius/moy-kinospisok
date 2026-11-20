@@ -13,7 +13,7 @@ let scheduleItem;
 const studioChoices = ['Apple', 'Amazon', 'Netflix', 'Disney', 'HBO'];
 const listNames = { waiting: 'Жду', available: 'Новинки', backlog: 'Старое', watching: 'Смотрю сейчас', watched: 'Просмотрено', favorite: 'Любимые' };
 const markActions = [
-  { kind: 'watched', add: 'Отметить просмотренным', remove: 'Снять отметку', icon: 'check' },
+  { kind: 'watched', add: 'Отметить просмотренным', remove: 'Снять отметку просмотра', icon: 'check' },
   { kind: 'favorite', add: 'В любимые', remove: 'Убрать из любимых', icon: 'heart' },
   { kind: 'watching', add: 'Смотрю сейчас', remove: 'Отложить просмотр', icon: 'play' }
 ];
@@ -21,6 +21,7 @@ const iconPaths = {
   sliders: '<path d="M3 7h4m5 0h9M3 17h10m5 0h3"/><circle cx="9.5" cy="7" r="2.5"/><circle cx="15.5" cy="17" r="2.5"/>',
   chevron: '<path d="m6 9 6 6 6-6"/>', close: '<path d="m6 6 12 12M18 6 6 18"/>',
   calendar: '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 10h18"/>',
+  search: '<circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/>',
   play: '<rect x="2.5" y="5" width="19" height="14" rx="4"/><path d="m10 9 5 3-5 3z" fill="currentColor" stroke="none"/>',
   heart: '<path d="M20.5 4.8a5.2 5.2 0 0 0-7.3 0L12 6l-1.2-1.2a5.2 5.2 0 0 0-7.3 7.4L12 21l8.5-8.8a5.2 5.2 0 0 0 0-7.4Z"/>',
   check: '<path d="m4.5 12.5 5 5 10-11"/>'
@@ -37,12 +38,15 @@ function icon(name) {
   box.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round">' + iconPaths[name] + '</svg>';
   return box;
 }
-function button(label, style, symbol, action) {
+function button(label, style, symbol, action, iconOnly = false) {
   const b = node('button', 'btn');
   if (style) b.classList.add(style);
   b.type = 'button';
   if (symbol) b.append(icon(symbol));
-  b.append(label);
+  if (iconOnly) {
+    b.setAttribute('aria-label', label);
+    b.title = label;
+  } else b.append(label);
   b.addEventListener('click', action);
   return b;
 }
@@ -287,6 +291,25 @@ function cardHistory(item) {
   section.append(node('h3', '', 'История'), dates);
   return section;
 }
+function yandexSearchUrl(item) {
+  const series = item.type === 'series';
+  const terms = [item.title, series ? 'сериал' : 'фильм'];
+  if (item.releaseDate) terms.push(item.releaseDate.slice(0, 4));
+  if (series && item.season > 1) terms.push(item.season + ' сезон');
+  terms.push('смотреть');
+  const url = new URL('https://yandex.ru/search/');
+  url.searchParams.set('text', terms.join(' '));
+  return url.href;
+}
+function externalLink(label, symbol, href, title) {
+  const link = node('a', 'btn');
+  link.href = href;
+  link.target = '_blank';
+  link.rel = 'noopener noreferrer';
+  link.title = title;
+  link.append(icon(symbol), label);
+  return link;
+}
 function card(item) {
   const section = node('article', 'entry');
   section.dataset.id = item.id;
@@ -306,23 +329,27 @@ function card(item) {
     date.append(node('span', '', 'Дата выхода'), strong);
   } else date.append(node('strong', '', 'Дата выхода уточняется'));
   const actions = node('div', 'actions');
+  const mediaLinks = node('div', 'media-actions');
   if (item.type === 'series') {
     const calendar = button('Сезоны и серии', '', 'calendar', () => showSchedule(item));
     calendar.setAttribute('aria-haspopup', 'dialog');
-    actions.append(calendar);
+    mediaLinks.append(calendar);
   }
   if (item.trailer) {
-    const trailer = node('a', 'btn'); trailer.href = item.trailer;
-    trailer.target = '_blank'; trailer.rel = 'noopener noreferrer';
-    trailer.title = 'Открыть трейлер на YouTube в новой вкладке';
-    trailer.append(icon('play'), 'Посмотреть трейлер'); actions.append(trailer);
+    mediaLinks.append(externalLink('Посмотреть трейлер', 'play', item.trailer, 'Открыть трейлер на YouTube в новой вкладке'));
   }
+  if (mediaLinks.childElementCount) actions.append(mediaLinks);
+  const shortcuts = node('div', 'card-shortcuts');
+  shortcuts.append(externalLink('Найти в Яндексе', 'search', yandexSearchUrl(item), 'Искать «' + item.title + '» в новой вкладке'));
+  actions.append(shortcuts);
   for (const { kind, add, remove, icon } of markActions) {
     if (kind === 'watching' && marked(item.id, 'watched')) continue;
     const active = marked(item.id, kind);
-    const mark = button(active ? remove : add, 'mark', icon, () => toggleMark(item, kind));
+    const compact = kind !== 'watching';
+    const mark = button(active ? remove : add, 'mark', icon, () => toggleMark(item, kind), compact);
     mark.dataset.kind = kind; mark.disabled = busy(item.id, kind);
-    mark.setAttribute('aria-pressed', String(active)); actions.append(mark);
+    mark.setAttribute('aria-pressed', String(active));
+    (compact ? shortcuts : actions).append(mark);
   }
   copy.append(date, synopsis(item), metadata(item), cardHistory(item), actions);
   section.append(gallery(item), copy);
@@ -337,7 +364,7 @@ function resetFilters() {
 function empty(hasFilters) {
   if (hasFilters || state.list === 'backlog' || state.list === 'watching') return node('p', 'empty', 'пусто');
   const box = node('section', 'empty');
-  const text = {waiting:'Здесь появятся будущие премьеры.',available:'Здесь появятся фильмы и сезоны, которые уже вышли.',watched:'Отметьте фильм или сезон просмотренным, и он появится здесь.',favorite:'Нажмите «В любимые» на карточке фильма или сезона.'};
+  const text = {waiting:'Здесь появятся будущие премьеры.',available:'Здесь появятся фильмы и сезоны, которые уже вышли.',watched:'Нажмите галочку на карточке просмотренного фильма или сезона.',favorite:'Нажмите сердце на карточке фильма или сезона.'};
   box.append(node('h2', '', 'В списке пока пусто'), node('p', '', text[state.list]));
   return box;
 }
