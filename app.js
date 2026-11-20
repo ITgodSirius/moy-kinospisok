@@ -411,9 +411,10 @@ function reflectControls() {
     if (b.classList.contains('selected-genre')) b.hidden = !active;
   }
   for (const option of el('genre-select').options) {
-    if (option.value) option.disabled = state.genres.has(option.value);
+    if (option.hidden) continue;
+    const active = option.value ? state.genres.has(option.value) : !state.genres.size;
+    option.textContent = (active ? '✓ ' : '') + (option.value || 'Все жанры');
   }
-  el('picker-badges').hidden = !state.genres.size;
   el('selected-genres').hidden = !state.genres.size;
   el('feed').setAttribute('aria-label', 'Лента · ' + listNames[state.list]);
   reflectSort();
@@ -428,7 +429,7 @@ function saveView() {
   const feed = el('feed');
   const top = feed.getBoundingClientRect().top;
   const first = [...el('records').children].find(card => card.dataset.id && card.getBoundingClientRect().bottom > top);
-  const dialog = document.querySelector('#filters[open], #schedule[open], #genre-picker[open]');
+  const dialog = document.querySelector('#filters[open], #schedule[open]');
   const openSeason = el('seasons').querySelector('details[open]');
   const view = {
     list: state.list, type: state.type, sorts: sortChoices,
@@ -496,10 +497,7 @@ function restoreFeed(view) {
 }
 function restorePosition(view) {
   el('lists').scrollLeft = view.listScroll || 0;
-  if (view.dialog === 'genre-picker' && el('genre-open').getClientRects().length) {
-    el('genre-open').focus({preventScroll:true});
-    el('genre-picker').showModal();
-  } else if (view.dialog === 'filters') {
+  if (view.dialog === 'filters') {
     el('filters-open').focus({preventScroll:true});
     el('filters').showModal();
   } else if (view.dialog === 'schedule') {
@@ -561,9 +559,7 @@ function wireGroup(id, key) {
 function setupGenres(availableGenres) {
   const group = el('genres');
   const strip = el('genre-strip');
-  const picker = el('genre-picker');
   const select = el('genre-select');
-  const pickerBadges = el('picker-badges');
   for (const genre of ['', ...[...availableGenres].sort(collator.compare)]) {
     const label = genre || 'Все жанры';
     const toggle = node('button', 'genre-chip');
@@ -571,15 +567,14 @@ function setupGenres(availableGenres) {
     toggle.type = 'button';
     toggle.dataset.genre = genre;
     strip.append(toggle);
+    select.add(new Option(label, genre));
     if (genre) {
-      select.add(new Option(genre, genre));
       const badge = toggle.cloneNode(true);
       badge.className = 'selected-genre';
       badge.hidden = true;
       badge.setAttribute('aria-label', 'Снять фильтр «' + genre + '»');
       badge.append(icon('close'));
       el('selected-genres').append(badge);
-      pickerBadges.append(badge.cloneNode(true));
     }
     toggle.title = label;
   }
@@ -597,19 +592,16 @@ function setupGenres(availableGenres) {
     toggleGenre(toggle.dataset.genre);
     if (toggle.classList.contains('selected-genre')) {
       const next = event.currentTarget.querySelector('button:not([hidden])');
-      const fallback = event.currentTarget === pickerBadges ? select : el('genre-open');
-      (next || fallback).focus({preventScroll:true});
+      (next || select).focus({preventScroll:true});
     }
   }
   group.addEventListener('click', selectGenre);
-  pickerBadges.addEventListener('click', selectGenre);
   el('selected-genres').addEventListener('click', selectGenre);
   select.onchange = () => {
-    if (select.value) toggleGenre(select.value);
-    select.value = '';
+    const genre = select.value;
+    select.selectedIndex = 0;
+    toggleGenre(genre);
   };
-  el('clear-genres').onclick = () => toggleGenre('');
-  el('genre-open').onclick = () => picker.showModal();
 
   function fitGenres() {
     const available = group.getBoundingClientRect().width;
@@ -617,10 +609,6 @@ function setupGenres(availableGenres) {
     // The max-content layout width stays at natural size when the strip is scaled.
     const natural = parseFloat(getComputedStyle(strip).width);
     strip.style.setProperty('--genre-fit', Math.min(1, available / natural));
-    if (picker.open) {
-      picker.close();
-      strip.querySelector('[aria-pressed="true"]')?.focus({preventScroll:true});
-    }
   }
   fitGenres();
   const observer = new ResizeObserver(fitGenres);

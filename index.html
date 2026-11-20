@@ -9,8 +9,8 @@
   <meta name="history-mode" content="local">
   <title>Мой киносписок</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%231443ef'/%3E%3Cpath d='M18 18h28v29L32 38l-14 9z' fill='white'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./style.css?v=bc026e7b587a">
-  <script type="module" src="./app.js?v=4f78d3448a2f"></script>
+  <link rel="stylesheet" href="./style.css?v=48a5dea9e657">
+  <script type="module" src="./app.js?v=68deda6834df"></script>
 </head>
 <body>
   <a class="skip" href="#feed">К фильмам и сериалам</a>
@@ -43,7 +43,9 @@
         <p class="last-update" hidden>Обновлено <time id="site-updated"></time></p>
         <div class="tools">
           <button id="filters-open" class="quiet" aria-haspopup="dialog"><span data-icon="sliders"></span>Фильтры <span id="filter-count" hidden></span></button>
-          <button id="genre-open" class="quiet" type="button" aria-haspopup="dialog" aria-controls="genre-picker">Жанры <span data-icon="chevron"></span></button>
+          <label class="quiet genre-control">Жанры <span data-icon="chevron"></span>
+            <select id="genre-select" aria-label="Жанры"><option hidden disabled selected>Жанры</option></select>
+          </label>
           <label class="sort"><span class="sr">Сортировка</span>
             <select id="sort">
               <option value="added-new">Сначала новые</option><option value="added-old">Сначала давние</option>
@@ -66,14 +68,6 @@
     <div class="wrap"><div id="records"><p class="loading">Загрузка каталога…</p></div></div>
   </main>
   <div id="notice" role="status" aria-live="polite"></div>
-  <dialog id="genre-picker" aria-labelledby="genre-title">
-    <div class="dialog-head"><h2 id="genre-title">Жанры</h2><button class="icon-button" data-close aria-label="Закрыть выбор жанров"><span data-icon="close"></span></button></div>
-    <div class="dialog-body filters-body">
-      <label>Добавить жанр<select id="genre-select"><option value="" disabled selected>Выберите жанр</option></select></label>
-      <div id="picker-badges" class="genre-badges" role="group" aria-label="Выбранные жанры" hidden></div>
-    </div>
-    <div class="dialog-foot"><button id="clear-genres" class="btn">Сбросить</button><button class="btn" data-close>Показать</button></div>
-  </dialog>
   <dialog id="edit-dialog" aria-labelledby="edit-title">
     <div class="dialog-head"><h2 id="edit-title">Изменить отметку</h2><button class="icon-button" data-close aria-label="Закрыть"><span data-icon="close"></span></button></div>
     <form id="edit-form" class="dialog-body field-body">
