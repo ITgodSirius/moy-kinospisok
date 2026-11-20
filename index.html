@@ -1,16 +1,16 @@
 <!doctype html>
-<html lang="ru" data-theme="light">
+<html lang="ru">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#ffffff">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#15171d">
   <meta name="description" content="Личный список фильмов и сериалов с датами премьер, расписанием серий и трейлерами.">
   <meta name="history-mode" content="local">
   <title>Мой киносписок</title>
-  <script>try { if (localStorage.getItem('film-list:theme') === 'dark') document.documentElement.dataset.theme = 'dark'; } catch {}</script>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%231443ef'/%3E%3Cpath d='M18 18h28v29L32 38l-14 9z' fill='white'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./style.css?v=393b13381b5e">
-  <script type="module" src="./app.js?v=8f5e00cbb6c6"></script>
+  <link rel="stylesheet" href="./style.css?v=b299d355ab18">
+  <script type="module" src="./app.js?v=b7ee2dcce17a"></script>
 </head>
 <body>
   <a class="skip" href="#feed">К фильмам и сериалам</a>
@@ -26,10 +26,6 @@
           <button data-list="watched" aria-pressed="false">Просмотрено</button>
           <button data-list="favorite" aria-pressed="false">Любимые</button>
         </nav>
-        <div class="header-actions">
-          <button id="share" type="button" class="icon-button" aria-label="Поделиться сайтом" title="Поделиться сайтом"><span data-icon="share"></span></button>
-          <button id="theme" class="icon-button" aria-label="Включить тёмную тему" title="Включить тёмную тему"></button>
-        </div>
       </div>
       <div class="toolbar">
         <div id="types" class="type-switch" role="group" aria-label="Тип">
@@ -55,13 +51,6 @@
     <div class="wrap"><div id="records"><p class="loading">Загрузка каталога…</p></div></div>
   </main>
   <div id="notice" role="status" aria-live="polite"></div>
-  <dialog id="share-dialog" aria-labelledby="share-title">
-    <div class="dialog-head"><h2 id="share-title">Поделиться сайтом</h2><button class="icon-button" data-close aria-label="Закрыть"><span data-icon="close"></span></button></div>
-    <div class="dialog-body field-body">
-      <label for="share-url">Ссылка на киносписок</label>
-      <input id="share-url" type="url" readonly value="https://itgodsirius.github.io/moy-kinospisok/">
-    </div>
-  </dialog>
   <dialog id="edit-dialog" aria-labelledby="edit-title">
     <div class="dialog-head"><h2 id="edit-title">Изменить отметку</h2><button class="icon-button" data-close aria-label="Закрыть"><span data-icon="close"></span></button></div>
     <form id="edit-form" class="dialog-body field-body">

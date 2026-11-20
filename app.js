@@ -18,9 +18,6 @@ const markActions = [
   { kind: 'watching', add: 'Смотрю сейчас', remove: 'Отложить просмотр', icon: 'play', style: 'utility' }
 ];
 const iconPaths = {
-  share: '<path d="M12 15V3m-4 4 4-4 4 4M7 10H5a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-9a1 1 0 0 0-1-1h-2"/>',
-  moon: '<path d="M20.5 14.4A8.7 8.7 0 0 1 9.6 3.5a9 9 0 1 0 10.9 10.9Z"/>',
-  sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M19 5l-1.5 1.5m-11 11L5 19"/>',
   sliders: '<path d="M3 7h4m5 0h9M3 17h10m5 0h3"/><circle cx="9.5" cy="7" r="2.5"/><circle cx="15.5" cy="17" r="2.5"/>',
   chevron: '<path d="m6 9 6 6 6-6"/>', close: '<path d="m6 6 12 12M18 6 6 18"/>',
   calendar: '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 10h18"/>',
@@ -98,38 +95,6 @@ function announce(msg) {
   clearTimeout(toastTimer);
   el('notice').textContent = msg;
   toastTimer = setTimeout(() => { el('notice').textContent = ''; }, 4500);
-}
-async function shareSite() {
-  const field = el('share-url');
-  const url = field.value;
-  if (navigator.share) {
-    try {
-      await navigator.share({ title: document.title, url });
-      return;
-    } catch (error) {
-      if (error.name === 'AbortError') return;
-    }
-  }
-  try {
-    await navigator.clipboard.writeText(url);
-    announce('Ссылка скопирована');
-  } catch {
-    el('share-dialog').showModal();
-    field.focus();
-    field.select();
-  }
-}
-function theme(dark, save = true) {
-  document.documentElement.dataset.theme = dark ? 'dark' : 'light';
-  document.querySelector('meta[name="theme-color"]').content = dark ? '#15171d' : '#ffffff';
-  const label = dark ? 'Включить светлую тему' : 'Включить тёмную тему';
-  el('theme').setAttribute('aria-label', label);
-  el('theme').title = label;
-  el('theme').replaceChildren(icon(dark ? 'sun' : 'moon'));
-  if (save) {
-    try { localStorage.setItem('film-list:theme', document.documentElement.dataset.theme); }
-    catch { announce('Выбор темы сохранится только до закрытия страницы.'); }
-  }
 }
 function renderSeasons(item) {
   const desktop = desktopSchedule.matches;
@@ -402,9 +367,6 @@ function wireGroup(id, key) {
 }
 async function start() {
   document.querySelectorAll('[data-icon]').forEach(holder => holder.replaceWith(icon(holder.dataset.icon)));
-  theme(document.documentElement.dataset.theme === 'dark', false);
-  el('theme').onclick = () => theme(document.documentElement.dataset.theme !== 'dark');
-  el('share').onclick = shareSite;
   el('edit-form').onsubmit = confirmEdit;
   el('edit-pin').oninput = () => {
     el('edit-error').textContent = '';
@@ -439,10 +401,7 @@ async function start() {
     const r = dialog.getBoundingClientRect();
     if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) dialog.close();
   });
-  window.addEventListener('storage', e => {
-    if (e.key === 'film-list:theme') theme(e.newValue === 'dark', false);
-    else if (!hosted) render();
-  });
+  if (!hosted) window.addEventListener('storage', render);
   render();
   if (hosted) {
     await sync();
