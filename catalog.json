@@ -1,5 +1,2032 @@
 [
   {
+    "id": "tmdb-movie-1458300",
+    "title": "Комариный кубок",
+    "type": "movie",
+    "genres": [
+      "Драма",
+      "Военный",
+      "Спорт"
+    ],
+    "studios": [
+      "Imagine Entertainment"
+    ],
+    "description": "После нападения на Пёрл-Харбор четверо звёзд студенческого футбола вступают в морскую пехоту. Перед отправкой на Окинаву их подразделения устраивают матч, который становится прощанием с прежней жизнью.",
+    "poster": "assets/tmdb-movie-1458300-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-1458300-gallery-1.jpg",
+      "assets/tmdb-movie-1458300-gallery-2.jpg"
+    ],
+    "releaseDate": "2026-10-30",
+    "rating": null,
+    "ratingSource": null,
+    "status": "available",
+    "trailer": "https://www.youtube.com/watch?v=-rWIE3-SIOg",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/1458300?language=ru-RU",
+      "release": "https://media.netflix.com/en/only-on-netflix/81661161",
+      "imdb": "https://www.imdb.com/title/tt36413910/",
+      "suppliedVideo": "https://www.youtube.com/watch?v=wwX0y9LPHcs",
+      "poster": "https://image.tmdb.org/t/p/w500/zbT4sxoCEeFWlQG4SC5X9Q8v6PC.jpg",
+      "gallery1": "https://image.tmdb.org/t/p/w780/k2djfMwL3LhpvZMfPN7IFX4DG5N.jpg",
+      "gallery2": "https://i.ytimg.com/vi/-rWIE3-SIOg/sd2.jpg"
+    },
+    "platforms": [
+      "Netflix"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-movie-1476746",
+    "title": "Флорист",
+    "type": "movie",
+    "genres": [
+      "Боевик",
+      "Триллер"
+    ],
+    "studios": [
+      "Film Bridge International"
+    ],
+    "description": "Наёмный убийца скрывается под видом тихого флориста. Когда он помогает подростку, ставшей свидетельницей преступления, за ними начинают охотиться наркокартель и коррумпированные полицейские.",
+    "poster": "assets/tmdb-movie-1476746-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-1476746-gallery-1.jpg",
+      "assets/tmdb-movie-1476746-gallery-2.jpg"
+    ],
+    "releaseDate": "2026-09-24",
+    "rating": null,
+    "ratingSource": null,
+    "status": "available",
+    "trailer": "https://www.youtube.com/watch?v=LNmIdALXoKo",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/1476746?language=ru-RU",
+      "releaseRussia": "https://www.afisha.ru/movie/florist-1004583/18-11-2026/",
+      "official": "https://www.swedishfilm.com/en/movies/t/the-florist/",
+      "imdb": "https://www.imdb.com/title/tt33214716/",
+      "suppliedVideo": "https://www.youtube.com/watch?v=V4SJz2u5FyU",
+      "poster": "https://image.tmdb.org/t/p/w500/4tnRvIiWMzVA2Tw9c7INLo4sfo0.jpg",
+      "gallery1": "https://image.tmdb.org/t/p/w780/lpk0MwAn0UA3qCy9Iub4xMe15gv.jpg",
+      "gallery2": "https://i.ytimg.com/vi/V4SJz2u5FyU/sd1.jpg"
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-movie-1492640",
+    "title": "Унабомбер",
+    "type": "movie",
+    "genres": [
+      "Драма",
+      "Триллер",
+      "Криминал"
+    ],
+    "studios": [
+      "MRC"
+    ],
+    "description": "Драма прослеживает путь Теда Качинского от одарённого студента Гарварда до преступника, которого годами разыскивало ФБР.",
+    "poster": "assets/tmdb-movie-1492640-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-1492640-gallery-1.jpg",
+      "assets/tmdb-movie-1492640-gallery-2.jpg"
+    ],
+    "releaseDate": "2026-09-25",
+    "rating": null,
+    "ratingSource": null,
+    "status": "available",
+    "trailer": "https://www.youtube.com/watch?v=B3tR6qQjbgI",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/1492640?language=ru-RU",
+      "release": "https://www.netflix.com/tudum/articles/unabomber-release-date-cast-news",
+      "suppliedVideo": "https://www.youtube.com/watch?v=BOuShjd96KA",
+      "poster": "https://image.tmdb.org/t/p/w500/39aMkR8Y5vhCG9dTkjiqRl8AVqp.jpg",
+      "gallery1": "https://image.tmdb.org/t/p/w780/XohTvvPXiGhUKhiQSvmoMTnj2z.jpg",
+      "gallery2": "https://i.ytimg.com/vi/B3tR6qQjbgI/sd1.jpg"
+    },
+    "platforms": [
+      "Netflix"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-movie-1255833",
+    "title": "Кит: Во тьме глубин",
+    "type": "movie",
+    "genres": [
+      "Триллер",
+      "Драма",
+      "Приключения"
+    ],
+    "studios": [
+      "20th Century Studios",
+      "Imagine Entertainment",
+      "Jurassic Party"
+    ],
+    "description": "Дайвер Джей Гардинер ныряет у побережья Калифорнии, чтобы найти останки отца. Его проглатывает кашалот, и Джей пытается выбраться, пока в баллоне ещё есть кислород.",
+    "poster": "assets/tmdb-movie-1255833-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-1255833-gallery-1.jpg",
+      "assets/tmdb-movie-1255833-gallery-2.jpg"
+    ],
+    "releaseDate": "2026-10-29",
+    "rating": null,
+    "ratingSource": null,
+    "status": "available",
+    "trailer": "https://www.youtube.com/watch?v=Dw-5ZGapGTQ",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/1255833?language=ru-RU",
+      "releaseRussia": "https://www.kinometro.ru/release/card/id/57528",
+      "official": "https://www.20thcenturystudios.com/movies/whalefall",
+      "imdb": "https://www.imdb.com/title/tt28535715/",
+      "suppliedVideo": "https://www.youtube.com/watch?v=hSp-tOvbbLw",
+      "poster": "https://image.tmdb.org/t/p/w500/vjTYUTgh9nO88i6HZ4YPRhiFL05.jpg",
+      "gallery1": "https://image.tmdb.org/t/p/w780/shW2jHkQLZVv4Fko2rJDqTGU0gx.jpg",
+      "gallery2": "https://i.ytimg.com/vi/Dw-5ZGapGTQ/sd2.jpg"
+    },
+    "platforms": [
+      "Disney"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-movie-1442211",
+    "title": "Идеальный шторм",
+    "type": "movie",
+    "genres": [
+      "Драма",
+      "Триллер",
+      "Приключения"
+    ],
+    "studios": [
+      "3Cat",
+      "Balandrau Films"
+    ],
+    "description": "В декабре 2000 года компания друзей поднимается на Баландрау в каталонских Пиренеях. Внезапная снежная буря отрезает их от безопасного пути вниз, и на поиски группы отправляются спасатели.",
+    "poster": "assets/tmdb-movie-1442211-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-1442211-gallery-1.jpg",
+      "assets/tmdb-movie-1442211-gallery-2.jpg"
+    ],
+    "releaseDate": "2026-11-05",
+    "rating": null,
+    "ratingSource": null,
+    "status": "available",
+    "trailer": "https://www.youtube.com/watch?v=ZQon2sp2UWI",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/1442211?language=ru-RU",
+      "releaseRussia": "https://www.kinobusiness.com/m/movies/idealnyy-shtorm26/",
+      "official": "https://www.filmax.com/distribucion/balandrau-vent-salvatge/324",
+      "imdb": "https://www.imdb.com/title/tt35933404/",
+      "suppliedVideo": "https://www.youtube.com/watch?v=Pp5HhzaCEq8",
+      "poster": "https://www.filmax.com/assets/cache/medium/assets/peliculas/carteles/6964faaf3c7b7.jpg",
+      "gallery1": "https://image.tmdb.org/t/p/w780/jU3R3buyT08P7jTnLy8RYYdQqoh.jpg",
+      "gallery2": "https://i.ytimg.com/vi/i8tzXGTKERM/sd2.jpg"
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-movie-1300968",
+    "title": "Голодные игры: Рассвет Жатвы",
+    "type": "movie",
+    "genres": [
+      "Фантастика",
+      "Боевик",
+      "Триллер"
+    ],
+    "studios": [
+      "Color Force",
+      "Lionsgate"
+    ],
+    "description": "За двадцать четыре года до истории Китнисс шестнадцатилетний Хеймитч Эбернети попадает на пятидесятые Голодные игры, где число участников вдвое больше обычного.",
+    "poster": "assets/tmdb-movie-1300968-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-1300968-gallery-1.jpg",
+      "assets/tmdb-movie-1300968-gallery-2.jpg"
+    ],
+    "releaseDate": "2026-11-26",
+    "rating": null,
+    "ratingSource": null,
+    "status": "waiting",
+    "trailer": "https://www.youtube.com/watch?v=fS35YSjopjE",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/1300968?language=ru-RU",
+      "releaseRussia": "https://www.kinometro.ru/release/card/id/54906",
+      "imdb": "https://www.imdb.com/title/tt32558705/",
+      "suppliedVideo": "https://www.youtube.com/watch?v=TZNlbj80a18",
+      "poster": "https://image.tmdb.org/t/p/w500/jNcZH8yplxttRlf0wwqfGGMKHxX.jpg",
+      "gallery1": "https://image.tmdb.org/t/p/w780/aqFZcr2dxSZ2UwWSo1WC6C0rwDf.jpg",
+      "gallery2": "https://i.ytimg.com/vi/fS35YSjopjE/sd1.jpg"
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-movie-458896",
+    "title": "Соловей",
+    "type": "movie",
+    "genres": [
+      "Драма",
+      "История",
+      "Военный"
+    ],
+    "studios": [
+      "TriStar Pictures",
+      "Hello Sunshine"
+    ],
+    "description": "В оккупированной Франции две сестры по-разному сопротивляются нацистам. Одна пытается уберечь семью, другая помогает переправлять людей через границу.",
+    "poster": "assets/tmdb-movie-458896-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-458896-gallery-1.jpg",
+      "assets/tmdb-movie-458896-gallery-2.jpg"
+    ],
+    "releaseDate": "2027-03-19",
+    "rating": null,
+    "ratingSource": null,
+    "status": "waiting",
+    "trailer": "https://www.youtube.com/watch?v=gNHr2-JjKRM",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/458896?language=ru-RU",
+      "release": "https://thenightingale.movie/",
+      "imdb": "https://www.imdb.com/title/tt4540534/",
+      "suppliedVideo": "https://www.youtube.com/watch?v=Rm7t6dkhmgE",
+      "poster": "https://image.tmdb.org/t/p/w500/b6CN8AAjev9ud7z9DXCKk0ipAsm.jpg",
+      "gallery1": "https://image.tmdb.org/t/p/w780/upfnWT6okzhJUE4nv9BxDhcbWnJ.jpg",
+      "gallery2": "https://i.ytimg.com/vi/gNHr2-JjKRM/sd2.jpg"
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-movie-1124006",
+    "title": "Оружейный барон 2",
+    "type": "movie",
+    "genres": [
+      "Криминал",
+      "Триллер",
+      "Драма"
+    ],
+    "studios": [
+      "Vendôme Pictures",
+      "Saturn Films"
+    ],
+    "description": "Торговец оружием Юрий Орлов узнаёт, что у него есть сын Антон. Тот идёт по стопам отца и становится его соперником. Российский прокат заявлен на январь 2027 года.",
+    "poster": "assets/tmdb-movie-1124006-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-1124006-gallery-1.jpg",
+      "assets/tmdb-movie-1124006-gallery-2.jpg"
+    ],
+    "releaseDate": null,
+    "rating": null,
+    "ratingSource": null,
+    "status": "waiting",
+    "trailer": "https://www.youtube.com/watch?v=6ANmtY7Xtwg",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/1124006?language=ru-RU",
+      "releaseRussia": "https://www.proficinema.com/picture-making/detail.php?ID=460407",
+      "imdb": "https://www.imdb.com/title/tt27706987/",
+      "official": "https://okko.tv/media/news/oruzheinyi-baron-2-s-nikolasom-keidzhem-vyidet-v-rossii-22-09-2026",
+      "suppliedVideo": "https://www.youtube.com/watch?v=3CuythO5VS0",
+      "poster": "https://image.tmdb.org/t/p/w500/66mWiwl4sbg0mV0sxdR7XV5oUOw.jpg",
+      "gallery1": "https://i.ytimg.com/vi/6ANmtY7Xtwg/sd2.jpg",
+      "gallery2": "https://i.ytimg.com/vi/6ANmtY7Xtwg/sd3.jpg"
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-movie-1700884",
+    "title": "Александр I",
+    "type": "movie",
+    "genres": [
+      "История",
+      "Драма"
+    ],
+    "studios": [
+      "Газпром-Медиа Холдинг"
+    ],
+    "description": "Александр вступает на российский престол, берётся за реформы и вскоре сталкивается с войной против Наполеона.",
+    "poster": "assets/tmdb-movie-1700884-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-1700884-gallery-1.jpg",
+      "assets/tmdb-movie-1700884-gallery-2.jpg"
+    ],
+    "releaseDate": "2026-11-26",
+    "rating": null,
+    "ratingSource": null,
+    "status": "waiting",
+    "trailer": "",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/1700884?language=ru-RU",
+      "releaseRussia": "https://www.kinometro.ru/release/card/id/56435",
+      "imdb": "https://www.imdb.com/title/tt37365663/",
+      "officialTrailer": "https://rutube.ru/video/72da41051bd3c3f54cff3412f4668566/",
+      "suppliedVideo": "https://www.youtube.com/watch?v=GxDr7Cu-ylQ",
+      "poster": "https://image.tmdb.org/t/p/w500/f7QZR7li6m7W55fDzIb0ZPu4PYA.jpg",
+      "gallery1": "https://image.tmdb.org/t/p/w780/49EybZFpkfum1asrBHherz2me9A.jpg",
+      "gallery2": "https://i.ytimg.com/vi/GxDr7Cu-ylQ/sd3.jpg"
+    },
+    "platforms": [],
+    "origin": "russian",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-tv-294607-s1",
+    "title": "Тринити",
+    "type": "series",
+    "season": 1,
+    "genres": [
+      "Триллер",
+      "Драма"
+    ],
+    "studios": [
+      "HTM Television",
+      "20th Television"
+    ],
+    "description": "Офицер атомной подлодки Кэтрин Декер сближается с министром обороны и обнаруживает, что он может быть связан с опасным заговором.",
+    "poster": "assets/tmdb-tv-294607-s1-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-294607-s1-gallery-1.jpg",
+      "assets/tmdb-tv-294607-s1-gallery-2.jpg"
+    ],
+    "releaseDate": "2026-12-01",
+    "rating": null,
+    "ratingSource": null,
+    "status": "waiting",
+    "trailer": "https://www.youtube.com/watch?v=oMeVvhr7GZw",
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2026-12-01",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2026-12-01"
+          },
+          {
+            "number": 2,
+            "date": "2026-12-01"
+          },
+          {
+            "number": 3,
+            "date": "2026-12-01"
+          },
+          {
+            "number": 4,
+            "date": "2026-12-01"
+          },
+          {
+            "number": 5,
+            "date": "2026-12-01"
+          },
+          {
+            "number": 6,
+            "date": "2026-12-01"
+          },
+          {
+            "number": 7,
+            "date": "2026-12-01"
+          }
+        ]
+      }
+    ],
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/294607/season/1?language=ru-RU",
+      "release": "https://www.netflix.com/tudum/articles/trinity-release-date-cast-news?inapp=trueOs",
+      "imdb": "https://www.imdb.com/title/tt37433759/",
+      "suppliedVideo": "https://www.youtube.com/watch?v=GMxvl4snuKQ",
+      "poster": "https://image.tmdb.org/t/p/w500/4V1DsqIwLmEKsgfzQayDF60eRYc.jpg",
+      "gallery1": "https://image.tmdb.org/t/p/w780/d6t09reR7JH0EUQfACa2846REo8.jpg",
+      "gallery2": "https://i.ytimg.com/vi/oMeVvhr7GZw/sd1.jpg"
+    },
+    "platforms": [
+      "Netflix"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-tv-171802-s1",
+    "title": "Бегущий по лезвию 2099",
+    "type": "series",
+    "season": 1,
+    "genres": [
+      "Фантастика",
+      "Драма",
+      "Боевик"
+    ],
+    "studios": [
+      "Alcon Television Group",
+      "Scott Free Productions",
+      "Amazon MGM Studios"
+    ],
+    "description": "В 2099 году беглянка Кора выдаёт себя за репликанта и объединяется с опытной охотницей Олвен, чтобы раскрыть заговор.",
+    "poster": "assets/tmdb-tv-171802-s1-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-171802-s1-gallery-1.jpg",
+      "assets/tmdb-tv-171802-s1-gallery-2.jpg"
+    ],
+    "releaseDate": "2026-11-25",
+    "rating": null,
+    "ratingSource": null,
+    "status": "waiting",
+    "trailer": "https://www.youtube.com/watch?v=1d4x_eSdqNc",
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2026-11-25",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2026-11-25"
+          },
+          {
+            "number": 2,
+            "date": "2026-11-25"
+          },
+          {
+            "number": 3,
+            "date": "2026-11-25"
+          },
+          {
+            "number": 4,
+            "date": "2026-11-25"
+          },
+          {
+            "number": 5,
+            "date": "2026-11-25"
+          },
+          {
+            "number": 6,
+            "date": "2026-11-25"
+          },
+          {
+            "number": 7,
+            "date": "2026-11-25"
+          },
+          {
+            "number": 8,
+            "date": "2026-11-25"
+          }
+        ]
+      }
+    ],
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/171802/season/1?language=ru-RU",
+      "release": "https://www.kinopoisk.ru/media/article/4013655/",
+      "imdb": "https://www.imdb.com/title/tt18224594/",
+      "suppliedVideo": "https://www.youtube.com/watch?v=ovC6vuBvTOk",
+      "poster": "https://image.tmdb.org/t/p/w500/qAcXaAoJiYry9nGEyxTirnJ82Jj.jpg",
+      "gallery1": "https://image.tmdb.org/t/p/w780/nuLUxzJ4bVVxafru5lgWfmcPOm7.jpg",
+      "gallery2": "https://i.ytimg.com/vi/1d4x_eSdqNc/sd1.jpg"
+    },
+    "platforms": [
+      "Amazon"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-tv-130853-s2",
+    "title": "Плохая обезьяна",
+    "type": "series",
+    "season": 2,
+    "genres": [
+      "Комедия",
+      "Детектив",
+      "Криминал"
+    ],
+    "studios": [
+      "Warner Bros. Television",
+      "Doozer Productions"
+    ],
+    "description": "Бывший детектив Эндрю Янси становится свидетелем убийства во Флориде и расследует его вместе с судебным бухгалтером.",
+    "poster": "assets/tmdb-tv-130853-s2-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-130853-s2-gallery-1.jpg",
+      "assets/tmdb-tv-130853-s2-gallery-2.jpg"
+    ],
+    "releaseDate": "2026-12-02",
+    "rating": null,
+    "ratingSource": null,
+    "status": "waiting",
+    "trailer": "https://www.youtube.com/watch?v=9ZiePpwIlAE",
+    "seasons": [
+      {
+        "number": 2,
+        "releaseDate": "2026-12-02",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2026-12-02"
+          },
+          {
+            "number": 2,
+            "date": "2026-12-09"
+          },
+          {
+            "number": 3,
+            "date": "2026-12-16"
+          },
+          {
+            "number": 4,
+            "date": "2026-12-23"
+          },
+          {
+            "number": 5,
+            "date": "2026-12-30"
+          },
+          {
+            "number": 6,
+            "date": "2027-01-06"
+          },
+          {
+            "number": 7,
+            "date": "2027-01-13"
+          },
+          {
+            "number": 8,
+            "date": "2027-01-20"
+          },
+          {
+            "number": 9,
+            "date": "2027-01-27"
+          },
+          {
+            "number": 10,
+            "date": "2027-02-03"
+          }
+        ]
+      }
+    ],
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/130853/season/2?language=ru-RU",
+      "release": "https://www.apple.com/tv-pr/news/2026/11/andrew-yancy-is-back-in-new-trailer-for-bad-monkey-season-two/",
+      "imdb": "https://www.imdb.com/title/tt15203646/",
+      "releaseRussia": "https://www.justwatch.com/ru/сериал/neposlushnaia-martyshka/сезон-2",
+      "suppliedVideo": "https://www.youtube.com/watch?v=YNFI_GuFXhM",
+      "poster": "https://image.tmdb.org/t/p/w500/lUGG3lxIF3f2N796t4aHmxDhLK5.jpg",
+      "gallery1": "https://i.ytimg.com/vi/9ZiePpwIlAE/sd1.jpg",
+      "gallery2": "https://i.ytimg.com/vi/9ZiePpwIlAE/sd3.jpg"
+    },
+    "platforms": [
+      "Apple"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-movie-1300926",
+    "title": "Angry Birds 3 в кино",
+    "type": "movie",
+    "genres": [
+      "Мультфильм",
+      "Комедия",
+      "Приключения",
+      "Семейный"
+    ],
+    "studios": [
+      "Rovio Entertainment",
+      "Paramount Animation",
+      "Flywheel Media",
+      "DNEG Animation"
+    ],
+    "description": "Рэд, Чак и Бомб возвращаются к новым приключениям. На этот раз Рэду предстоит испытание, к которому его прежние подвиги не подготовили, — семейная жизнь.",
+    "poster": "assets/tmdb-movie-1300926-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-1300926-gallery-1.jpg",
+      "assets/tmdb-movie-1300926-gallery-2.jpg"
+    ],
+    "releaseDate": "2026-12-23",
+    "rating": null,
+    "ratingSource": null,
+    "status": "waiting",
+    "trailer": "https://www.youtube.com/watch?v=FjYzudbOzlY",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/1300926?language=ru-RU",
+      "release": "https://www.angrybirds.com/angry-birds-movie-3/",
+      "imdb": "https://www.imdb.com/title/tt32557122/",
+      "releaseDates": "https://www.kinopoisk.ru/film/5782342/dates/",
+      "suppliedVideo": "https://www.youtube.com/watch?v=BWUHQE3fIts",
+      "poster": "https://image.tmdb.org/t/p/w500/xyml31x5gu23tOMIFJ43XO4aTD6.jpg",
+      "gallery1": "https://image.tmdb.org/t/p/w780/ieAytQ8YcWEZGQpbBy7vHVddwd.jpg",
+      "gallery2": "https://i.ytimg.com/vi/FjYzudbOzlY/sd1.jpg"
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-tv-296244-s1",
+    "title": "Король Фриско",
+    "type": "series",
+    "season": 1,
+    "genres": [
+      "Криминал",
+      "Драма"
+    ],
+    "studios": [
+      "Paramount Television Studios",
+      "101 Studios"
+    ],
+    "description": "Расселл Ли Вашингтон-младший покидает Талсу и пытается начать своё дело во Фриско, пригороде Далласа.",
+    "poster": "assets/tmdb-tv-296244-s1-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-296244-s1-gallery-1.jpg",
+      "assets/tmdb-tv-296244-s1-gallery-2.jpg"
+    ],
+    "releaseDate": "2026-12-18",
+    "rating": null,
+    "ratingSource": null,
+    "status": "waiting",
+    "trailer": "https://www.youtube.com/watch?v=wAFHBHXUzWE",
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2026-12-18",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2026-12-18"
+          },
+          {
+            "number": 2,
+            "date": "2026-12-18"
+          },
+          {
+            "number": 3,
+            "date": "2026-12-25"
+          },
+          {
+            "number": 4,
+            "date": "2027-01-01"
+          },
+          {
+            "number": 5,
+            "date": "2027-01-08"
+          },
+          {
+            "number": 6,
+            "date": "2027-01-15"
+          },
+          {
+            "number": 7,
+            "date": "2027-01-22"
+          },
+          {
+            "number": 8,
+            "date": "2027-01-29"
+          }
+        ]
+      }
+    ],
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/296244/season/1?language=ru-RU",
+      "release": "https://www.paramountplus.com/sneak-peak/frisco-king-taylor-sheridan-samuel-l-jackson/",
+      "suppliedVideo": "https://www.youtube.com/watch?v=LAhJUnwvLkk",
+      "poster": "https://image.tmdb.org/t/p/w500/9wNdTWthGpTZZaOBKlO07pK77pU.jpg",
+      "gallery1": "https://image.tmdb.org/t/p/w780/4rBugdmBu7ZgrWnh5Gp5qgwvdQ.jpg",
+      "gallery2": "https://i.ytimg.com/vi/wAFHBHXUzWE/sd2.jpg"
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-movie-1562642",
+    "title": "Призрачный солдат",
+    "type": "movie",
+    "genres": [
+      "Боевик"
+    ],
+    "studios": [
+      "Project X Entertainment"
+    ],
+    "description": "Бывший военный Генри Фицджеральд ведёт тихую жизнь в Вайоминге, пока события в его городе не заставляют его снова вспомнить боевое прошлое.",
+    "poster": "assets/tmdb-movie-1562642-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-1562642-gallery-1.jpg",
+      "assets/tmdb-movie-1562642-gallery-2.jpg"
+    ],
+    "releaseDate": "2026-11-04",
+    "rating": null,
+    "ratingSource": null,
+    "status": "available",
+    "trailer": "https://www.youtube.com/watch?v=l0pTZqZWs-c",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/1562642?language=ru-RU",
+      "release": "https://www.imdb.com/title/tt38686316/releaseinfo/",
+      "imdb": "https://www.imdb.com/title/tt38686316/",
+      "suppliedVideo": "https://www.youtube.com/watch?v=R9HQfShaMgU",
+      "poster": "https://image.tmdb.org/t/p/w500/8Y4oJ5iUs3hgPcDB3SIEmsNYjZk.jpg",
+      "gallery1": "https://image.tmdb.org/t/p/w780/ggqvhSdAASrseKuMlzk51sbvbE8.jpg",
+      "gallery2": "https://i.ytimg.com/vi/l0pTZqZWs-c/sd2.jpg"
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-tv-95557-s5",
+    "title": "Неуязвимый",
+    "type": "series",
+    "season": 5,
+    "genres": [
+      "Мультфильм",
+      "Фантастика",
+      "Боевик",
+      "Драма"
+    ],
+    "studios": [
+      "Skybound Entertainment",
+      "Amazon MGM Studios"
+    ],
+    "description": "Марк Грейсон пытается справиться с последствиями войны и защитить Землю, пока Трэгг и вилтрумиты остаются угрозой.",
+    "poster": "assets/tmdb-tv-95557-s5-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-95557-s5-gallery-1.jpg",
+      "assets/tmdb-tv-95557-s5-gallery-2.jpg"
+    ],
+    "releaseDate": "2027-02-17",
+    "rating": null,
+    "ratingSource": null,
+    "status": "waiting",
+    "trailer": "https://www.youtube.com/watch?v=8OomIu5JJwQ",
+    "seasons": [
+      {
+        "number": 5,
+        "releaseDate": "2027-02-17",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2027-02-17"
+          }
+        ]
+      }
+    ],
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/95557/season/5?language=ru-RU",
+      "release": "https://www.aboutamazon.com/news/entertainment/invincible-prime-video",
+      "imdb": "https://www.imdb.com/title/tt6741278/",
+      "suppliedVideo": "https://www.youtube.com/watch?v=1XwjEfWLxGA",
+      "poster": "https://image.tmdb.org/t/p/w500/4tblBrslcKSifMVZ3TmtT2ukMor.jpg",
+      "gallery1": "https://image.tmdb.org/t/p/w780/9qrroces8C6R9aKr08hACNPVXdZ.jpg",
+      "gallery2": "https://i.ytimg.com/vi/8OomIu5JJwQ/sd2.jpg"
+    },
+    "platforms": [
+      "Amazon"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-movie-1492198",
+    "title": "Искусственный интеллект",
+    "type": "movie",
+    "genres": [
+      "Биография",
+      "Драма"
+    ],
+    "studios": [
+      "Heyday Films",
+      "Amazon MGM Studios"
+    ],
+    "description": "Исследователь Илья Суцкевер участвует в создании новой технологии, а руководство OpenAI спорит о том, кто должен определять её будущее.",
+    "poster": "assets/tmdb-movie-1492198-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-1492198-gallery-1.jpg",
+      "assets/tmdb-movie-1492198-gallery-2.jpg"
+    ],
+    "releaseDate": "2027-01-21",
+    "rating": null,
+    "ratingSource": null,
+    "status": "waiting",
+    "trailer": "https://www.youtube.com/watch?v=rDZplZFnbOk",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/1492198?language=ru-RU",
+      "releaseRussia": "https://www.vlgfilm.ru/films/artificial/",
+      "imdb": "https://www.imdb.com/title/tt37171180/",
+      "suppliedVideo": "https://www.youtube.com/watch?v=AZLjj883eDA",
+      "poster": "https://image.tmdb.org/t/p/w500/tD4JOGcI5SSBKSFo4coObYwRlxE.jpg",
+      "gallery1": "https://image.tmdb.org/t/p/w780/qt79gpmITExaeb3Y74gxgkVSvaZ.jpg",
+      "gallery2": "https://i.ytimg.com/vi/rDZplZFnbOk/sd3.jpg"
+    },
+    "platforms": [
+      "Amazon"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-movie-1457866",
+    "title": "Новые похождения Клиффа Бута",
+    "type": "movie",
+    "genres": [
+      "Драма",
+      "Комедия",
+      "Криминал"
+    ],
+    "studios": [
+      "Netflix"
+    ],
+    "description": "В Голливуде 1970-х каскадёр Клифф Бут берётся улаживать чужие проблемы и снова оказывается в центре событий, которые лучше бы обошли его стороной.",
+    "poster": "assets/tmdb-movie-1457866-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-1457866-gallery-1.jpg",
+      "assets/tmdb-movie-1457866-gallery-2.jpg"
+    ],
+    "releaseDate": "2026-11-25",
+    "rating": null,
+    "ratingSource": null,
+    "status": "waiting",
+    "trailer": "https://www.youtube.com/watch?v=fJH-wfSXnWg",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/1457866?language=ru-RU",
+      "release": "https://www.netflix.com/tudum/articles/david-fincher-new-film-release-date",
+      "imdb": "https://www.imdb.com/title/tt36408401/",
+      "streaming": "https://www.netflix.com/tudum/articles/david-fincher-new-film-release-date",
+      "suppliedVideo": "https://www.youtube.com/watch?v=TAGptJztWt4",
+      "poster": "https://image.tmdb.org/t/p/w500/thX8Rs7nfgmPHfCgjoFuRovy49l.jpg",
+      "gallery1": "https://image.tmdb.org/t/p/w780/qqPspJFy0XrEoVTKZdp0Em7kej6.jpg",
+      "gallery2": "https://i.ytimg.com/vi/fJH-wfSXnWg/sd3.jpg"
+    },
+    "platforms": [
+      "Netflix"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-movie-615121",
+    "title": "Афера Томаса Крауна",
+    "type": "movie",
+    "genres": [
+      "Криминал",
+      "Боевик",
+      "Триллер"
+    ],
+    "studios": [
+      "Amazon MGM Studios",
+      "Outlier Society"
+    ],
+    "description": "Состоятельный Томас Краун устраивает дерзкое ограбление, а расследующая дело женщина превращает погоню за ним в личное противостояние.",
+    "poster": "assets/tmdb-movie-615121-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-615121-gallery-1.jpg",
+      "assets/tmdb-movie-615121-gallery-2.jpg"
+    ],
+    "releaseDate": "2027-03-05",
+    "rating": null,
+    "ratingSource": null,
+    "status": "waiting",
+    "trailer": "https://www.youtube.com/watch?v=A643rogutGM",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/615121?language=ru-RU",
+      "release": "https://www.aboutamazon.com/news/entertainment/thomas-crown-affair-michael-b-jordan-amazon-mgm-studios",
+      "imdb": "https://www.imdb.com/title/tt5500064/",
+      "suppliedVideo": "https://www.youtube.com/watch?v=t1qN0tlFQcI",
+      "poster": "https://image.tmdb.org/t/p/w500/sT1TQeAy1PdRfPIb6rrM2DB7DB.jpg",
+      "gallery1": "https://i.ytimg.com/vi/A643rogutGM/sd1.jpg",
+      "gallery2": "https://i.ytimg.com/vi/A643rogutGM/sd3.jpg"
+    },
+    "platforms": [
+      "Amazon"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-movie-1286656",
+    "title": "Рокки — это я",
+    "type": "movie",
+    "genres": [
+      "Биография",
+      "Драма"
+    ],
+    "studios": [
+      "Amazon MGM Studios"
+    ],
+    "description": "Малоизвестный актёр Сильвестр Сталлоне пишет сценарий о боксёре Рокки Бальбоа и отказывается продавать его, если ему не дадут главную роль.",
+    "poster": "assets/tmdb-movie-1286656-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-1286656-gallery-1.jpg",
+      "assets/tmdb-movie-1286656-gallery-2.jpg"
+    ],
+    "releaseDate": "2026-11-19",
+    "rating": null,
+    "ratingSource": null,
+    "status": "available",
+    "trailer": "https://www.youtube.com/watch?v=jq5oCjhQtIc",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/1286656?language=ru-RU",
+      "releaseRussia": "https://www.kinometro.ru/release/card/id/55418",
+      "imdb": "https://www.imdb.com/title/tt11995650/",
+      "suppliedVideo": "https://www.youtube.com/watch?v=whHO_ATBMzk",
+      "poster": "https://image.tmdb.org/t/p/w500/jKW6b89n5EGbJXtxTZYBcDHLpYg.jpg",
+      "gallery1": "https://image.tmdb.org/t/p/w780/1lnnjBCRLZzKRhQipK5zm61YkPe.jpg",
+      "gallery2": "https://i.ytimg.com/vi/jq5oCjhQtIc/sd3.jpg"
+    },
+    "platforms": [
+      "Amazon"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-tv-243214-s1",
+    "title": "Криминал",
+    "type": "series",
+    "season": 1,
+    "genres": [
+      "Криминал",
+      "Драма"
+    ],
+    "studios": [
+      "Amazon MGM Studios",
+      "Legendary Television"
+    ],
+    "description": "Экранизация комиксов Эда Брубейкера и Шона Филлипса о преступниках, чьи истории переплетаются в одном городе.",
+    "poster": "assets/tmdb-tv-243214-s1-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-243214-s1-gallery-1.jpg",
+      "assets/tmdb-tv-243214-s1-gallery-2.jpg"
+    ],
+    "releaseDate": "2027-01-13",
+    "rating": null,
+    "ratingSource": null,
+    "status": "waiting",
+    "trailer": "https://www.youtube.com/watch?v=46AEtqYlMlc",
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2027-01-13",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2027-01-13"
+          },
+          {
+            "number": 2,
+            "date": "2027-01-13"
+          },
+          {
+            "number": 3,
+            "date": "2027-01-13"
+          },
+          {
+            "number": 4,
+            "date": "2027-01-13"
+          },
+          {
+            "number": 5,
+            "date": "2027-01-27"
+          },
+          {
+            "number": 6,
+            "date": "2027-01-27"
+          },
+          {
+            "number": 7,
+            "date": "2027-01-27"
+          },
+          {
+            "number": 8,
+            "date": "2027-01-27"
+          }
+        ]
+      }
+    ],
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/243214/season/1?language=ru-RU",
+      "release": "https://www.tvline.com/2307650/criminal-release-date-prime-video-trailer-charlie-hunnam-adria-arjona-emilia-clarke/",
+      "schedule": "https://www.tvmaze.com/shows/73877/criminal",
+      "suppliedVideo": "https://www.youtube.com/watch?v=7Le6ljOPpeo",
+      "poster": "https://image.tmdb.org/t/p/w500/qsS3xGLmNAlElDNs2B89QABCgMx.jpg",
+      "gallery1": "https://image.tmdb.org/t/p/w780/cRrkgywOQU3q09ONVq8BkHHqeuu.jpg",
+      "gallery2": "https://i.ytimg.com/vi/46AEtqYlMlc/sd3.jpg"
+    },
+    "platforms": [
+      "Amazon"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-movie-1532610",
+    "title": "Чернила",
+    "type": "movie",
+    "genres": [
+      "Триллер",
+      "Драма",
+      "Биография"
+    ],
+    "studios": [
+      "STUDIOCANAL",
+      "House Productions"
+    ],
+    "description": "В 1969 году Руперт Мердок покупает британскую газету The Sun и поручает редактору Ларри Лэмбу превратить её в популярный таблоид.",
+    "poster": "assets/tmdb-movie-1532610-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-1532610-gallery-1.jpg",
+      "assets/tmdb-movie-1532610-gallery-2.jpg"
+    ],
+    "releaseDate": "2026-12-10",
+    "rating": null,
+    "ratingSource": null,
+    "status": "waiting",
+    "trailer": "https://www.youtube.com/watch?v=-IK_cCkRqfU",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/1532610?language=ru-RU",
+      "releaseRussia": "https://www.kinobusiness.com/movies/chernila/",
+      "imdb": "https://www.imdb.com/title/tt37967547/",
+      "suppliedVideo": "https://www.youtube.com/watch?v=hT2rlmKgExQ",
+      "poster": "https://www.impawards.com/intl/uk/2026/posters/ink_ver4.jpg",
+      "gallery1": "https://image.tmdb.org/t/p/w780/sWtM1GfbjMkcvpj2riGW8QxlTr.jpg",
+      "gallery2": "https://i.ytimg.com/vi/-IK_cCkRqfU/sd1.jpg"
+    },
+    "platforms": [
+      "Netflix"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-movie-1340208",
+    "title": "Кароси",
+    "type": "movie",
+    "genres": [
+      "Боевик",
+      "Триллер"
+    ],
+    "studios": [
+      "87Eleven Entertainment",
+      "Lionsgate"
+    ],
+    "description": "В футуристическом Нью-Йорке герой Тео Ю оказывается втянут в конфликт, где корпоративное соперничество перерастает в смертельную схватку.",
+    "poster": "assets/tmdb-movie-1340208-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-1340208-gallery-1.jpg",
+      "assets/tmdb-movie-1340208-gallery-2.jpg"
+    ],
+    "releaseDate": "2027-02-25",
+    "rating": null,
+    "ratingSource": null,
+    "status": "waiting",
+    "trailer": "https://www.youtube.com/watch?v=jQHoAsDcjVU",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/1340208?language=ru-RU",
+      "releaseRussia": "https://www.kinometro.ru/release/card/id/57572",
+      "imdb": "https://www.imdb.com/title/tt33295857/",
+      "suppliedVideo": "https://www.youtube.com/watch?v=Z8HsEMaUa1c",
+      "poster": "https://image.tmdb.org/t/p/w500/xOwetUoCyca3yYlqZ5rlElgXiTV.jpg",
+      "gallery1": "https://image.tmdb.org/t/p/w780/9BV0sX13uzERMgamOFslyFD5Dqk.jpg",
+      "gallery2": "https://i.ytimg.com/vi/jQHoAsDcjVU/sd1.jpg"
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-movie-1287520",
+    "title": "Ноябрь 63",
+    "type": "movie",
+    "genres": [
+      "Триллер",
+      "Криминал",
+      "История"
+    ],
+    "studios": [
+      "Minds Eye Entertainment",
+      "K5 International",
+      "Lunick Brothers Entertainment"
+    ],
+    "description": "Исторический триллер Роланда Жоффе рассматривает версию о причастности чикагской мафии к убийству президента Джона Кеннеди.",
+    "poster": "assets/tmdb-movie-1287520-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-1287520-gallery-1.jpg",
+      "assets/tmdb-movie-1287520-gallery-2.jpg"
+    ],
+    "releaseDate": "2026-12-10",
+    "rating": null,
+    "ratingSource": null,
+    "status": "waiting",
+    "trailer": "https://www.youtube.com/watch?v=8N9e-skJ3hw",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/1287520?language=ru-RU",
+      "releaseRussia": "https://www.kinometro.ru/news/show/name/grafik_relizov_20092026",
+      "imdb": "https://www.imdb.com/title/tt9219630/",
+      "suppliedVideo": "https://www.youtube.com/watch?v=GaMgUE-oXNY",
+      "poster": "https://image.tmdb.org/t/p/w500/ujp2aHu1lWMjAGoletnsmv3mcMn.jpg",
+      "gallery1": "https://image.tmdb.org/t/p/w780/ppQKMpC4WhEumnzu4aAcWjAr7WU.jpg",
+      "gallery2": "https://i.ytimg.com/vi/8N9e-skJ3hw/sd1.jpg"
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-tv-288672-s1",
+    "title": "Гордость и предубеждение",
+    "type": "series",
+    "season": 1,
+    "genres": [
+      "Драма",
+      "Мелодрама"
+    ],
+    "studios": [
+      "Lookout Point"
+    ],
+    "description": "В новой экранизации Джейн Остин Элизабет Беннет и мистеру Дарси предстоит пересмотреть свои первые впечатления друг о друге.",
+    "poster": "assets/tmdb-tv-288672-s1-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-288672-s1-gallery-1.jpg",
+      "assets/tmdb-tv-288672-s1-gallery-2.jpg"
+    ],
+    "releaseDate": "2026-12-03",
+    "rating": null,
+    "ratingSource": null,
+    "status": "waiting",
+    "trailer": "https://www.youtube.com/watch?v=KuRYRhP6kag",
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2026-12-03",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2026-12-03"
+          },
+          {
+            "number": 2,
+            "date": "2026-12-03"
+          },
+          {
+            "number": 3,
+            "date": "2026-12-03"
+          },
+          {
+            "number": 4,
+            "date": "2026-12-03"
+          },
+          {
+            "number": 5,
+            "date": "2026-12-03"
+          },
+          {
+            "number": 6,
+            "date": "2026-12-03"
+          }
+        ]
+      }
+    ],
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/288672/season/1?language=ru-RU",
+      "release": "https://media.netflix.com/en/only-on-netflix/81737965",
+      "official": "https://www.netflix.com/tudum/articles/pride-and-prejudice-cast-photos-release-date-news?inapp=true-65",
+      "suppliedVideo": "https://www.youtube.com/watch?v=GFoU0KdGiy4",
+      "poster": "https://image.tmdb.org/t/p/w500/aqJpnEB4Vo6ergqMD7Sc2G7T1pe.jpg",
+      "gallery1": "https://i.ytimg.com/vi/KuRYRhP6kag/sd1.jpg",
+      "gallery2": "https://i.ytimg.com/vi/KuRYRhP6kag/sd3.jpg"
+    },
+    "platforms": [
+      "Netflix"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-movie-1480665",
+    "title": "Квазимодо, душа Парижа",
+    "type": "movie",
+    "genres": [
+      "Драма",
+      "Мелодрама"
+    ],
+    "studios": [
+      "Netflix"
+    ],
+    "description": "В Париже XIX века Квазимодо пытается выжить в городе, охваченном социальными волнениями и эпидемией холеры.",
+    "poster": "assets/tmdb-movie-1480665-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-1480665-gallery-1.jpg",
+      "assets/tmdb-movie-1480665-gallery-2.jpg"
+    ],
+    "releaseDate": "2026-11-27",
+    "rating": null,
+    "ratingSource": null,
+    "status": "waiting",
+    "trailer": "https://www.youtube.com/watch?v=eBfPTW1YaAQ",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/1480665?language=ru-RU",
+      "release": "https://about.netflix.com/en/news/netflix-presents-quasimodo-the-soul-of-paris-the-myth-revisited-releasing-nov-27-2026",
+      "imdb": "https://www.imdb.com/title/tt37267166/",
+      "suppliedVideo": "https://www.youtube.com/watch?v=ct3nn9QUSBk",
+      "poster": "https://image.tmdb.org/t/p/w500/3dHSDFEyUsjwRldplaRGygC5zkJ.jpg",
+      "gallery1": "https://image.tmdb.org/t/p/w780/fILFJb7okqkNdzAataH4CxywwZX.jpg",
+      "gallery2": "https://i.ytimg.com/vi/eBfPTW1YaAQ/sd3.jpg"
+    },
+    "platforms": [
+      "Netflix"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-movie-1260649",
+    "title": "Джуманджи: Великий побег",
+    "type": "movie",
+    "genres": [
+      "Фэнтези",
+      "Приключения",
+      "Комедия",
+      "Боевик"
+    ],
+    "studios": [
+      "Columbia Pictures",
+      "Seven Bucks Productions"
+    ],
+    "description": "Опасные обитатели игры «Джуманджи» вырываются из виртуальных джунглей в реальный мир, и друзьям приходится снова объединиться.",
+    "poster": "assets/tmdb-movie-1260649-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-1260649-gallery-1.jpg",
+      "assets/tmdb-movie-1260649-gallery-2.jpg"
+    ],
+    "releaseDate": "2026-12-25",
+    "rating": null,
+    "ratingSource": null,
+    "status": "waiting",
+    "trailer": "https://www.youtube.com/watch?v=nIw1O3zvOfE",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/1260649?language=ru-RU",
+      "release": "https://www.sonypictures.com/movies/jumanjiopenworld",
+      "imdb": "https://www.imdb.com/title/tt26735127/",
+      "suppliedVideo": "https://www.youtube.com/watch?v=p9PYOnEk_Cg",
+      "poster": "https://image.tmdb.org/t/p/w500/ntjF2gemedf3ZcWzARGt6cuZlnJ.jpg",
+      "gallery1": "https://image.tmdb.org/t/p/w780/vaYfhMuwFwsMqyMnu9amtS9hUHE.jpg",
+      "gallery2": "https://i.ytimg.com/vi/nIw1O3zvOfE/sd2.jpg"
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-movie-1697911",
+    "title": "Барабанщик",
+    "type": "movie",
+    "genres": [
+      "Мюзикл",
+      "Драма",
+      "Семейный",
+      "Военный"
+    ],
+    "studios": [
+      "Angel Studios",
+      "2521 Entertainment",
+      "Red 56"
+    ],
+    "description": "Во время Войны за независимость США братья Клем оказываются по разные стороны конфликта и пытаются сохранить связь друг с другом.",
+    "poster": "assets/tmdb-movie-1697911-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-1697911-gallery-1.jpg",
+      "assets/tmdb-movie-1697911-gallery-2.jpg"
+    ],
+    "releaseDate": "2026-11-06",
+    "rating": 7.7,
+    "ratingSource": "IMDb",
+    "status": "available",
+    "trailer": "https://www.youtube.com/watch?v=rXaR4nXRvOY",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/1697911?language=ru-RU",
+      "release": "https://support.angel.com/hc/en-us/articles/42298616197655-DRUMMER-BOY-FAQ",
+      "imdb": "https://www.imdb.com/title/tt10098420/",
+      "rating": "https://www.kinopoisk.ru/film/15102123/",
+      "suppliedVideo": "https://www.youtube.com/watch?v=7YaJ6wdHNR0",
+      "poster": "https://image.tmdb.org/t/p/w500/bhjdgMm2fFrysSzVqv5RwRwIbVf.jpg",
+      "gallery1": "https://image.tmdb.org/t/p/w780/5KF459N6jOfRV7kV9XV7ZQdCLKK.jpg",
+      "gallery2": "https://i.ytimg.com/vi/rXaR4nXRvOY/sd1.jpg"
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-movie-1736032",
+    "title": "Отцовский клуб",
+    "type": "movie",
+    "genres": [
+      "Комедия"
+    ],
+    "studios": [
+      "Инфинити Контент"
+    ],
+    "description": "Дима готовится стать отцом. В день родов в его жизни неожиданно появляется давно исчезнувший отец, а в роддоме он знакомится с другими будущими папами.",
+    "poster": "assets/tmdb-movie-1736032-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-1736032-gallery-1.jpg",
+      "assets/tmdb-movie-1736032-gallery-2.jpg"
+    ],
+    "releaseDate": "2027-06-10",
+    "rating": null,
+    "ratingSource": null,
+    "status": "waiting",
+    "trailer": "",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/1736032?language=ru-RU",
+      "releaseRussia": "https://rutube.ru/video/df0c4063ce89332654f68a88abd7176b/",
+      "officialTrailer": "https://rutube.ru/video/df0c4063ce89332654f68a88abd7176b/",
+      "suppliedVideo": "https://www.youtube.com/watch?v=252iP1z-33c",
+      "poster": "https://www.kinonews.ru/shot277031/",
+      "gallery1": "https://www.kinonews.ru/insimgs/2026/shotimg/shotimg142920_12.webp",
+      "gallery2": "https://www.kinonews.ru/insimgs/2026/shotimg/shotimg142920_7.webp"
+    },
+    "platforms": [],
+    "origin": "russian",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-movie-1381273",
+    "title": "Бумажный тигр",
+    "type": "movie",
+    "genres": [
+      "Драма",
+      "Триллер",
+      "Криминал"
+    ],
+    "studios": [
+      "Keep Your Head Productions",
+      "Leone Film Group"
+    ],
+    "description": "Два брата пытаются наладить жизнь, но рискованная сделка втягивает их семью в конфликт с русской мафией.",
+    "poster": "assets/tmdb-movie-1381273-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-1381273-gallery-1.jpg",
+      "assets/tmdb-movie-1381273-gallery-2.jpg"
+    ],
+    "releaseDate": "2026-11-19",
+    "rating": 6.9,
+    "ratingSource": "IMDb",
+    "status": "available",
+    "trailer": "https://www.youtube.com/watch?v=MLwTyQOhBkw",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/1381273?language=ru-RU",
+      "releaseRussia": "https://kinoteatr.ru/film/bumazhnyy-tigr-2/?date=2026-11-19",
+      "rating": "https://www.kinopoisk.ru/film/7420147/",
+      "suppliedVideo": "https://www.youtube.com/watch?v=q5tbaoWolHA",
+      "poster": "https://image.tmdb.org/t/p/w500/p6oLmq5KmuWY6uRXBQBL2q30jia.jpg",
+      "gallery1": "https://image.tmdb.org/t/p/w780/6S41dEoKH2cxw20QgLxhnsQoLQF.jpg",
+      "gallery2": "https://i.ytimg.com/vi/MLwTyQOhBkw/sd3.jpg"
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-movie-1170608",
+    "title": "Дюна: Часть третья",
+    "type": "movie",
+    "genres": [
+      "Фантастика",
+      "Приключения",
+      "Драма"
+    ],
+    "studios": [
+      "Legendary Pictures",
+      "Warner Bros. Pictures"
+    ],
+    "description": "Став императором, Пол Атрейдес сталкивается с последствиями своей власти, а заговорщики пытаются изменить будущее Империи.",
+    "poster": "assets/tmdb-movie-1170608-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-1170608-gallery-1.jpg",
+      "assets/tmdb-movie-1170608-gallery-2.jpg"
+    ],
+    "releaseDate": "2026-12-18",
+    "rating": null,
+    "ratingSource": null,
+    "status": "waiting",
+    "trailer": "https://www.youtube.com/watch?v=uJqaGLmZpGo",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/1170608?language=ru-RU",
+      "release": "https://www.warnerbros.com/movies/dune-part-three",
+      "imdb": "https://www.imdb.com/title/tt31378509/",
+      "releaseRussia": "https://www.vedomosti.ru/media/news/2026/09/07/1227048-novie-dyuna-mstiteli",
+      "suppliedVideo": "https://www.youtube.com/watch?v=SZV4TMWkqrE",
+      "poster": "https://image.tmdb.org/t/p/w500/d43fvHQsIMa4kpyhKXw0haEJIvI.jpg",
+      "gallery1": "https://image.tmdb.org/t/p/w780/i5E9H7Ik0u61ylDDTbmUpTL3Yw.jpg",
+      "gallery2": "https://i.ytimg.com/vi/uJqaGLmZpGo/sd1.jpg"
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-movie-1340206",
+    "title": "Настройщик",
+    "type": "movie",
+    "genres": [
+      "Триллер",
+      "Драма",
+      "Криминал"
+    ],
+    "studios": [
+      "Black Bear Pictures"
+    ],
+    "description": "Одарённый настройщик пианино обнаруживает, что исключительный слух позволяет ему вскрывать сейфы, и оказывается втянут в преступный бизнес.",
+    "poster": "assets/tmdb-movie-1340206-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-1340206-gallery-1.jpg",
+      "assets/tmdb-movie-1340206-gallery-2.jpg"
+    ],
+    "releaseDate": "2026-11-05",
+    "rating": 7.3,
+    "ratingSource": "IMDb",
+    "status": "available",
+    "trailer": "https://www.youtube.com/watch?v=AfcmVGybiNQ",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/1340206?language=ru-RU",
+      "releaseRussia": "https://www.kinometro.ru/release/card/id/57502",
+      "imdb": "https://www.imdb.com/title/tt33296751/",
+      "rating": "https://ovideo.ru/film/330227",
+      "suppliedVideo": "https://www.youtube.com/watch?v=0Mtr444MmsQ",
+      "poster": "https://image.tmdb.org/t/p/w500/5OvA3i9wZs5jHu0DCrfmXlzAM67.jpg",
+      "gallery1": "https://image.tmdb.org/t/p/w780/y04gpYp8rJoUud6vf8okqHIdP4V.jpg",
+      "gallery2": "https://i.ytimg.com/vi/AfcmVGybiNQ/sd2.jpg"
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-movie-1551025",
+    "title": "Телохранительница",
+    "type": "movie",
+    "genres": [
+      "Мелодрама",
+      "Комедия"
+    ],
+    "studios": [
+      "Netflix"
+    ],
+    "description": "Телохранительница Ханна Брукс должна защитить кинозвезду Джека Стэплтона от преследователя и на праздниках притворяется его девушкой.",
+    "poster": "assets/tmdb-movie-1551025-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-1551025-gallery-1.jpg",
+      "assets/tmdb-movie-1551025-gallery-2.jpg"
+    ],
+    "releaseDate": "2026-11-18",
+    "rating": null,
+    "ratingSource": null,
+    "status": "available",
+    "trailer": "https://www.youtube.com/watch?v=mFvtVPMa5ak",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/1551025?language=ru-RU",
+      "release": "https://www.netflix.com/tudum/articles/leighton-meester-jared-padalecki-bodyguard-adaptation-cast-news-movie-name",
+      "imdb": "https://www.imdb.com/title/tt6611324/",
+      "suppliedVideo": "https://www.youtube.com/watch?v=E9Kg6i29QXc",
+      "poster": "https://image.tmdb.org/t/p/w500/wWNizZ4IcSld3xXH1WEXziJiNJN.jpg",
+      "gallery1": "https://image.tmdb.org/t/p/w780/qHvap0vpfTBIbv7cnR0OyBRqQHG.jpg",
+      "gallery2": "https://i.ytimg.com/vi/mFvtVPMa5ak/sd3.jpg"
+    },
+    "platforms": [
+      "Netflix"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-tv-248172-s1",
+    "title": "Спасатели Малибу",
+    "type": "series",
+    "season": 1,
+    "genres": [
+      "Драма",
+      "Боевик"
+    ],
+    "studios": [
+      "FOX Entertainment",
+      "Fremantle"
+    ],
+    "description": "Хоби Бьюкенен возглавляет команду спасателей Малибу. Когда на берегу появляется его дочь Чарли, семье предстоит заново выстроить отношения.",
+    "poster": "assets/tmdb-tv-248172-s1-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-248172-s1-gallery-1.jpg",
+      "assets/tmdb-tv-248172-s1-gallery-2.jpg"
+    ],
+    "releaseDate": "2027-01-06",
+    "rating": null,
+    "ratingSource": null,
+    "status": "waiting",
+    "trailer": "https://www.youtube.com/watch?v=-9WoJ3d6WkY",
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2027-01-06",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2027-01-06"
+          }
+        ]
+      }
+    ],
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/248172/season/1?language=ru-RU",
+      "release": "https://www.foxflash.com/shows/baywatch/releases/print/fox-powers-into-winter-2027-with-global-franchise-baywatch-compelling-new-drama-the-interrogator-and-a-standout-lineup-of-returning-hits",
+      "suppliedVideo": "https://www.youtube.com/watch?v=5ujEHR5ehXk",
+      "poster": "https://image.tmdb.org/t/p/w500/CPNtOu08ucoIlSM7QpuEwWFh3A.jpg",
+      "gallery1": "https://image.tmdb.org/t/p/w780/6s25WseOcAnlrL9kav1i0moozG4.jpg",
+      "gallery2": "https://i.ytimg.com/vi/-9WoJ3d6WkY/sd1.jpg"
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-movie-1185344",
+    "title": "Зверь",
+    "type": "movie",
+    "genres": [
+      "Боевик",
+      "Триллер"
+    ],
+    "studios": [],
+    "description": "После попытки переворота президент США укрывается в бронированном лимузине и пытается спастись вместе с раненым агентом Секретной службы.",
+    "poster": "assets/tmdb-movie-1185344-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-1185344-gallery-1.jpg",
+      "assets/tmdb-movie-1185344-gallery-2.jpg"
+    ],
+    "releaseDate": "2026-11-04",
+    "rating": null,
+    "ratingSource": null,
+    "status": "available",
+    "trailer": "https://www.youtube.com/watch?v=5ckqV_uf8E0",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/1185344?language=ru-RU",
+      "releaseRussia": "https://www.kinometro.ru/release/card/id/57509",
+      "imdb": "https://www.imdb.com/title/tt29256561/",
+      "suppliedVideo": "https://www.youtube.com/watch?v=gAhrOxNuqvY",
+      "poster": "https://image.tmdb.org/t/p/w500/ocg5JfJP19fodcv5uQUApkmZMdI.jpg",
+      "gallery1": "https://image.tmdb.org/t/p/w780/r5RYEmZzm1Z6imS7XfiKPnMlyc7.jpg",
+      "gallery2": "https://i.ytimg.com/vi/5ckqV_uf8E0/sd1.jpg"
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-tv-285887-s1",
+    "title": "Кровавая Секира",
+    "type": "series",
+    "season": 1,
+    "genres": [
+      "Драма",
+      "История"
+    ],
+    "studios": [
+      "MGM Television"
+    ],
+    "description": "Эрик Кровавая Секира и Гуннхильд борются за норвежский престол, пока соперники оспаривают их право на власть.",
+    "poster": "assets/tmdb-tv-285887-s1-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-285887-s1-gallery-1.jpg",
+      "assets/tmdb-tv-285887-s1-gallery-2.jpg"
+    ],
+    "releaseDate": "2027-01-20",
+    "rating": null,
+    "ratingSource": null,
+    "status": "waiting",
+    "trailer": "https://www.youtube.com/watch?v=nT8Mdw5nKd0",
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2027-01-20",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2027-01-20"
+          },
+          {
+            "number": 2,
+            "date": "2027-01-20"
+          },
+          {
+            "number": 3,
+            "date": "2027-01-20"
+          },
+          {
+            "number": 4,
+            "date": "2027-01-20"
+          },
+          {
+            "number": 5,
+            "date": "2027-01-20"
+          },
+          {
+            "number": 6,
+            "date": "2027-01-20"
+          },
+          {
+            "number": 7,
+            "date": "2027-01-20"
+          },
+          {
+            "number": 8,
+            "date": "2027-01-20"
+          }
+        ]
+      }
+    ],
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/285887/season/1?language=ru-RU",
+      "release": "https://www.aboutamazon.com/news/entertainment/bloodaxe-vikings-prime-video",
+      "suppliedVideo": "https://www.youtube.com/watch?v=dR-8u7I1EPc",
+      "poster": "https://image.tmdb.org/t/p/w500/3dWNyzYFQfuL7pj3OdlSjyOr6yN.jpg",
+      "gallery1": "https://image.tmdb.org/t/p/w780/d3phaA8SSFGB4qTC0HP9JafcuH9.jpg",
+      "gallery2": "https://i.ytimg.com/vi/nT8Mdw5nKd0/sd3.jpg"
+    },
+    "platforms": [
+      "Amazon"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-tv-248830-s2",
+    "title": "Король гольфа",
+    "type": "series",
+    "season": 2,
+    "genres": [
+      "Комедия",
+      "Драма",
+      "Спорт"
+    ],
+    "studios": [
+      "Apple Studios"
+    ],
+    "description": "Санти приближается к профессиональному гольфу, а его наставник Прайс Кэхилл решает дать собственной спортивной карьере ещё один шанс.",
+    "poster": "assets/tmdb-tv-248830-s2-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-248830-s2-gallery-1.jpg",
+      "assets/tmdb-tv-248830-s2-gallery-2.jpg"
+    ],
+    "releaseDate": "2026-11-04",
+    "rating": null,
+    "ratingSource": null,
+    "status": "available",
+    "trailer": "https://www.youtube.com/watch?v=m6ArXts5JPk",
+    "seasons": [
+      {
+        "number": 2,
+        "releaseDate": "2026-11-04",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2026-11-04"
+          },
+          {
+            "number": 2,
+            "date": "2026-11-04"
+          },
+          {
+            "number": 3,
+            "date": "2026-11-11"
+          },
+          {
+            "number": 4,
+            "date": "2026-11-18"
+          },
+          {
+            "number": 5,
+            "date": "2026-11-25"
+          },
+          {
+            "number": 6,
+            "date": "2026-12-02"
+          },
+          {
+            "number": 7,
+            "date": "2026-12-09"
+          },
+          {
+            "number": 8,
+            "date": "2026-12-16"
+          },
+          {
+            "number": 9,
+            "date": "2026-12-23"
+          },
+          {
+            "number": 10,
+            "date": "2026-12-30"
+          }
+        ]
+      }
+    ],
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/248830/season/2?language=ru-RU",
+      "release": "https://www.apple.com/tv-pr/news/2026/10/apple-tv-debuts-un-fore-gettable-trailer-for-the-second-season-of-the-beloved-sports-comedy-stick-starring-and-executive-produced-by-owen-wilson/",
+      "releaseRussia": "https://www.justwatch.com/ru/сериал/korol-gol-fa",
+      "suppliedVideo": "https://www.youtube.com/watch?v=QwYZJOUOTUQ",
+      "poster": "https://image.tmdb.org/t/p/w500/3zkHz1s4PpukMJRs3npzbGK10iV.jpg",
+      "gallery1": "https://image.tmdb.org/t/p/w780/2Bt2uXrIOQASBAsni2AGGqCCF14.jpg",
+      "gallery2": "https://i.ytimg.com/vi/m6ArXts5JPk/sd1.jpg"
+    },
+    "platforms": [
+      "Apple"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-tv-153312-s4",
+    "title": "Король Талсы",
+    "type": "series",
+    "season": 4,
+    "genres": [
+      "Криминал",
+      "Драма"
+    ],
+    "studios": [
+      "Paramount Television Studios",
+      "101 Studios"
+    ],
+    "description": "Дуайт Манфреди пытается сделать свой бизнес законным, но давление властей и старые враги ставят под удар его команду.",
+    "poster": "assets/tmdb-tv-153312-s4-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-153312-s4-gallery-1.jpg",
+      "assets/tmdb-tv-153312-s4-gallery-2.jpg"
+    ],
+    "releaseDate": "2026-10-16",
+    "rating": null,
+    "ratingSource": null,
+    "status": "available",
+    "trailer": "https://www.youtube.com/watch?v=yaCHj96d1PA",
+    "seasons": [
+      {
+        "number": 4,
+        "releaseDate": "2026-10-16",
+        "episodes": [
+          {
+            "number": 1,
+            "title": "W.W.D.D.",
+            "date": "2026-10-16"
+          },
+          {
+            "number": 2,
+            "title": "Blind Rooster",
+            "date": "2026-10-23"
+          },
+          {
+            "number": 3,
+            "title": "Cease & Desist",
+            "date": "2026-10-30"
+          },
+          {
+            "number": 4,
+            "title": "Square One",
+            "date": "2026-11-06"
+          },
+          {
+            "number": 5,
+            "title": "Dinosaurs",
+            "date": "2026-11-13"
+          },
+          {
+            "number": 6,
+            "title": "Racket Club",
+            "date": "2026-11-20"
+          },
+          {
+            "number": 7,
+            "title": "Black Diamonds",
+            "date": "2026-11-27"
+          },
+          {
+            "number": 8,
+            "title": "Storm Front",
+            "date": "2026-12-04"
+          },
+          {
+            "number": 9,
+            "title": "Nerved Up",
+            "date": "2026-12-11"
+          },
+          {
+            "number": 10,
+            "title": "Exit Interview",
+            "date": "2026-12-18"
+          }
+        ]
+      }
+    ],
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/153312/season/4?language=ru-RU",
+      "release": "https://www.paramountpressexpress.com/paramount-plus/shows/tulsa-king/releases/?view=113200-tulsa-king-season-four-premieres-october-16-on-paramount",
+      "imdb": "https://www.imdb.com/title/tt16358384/",
+      "schedule": "https://www.paramountplus.com/sneak-peak/tulsa-king-season-4-everything-you-need-to-know/",
+      "suppliedVideo": "https://www.youtube.com/watch?v=4Rq82Vy9W1M",
+      "poster": "https://image.tmdb.org/t/p/w500/y13WOeZ2rz2Ezpws0RJ0I8sQpG4.jpg",
+      "gallery1": "https://image.tmdb.org/t/p/w780/mNHRGO1gFpR2CYZdANe72kcKq7G.jpg",
+      "gallery2": "https://i.ytimg.com/vi/yaCHj96d1PA/sd2.jpg"
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-movie-1421903",
+    "title": "Вервульф",
+    "type": "movie",
+    "genres": [
+      "Ужасы",
+      "Фэнтези"
+    ],
+    "studios": [
+      "Focus Features",
+      "Maiden Voyage Pictures"
+    ],
+    "description": "В средневековой Англии загадочное существо терроризирует деревню, и старые поверья становятся для её жителей реальной угрозой.",
+    "poster": "assets/tmdb-movie-1421903-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-1421903-gallery-1.jpg",
+      "assets/tmdb-movie-1421903-gallery-2.jpg"
+    ],
+    "releaseDate": "2026-12-25",
+    "rating": null,
+    "ratingSource": null,
+    "status": "waiting",
+    "trailer": "https://www.youtube.com/watch?v=CL1EFACsWag",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/1421903?language=ru-RU",
+      "release": "https://www.focusfeatures.com/werwulf",
+      "imdb": "https://www.imdb.com/title/tt35514120/",
+      "suppliedVideo": "https://www.youtube.com/watch?v=McETgoleDgE",
+      "poster": "https://image.tmdb.org/t/p/w500/imnkSt4PSQpxIuyiRpJCiLk3SZz.jpg",
+      "gallery1": "https://image.tmdb.org/t/p/w780/jmW9NkzbpI9vhyxJU2x644Nj7VU.jpg",
+      "gallery2": "https://i.ytimg.com/vi/CL1EFACsWag/sd1.jpg"
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-tv-333101-s1",
+    "title": "Остров сокровищ",
+    "type": "series",
+    "season": 1,
+    "genres": [
+      "Драма",
+      "Приключения"
+    ],
+    "studios": [
+      "Playground",
+      "Fifth Season"
+    ],
+    "description": "Джим Хокинс и его мать Бесс находят карту капитана Флинта и отправляются за сокровищами, на которые претендует команда Долговязого Джона Сильвера.",
+    "poster": "assets/tmdb-tv-333101-s1-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-333101-s1-gallery-1.jpg",
+      "assets/tmdb-tv-333101-s1-gallery-2.jpg"
+    ],
+    "releaseDate": "2026-10-12",
+    "rating": null,
+    "ratingSource": null,
+    "status": "available",
+    "trailer": "https://www.youtube.com/watch?v=UsFVIvngwRA",
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2026-10-12",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2026-10-12"
+          },
+          {
+            "number": 2,
+            "date": "2026-10-19"
+          },
+          {
+            "number": 3,
+            "date": "2026-10-26"
+          },
+          {
+            "number": 4,
+            "date": "2026-11-02"
+          },
+          {
+            "number": 5,
+            "date": "2026-11-09"
+          },
+          {
+            "number": 6,
+            "date": "2026-11-16"
+          }
+        ]
+      }
+    ],
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/333101/season/1?language=ru-RU",
+      "releaseRussia": "https://www.championat.com/cybersport/news-6639314-serial-ostrov-sokrovisch-2026-data-vyhoda-skolko-serij-vse-serii-raspisanie-gde-smotret-v-horoshem-kachestve.html",
+      "official": "https://www.paramountplus.com/sneak-peak/gb/treasure-island-2026-uk/",
+      "schedule": "https://etokino.ru/serial/8306/",
+      "streamingRussia": "https://okko.tv/serial/treasure-island-300003419522",
+      "suppliedVideo": "https://www.youtube.com/watch?v=DAEgFbFEzuA",
+      "poster": "https://image.tmdb.org/t/p/w500/xZQ5ABJF1iLjGq9xR4MthpgQEFF.jpg",
+      "gallery1": "https://image.tmdb.org/t/p/w780/grC6bTUTeVvjZ2orztjItUxM4yy.jpg",
+      "gallery2": "https://i.ytimg.com/vi/UsFVIvngwRA/sd3.jpg"
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-movie-1266643",
+    "title": "Вечный странник",
+    "type": "movie",
+    "genres": [
+      "Боевик",
+      "Триллер"
+    ],
+    "studios": [
+      "Lionsgate",
+      "Thunder Road Films",
+      "30WEST",
+      "IN.2 Film"
+    ],
+    "description": "Барменша с яхты знакомится с загадочным пассажиром. Когда оба оказываются втянуты в криминальный конфликт, ей приходится решить, можно ли ему доверять.",
+    "poster": "assets/tmdb-movie-1266643-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-1266643-gallery-1.jpg",
+      "assets/tmdb-movie-1266643-gallery-2.jpg"
+    ],
+    "releaseDate": "2027-03-25",
+    "rating": null,
+    "ratingSource": null,
+    "status": "waiting",
+    "trailer": "https://www.youtube.com/watch?v=bhKKR5He_Fo",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/1266643?language=ru-RU",
+      "releaseRussia": "https://www.kinometro.ru/news/show/name/weekend_releases_13092026",
+      "imdb": "https://www.imdb.com/title/tt18795088/",
+      "official": "https://www.daydrinker.movie/",
+      "suppliedVideo": "https://www.youtube.com/watch?v=lylC8BJNV2Y",
+      "poster": "https://image.tmdb.org/t/p/w500/5n1ObdUbJH8Irlm48IpPmt1tdVb.jpg",
+      "gallery1": "https://image.tmdb.org/t/p/w780/o57I2Z3OSYDGElMmyAxR3dH75eE.jpg",
+      "gallery2": "https://i.ytimg.com/vi/bhKKR5He_Fo/sd3.jpg"
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-movie-1213643",
+    "title": "Убить Кастро",
+    "type": "movie",
+    "genres": [
+      "Драма",
+      "Триллер",
+      "История"
+    ],
+    "studios": [
+      "Romulus Entertainment",
+      "Fourth & Twenty Eight Films",
+      "Influence Media",
+      "G-Unit Film & Television"
+    ],
+    "description": "Нью-Йорк, 1960 год. Фидель Кастро приезжает выступить в ООН и по приглашению Малкольма Икса останавливается в Гарлеме. Молодой переводчик и сотрудница отеля оказываются втянуты в заговор против кубинского лидера.",
+    "poster": "assets/killing-castro-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-1213643-gallery-1.jpg",
+      "assets/tmdb-movie-1213643-gallery-2.jpg"
+    ],
+    "releaseDate": "2026-12-11",
+    "rating": null,
+    "ratingSource": null,
+    "status": "waiting",
+    "trailer": "https://www.youtube.com/watch?v=QjQHkF_GyD8",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/1213643-killing-castro?language=ru-RU",
+      "official": "https://www.youtube.com/watch?v=cal1RfsmHUI",
+      "imdb": "https://www.imdb.com/title/tt30057115/",
+      "festival": "https://tribecafilm.com/festival/archive/killing-castro-2026",
+      "subtitles": "https://www.youtube.com/watch?v=WzlMJ0d1wLQ",
+      "poster": "https://i0.wp.com/whentostream.com/wp-content/uploads/2026/11/Killing-Castro.jpg?resize=640%2C829&ssl=1",
+      "gallery1": "https://image.tmdb.org/t/p/w780/ilTcnOBtYq5M7gMrVKvQHNitkOq.jpg",
+      "gallery2": "https://i.ytimg.com/vi/QjQHkF_GyD8/sd2.jpg"
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-20"
+  },
+  {
     "id": "tmdb-tv-224377-s1",
     "title": "Гарри Поттер и философский камень",
     "type": "series",
@@ -16,7 +2043,10 @@
     ],
     "description": "В одиннадцать лет Гарри Поттер узнаёт, что он волшебник. В Хогвартсе он находит друзей, осваивает магию и сталкивается с опасностью, связанной с его прошлым.",
     "poster": "assets/harry-potter-philosophers-stone-poster.jpg",
-    "gallery": [],
+    "gallery": [
+      "assets/tmdb-tv-224377-s1-gallery-1.jpg",
+      "assets/tmdb-tv-224377-s1-gallery-2.jpg"
+    ],
     "releaseDate": "2026-12-25",
     "rating": null,
     "ratingSource": null,
@@ -68,7 +2098,9 @@
       "release": "https://www.harrypotter.com/features/everything-we-know-about-the-harry-potter-tv-series-so-far",
       "production": "https://press.wbd.com/us/media-release/hbo-0/harry-potter/hbo-original-harry-potter-series-releases-first-official-teaser-and-announces",
       "clip": "https://www.youtube.com/watch?v=0Vs-fglKhpA",
-      "poster": "https://contentful.harrypotter.com/usf1vwtuqyxm/19implO0JiMm9vxzpEgchc/1a8c73d3cfadbd0488a81aefca36796e/HBO-harry-poster-close-up-eye-UK-date.jpg?fm=jpg&q=79&w=700"
+      "poster": "https://contentful.harrypotter.com/usf1vwtuqyxm/19implO0JiMm9vxzpEgchc/1a8c73d3cfadbd0488a81aefca36796e/HBO-harry-poster-close-up-eye-UK-date.jpg?fm=jpg&q=79&w=700",
+      "gallery1": "https://i.ytimg.com/vi/SJVmeJaS44s/sd1.jpg",
+      "gallery2": "https://i.ytimg.com/vi/SJVmeJaS44s/sd2.jpg"
     },
     "platforms": [
       "HBO"
