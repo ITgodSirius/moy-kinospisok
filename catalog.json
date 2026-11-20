@@ -1,0 +1,192 @@
+[
+  {
+    "id": "tmdb-tv-108545-s2",
+    "title": "Задача трёх тел",
+    "type": "series",
+    "season": 2,
+    "genres": [
+      "Фантастика",
+      "Драма"
+    ],
+    "studios": [
+      "Netflix",
+      "Plan B"
+    ],
+    "description": "Учёные ищут способ защитить Землю от вторжения Сан-Ти.",
+    "poster": "assets/3-body-poster.webp",
+    "gallery": [
+      "assets/3-body-visor.webp",
+      "assets/3-body-room.webp"
+    ],
+    "releaseDate": "2027-01-14",
+    "addedDate": "2026-11-20",
+    "rating": 7.5,
+    "ratingSource": "IMDb сериала",
+    "status": "waiting",
+    "trailer": "https://www.youtube.com/watch?v=KInfw7kCPkc",
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2024-03-21",
+        "episodes": [
+          {
+            "number": 1,
+            "title": "Обратный отсчёт",
+            "date": "2024-03-21"
+          },
+          {
+            "number": 2,
+            "title": "Красный берег",
+            "date": "2024-03-21"
+          },
+          {
+            "number": 3,
+            "title": "Разрушитель миров",
+            "date": "2024-03-21"
+          },
+          {
+            "number": 4,
+            "title": "Господь",
+            "date": "2024-03-21"
+          },
+          {
+            "number": 5,
+            "title": "Страшный суд",
+            "date": "2024-03-21"
+          },
+          {
+            "number": 6,
+            "title": "Звёзды — наша цель",
+            "date": "2024-03-21"
+          },
+          {
+            "number": 7,
+            "title": "Только вперёд",
+            "date": "2024-03-21"
+          },
+          {
+            "number": 8,
+            "title": "Пустозрящий",
+            "date": "2024-03-21"
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "releaseDate": "2027-01-14",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2027-01-14"
+          },
+          {
+            "number": 2,
+            "date": "2027-01-14"
+          },
+          {
+            "number": 3,
+            "date": "2027-01-14"
+          },
+          {
+            "number": 4,
+            "date": "2027-01-14"
+          },
+          {
+            "number": 5,
+            "date": "2027-01-14"
+          },
+          {
+            "number": 6,
+            "date": "2027-01-14"
+          }
+        ]
+      },
+      {
+        "number": 3,
+        "releaseDate": null,
+        "episodes": []
+      }
+    ],
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/108545-3-body-problem/season/2?language=ru-RU",
+      "official": "https://www.netflix.com/tudum/articles/3-body-problem-renewed",
+      "imdb": "https://www.imdb.com/title/tt13016388/"
+    }
+  },
+  {
+    "id": "tmdb-tv-254630-s1",
+    "title": "12 12 12",
+    "type": "series",
+    "season": 1,
+    "genres": [
+      "Криминал",
+      "Триллер"
+    ],
+    "studios": [
+      "Apple",
+      "Paramount Television Studios",
+      "Anonymous Content"
+    ],
+    "description": "После ограбления банка в Цюрихе агент ФБР охотится за организатором налёта по всей Европе.",
+    "poster": "assets/12-poster.webp",
+    "gallery": [
+      "assets/12-still-1.webp",
+      "assets/12-still-2.webp"
+    ],
+    "releaseDate": "2026-11-13",
+    "addedDate": "2026-11-20",
+    "rating": 5.6,
+    "ratingSource": "IMDb сериала",
+    "status": "available",
+    "trailer": "https://www.youtube.com/watch?v=pWdt8WMCqnc",
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2026-11-13",
+        "episodes": [
+          {
+            "number": 1,
+            "title": "Я граблю дом на Рождество, пока хозяева в церкви",
+            "date": "2026-11-13"
+          },
+          {
+            "number": 2,
+            "title": "Я хочу вернуть свой нимб",
+            "date": "2026-11-13"
+          },
+          {
+            "number": 3,
+            "title": "Зашибись",
+            "date": "2026-11-20"
+          },
+          {
+            "number": 4,
+            "title": "Вот как это делается",
+            "date": "2026-11-27"
+          },
+          {
+            "number": 5,
+            "date": "2026-12-04"
+          },
+          {
+            "number": 6,
+            "date": "2026-12-11"
+          },
+          {
+            "number": 7,
+            "date": "2026-12-18"
+          },
+          {
+            "number": 8,
+            "date": "2026-12-25"
+          }
+        ]
+      }
+    ],
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/254630-12-12-12/season/1?language=ru-RU",
+      "official": "https://www.apple.com/tv-pr/originals/12-12-12/",
+      "imdb": "https://www.imdb.com/title/tt32375763/"
+    }
+  }
+]

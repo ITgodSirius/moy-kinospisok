@@ -1,0 +1,280 @@
+import { hosted, marked, busy, refreshHistory, setMark } from './history.js';
+
+const el = id => document.getElementById(id);
+const state = { list: 'waiting', type: 'all', catalog: [] };
+const filterIds = ['genre', 'studio', 'period', 'minimum'];
+const collator = new Intl.Collator('ru', { numeric: true });
+const formatDate = new Intl.DateTimeFormat('ru-RU', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+const studioChoices = ['Apple', 'Amazon', 'Netflix', 'Disney', 'HBO'];
+const listNames = { waiting: 'Жду', available: 'Можно смотреть', watched: 'Просмотрено', favorite: 'Любимые' };
+const iconPaths = {
+  moon: '<path d="M20.5 14.4A8.7 8.7 0 0 1 9.6 3.5a9 9 0 1 0 10.9 10.9Z"/>',
+  sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M19 5l-1.5 1.5m-11 11L5 19"/>',
+  sliders: '<path d="M3 7h4m5 0h9M3 17h10m5 0h3"/><circle cx="9.5" cy="7" r="2.5"/><circle cx="15.5" cy="17" r="2.5"/>',
+  chevron: '<path d="m6 9 6 6 6-6"/>', close: '<path d="m6 6 12 12M18 6 6 18"/>',
+  calendar: '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 10h18"/>',
+  play: '<rect x="2.5" y="5" width="19" height="14" rx="4"/><path d="m10 9 5 3-5 3z" fill="currentColor" stroke="none"/>',
+  heart: '<path d="M20.5 4.8a5.2 5.2 0 0 0-7.3 0L12 6l-1.2-1.2a5.2 5.2 0 0 0-7.3 7.4L12 21l8.5-8.8a5.2 5.2 0 0 0 0-7.4Z"/>',
+  check: '<path d="m4.5 12.5 5 5 10-11"/>'
+};
+function node(tag, className, text) {
+  const element = document.createElement(tag);
+  if (className) element.className = className;
+  if (text !== undefined) element.textContent = text;
+  return element;
+}
+function icon(name, filled = false) {
+  const box = node('span', 'ico');
+  box.setAttribute('aria-hidden', 'true');
+  box.innerHTML = '<svg viewBox="0 0 24 24" fill="' + (filled ? 'currentColor' : 'none') + '" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round">' + iconPaths[name] + '</svg>';
+  return box;
+}
+function button(label, style, symbol, action) {
+  const b = node('button', 'btn ' + style);
+  b.type = 'button';
+  if (symbol) b.append(icon(symbol, symbol === 'heart' && style.includes('chosen')));
+  b.append(label);
+  b.addEventListener('click', action);
+  return b;
+}
+function dateText(value) {
+  if (!value) return 'Дата выхода уточняется';
+  return formatDate.format(new Date(value + 'T12:00:00Z')).replace(/\s*г\.$/, '');
+}
+function today() {
+  const t = new Date();
+  return [t.getFullYear(), String(t.getMonth() + 1).padStart(2, '0'), String(t.getDate()).padStart(2, '0')].join('-');
+}
+function listMatches(item) {
+  const watched = marked(item.id, 'watched');
+  const favorite = marked(item.id, 'favorite');
+  if (state.list === 'watched') return watched;
+  if (state.list === 'favorite') return favorite;
+  const released = item.status === 'available' || (item.releaseDate && item.releaseDate <= today());
+  return state.list === 'waiting' ? !released && !watched && !favorite : released && !watched;
+}
+function matches(item) {
+  const ageDays = (Date.parse(today()) - Date.parse(item.addedDate)) / 86400000;
+  return listMatches(item) && (state.type === 'all' || item.type === state.type)
+    && (!el('genre').value || item.genres.includes(el('genre').value))
+    && (!el('studio').value || item.studios.includes(el('studio').value))
+    && (!el('minimum').value || (item.rating != null && item.rating >= Number(el('minimum').value)))
+    && (!el('period').value || (ageDays >= 0 && ageDays < Number(el('period').value)));
+}
+function compare(a, b) {
+  const sort = el('sort').value;
+  const field = { 'added-new': 'addedDate', 'added-old': 'addedDate', 'release-new': 'releaseDate', 'release-old': 'releaseDate', rating: 'rating' }[sort];
+  if (field) {
+    if ((a[field] == null) !== (b[field] == null)) return a[field] == null ? 1 : -1;
+    const dir = sort.endsWith('old') ? 1 : -1;
+    if (a[field] !== b[field]) return (a[field] > b[field] ? 1 : -1) * dir;
+  }
+  return collator.compare(a.title, b.title) || (a.season ?? 0) - (b.season ?? 0) || collator.compare(a.id, b.id);
+}
+let toastTimer;
+function announce(msg) {
+  clearTimeout(toastTimer);
+  el('notice').textContent = msg;
+  toastTimer = setTimeout(() => { el('notice').textContent = ''; }, 4500);
+}
+function theme(dark, save = true) {
+  document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+  document.querySelector('meta[name="theme-color"]').content = dark ? '#15171d' : '#ffffff';
+  const label = dark ? 'Включить светлую тему' : 'Включить тёмную тему';
+  el('theme').setAttribute('aria-label', label);
+  el('theme').title = label;
+  el('theme').replaceChildren(icon(dark ? 'sun' : 'moon'));
+  if (save) {
+    try { localStorage.setItem('film-list:theme', document.documentElement.dataset.theme); }
+    catch { announce('Выбор темы сохранится только до закрытия страницы.'); }
+  }
+}
+function showSchedule(item) {
+  el('series-title').textContent = item.title;
+  const blocks = (item.seasons || []).map(season => {
+    const details = node('details');
+    details.name = 'season-choice';
+    details.open = season.number === item.season;
+    const summary = node('summary');
+    const header = node('span', '', 'Сезон ' + season.number);
+    header.append(node('small', '', dateText(season.releaseDate)));
+    summary.append(header, icon('chevron'));
+    details.append(summary);
+    if (!season.episodes?.length) details.append(node('p', 'no-dates', 'Расписание серий пока не объявлено.'));
+    else {
+      const list = node('ol', 'episodes');
+      for (const episode of season.episodes) {
+        const li = node('li');
+        const date = node(episode.date ? 'time' : 'span', episode.date ? '' : 'episode-unknown', episode.date ? dateText(episode.date) : 'Дата уточняется');
+        if (episode.date) date.dateTime = episode.date;
+        li.append(node('span', 'num', episode.number), node('span', '', episode.title || 'Серия ' + episode.number), date);
+        list.append(li);
+      }
+      details.append(list);
+    }
+    return details;
+  });
+  el('seasons').replaceChildren(...(blocks.length ? blocks : [node('p', 'no-dates', 'Расписание серий пока не объявлено.')]));
+  el('schedule').showModal();
+}
+async function toggleMark(item, kind) {
+  const value = !marked(item.id, kind);
+  try {
+    await setMark(item.id, kind, value, render);
+    const list = kind === 'watched' ? 'Просмотрено' : 'Любимые';
+    announce((value ? 'Добавлено в «' : 'Убрано из «') + list + '»');
+  } catch {
+    announce(hosted ? 'Не удалось подтвердить сохранение. Проверьте соединение.' : 'Не удалось сохранить отметку в этом браузере.');
+    if (hosted) sync();
+  }
+}
+function gallery(item) {
+  const images = [item.poster, ...(item.gallery || [])].filter(Boolean).slice(0, 3);
+  const gallery = node('div', 'gallery' + (images.length < 2 ? ' single' : images.length === 2 ? ' two' : ''));
+  images.forEach((src, i) => {
+    const img = node('img');
+    if (i === 0 && images.length > 1) img.addEventListener('load', () => {
+      gallery.style.aspectRatio = String(img.naturalWidth / img.naturalHeight * (2.44 / 1.44));
+    }, { once: true });
+    img.src = src; img.alt = i === 0 ? 'Постер «' + item.title + '»' : '';
+    img.decoding = 'async';
+    gallery.append(img);
+  });
+  return gallery;
+}
+function card(item) {
+  const section = node('article', 'entry');
+  section.dataset.id = item.id;
+  const copy = node('div', 'copy');
+  copy.append(node('h2', '', item.title));
+  const date = node('div', 'date');
+  date.append(icon('calendar'));
+  if (item.releaseDate) {
+    const time = node('time', '', dateText(item.releaseDate));
+    time.dateTime = item.releaseDate;
+    const strong = node('strong'); strong.append(time);
+    date.append(node('span', '', 'Дата выхода'), strong);
+  } else date.append(node('strong', '', 'Дата выхода уточняется'));
+  const badges = node('div', 'badges');
+  const tags = [item.type === 'series' ? 'Сериал' : 'Фильм'];
+  if (item.type === 'series') tags.push('Сезон ' + item.season);
+  tags.push(...item.genres, ...item.studios.map(s => s === 'Apple' ? 'Apple TV' : s));
+  for (const tag of tags) badges.append(node('span', 'badge', tag));
+  if (item.rating != null) badges.append(node('span', 'badge score', item.ratingSource + ' ' + item.rating.toLocaleString('ru-RU')));
+  const actions = node('div', 'actions');
+  if (item.type === 'series') {
+    const calendar = button('Сезоны и серии', 'utility', 'calendar', () => showSchedule(item));
+    calendar.setAttribute('aria-haspopup', 'dialog');
+    actions.append(calendar);
+  }
+  if (item.trailer) {
+    const trailer = node('a', 'btn trailer'); trailer.href = item.trailer;
+    trailer.target = '_blank'; trailer.rel = 'noopener noreferrer';
+    trailer.title = 'Открыть трейлер на YouTube в новой вкладке';
+    trailer.append(icon('play'), 'Посмотреть трейлер'); actions.append(trailer);
+  }
+  for (const kind of ['watched', 'favorite']) {
+    const active = marked(item.id, kind);
+    const watch = kind === 'watched';
+    const label = watch ? (active ? 'Снять отметку' : 'Отметить просмотренным') : (active ? 'Убрать из любимых' : 'В любимые');
+    const mark = button(label, 'mark ' + (active ? 'chosen' : watch ? 'primary' : 'outline'), watch ? 'check' : 'heart', () => toggleMark(item, kind));
+    mark.dataset.kind = kind; mark.disabled = busy(item.id, kind);
+    mark.setAttribute('aria-pressed', String(active)); actions.append(mark);
+  }
+  copy.append(date, badges, node('p', 'synopsis', item.description), actions);
+  section.append(gallery(item), copy);
+  return section;
+}
+function resetFilters() {
+  for (const id of filterIds) el(id).value = '';
+  state.type = 'all';
+  reflectControls();
+  render();
+}
+function empty(hasFilters) {
+  if (hasFilters) return node('p', 'empty', 'пусто');
+  const box = node('section', 'empty');
+  const text = {waiting:'Здесь появятся будущие премьеры.',available:'Здесь появятся фильмы и сезоны, которые уже вышли.',watched:'Отметьте фильм или сезон просмотренным, и он появится здесь.',favorite:'Нажмите «В любимые» на карточке фильма или сезона.'};
+  box.append(node('h2', '', 'В списке пока пусто'), node('p', '', text[state.list]));
+  return box;
+}
+function reflectControls() {
+  for (const b of document.querySelectorAll('[data-list]')) b.setAttribute('aria-pressed', String(b.dataset.list === state.list));
+  for (const b of document.querySelectorAll('[data-type]')) b.setAttribute('aria-pressed', String(b.dataset.type === state.type));
+}
+function render() {
+  const focused = document.activeElement;
+  const kind = focused?.dataset.kind;
+  const id = focused?.closest('.entry')?.dataset.id;
+  const result = state.catalog.filter(matches).sort(compare);
+  const count = filterIds.filter(id => el(id).value).length;
+  el('filter-count').hidden = !count; el('filter-count').textContent = count;
+  el('apply').textContent = 'Показать (' + result.length + ')';
+  el('records').replaceChildren(...(result.length ? result.map(card) : [empty(Boolean(count || state.type !== 'all'))]));
+  if (kind && id) {
+    const same = [...el('records').querySelectorAll('.entry')].find(entry => entry.dataset.id === id);
+    (same?.querySelector('[data-kind="' + kind + '"]') || document.querySelector('#lists [aria-pressed="true"]')).focus({ preventScroll: true });
+  }
+}
+async function sync() {
+  if (!hosted) return;
+  try { if (await refreshHistory()) render(); }
+  catch { announce('Нет связи с историей просмотра. Повторим синхронизацию.'); }
+}
+function wireGroup(id, key) {
+  el(id).addEventListener('click', event => {
+    const value = event.target.closest('button')?.dataset[key];
+    if (!value) return;
+    state[key] = value;
+    reflectControls(); render(); el('feed').scrollTop = 0;
+    el('feed').setAttribute('aria-label','Лента · ' + listNames[state.list]);
+  });
+}
+async function start() {
+  document.querySelectorAll('[data-icon]').forEach(holder => holder.replaceWith(icon(holder.dataset.icon)));
+  theme(document.documentElement.dataset.theme === 'dark', false);
+  el('theme').onclick = () => theme(document.documentElement.dataset.theme !== 'dark');
+  const embedded = document.getElementById('offline-catalog');
+  if (embedded) state.catalog = JSON.parse(embedded.textContent);
+  else {
+    const response = await fetch('./catalog.json', { cache: 'no-cache' });
+    if (!response.ok) throw new Error('Каталог недоступен');
+    state.catalog = await response.json();
+  }
+  for (const [id, values] of [['genre', state.catalog.flatMap(i => i.genres)], ['studio', [...studioChoices,...state.catalog.flatMap(i => i.studios)]]]) {
+    for (const s of new Set(values)) el(id).add(new Option(s,s));
+  }
+  wireGroup('lists','list'); wireGroup('types','type');
+  for (const id of filterIds) el(id).addEventListener('change', render);
+  el('sort').onchange = () => {
+    const chosen = el('sort').selectedOptions[0].textContent;
+    el('sort').style.setProperty('--sort-width', Math.min(236, chosen.length * 8.25 + 32) + 'px');
+    render(); el('feed').scrollTop = 0;
+  };
+  el('filters-open').onclick = () => el('filters').showModal();
+  el('clear').onclick = resetFilters;
+  el('apply').onclick = () => { el('filters').close(); el('feed').scrollTop = 0; };
+  document.querySelectorAll('[data-close]').forEach(b => b.onclick = () => b.closest('dialog').close());
+  for (const dialog of document.querySelectorAll('dialog')) dialog.addEventListener('click', e => {
+    if (e.target !== dialog) return;
+    const r = dialog.getBoundingClientRect();
+    if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) dialog.close();
+  });
+  window.addEventListener('storage', e => {
+    if (e.key === 'film-list:theme') theme(e.newValue === 'dark', false);
+    else if (!hosted) render();
+  });
+  render();
+  if (hosted) {
+    await sync();
+    window.addEventListener('focus', sync);
+    document.addEventListener('visibilitychange', () => { if (!document.hidden) sync(); });
+    window.addEventListener('online', sync);
+    setInterval(() => { if (!document.hidden) sync(); }, 30000);
+  }
+}
+start().catch(() => {
+  const failure = node('section','empty');
+  failure.append(node('h2','','Не удалось открыть каталог'),button('Повторить','outline',null,() => location.reload()));
+  el('records').replaceChildren(failure);
+});
