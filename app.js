@@ -3,6 +3,7 @@ import { hosted, marked, markTime, busy, refreshHistory, setMark } from './histo
 const el = id => document.getElementById(id);
 const editAccessKey = 'film-list:edit-unlocked';
 const viewKey = 'film-list:view:' + location.pathname;
+const persistentViewKey = viewKey.replace(/\/index\.html$/, '/');
 const layoutKey = viewKey + ':layout';
 let layout = 'list';
 let detailItem;
@@ -536,7 +537,8 @@ function reflectSort() {
   const width = sort.selectedOptions[0].textContent.length * 8.25 + 32;
   sort.style.setProperty('--sort-width', Math.min(236, width) + 'px');
 }
-function saveView() {
+let lastSavedFeed;
+function saveView({ initial = false } = {}) {
   const feed = el('feed');
   const top = feed.getBoundingClientRect().top;
   const first = [...el('records').children].find(card => card.dataset.id && card.getBoundingClientRect().bottom > top);
@@ -547,20 +549,58 @@ function saveView() {
     genres: [...state.genres],
     filters: Object.fromEntries(filterIds.map(id => [id, el(id).value])),
     expanded: [...expandedDescriptions], scrollTop: feed.scrollTop, listScroll: el('lists').scrollLeft,
-    card: first?.dataset.id, offset: first ? top - first.getBoundingClientRect().top : 0,
+    card: first?.dataset.id, offset: first ? top - first.getBoundingClientRect().top : 0
+  };
+  const feedJson = JSON.stringify(view);
+  if (feedJson !== lastSavedFeed) {
+    try {
+      // Loading an existing tab should not replace another tab's latest choices.
+      if (!initial || localStorage.getItem(persistentViewKey) === null) {
+        localStorage.setItem(persistentViewKey, feedJson);
+      }
+      lastSavedFeed = feedJson;
+    } catch { /* A tab snapshot may still be available. */ }
+  }
+  const tabView = {
+    ...view,
     detail: el('film-details').open ? detailItem.id : undefined,
     detailScroll: el('film-details').querySelector('.film-body').scrollTop,
     dialog: dialog?.id, dialogScroll: dialog?.querySelector('.dialog-body').scrollTop,
     series: dialog?.id === 'schedule' ? scheduleItem.id : undefined,
     season: desktop.matches ? undefined : Number(openSeason?.dataset.season) || null
   };
-  try { sessionStorage.setItem(viewKey, JSON.stringify(view)); }
+  try { sessionStorage.setItem(viewKey, JSON.stringify(tabView)); }
   catch { /* The catalog also works without browser storage. */ }
 }
-function readReloadView() {
-  if (performance.getEntriesByType('navigation')[0]?.type !== 'reload') return;
-  try { return JSON.parse(sessionStorage.getItem(viewKey)); }
-  catch { return null; }
+function readSavedView() {
+  let tabView;
+  try { tabView = JSON.parse(sessionStorage.getItem(viewKey)); }
+  catch { /* Try the browser's saved feed. */ }
+  const navigation = performance.getEntriesByType('navigation')[0]?.type;
+  if (tabView && navigation !== 'navigate') return tabView;
+  try {
+    const feed = JSON.parse(localStorage.getItem(persistentViewKey));
+    if (feed) return feed;
+  } catch { /* Older versions saved the view only in this tab. */ }
+  return tabView;
+}
+function trackView() {
+  // These bubble after the controls have applied their changes.
+  document.addEventListener('click', saveView);
+  document.addEventListener('change', saveView);
+  document.addEventListener('close', saveView, true);
+  document.addEventListener('toggle', saveView, true);
+  let scrollTimer;
+  function flush() {
+    clearTimeout(scrollTimer);
+    scrollTimer = undefined;
+    saveView();
+  }
+  document.addEventListener('scroll', () => {
+    if (scrollTimer === undefined) scrollTimer = setTimeout(flush, 180);
+  }, { capture: true, passive: true });
+  window.addEventListener('pagehide', flush);
+  document.addEventListener('visibilitychange', () => { if (document.hidden) flush(); });
 }
 function restoreChoices(view, availableGenres) {
   if (Object.hasOwn(listNames, view.list)) state.list = view.list;
@@ -824,7 +864,7 @@ async function start() {
   const availableGenres = new Set(state.catalog.flatMap(item => item.genres).filter(Boolean));
   setupGenres(availableGenres);
   setupLayouts();
-  const view = readReloadView();
+  const view = readSavedView();
   if (view) restoreChoices(view, availableGenres);
   else reflectControls();
   wireGroup('list-navigation','list'); wireGroup('types','type');
@@ -851,11 +891,13 @@ async function start() {
     const r = dialog.getBoundingClientRect();
     if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) dialog.close();
   });
-  if (!hosted) window.addEventListener('storage', render);
+  if (!hosted) window.addEventListener('storage', event => {
+    if (!event.key?.startsWith('film-list:view:')) render();
+  });
   trackCalendarDay();
   if (view) restorePosition(view);
-  window.addEventListener('pagehide', saveView);
-  document.addEventListener('visibilitychange', () => { if (document.hidden) saveView(); });
+  saveView({ initial: true });
+  trackView();
   if (hosted) {
     await sync();
     window.addEventListener('focus', sync);
