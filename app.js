@@ -1,4 +1,4 @@
-import { hosted, marked, markTime, busy, refreshHistory, setMark } from './history.js?v=6a7130caa3ee';
+import { guest, hosted, marked, markTime, busy, refreshHistory, setMark } from './history.js?v=d7981e5f46c6';
 
 const el = id => document.getElementById(id);
 const state = { list: 'waiting', type: 'all', catalog: [] };
@@ -11,6 +11,7 @@ let scheduleItem;
 const studioChoices = ['Apple', 'Amazon', 'Netflix', 'Disney', 'HBO'];
 const listNames = { waiting: 'Жду', available: 'Новинки', backlog: 'Старое', watched: 'Просмотрено', favorite: 'Любимые' };
 const iconPaths = {
+  share: '<path d="M12 15V3m-4 4 4-4 4 4M7 10H5a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-9a1 1 0 0 0-1-1h-2"/>',
   moon: '<path d="M20.5 14.4A8.7 8.7 0 0 1 9.6 3.5a9 9 0 1 0 10.9 10.9Z"/>',
   sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M19 5l-1.5 1.5m-11 11L5 19"/>',
   sliders: '<path d="M3 7h4m5 0h9M3 17h10m5 0h3"/><circle cx="9.5" cy="7" r="2.5"/><circle cx="15.5" cy="17" r="2.5"/>',
@@ -81,6 +82,26 @@ function announce(msg) {
   clearTimeout(toastTimer);
   el('notice').textContent = msg;
   toastTimer = setTimeout(() => { el('notice').textContent = ''; }, 4500);
+}
+async function shareSite() {
+  const field = el('share-url');
+  const url = field.value;
+  if (navigator.share) {
+    try {
+      await navigator.share({ title: document.title, url });
+      return;
+    } catch (error) {
+      if (error.name === 'AbortError') return;
+    }
+  }
+  try {
+    await navigator.clipboard.writeText(url);
+    announce('Гостевая ссылка скопирована');
+  } catch {
+    el('share-dialog').showModal();
+    field.focus();
+    field.select();
+  }
 }
 function theme(dark, save = true) {
   document.documentElement.dataset.theme = dark ? 'dark' : 'light';
@@ -266,13 +287,15 @@ function card(item) {
     trailer.title = 'Открыть трейлер на YouTube в новой вкладке';
     trailer.append(icon('play'), 'Посмотреть трейлер'); actions.append(trailer);
   }
-  for (const kind of ['watched', 'favorite']) {
-    const active = marked(item.id, kind);
-    const watch = kind === 'watched';
-    const label = watch ? (active ? 'Снять отметку' : 'Отметить просмотренным') : (active ? 'Убрать из любимых' : 'В любимые');
-    const mark = button(label, 'mark ' + (active ? 'chosen' : watch ? 'primary' : 'outline'), watch ? 'check' : 'heart', () => toggleMark(item, kind));
-    mark.dataset.kind = kind; mark.disabled = busy(item.id, kind);
-    mark.setAttribute('aria-pressed', String(active)); actions.append(mark);
+  if (!guest) {
+    for (const kind of ['watched', 'favorite']) {
+      const active = marked(item.id, kind);
+      const watch = kind === 'watched';
+      const label = watch ? (active ? 'Снять отметку' : 'Отметить просмотренным') : (active ? 'Убрать из любимых' : 'В любимые');
+      const mark = button(label, 'mark ' + (active ? 'chosen' : watch ? 'primary' : 'outline'), watch ? 'check' : 'heart', () => toggleMark(item, kind));
+      mark.dataset.kind = kind; mark.disabled = busy(item.id, kind);
+      mark.setAttribute('aria-pressed', String(active)); actions.append(mark);
+    }
   }
   copy.append(date, synopsis(item), metadata(item), cardHistory(item), actions);
   section.append(gallery(item), copy);
@@ -325,9 +348,14 @@ function wireGroup(id, key) {
   });
 }
 async function start() {
+  if (guest) {
+    for (const tab of document.querySelectorAll('#lists [data-list="watched"], #lists [data-list="favorite"]')) tab.remove();
+  }
   document.querySelectorAll('[data-icon]').forEach(holder => holder.replaceWith(icon(holder.dataset.icon)));
   theme(document.documentElement.dataset.theme === 'dark', false);
   el('theme').onclick = () => theme(document.documentElement.dataset.theme !== 'dark');
+  el('share').onclick = shareSite;
+  document.querySelectorAll('[data-close]').forEach(b => b.onclick = () => b.closest('dialog').close());
   const embedded = document.getElementById('offline-catalog');
   if (embedded) state.catalog = JSON.parse(embedded.textContent);
   else {
@@ -351,7 +379,6 @@ async function start() {
   });
   el('clear').onclick = resetFilters;
   el('apply').onclick = () => { el('filters').close(); el('feed').scrollTop = 0; };
-  document.querySelectorAll('[data-close]').forEach(b => b.onclick = () => b.closest('dialog').close());
   for (const dialog of document.querySelectorAll('dialog')) dialog.addEventListener('click', e => {
     if (e.target !== dialog) return;
     const r = dialog.getBoundingClientRect();
@@ -359,7 +386,7 @@ async function start() {
   });
   window.addEventListener('storage', e => {
     if (e.key === 'film-list:theme') theme(e.newValue === 'dark', false);
-    else if (!hosted) render();
+    else if (!hosted && !guest) render();
   });
   render();
   if (hosted) {
