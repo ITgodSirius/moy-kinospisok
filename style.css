@@ -69,14 +69,11 @@ select option{background:var(--paper);color:var(--ink)}
 .synopsis .clamped{display:-webkit-box;-webkit-line-clamp:var(--synopsis-lines);-webkit-box-orient:vertical;overflow:hidden}
 .synopsis .read-more{border:0;padding:4px 0;min-height:32px;background:transparent}
 .read-more[hidden]{display:none}
-.metadata,.card-history dl{display:grid;align-items:baseline;gap:6px 14px;margin:0;font-size:.9375rem;line-height:1.4}
-.metadata{grid-template-columns:minmax(80px,max-content) minmax(0,1fr)}
+.metadata{display:grid;grid-template-columns:minmax(80px,max-content) minmax(0,1fr);align-items:baseline;gap:6px 14px;margin:0;font-size:.9375rem;line-height:1.4}
 .copy dd{margin:0;overflow-wrap:anywhere}
-.metadata dt,.card-history dt{color:var(--muted)}
-.card-history{border-top:1px solid var(--line);margin-block:15px;padding-top:11px}
-.card-history h3{font-size:1rem;margin:0 0 6px}
-.card-history dl{grid-template-columns:minmax(0,1fr) auto}
-.card-history dd{text-align:right;font-variant-numeric:tabular-nums}
+.metadata dt{color:var(--muted)}
+.card-history{margin-block:12px;color:#858b98;font-size:.75rem;line-height:1.45;font-variant-numeric:tabular-nums}
+.card-history dl{display:grid;grid-template-columns:fit-content(50%) minmax(0,1fr);align-items:baseline;gap:2px 8px;margin:0}
 .actions{display:grid;gap:14px;container-type:inline-size}
 .media-actions,.card-marks{display:flex;gap:8px}
 .media-actions .btn{flex:1 1 auto;min-width:0}

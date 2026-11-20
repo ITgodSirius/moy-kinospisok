@@ -4,6 +4,7 @@ const el = id => document.getElementById(id);
 const editAccessKey = 'film-list:edit-unlocked';
 const viewKey = 'film-list:view:' + location.pathname;
 const state = { list: 'waiting', type: 'all', genres: new Set(), catalog: [], day: null };
+const sortChoices = { available: 'release-new', other: 'added-new' };
 const filterIds = ['origin', 'studio', 'period', 'minimum'];
 const animationGenres = new Set(['мультфильм', 'мультсериал', 'анимация', 'мультипликация']);
 const originLabels = { russian: 'Российское', foreign: 'Зарубежное' };
@@ -90,8 +91,11 @@ function matches(item) {
     && (!el('minimum').value || (item.rating != null && item.rating >= Number(el('minimum').value)))
     && (!el('period').value || (ageDays >= 0 && ageDays < Number(el('period').value)));
 }
+function sortScope() {
+  return state.list === 'available' ? 'available' : 'other';
+}
 function compare(a, b) {
-  let sort = el('sort').value;
+  let sort = sortChoices[sortScope()];
   if (sort === 'russian-first' || sort === 'foreign-first') {
     const first = sort === 'russian-first' ? 'russian' : 'foreign';
     const rank = origin => origin == null ? 2 : Number(origin !== first);
@@ -301,7 +305,7 @@ function cardHistory(item) {
     const date = /^\d{4}-\d{2}-\d{2}T/.test(stamp) ? new Date(stamp) : null;
     row(dates, label, date && Number.isFinite(date.getTime()) ? dated(stamp, formatMarkDate.format(date).replace(/\s*г\.$/, '')) : 'Дата неизвестна');
   }
-  section.append(node('h3', '', 'История'), dates);
+  section.append(node('h3', 'sr', 'История'), dates);
   return section;
 }
 function yandexSearchUrl(item) {
@@ -405,9 +409,11 @@ function reflectControls() {
     b.setAttribute('aria-pressed', String(genre ? state.genres.has(genre) : !state.genres.size));
   }
   el('feed').setAttribute('aria-label', 'Лента · ' + listNames[state.list]);
+  reflectSort();
 }
-function sizeSortControl() {
+function reflectSort() {
   const sort = el('sort');
+  sort.value = sortChoices[sortScope()];
   const width = sort.selectedOptions[0].textContent.length * 8.25 + 32;
   sort.style.setProperty('--sort-width', Math.min(236, width) + 'px');
 }
@@ -418,7 +424,7 @@ function saveView() {
   const dialog = document.querySelector('#filters[open], #schedule[open]');
   const openSeason = el('seasons').querySelector('details[open]');
   const view = {
-    list: state.list, type: state.type, sort: el('sort').value,
+    list: state.list, type: state.type, sorts: sortChoices,
     genres: [...state.genres], genreScroll: el('genres').scrollLeft,
     filters: Object.fromEntries(filterIds.map(id => [id, el(id).value])),
     expanded: [...expandedDescriptions], scrollTop: feed.scrollTop, listScroll: el('lists').scrollLeft,
@@ -440,16 +446,23 @@ function restoreChoices(view, availableGenres) {
   if ([...el('types').children].some(button => button.dataset.type === view.type)) state.type = view.type;
   const savedGenres = Array.isArray(view.genres) ? view.genres : [view.filters?.genre];
   state.genres = new Set(savedGenres.filter(genre => availableGenres.has(genre)));
-  for (const id of [...filterIds, 'sort']) {
+  const savedSorts = view.sorts ?? {
+    other: view.sort,
+    available: view.list === 'available' && view.sort !== 'added-new' ? view.sort : undefined
+  };
+  const validSorts = new Set([...el('sort').options].map(option => option.value));
+  for (const scope of Object.keys(sortChoices)) {
+    if (validSorts.has(savedSorts[scope])) sortChoices[scope] = savedSorts[scope];
+  }
+  for (const id of filterIds) {
     const select = el(id);
-    const value = id === 'sort' ? view.sort : view.filters?.[id];
+    const value = view.filters?.[id];
     if ([...select.options].some(option => option.value === value)) select.value = value;
   }
   if (Array.isArray(view.expanded)) {
     for (const id of view.expanded) expandedDescriptions.add(id);
   }
   reflectControls();
-  sizeSortControl();
 }
 function restoreFeed(view) {
   const feed = el('feed');
@@ -594,7 +607,8 @@ async function start() {
   wireGroup('list-navigation','list'); wireGroup('types','type');
   for (const id of filterIds) el(id).addEventListener('change', render);
   el('sort').onchange = () => {
-    sizeSortControl();
+    sortChoices[sortScope()] = el('sort').value;
+    reflectSort();
     render(); el('feed').scrollTop = 0;
   };
   el('filters-open').onclick = () => el('filters').showModal();
