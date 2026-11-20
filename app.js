@@ -17,6 +17,27 @@ const formatMarkDate = new Intl.DateTimeFormat('ru-RU', { day: 'numeric', month:
 const desktop = window.matchMedia('(min-width: 821px)');
 let scheduleItem;
 const studioChoices = ['Apple', 'Amazon', 'Netflix', 'Disney', 'HBO'];
+// Logo rows in assets/poster-brands.webp use Simple Icons, Wikimedia Commons
+// (Disney, Paramount, Universal), and the Lionsgate site wordmark.
+const posterBrandNames = [
+  ['Amazon', 'Prime Video', 'Amazon Prime', 'Amazon Prime Video', 'Amazon Studios', 'Amazon MGM', 'Amazon MGM Studios', 'Амазон'],
+  ['Apple', 'Apple TV', 'Apple TV+', 'Apple Studios', 'Apple Original Films', 'Эппл'],
+  ['Disney', 'Disney+', 'Walt Disney', 'Walt Disney Pictures', 'Walt Disney Animation Studios', 'Disney Television Animation', 'Дисней'],
+  ['HBO', 'HBO Max', 'Max', 'HBO Films', 'HBO Entertainment', 'Home Box Office'],
+  ['Lionsgate', 'Lionsgate Films', 'Lionsgate Television', 'Lionsgate+', 'Lions Gate Films', 'Lionsgate Studios'],
+  ['Netflix', 'Netflix Studios', 'Netflix Animation', 'Нетфликс'],
+  ['Paramount', 'Paramount+', 'Paramount Pictures', 'Paramount Animation', 'Paramount Television', 'Paramount Television Studios', 'Paramount Players'],
+  ['Sony', 'Sony Pictures', 'Sony Pictures Entertainment', 'Sony Pictures Television', 'Sony Pictures Animation', 'Sony Pictures Classics'],
+  ['Universal', 'Universal Pictures', 'Universal Television', 'Universal Studios', 'Universal Pictures International'],
+  ['Warner Bros.', 'Warner Bros. Pictures', 'Warner Bros. Television', 'Warner Bros. Animation', 'Warner Bros. Pictures Animation', 'WB']
+];
+function brandKey(name) {
+  return name.trim().toLowerCase().replaceAll('.', '').replaceAll('+', ' plus').replace(/\s+/g, ' ');
+}
+const posterBrandRows = new Map();
+posterBrandNames.forEach((aliases, row) => {
+  for (const alias of aliases) posterBrandRows.set(brandKey(alias), row);
+});
 const listNames = { waiting: 'Жду', available: 'Новинки', backlog: 'Старое', watching: 'Смотрю сейчас', watched: 'Просмотрено', favorite: 'Любимые' };
 const markActions = [
   { kind: 'watched', add: 'Отметить просмотренным', remove: 'Снять отметку просмотра', icon: 'check' },
@@ -265,15 +286,31 @@ function cardHeader(item) {
   if (item.type === 'series') format = (animated ? 'Мультсериал' : 'Сериал') + ' · Сезон ' + item.season;
   title.append(node('h2', '', item.title), node('p', 'kind', format));
   header.append(title);
-  if (item.rating != null) {
-    const score = node('div', 'rating');
-    const source = item.ratingSource || 'Рейтинг';
-    const imdb = source.startsWith('IMDb');
-    score.append(node('span', 'rating-source', imdb ? 'IMDb' : source), node('strong', '', item.rating.toLocaleString('ru-RU')));
-    if (source === 'IMDb сериала') score.append(node('small', '', 'Оценка сериала'));
-    header.append(score);
-  }
+  if (item.rating != null) header.append(cardRating(item));
   return header;
+}
+function cardRating(item) {
+  const score = node('div', 'rating');
+  const source = item.ratingSource || 'Рейтинг';
+  score.append(node('span', 'rating-source', source === 'IMDb сериала' ? 'IMDb' : source), node('strong', '', item.rating.toLocaleString('ru-RU')));
+  if (source === 'IMDb сериала') score.append(node('small', '', 'Оценка сериала'));
+  return score;
+}
+function posterBrand(item) {
+  for (const [kind, names] of [['Платформа', item.platforms], ['Студия', item.studios]]) {
+    for (const name of names || []) {
+      const row = posterBrandRows.get(brandKey(name));
+      if (row === undefined) continue;
+      const label = kind + ' · ' + name;
+      const badge = node('span', 'poster-brand');
+      badge.dataset.brand = posterBrandNames[row][0];
+      badge.setAttribute('role', 'img');
+      badge.setAttribute('aria-label', label);
+      badge.title = label;
+      badge.style.setProperty('--brand-row', row);
+      return badge;
+    }
+  }
 }
 function row(list, label, value) {
   const dd = node('dd');
@@ -410,6 +447,9 @@ function posterCard(item) {
     img.src = src;
     image.append(img);
   }
+  const brand = posterBrand(item);
+  if (brand) image.append(brand);
+  if (item.rating != null) image.append(cardRating(item));
   const caption = node('div', 'poster-caption');
   const heading = node('h2');
   const open = node('button', 'poster-open');

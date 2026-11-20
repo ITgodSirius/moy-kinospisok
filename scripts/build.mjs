@@ -57,8 +57,9 @@ const dataUrl = file => {
 const offline = catalog.map(item => ({ ...item, poster: dataUrl(item.poster), gallery: (item.gallery || []).map(dataUrl) }));
 const code = app.replace("'" + historyUrl + "'", () => "'" + dataUrl('history.js') + "'");
 const json = JSON.stringify(offline).replaceAll('<','\\u003c');
+const offlineCss = css.replace(/url\("\.\/(assets\/[^"]+)"\)/g, (_, file) => 'url("' + dataUrl(file) + '")');
 const html = builtPage
-  .replace('<link rel="stylesheet" href="' + styleUrl + '">', () => '<style>' + css + '</style>')
+  .replace('<link rel="stylesheet" href="' + styleUrl + '">', () => '<style>' + offlineCss + '</style>')
   .replace('<script type="module" src="' + appUrl + '"></script>', () => '<script type="application/json" id="offline-catalog">' + json + '</script>\n<script type="module">' + code + '</script>');
 await writeFile(path('dist/Мой киносписок.html'), html);
 console.log('Сборка готова. Записей в каталоге: ' + catalog.length);
