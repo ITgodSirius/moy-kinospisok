@@ -105,7 +105,7 @@ function isAnimated(item) {
   return item.genres.some(genre => animationGenres.has(genre.trim().toLowerCase()));
 }
 function matchesCategory(item) {
-  if (state.type === 'announcements') return !item.releaseDate;
+  if (state.list === 'waiting' && !item.releaseDate) return state.type === 'announcements';
   if (state.type === 'dorama') return item.type === 'series' && item.dorama === true;
   if (state.type === 'animation') return isAnimated(item);
   return state.type === 'all' || item.type === state.type;
