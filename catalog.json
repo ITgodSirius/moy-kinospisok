@@ -1,5 +1,893 @@
 [
   {
+    "id": "tmdb-tv-328089-s1",
+    "title": "Capital",
+    "type": "series",
+    "season": 1,
+    "genres": [
+      "Криминал",
+      "Драма"
+    ],
+    "studios": [
+      "Amazon MGM Studios",
+      "VICE Studios",
+      "Jack Tar Pictures"
+    ],
+    "description": "Криминальная драма о преступной среде современного Лондона. Сериал разрабатывают Гай Ричи и Роб Уильямс, Ричи также заявлен режиссёром и продюсером.",
+    "poster": "assets/tmdb-tv-328089-s1-poster.jpg",
+    "gallery": [],
+    "releaseDate": null,
+    "rating": null,
+    "ratingSource": null,
+    "status": "waiting",
+    "trailer": null,
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": null,
+        "episodes": []
+      }
+    ],
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/328089/season/1?language=ru-RU",
+      "official": "https://screenmdm.com/news/scripted/new-guy-ritchie-drama-in-development-at-amazon-mgm-studios-uk/",
+      "catalog": "https://screensearch.co.uk/watch/tv/328089/capital"
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-movie-1815960",
+    "title": "Dogfight",
+    "type": "movie",
+    "genres": [
+      "Боевик",
+      "Триллер",
+      "Криминал"
+    ],
+    "studios": [
+      "Black Bear",
+      "Toff Guy Films",
+      "Punch Palace"
+    ],
+    "description": "Триллер о мести в лондонском криминальном мире. Гай Ричи пишет сценарий и ставит фильм, главную роль играет Джейсон Стэйтем. Начало съёмок запланировано на 2027 год.",
+    "poster": "assets/tmdb-movie-1815960-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-1815960-gallery-1.jpg"
+    ],
+    "releaseDate": null,
+    "rating": null,
+    "ratingSource": null,
+    "status": "waiting",
+    "trailer": null,
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/1815960?language=ru-RU",
+      "official": "https://www.netflix.com/tudum/articles/dogfight-jason-statham-release-date-photos-news",
+      "gallery1": "https://dnm.nflximg.net/api/v6/s0XAg4q_jvYbSSbLvySyUsliNSg/AAAAQXiLz6ZuObM1sgVUFfDCeXz2P-EGTP4Qc8H89kM2TIHadiqOrbWrXDRoTSxjAycza-X-YxWQepIfgtmeAyOGyj7i-Cov9zV4jAB3dfwmjF42gqi-fBzHDH4DXbwreh7a-qYEbFQGrMFyL1QgF56HamNvJ5E.jpg?r=e81"
+    },
+    "platforms": [
+      "Netflix"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-movie-1571245",
+    "title": "Viva La Madness",
+    "type": "movie",
+    "genres": [
+      "Криминал",
+      "Триллер",
+      "Боевик"
+    ],
+    "studios": [
+      "Black Bear",
+      "Toff Guy Films",
+      "Punch Palace Productions",
+      "Lumina Studios"
+    ],
+    "description": "Пока страсти после последнего дела улегаются, герой Джейсона Стэйтема скрывается на Карибах и готовится вернуться в Лондон. Гай Ричи снимает фильм по роману Дж. Дж. Коннолли, литературному продолжению «Слоёного торта».",
+    "poster": "assets/tmdb-movie-1571245-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-1571245-gallery-1.jpg"
+    ],
+    "releaseDate": null,
+    "rating": null,
+    "ratingSource": null,
+    "status": "waiting",
+    "trailer": null,
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/1571245?language=ru-RU",
+      "official": "https://www.screenglobalproduction.com/news/2026/02/05/guy-ritchie-viva-la-madness-jason-statham-film-uk",
+      "gallery1": "https://res.cloudinary.com/du1efakdk/image/upload/c_fill,f_auto,h_500,q_auto,w_800/v1770285529/kftv/blhxjhnyzq6ujc0ddy1p.jpg"
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-tv-255661-s1",
+    "title": "Молодой Шерлок",
+    "type": "series",
+    "season": 1,
+    "genres": [
+      "Детектив",
+      "Приключения",
+      "Драма"
+    ],
+    "studios": [
+      "Amazon MGM Studios",
+      "Motive Pictures"
+    ],
+    "description": "В викторианском Оксфорде юный Шерлок Холмс оказывается втянут в расследование убийства. Чтобы очистить своё имя, он объединяется с Джеймсом Мориарти и выходит на след заговора.",
+    "poster": "assets/tmdb-tv-255661-s1-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-255661-s1-gallery-1.jpg",
+      "assets/tmdb-tv-255661-s1-gallery-2.jpg"
+    ],
+    "releaseDate": "2026-03-04",
+    "rating": null,
+    "ratingSource": null,
+    "status": "available",
+    "trailer": "https://www.youtube.com/watch?v=rXMrTALO2ME",
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2026-03-04",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2026-03-04"
+          },
+          {
+            "number": 2,
+            "date": "2026-03-04"
+          },
+          {
+            "number": 3,
+            "date": "2026-03-04"
+          },
+          {
+            "number": 4,
+            "date": "2026-03-04"
+          },
+          {
+            "number": 5,
+            "date": "2026-03-04"
+          },
+          {
+            "number": 6,
+            "date": "2026-03-04"
+          },
+          {
+            "number": 7,
+            "date": "2026-03-04"
+          },
+          {
+            "number": 8,
+            "date": "2026-03-04"
+          }
+        ]
+      }
+    ],
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/255661/season/1?language=ru-RU",
+      "release": "https://advertising.amazon.com/en-gb/library/news/prime-video-show-movie-releases-2026",
+      "official": "https://www.primevideo.com/detail/0OHZJ90LNM4KVKJXM4K15HDQJR",
+      "kinopoisk": "https://www.kinopoisk.ru/series/5591410/",
+      "poster": "https://static.tvmaze.com/uploads/images/original_untouched/604/1510570.jpg",
+      "gallery1": "https://static.tvmaze.com/uploads/images/original_untouched/616/1540815.jpg",
+      "gallery2": "https://static.tvmaze.com/uploads/images/original_untouched/616/1540817.jpg",
+      "schedule": "https://www.tvmaze.com/seasons/170156/young-sherlock-season-1"
+    },
+    "platforms": [
+      "Amazon"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-tv-255661-s2",
+    "title": "Молодой Шерлок",
+    "type": "series",
+    "season": 2,
+    "genres": [
+      "Детектив",
+      "Приключения",
+      "Драма"
+    ],
+    "studios": [
+      "Amazon MGM Studios",
+      "Motive Pictures"
+    ],
+    "description": "Хиро Файнс-Тиффин возвращается к роли молодого Шерлока Холмса. Гай Ричи снимает первый эпизод второго сезона, к актёрскому составу присоединяются Оливия Уильямс, Индира Варма, Софи Скелтон и Эйдан Гиллен.",
+    "poster": "assets/tmdb-tv-255661-s2-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-255661-s2-gallery-1.jpg",
+      "assets/tmdb-tv-255661-s2-gallery-2.jpg"
+    ],
+    "releaseDate": null,
+    "rating": null,
+    "ratingSource": null,
+    "status": "waiting",
+    "trailer": "https://www.youtube.com/watch?v=E9eOibZCVVU",
+    "seasons": [
+      {
+        "number": 2,
+        "releaseDate": null,
+        "episodes": []
+      }
+    ],
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/255661/season/2?language=ru-RU",
+      "official": "https://www.aboutamazon.com/news/entertainment/guy-ritchie-sherlock-holmes-young-sherlock-prime-video",
+      "poster": "https://static.tvmaze.com/uploads/images/original_untouched/616/1540834.jpg",
+      "gallery1": "https://i.ytimg.com/vi/E9eOibZCVVU/sd2.jpg",
+      "gallery2": "https://assets.aboutamazon.com/dims4/default/70d8ddf/2147483647/strip/true/crop/1600x900+0+0/resize/1320x743!/quality/90/?url=https%3A%2F%2Fassets.aboutamazon.com%2F46%2F4f%2F49dc5a5f4d4e818f1aa3a4253b34%2Fgod-of-war-1.png"
+    },
+    "platforms": [
+      "Amazon"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-tv-247718-s2",
+    "title": "Гангстерленд",
+    "type": "series",
+    "season": 2,
+    "genres": [
+      "Криминал",
+      "Драма",
+      "Триллер"
+    ],
+    "studios": [
+      "Paramount Television Studios",
+      "101 Studios"
+    ],
+    "description": "После открытого конфликта с соперниками семья Харриганов рискует расколоться изнутри. Гарри да Соуза пытается сохранить порядок, пока Конрад и Мейв борются за власть и в Лондоне появляются новые противники.",
+    "poster": "assets/tmdb-tv-247718-s2-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-247718-s2-gallery-1.jpg",
+      "assets/tmdb-tv-247718-s2-gallery-2.jpg"
+    ],
+    "releaseDate": "2026-09-18",
+    "rating": null,
+    "ratingSource": null,
+    "status": "available",
+    "trailer": "https://www.youtube.com/watch?v=VvYl1a1Px5Y",
+    "seasons": [
+      {
+        "number": 2,
+        "releaseDate": "2026-09-18",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2026-09-18"
+          },
+          {
+            "number": 2,
+            "date": "2026-09-25"
+          },
+          {
+            "number": 3,
+            "date": "2026-10-02"
+          },
+          {
+            "number": 4,
+            "date": "2026-10-09"
+          },
+          {
+            "number": 5,
+            "date": "2026-10-16"
+          },
+          {
+            "number": 6,
+            "date": "2026-10-23"
+          },
+          {
+            "number": 7,
+            "date": "2026-10-30"
+          },
+          {
+            "number": 8,
+            "date": "2026-11-06"
+          },
+          {
+            "number": 9,
+            "date": "2026-11-13"
+          },
+          {
+            "number": 10,
+            "date": "2026-11-20"
+          }
+        ]
+      }
+    ],
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/247718/season/2?language=ru-RU",
+      "release": "https://www.paramountpressexpress.com/paramount-plus/shows/mobland/releases/?view=113038-the-harrigans-are-bloody-back-mobland-returns-to-paramount-september-18",
+      "official": "https://www.paramountplus.com/sneak-peak/mobland-season-2-everything-you-need-to-know/",
+      "poster": "https://static.tvmaze.com/uploads/images/original_untouched/637/1592942.jpg",
+      "gallery1": "https://static.tvmaze.com/uploads/images/original_untouched/641/1604707.jpg",
+      "gallery2": "https://static.tvmaze.com/uploads/images/original_untouched/642/1607370.jpg",
+      "schedule": "https://www.tvmaze.com/seasons/187807/mobland-season-2"
+    },
+    "platforms": [
+      "Paramount+"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-tv-247718-s3",
+    "title": "Гангстерленд",
+    "type": "series",
+    "season": 3,
+    "genres": [
+      "Криминал",
+      "Драма",
+      "Триллер"
+    ],
+    "studios": [
+      "Paramount Television Studios",
+      "101 Studios"
+    ],
+    "description": "Гарри да Соуза снова работает на преступную семью Харриганов. Том Харди, Пирс Броснан и Хелен Миррен возвращаются к своим ролям, а Гай Ричи остаётся исполнительным продюсером.",
+    "poster": "assets/tmdb-tv-247718-s3-poster.jpg",
+    "gallery": [],
+    "releaseDate": null,
+    "rating": null,
+    "ratingSource": null,
+    "status": "waiting",
+    "trailer": null,
+    "seasons": [
+      {
+        "number": 3,
+        "releaseDate": null,
+        "episodes": []
+      }
+    ],
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/247718/season/3?language=ru-RU",
+      "official": "https://www.paramountpressexpress.com/paramount-plus/shows/mobland/releases/?view=113634-production-begins-on-season-three-of-the-hit-paramount-original-series-mobland",
+      "poster": "https://static.tvmaze.com/uploads/images/original_untouched/641/1604671.jpg"
+    },
+    "platforms": [
+      "Paramount+"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-movie-1290000",
+    "title": "Жена и пёс",
+    "type": "movie",
+    "genres": [
+      "Триллер",
+      "Комедия",
+      "Криминал"
+    ],
+    "studios": [
+      "Black Bear",
+      "Toff Guy Films"
+    ],
+    "description": "Малкольм Фэрбенк передаёт семейное дело дочери Флоренс. Её брат Гидеон, недавно вышедший из тюрьмы, грозит отомстить. Флоренс нанимает в телохранители конюха Шона, у которого есть собственное прошлое.",
+    "poster": "assets/tmdb-movie-1290000-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-1290000-gallery-1.jpg",
+      "assets/tmdb-movie-1290000-gallery-2.jpg"
+    ],
+    "releaseDate": "2027-02-18",
+    "rating": null,
+    "ratingSource": null,
+    "status": "waiting",
+    "trailer": "https://www.youtube.com/watch?v=NmYFn343IPU",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/1290000?language=ru-RU",
+      "release": "https://www.kinometro.ru/sp/show/name/spbmkf_day2_karopremier_22092026",
+      "official": "https://blackbearpictures.com/film-and-tv/wife-and-dog",
+      "poster": "https://a.ltrbxd.com/resized/film-poster/1/1/7/2/7/4/5/1172745-wife-dog-0-230-0-345-crop.jpg?v=c1202e201d",
+      "gallery1": "https://cdn.sanity.io/images/th8p6n7w/production/30aaac0f71c2c46dcc0ca30f28616eac806e40aa-1672x941.png?w=1200&fit=clip&auto=format",
+      "gallery2": "https://i.ytimg.com/vi/NmYFn343IPU/sd3.jpg"
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-movie-1122573",
+    "title": "Грязные деньги",
+    "type": "movie",
+    "genres": [
+      "Боевик",
+      "Триллер"
+    ],
+    "studios": [
+      "Black Bear",
+      "Toff Guy Films"
+    ],
+    "description": "Юрист Рэйчел и её напарники Сид и Бронко берутся взыскать огромный долг с криминального магната. Когда операция срывается, команде приходится искать выход с острова, где у должника есть собственная армия.",
+    "poster": "assets/tmdb-movie-1122573-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-1122573-gallery-1.jpg",
+      "assets/tmdb-movie-1122573-gallery-2.jpg"
+    ],
+    "releaseDate": "2026-05-21",
+    "rating": null,
+    "ratingSource": null,
+    "status": "available",
+    "trailer": "https://www.youtube.com/watch?v=9mBXguySLQU",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/1122573?language=ru-RU",
+      "release": "https://www.kinometro.ru/release/card/id/56464",
+      "official": "https://www.inthegrey.film/home/",
+      "kinopoisk": "https://www.kinopoisk.ru/film/5437609/",
+      "poster": "https://www.kinobusiness.com/upload/resize_cache/iblock/7e5/6la7odm8v7jgw8otlgygqpjfjg4nwyzh/200_200_1/image003.png",
+      "gallery1": "https://i.ytimg.com/vi/9mBXguySLQU/sd2.jpg",
+      "gallery2": "https://i.ytimg.com/vi/9mBXguySLQU/sd3.jpg"
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-movie-524417",
+    "title": "Этой ночью",
+    "type": "movie",
+    "genres": [
+      "Драма",
+      "Комедия"
+    ],
+    "studios": [
+      "Blumhouse Productions",
+      "Man in a Tree Productions"
+    ],
+    "description": "В 1982 году Статен-Айленд ждёт премьеры «Рокки 3». Для подростка Энтони и его семьи этот вечер становится поводом сделать выбор, на который они давно не решались.",
+    "poster": "assets/tmdb-movie-524417-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-524417-gallery-1.jpg",
+      "assets/tmdb-movie-524417-gallery-2.jpg"
+    ],
+    "releaseDate": "2021-09-17",
+    "rating": null,
+    "ratingSource": null,
+    "status": "available",
+    "trailer": "https://www.youtube.com/watch?v=JfI0-UcHEvQ",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/524417?language=ru-RU",
+      "release": "https://deadline.com/2021/09/this-is-the-night-james-demonaco-purge-release-1234832622/",
+      "official": "https://www.universalpicturesathome.com/movies/this-is-the-night-2021",
+      "kinopoisk": "https://www.kinopoisk.ru/film/1160012/",
+      "poster": "https://images.contentstack.io/v3/assets/blt13adb7e2033fcee5/bltadf4fef59f1b5ac7/690eb928911282598b240720/ThisIsTheNight2021_poster.jpg?width=1200",
+      "gallery1": "https://i.ytimg.com/vi/JfI0-UcHEvQ/sd1.jpg",
+      "gallery2": "https://i.ytimg.com/vi/JfI0-UcHEvQ/sd3.jpg"
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-tv-199001-s1",
+    "title": "Моя жизнь с мальчиками Уолтер",
+    "type": "series",
+    "season": 1,
+    "genres": [
+      "Драма",
+      "Мелодрама"
+    ],
+    "studios": [
+      "Sony Pictures Television",
+      "iGeneration Studios"
+    ],
+    "description": "После гибели семьи пятнадцатилетняя Джеки переезжает из Нью-Йорка к опекунам в Колорадо. Ей предстоит найти своё место в большом доме Уолтеров и разобраться в чувствах к братьям Алексу и Коулу.",
+    "poster": "assets/tmdb-tv-199001-s1-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-199001-s1-gallery-1.jpg",
+      "assets/tmdb-tv-199001-s1-gallery-2.jpg"
+    ],
+    "releaseDate": "2023-12-07",
+    "rating": null,
+    "ratingSource": null,
+    "status": "available",
+    "trailer": "https://www.youtube.com/watch?v=pHIXtOrHF80",
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2023-12-07",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2023-12-07"
+          },
+          {
+            "number": 2,
+            "date": "2023-12-07"
+          },
+          {
+            "number": 3,
+            "date": "2023-12-07"
+          },
+          {
+            "number": 4,
+            "date": "2023-12-07"
+          },
+          {
+            "number": 5,
+            "date": "2023-12-07"
+          },
+          {
+            "number": 6,
+            "date": "2023-12-07"
+          },
+          {
+            "number": 7,
+            "date": "2023-12-07"
+          },
+          {
+            "number": 8,
+            "date": "2023-12-07"
+          },
+          {
+            "number": 9,
+            "date": "2023-12-07"
+          },
+          {
+            "number": 10,
+            "date": "2023-12-07"
+          }
+        ]
+      }
+    ],
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/199001/season/1?language=ru-RU",
+      "release": "https://www.youtube.com/watch?v=pHIXtOrHF80",
+      "official": "https://www.sonypictures.com/tv/mylifewiththewalterboys",
+      "poster": "https://static.tvmaze.com/uploads/images/original_untouched/582/1455307.jpg",
+      "gallery1": "https://static.tvmaze.com/uploads/images/original_untouched/491/1228078.jpg",
+      "gallery2": "https://static.tvmaze.com/uploads/images/original_untouched/491/1228081.jpg",
+      "schedule": "https://www.tvmaze.com/seasons/135378/my-life-with-the-walter-boys-season-1"
+    },
+    "platforms": [
+      "Netflix"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-tv-243954-s1",
+    "title": "Лихачи",
+    "type": "series",
+    "season": 1,
+    "genres": [
+      "Драма",
+      "Мелодрама"
+    ],
+    "studios": [
+      "Amazon MGM Studios"
+    ],
+    "description": "Близнецы Зак и Кейтлин переезжают в небольшой город, где когда-то жил их отец. Местные подростки увлечены автомобилями, и Зак быстро втягивается в соперничество с Харрисом, когда знакомится с его девушкой Алишей.",
+    "poster": "assets/tmdb-tv-243954-s1-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-243954-s1-gallery-1.jpg",
+      "assets/tmdb-tv-243954-s1-gallery-2.jpg"
+    ],
+    "releaseDate": "2025-05-20",
+    "rating": null,
+    "ratingSource": null,
+    "status": "available",
+    "trailer": "https://www.youtube.com/watch?v=kW-hafmct8Y",
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2025-05-20",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2025-05-20"
+          },
+          {
+            "number": 2,
+            "date": "2025-05-20"
+          },
+          {
+            "number": 3,
+            "date": "2025-05-20"
+          },
+          {
+            "number": 4,
+            "date": "2025-05-20"
+          },
+          {
+            "number": 5,
+            "date": "2025-05-20"
+          },
+          {
+            "number": 6,
+            "date": "2025-05-20"
+          },
+          {
+            "number": 7,
+            "date": "2025-05-20"
+          },
+          {
+            "number": 8,
+            "date": "2025-05-20"
+          },
+          {
+            "number": 9,
+            "date": "2025-05-20"
+          },
+          {
+            "number": 10,
+            "date": "2025-05-20"
+          }
+        ]
+      }
+    ],
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/243954/season/1?language=ru-RU",
+      "release": "https://www.primevideo.com/detail/0SJRF59GQSY8FC4RVK689ECDLP",
+      "kinopoisk": "https://www.kinopoisk.ru/series/5965208/",
+      "poster": "https://static.tvmaze.com/uploads/images/original_untouched/567/1418403.jpg",
+      "gallery1": "https://static.tvmaze.com/uploads/images/original_untouched/569/1423564.jpg",
+      "gallery2": "https://static.tvmaze.com/uploads/images/original_untouched/569/1423561.jpg",
+      "schedule": "https://www.tvmaze.com/seasons/160456/motorheads-season-1"
+    },
+    "platforms": [
+      "Amazon"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-tv-322687-s1",
+    "title": "Два года спустя",
+    "type": "series",
+    "season": 1,
+    "genres": [
+      "Мелодрама",
+      "Драма"
+    ],
+    "studios": [
+      "Hoodlum"
+    ],
+    "description": "Эмили и Райан знакомятся по дороге на работу, но пандемия прерывает их встречи. Два года спустя они случайно видятся снова, и Райан предлагает провести восемь свиданий, чтобы понять, хотят ли они пожениться.",
+    "poster": "assets/tmdb-tv-322687-s1-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-322687-s1-gallery-1.jpg",
+      "assets/tmdb-tv-322687-s1-gallery-2.jpg"
+    ],
+    "releaseDate": "2026-06-04",
+    "rating": null,
+    "ratingSource": null,
+    "status": "available",
+    "trailer": "https://www.youtube.com/watch?v=2ghZR4edQMw",
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2026-06-04",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2026-06-04"
+          },
+          {
+            "number": 2,
+            "date": "2026-06-04"
+          },
+          {
+            "number": 3,
+            "date": "2026-06-04"
+          },
+          {
+            "number": 4,
+            "date": "2026-06-04"
+          },
+          {
+            "number": 5,
+            "date": "2026-06-04"
+          },
+          {
+            "number": 6,
+            "date": "2026-06-04"
+          },
+          {
+            "number": 7,
+            "date": "2026-06-04"
+          },
+          {
+            "number": 8,
+            "date": "2026-06-04"
+          }
+        ]
+      }
+    ],
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/322687/season/1?language=ru-RU",
+      "release": "https://www.paramountanz.com.au/news/new-romantic-drama-two-years-later-is-streaming-now/",
+      "official": "https://www.intl.paramountplus.com/au/shows/two-years-later/",
+      "poster": "https://static.tvmaze.com/uploads/images/original_untouched/624/1560249.jpg",
+      "gallery1": "http://static.tvmaze.com/uploads/images/original_untouched/627/1569662.jpg",
+      "gallery2": "http://static.tvmaze.com/uploads/images/original_untouched/627/1569664.jpg",
+      "schedule": "https://www.tvmaze.com/seasons/188072/two-years-later-season-1"
+    },
+    "platforms": [
+      "Paramount+"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-tv-236235-s2",
+    "title": "Джентльмены",
+    "type": "series",
+    "season": 2,
+    "genres": [
+      "Криминал",
+      "Комедия",
+      "Драма"
+    ],
+    "studios": [
+      "Moonage Pictures",
+      "Miramax Television"
+    ],
+    "description": "Через год после событий первого сезона Эдди Хорниман и Сьюзи Гласс хотят расширить своё дело. Партнёры отправляются в Италию, где им приходится иметь дело с новыми союзниками и соперниками.",
+    "poster": "assets/tmdb-tv-236235-s2-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-236235-s2-gallery-1.jpg",
+      "assets/tmdb-tv-236235-s2-gallery-2.jpg"
+    ],
+    "releaseDate": "2026-09-03",
+    "rating": null,
+    "ratingSource": null,
+    "status": "available",
+    "trailer": "https://www.youtube.com/watch?v=01IeKpHvgvM",
+    "seasons": [
+      {
+        "number": 2,
+        "releaseDate": "2026-09-03",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2026-09-03"
+          },
+          {
+            "number": 2,
+            "date": "2026-09-03"
+          },
+          {
+            "number": 3,
+            "date": "2026-09-03"
+          },
+          {
+            "number": 4,
+            "date": "2026-09-03"
+          },
+          {
+            "number": 5,
+            "date": "2026-09-03"
+          },
+          {
+            "number": 6,
+            "date": "2026-09-03"
+          },
+          {
+            "number": 7,
+            "date": "2026-09-03"
+          },
+          {
+            "number": 8,
+            "date": "2026-09-03"
+          }
+        ]
+      }
+    ],
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/236235/season/2?language=ru-RU",
+      "release": "https://www.netflix.com/tudum/articles/the-gentlemen-season-2-release-date-photos",
+      "official": "https://www.netflix.com/title/81437051",
+      "poster": "https://static.tvmaze.com/uploads/images/original_untouched/639/1599588.jpg",
+      "gallery1": "https://dnm.nflximg.net/api/v6/a01MIaQTUgSJoLaS_OCn68Eg3hU/AAAAQTe4vXkxByiBL9sQJKBez5K-En3bZoL2stTYmwc4TELxzBJ9uvmQM-Xg6YfFYvEvbMz8AoxajjVNsCvOAi45iW5uYj0w2XhI_0f0vqbu5Lfe4r_YGEtTKr4qpaAUBWnjgsHEpSe3w4di6opAY7jmme-L.jpg?r=96a",
+      "gallery2": "https://dnm.nflximg.net/api/v6/a01MIaQTUgSJoLaS_OCn68Eg3hU/AAAAQQTcRq-M6cdgk1G9Jdq7zyDKD2WY0M8nfDMS5LAUA0U48l2xGBtX89VGONE8gxystvJMSK_wnvDJc_k6S2tCm_wu-GeXm3OcdT7ptYI5fwuiI0la2rYgj7KyH185vyj9XwWUQaJ_l5kwqYAZ2LmyjM1R.jpg?r=e13",
+      "schedule": "https://www.tvmaze.com/seasons/173696/the-gentlemen-season-2"
+    },
+    "platforms": [
+      "Netflix"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-tv-236235-s3",
+    "title": "Джентльмены",
+    "type": "series",
+    "season": 3,
+    "genres": [
+      "Криминал",
+      "Комедия",
+      "Драма"
+    ],
+    "studios": [
+      "Moonage Pictures",
+      "Miramax Television"
+    ],
+    "description": "Эдди Хорниман и Сьюзи Гласс берутся за самый крупный проект своего союза — казино на Ближнем Востоке. Но у нового предприятия свои правила и соперники.",
+    "poster": "assets/tmdb-tv-236235-s3-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-236235-s3-gallery-1.jpg",
+      "assets/tmdb-tv-236235-s3-gallery-2.jpg"
+    ],
+    "releaseDate": null,
+    "rating": null,
+    "ratingSource": null,
+    "status": "waiting",
+    "trailer": null,
+    "seasons": [
+      {
+        "number": 3,
+        "releaseDate": null,
+        "episodes": []
+      }
+    ],
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/236235/season/3?language=ru-RU",
+      "official": "https://www.netflix.com/tudum/articles/the-gentlemen-season-3-release-date-cast-news",
+      "poster": "https://image.tmdb.org/t/p/w500/kg3jGBY39Zxn3Yb2IPTyivQLbvE.jpg",
+      "gallery1": "https://dnm.nflximg.net/api/v6/a01MIaQTUgSJoLaS_OCn68Eg3hU/AAAAQZNDRNBSOdzufUWTJ7qMWZSX4UXp_L_FSf6zZ4aC1cxexfZphvAaXWzakibkLlxlHz9-0R87Xnze3J6th4-LOscu6Ju77U9fsfLPzfmysUaw4jHMijxGzfEohtrGVTpsrfI233tUYYmaVmivLgR971Ay.jpg?r=8c6",
+      "gallery2": "https://www.whats-on-netflix.com/wp-content/uploads/2026/11/BGUK-3731957-063-1536x1024.jpg"
+    },
+    "platforms": [
+      "Netflix"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "tmdb-tv-117581-s4",
+    "title": "Джинни и Джорджия",
+    "type": "series",
+    "season": 4,
+    "genres": [
+      "Драма",
+      "Комедия"
+    ],
+    "studios": [
+      "Dynamic Television"
+    ],
+    "description": "После суда Джорджия пытается вернуть доверие детей, но её прошлое вновь даёт о себе знать. Джинни хочет разорвать семейный круг обмана, а Остин остаётся один на один с последствиями своих решений.",
+    "poster": "assets/tmdb-tv-117581-s4-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-117581-s4-gallery-1.jpg",
+      "assets/tmdb-tv-117581-s4-gallery-2.jpg"
+    ],
+    "releaseDate": "2027-01-21",
+    "rating": null,
+    "ratingSource": null,
+    "status": "waiting",
+    "trailer": null,
+    "seasons": [
+      {
+        "number": 4,
+        "releaseDate": "2027-01-21",
+        "episodes": []
+      }
+    ],
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/117581/season/4?language=ru-RU",
+      "release": "https://www.netflix.com/tudum/articles/ginny-and-georgia-season-4",
+      "poster": "https://image.tmdb.org/t/p/w500/vOwunzW4dx3n0J5mH40n9jTRSwY.jpg",
+      "gallery1": "https://dnm.nflximg.net/api/v6/s0XAg4q_jvYbSSbLvySyUsliNSg/AAAAQXxBBaP5WTJSGTQ-PjfcFoOcf4ck2jqHgjgjJvlKCAX-e2XWik-etSP86xFgg91BFk7atzuDwObGf9PudHtH7Xe7mG94XCycXTHZLySGWjg-lawfwQqqfa9It3m43ZMHIdnZ0US6hvTKXsgXxD5feiT2FJE.jpg?r=520",
+      "gallery2": "https://dnm.nflximg.net/api/v6/a01MIaQTUgSJoLaS_OCn68Eg3hU/AAAAQeYGZB3_v6XTgDIBdnBG_RrFh5JmigYaJ8ux4m1byOFbVhWTSt9_aYX7Ei2pxpmq24oH7bQr5nw7EWJkOug32U4lHlFhEF3SE5CIQFHrS-hmMUhycEZIOOOvNAw88f3sKhkVJuFcaOO0tsmIWoaD_49K.jpg?r=0d3"
+    },
+    "platforms": [
+      "Netflix"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-21"
+  },
+  {
     "id": "tmdb-tv-335783-s1",
     "title": "Истребители",
     "type": "series",
