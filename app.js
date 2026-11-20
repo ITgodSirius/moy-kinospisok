@@ -2,7 +2,7 @@ import { hosted, marked, markTime, busy, refreshHistory, setMark } from './histo
 
 const el = id => document.getElementById(id);
 const editAccessKey = 'film-list:edit-unlocked';
-const state = { list: 'waiting', type: 'all', catalog: [] };
+const state = { list: 'waiting', type: 'all', catalog: [], day: null };
 const filterIds = ['origin', 'genre', 'studio', 'period', 'minimum'];
 const originLabels = { russian: 'Российское', foreign: 'Зарубежное' };
 const collator = new Intl.Collator('ru', { numeric: true });
@@ -50,9 +50,12 @@ function dateText(value) {
   if (!value) return 'Дата выхода уточняется';
   return formatDate.format(new Date(value + 'T12:00:00Z')).replace(/\s*г\.$/, '');
 }
-function today() {
-  const t = new Date();
-  return [t.getFullYear(), String(t.getMonth() + 1).padStart(2, '0'), String(t.getDate()).padStart(2, '0')].join('-');
+function calendarDay(now) {
+  // Catalog dates have no time. Use the same UTC scale for the viewer's local date.
+  return Date.UTC(now.getFullYear(), now.getMonth(), now.getDate());
+}
+function daysSince(date) {
+  return (state.day - Date.parse(date)) / 86_400_000;
 }
 function listMatches(item) {
   const watched = marked(item.id, 'watched');
@@ -62,11 +65,11 @@ function listMatches(item) {
   if (watched) return false;
   if (marked(item.id, 'watching')) return state.list === 'watching';
   if (item.status === 'backlog') return state.list === 'backlog';
-  const released = item.status === 'available' || (item.releaseDate && item.releaseDate <= today());
+  const released = item.status === 'available' || daysSince(item.releaseDate) >= 0;
   return released ? state.list === 'available' : state.list === 'waiting' && !favorite;
 }
 function matches(item) {
-  const ageDays = (Date.parse(today()) - Date.parse(item.addedDate)) / 86400000;
+  const ageDays = daysSince(item.addedDate);
   return listMatches(item) && (state.type === 'all' || item.type === state.type)
     && (!el('origin').value || item.origin === el('origin').value)
     && (!el('genre').value || item.genres.includes(el('genre').value))
@@ -292,6 +295,11 @@ function card(item) {
   const date = node('div', 'date');
   date.append(icon('calendar'));
   if (item.releaseDate) {
+    const daysSinceRelease = daysSince(item.releaseDate);
+    if (daysSinceRelease >= 0 && daysSinceRelease < 10) {
+      section.classList.add('recent-release');
+      date.append(node('span', 'sr', 'Недавняя премьера.'));
+    }
     const time = node('time', '', dateText(item.releaseDate));
     time.dateTime = item.releaseDate;
     const strong = node('strong'); strong.append(time);
@@ -338,6 +346,7 @@ function reflectControls() {
   for (const b of document.querySelectorAll('[data-type]')) b.setAttribute('aria-pressed', String(b.dataset.type === state.type));
 }
 function render() {
+  state.day = calendarDay(new Date());
   const focused = document.activeElement;
   const kind = focused?.dataset.kind;
   const id = focused?.closest('.entry')?.dataset.id;
@@ -352,6 +361,21 @@ function render() {
     const activeList = [...document.querySelectorAll('[data-list][aria-pressed="true"]')].find(button => button.getClientRects().length);
     (same?.querySelector('[data-kind="' + kind + '"]') || activeList)?.focus({ preventScroll: true });
   }
+}
+function trackCalendarDay() {
+  let timer;
+  function refresh() {
+    clearTimeout(timer);
+    const now = new Date();
+    if (calendarDay(now) !== state.day) render();
+    const midnight = new Date(now);
+    midnight.setHours(24, 0, 0, 0);
+    timer = setTimeout(refresh, midnight - now);
+  }
+  window.addEventListener('focus', refresh);
+  window.addEventListener('pageshow', refresh);
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) refresh(); });
+  refresh();
 }
 async function sync() {
   if (!hosted) return;
@@ -404,7 +428,7 @@ async function start() {
     if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) dialog.close();
   });
   if (!hosted) window.addEventListener('storage', render);
-  render();
+  trackCalendarDay();
   if (hosted) {
     await sync();
     window.addEventListener('focus', sync);
