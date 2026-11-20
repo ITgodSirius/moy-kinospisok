@@ -2,6 +2,7 @@ import { hosted, marked, markTime, busy, refreshHistory, setMark } from './histo
 
 const el = id => document.getElementById(id);
 const editAccessKey = 'film-list:edit-unlocked';
+const viewKey = 'film-list:view:' + location.pathname;
 const state = { list: 'waiting', type: 'all', catalog: [], day: null };
 const filterIds = ['origin', 'genre', 'studio', 'period', 'minimum'];
 const originLabels = { russian: 'Российское', foreign: 'Зарубежное' };
@@ -104,7 +105,7 @@ function announce(msg) {
   el('notice').textContent = msg;
   toastTimer = setTimeout(() => { el('notice').textContent = ''; }, 4500);
 }
-function renderSeasons(item) {
+function renderSeasons(item, openSeason = item.season) {
   const desktop = desktopSchedule.matches;
   const blocks = (item.seasons || []).map(season => {
     const block = node(desktop ? 'section' : 'details', 'season');
@@ -114,7 +115,8 @@ function renderSeasons(item) {
     header.append(label);
     if (!desktop) {
       block.name = 'season-choice';
-      block.open = season.number === item.season;
+      block.dataset.season = season.number;
+      block.open = season.number === openSeason;
       header.append(icon('chevron'));
     }
     block.append(header);
@@ -137,10 +139,10 @@ function renderSeasons(item) {
   });
   el('seasons').replaceChildren(...(blocks.length ? blocks : [node('p', 'no-dates', 'Расписание серий пока не объявлено.')]));
 }
-function showSchedule(item) {
+function showSchedule(item, openSeason) {
   scheduleItem = item;
   el('series-title').textContent = item.title;
-  renderSeasons(item);
+  renderSeasons(item, openSeason);
   el('seasons').scrollTop = 0;
   el('schedule').showModal();
 }
@@ -385,6 +387,88 @@ function empty() {
 function reflectControls() {
   for (const b of document.querySelectorAll('[data-list]')) b.setAttribute('aria-pressed', String(b.dataset.list === state.list));
   for (const b of document.querySelectorAll('[data-type]')) b.setAttribute('aria-pressed', String(b.dataset.type === state.type));
+  el('feed').setAttribute('aria-label', 'Лента · ' + listNames[state.list]);
+}
+function sizeSortControl() {
+  const sort = el('sort');
+  const width = sort.selectedOptions[0].textContent.length * 8.25 + 32;
+  sort.style.setProperty('--sort-width', Math.min(236, width) + 'px');
+}
+function saveView() {
+  const feed = el('feed');
+  const top = feed.getBoundingClientRect().top;
+  const first = [...el('records').children].find(card => card.dataset.id && card.getBoundingClientRect().bottom > top);
+  const dialog = document.querySelector('#filters[open], #schedule[open]');
+  const openSeason = el('seasons').querySelector('details[open]');
+  const view = {
+    list: state.list, type: state.type, sort: el('sort').value,
+    filters: Object.fromEntries(filterIds.map(id => [id, el(id).value])),
+    expanded: [...expandedDescriptions], scrollTop: feed.scrollTop, listScroll: el('lists').scrollLeft,
+    card: first?.dataset.id, offset: first ? top - first.getBoundingClientRect().top : 0,
+    dialog: dialog?.id, dialogScroll: dialog?.querySelector('.dialog-body').scrollTop,
+    series: dialog?.id === 'schedule' ? scheduleItem.id : undefined,
+    season: desktopSchedule.matches ? undefined : Number(openSeason?.dataset.season) || null
+  };
+  try { sessionStorage.setItem(viewKey, JSON.stringify(view)); }
+  catch { /* The catalog also works without browser storage. */ }
+}
+function readReloadView() {
+  if (performance.getEntriesByType('navigation')[0]?.type !== 'reload') return;
+  try { return JSON.parse(sessionStorage.getItem(viewKey)); }
+  catch { return null; }
+}
+function restoreChoices(view) {
+  if (Object.hasOwn(listNames, view.list)) state.list = view.list;
+  if (['all', 'movie', 'series'].includes(view.type)) state.type = view.type;
+  for (const id of [...filterIds, 'sort']) {
+    const select = el(id);
+    const value = id === 'sort' ? view.sort : view.filters?.[id];
+    if ([...select.options].some(option => option.value === value)) select.value = value;
+  }
+  if (Array.isArray(view.expanded)) {
+    for (const id of view.expanded) expandedDescriptions.add(id);
+  }
+  reflectControls();
+  sizeSortControl();
+}
+function restoreFeed(view) {
+  const feed = el('feed');
+  const records = el('records');
+  function align() {
+    const card = typeof view.card === 'string' && records.querySelector('[data-id="' + CSS.escape(view.card) + '"]');
+    if (card) {
+      const delta = card.getBoundingClientRect().top - feed.getBoundingClientRect().top;
+      feed.scrollTop += delta + Math.min(view.offset || 0, card.offsetHeight - 1);
+    } else feed.scrollTop = view.scrollTop || 0;
+  }
+  align();
+  // Posters and expanded descriptions can change the heights above the saved card.
+  const observer = new ResizeObserver(align);
+  observer.observe(records);
+  const controller = new AbortController();
+  function stop() {
+    observer.disconnect();
+    controller.abort();
+  }
+  for (const event of ['pointerdown', 'wheel', 'touchstart', 'keydown', 'pagehide']) {
+    window.addEventListener(event, stop, { capture: true, passive: true, signal: controller.signal });
+  }
+}
+function restorePosition(view) {
+  el('lists').scrollLeft = view.listScroll || 0;
+  if (view.dialog === 'filters') {
+    el('filters-open').focus({preventScroll:true});
+    el('filters').showModal();
+  } else if (view.dialog === 'schedule') {
+    const item = state.catalog.find(item => item.id === view.series && item.type === 'series');
+    if (item) {
+      el('records').querySelector('[data-id="' + CSS.escape(item.id) + '"] [aria-haspopup="dialog"]')?.focus({preventScroll:true});
+      showSchedule(item, view.season);
+    }
+  }
+  const body = document.querySelector('dialog[open] .dialog-body');
+  if (body) body.scrollTop = view.dialogScroll || 0;
+  restoreFeed(view);
 }
 function render() {
   state.day = calendarDay(new Date());
@@ -429,7 +513,6 @@ function wireGroup(id, key) {
     if (!value) return;
     state[key] = value;
     reflectControls(); render(); el('feed').scrollTop = 0;
-    el('feed').setAttribute('aria-label','Лента · ' + listNames[state.list]);
   });
 }
 async function start() {
@@ -450,11 +533,12 @@ async function start() {
   for (const [id, values] of [['genre', state.catalog.flatMap(i => i.genres)], ['studio', [...studioChoices,...state.catalog.flatMap(i => [...i.studios, ...(i.platforms || [])])]]]) {
     for (const s of new Set(values)) el(id).add(new Option(s,s));
   }
+  const view = readReloadView();
+  if (view) restoreChoices(view);
   wireGroup('list-navigation','list'); wireGroup('types','type');
   for (const id of filterIds) el(id).addEventListener('change', render);
   el('sort').onchange = () => {
-    const chosen = el('sort').selectedOptions[0].textContent;
-    el('sort').style.setProperty('--sort-width', Math.min(236, chosen.length * 8.25 + 32) + 'px');
+    sizeSortControl();
     render(); el('feed').scrollTop = 0;
   };
   el('filters-open').onclick = () => el('filters').showModal();
@@ -470,6 +554,9 @@ async function start() {
   });
   if (!hosted) window.addEventListener('storage', render);
   trackCalendarDay();
+  if (view) restorePosition(view);
+  window.addEventListener('pagehide', saveView);
+  document.addEventListener('visibilitychange', () => { if (document.hidden) saveView(); });
   if (hosted) {
     await sync();
     window.addEventListener('focus', sync);
