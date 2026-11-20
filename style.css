@@ -70,9 +70,15 @@ select option{background:var(--paper);color:var(--ink)}
 .card-history h3{font-size:1rem;margin:0 0 6px}
 .card-history dl{grid-template-columns:minmax(0,1fr) auto}
 .card-history dd{text-align:right;font-variant-numeric:tabular-nums}
-.actions,.media-actions,.card-shortcuts{display:grid;gap:8px}
-.media-actions{grid-auto-flow:column;grid-auto-columns:minmax(0,1fr)}
-.card-shortcuts{grid-template-columns:minmax(0,1fr) 44px 44px;min-height:44px}
+.actions{display:grid;gap:14px;container-type:inline-size}
+.media-actions,.card-marks{display:flex;gap:8px}
+.media-actions .btn{flex:1 1 auto;min-width:0}
+.card-marks .btn{min-width:44px;min-height:44px}
+.card-marks [data-kind=watching]:disabled[title]{cursor:not-allowed}
+@container (max-width:360px){
+ .media-actions{gap:6px}
+ .media-actions .ico{display:none}
+}
 .btn{padding:8px 11px;min-height:42px;display:inline-flex;align-items:center;justify-content:center;gap:7px;border-radius:7px;border:1px solid var(--button-border);background:var(--button-bg);color:var(--button-text);text-align:center;line-height:1.25;font-size:.9375rem;font-weight:580}
 .btn:is([aria-pressed=true],[aria-expanded=true],:active:not(:disabled)){background:var(--tint);border-color:var(--blue);color:var(--blue)}
 .btn:active:not(:disabled){transform:translateY(1px)}

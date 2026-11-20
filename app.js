@@ -330,27 +330,32 @@ function card(item) {
   } else date.append(node('strong', '', 'Дата выхода уточняется'));
   const actions = node('div', 'actions');
   const mediaLinks = node('div', 'media-actions');
+  mediaLinks.setAttribute('role', 'group');
+  mediaLinks.setAttribute('aria-label', 'Информация о проекте');
   if (item.type === 'series') {
     const calendar = button('Сезоны и серии', '', 'calendar', () => showSchedule(item));
     calendar.setAttribute('aria-haspopup', 'dialog');
     mediaLinks.append(calendar);
   }
   if (item.trailer) {
-    mediaLinks.append(externalLink('Посмотреть трейлер', 'play', item.trailer, 'Открыть трейлер на YouTube в новой вкладке'));
+    mediaLinks.append(externalLink('Трейлер', 'play', item.trailer, 'Открыть трейлер на YouTube в новой вкладке'));
   }
-  if (mediaLinks.childElementCount) actions.append(mediaLinks);
-  const shortcuts = node('div', 'card-shortcuts');
-  shortcuts.append(externalLink('Найти в Яндексе', 'search', yandexSearchUrl(item), 'Искать «' + item.title + '» в новой вкладке'));
-  actions.append(shortcuts);
+  mediaLinks.append(externalLink('Найти', 'search', yandexSearchUrl(item), 'Найти «' + item.title + '» в Яндексе в новой вкладке'));
+  const marks = node('div', 'card-marks');
+  marks.setAttribute('role', 'group');
+  marks.setAttribute('aria-label', 'Мои отметки');
   for (const { kind, add, remove, icon } of markActions) {
-    if (kind === 'watching' && marked(item.id, 'watched')) continue;
-    const active = marked(item.id, kind);
+    const finished = kind === 'watching' && marked(item.id, 'watched');
+    const active = !finished && marked(item.id, kind);
     const compact = kind !== 'watching';
     const mark = button(active ? remove : add, 'mark', icon, () => toggleMark(item, kind), compact);
-    mark.dataset.kind = kind; mark.disabled = busy(item.id, kind);
+    mark.dataset.kind = kind;
+    mark.disabled = finished || busy(item.id, kind);
+    if (finished) mark.title = 'Сначала снимите отметку «Просмотрено»';
     mark.setAttribute('aria-pressed', String(active));
-    (compact ? shortcuts : actions).append(mark);
+    marks.append(mark);
   }
+  actions.append(mediaLinks, marks);
   copy.append(date, synopsis(item), metadata(item), cardHistory(item), actions);
   section.append(gallery(item), copy);
   return section;
