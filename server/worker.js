@@ -1,12 +1,15 @@
 const json = (value, status = 200) => Response.json(value, { status, headers: { 'Cache-Control': 'no-store' } });
+// For a reaction row, the existing integer column stores one exclusive choice.
+const reactionCodes = [null, 'like', 'neutral', 'dislike'];
 
 // Sites strips client-supplied identity headers and supplies the authenticated account.
 async function history(request, env, url) {
   const owner = request.headers.get('oai-authenticated-user-id');
   if (!owner) return json({ error: 'Требуется доступ владельца сайта.' }, 401);
   if (request.method === 'GET') {
-    const rows = await env.DB.prepare('SELECT card, kind, marked_at AS markedAt FROM marks WHERE owner = ? AND marked = 1').bind(owner).all();
-    return json(rows.results);
+    const rows = await env.DB.prepare('SELECT card, kind, marked, marked_at AS markedAt FROM marks WHERE owner = ? AND marked > 0').bind(owner).all();
+    return json(rows.results.map(({card, kind, marked, markedAt}) =>
+      kind === 'reaction' ? {card, kind, markedAt, reaction: reactionCodes[marked]} : {card, kind, markedAt}));
   }
   if (request.method !== 'PUT') return json({ error: 'Метод не поддерживается.' }, 405);
   if (request.headers.get('Origin') !== url.origin) return json({ error: 'Недопустимый источник запроса.' }, 403);
@@ -15,16 +18,21 @@ async function history(request, env, url) {
   try { change = await request.json(); } catch { return json({ error: 'Некорректные данные.' }, 400); }
   const validMark = change?.kind === 'fulfilled' ? WISH_IDS.includes(change.card)
     : CARD_IDS.includes(change?.card) && ['watching', 'watched', 'favorite'].includes(change?.kind);
-  if (!validMark || typeof change.marked !== 'boolean') {
+  const isReaction = change?.kind === 'reaction' && CARD_IDS.includes(change.card);
+  if (isReaction ? !reactionCodes.includes(change.reaction) : !validMark || typeof change.marked !== 'boolean') {
     return json({ error: 'Некорректная отметка.' }, 400);
   }
+  const code = isReaction ? reactionCodes.indexOf(change.reaction) : Number(change.marked);
   const row = await env.DB.prepare(`
-    INSERT INTO marks (owner, card, kind, marked, marked_at) VALUES (?, ?, ?, ?, ?)
+    INSERT INTO marks (owner, card, kind, marked, marked_at) SELECT ?, ?, ?, ?, ?
+    WHERE ? = 0 OR EXISTS (SELECT 1 FROM marks WHERE owner = ? AND card = ? AND kind = 'watched' AND marked = 1)
     ON CONFLICT (owner, card, kind) DO UPDATE SET
       marked_at = CASE WHEN marks.marked = excluded.marked THEN marks.marked_at ELSE excluded.marked_at END,
       marked = excluded.marked
     RETURNING marked_at AS markedAt
-  `).bind(owner, change.card, change.kind, Number(change.marked), change.marked ? new Date().toISOString() : null).first();
+  `).bind(owner, change.card, change.kind, code, code ? new Date().toISOString() : null,
+    Number(isReaction && code > 0), owner, change.card).first();
+  if (!row) return json({ error: 'Сначала отметьте просмотр.' }, 409);
   return json({ saved: true, markedAt: row.markedAt });
 }
 

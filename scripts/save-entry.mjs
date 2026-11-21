@@ -2,6 +2,7 @@
 import { readFile, rename, writeFile, open, unlink } from 'node:fs/promises';
 import { randomUUID } from 'node:crypto';
 import { root } from './public-files.mjs';
+import { fetchSeasons, mergeSeasons } from './series-schedule.mjs';
 let input = '';
 for await (const chunk of process.stdin) input += chunk;
 const entry = JSON.parse(input);
@@ -15,6 +16,15 @@ if (!/^tmdb-(movie-\d+|tv-\d+-s\d+)$/.test(entry.id) || !entry.title || !entry.d
   throw new Error('Проверьте обязательные поля и стабильный ID карточки.');
 }
 const file = new URL('catalog.json', root);
+const seriesId = entry.type === 'series' ? entry.id.split('-')[2] : null;
+let schedule = [];
+if (seriesId) {
+  if (process.argv.includes('--verified-seasons')) {
+    if (!entry.seasons?.some(s => s.number === entry.season)) throw new Error('Передайте проверенное расписание сериала.');
+  } else {
+    schedule = await fetchSeasons(seriesId);
+  }
+}
 const lock = new URL('catalog.json.lock', root);
 const guard = await open(lock, 'wx');
 const temp = new URL('catalog.' + randomUUID() + '.tmp', root);
@@ -27,6 +37,14 @@ try {
   }
   if (entry.dorama === undefined && existing?.dorama === true) entry.dorama = true;
   if (entry.origin === undefined) entry.origin = existing?.origin ?? null;
+  if (seriesId) {
+    const siblings = entries.filter(i => i.id.startsWith('tmdb-tv-' + seriesId + '-s'));
+    const seasons = mergeSeasons(...siblings.map(i => i.seasons || []), schedule,
+      [{ number: entry.season, releaseDate: entry.releaseDate }], entry.seasons || []);
+    for (const sibling of siblings) sibling.seasons = seasons;
+    entry.seasons = seasons;
+    entry.sources = { ...entry.sources, seasons: 'https://www.themoviedb.org/tv/' + seriesId + '/seasons' };
+  }
   const now = new Date();
   const localDate = new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().slice(0,10);
   entry.addedDate = existing ? existing.addedDate : localDate;

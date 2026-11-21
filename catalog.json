@@ -25,13 +25,19 @@
       {
         "number": 1,
         "releaseDate": null,
-        "episodes": []
+        "episodes": [
+          {
+            "number": 1,
+            "date": null
+          }
+        ]
       }
     ],
     "sources": {
       "tmdb": "https://www.themoviedb.org/tv/328089/season/1?language=ru-RU",
       "official": "https://screenmdm.com/news/scripted/new-guy-ritchie-drama-in-development-at-amazon-mgm-studios-uk/",
-      "catalog": "https://screensearch.co.uk/watch/tv/328089/capital"
+      "catalog": "https://screensearch.co.uk/watch/tv/328089/capital",
+      "seasons": "https://www.themoviedb.org/tv/328089/seasons"
     },
     "platforms": [],
     "origin": "foreign",
@@ -138,35 +144,61 @@
         "episodes": [
           {
             "number": 1,
-            "date": "2026-03-04"
+            "date": "2026-03-04",
+            "title": "Дело о потерянных свитках"
           },
           {
             "number": 2,
-            "date": "2026-03-04"
+            "date": "2026-03-04",
+            "title": "Дело о сожжённой фотографии"
           },
           {
             "number": 3,
-            "date": "2026-03-04"
+            "date": "2026-03-04",
+            "title": "Дело о безоружном человеке"
           },
           {
             "number": 4,
-            "date": "2026-03-04"
+            "date": "2026-03-04",
+            "title": "Дело о пропавшей пуговице"
           },
           {
             "number": 5,
-            "date": "2026-03-04"
+            "date": "2026-03-04",
+            "title": "Дело о молодом Шерлоке Холмсе"
           },
           {
             "number": 6,
-            "date": "2026-03-04"
+            "date": "2026-03-04",
+            "title": "Дело о сосуде смерти"
           },
           {
             "number": 7,
-            "date": "2026-03-04"
+            "date": "2026-03-04",
+            "title": "Дело о двух углах"
           },
           {
             "number": 8,
-            "date": "2026-03-04"
+            "date": "2026-03-04",
+            "title": "Дело о Беатрис Холмс"
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "releaseDate": null,
+        "episodes": [
+          {
+            "number": 1,
+            "date": null
+          },
+          {
+            "number": 2,
+            "date": null
+          },
+          {
+            "number": 3,
+            "date": null
           }
         ]
       }
@@ -179,7 +211,8 @@
       "poster": "https://static.tvmaze.com/uploads/images/original_untouched/604/1510570.jpg",
       "gallery1": "https://static.tvmaze.com/uploads/images/original_untouched/616/1540815.jpg",
       "gallery2": "https://static.tvmaze.com/uploads/images/original_untouched/616/1540817.jpg",
-      "schedule": "https://www.tvmaze.com/seasons/170156/young-sherlock-season-1"
+      "schedule": "https://www.tvmaze.com/seasons/170156/young-sherlock-season-1",
+      "seasons": "https://www.themoviedb.org/tv/255661/seasons"
     },
     "platforms": [
       "Amazon"
@@ -214,9 +247,68 @@
     "trailer": "https://www.youtube.com/watch?v=E9eOibZCVVU",
     "seasons": [
       {
+        "number": 1,
+        "releaseDate": "2026-03-04",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2026-03-04",
+            "title": "Дело о потерянных свитках"
+          },
+          {
+            "number": 2,
+            "date": "2026-03-04",
+            "title": "Дело о сожжённой фотографии"
+          },
+          {
+            "number": 3,
+            "date": "2026-03-04",
+            "title": "Дело о безоружном человеке"
+          },
+          {
+            "number": 4,
+            "date": "2026-03-04",
+            "title": "Дело о пропавшей пуговице"
+          },
+          {
+            "number": 5,
+            "date": "2026-03-04",
+            "title": "Дело о молодом Шерлоке Холмсе"
+          },
+          {
+            "number": 6,
+            "date": "2026-03-04",
+            "title": "Дело о сосуде смерти"
+          },
+          {
+            "number": 7,
+            "date": "2026-03-04",
+            "title": "Дело о двух углах"
+          },
+          {
+            "number": 8,
+            "date": "2026-03-04",
+            "title": "Дело о Беатрис Холмс"
+          }
+        ]
+      },
+      {
         "number": 2,
         "releaseDate": null,
-        "episodes": []
+        "episodes": [
+          {
+            "number": 1,
+            "date": null
+          },
+          {
+            "number": 2,
+            "date": null
+          },
+          {
+            "number": 3,
+            "date": null
+          }
+        ]
       }
     ],
     "sources": {
@@ -224,7 +316,8 @@
       "official": "https://www.aboutamazon.com/news/entertainment/guy-ritchie-sherlock-holmes-young-sherlock-prime-video",
       "poster": "https://static.tvmaze.com/uploads/images/original_untouched/616/1540834.jpg",
       "gallery1": "https://i.ytimg.com/vi/E9eOibZCVVU/sd2.jpg",
-      "gallery2": "https://assets.aboutamazon.com/dims4/default/70d8ddf/2147483647/strip/true/crop/1600x900+0+0/resize/1320x743!/quality/90/?url=https%3A%2F%2Fassets.aboutamazon.com%2F46%2F4f%2F49dc5a5f4d4e818f1aa3a4253b34%2Fgod-of-war-1.png"
+      "gallery2": "https://assets.aboutamazon.com/dims4/default/70d8ddf/2147483647/strip/true/crop/1600x900+0+0/resize/1320x743!/quality/90/?url=https%3A%2F%2Fassets.aboutamazon.com%2F46%2F4f%2F49dc5a5f4d4e818f1aa3a4253b34%2Fgod-of-war-1.png",
+      "seasons": "https://www.themoviedb.org/tv/255661/seasons"
     },
     "platforms": [
       "Amazon"
@@ -259,50 +352,121 @@
     "trailer": "https://www.youtube.com/watch?v=VvYl1a1Px5Y",
     "seasons": [
       {
+        "number": 1,
+        "releaseDate": "2025-03-30",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2025-03-30",
+            "title": "Пан или пропал"
+          },
+          {
+            "number": 2,
+            "date": "2025-04-06",
+            "title": "Пазл"
+          },
+          {
+            "number": 3,
+            "date": "2025-04-13",
+            "title": "Запасной план"
+          },
+          {
+            "number": 4,
+            "date": "2025-04-20",
+            "title": "Крысоловка"
+          },
+          {
+            "number": 5,
+            "date": "2025-04-27",
+            "title": "Похороны друга"
+          },
+          {
+            "number": 6,
+            "date": "2025-05-04",
+            "title": "Антверпенский блюз"
+          },
+          {
+            "number": 7,
+            "date": "2025-05-11",
+            "title": "Перепутье"
+          },
+          {
+            "number": 8,
+            "date": "2025-05-18",
+            "title": "Тарарам"
+          },
+          {
+            "number": 9,
+            "date": "2025-05-25",
+            "title": "Банкет для нищих"
+          },
+          {
+            "number": 10,
+            "date": "2025-06-01",
+            "title": "Зверь во мне"
+          }
+        ]
+      },
+      {
         "number": 2,
         "releaseDate": "2026-09-18",
         "episodes": [
           {
             "number": 1,
-            "date": "2026-09-18"
+            "date": "2026-09-18",
+            "title": "Хочу быть твоим псом"
           },
           {
             "number": 2,
-            "date": "2026-09-25"
+            "date": "2026-09-25",
+            "title": "Песня 2"
           },
           {
             "number": 3,
-            "date": "2026-10-02"
+            "date": "2026-10-02",
+            "title": "Бонзо едет в Битбург"
           },
           {
             "number": 4,
-            "date": "2026-10-09"
+            "date": "2026-10-09",
+            "title": "Глухой занавес"
           },
           {
             "number": 5,
-            "date": "2026-10-16"
+            "date": "2026-10-16",
+            "title": "Птичий край"
           },
           {
             "number": 6,
-            "date": "2026-10-23"
+            "date": "2026-10-23",
+            "title": "На другом краю"
           },
           {
             "number": 7,
-            "date": "2026-10-30"
+            "date": "2026-10-30",
+            "title": "Пиковый туз"
           },
           {
             "number": 8,
-            "date": "2026-11-06"
+            "date": "2026-11-06",
+            "title": "Мы больше не общаемся"
           },
           {
             "number": 9,
-            "date": "2026-11-13"
+            "date": "2026-11-13",
+            "title": "Нервный срыв"
           },
           {
             "number": 10,
-            "date": "2026-11-20"
+            "date": "2026-11-20",
+            "title": "The Queen Is Dead"
           }
         ]
+      },
+      {
+        "number": 3,
+        "releaseDate": null,
+        "episodes": []
       }
     ],
     "sources": {
@@ -312,7 +476,8 @@
       "poster": "https://static.tvmaze.com/uploads/images/original_untouched/637/1592942.jpg",
       "gallery1": "https://static.tvmaze.com/uploads/images/original_untouched/641/1604707.jpg",
       "gallery2": "https://static.tvmaze.com/uploads/images/original_untouched/642/1607370.jpg",
-      "schedule": "https://www.tvmaze.com/seasons/187807/mobland-season-2"
+      "schedule": "https://www.tvmaze.com/seasons/187807/mobland-season-2",
+      "seasons": "https://www.themoviedb.org/tv/247718/seasons"
     },
     "platforms": [
       "Paramount+"
@@ -344,6 +509,118 @@
     "trailer": null,
     "seasons": [
       {
+        "number": 1,
+        "releaseDate": "2025-03-30",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2025-03-30",
+            "title": "Пан или пропал"
+          },
+          {
+            "number": 2,
+            "date": "2025-04-06",
+            "title": "Пазл"
+          },
+          {
+            "number": 3,
+            "date": "2025-04-13",
+            "title": "Запасной план"
+          },
+          {
+            "number": 4,
+            "date": "2025-04-20",
+            "title": "Крысоловка"
+          },
+          {
+            "number": 5,
+            "date": "2025-04-27",
+            "title": "Похороны друга"
+          },
+          {
+            "number": 6,
+            "date": "2025-05-04",
+            "title": "Антверпенский блюз"
+          },
+          {
+            "number": 7,
+            "date": "2025-05-11",
+            "title": "Перепутье"
+          },
+          {
+            "number": 8,
+            "date": "2025-05-18",
+            "title": "Тарарам"
+          },
+          {
+            "number": 9,
+            "date": "2025-05-25",
+            "title": "Банкет для нищих"
+          },
+          {
+            "number": 10,
+            "date": "2025-06-01",
+            "title": "Зверь во мне"
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "releaseDate": "2026-09-18",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2026-09-18",
+            "title": "Хочу быть твоим псом"
+          },
+          {
+            "number": 2,
+            "date": "2026-09-25",
+            "title": "Песня 2"
+          },
+          {
+            "number": 3,
+            "date": "2026-10-02",
+            "title": "Бонзо едет в Битбург"
+          },
+          {
+            "number": 4,
+            "date": "2026-10-09",
+            "title": "Глухой занавес"
+          },
+          {
+            "number": 5,
+            "date": "2026-10-16",
+            "title": "Птичий край"
+          },
+          {
+            "number": 6,
+            "date": "2026-10-23",
+            "title": "На другом краю"
+          },
+          {
+            "number": 7,
+            "date": "2026-10-30",
+            "title": "Пиковый туз"
+          },
+          {
+            "number": 8,
+            "date": "2026-11-06",
+            "title": "Мы больше не общаемся"
+          },
+          {
+            "number": 9,
+            "date": "2026-11-13",
+            "title": "Нервный срыв"
+          },
+          {
+            "number": 10,
+            "date": "2026-11-20",
+            "title": "The Queen Is Dead"
+          }
+        ]
+      },
+      {
         "number": 3,
         "releaseDate": null,
         "episodes": []
@@ -352,7 +629,8 @@
     "sources": {
       "tmdb": "https://www.themoviedb.org/tv/247718/season/3?language=ru-RU",
       "official": "https://www.paramountpressexpress.com/paramount-plus/shows/mobland/releases/?view=113634-production-begins-on-season-three-of-the-hit-paramount-original-series-mobland",
-      "poster": "https://static.tvmaze.com/uploads/images/original_untouched/641/1604671.jpg"
+      "poster": "https://static.tvmaze.com/uploads/images/original_untouched/641/1604671.jpg",
+      "seasons": "https://www.themoviedb.org/tv/247718/seasons"
     },
     "platforms": [
       "Paramount+"
@@ -499,43 +777,165 @@
         "episodes": [
           {
             "number": 1,
-            "date": "2023-12-07"
+            "date": "2023-12-07",
+            "title": "Добро пожаловать в Колорадо"
           },
           {
             "number": 2,
-            "date": "2023-12-07"
+            "date": "2023-12-07",
+            "title": "Поживи чуть-чуть"
           },
           {
             "number": 3,
-            "date": "2023-12-07"
+            "date": "2023-12-07",
+            "title": "Эффект Коула"
           },
           {
             "number": 4,
-            "date": "2023-12-07"
+            "date": "2023-12-07",
+            "title": "Девятнадцать"
           },
           {
             "number": 5,
-            "date": "2023-12-07"
+            "date": "2023-12-07",
+            "title": "День благодарения"
           },
           {
             "number": 6,
-            "date": "2023-12-07"
+            "date": "2023-12-07",
+            "title": "Багаж"
           },
           {
             "number": 7,
-            "date": "2023-12-07"
+            "date": "2023-12-07",
+            "title": "Слухи в маленьком городе"
           },
           {
             "number": 8,
-            "date": "2023-12-07"
+            "date": "2023-12-07",
+            "title": "Теряя контроль"
           },
           {
             "number": 9,
-            "date": "2023-12-07"
+            "date": "2023-12-07",
+            "title": "Перемены"
           },
           {
             "number": 10,
-            "date": "2023-12-07"
+            "date": "2023-12-07",
+            "title": "И жили они долго и счастливо"
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "releaseDate": "2025-08-28",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2025-08-28",
+            "title": "Начать с чистого листа"
+          },
+          {
+            "number": 2,
+            "date": "2025-08-28",
+            "title": "Моя жизнь без мальчиков Уолтер"
+          },
+          {
+            "number": 3,
+            "date": "2025-08-28",
+            "title": "Девчонки хотят денег"
+          },
+          {
+            "number": 4,
+            "date": "2025-08-28",
+            "title": "Пасуй не глядя"
+          },
+          {
+            "number": 5,
+            "date": "2025-08-28",
+            "title": "Незабываемый вечер"
+          },
+          {
+            "number": 6,
+            "date": "2025-08-28",
+            "title": "После бала"
+          },
+          {
+            "number": 7,
+            "date": "2025-08-28",
+            "title": "На коне"
+          },
+          {
+            "number": 8,
+            "date": "2025-08-28",
+            "title": "Сменить передачу"
+          },
+          {
+            "number": 9,
+            "date": "2025-08-28",
+            "title": "Хэллоуин и его канун"
+          },
+          {
+            "number": 10,
+            "date": "2025-08-28",
+            "title": "Блеск и важные события"
+          }
+        ]
+      },
+      {
+        "number": 3,
+        "releaseDate": "2026-08-06",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2026-08-06",
+            "title": "Homecoming"
+          },
+          {
+            "number": 2,
+            "date": "2026-08-06",
+            "title": "Split Focus"
+          },
+          {
+            "number": 3,
+            "date": "2026-08-06",
+            "title": "Fever Pitch"
+          },
+          {
+            "number": 4,
+            "date": "2026-08-06",
+            "title": "Screeching Tires and True Love"
+          },
+          {
+            "number": 5,
+            "date": "2026-08-06",
+            "title": "The Jackie and Cole Effect"
+          },
+          {
+            "number": 6,
+            "date": "2026-08-06",
+            "title": "Wide Open Spaces"
+          },
+          {
+            "number": 7,
+            "date": "2026-08-06",
+            "title": "Washout"
+          },
+          {
+            "number": 8,
+            "date": "2026-08-06",
+            "title": "Everybody’s Fine"
+          },
+          {
+            "number": 9,
+            "date": "2026-08-06",
+            "title": "Ghosts"
+          },
+          {
+            "number": 10,
+            "date": "2026-08-06",
+            "title": "The Beautiful and The Damned"
           }
         ]
       }
@@ -547,7 +947,8 @@
       "poster": "https://static.tvmaze.com/uploads/images/original_untouched/582/1455307.jpg",
       "gallery1": "https://static.tvmaze.com/uploads/images/original_untouched/491/1228078.jpg",
       "gallery2": "https://static.tvmaze.com/uploads/images/original_untouched/491/1228081.jpg",
-      "schedule": "https://www.tvmaze.com/seasons/135378/my-life-with-the-walter-boys-season-1"
+      "schedule": "https://www.tvmaze.com/seasons/135378/my-life-with-the-walter-boys-season-1",
+      "seasons": "https://www.themoviedb.org/tv/199001/seasons"
     },
     "platforms": [
       "Netflix"
@@ -585,43 +986,53 @@
         "episodes": [
           {
             "number": 1,
-            "date": "2025-05-20"
+            "date": "2025-05-20",
+            "title": "Pilot"
           },
           {
             "number": 2,
-            "date": "2025-05-20"
+            "date": "2025-05-20",
+            "title": "Glow"
           },
           {
             "number": 3,
-            "date": "2025-05-20"
+            "date": "2025-05-20",
+            "title": "Assessment"
           },
           {
             "number": 4,
-            "date": "2025-05-20"
+            "date": "2025-05-20",
+            "title": "Disassemble"
           },
           {
             "number": 5,
-            "date": "2025-05-20"
+            "date": "2025-05-20",
+            "title": "Value"
           },
           {
             "number": 6,
-            "date": "2025-05-20"
+            "date": "2025-05-20",
+            "title": "Reassemble"
           },
           {
             "number": 7,
-            "date": "2025-05-20"
+            "date": "2025-05-20",
+            "title": "Red, Green, Blue"
           },
           {
             "number": 8,
-            "date": "2025-05-20"
+            "date": "2025-05-20",
+            "title": "Wiring"
           },
           {
             "number": 9,
-            "date": "2025-05-20"
+            "date": "2025-05-20",
+            "title": "Ignition"
           },
           {
             "number": 10,
-            "date": "2025-05-20"
+            "date": "2025-05-20",
+            "title": "Redbird"
           }
         ]
       }
@@ -633,7 +1044,8 @@
       "poster": "https://static.tvmaze.com/uploads/images/original_untouched/567/1418403.jpg",
       "gallery1": "https://static.tvmaze.com/uploads/images/original_untouched/569/1423564.jpg",
       "gallery2": "https://static.tvmaze.com/uploads/images/original_untouched/569/1423561.jpg",
-      "schedule": "https://www.tvmaze.com/seasons/160456/motorheads-season-1"
+      "schedule": "https://www.tvmaze.com/seasons/160456/motorheads-season-1",
+      "seasons": "https://www.themoviedb.org/tv/243954/seasons"
     },
     "platforms": [
       "Amazon"
@@ -671,35 +1083,43 @@
         "episodes": [
           {
             "number": 1,
-            "date": "2026-06-04"
+            "date": "2026-06-04",
+            "title": "First Date"
           },
           {
             "number": 2,
-            "date": "2026-06-04"
+            "date": "2026-06-04",
+            "title": "Second Date"
           },
           {
             "number": 3,
-            "date": "2026-06-04"
+            "date": "2026-06-04",
+            "title": "Third Date"
           },
           {
             "number": 4,
-            "date": "2026-06-04"
+            "date": "2026-06-04",
+            "title": "Fourth Date"
           },
           {
             "number": 5,
-            "date": "2026-06-04"
+            "date": "2026-06-04",
+            "title": "Fifth Date"
           },
           {
             "number": 6,
-            "date": "2026-06-04"
+            "date": "2026-06-04",
+            "title": "Sixth Date"
           },
           {
             "number": 7,
-            "date": "2026-06-04"
+            "date": "2026-06-04",
+            "title": "Seventh Date"
           },
           {
             "number": 8,
-            "date": "2026-06-04"
+            "date": "2026-06-04",
+            "title": "Eighth Date"
           }
         ]
       }
@@ -711,7 +1131,8 @@
       "poster": "https://static.tvmaze.com/uploads/images/original_untouched/624/1560249.jpg",
       "gallery1": "http://static.tvmaze.com/uploads/images/original_untouched/627/1569662.jpg",
       "gallery2": "http://static.tvmaze.com/uploads/images/original_untouched/627/1569664.jpg",
-      "schedule": "https://www.tvmaze.com/seasons/188072/two-years-later-season-1"
+      "schedule": "https://www.tvmaze.com/seasons/188072/two-years-later-season-1",
+      "seasons": "https://www.themoviedb.org/tv/322687/seasons"
     },
     "platforms": [
       "Paramount+"
@@ -746,42 +1167,101 @@
     "trailer": "https://www.youtube.com/watch?v=01IeKpHvgvM",
     "seasons": [
       {
+        "number": 1,
+        "releaseDate": "2024-03-07",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2024-03-07",
+            "title": "Изысканная агрессия"
+          },
+          {
+            "number": 2,
+            "date": "2024-03-07",
+            "title": "Томми всё ку ку"
+          },
+          {
+            "number": 3,
+            "date": "2024-03-07",
+            "title": "Где моя травка?"
+          },
+          {
+            "number": 4,
+            "date": "2024-03-07",
+            "title": "Неприятный джентльмен"
+          },
+          {
+            "number": 5,
+            "date": "2024-03-07",
+            "title": "У меня сотни родственников"
+          },
+          {
+            "number": 6,
+            "date": "2024-03-07",
+            "title": "Всякие неожиданности"
+          },
+          {
+            "number": 7,
+            "date": "2024-03-07",
+            "title": "Перед лицом опасности"
+          },
+          {
+            "number": 8,
+            "date": "2024-03-07",
+            "title": "Евангелие от Бобби Гласса"
+          }
+        ]
+      },
+      {
         "number": 2,
         "releaseDate": "2026-09-03",
         "episodes": [
           {
             "number": 1,
-            "date": "2026-09-03"
+            "date": "2026-09-03",
+            "title": "Дорога к престолу"
           },
           {
             "number": 2,
-            "date": "2026-09-03"
+            "date": "2026-09-03",
+            "title": "Крыса на кухне"
           },
           {
             "number": 3,
-            "date": "2026-09-03"
+            "date": "2026-09-03",
+            "title": "Отрекаетесь ли вы от Сатаны?"
           },
           {
             "number": 4,
-            "date": "2026-09-03"
+            "date": "2026-09-03",
+            "title": "Вся картина"
           },
           {
             "number": 5,
-            "date": "2026-09-03"
+            "date": "2026-09-03",
+            "title": "Пригородная трасса на окраине Бейзингстоука"
           },
           {
             "number": 6,
-            "date": "2026-09-03"
+            "date": "2026-09-03",
+            "title": "Колокола Сан-Доменико"
           },
           {
             "number": 7,
-            "date": "2026-09-03"
+            "date": "2026-09-03",
+            "title": "Этот адский балаган"
           },
           {
             "number": 8,
-            "date": "2026-09-03"
+            "date": "2026-09-03",
+            "title": "Дай мне здесь голову"
           }
         ]
+      },
+      {
+        "number": 3,
+        "releaseDate": null,
+        "episodes": []
       }
     ],
     "sources": {
@@ -791,7 +1271,8 @@
       "poster": "https://static.tvmaze.com/uploads/images/original_untouched/639/1599588.jpg",
       "gallery1": "https://dnm.nflximg.net/api/v6/a01MIaQTUgSJoLaS_OCn68Eg3hU/AAAAQTe4vXkxByiBL9sQJKBez5K-En3bZoL2stTYmwc4TELxzBJ9uvmQM-Xg6YfFYvEvbMz8AoxajjVNsCvOAi45iW5uYj0w2XhI_0f0vqbu5Lfe4r_YGEtTKr4qpaAUBWnjgsHEpSe3w4di6opAY7jmme-L.jpg?r=96a",
       "gallery2": "https://dnm.nflximg.net/api/v6/a01MIaQTUgSJoLaS_OCn68Eg3hU/AAAAQQTcRq-M6cdgk1G9Jdq7zyDKD2WY0M8nfDMS5LAUA0U48l2xGBtX89VGONE8gxystvJMSK_wnvDJc_k6S2tCm_wu-GeXm3OcdT7ptYI5fwuiI0la2rYgj7KyH185vyj9XwWUQaJ_l5kwqYAZ2LmyjM1R.jpg?r=e13",
-      "schedule": "https://www.tvmaze.com/seasons/173696/the-gentlemen-season-2"
+      "schedule": "https://www.tvmaze.com/seasons/173696/the-gentlemen-season-2",
+      "seasons": "https://www.themoviedb.org/tv/236235/seasons"
     },
     "platforms": [
       "Netflix"
@@ -826,6 +1307,98 @@
     "trailer": null,
     "seasons": [
       {
+        "number": 1,
+        "releaseDate": "2024-03-07",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2024-03-07",
+            "title": "Изысканная агрессия"
+          },
+          {
+            "number": 2,
+            "date": "2024-03-07",
+            "title": "Томми всё ку ку"
+          },
+          {
+            "number": 3,
+            "date": "2024-03-07",
+            "title": "Где моя травка?"
+          },
+          {
+            "number": 4,
+            "date": "2024-03-07",
+            "title": "Неприятный джентльмен"
+          },
+          {
+            "number": 5,
+            "date": "2024-03-07",
+            "title": "У меня сотни родственников"
+          },
+          {
+            "number": 6,
+            "date": "2024-03-07",
+            "title": "Всякие неожиданности"
+          },
+          {
+            "number": 7,
+            "date": "2024-03-07",
+            "title": "Перед лицом опасности"
+          },
+          {
+            "number": 8,
+            "date": "2024-03-07",
+            "title": "Евангелие от Бобби Гласса"
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "releaseDate": "2026-09-03",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2026-09-03",
+            "title": "Дорога к престолу"
+          },
+          {
+            "number": 2,
+            "date": "2026-09-03",
+            "title": "Крыса на кухне"
+          },
+          {
+            "number": 3,
+            "date": "2026-09-03",
+            "title": "Отрекаетесь ли вы от Сатаны?"
+          },
+          {
+            "number": 4,
+            "date": "2026-09-03",
+            "title": "Вся картина"
+          },
+          {
+            "number": 5,
+            "date": "2026-09-03",
+            "title": "Пригородная трасса на окраине Бейзингстоука"
+          },
+          {
+            "number": 6,
+            "date": "2026-09-03",
+            "title": "Колокола Сан-Доменико"
+          },
+          {
+            "number": 7,
+            "date": "2026-09-03",
+            "title": "Этот адский балаган"
+          },
+          {
+            "number": 8,
+            "date": "2026-09-03",
+            "title": "Дай мне здесь голову"
+          }
+        ]
+      },
+      {
         "number": 3,
         "releaseDate": null,
         "episodes": []
@@ -836,7 +1409,8 @@
       "official": "https://www.netflix.com/tudum/articles/the-gentlemen-season-3-release-date-cast-news",
       "poster": "https://image.tmdb.org/t/p/w500/kg3jGBY39Zxn3Yb2IPTyivQLbvE.jpg",
       "gallery1": "https://dnm.nflximg.net/api/v6/a01MIaQTUgSJoLaS_OCn68Eg3hU/AAAAQZNDRNBSOdzufUWTJ7qMWZSX4UXp_L_FSf6zZ4aC1cxexfZphvAaXWzakibkLlxlHz9-0R87Xnze3J6th4-LOscu6Ju77U9fsfLPzfmysUaw4jHMijxGzfEohtrGVTpsrfI233tUYYmaVmivLgR971Ay.jpg?r=8c6",
-      "gallery2": "https://www.whats-on-netflix.com/wp-content/uploads/2026/11/BGUK-3731957-063-1536x1024.jpg"
+      "gallery2": "https://www.whats-on-netflix.com/wp-content/uploads/2026/11/BGUK-3731957-063-1536x1024.jpg",
+      "seasons": "https://www.themoviedb.org/tv/236235/seasons"
     },
     "platforms": [
       "Netflix"
@@ -869,9 +1443,182 @@
     "trailer": null,
     "seasons": [
       {
+        "number": 1,
+        "releaseDate": "2021-02-24",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2021-02-24",
+            "title": "Пилотный эпизод"
+          },
+          {
+            "number": 2,
+            "date": "2021-02-24",
+            "title": "Лицо не должно быть маской"
+          },
+          {
+            "number": 3,
+            "date": "2021-02-24",
+            "title": "Новый уровень для богачей"
+          },
+          {
+            "number": 4,
+            "date": "2021-02-24",
+            "title": "Лидия Беннет — стопудово феминистка"
+          },
+          {
+            "number": 5,
+            "date": "2021-02-24",
+            "title": "Ку-ку, сучка"
+          },
+          {
+            "number": 6,
+            "date": "2021-02-24",
+            "title": "У меня травма"
+          },
+          {
+            "number": 7,
+            "date": "2021-02-24",
+            "title": "С шестнадцатилетием, засранка!"
+          },
+          {
+            "number": 8,
+            "date": "2021-02-24",
+            "title": "Одна галочка, другая"
+          },
+          {
+            "number": 9,
+            "date": "2021-02-24",
+            "title": "Любовь — сложная штука"
+          },
+          {
+            "number": 10,
+            "date": "2021-02-24",
+            "title": "Меня предали, как Джордин предала Кайли"
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "releaseDate": "2023-01-05",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2023-01-05",
+            "title": "С возвращением, чертяки!"
+          },
+          {
+            "number": 2,
+            "date": "2023-01-05",
+            "title": "Почему всё всегда должно быть так ужасно?"
+          },
+          {
+            "number": 3,
+            "date": "2023-01-05",
+            "title": "Что за игры, девочка?"
+          },
+          {
+            "number": 4,
+            "date": "2023-01-05",
+            "title": "С моим днем рождения вас"
+          },
+          {
+            "number": 5,
+            "date": "2023-01-05",
+            "title": "Латкес — огонь"
+          },
+          {
+            "number": 6,
+            "date": "2023-01-05",
+            "title": "Очень рождественская серия с Джорджией и Джинни"
+          },
+          {
+            "number": 7,
+            "date": "2023-01-05",
+            "title": "Дай нам замучить тебя серенадами"
+          },
+          {
+            "number": 8,
+            "date": "2023-01-05",
+            "title": "Чу! Приходит тьма."
+          },
+          {
+            "number": 9,
+            "date": "2023-01-05",
+            "title": "Убить Гила"
+          },
+          {
+            "number": 10,
+            "date": "2023-01-05",
+            "title": "Я совсем не Золушка"
+          }
+        ]
+      },
+      {
+        "number": 3,
+        "releaseDate": "2025-06-05",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2025-06-05",
+            "title": "Даже для подкаста тема мелковата"
+          },
+          {
+            "number": 2,
+            "date": "2025-06-05",
+            "title": "Бип, бип, чтоб тебя"
+          },
+          {
+            "number": 3,
+            "date": "2025-06-05",
+            "title": "Друзьям можно танцевать"
+          },
+          {
+            "number": 4,
+            "date": "2025-06-05",
+            "title": "Стерва вернулась"
+          },
+          {
+            "number": 5,
+            "date": "2025-06-05",
+            "title": "Рвануло так рвануло"
+          },
+          {
+            "number": 6,
+            "date": "2025-06-05",
+            "title": "По крайней мере, хуже уже не будет"
+          },
+          {
+            "number": 7,
+            "date": "2025-06-05",
+            "title": "Лють какая"
+          },
+          {
+            "number": 8,
+            "date": "2025-06-05",
+            "title": "Это домашний обед?"
+          },
+          {
+            "number": 9,
+            "date": "2025-06-05",
+            "title": "У меня сейчас соло"
+          },
+          {
+            "number": 10,
+            "date": "2025-06-05",
+            "title": "Чудовища"
+          }
+        ]
+      },
+      {
         "number": 4,
         "releaseDate": "2027-01-21",
-        "episodes": []
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2027-01-21"
+          }
+        ]
       }
     ],
     "sources": {
@@ -879,7 +1626,8 @@
       "release": "https://www.netflix.com/tudum/articles/ginny-and-georgia-season-4",
       "poster": "https://image.tmdb.org/t/p/w500/vOwunzW4dx3n0J5mH40n9jTRSwY.jpg",
       "gallery1": "https://dnm.nflximg.net/api/v6/s0XAg4q_jvYbSSbLvySyUsliNSg/AAAAQXxBBaP5WTJSGTQ-PjfcFoOcf4ck2jqHgjgjJvlKCAX-e2XWik-etSP86xFgg91BFk7atzuDwObGf9PudHtH7Xe7mG94XCycXTHZLySGWjg-lawfwQqqfa9It3m43ZMHIdnZ0US6hvTKXsgXxD5feiT2FJE.jpg?r=520",
-      "gallery2": "https://dnm.nflximg.net/api/v6/a01MIaQTUgSJoLaS_OCn68Eg3hU/AAAAQeYGZB3_v6XTgDIBdnBG_RrFh5JmigYaJ8ux4m1byOFbVhWTSt9_aYX7Ei2pxpmq24oH7bQr5nw7EWJkOug32U4lHlFhEF3SE5CIQFHrS-hmMUhycEZIOOOvNAw88f3sKhkVJuFcaOO0tsmIWoaD_49K.jpg?r=0d3"
+      "gallery2": "https://dnm.nflximg.net/api/v6/a01MIaQTUgSJoLaS_OCn68Eg3hU/AAAAQeYGZB3_v6XTgDIBdnBG_RrFh5JmigYaJ8ux4m1byOFbVhWTSt9_aYX7Ei2pxpmq24oH7bQr5nw7EWJkOug32U4lHlFhEF3SE5CIQFHrS-hmMUhycEZIOOOvNAw88f3sKhkVJuFcaOO0tsmIWoaD_49K.jpg?r=0d3",
+      "seasons": "https://www.themoviedb.org/tv/117581/seasons"
     },
     "platforms": [
       "Netflix"
@@ -911,7 +1659,8 @@
       "kinopoisk": "https://www.kinopoisk.ru/series/10086817/",
       "poster": "https://fast.ntvplus.tv/files/image/12/02/355/--kino-poster!7yz.jpg",
       "gallery1": "https://fast.ntvplus.tv/files/image/12/02/360/-list-xs!3fj.jpg",
-      "gallery2": "https://fast.ntvplus.tv/files/image/12/02/413/-list-xs!hlu.png"
+      "gallery2": "https://fast.ntvplus.tv/files/image/12/02/413/-list-xs!hlu.png",
+      "seasons": "https://www.themoviedb.org/tv/335783/seasons"
     },
     "platforms": [
       "Premier"
@@ -975,7 +1724,8 @@
       "schedule": "https://www.tvmaze.com/shows/66811/nocturne",
       "poster": "https://image.tmdb.org/t/p/w780/cfOQYtWFf2Ypc7tOT6rv1KKqLlD.jpg",
       "gallery1": "https://static.tvmaze.com/uploads/images/original_untouched/648/1621819.jpg",
-      "gallery2": "https://static.tvmaze.com/uploads/images/original_untouched/651/1628504.jpg"
+      "gallery2": "https://static.tvmaze.com/uploads/images/original_untouched/651/1628504.jpg",
+      "seasons": "https://www.themoviedb.org/tv/292741/seasons"
     },
     "platforms": [
       "Apple"
@@ -995,27 +1745,33 @@
         "episodes": [
           {
             "number": 1,
-            "date": "2026-10-30"
+            "date": "2026-10-30",
+            "title": "Лазарь, восстань!"
           },
           {
             "number": 2,
-            "date": "2026-10-30"
+            "date": "2026-10-30",
+            "title": "Для такого времени"
           },
           {
             "number": 3,
-            "date": "2026-11-06"
+            "date": "2026-11-06",
+            "title": "Взгляд изнутри"
           },
           {
             "number": 4,
-            "date": "2026-11-13"
+            "date": "2026-11-13",
+            "title": "Курьер"
           },
           {
             "number": 5,
-            "date": "2026-11-20"
+            "date": "2026-11-20",
+            "title": "Одиночество"
           },
           {
             "number": 6,
-            "date": "2026-11-25"
+            "date": "2026-11-25",
+            "title": "Связующая нить"
           },
           {
             "number": 7,
@@ -1064,7 +1820,8 @@
       "trailer": "https://rutube.ru/video/d1d04f84318d653bbe484fd50c039ee9/",
       "poster": "https://static.tvmaze.com/uploads/images/original_untouched/648/1621312.jpg",
       "gallery1": "https://wink.ru/api/media/file/0049-1400x935.jpg?v=mw0srswl",
-      "gallery2": "https://wink.ru/api/media/file/a11-1400x933.jpg?v=mw0qgacc"
+      "gallery2": "https://wink.ru/api/media/file/a11-1400x933.jpg?v=mw0qgacc",
+      "seasons": "https://www.themoviedb.org/tv/337738/seasons"
     },
     "platforms": [
       "Wink"
@@ -1142,7 +1899,8 @@
       "official": "https://www.peacocktv.com/blog/eddie-redmaynes-the-day-of-the-jackal-reveals-march-2027-return",
       "poster": "https://image.tmdb.org/t/p/w780/tYLecM3WSEjlkKhkGiH5G68Dprm.jpg",
       "gallery1": "https://images.contentstack.io/v3/assets/blt4b099fa9cc3801a6/blt63146eccc846aa78/6afedf274780233b71c83f46/FLTease_01_TheDayoftheJackal_S02.jpg",
-      "gallery2": "https://i.ytimg.com/vi/eD7PKEOKGDI/sd2.jpg"
+      "gallery2": "https://i.ytimg.com/vi/eD7PKEOKGDI/sd2.jpg",
+      "seasons": "https://www.themoviedb.org/tv/222766/seasons"
     },
     "platforms": [
       "Sky",
@@ -1157,6 +1915,52 @@
     "rating": null,
     "ratingSource": null,
     "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2024-11-07",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2024-11-07"
+          },
+          {
+            "number": 2,
+            "date": "2024-11-07"
+          },
+          {
+            "number": 3,
+            "date": "2024-11-07"
+          },
+          {
+            "number": 4,
+            "date": "2024-11-08"
+          },
+          {
+            "number": 5,
+            "date": "2024-11-08"
+          },
+          {
+            "number": 6,
+            "date": "2024-11-14"
+          },
+          {
+            "number": 7,
+            "date": "2024-11-21"
+          },
+          {
+            "number": 8,
+            "date": "2024-11-28"
+          },
+          {
+            "number": 9,
+            "date": "2024-12-05"
+          },
+          {
+            "number": 10,
+            "date": "2024-12-12"
+          }
+        ]
+      },
       {
         "number": 2,
         "releaseDate": null,
@@ -1189,7 +1993,8 @@
       "kinopoisk": "https://www.kinopoisk.ru/series/5454228/",
       "poster": "https://image.tmdb.org/t/p/w780/8bqb3Ql6bFYDcjUMyJWpi1Ll04N.jpg",
       "gallery1": "https://assets.aboutamazon.com/e2/64/4e7065b44dfabad890c7a84ed281/untitled-26-june-2026-at-10-37-28.png",
-      "gallery2": "https://assets.aboutamazon.com/d4/f6/d16fc5994bceb820a3fb80d8af54/untitled-26-june-2026-at-10-48-54.png"
+      "gallery2": "https://assets.aboutamazon.com/d4/f6/d16fc5994bceb820a3fb80d8af54/untitled-26-june-2026-at-10-48-54.png",
+      "seasons": "https://www.themoviedb.org/tv/250670/seasons"
     },
     "platforms": [
       "Amazon"
@@ -1203,6 +2008,78 @@
     "ratingSource": null,
     "origin": "foreign",
     "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2024-05-09",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2024-05-09",
+            "title": "Under the Radar"
+          },
+          {
+            "number": 2,
+            "date": "2024-05-09",
+            "title": "Noblesse Oblige"
+          },
+          {
+            "number": 3,
+            "date": "2024-05-09",
+            "title": "Exposed"
+          },
+          {
+            "number": 4,
+            "date": "2024-05-09",
+            "title": "The Moment of Truth"
+          },
+          {
+            "number": 5,
+            "date": "2024-05-09",
+            "title": "In the Eye of the Storm"
+          },
+          {
+            "number": 6,
+            "date": "2024-05-09",
+            "title": "A Piece of Happiness"
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "releaseDate": "2025-11-07",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2025-11-07",
+            "title": "Devastated"
+          },
+          {
+            "number": 2,
+            "date": "2025-11-07",
+            "title": "Wish to the Universe"
+          },
+          {
+            "number": 3,
+            "date": "2025-11-07",
+            "title": "Emotional Rollercoaster"
+          },
+          {
+            "number": 4,
+            "date": "2025-11-14",
+            "title": "Secrets"
+          },
+          {
+            "number": 5,
+            "date": "2025-11-21",
+            "title": "Deceptive Lightness"
+          },
+          {
+            "number": 6,
+            "date": "2025-11-28",
+            "title": "Reaching for the Stars"
+          }
+        ]
+      },
       {
         "number": 3,
         "releaseDate": "2026-12-09",
@@ -1340,7 +2217,8 @@
       "press": "https://www.amcglobalmedia.com/2026/08/19/amc-catherine-zeta-jones-revenge-thriller-kill-jackie-to-premiere-october-2/",
       "poster": "https://image.tmdb.org/t/p/w780/xECrN4jpKMhTOxUbnCdiKo7QWdL.jpg",
       "gallery1": "https://assets.aboutamazon.com/50/46/4c069efd448787fcf2f3724a388b/catherine-zeta-jones-as-jackie-price-unai-mateo-fremantle-and-steel-springs-pictures-2026-1-cropped.jpg",
-      "gallery2": "https://assets.aboutamazon.com/da/3a/51253770408695dffb28fb7792f8/sebastian-armesto-as-the-cuban-and-daniel-ings-as-sam-unai-mateo-fremantle-and-steel-springs-pictures-2026-cropped.jpg"
+      "gallery2": "https://assets.aboutamazon.com/da/3a/51253770408695dffb28fb7792f8/sebastian-armesto-as-the-cuban-and-daniel-ings-as-sam-unai-mateo-fremantle-and-steel-springs-pictures-2026-cropped.jpg",
+      "seasons": "https://www.themoviedb.org/tv/284558/seasons"
     },
     "platforms": [
       "Амедиатека",
@@ -1362,35 +2240,43 @@
         "episodes": [
           {
             "number": 1,
-            "date": "2026-10-02"
+            "date": "2026-10-02",
+            "title": "Сжечь дом дотла"
           },
           {
             "number": 2,
-            "date": "2026-10-02"
+            "date": "2026-10-02",
+            "title": "Смерть захватчикам"
           },
           {
             "number": 3,
-            "date": "2026-10-02"
+            "date": "2026-10-02",
+            "title": "Её не стало"
           },
           {
             "number": 4,
-            "date": "2026-10-02"
+            "date": "2026-10-02",
+            "title": "Кокаиновый блюз"
           },
           {
             "number": 5,
-            "date": "2026-10-02"
+            "date": "2026-10-02",
+            "title": "А вот и она"
           },
           {
             "number": 6,
-            "date": "2026-10-02"
+            "date": "2026-10-02",
+            "title": "Мы с Дьяволом"
           },
           {
             "number": 7,
-            "date": "2026-10-02"
+            "date": "2026-10-02",
+            "title": "Мамочки и папочки"
           },
           {
             "number": 8,
-            "date": "2026-10-02"
+            "date": "2026-10-02",
+            "title": "Ветер перемен"
           }
         ]
       }
@@ -1421,7 +2307,8 @@
       "schedule": "https://okko.tv/media/news/razdelyai-a-zatem-vlastvui-grafik-vykhoda-epizodov-seriala-voina-24-09-2026",
       "poster": "https://resizing.flixster.com/pXMMWpodRzA_t_8M83GM45IYdeQ=/ems.cHJkLWVtcy1hc3NldHMvdHZzZXJpZXMvMDU5MmEyMGYtNWNiNS00YjAzLTg3MmEtZDIwZjM0ZmNlYmNiLmpwZw==",
       "gallery1": "https://images.contentstack.io/v3/assets/blt4b099fa9cc3801a6/blte545e8ba3fdfe029/6a7437630da673498057a052/war-01.jpg",
-      "gallery2": "https://rts.org.uk/sites/default/files/styles/9_column_landscape/public/gallery/Main%20body%20article%20page%20dimensions%20%281%29.png?itok=U8qGcref"
+      "gallery2": "https://rts.org.uk/sites/default/files/styles/9_column_landscape/public/gallery/Main%20body%20article%20page%20dimensions%20%281%29.png?itok=U8qGcref",
+      "seasons": "https://www.themoviedb.org/tv/298852/seasons"
     },
     "platforms": [
       "HBO",
@@ -1442,35 +2329,43 @@
         "episodes": [
           {
             "number": 1,
-            "date": "2026-10-01"
+            "date": "2026-10-01",
+            "title": "It's Done"
           },
           {
             "number": 2,
-            "date": "2026-10-08"
+            "date": "2026-10-08",
+            "title": "No More Nasty Surprises"
           },
           {
             "number": 3,
-            "date": "2026-10-15"
+            "date": "2026-10-15",
+            "title": "Chip Off the Block"
           },
           {
             "number": 4,
-            "date": "2026-10-22"
+            "date": "2026-10-22",
+            "title": "Sing"
           },
           {
             "number": 5,
-            "date": "2026-10-29"
+            "date": "2026-10-29",
+            "title": "Every Little Thing She Does"
           },
           {
             "number": 6,
-            "date": "2026-11-05"
+            "date": "2026-11-05",
+            "title": "The Simple Act of Paying Attention"
           },
           {
             "number": 7,
-            "date": "2026-11-12"
+            "date": "2026-11-12",
+            "title": "The Juicy Bit"
           },
           {
             "number": 8,
-            "date": "2026-11-19"
+            "date": "2026-11-19",
+            "title": "Partners"
           }
         ]
       }
@@ -1542,43 +2437,43 @@
         "episodes": [
           {
             "number": 1,
-            "title": "The Catch",
-            "date": "2026-09-10"
+            "date": "2026-09-10",
+            "title": "The Catch"
           },
           {
             "number": 2,
-            "title": "The Hateful Eight",
-            "date": "2026-09-10"
+            "date": "2026-09-10",
+            "title": "The Hateful Eight"
           },
           {
             "number": 3,
-            "title": "Flight Crew",
-            "date": "2026-09-10"
+            "date": "2026-09-10",
+            "title": "Flight Crew"
           },
           {
             "number": 4,
-            "title": "True Rowmance",
-            "date": "2026-09-10"
+            "date": "2026-09-10",
+            "title": "True Rowmance"
           },
           {
             "number": 5,
-            "title": "Anatomy of a Fall Formal",
-            "date": "2026-09-10"
+            "date": "2026-09-10",
+            "title": "Anatomy of a Fall Formal"
           },
           {
             "number": 6,
-            "title": "Bad Break",
-            "date": "2026-09-10"
+            "date": "2026-09-10",
+            "title": "Bad Break"
           },
           {
             "number": 7,
-            "title": "Under Pressure",
-            "date": "2026-09-10"
+            "date": "2026-09-10",
+            "title": "Under Pressure"
           },
           {
             "number": 8,
-            "title": "O Coxswain, My Coxswain",
-            "date": "2026-09-10"
+            "date": "2026-09-10",
+            "title": "O Coxswain, My Coxswain"
           }
         ]
       }
@@ -1591,7 +2486,8 @@
       "schedule": "https://thetvdb.com/series/crew-girl/seasons/official/1",
       "poster": "https://image.tmdb.org/t/p/w780/jkPZW1iHNvlI6077NxSxwITa1tj.jpg",
       "gallery1": "https://image.tmdb.org/t/p/w780/lmtTtOjsIBxwKD7LsAD5eeyhq1g.jpg",
-      "gallery2": "https://i.ytimg.com/vi/Xs5qsfqp-tA/sd3.jpg"
+      "gallery2": "https://i.ytimg.com/vi/Xs5qsfqp-tA/sd3.jpg",
+      "seasons": "https://www.themoviedb.org/tv/300507/seasons"
     },
     "platforms": [
       "Netflix"
@@ -1631,43 +2527,211 @@
         "episodes": [
           {
             "number": 1,
-            "title": "Homecoming",
-            "date": "2019-03-09"
+            "date": "2019-03-09",
+            "title": "Homecoming"
           },
           {
             "number": 2,
-            "title": "First Kiss",
-            "date": "2019-03-09"
+            "date": "2019-03-09",
+            "title": "First Kiss"
           },
           {
             "number": 3,
-            "title": "Sunday",
-            "date": "2019-03-09"
+            "date": "2019-03-09",
+            "title": "Sunday"
           },
           {
             "number": 4,
-            "title": "Sleepover",
-            "date": "2019-03-17"
+            "date": "2019-03-17",
+            "title": "Sleepover"
           },
           {
             "number": 5,
-            "title": "Audition",
-            "date": "2019-03-17"
+            "date": "2019-03-17",
+            "title": "Audition"
           },
           {
             "number": 6,
-            "title": "Halloween",
-            "date": null
+            "date": "2019-04-13",
+            "title": "Halloween"
           },
           {
             "number": 7,
-            "title": "Road Trip",
-            "date": null
+            "date": "2019-04-20",
+            "title": "Road Trip"
           },
           {
             "number": 8,
-            "title": "Lucia",
-            "date": null
+            "date": "2019-04-27",
+            "title": "Lucia"
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "releaseDate": "2020-03-06",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2020-03-06",
+            "title": "Поступления"
+          },
+          {
+            "number": 2,
+            "date": "2020-03-06",
+            "title": "Воссоединение"
+          },
+          {
+            "number": 3,
+            "date": "2020-03-06",
+            "title": "Ночь Вне Дома"
+          },
+          {
+            "number": 4,
+            "date": "2020-03-13",
+            "title": "Возвращение"
+          },
+          {
+            "number": 5,
+            "date": "2020-03-13",
+            "title": "День игры"
+          },
+          {
+            "number": 6,
+            "date": "2020-03-20",
+            "title": "Последствия"
+          },
+          {
+            "number": 7,
+            "date": "2020-03-20",
+            "title": "Секреты"
+          },
+          {
+            "number": 8,
+            "date": "2020-03-27",
+            "title": "Раскрывается"
+          },
+          {
+            "number": 9,
+            "date": "2020-04-03",
+            "title": "Июнь"
+          },
+          {
+            "number": 10,
+            "date": "2020-04-10",
+            "title": "Отправления"
+          }
+        ]
+      },
+      {
+        "number": 3,
+        "releaseDate": "2021-06-04",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2021-06-04",
+            "title": "The Funeral"
+          },
+          {
+            "number": 2,
+            "date": "2021-06-04",
+            "title": "Diamonds"
+          },
+          {
+            "number": 3,
+            "date": "2021-06-04",
+            "title": "Field Trip"
+          },
+          {
+            "number": 4,
+            "date": "2021-06-11",
+            "title": "Date Night"
+          },
+          {
+            "number": 5,
+            "date": "2021-06-11",
+            "title": "Wounds"
+          },
+          {
+            "number": 6,
+            "date": "2021-06-18",
+            "title": "Crossroads"
+          },
+          {
+            "number": 7,
+            "date": "2021-06-18",
+            "title": "The Bomb"
+          },
+          {
+            "number": 8,
+            "date": "2021-06-25",
+            "title": "Lost"
+          },
+          {
+            "number": 9,
+            "date": "2021-06-25",
+            "title": "Rewind"
+          },
+          {
+            "number": 10,
+            "date": "2021-07-02",
+            "title": "New Years"
+          }
+        ]
+      },
+      {
+        "number": 4,
+        "releaseDate": "2022-01-28",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2022-01-28",
+            "title": "Time"
+          },
+          {
+            "number": 2,
+            "date": "2022-01-28",
+            "title": "Valentines"
+          },
+          {
+            "number": 3,
+            "date": "2022-02-04",
+            "title": "Nocturnal"
+          },
+          {
+            "number": 4,
+            "date": "2022-02-04",
+            "title": "Confrontations"
+          },
+          {
+            "number": 5,
+            "date": "2022-02-11",
+            "title": "April Fools"
+          },
+          {
+            "number": 6,
+            "date": "2022-02-11",
+            "title": "The Truth"
+          },
+          {
+            "number": 7,
+            "date": "2022-02-18",
+            "title": "The Plan"
+          },
+          {
+            "number": 8,
+            "date": "2022-02-18",
+            "title": "Endgame"
+          },
+          {
+            "number": 9,
+            "date": "2022-02-25",
+            "title": "Prom"
+          },
+          {
+            "number": 10,
+            "date": "2022-02-25",
+            "title": "Farewell"
           }
         ]
       }
@@ -1679,7 +2743,8 @@
       "schedule": "https://thetvdb.com/series/eagles/seasons/official/1",
       "poster": "https://image.tmdb.org/t/p/w780/y4NtJJMBFTtuBVaDEsuUfDvZ4TQ.jpg",
       "gallery1": "https://www.svtstatic.se/image/custom/1144/31217038/1686135967?format=auto&chromaSubSampling=false&enableAvif=true&quality=85",
-      "gallery2": "https://i.ytimg.com/vi/EpiKTLaOjgw/sd2.jpg"
+      "gallery2": "https://i.ytimg.com/vi/EpiKTLaOjgw/sd2.jpg",
+      "seasons": "https://www.themoviedb.org/tv/87833/seasons"
     },
     "platforms": [],
     "origin": "foreign",
@@ -1716,43 +2781,53 @@
         "episodes": [
           {
             "number": 1,
-            "date": "2020-01-01"
+            "date": "2020-01-01",
+            "title": "Вы приехали в Сан-Валли"
           },
           {
             "number": 2,
-            "date": "2020-01-01"
+            "date": "2020-01-01",
+            "title": "Добро пожаловать в семью"
           },
           {
             "number": 3,
-            "date": "2020-01-01"
+            "date": "2020-01-01",
+            "title": "Соблюдайте осторожность"
           },
           {
             "number": 4,
-            "date": "2020-01-01"
+            "date": "2020-01-01",
+            "title": "Сохраним природу Пайнкреста"
           },
           {
             "number": 5,
-            "date": "2020-01-01"
+            "date": "2020-01-01",
+            "title": "Два за 40 долларов"
           },
           {
             "number": 6,
-            "date": "2020-01-01"
+            "date": "2020-01-01",
+            "title": "Хорошего дня!"
           },
           {
             "number": 7,
-            "date": "2020-01-01"
+            "date": "2020-01-01",
+            "title": "На восстановление потребуется время"
           },
           {
             "number": 8,
-            "date": "2020-01-01"
+            "date": "2020-01-01",
+            "title": "Ад существует"
           },
           {
             "number": 9,
-            "date": "2020-01-01"
+            "date": "2020-01-01",
+            "title": "Лучшая мама"
           },
           {
             "number": 10,
-            "date": "2020-01-01"
+            "date": "2020-01-01",
+            "title": "Уголок слез и поцелуев"
           }
         ]
       }
@@ -1764,7 +2839,8 @@
       "imdb": "https://www.imdb.com/title/tt9117054/",
       "poster": "https://image.tmdb.org/t/p/w780/bAEGuEK0z4KTlrsx5UYpIvmPIPc.jpg",
       "gallery1": "https://image.tmdb.org/t/p/w780/zLAANW5gTW6l2vbMPRmJasyI171.jpg",
-      "gallery2": "https://i.ytimg.com/vi/AmdnhR1Ie7g/sd3.jpg"
+      "gallery2": "https://i.ytimg.com/vi/AmdnhR1Ie7g/sd3.jpg",
+      "seasons": "https://www.themoviedb.org/tv/83050/seasons"
     },
     "platforms": [
       "Netflix"
@@ -1911,27 +2987,33 @@
         "episodes": [
           {
             "number": 1,
-            "date": "2026-11-06"
+            "date": "2026-11-06",
+            "title": "Heartbreak"
           },
           {
             "number": 2,
-            "date": "2026-11-06"
+            "date": "2026-11-06",
+            "title": "New Girl"
           },
           {
             "number": 3,
-            "date": "2026-11-06"
+            "date": "2026-11-06",
+            "title": "Zombie Girl"
           },
           {
             "number": 4,
-            "date": "2026-11-06"
+            "date": "2026-11-06",
+            "title": "Winter Break"
           },
           {
             "number": 5,
-            "date": "2026-11-06"
+            "date": "2026-11-06",
+            "title": "Game Over"
           },
           {
             "number": 6,
-            "date": "2026-11-06"
+            "date": "2026-11-06",
+            "title": "Supermad"
           }
         ]
       }
@@ -1942,7 +3024,8 @@
       "official": "https://www.primevideo.com/-/fr/detail/0LPJITUUG4OPFN23EQ16P5SH3I",
       "poster": "https://image.tmdb.org/t/p/w780/kTgV6VLp70QOBpCZqvEuTWAA4Ng.jpg",
       "gallery1": "https://image.tmdb.org/t/p/w780/oaWJm4brEMSWBmQIB73DFxsU683.jpg",
-      "gallery2": "https://image.tmdb.org/t/p/w1280/iUNnKNy6nDItXgwcVKQwsrDfjj5.jpg"
+      "gallery2": "https://image.tmdb.org/t/p/w1280/iUNnKNy6nDItXgwcVKQwsrDfjj5.jpg",
+      "seasons": "https://www.themoviedb.org/tv/303044/seasons"
     },
     "platforms": [
       "Amazon"
@@ -1981,35 +3064,43 @@
         "episodes": [
           {
             "number": 1,
-            "date": "2026-11-11"
+            "date": "2026-11-11",
+            "title": "Развратный бог"
           },
           {
             "number": 2,
-            "date": "2026-11-11"
+            "date": "2026-11-11",
+            "title": "Иисус, буквально"
           },
           {
             "number": 3,
-            "date": "2026-11-11"
+            "date": "2026-11-11",
+            "title": "Нечестивые мысли"
           },
           {
             "number": 4,
-            "date": "2026-11-11"
+            "date": "2026-11-11",
+            "title": "Я видел Грейс Франклин с дьяволом"
           },
           {
             "number": 5,
-            "date": "2026-11-11"
+            "date": "2026-11-11",
+            "title": "Притворство"
           },
           {
             "number": 6,
-            "date": "2026-11-11"
+            "date": "2026-11-11",
+            "title": "Звёздное качество"
           },
           {
             "number": 7,
-            "date": "2026-11-11"
+            "date": "2026-11-11",
+            "title": "Святая Троица"
           },
           {
             "number": 8,
-            "date": "2026-11-11"
+            "date": "2026-11-11",
+            "title": "Каминг-аут"
           }
         ]
       }
@@ -2020,7 +3111,8 @@
       "official": "https://www.netflix.com/title/81983578",
       "poster": "https://image.tmdb.org/t/p/w780/195kCuy2RqGaEAZDDpGTx7gBUBZ.jpg",
       "gallery1": "https://i.ytimg.com/vi/wl7uj7n7DoY/sd1.jpg",
-      "gallery2": "https://i.ytimg.com/vi/wl7uj7n7DoY/sd3.jpg"
+      "gallery2": "https://i.ytimg.com/vi/wl7uj7n7DoY/sd3.jpg",
+      "seasons": "https://www.themoviedb.org/tv/291507/seasons"
     },
     "platforms": [
       "Netflix"
@@ -2059,41 +3151,48 @@
         "episodes": [
           {
             "number": 1,
-            "title": "Pilot",
-            "date": "2026-08-05"
+            "date": "2026-08-05",
+            "title": "Pilot"
           },
           {
             "number": 2,
-            "title": "Don’t You Want Me",
-            "date": "2026-08-05"
+            "date": "2026-08-05",
+            "title": "Don’t You Want Me"
           },
           {
             "number": 3,
-            "date": "2026-08-12"
+            "date": "2026-08-12",
+            "title": "Help Me! Rhonda"
           },
           {
             "number": 4,
-            "date": "2026-08-19"
+            "date": "2026-08-19",
+            "title": "Robert's Party"
           },
           {
             "number": 5,
-            "date": "2026-08-26"
+            "date": "2026-08-26",
+            "title": "Murder on the Dancefloor"
           },
           {
             "number": 6,
-            "date": "2026-09-02"
+            "date": "2026-09-02",
+            "title": "Homecoming (1)"
           },
           {
             "number": 7,
-            "date": "2026-09-09"
+            "date": "2026-09-09",
+            "title": "Homecoming (2)"
           },
           {
             "number": 8,
-            "date": "2026-09-16"
+            "date": "2026-09-16",
+            "title": "Hamlet"
           },
           {
             "number": 9,
-            "date": "2026-09-23"
+            "date": "2026-09-23",
+            "title": "Stairway to Heaven"
           }
         ]
       }
@@ -2106,7 +3205,8 @@
       "schedule": "https://www.hulu.com/guides/the-shards",
       "poster": "https://image.tmdb.org/t/p/w780/wP0GdqwVu2g1y3q1KzBXuSrdTvX.jpg",
       "gallery1": "https://i.ytimg.com/vi/Zpm9HUOrZIc/sd1.jpg",
-      "gallery2": "https://i.ytimg.com/vi/Zpm9HUOrZIc/sd2.jpg"
+      "gallery2": "https://i.ytimg.com/vi/Zpm9HUOrZIc/sd2.jpg",
+      "seasons": "https://www.themoviedb.org/tv/298168/seasons"
     },
     "platforms": [],
     "origin": "foreign",
@@ -2183,43 +3283,155 @@
         "episodes": [
           {
             "number": 1,
-            "title": "Monster",
-            "date": "2019-12-06"
+            "date": "2019-12-06",
+            "title": "Monster"
           },
           {
             "number": 2,
-            "title": "Black People in the Neighborhood",
-            "date": "2019-12-06"
+            "date": "2019-12-06",
+            "title": "Black People in the Neighborhood"
           },
           {
             "number": 3,
-            "title": "Even Salt Looks Like Sugar",
-            "date": "2019-12-06"
+            "date": "2019-12-06",
+            "title": "Even Salt Looks Like Sugar"
           },
           {
             "number": 4,
-            "title": "No Cross, No Crown",
-            "date": "2019-12-13"
+            "date": "2019-12-13",
+            "title": "No Cross, No Crown"
           },
           {
             "number": 5,
-            "title": "Graveyard Love",
-            "date": "2019-12-20"
+            "date": "2019-12-20",
+            "title": "Graveyard Love"
           },
           {
             "number": 6,
-            "title": "Not Buried, Planted",
-            "date": "2019-12-27"
+            "date": "2019-12-27",
+            "title": "Not Buried, Planted"
           },
           {
             "number": 7,
-            "title": "Live Thru This",
-            "date": "2020-01-03"
+            "date": "2020-01-03",
+            "title": "Live Thru This"
           },
           {
             "number": 8,
-            "title": "All That Was Lost",
-            "date": "2020-01-10"
+            "date": "2020-01-10",
+            "title": "All That Was Lost"
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "releaseDate": "2021-08-20",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2021-08-20",
+            "title": "Чужие слезы это всего лишь вода"
+          },
+          {
+            "number": 2,
+            "date": "2021-08-27",
+            "title": "Призраки на пиру"
+          },
+          {
+            "number": 3,
+            "date": "2021-09-03",
+            "title": "Если бы желания были лошадьми"
+          },
+          {
+            "number": 4,
+            "date": "2021-09-10",
+            "title": "В другой жизни"
+          },
+          {
+            "number": 5,
+            "date": "2021-09-17",
+            "title": "Если бы я не смеялась, ты бы плакал"
+          },
+          {
+            "number": 6,
+            "date": "2021-09-23",
+            "title": "Все эти женщины"
+          },
+          {
+            "number": 7,
+            "date": "2021-10-01",
+            "title": "Лантерман-Петрис-Шорт"
+          },
+          {
+            "number": 8,
+            "date": "2021-10-08",
+            "title": "Нерассказанная история"
+          },
+          {
+            "number": 9,
+            "date": "2021-10-14",
+            "title": "Кирпич за кирпич тоже может рухнуть"
+          },
+          {
+            "number": 10,
+            "date": "2021-10-21",
+            "title": "Последний выход... Окленд"
+          }
+        ]
+      },
+      {
+        "number": 3,
+        "releaseDate": "2023-01-19",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2023-01-19",
+            "title": "На горло певчей птице"
+          },
+          {
+            "number": 2,
+            "date": "2023-01-26",
+            "title": "И горе - оружие ее"
+          },
+          {
+            "number": 3,
+            "date": "2023-02-02",
+            "title": "Да не узрит она здесь врага"
+          },
+          {
+            "number": 4,
+            "date": "2023-02-09",
+            "title": "Не своди с нее глаз"
+          },
+          {
+            "number": 5,
+            "date": "2023-02-16",
+            "title": "Свобода не дается даром, ее завоевывают"
+          },
+          {
+            "number": 6,
+            "date": "2023-02-23",
+            "title": "Отравленный плод из рук моих"
+          },
+          {
+            "number": 7,
+            "date": "2023-03-02",
+            "title": "Наслаждение в самобичевании"
+          },
+          {
+            "number": 8,
+            "date": "2023-03-09",
+            "title": "Тьма прославляет триумф света"
+          },
+          {
+            "number": 9,
+            "date": "2023-03-16",
+            "title": "Незначительные тайны"
+          },
+          {
+            "number": 10,
+            "date": "2023-03-23",
+            "title": "Поцелуй не только мой"
           }
         ]
       }
@@ -2232,7 +3444,8 @@
       "schedule": "https://thetvdb.com/series/truth-be-told-2019/allseasons/official",
       "poster": "https://image.tmdb.org/t/p/w780/3T2TJ61ems7ArVGwb6kiVuKcdUk.jpg",
       "gallery1": "https://image.tmdb.org/t/p/w780/cXjRGoYFAFkwPzhOZXFARPuYQ00.jpg",
-      "gallery2": "https://i.ytimg.com/vi/HjGm7JUc04E/sd2.jpg"
+      "gallery2": "https://i.ytimg.com/vi/HjGm7JUc04E/sd2.jpg",
+      "seasons": "https://www.themoviedb.org/tv/80054/seasons"
     },
     "platforms": [
       "Apple"
@@ -2645,7 +3858,8 @@
       "suppliedVideo": "https://www.youtube.com/watch?v=GMxvl4snuKQ",
       "poster": "https://image.tmdb.org/t/p/w500/4V1DsqIwLmEKsgfzQayDF60eRYc.jpg",
       "gallery1": "https://image.tmdb.org/t/p/w780/d6t09reR7JH0EUQfACa2846REo8.jpg",
-      "gallery2": "https://i.ytimg.com/vi/oMeVvhr7GZw/sd1.jpg"
+      "gallery2": "https://i.ytimg.com/vi/oMeVvhr7GZw/sd1.jpg",
+      "seasons": "https://www.themoviedb.org/tv/294607/seasons"
     },
     "platforms": [
       "Netflix"
@@ -2726,7 +3940,8 @@
       "suppliedVideo": "https://www.youtube.com/watch?v=ovC6vuBvTOk",
       "poster": "https://image.tmdb.org/t/p/w500/qAcXaAoJiYry9nGEyxTirnJ82Jj.jpg",
       "gallery1": "https://image.tmdb.org/t/p/w780/nuLUxzJ4bVVxafru5lgWfmcPOm7.jpg",
-      "gallery2": "https://i.ytimg.com/vi/1d4x_eSdqNc/sd1.jpg"
+      "gallery2": "https://i.ytimg.com/vi/1d4x_eSdqNc/sd1.jpg",
+      "seasons": "https://www.themoviedb.org/tv/171802/seasons"
     },
     "platforms": [
       "Amazon"
@@ -2760,6 +3975,62 @@
     "status": "waiting",
     "trailer": "https://www.youtube.com/watch?v=9ZiePpwIlAE",
     "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2024-08-13",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2024-08-13",
+            "title": "В США тут самая большая концентрация частей тела в воде"
+          },
+          {
+            "number": 2,
+            "date": "2024-08-13",
+            "title": "За сотню передумаешь"
+          },
+          {
+            "number": 3,
+            "date": "2024-08-20",
+            "title": "Он отнюдь не Элвин Эйнштейн"
+          },
+          {
+            "number": 4,
+            "date": "2024-08-27",
+            "title": "Не имею ничего против, но мне больше это не нужно"
+          },
+          {
+            "number": 5,
+            "date": "2024-09-03",
+            "title": "Проклятая рука вернулась"
+          },
+          {
+            "number": 6,
+            "date": "2024-09-10",
+            "title": "Эй, передайте мисс Чейз, что я всё еще люблю ее"
+          },
+          {
+            "number": 7,
+            "date": "2024-09-17",
+            "title": "Заядлый кошатник"
+          },
+          {
+            "number": 8,
+            "date": "2024-09-24",
+            "title": "Русская мафия очень активна на Ки-Уэст"
+          },
+          {
+            "number": 9,
+            "date": "2024-10-01",
+            "title": "Ты же не хочешь убить этого милого песика"
+          },
+          {
+            "number": 10,
+            "date": "2024-10-08",
+            "title": "Мы тут за воспоминаниями"
+          }
+        ]
+      },
       {
         "number": 2,
         "releaseDate": "2026-12-02",
@@ -2815,7 +4086,8 @@
       "suppliedVideo": "https://www.youtube.com/watch?v=YNFI_GuFXhM",
       "poster": "https://image.tmdb.org/t/p/w500/lUGG3lxIF3f2N796t4aHmxDhLK5.jpg",
       "gallery1": "https://i.ytimg.com/vi/9ZiePpwIlAE/sd1.jpg",
-      "gallery2": "https://i.ytimg.com/vi/9ZiePpwIlAE/sd3.jpg"
+      "gallery2": "https://i.ytimg.com/vi/9ZiePpwIlAE/sd3.jpg",
+      "seasons": "https://www.themoviedb.org/tv/130853/seasons"
     },
     "platforms": [
       "Apple"
@@ -2934,7 +4206,8 @@
       "suppliedVideo": "https://www.youtube.com/watch?v=LAhJUnwvLkk",
       "poster": "https://image.tmdb.org/t/p/w500/9wNdTWthGpTZZaOBKlO07pK77pU.jpg",
       "gallery1": "https://image.tmdb.org/t/p/w780/4rBugdmBu7ZgrWnh5Gp5qgwvdQ.jpg",
-      "gallery2": "https://i.ytimg.com/vi/wAFHBHXUzWE/sd2.jpg"
+      "gallery2": "https://i.ytimg.com/vi/wAFHBHXUzWE/sd2.jpg",
+      "seasons": "https://www.themoviedb.org/tv/296244/seasons"
     },
     "platforms": [],
     "origin": "foreign",
@@ -3002,12 +4275,235 @@
     "trailer": "https://www.youtube.com/watch?v=8OomIu5JJwQ",
     "seasons": [
       {
+        "number": 0,
+        "releaseDate": "2023-07-21",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2023-07-21",
+            "title": "Атомная Ева"
+          }
+        ]
+      },
+      {
+        "number": 1,
+        "releaseDate": "2021-03-25",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2021-03-25",
+            "title": "КАК РАЗ ВОВРЕМЯ"
+          },
+          {
+            "number": 2,
+            "date": "2021-03-25",
+            "title": "БУДЬ ЧТО БУДЕТ"
+          },
+          {
+            "number": 3,
+            "date": "2021-03-25",
+            "title": "И КТО ТУТ УРОДЛИВЫЙ?"
+          },
+          {
+            "number": 4,
+            "date": "2021-04-01",
+            "title": "НИЛ АРМСТРОНГ, ЗАВИДУЙ ДАЛЬШЕ"
+          },
+          {
+            "number": 5,
+            "date": "2021-04-08",
+            "title": "А ЭТО БЫЛО БОЛЬНО"
+          },
+          {
+            "number": 6,
+            "date": "2021-04-15",
+            "title": "ВЫГЛЯДИШЬ КАК-ТО НЕ ЖИВО"
+          },
+          {
+            "number": 7,
+            "date": "2021-04-22",
+            "title": "НУЖНО ПОГОВОРИТЬ"
+          },
+          {
+            "number": 8,
+            "date": "2021-04-29",
+            "title": "МОЯ НАСТОЯЩАЯ РОДИНА"
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "releaseDate": "2023-11-02",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2023-11-02",
+            "title": "УРОК НА СЛЕДУЮЩУЮ ЖИЗНЬ"
+          },
+          {
+            "number": 2,
+            "date": "2023-11-09",
+            "title": "ЧАСОВ ЧЕРЕЗ ШЕСТЬ Я ЛИШУСЬ ДЕВСТВЕННОСТИ С РЫБОЙ"
+          },
+          {
+            "number": 3,
+            "date": "2023-11-16",
+            "title": "НУ И ПОСЛАНИЕ, НУ И МАХИНАЦИЯ!"
+          },
+          {
+            "number": 4,
+            "date": "2023-11-23",
+            "title": "СКОЛЬКО ЛЕТ, СКОЛЬКО ЗИМ"
+          },
+          {
+            "number": 5,
+            "date": "2024-03-14",
+            "title": "ТЫ ОЧЕНЬ УДИВИШЬСЯ"
+          },
+          {
+            "number": 6,
+            "date": "2024-03-21",
+            "title": "НЕ ВСЁ ТАК ОДНОЗНАЧНО"
+          },
+          {
+            "number": 7,
+            "date": "2024-03-28",
+            "title": "Я НИКУДА НЕ ДЕНУСЬ"
+          },
+          {
+            "number": 8,
+            "date": "2024-04-04",
+            "title": "А ТЫ КАЗАЛСЯ МНЕ СИЛЬНЕЕ"
+          }
+        ]
+      },
+      {
+        "number": 3,
+        "releaseDate": "2025-02-06",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2025-02-06",
+            "title": "Теперь вам не до смеха"
+          },
+          {
+            "number": 2,
+            "date": "2025-02-06",
+            "title": "Сделка с дьяволом"
+          },
+          {
+            "number": 3,
+            "date": "2025-02-06",
+            "title": "Тебе нужен настоящий костюм"
+          },
+          {
+            "number": 4,
+            "date": "2025-02-13",
+            "title": "Ты был моим героем"
+          },
+          {
+            "number": 5,
+            "date": "2025-02-20",
+            "title": "Это должно было быть просто"
+          },
+          {
+            "number": 6,
+            "date": "2025-02-27",
+            "title": "Я могу только извиниться"
+          },
+          {
+            "number": 7,
+            "date": "2025-03-06",
+            "title": "Что я наделал"
+          },
+          {
+            "number": 8,
+            "date": "2025-03-13",
+            "title": "Я думал, ты никогда не заткнёшься"
+          }
+        ]
+      },
+      {
+        "number": 4,
+        "releaseDate": "2026-03-18",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2026-03-18",
+            "title": "Мы делаем мир лучше"
+          },
+          {
+            "number": 2,
+            "date": "2026-03-18",
+            "title": "Я устрою вам экскурсию"
+          },
+          {
+            "number": 3,
+            "date": "2026-03-18",
+            "title": "Мне нужно освежиться"
+          },
+          {
+            "number": 4,
+            "date": "2026-03-25",
+            "title": "Гррм"
+          },
+          {
+            "number": 5,
+            "date": "2026-04-01",
+            "title": "Дай нам минутку"
+          },
+          {
+            "number": 6,
+            "date": "2026-04-08",
+            "title": "Ужасно выглядишь"
+          },
+          {
+            "number": 7,
+            "date": "2026-04-15",
+            "title": "Не делай глупостей"
+          },
+          {
+            "number": 8,
+            "date": "2026-04-22",
+            "title": "Не оставляй меня без ответа"
+          }
+        ]
+      },
+      {
         "number": 5,
         "releaseDate": "2027-02-17",
         "episodes": [
           {
             "number": 1,
             "date": "2027-02-17"
+          },
+          {
+            "number": 2,
+            "date": "2027-02-24"
+          },
+          {
+            "number": 3,
+            "date": "2027-03-03"
+          },
+          {
+            "number": 4,
+            "date": "2027-03-10"
+          },
+          {
+            "number": 5,
+            "date": "2027-03-17"
+          },
+          {
+            "number": 6,
+            "date": "2027-03-24"
+          },
+          {
+            "number": 7,
+            "date": "2027-03-31"
+          },
+          {
+            "number": 8,
+            "date": "2027-04-07"
           }
         ]
       }
@@ -3019,7 +4515,8 @@
       "suppliedVideo": "https://www.youtube.com/watch?v=1XwjEfWLxGA",
       "poster": "https://image.tmdb.org/t/p/w500/4tblBrslcKSifMVZ3TmtT2ukMor.jpg",
       "gallery1": "https://image.tmdb.org/t/p/w780/9qrroces8C6R9aKr08hACNPVXdZ.jpg",
-      "gallery2": "https://i.ytimg.com/vi/8OomIu5JJwQ/sd2.jpg"
+      "gallery2": "https://i.ytimg.com/vi/8OomIu5JJwQ/sd2.jpg",
+      "seasons": "https://www.themoviedb.org/tv/95557/seasons"
     },
     "platforms": [
       "Amazon"
@@ -3251,7 +4748,8 @@
       "suppliedVideo": "https://www.youtube.com/watch?v=7Le6ljOPpeo",
       "poster": "https://image.tmdb.org/t/p/w500/qsS3xGLmNAlElDNs2B89QABCgMx.jpg",
       "gallery1": "https://image.tmdb.org/t/p/w780/cRrkgywOQU3q09ONVq8BkHHqeuu.jpg",
-      "gallery2": "https://i.ytimg.com/vi/46AEtqYlMlc/sd3.jpg"
+      "gallery2": "https://i.ytimg.com/vi/46AEtqYlMlc/sd3.jpg",
+      "seasons": "https://www.themoviedb.org/tv/243214/seasons"
     },
     "platforms": [
       "Amazon"
@@ -3434,7 +4932,8 @@
       "suppliedVideo": "https://www.youtube.com/watch?v=GFoU0KdGiy4",
       "poster": "https://image.tmdb.org/t/p/w500/aqJpnEB4Vo6ergqMD7Sc2G7T1pe.jpg",
       "gallery1": "https://i.ytimg.com/vi/KuRYRhP6kag/sd1.jpg",
-      "gallery2": "https://i.ytimg.com/vi/KuRYRhP6kag/sd3.jpg"
+      "gallery2": "https://i.ytimg.com/vi/KuRYRhP6kag/sd3.jpg",
+      "seasons": "https://www.themoviedb.org/tv/288672/seasons"
     },
     "platforms": [
       "Netflix"
@@ -3772,6 +5271,50 @@
           {
             "number": 1,
             "date": "2027-01-06"
+          },
+          {
+            "number": 2,
+            "date": "2027-01-13"
+          },
+          {
+            "number": 3,
+            "date": null
+          },
+          {
+            "number": 4,
+            "date": null
+          },
+          {
+            "number": 5,
+            "date": null
+          },
+          {
+            "number": 6,
+            "date": null
+          },
+          {
+            "number": 7,
+            "date": null
+          },
+          {
+            "number": 8,
+            "date": null
+          },
+          {
+            "number": 9,
+            "date": null
+          },
+          {
+            "number": 10,
+            "date": null
+          },
+          {
+            "number": 11,
+            "date": null
+          },
+          {
+            "number": 12,
+            "date": null
           }
         ]
       }
@@ -3782,7 +5325,9 @@
       "suppliedVideo": "https://www.youtube.com/watch?v=5ujEHR5ehXk",
       "poster": "https://image.tmdb.org/t/p/w500/CPNtOu08ucoIlSM7QpuEwWFh3A.jpg",
       "gallery1": "https://image.tmdb.org/t/p/w780/6s25WseOcAnlrL9kav1i0moozG4.jpg",
-      "gallery2": "https://i.ytimg.com/vi/-9WoJ3d6WkY/sd1.jpg"
+      "gallery2": "https://i.ytimg.com/vi/-9WoJ3d6WkY/sd1.jpg",
+      "seasons": "https://www.themoviedb.org/tv/248172/seasons",
+      "episodeCount": "https://www.foxflash.com/releases/view/global-sensation-baywatch-splashes-into-foxs-2026-27-season"
     },
     "platforms": [],
     "origin": "foreign",
@@ -3890,7 +5435,8 @@
       "suppliedVideo": "https://www.youtube.com/watch?v=dR-8u7I1EPc",
       "poster": "https://image.tmdb.org/t/p/w500/3dWNyzYFQfuL7pj3OdlSjyOr6yN.jpg",
       "gallery1": "https://image.tmdb.org/t/p/w780/d3phaA8SSFGB4qTC0HP9JafcuH9.jpg",
-      "gallery2": "https://i.ytimg.com/vi/nT8Mdw5nKd0/sd3.jpg"
+      "gallery2": "https://i.ytimg.com/vi/nT8Mdw5nKd0/sd3.jpg",
+      "seasons": "https://www.themoviedb.org/tv/285887/seasons"
     },
     "platforms": [
       "Amazon"
@@ -3924,44 +5470,109 @@
     "trailer": "https://www.youtube.com/watch?v=m6ArXts5JPk",
     "seasons": [
       {
+        "number": 1,
+        "releaseDate": "2025-06-03",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2025-06-03",
+            "title": "Пилот"
+          },
+          {
+            "number": 2,
+            "date": "2025-06-03",
+            "title": "Закон Гроссуинера"
+          },
+          {
+            "number": 3,
+            "date": "2025-06-03",
+            "title": "Отцы и дети"
+          },
+          {
+            "number": 4,
+            "date": "2025-06-10",
+            "title": "Все ставят на Зиро"
+          },
+          {
+            "number": 5,
+            "date": "2025-06-17",
+            "title": "Машина для берди"
+          },
+          {
+            "number": 6,
+            "date": "2025-06-24",
+            "title": "Шангри-Ла на колесах"
+          },
+          {
+            "number": 7,
+            "date": "2025-07-01",
+            "title": "Забытые сны"
+          },
+          {
+            "number": 8,
+            "date": "2025-07-08",
+            "title": "Сделать Кларка"
+          },
+          {
+            "number": 9,
+            "date": "2025-07-15",
+            "title": "Мир профи"
+          },
+          {
+            "number": 10,
+            "date": "2025-07-22",
+            "title": "И снова дежавю"
+          }
+        ]
+      },
+      {
         "number": 2,
         "releaseDate": "2026-11-04",
         "episodes": [
           {
             "number": 1,
-            "date": "2026-11-04"
+            "date": "2026-11-04",
+            "title": "Сирены от гольфа"
           },
           {
             "number": 2,
-            "date": "2026-11-04"
+            "date": "2026-11-04",
+            "title": "Не будь летним майонезом"
           },
           {
             "number": 3,
-            "date": "2026-11-11"
+            "date": "2026-11-11",
+            "title": "Весь в Буча"
           },
           {
             "number": 4,
-            "date": "2026-11-18"
+            "date": "2026-11-18",
+            "title": "Буг"
           },
           {
             "number": 5,
-            "date": "2026-11-25"
+            "date": "2026-11-25",
+            "title": "Погнали!"
           },
           {
             "number": 6,
-            "date": "2026-12-02"
+            "date": "2026-12-02",
+            "title": "Jung and the Restless"
           },
           {
             "number": 7,
-            "date": "2026-12-09"
+            "date": "2026-12-09",
+            "title": "Bogey Nights"
           },
           {
             "number": 8,
-            "date": "2026-12-16"
+            "date": "2026-12-16",
+            "title": "Fast Greens Do Not Hold"
           },
           {
             "number": 9,
-            "date": "2026-12-23"
+            "date": "2026-12-23",
+            "title": "Let 'er Rip"
           },
           {
             "number": 10,
@@ -3977,7 +5588,8 @@
       "suppliedVideo": "https://www.youtube.com/watch?v=QwYZJOUOTUQ",
       "poster": "https://image.tmdb.org/t/p/w500/3zkHz1s4PpukMJRs3npzbGK10iV.jpg",
       "gallery1": "https://image.tmdb.org/t/p/w780/2Bt2uXrIOQASBAsni2AGGqCCF14.jpg",
-      "gallery2": "https://i.ytimg.com/vi/m6ArXts5JPk/sd1.jpg"
+      "gallery2": "https://i.ytimg.com/vi/m6ArXts5JPk/sd1.jpg",
+      "seasons": "https://www.themoviedb.org/tv/248830/seasons"
     },
     "platforms": [
       "Apple"
@@ -4011,58 +5623,232 @@
     "trailer": "https://www.youtube.com/watch?v=yaCHj96d1PA",
     "seasons": [
       {
+        "number": 0,
+        "releaseDate": "2022-11-11",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2022-11-11",
+            "title": "Tulsa King: Inside the Series"
+          }
+        ]
+      },
+      {
+        "number": 1,
+        "releaseDate": "2022-11-13",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2022-11-13",
+            "title": "Езжай на запад, старик"
+          },
+          {
+            "number": 2,
+            "date": "2022-11-20",
+            "title": "Центр Вселенной"
+          },
+          {
+            "number": 3,
+            "date": "2022-11-27",
+            "title": "Каприз"
+          },
+          {
+            "number": 4,
+            "date": "2022-12-04",
+            "title": "Место встречи"
+          },
+          {
+            "number": 5,
+            "date": "2022-12-11",
+            "title": "Кассир Джо"
+          },
+          {
+            "number": 6,
+            "date": "2022-12-18",
+            "title": "Конюшня"
+          },
+          {
+            "number": 7,
+            "date": "2022-12-25",
+            "title": "Уорр Эйкерс"
+          },
+          {
+            "number": 8,
+            "date": "2023-01-01",
+            "title": "Эдоуб-Уоллс"
+          },
+          {
+            "number": 9,
+            "date": "2023-01-08",
+            "title": "Счастливые тропы"
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "releaseDate": "2024-09-15",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2024-09-15",
+            "title": "Снова в седле"
+          },
+          {
+            "number": 2,
+            "date": "2024-09-22",
+            "title": "Блюз Канзас-Cити"
+          },
+          {
+            "number": 3,
+            "date": "2024-09-29",
+            "title": "Оклахома против Манфреди"
+          },
+          {
+            "number": 4,
+            "date": "2024-10-06",
+            "title": "Герои и злодеи"
+          },
+          {
+            "number": 5,
+            "date": "2024-10-13",
+            "title": "Борьба с ветряными мельницами"
+          },
+          {
+            "number": 6,
+            "date": "2024-10-20",
+            "title": "Навигейтор"
+          },
+          {
+            "number": 7,
+            "date": "2024-10-27",
+            "title": "Жизнеобеспечение"
+          },
+          {
+            "number": 8,
+            "date": "2024-11-03",
+            "title": "Смена руководства"
+          },
+          {
+            "number": 9,
+            "date": "2024-11-10",
+            "title": "Триада"
+          },
+          {
+            "number": 10,
+            "date": "2024-11-17",
+            "title": "Реконструкция"
+          }
+        ]
+      },
+      {
+        "number": 3,
+        "releaseDate": "2025-09-21",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2025-09-21",
+            "title": "Кровь и бурбон"
+          },
+          {
+            "number": 2,
+            "date": "2025-09-28",
+            "title": "Пятидесятилетний"
+          },
+          {
+            "number": 3,
+            "date": "2025-10-05",
+            "title": "Настоящий гангстер"
+          },
+          {
+            "number": 4,
+            "date": "2025-10-12",
+            "title": "Бочки и стволы"
+          },
+          {
+            "number": 5,
+            "date": "2025-10-19",
+            "title": "Со льдом"
+          },
+          {
+            "number": 6,
+            "date": "2025-10-26",
+            "title": "Пузырьки"
+          },
+          {
+            "number": 7,
+            "date": "2025-11-02",
+            "title": "Искусство войны"
+          },
+          {
+            "number": 8,
+            "date": "2025-11-09",
+            "title": "Ничто не кончено"
+          },
+          {
+            "number": 9,
+            "date": "2025-11-16",
+            "title": "Мёртвый груз"
+          },
+          {
+            "number": 10,
+            "date": "2025-11-23",
+            "title": "Ящерица-Иисус"
+          }
+        ]
+      },
+      {
         "number": 4,
         "releaseDate": "2026-10-16",
         "episodes": [
           {
             "number": 1,
-            "title": "W.W.D.D.",
-            "date": "2026-10-16"
+            "date": "2026-10-16",
+            "title": "W.W.D.D."
           },
           {
             "number": 2,
-            "title": "Blind Rooster",
-            "date": "2026-10-23"
+            "date": "2026-10-23",
+            "title": "Blind Rooster"
           },
           {
             "number": 3,
-            "title": "Cease & Desist",
-            "date": "2026-10-30"
+            "date": "2026-10-30",
+            "title": "Cease & Desist"
           },
           {
             "number": 4,
-            "title": "Square One",
-            "date": "2026-11-06"
+            "date": "2026-11-06",
+            "title": "Square One"
           },
           {
             "number": 5,
-            "title": "Dinosaurs",
-            "date": "2026-11-13"
+            "date": "2026-11-13",
+            "title": "Dinosaurs"
           },
           {
             "number": 6,
-            "title": "Racket Club",
-            "date": "2026-11-20"
+            "date": "2026-11-20",
+            "title": "Racket Club"
           },
           {
             "number": 7,
-            "title": "Black Diamonds",
-            "date": "2026-11-27"
+            "date": "2026-11-27",
+            "title": "Black Diamonds"
           },
           {
             "number": 8,
-            "title": "Storm Front",
-            "date": "2026-12-04"
+            "date": "2026-12-04",
+            "title": "Storm Front"
           },
           {
             "number": 9,
-            "title": "Nerved Up",
-            "date": "2026-12-11"
+            "date": "2026-12-11",
+            "title": "Nerved Up"
           },
           {
             "number": 10,
-            "title": "Exit Interview",
-            "date": "2026-12-18"
+            "date": "2026-12-18",
+            "title": "Exit Interview"
           }
         ]
       }
@@ -4075,7 +5861,8 @@
       "suppliedVideo": "https://www.youtube.com/watch?v=4Rq82Vy9W1M",
       "poster": "https://image.tmdb.org/t/p/w500/y13WOeZ2rz2Ezpws0RJ0I8sQpG4.jpg",
       "gallery1": "https://image.tmdb.org/t/p/w780/mNHRGO1gFpR2CYZdANe72kcKq7G.jpg",
-      "gallery2": "https://i.ytimg.com/vi/yaCHj96d1PA/sd2.jpg"
+      "gallery2": "https://i.ytimg.com/vi/yaCHj96d1PA/sd2.jpg",
+      "seasons": "https://www.themoviedb.org/tv/153312/seasons"
     },
     "platforms": [],
     "origin": "foreign",
@@ -4148,27 +5935,33 @@
         "episodes": [
           {
             "number": 1,
-            "date": "2026-10-12"
+            "date": "2026-10-12",
+            "title": "«Адмирал Бенбоу»"
           },
           {
             "number": 2,
-            "date": "2026-10-19"
+            "date": "2026-10-19",
+            "title": "Великобритания"
           },
           {
             "number": 3,
-            "date": "2026-10-26"
+            "date": "2026-10-26",
+            "title": "Бескрайнее вечное море"
           },
           {
             "number": 4,
-            "date": "2026-11-02"
+            "date": "2026-11-02",
+            "title": "Сан-Доминго"
           },
           {
             "number": 5,
-            "date": "2026-11-09"
+            "date": "2026-11-09",
+            "title": "Остров Скелетов"
           },
           {
             "number": 6,
-            "date": "2026-11-16"
+            "date": "2026-11-16",
+            "title": "Принцесса де Авейру"
           }
         ]
       }
@@ -4182,7 +5975,8 @@
       "suppliedVideo": "https://www.youtube.com/watch?v=DAEgFbFEzuA",
       "poster": "https://image.tmdb.org/t/p/w500/xZQ5ABJF1iLjGq9xR4MthpgQEFF.jpg",
       "gallery1": "https://image.tmdb.org/t/p/w780/grC6bTUTeVvjZ2orztjItUxM4yy.jpg",
-      "gallery2": "https://i.ytimg.com/vi/UsFVIvngwRA/sd3.jpg"
+      "gallery2": "https://i.ytimg.com/vi/UsFVIvngwRA/sd3.jpg",
+      "seasons": "https://www.themoviedb.org/tv/333101/seasons"
     },
     "platforms": [],
     "origin": "foreign",
@@ -4341,7 +6135,8 @@
       "clip": "https://www.youtube.com/watch?v=0Vs-fglKhpA",
       "poster": "https://contentful.harrypotter.com/usf1vwtuqyxm/19implO0JiMm9vxzpEgchc/1a8c73d3cfadbd0488a81aefca36796e/HBO-harry-poster-close-up-eye-UK-date.jpg?fm=jpg&q=79&w=700",
       "gallery1": "https://i.ytimg.com/vi/SJVmeJaS44s/sd1.jpg",
-      "gallery2": "https://i.ytimg.com/vi/SJVmeJaS44s/sd2.jpg"
+      "gallery2": "https://i.ytimg.com/vi/SJVmeJaS44s/sd2.jpg",
+      "seasons": "https://www.themoviedb.org/tv/224377/seasons"
     },
     "platforms": [
       "HBO"
@@ -4558,33 +6353,33 @@
         "episodes": [
           {
             "number": 1,
-            "title": "Something Different",
-            "date": "2023-07-13"
+            "date": "2023-07-13",
+            "title": "Something Different"
           },
           {
             "number": 2,
-            "title": "Charger",
-            "date": "2023-07-13"
+            "date": "2023-07-13",
+            "title": "Charger"
           },
           {
             "number": 3,
-            "title": "Jared's Body",
-            "date": "2023-07-20"
+            "date": "2023-07-20",
+            "title": "Jared's Body"
           },
           {
             "number": 4,
-            "title": "Safe in the Circle",
-            "date": "2023-07-20"
+            "date": "2023-07-20",
+            "title": "Safe in the Circle"
           },
           {
             "number": 5,
-            "title": "Loyalty",
-            "date": "2023-07-27"
+            "date": "2023-07-27",
+            "title": "Loyalty"
           },
           {
             "number": 6,
-            "title": "Essequibo",
-            "date": "2023-07-27"
+            "date": "2023-07-27",
+            "title": "Essequibo"
           }
         ]
       }
@@ -4593,7 +6388,8 @@
       "tmdb": "https://www.themoviedb.org/tv/132016/season/1?language=ru-RU",
       "official": "https://www.hbomax.com/show/8996a19c-8e8b-4d8b-8f1a-fa146751d544",
       "imdb": "https://www.imdb.com/title/tt15303234/",
-      "schedule": "https://press.wbd.com/us/media-release/hbo-max/max-original-limited-series-full-circle-debuts-july-13"
+      "schedule": "https://press.wbd.com/us/media-release/hbo-max/max-original-limited-series-full-circle-debuts-july-13",
+      "seasons": "https://www.themoviedb.org/tv/132016/seasons"
     },
     "platforms": [
       "HBO"
@@ -4726,43 +6522,43 @@
         "episodes": [
           {
             "number": 1,
-            "title": "Обратный отсчёт",
-            "date": "2024-03-21"
+            "date": "2024-03-21",
+            "title": "Обратный отсчёт"
           },
           {
             "number": 2,
-            "title": "Красный берег",
-            "date": "2024-03-21"
+            "date": "2024-03-21",
+            "title": "Красный берег"
           },
           {
             "number": 3,
-            "title": "Разрушитель миров",
-            "date": "2024-03-21"
+            "date": "2024-03-21",
+            "title": "Разрушитель миров"
           },
           {
             "number": 4,
-            "title": "Господь",
-            "date": "2024-03-21"
+            "date": "2024-03-21",
+            "title": "Господь"
           },
           {
             "number": 5,
-            "title": "Страшный суд",
-            "date": "2024-03-21"
+            "date": "2024-03-21",
+            "title": "Страшный суд"
           },
           {
             "number": 6,
-            "title": "Звёзды — наша цель",
-            "date": "2024-03-21"
+            "date": "2024-03-21",
+            "title": "Звёзды — наша цель"
           },
           {
             "number": 7,
-            "title": "Только вперёд",
-            "date": "2024-03-21"
+            "date": "2024-03-21",
+            "title": "Только вперёд"
           },
           {
             "number": 8,
-            "title": "Пустозрящий",
-            "date": "2024-03-21"
+            "date": "2024-03-21",
+            "title": "Пустозрящий"
           }
         ]
       },
@@ -4805,7 +6601,8 @@
     "sources": {
       "tmdb": "https://www.themoviedb.org/tv/108545-3-body-problem/season/2?language=ru-RU",
       "official": "https://www.netflix.com/tudum/articles/3-body-problem-renewed",
-      "imdb": "https://www.imdb.com/title/tt13016388/"
+      "imdb": "https://www.imdb.com/title/tt13016388/",
+      "seasons": "https://www.themoviedb.org/tv/108545/seasons"
     },
     "platforms": [
       "Netflix"
@@ -4844,39 +6641,43 @@
         "episodes": [
           {
             "number": 1,
-            "title": "Я граблю дом на Рождество, пока хозяева в церкви",
-            "date": "2026-11-13"
+            "date": "2026-11-13",
+            "title": "Я граблю дом на Рождество, пока хозяева в церкви"
           },
           {
             "number": 2,
-            "title": "Я хочу вернуть свой нимб",
-            "date": "2026-11-13"
+            "date": "2026-11-13",
+            "title": "Я хочу вернуть свой нимб"
           },
           {
             "number": 3,
-            "title": "Зашибись",
-            "date": "2026-11-20"
+            "date": "2026-11-20",
+            "title": "Зашибись"
           },
           {
             "number": 4,
-            "title": "Вот как это делается",
-            "date": "2026-11-27"
+            "date": "2026-11-27",
+            "title": "Вот как это делается"
           },
           {
             "number": 5,
-            "date": "2026-12-04"
+            "date": "2026-12-04",
+            "title": "One for the Money, Two for the Show"
           },
           {
             "number": 6,
-            "date": "2026-12-11"
+            "date": "2026-12-11",
+            "title": "I Know Who You Are"
           },
           {
             "number": 7,
-            "date": "2026-12-18"
+            "date": "2026-12-18",
+            "title": "You're One of Us, Maybe You Always Were"
           },
           {
             "number": 8,
-            "date": "2026-12-25"
+            "date": "2026-12-25",
+            "title": "The Banks Must Pay"
           }
         ]
       }
@@ -4885,7 +6686,8 @@
       "tmdb": "https://www.themoviedb.org/tv/254630-12-12-12/season/1?language=ru-RU",
       "official": "https://www.apple.com/tv-pr/originals/12-12-12/",
       "imdb": "https://www.imdb.com/title/tt32375763/",
-      "origin": "https://tv.apple.com/us/show/12-12-12/umc.cmc.2xeasogpeiwbaegczytrdg1uh"
+      "origin": "https://tv.apple.com/us/show/12-12-12/umc.cmc.2xeasogpeiwbaegczytrdg1uh",
+      "seasons": "https://www.themoviedb.org/tv/254630/seasons"
     },
     "platforms": [
       "Apple"

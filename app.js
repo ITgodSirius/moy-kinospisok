@@ -1,4 +1,4 @@
-import { hosted, marked, markTime, busy, refreshHistory, setMark } from './history.js?v=7cebc47d4382';
+import { hosted, marked, markTime, reactionValue, busy, refreshHistory, setMark } from './history.js?v=798413576a21';
 
 const el = id => document.getElementById(id);
 const editAccessKey = 'film-list:edit-unlocked';
@@ -51,6 +51,8 @@ const markActions = [
   { kind: 'watching', add: 'Смотрю сейчас', remove: 'Отложить просмотр', icon: 'play' }
 ];
 const iconPaths = {
+  thumb: '<path d="M7 10v10H3V10zm0 0 5-6c1-1.3 3-.8 3 1.1L14 9h5.2a2 2 0 0 1 2 2.4l-1.4 6.8a2.2 2.2 0 0 1-2.2 1.8H7"/>',
+  neutral: '<path d="M5 12h14"/>',
   lock: '<rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 4v2"/>',
   book: '<path d="M12 6c-2.6-2.1-5.6-2.7-9-1.5v14c3.2-1 6.2-.4 9 1.5 2.8-1.9 5.8-2.5 9-1.5v-14c-3.4-1.2-6.4-.6-9 1.5Zm0 0v14"/>',
   ear: '<path d="M6 9a6 6 0 1 1 10.55 3.91c-1.29 1.54-2.3 2.33-2.55 4.09-.25 1.7-1.15 3-3 3-1.66 0-3-1.34-3-3m2-8a2 2 0 1 1 3.35 1.48c-.81.74-1.35 1.43-1.35 2.52"/>',
@@ -161,7 +163,7 @@ function renderSeasons(item, openSeason = item.season) {
   const blocks = (item.seasons || []).map(season => {
     const block = node(expanded ? 'section' : 'details', 'season');
     const header = node(expanded ? 'h3' : 'summary');
-    const label = node('span', '', 'Сезон ' + season.number);
+    const label = node('span', '', season.number === 0 ? 'Спецвыпуски' : 'Сезон ' + season.number);
     label.append(node('small', '', (season.releaseDate ? 'Премьера · ' : '') + dateText(season.releaseDate)));
     header.append(label);
     if (!expanded) {
@@ -183,7 +185,7 @@ function renderSeasons(item, openSeason = item.season) {
         list.append(li);
       }
       block.append(list);
-    } else if (season.releaseDate || !expanded) {
+    } else {
       block.append(node('p', 'no-dates', 'Расписание серий пока не объявлено.'));
     }
     return block;
@@ -376,17 +378,46 @@ function dated(value, text) {
   time.dateTime = value;
   return time;
 }
+const opinions = { like: 'Понравилось', neutral: 'Нейтрально', dislike: 'Не понравилось' };
+function reactionButtons(item, compact = false) {
+  const group = node('div', 'reactions');
+  group.setAttribute('role', 'group');
+  group.setAttribute('aria-label', 'Моя оценка');
+  const current = reactionValue(item.id);
+  for (const [value, label] of Object.entries(opinions)) {
+    const control = button(label, '', value === 'neutral' ? 'neutral' : 'thumb', async () => {
+      if (!await requestEditAccess() || !marked(item.id, 'watched') || busy(item.id, 'reaction')) return;
+      const next = reactionValue(item.id) === value ? null : value;
+      try {
+        await setMark(item.id, 'reaction', next, render);
+        announce(next ? 'Моя оценка · ' + label : 'Оценка снята');
+      } catch {
+        announce('Не удалось сохранить оценку.');
+        if (hosted) sync();
+      }
+    }, compact);
+    control.dataset.kind = value;
+    control.setAttribute('aria-pressed', String(current === value));
+    control.disabled = busy(item.id, 'reaction');
+    group.append(control);
+  }
+  return group;
+}
 function cardHistory(item) {
   const section = node('section', 'card-history');
   const dates = node('dl');
   row(dates, 'Добавлено в каталог', dated(item.addedDate, dateText(item.addedDate)));
-  for (const [kind, label] of [['watching', 'Начало просмотра'], ['watched', 'Отмечено просмотренным'], ['favorite', 'Добавлено в любимые']]) {
+  const watched = marked(item.id, 'watched');
+  const events = [['watching', 'Начало просмотра'], ['watched', 'Отмечено просмотренным'], ['favorite', 'Добавлено в любимые']];
+  if (watched) events.push(['reaction', 'Дата оценки']);
+  for (const [kind, label] of events) {
     const stamp = markTime(item.id, kind);
     if (stamp === null) continue;
     const date = /^\d{4}-\d{2}-\d{2}T/.test(stamp) ? new Date(stamp) : null;
     row(dates, label, date && Number.isFinite(date.getTime()) ? dated(stamp, formatMarkDate.format(date).replace(/\s*г\.$/, '')) : 'Дата неизвестна');
   }
   section.append(node('h3', 'sr', 'История'), dates);
+  if (watched) section.append(reactionButtons(item));
   return section;
 }
 function yandexSearchUrl(item) {
@@ -509,6 +540,7 @@ function posterCard(item) {
   const meta = node('div', 'poster-meta');
   meta.append(releaseDate(item, true), mediaActions(item, true));
   caption.append(heading, node('p', 'poster-genres', item.genres.join(' · ')), meta);
+  if (marked(item.id, 'watched')) caption.append(reactionButtons(item, true));
   section.append(image, caption);
   return section;
 }
@@ -937,7 +969,7 @@ function saveView({ initial = false } = {}) {
     detailScroll: el('film-details').querySelector('.film-body').scrollTop,
     dialog: dialog?.id, dialogScroll: dialog?.querySelector('.dialog-body').scrollTop,
     series: dialog?.id === 'schedule' ? scheduleItem.id : undefined,
-    season: desktop.matches ? undefined : Number(openSeason?.dataset.season) || null
+    season: desktop.matches ? undefined : openSeason ? Number(openSeason.dataset.season) : null
   };
   try { sessionStorage.setItem(viewKey, JSON.stringify(tabView)); }
   catch { /* The catalog also works without browser storage. */ }
@@ -1046,7 +1078,8 @@ function render() {
   state.day = calendarDay(new Date());
   const focused = document.activeElement;
   const kind = focused?.dataset.kind;
-  const id = focused?.closest('.entry')?.dataset.id;
+  const id = focused?.closest('.entry, .poster-card')?.dataset.id;
+  const inDetails = focused?.closest('#film-details');
   const result = state.catalog.filter(matchesFilters).sort(compare);
   const count = filterIds.filter(id => el(id).value).length;
   el('filter-count').hidden = !count; el('filter-count').textContent = count;
@@ -1061,12 +1094,12 @@ function render() {
     dialog.querySelector('.card-history').replaceWith(cardHistory(detailItem));
     const marks = cardMarks(detailItem);
     dialog.querySelector('.card-marks').replaceWith(marks);
-    if (kind && focused.closest('dialog') === dialog) {
-      marks.querySelector('[data-kind="' + kind + '"]:not(:disabled)')?.focus({preventScroll:true});
+    if (kind && inDetails) {
+      dialog.querySelector('[data-kind="' + kind + '"]:not(:disabled)')?.focus({preventScroll:true});
     }
   }
   if (kind && id) {
-    const same = [...el('records').querySelectorAll('.entry')].find(entry => entry.dataset.id === id);
+    const same = el('records').querySelector('[data-id="' + CSS.escape(id) + '"]');
     const activeList = [...document.querySelectorAll('[data-list][aria-pressed="true"]')].find(button => button.getClientRects().length);
     (same?.querySelector('[data-kind="' + kind + '"]') || activeList)?.focus({ preventScroll: true });
   }

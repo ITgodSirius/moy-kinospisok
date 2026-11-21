@@ -93,6 +93,17 @@ select option{background:var(--paper);color:var(--ink)}
 .btn{padding:8px 11px;min-height:42px;display:inline-flex;align-items:center;justify-content:center;gap:7px;border-radius:7px;border:1px solid var(--button-border);background:var(--button-bg);color:var(--button-text);text-align:center;line-height:1.25;font-size:.9375rem;font-weight:580}
 .btn:is([aria-pressed=true],[aria-expanded=true],:active:not(:disabled)){background:var(--tint);border-color:var(--blue);color:var(--blue)}
 .btn:active:not(:disabled){transform:translateY(1px)}
+.reactions{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.reactions .btn{min-height:40px;font-size:.8125rem}
+.poster-card .reactions .btn{position:relative;min-width:40px}
+.reactions [data-kind=dislike] .ico{transform:rotate(180deg)}
+.reactions [data-kind=like][aria-pressed=true]{background:#19362b;color:#99e3b7;border-color:#529875}
+.reactions [data-kind=neutral][aria-pressed=true]{background:#382f19;color:#f1d179;border-color:#a18b44}
+.reactions [data-kind=dislike][aria-pressed=true]{background:#402429;color:#ffacac;border-color:#b76d73}
+@media(max-width:640px){
+ .card-history .reactions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+ .card-history .reactions .btn{flex-direction:column;gap:4px;min-height:48px;padding:6px 2px;font-size:.78rem}
+}
 .mark[data-kind=favorite][aria-pressed=true] svg,.mobile-lists [data-list=favorite][aria-pressed=true] svg{fill:currentColor}
 .empty,.loading{padding-block:clamp(38px,7vw,96px)}
 .empty h2{font-size:1.5rem}.empty p,.loading{color:var(--muted)}.empty p{margin:9px 0 18px}
