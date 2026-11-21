@@ -2,6 +2,8 @@ import { hosted, marked, markTime, busy, refreshHistory, setMark } from './histo
 
 const el = id => document.getElementById(id);
 const editAccessKey = 'film-list:edit-unlocked';
+const editPinHash = '9c6c088d75eb59217e0431d1796f5c787d2039f56d3681df53e6348c5d32d05c';
+const editPinSalt = '60bb843cedd8d5985c0f4a5a932cfea0';
 const viewKey = 'film-list:view:' + location.pathname;
 const persistentViewKey = viewKey.replace(/\/index\.html$/, '/');
 const layoutKey = viewKey + ':layout';
@@ -195,10 +197,11 @@ function showSchedule(item, openSeason) {
   el('seasons').scrollTop = 0;
   el('schedule').showModal();
 }
+let pinAttempt = 0;
 function requestEditAccess(title = 'Изменить отметку') {
   if (hosted) return true;
   try {
-    if (localStorage.getItem(editAccessKey) === '1') return true;
+    if (localStorage.getItem(editAccessKey) === editPinHash) return true;
   } catch { /* The dialog will report a storage error on confirmation. */ }
 
   const dialog = el('edit-dialog');
@@ -209,6 +212,7 @@ function requestEditAccess(title = 'Изменить отметку') {
   el('edit-pin').focus();
   return new Promise(resolve => {
     dialog.addEventListener('close', () => {
+      pinAttempt++;
       el('edit-form').reset();
       el('edit-error').textContent = '';
       el('edit-pin').removeAttribute('aria-invalid');
@@ -216,23 +220,41 @@ function requestEditAccess(title = 'Изменить отметку') {
     }, { once: true });
   });
 }
-function confirmEdit(event) {
+async function matchesEditPin(value) {
+  if (!/^[0-9]{5}$/.test(value)) return false;
+  const encoder = new TextEncoder();
+  const key = await crypto.subtle.importKey('raw', encoder.encode(value), 'PBKDF2', false, ['deriveBits']);
+  const bits = await crypto.subtle.deriveBits({
+    name: 'PBKDF2', hash: 'SHA-256', salt: encoder.encode(editPinSalt), iterations: 600000
+  }, key, 256);
+  return Array.from(new Uint8Array(bits), byte => byte.toString(16).padStart(2, '0')).join('') === editPinHash;
+}
+async function confirmEdit(event) {
   event.preventDefault();
   const pin = el('edit-pin');
-  if (pin.value !== '5972') {
-    el('edit-error').textContent = pin.value ? 'Неверный пароль. Попробуй ещё раз.' : 'Введи пароль.';
+  const dialog = el('edit-dialog');
+  const attempt = ++pinAttempt;
+  let error = '';
+  try {
+    if (!await matchesEditPin(pin.value)) error = pin.value ? 'Неверный пароль. Попробуй ещё раз.' : 'Введи пароль.';
+  } catch {
+    error = 'Браузеру не удалось проверить пароль.';
+  }
+  if (attempt !== pinAttempt || !dialog.open) return;
+  if (error) {
+    el('edit-error').textContent = error;
     pin.setAttribute('aria-invalid', 'true');
     pin.focus();
     pin.select();
     return;
   }
   try {
-    localStorage.setItem(editAccessKey, '1');
+    localStorage.setItem(editAccessKey, editPinHash);
   } catch {
     el('edit-error').textContent = 'Браузеру нужен доступ к данным сайта, чтобы запомнить разрешение.';
     return;
   }
-  el('edit-dialog').close('confirmed');
+  dialog.close('confirmed');
 }
 async function toggleMark(item, kind) {
   const value = !marked(item.id, kind);
@@ -1198,6 +1220,7 @@ async function start() {
   document.querySelectorAll('[data-icon]').forEach(holder => holder.replaceWith(icon(holder.dataset.icon)));
   el('edit-form').onsubmit = confirmEdit;
   el('edit-pin').oninput = () => {
+    pinAttempt++;
     el('edit-error').textContent = '';
     el('edit-pin').removeAttribute('aria-invalid');
   };

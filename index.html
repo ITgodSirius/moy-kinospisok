@@ -10,7 +10,7 @@
   <title>Мой киносписок</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%231443ef'/%3E%3Cpath d='M18 18h28v29L32 38l-14 9z' fill='white'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="./style.css?v=ffbe20b0e431">
-  <script type="module" src="./app.js?v=6a8f70ddfddd"></script>
+  <script type="module" src="./app.js?v=9ce5ab5959e0"></script>
 </head>
 <body>
   <a class="skip" href="#feed">К фильмам и сериалам</a>
@@ -158,8 +158,8 @@
   <dialog id="edit-dialog" aria-labelledby="edit-title">
     <div class="dialog-head"><h2 id="edit-title">Изменить отметку</h2><button class="icon-button" data-close aria-label="Закрыть"><span data-icon="close"></span></button></div>
     <form id="edit-form" class="dialog-body field-body">
-      <label for="edit-pin">Пароль</label>
-      <input id="edit-pin" type="password" inputmode="numeric" maxlength="4" autocomplete="off" aria-describedby="edit-error">
+      <label for="edit-pin">Пароль из 5 цифр</label>
+      <input id="edit-pin" type="password" inputmode="numeric" maxlength="5" autocomplete="off" aria-describedby="edit-error">
       <p id="edit-error" role="alert"></p>
     </form>
     <div class="dialog-foot">
