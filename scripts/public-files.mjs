@@ -8,5 +8,6 @@ export const mime = file => ({
 })[extname(file)] || 'application/octet-stream';
 export async function publicFiles() {
   const images = await readdir(new URL('assets/', root), {withFileTypes: true});
-  return ['index.html','style.css','app.js','history.js','catalog.json','wishlist.json', ...images.filter(f => f.isFile() && !f.name.startsWith('.')).map(f => 'assets/' + f.name)];
+  return ['index.html', 'style.css', 'app.js', 'history.js', 'catalog.json', 'wishlist.json', 'quotes.json',
+    ...images.filter(f => f.isFile() && !f.name.startsWith('.')).map(f => 'assets/' + f.name)];
 }

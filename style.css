@@ -361,3 +361,63 @@ details[open] summary svg{transform:rotate(180deg)}
  #open-wishlist{font-size:1.25rem}
  #wish-categories button{padding-inline:6px}
 }
+
+.collection-brand{display:flex;align-items:center;gap:8px}
+.open-quotes:hover,.quote-collections button:hover{border-color:var(--blue);background:var(--tint)}
+#quotes:not([hidden]){display:flex;flex:1;flex-direction:column;min-height:0}
+.quote-top{display:flex;gap:16px}
+#quotes-heading:focus{outline:none}
+.quote-collections{display:flex;gap:7px}
+.quote-toolbar{min-height:61px;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"types search";padding-block:8px}
+.quote-search{grid-area:search;display:flex;align-items:center;gap:9px;width:248px;min-height:39px;padding:7px 10px;border:1px solid var(--line);border-radius:8px;color:var(--muted);background:var(--surface)}
+.quote-search .ico{width:16px;height:16px}
+.quote-search input{flex:1;min-width:0;margin:0;padding:0;border:0;outline:0;background:transparent;color:var(--ink);font:inherit;font-size:.9rem}
+.quote-search input::placeholder{color:var(--muted);opacity:1}
+.quote-search:focus-within{border-color:var(--blue)}
+#quote-feed{flex:1;min-height:0;overflow:auto;overscroll-behavior-y:contain;scrollbar-color:var(--line) transparent}
+#quote-feed>.wrap{width:min(100%,1264px);padding:20px 24px 28px}
+.quote-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.quote-empty{grid-column:1/-1;font-size:1.45rem;color:var(--muted)}
+.quote-card{display:flex;min-width:0;min-height:245px;flex-direction:column;margin:0;padding:17px 18px 0;border:1px solid var(--line);border-radius:13px;background:var(--surface)}
+.quote-label{display:flex;align-items:center;align-self:flex-start;gap:6px;color:var(--blue);font-size:.8rem;font-weight:600;line-height:1.2}
+.quote-label .ico{width:15px;height:15px}
+.quote-card[data-quote-kind=book] .quote-label{color:#dbc8b0}
+.quote-card[data-quote-kind=heard] .quote-label{color:var(--muted)}
+.quote-card blockquote{flex:1;margin:0;padding:17px 0 15px;font:1.62rem/1.24 Georgia,"Times New Roman",serif;letter-spacing:-.018em;overflow-wrap:anywhere;white-space:pre-line}
+.quote-caption{display:flex;justify-content:space-between;align-items:center;gap:10px;min-height:72px;padding:11px 0 13px;border-top:1px solid var(--line);overflow-wrap:anywhere}
+.quote-source{display:flex;align-items:baseline;gap:6px;color:var(--ink);font-size:.92rem;font-weight:650;line-height:1.28}
+.quote-source .ico{align-self:center;width:13px;height:13px;color:var(--muted)}
+a.quote-source:hover{color:var(--blue)}
+.quote-author{margin-top:4px;color:var(--muted);font-size:.77rem;line-height:1.35}
+.quote-copy.btn{width:38px;min-height:36px;flex:none;padding:0}
+.quote-copy:hover{border-color:var(--blue);color:var(--blue)}
+.quote-empty .btn{margin-top:14px}
+@media(max-width:1280px){
+ #cinema-header .collection-destination>span:not(.ico){display:none}
+}
+@media(max-width:960px){
+ .quote-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:640px){
+ .collection-brand{gap:5px}
+ #wishlist .collection-brand{flex-wrap:wrap}
+ .quote-top{min-height:54px;gap:8px;padding-top:6px;justify-content:space-between}
+ .quote-collections{gap:4px}
+ .quote-collections .collection-destination{min-height:28px;gap:3px;padding-inline:5px;font-size:.72rem}
+ .quote-collections .ico{width:12px;height:12px}
+ .quote-toolbar{grid-template-columns:minmax(0,1fr);grid-template-areas:"types" "search";gap:6px;padding-block:5px 9px}
+ #quote-categories{flex-wrap:wrap}
+ .quote-search{width:100%;min-height:36px}
+ #quote-feed>.wrap{padding:12px 14px 16px}
+ .quote-grid{grid-template-columns:minmax(0,1fr);gap:10px}
+ .quote-card{min-height:0;padding:12px 13px 0;border-radius:10px}
+ .quote-card blockquote{padding:12px 0;font-size:1.35rem}
+ .quote-caption{min-height:64px;padding-block:8px}
+ .quote-copy.btn{width:44px;min-height:44px}
+}
+@media(max-width:360px){
+ #open-wishlist{font-size:1.08rem;gap:4px}
+ #cinema-header .collection-destination{padding-inline:4px}
+ .quote-top{flex-wrap:wrap;justify-content:flex-start;row-gap:5px;padding-bottom:6px}
+ .quote-top h1{font-size:1.25rem}
+}

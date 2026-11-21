@@ -9,15 +9,18 @@
   <meta name="history-mode" content="local">
   <title>Мой киносписок</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%231443ef'/%3E%3Cpath d='M18 18h28v29L32 38l-14 9z' fill='white'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./style.css?v=81dcddf49a5c">
-  <script type="module" src="./app.js?v=ab74acca8428"></script>
+  <link rel="stylesheet" href="./style.css?v=ffbe20b0e431">
+  <script type="module" src="./app.js?v=6a8f70ddfddd"></script>
 </head>
 <body>
   <a class="skip" href="#feed">К фильмам и сериалам</a>
   <header class="masthead" id="cinema-header">
     <div class="wrap">
       <div class="topline" id="list-navigation">
-        <h1><button class="collection-switch" id="open-wishlist" type="button" aria-label="Мой киносписок. Открыть вишлист" aria-controls="wishlist">Мой киносписок <span class="collection-destination"><span data-icon="swap"></span><span>Вишлист</span></span></button></h1>
+        <div class="collection-brand">
+          <h1><button class="collection-switch" id="open-wishlist" type="button" data-collection="wishlist" aria-label="Мой киносписок. Открыть вишлист" aria-controls="wishlist">Мой киносписок <span class="collection-destination"><span data-icon="swap"></span><span>Вишлист</span></span></button></h1>
+          <button type="button" class="collection-destination open-quotes" data-collection="quotes" aria-label="Цитаты" aria-haspopup="dialog" aria-controls="edit-dialog"><span data-icon="lock"></span><span>Цитаты</span></button>
+        </div>
         <nav class="mobile-lists" aria-label="Личные списки">
           <button type="button" data-list="favorite" aria-pressed="false" aria-label="Любимые" title="Любимые"><span data-icon="heart"></span></button>
           <button type="button" data-list="watched" aria-pressed="false" aria-label="Просмотрено" title="Просмотрено"><span data-icon="check"></span></button>
@@ -77,7 +80,10 @@
     <header class="masthead">
       <div class="wrap">
         <div class="topline wish-top">
-          <h1><button class="collection-switch" id="open-cinema" type="button" aria-label="Мой вишлист. Открыть киносписок" aria-controls="feed">Мой вишлист <span class="collection-destination"><span data-icon="swap"></span><span>Киносписок</span></span></button></h1>
+          <div class="collection-brand">
+            <h1><button class="collection-switch" id="open-cinema" type="button" data-collection="cinema" aria-label="Мой вишлист. Открыть киносписок" aria-controls="feed">Мой вишлист <span class="collection-destination"><span data-icon="swap"></span><span>Киносписок</span></span></button></h1>
+            <button type="button" class="collection-destination open-quotes" data-collection="quotes" aria-label="Цитаты" aria-haspopup="dialog" aria-controls="edit-dialog"><span data-icon="lock"></span><span>Цитаты</span></button>
+          </div>
           <nav class="wish-status" id="wish-status" aria-label="Статус желания">
             <button type="button" data-wish-status="wanted" aria-pressed="true">Хочу</button>
             <button type="button" data-wish-status="fulfilled" aria-pressed="false">Сбылось</button>
@@ -110,6 +116,31 @@
       <div class="wrap"><div id="wish-records" class="wish-grid"></div></div>
     </main>
   </section>
+  <section id="quotes" aria-label="Мои цитаты" hidden>
+    <header class="masthead">
+      <div class="wrap">
+        <div class="topline quote-top">
+          <h1 id="quotes-heading" tabindex="-1">Мои цитаты</h1>
+          <nav class="quote-collections" aria-label="Другие разделы">
+            <button type="button" class="collection-destination" data-collection="cinema" aria-controls="feed"><span data-icon="swap"></span>Киносписок</button>
+            <button type="button" class="collection-destination" data-collection="wishlist" aria-controls="wishlist"><span data-icon="swap"></span>Вишлист</button>
+          </nav>
+        </div>
+        <div class="toolbar quote-toolbar">
+          <div class="type-switch" id="quote-categories" role="group" aria-label="Категории цитат">
+            <button type="button" data-quote-category="all" aria-pressed="true">Всё</button>
+            <button type="button" data-quote-category="film" aria-pressed="false">Фильмы</button>
+            <button type="button" data-quote-category="book" aria-pressed="false">Книги</button>
+            <button type="button" data-quote-category="heard" aria-pressed="false">Где-то услышал</button>
+          </div>
+          <label class="quote-search"><span data-icon="search"></span><input id="quote-search" type="search" aria-label="Поиск по цитатам" placeholder="Поиск по цитатам"></label>
+        </div>
+      </div>
+    </header>
+    <main id="quote-feed" tabindex="-1" aria-label="Лента цитат">
+      <div class="wrap"><div id="quote-records" class="quote-grid"></div></div>
+    </main>
+  </section>
   <div id="notice" role="status" aria-live="polite"></div>
   <dialog id="wish-details" aria-labelledby="wish-title">
     <div class="dialog-head">
@@ -127,7 +158,7 @@
   <dialog id="edit-dialog" aria-labelledby="edit-title">
     <div class="dialog-head"><h2 id="edit-title">Изменить отметку</h2><button class="icon-button" data-close aria-label="Закрыть"><span data-icon="close"></span></button></div>
     <form id="edit-form" class="dialog-body field-body">
-      <label for="edit-pin">Пароль для редактирования</label>
+      <label for="edit-pin">Пароль</label>
       <input id="edit-pin" type="password" inputmode="numeric" maxlength="4" autocomplete="off" aria-describedby="edit-error">
       <p id="edit-error" role="alert"></p>
     </form>

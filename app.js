@@ -49,6 +49,10 @@ const markActions = [
   { kind: 'watching', add: 'Смотрю сейчас', remove: 'Отложить просмотр', icon: 'play' }
 ];
 const iconPaths = {
+  lock: '<rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 4v2"/>',
+  book: '<path d="M12 6c-2.6-2.1-5.6-2.7-9-1.5v14c3.2-1 6.2-.4 9 1.5 2.8-1.9 5.8-2.5 9-1.5v-14c-3.4-1.2-6.4-.6-9 1.5Zm0 0v14"/>',
+  ear: '<path d="M6 9a6 6 0 1 1 10.55 3.91c-1.29 1.54-2.3 2.33-2.55 4.09-.25 1.7-1.15 3-3 3-1.66 0-3-1.34-3-3m2-8a2 2 0 1 1 3.35 1.48c-.81.74-1.35 1.43-1.35 2.52"/>',
+  copy: '<rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/>',
   swap: '<path d="M4 8h15m-4-4 4 4-4 4M20 16H5m4-4-4 4 4 4"/>',
   external: '<path d="M13 5h6v6m0-6-9 9m0-7H6a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-4"/>',
   list: '<rect x="3.5" y="4.5" width="17" height="5" rx="1"/><rect x="3.5" y="14.5" width="17" height="5" rx="1"/>',
@@ -191,7 +195,7 @@ function showSchedule(item, openSeason) {
   el('seasons').scrollTop = 0;
   el('schedule').showModal();
 }
-function requestEditAccess() {
+function requestEditAccess(title = 'Изменить отметку') {
   if (hosted) return true;
   try {
     if (localStorage.getItem(editAccessKey) === '1') return true;
@@ -199,6 +203,7 @@ function requestEditAccess() {
 
   const dialog = el('edit-dialog');
   if (dialog.open) return false;
+  el('edit-title').textContent = title;
   dialog.returnValue = '';
   dialog.showModal();
   el('edit-pin').focus();
@@ -224,7 +229,7 @@ function confirmEdit(event) {
   try {
     localStorage.setItem(editAccessKey, '1');
   } catch {
-    el('edit-error').textContent = 'Браузеру нужен доступ к данным сайта, чтобы сохранить отметку.';
+    el('edit-error').textContent = 'Браузеру нужен доступ к данным сайта, чтобы запомнить разрешение.';
     return;
   }
   el('edit-dialog').close('confirmed');
@@ -625,12 +630,6 @@ async function loadWishlist() {
   }
 }
 function setupWishlist() {
-  const panel = el('wishlist');
-  const feed = el('feed');
-  const header = el('cinema-header');
-  const skip = document.querySelector('.skip');
-  let filmScroll = 0;
-  let listScroll = 0;
   try { if (localStorage.getItem(wishLayoutKey) === 'list') wishes.layout = 'list'; }
   catch { /* The layout can still be changed for this tab. */ }
   const controls = [
@@ -661,33 +660,170 @@ function setupWishlist() {
     renderWishlist();
     el('wish-feed').scrollTop = 0;
   };
-  el('open-wishlist').onclick = () => {
-    if (state.catalog.length) saveView();
-    filmScroll = feed.scrollTop;
-    listScroll = el('lists').scrollLeft;
-    header.hidden = feed.hidden = true;
-    panel.hidden = false;
-    skip.href = '#wish-feed';
-    skip.textContent = 'К желаниям';
-    document.title = 'Мой вишлист';
-    el('open-cinema').focus({ preventScroll: true });
-    loadWishlist();
-  };
-  el('open-cinema').onclick = () => {
-    panel.hidden = true;
-    header.hidden = feed.hidden = false;
-    feed.scrollTop = filmScroll;
-    el('lists').scrollLeft = listScroll;
-    skip.href = '#feed';
-    skip.textContent = 'К фильмам и сериалам';
-    document.title = 'Мой киносписок';
-    el('open-wishlist').focus({ preventScroll: true });
-  };
   el('edit-dialog').addEventListener('keydown', event => {
     if (event.key === 'Escape' && el('wish-details').open) {
       event.preventDefault();
       el('edit-dialog').close();
     }
+  });
+}
+const quoteKinds = {
+  film: ['Фильм', 'play'],
+  book: ['Книга', 'book'],
+  heard: ['Где-то услышал', 'ear']
+};
+function quoteCard(quote) {
+  const card = node('figure', 'quote-card');
+  const [label, symbol] = quoteKinds[quote.category];
+  card.dataset.quoteKind = quote.category;
+  const type = node('p', 'quote-label');
+  type.append(icon(symbol), label);
+
+  const block = node('blockquote');
+  const text = quote.text.trim();
+  const display = /^[«“"]/.test(text) ? text : text.endsWith('.') ? '«' + text.slice(0, -1) + '».' : '«' + text + '»';
+  block.append(node('p', '', display));
+
+  const caption = node('figcaption', 'quote-caption');
+  const source = node('div');
+  if (quote.url?.startsWith('https://')) {
+    const link = node('a', 'quote-source', quote.source || 'Источник');
+    link.href = quote.url;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    link.append(icon('external'));
+    source.append(link);
+    block.cite = quote.url;
+  } else if (quote.source) source.append(node('p', 'quote-source', quote.source));
+  if (quote.author) source.append(node('p', 'quote-author', quote.author));
+  const copy = button('Копировать цитату', 'quote-copy', 'copy', async () => {
+    try {
+      await navigator.clipboard.writeText(text);
+      announce('Цитата скопирована');
+    } catch {
+      announce('Не удалось скопировать цитату.');
+    }
+  }, true);
+  caption.append(source, copy);
+  card.append(type, block, caption);
+  return card;
+}
+function setupQuotes(onUnlock) {
+  const search = el('quote-search');
+  const categories = el('quote-categories');
+  const records = el('quote-records');
+  let loading;
+  let entries = null;
+  let category = 'all';
+
+  function renderQuotes() {
+    if (!entries) return;
+    const query = search.value.trim().toLocaleLowerCase('ru');
+    const result = entries.filter(quote => (category === 'all' || quote.category === category)
+      && [quote.text, quote.source, quote.author].join(' ').toLocaleLowerCase('ru').includes(query));
+    const message = !entries.length ? 'Пока нет цитат'
+      : query ? 'Ничего не найдено' : 'В этой категории пока нет цитат';
+    records.replaceChildren(...(result.length ? result.map(quoteCard) : [node('h2', 'empty quote-empty', message)]));
+  }
+  function chooseCategory(value) {
+    category = value;
+    for (const option of categories.children) option.setAttribute('aria-pressed', String(option.dataset.quoteCategory === category));
+    renderQuotes();
+    el('quote-feed').scrollTop = 0;
+  }
+  categories.onclick = event => {
+    const value = event.target.closest('button')?.dataset.quoteCategory;
+    if (value) chooseCategory(value);
+  };
+  search.oninput = () => {
+    renderQuotes();
+    el('quote-feed').scrollTop = 0;
+  };
+  async function loadQuotes() {
+    if (loading) return;
+    const request = new AbortController();
+    loading = request;
+    records.replaceChildren(node('p', 'loading quote-empty', 'Загрузка цитат…'));
+    try {
+      const embedded = el('offline-quotes');
+      let quotes;
+      if (embedded) quotes = JSON.parse(embedded.textContent);
+      else {
+        const response = await fetch('./quotes.json', { cache: 'no-cache', signal: request.signal });
+        if (!response.ok) throw new Error('Каталог цитат недоступен.');
+        quotes = await response.json();
+      }
+      if (request.signal.aborted) return;
+      if (!Array.isArray(quotes)) throw new Error('Неверный формат каталога цитат.');
+      entries = quotes;
+      renderQuotes();
+    } catch {
+      if (request.signal.aborted) return;
+      entries = null;
+      const failure = node('section', 'empty quote-empty');
+      failure.append(node('h2', '', 'Не удалось открыть цитаты'), button('Повторить', '', null, loadQuotes));
+      records.replaceChildren(failure);
+    } finally {
+      if (loading === request) loading = undefined;
+    }
+  }
+  return {
+    async request() {
+      if (!await requestEditAccess('Открыть «Мои цитаты»')) return;
+      onUnlock();
+      loadQuotes();
+    },
+    lock() {
+      loading?.abort();
+      loading = undefined;
+      entries = null;
+      search.value = '';
+      records.replaceChildren();
+      chooseCategory('all');
+    }
+  };
+}
+function setupCollections() {
+  const feed = el('feed');
+  const lists = el('lists');
+  const wishFeed = el('wish-feed');
+  const skip = document.querySelector('.skip');
+  const screens = {
+    cinema: { surfaces: [el('cinema-header'), feed], feed, focus: el('open-wishlist'), title: 'Мой киносписок', skipText: 'К фильмам и сериалам' },
+    wishlist: { surfaces: [el('wishlist')], feed: wishFeed, focus: el('open-cinema'), title: 'Мой вишлист', skipText: 'К желаниям' },
+    quotes: { surfaces: [el('quotes')], feed: el('quote-feed'), focus: el('quotes-heading'), title: 'Мои цитаты', skipText: 'К цитатам' }
+  };
+  const positions = { cinema: 0, wishlist: 0, quotes: 0 };
+  let current = 'cinema';
+  let listScroll = 0;
+  const quotes = setupQuotes(() => show('quotes'));
+  function show(next) {
+    if (current === next) return;
+    if (current === 'cinema') {
+      if (state.catalog.length) saveView();
+      listScroll = lists.scrollLeft;
+    }
+    const previous = screens[current];
+    positions[current] = current === 'quotes' ? 0 : previous.feed.scrollTop;
+    for (const surface of previous.surfaces) surface.hidden = true;
+    if (current === 'quotes') quotes.lock();
+    current = next;
+    const screen = screens[current];
+    for (const surface of screen.surfaces) surface.hidden = false;
+    screen.feed.scrollTop = positions[current];
+    if (current === 'cinema') lists.scrollLeft = listScroll;
+    skip.href = '#' + screen.feed.id;
+    skip.textContent = screen.skipText;
+    document.title = screen.title;
+    screen.focus.focus({ preventScroll: true });
+    if (current === 'wishlist') loadWishlist();
+  }
+  for (const button of document.querySelectorAll('[data-collection]')) {
+    const next = button.dataset.collection;
+    button.onclick = next === 'quotes' ? quotes.request : () => show(next);
+  }
+  window.addEventListener('pagehide', () => {
+    if (current === 'quotes') show('cinema');
   });
 }
 function resetFilters() {
@@ -1067,6 +1203,7 @@ async function start() {
   };
   document.querySelectorAll('[data-close]').forEach(b => b.onclick = () => b.closest('dialog').close());
   setupWishlist();
+  setupCollections();
   const embedded = document.getElementById('offline-catalog');
   let modified;
   if (embedded) state.catalog = JSON.parse(embedded.textContent);
