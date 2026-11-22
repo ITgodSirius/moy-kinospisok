@@ -1,5 +1,318 @@
 [
   {
+    "id": "tmdb-movie-509967",
+    "title": "Призрачная шестёрка",
+    "type": "movie",
+    "genres": [
+      "Боевик",
+      "Триллер"
+    ],
+    "studios": [
+      "Skydance Media",
+      "Bay Films"
+    ],
+    "description": "Миллиардер инсценирует свою смерть и собирает команду людей, которые тоже исчезли из прежней жизни. Первое задание группы — помочь свергнуть диктатора в вымышленной стране.",
+    "poster": "assets/tmdb-movie-509967-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-509967-still-1.jpg",
+      "assets/tmdb-movie-509967-still-2.jpg"
+    ],
+    "releaseDate": "2019-12-13",
+    "rating": 6.1,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=YLE85olJjp8",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/509967?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt8106534/",
+      "official": "https://media.netflix.com/en/only-on-netflix/81001887",
+      "releaseRussia": "https://www.kinopoisk.ru/film/1128272/dates/",
+      "poster": "https://images.metahub.space/poster/medium/tt8106534/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt8106534/img",
+        "https://i.ytimg.com/vi/YLE85olJjp8/sd2.jpg"
+      ]
+    },
+    "platforms": [
+      "Netflix"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-254128",
+    "title": "Разлом Сан-Андреас",
+    "type": "movie",
+    "genres": [
+      "Боевик",
+      "Приключения",
+      "Драма"
+    ],
+    "studios": [
+      "New Line Cinema",
+      "Village Roadshow Pictures"
+    ],
+    "description": "После мощного землетрясения в Калифорнии пилот спасательного вертолёта Рэй и его бывшая жена пытаются добраться до дочери, которая оказалась в разрушенном Сан-Франциско.",
+    "poster": "assets/tmdb-movie-254128-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-254128-still-1.jpg",
+      "assets/tmdb-movie-254128-still-2.jpg"
+    ],
+    "releaseDate": "2015-05-28",
+    "rating": 6.1,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=23VflsU3kZE",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/254128?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt2126355/",
+      "official": "https://www.warnerbros.com/movies/san-andreas",
+      "releaseRussia": "https://www.kinopoisk.ru/film/652692/",
+      "poster": "https://images.metahub.space/poster/medium/tt2126355/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt2126355/img",
+        "https://i.ytimg.com/vi/23VflsU3kZE/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-8065",
+    "title": "Двадцать одно",
+    "type": "movie",
+    "genres": [
+      "Драма",
+      "Криминал",
+      "Триллер"
+    ],
+    "studios": [
+      "Columbia Pictures",
+      "Relativity Media",
+      "Trigger Street Productions"
+    ],
+    "description": "Студенту Бену Кэмпбеллу нужны деньги на медицинскую школу. Профессор приглашает его в группу студентов, которая ездит в Лас-Вегас и пытается обыграть казино в блэкджек.",
+    "poster": "assets/tmdb-movie-8065-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-8065-still-1.jpg",
+      "assets/tmdb-movie-8065-still-2.jpg"
+    ],
+    "releaseDate": "2008-04-17",
+    "rating": 6.8,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=oqkdB7It5Go",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/8065?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0478087/",
+      "official": "https://www.sonypictures.com/movies/21",
+      "releaseRussia": "https://www.kinopoisk.ru/film/195847/",
+      "poster": "https://images.metahub.space/poster/medium/tt0478087/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt0478087/img",
+        "https://i.ytimg.com/vi/oqkdB7It5Go/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-300671",
+    "title": "13 часов: Тайные солдаты Бенгази",
+    "type": "movie",
+    "genres": [
+      "Боевик",
+      "Триллер",
+      "Драма"
+    ],
+    "studios": [
+      "Paramount Pictures",
+      "3 Arts Entertainment",
+      "Bay Films"
+    ],
+    "description": "В 2012 году в ливийском Бенгази атакуют американское дипломатическое представительство. Шестеро сотрудников охраны пытаются вывести людей из опасности и продержаться до прибытия помощи.",
+    "poster": "assets/tmdb-movie-300671-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-300671-still-1.jpg",
+      "assets/tmdb-movie-300671-still-2.jpg"
+    ],
+    "releaseDate": "2016-01-28",
+    "rating": 7.3,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=4CJBuUwd0Os",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/300671?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt4172430/",
+      "official": "https://www.paramountmovies.com/movies/13-hours-the-secret-soldiers-of-benghazi",
+      "releaseRussia": "https://www.kinopoisk.ru/film/882327/",
+      "poster": "https://images.metahub.space/poster/medium/tt4172430/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt4172430/img",
+        "https://i.ytimg.com/vi/4CJBuUwd0Os/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-594",
+    "title": "Терминал",
+    "type": "movie",
+    "genres": [
+      "Драма",
+      "Мелодрама",
+      "Комедия"
+    ],
+    "studios": [
+      "DreamWorks Pictures",
+      "Amblin Entertainment"
+    ],
+    "description": "Пока Виктор Наворски летит в Нью-Йорк, в его стране меняется власть и его документы перестают действовать. Ему приходится жить в аэропорту, где он знакомится с сотрудниками терминала и стюардессой Амелией.",
+    "poster": "assets/tmdb-movie-594-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-594-still-1.jpg",
+      "assets/tmdb-movie-594-still-2.jpg"
+    ],
+    "releaseDate": "2004-10-14",
+    "rating": 7.4,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=2X1zH0YfqZY",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/594?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0362227/",
+      "official": "https://amblin.com/movie/the-terminal/",
+      "releaseRussia": "https://www.kinopoisk.ru/film/6877/",
+      "poster": "https://images.metahub.space/poster/medium/tt0362227/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt0362227/img",
+        "https://i.ytimg.com/vi/2X1zH0YfqZY/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-51876",
+    "title": "Области тьмы",
+    "type": "movie",
+    "genres": [
+      "Фантастика",
+      "Триллер"
+    ],
+    "studios": [
+      "Relativity Media",
+      "Virgin Produced"
+    ],
+    "description": "Писатель Эдди Морра принимает экспериментальный препарат и обнаруживает, что способен мгновенно вспоминать и анализировать то, что раньше забывал. Быстрый успех на Уолл-стрит привлекает внимание людей, которым нужен его секрет.",
+    "poster": "assets/tmdb-movie-51876-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-51876-still-1.jpg",
+      "assets/tmdb-movie-51876-still-2.jpg"
+    ],
+    "releaseDate": "2011-03-17",
+    "rating": 7.4,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=PfiFZG_RdI0",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/51876?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt1219289/",
+      "official": "https://www.youtube.com/watch?v=PfiFZG_RdI0",
+      "releaseRussia": "https://www.kinopoisk.ru/film/462606/",
+      "poster": "https://images.metahub.space/poster/medium/tt1219289/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt1219289/img",
+        "https://i.ytimg.com/vi/PfiFZG_RdI0/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-307081",
+    "title": "Левша",
+    "type": "movie",
+    "genres": [
+      "Драма",
+      "Спорт"
+    ],
+    "studios": [
+      "Escape Artists",
+      "Riche-Ludwig Productions"
+    ],
+    "description": "Боксёр Билли Хоуп теряет жену, чемпионский титул и опеку над дочерью. Он просит тренера Тика Уиллса помочь ему вернуться на ринг и восстановить жизнь.",
+    "poster": "assets/tmdb-movie-307081-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-307081-still-1.jpg",
+      "assets/tmdb-movie-307081-still-2.jpg"
+    ],
+    "releaseDate": "2015-07-30",
+    "rating": 7.3,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=unX5-QBVZpk",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/307081?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt1798684/",
+      "official": "https://www.youtube.com/watch?v=unX5-QBVZpk",
+      "releaseRussia": "https://www.kinopoisk.ru/film/573990/",
+      "poster": "https://images.metahub.space/poster/medium/tt1798684/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt1798684/img",
+        "https://i.ytimg.com/vi/unX5-QBVZpk/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-562",
+    "title": "Крепкий орешек",
+    "type": "movie",
+    "genres": [
+      "Боевик",
+      "Триллер"
+    ],
+    "studios": [
+      "20th Century Fox",
+      "Gordon Company",
+      "Silver Pictures"
+    ],
+    "description": "Нью-йоркский полицейский Джон Макклейн приезжает к жене на рождественский вечер в Лос-Анджелесе. Когда вооружённые преступники захватывают гостей в небоскрёбе, он остаётся внутри и пытается им помешать.",
+    "poster": "assets/tmdb-movie-562-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-562-still-1.jpg",
+      "assets/tmdb-movie-562-still-2.jpg"
+    ],
+    "releaseDate": "1988-07-15",
+    "rating": 8.2,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=gYWvwkXreaI",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/562?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0095016/",
+      "official": "https://www.20thcenturystudios.com/movies/die-hard",
+      "release": "https://catalog.afi.com/Film/55749-DIE-HARD",
+      "poster": "https://images.metahub.space/poster/medium/tt0095016/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt0095016/img",
+        "https://i.ytimg.com/vi/gYWvwkXreaI/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
     "id": "tmdb-tv-157741-s1",
     "title": "Лэндмен",
     "type": "series",
