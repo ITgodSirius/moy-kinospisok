@@ -57,6 +57,12 @@ h1{font-size:clamp(1.5rem,2.55vw,2.25rem);font-weight:730;white-space:nowrap}
 .search-result img{flex:none;width:46px;height:66px;object-fit:cover;border-radius:5px;background:var(--surface)}
 .search-result h2{font-size:1.05rem;overflow-wrap:anywhere}
 .search-result p{margin-top:4px;font-size:.875rem;color:var(--muted)}
+.search-result .card-marks{flex:none;margin-inline-start:auto}
+@media(max-width:640px){
+ .search-result{gap:8px}
+ .search-result img{width:36px;height:52px}
+ .search-result .card-marks{gap:3px}
+}
 .quiet,.sort select{font-size:.9375rem}
 .quiet{gap:8px;padding:9px 10px;border-radius:7px}
 #filter-count:not([hidden]){font-size:.8125rem;font-weight:650;background:var(--tint);color:var(--blue);min-width:1.55em;border-radius:4px}

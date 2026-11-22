@@ -488,14 +488,14 @@ function mediaActions(item, compact = false) {
   links.append(externalLink('Найти', 'search', yandexSearchUrl(item), 'Найти «' + item.title + '» в Яндексе в новой вкладке', compact));
   return links;
 }
-function cardMarks(item) {
+function cardMarks(item, iconsOnly = false) {
   const marks = node('div', 'card-marks');
   marks.setAttribute('role', 'group');
   marks.setAttribute('aria-label', 'Мои отметки');
   for (const { kind, add, remove, icon } of markActions) {
     const finished = kind === 'watching' && marked(item.id, 'watched');
     const active = !finished && marked(item.id, kind);
-    const compact = kind !== 'watching';
+    const compact = iconsOnly || kind !== 'watching';
     const mark = button(active ? remove : add, 'mark', icon, () => toggleMark(item, kind), compact);
     mark.dataset.kind = kind;
     mark.disabled = finished || busy(item.id, kind);
@@ -1107,7 +1107,7 @@ function searchResult(item) {
   const list = itemList(item);
   const location = list === 'waiting' && !item.releaseDate ? 'Жду · Анонсы' : listNames[list];
   info.append(node('h2', '', item.title), node('p', '', [formatLabel(item), location, dateText(item.releaseDate)].join(' · ')));
-  row.append(info);
+  row.append(info, cardMarks(item, true));
   return row;
 }
 function renderSearch() {
@@ -1119,7 +1119,15 @@ function renderSearch() {
   }).sort((a, b) => collator.compare(a.title, b.title) || (a.season || 0) - (b.season || 0)) : [];
   el('search-status').textContent = !query ? 'Введите название фильма или сериала.' :
     result.length ? 'Найдено совпадений: ' + result.length : 'Ничего не найдено. Попробуйте другое название.';
-  el('records').replaceChildren(...result.map(searchResult));
+  const records = el('records');
+  const focused = document.activeElement;
+  const id = focused.closest('.search-result')?.dataset.id;
+  records.replaceChildren(...result.map(searchResult));
+  if (id && focused.dataset.kind) {
+    const row = records.querySelector('[data-id="' + CSS.escape(id) + '"]');
+    const mark = row?.querySelector('[data-kind="' + focused.dataset.kind + '"]:enabled');
+    (mark || row?.querySelector('button:enabled') || el('catalog-query')).focus({ preventScroll: true });
+  }
 }
 function setSearchOpen(open) {
   el('catalog-search').hidden = !open;
@@ -1159,7 +1167,7 @@ function setupSearch() {
     saveView();
   };
   document.addEventListener('keydown', event => {
-    if (viewBeforeSearch && event.key === 'Escape' && !event.isComposing) {
+    if (viewBeforeSearch && event.key === 'Escape' && !event.isComposing && !el('edit-dialog').open) {
       event.preventDefault();
       closeSearch();
     }
