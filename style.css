@@ -53,11 +53,21 @@ h1{font-size:clamp(1.5rem,2.55vw,2.25rem);font-weight:730;white-space:nowrap}
 #catalog-query::placeholder,#search-status{color:var(--muted)}
 #search-close{min-height:40px;padding-inline:12px;color:var(--blue);font-size:.875rem}
 #search-status{margin:20px 0 10px;font-size:.9rem}
-.search-result{display:flex;align-items:center;gap:14px;min-height:84px;padding:10px 0;border-bottom:1px solid var(--line)}
+.search-result{position:relative;display:flex;align-items:center;gap:14px;min-height:84px;padding:10px 0;border-bottom:1px solid var(--line)}
 .search-result img{flex:none;width:46px;height:66px;object-fit:cover;border-radius:5px;background:var(--surface)}
 .search-result h2{font-size:1.05rem;overflow-wrap:anywhere}
 .search-result p{margin-top:4px;font-size:.875rem;color:var(--muted)}
-.search-result .card-marks{flex:none;margin-inline-start:auto}
+.search-result-info{flex:1;min-width:0}
+.search-result-open{display:inline-flex;align-items:baseline;gap:4px;text-align:start;font:inherit;color:inherit;overflow-wrap:anywhere}
+.search-result-open>.ico{width:.85em;height:.85em;align-self:center;transform:rotate(-90deg);color:var(--muted)}
+.search-result-open::after{content:"";position:absolute;inset:0;border-radius:6px}
+.search-result-open:focus-visible{outline:none}
+.search-result-open:focus-visible::after{outline:2px solid var(--blue);outline-offset:-2px}
+.search-result-open:hover{color:var(--blue)}
+.search-result-actions{display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:8px 14px;max-width:70%}
+.search-result-actions :is(button,a){position:relative}
+.search-result-actions .reactions{margin:0}
+.search-result-actions .media-actions .btn{white-space:nowrap}
 @media(max-width:640px){
  .search-result{gap:8px}
  .search-result img{width:36px;height:52px}
@@ -231,6 +241,17 @@ details[open] summary svg{transform:rotate(180deg)}
  #cinema-header .toolbar{grid-template-areas:"types updated" "tools tools" "genres genres"}
 }
 @media(max-width:820px){
+ #film-heading{flex:1;min-width:0}
+ #film-heading h2{overflow-wrap:anywhere}
+ #film-details .dialog-head{align-items:flex-start}
+ #film-details .dialog-head>.icon-button{flex:none}
+ .film-body{padding-block:14px}
+ .film-body .gallery{margin-bottom:14px}
+ .film-body .date{margin-top:0}
+ .film-foot{display:grid;justify-content:stretch;gap:8px;container-type:inline-size}
+ .film-foot .btn{min-width:0;min-height:44px}
+ .film-foot .card-marks{justify-content:flex-end}
+ .film-foot .card-marks .btn{min-width:44px}
  .toolbar{min-height:54px}.entry{gap:18px;grid-template-columns:minmax(0,.85fr) minmax(0,1fr)}
 }
 @media(max-width:760px){

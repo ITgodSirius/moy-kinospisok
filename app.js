@@ -950,17 +950,26 @@ function saveTabView(view) {
   try { sessionStorage.setItem(viewKey, JSON.stringify(view)); }
   catch { /* The catalog also works without browser storage. */ }
 }
+function dialogView() {
+  const dialog = document.querySelector('#filters[open], #schedule[open]');
+  const openSeason = el('seasons').querySelector('details[open]');
+  return {
+    detail: el('film-details').open ? detailItem.id : undefined,
+    detailScroll: el('film-details').querySelector('.film-body').scrollTop,
+    dialog: dialog?.id, dialogScroll: dialog?.querySelector('.dialog-body').scrollTop,
+    series: dialog?.id === 'schedule' ? scheduleItem.id : undefined,
+    season: desktop.matches ? undefined : openSeason ? Number(openSeason.dataset.season) : null
+  };
+}
 function saveView({ initial = false } = {}) {
   const feed = el('feed');
   if (feed.hidden) return;
   if (viewBeforeSearch) {
-    saveTabView({ ...viewBeforeSearch, search: { query: el('catalog-query').value, scrollTop: feed.scrollTop } });
+    saveTabView({ ...viewBeforeSearch, search: { query: el('catalog-query').value, scrollTop: feed.scrollTop, ...dialogView() } });
     return;
   }
   const top = feed.getBoundingClientRect().top;
   const first = [...el('records').children].find(card => card.dataset.id && card.getBoundingClientRect().bottom > top);
-  const dialog = document.querySelector('#filters[open], #schedule[open]');
-  const openSeason = el('seasons').querySelector('details[open]');
   const view = {
     list: state.list, type: state.type, sorts: sortChoices,
     genres: [...state.genres],
@@ -978,15 +987,7 @@ function saveView({ initial = false } = {}) {
       lastSavedFeed = feedJson;
     } catch { /* A tab snapshot may still be available. */ }
   }
-  const tabView = {
-    ...view,
-    detail: el('film-details').open ? detailItem.id : undefined,
-    detailScroll: el('film-details').querySelector('.film-body').scrollTop,
-    dialog: dialog?.id, dialogScroll: dialog?.querySelector('.dialog-body').scrollTop,
-    series: dialog?.id === 'schedule' ? scheduleItem.id : undefined,
-    season: desktop.matches ? undefined : openSeason ? Number(openSeason.dataset.season) : null
-  };
-  saveTabView(tabView);
+  saveTabView({ ...view, ...dialogView() });
   return view;
 }
 function readSavedView() {
@@ -1065,11 +1066,10 @@ function restoreFeed(view) {
     window.addEventListener(event, stop, { capture: true, passive: true, signal: controller.signal });
   }
 }
-function restorePosition(view) {
-  el('lists').scrollLeft = view.listScroll || 0;
-  if (view.detail && desktop.matches && layout === 'grid') {
+function restoreDialogs(view) {
+  if (view.detail && (viewBeforeSearch || (desktop.matches && layout === 'grid'))) {
     const item = state.catalog.find(item => item.id === view.detail);
-    if (item && (busy(item.id, 'favorite') || favoriteMatchesList(item))) {
+    if (item && (viewBeforeSearch || busy(item.id, 'favorite') || favoriteMatchesList(item))) {
       showDetails(item);
       el('film-details').querySelector('.film-body').scrollTop = view.detailScroll || 0;
     }
@@ -1087,7 +1087,6 @@ function restorePosition(view) {
   }
   const body = el(view.dialog)?.querySelector('.dialog-body');
   if (body) body.scrollTop = view.dialogScroll || 0;
-  restoreFeed(view);
 }
 function searchText(text) {
   return text.toLowerCase().replaceAll('ё', 'е').replace(/[^\p{L}\p{N}]+/gu, ' ').trim();
@@ -1103,11 +1102,26 @@ function searchResult(item) {
     img.src = src;
     row.append(img);
   }
-  const info = node('div');
+  const info = node('div', 'search-result-info');
   const list = itemList(item);
   const location = list === 'waiting' && !item.releaseDate ? 'Жду · Анонсы' : listNames[list];
-  info.append(node('h2', '', item.title), node('p', '', [formatLabel(item), location, dateText(item.releaseDate)].join(' · ')));
-  row.append(info, cardMarks(item, true));
+  const heading = node('h2');
+  const open = node('button', 'search-result-open', item.title);
+  open.type = 'button';
+  open.setAttribute('aria-haspopup', 'dialog');
+  open.setAttribute('aria-controls', 'film-details');
+  const meta = node('p', '', [formatLabel(item), location, dateText(item.releaseDate)].join(' · '));
+  meta.id = 'search-meta-' + item.id;
+  open.setAttribute('aria-describedby', meta.id);
+  open.append(icon('chevron'));
+  open.onclick = () => showDetails(item);
+  heading.append(open);
+  info.append(heading, meta);
+  const actions = node('div', 'search-result-actions');
+  if (desktop.matches) actions.append(mediaActions(item));
+  actions.append(cardMarks(item, true));
+  if (desktop.matches && marked(item.id, 'watched')) actions.append(reactionButtons(item, true));
+  row.append(info, actions);
   return row;
 }
 function renderSearch() {
@@ -1147,6 +1161,7 @@ function openSearch(base = saveView(), search = {}) {
   renderSearch();
   el('feed').scrollTop = search.scrollTop || 0;
   input.focus({ preventScroll: true });
+  restoreDialogs(search);
 }
 function closeSearch() {
   const base = viewBeforeSearch;
@@ -1167,22 +1182,16 @@ function setupSearch() {
     saveView();
   };
   document.addEventListener('keydown', event => {
-    if (viewBeforeSearch && event.key === 'Escape' && !event.isComposing && !el('edit-dialog').open) {
+    if (viewBeforeSearch && event.key === 'Escape' && !event.isComposing && !event.defaultPrevented && !document.querySelector('dialog[open]')) {
       event.preventDefault();
       closeSearch();
     }
   });
 }
-function render() {
-  state.day = calendarDay(new Date());
-  if (viewBeforeSearch) {
-    renderSearch();
-    return;
-  }
+function renderFeed() {
   const focused = document.activeElement;
   const kind = focused?.dataset.kind;
   const id = focused?.closest('.entry, .poster-card')?.dataset.id;
-  const inDetails = focused?.closest('#film-details');
   const result = state.catalog.filter(matchesFilters).sort(compare);
   const count = filterIds.filter(id => el(id).value).length;
   el('filter-count').hidden = !count; el('filter-count').textContent = count;
@@ -1192,21 +1201,26 @@ function render() {
   const records = el('records');
   records.classList.toggle('poster-grid', grid && result.length > 0);
   records.replaceChildren(...(result.length ? result.map(grid ? posterCard : card) : [empty()]));
-  const dialog = el('film-details');
-  if (dialog.open && !busy(detailItem.id, 'favorite') && !favoriteMatchesList(detailItem)) dialog.close();
-  if (dialog.open) {
-    dialog.querySelector('.card-history').replaceWith(cardHistory(detailItem));
-    const marks = cardMarks(detailItem);
-    dialog.querySelector('.card-marks').replaceWith(marks);
-    if (kind && inDetails) {
-      dialog.querySelector('[data-kind="' + kind + '"]:not(:disabled)')?.focus({preventScroll:true});
-    }
-  }
   if (kind && id) {
     const same = el('records').querySelector('[data-id="' + CSS.escape(id) + '"]');
     const activeList = [...document.querySelectorAll('[data-list][aria-pressed="true"]')].find(button => button.getClientRects().length);
     (same?.querySelector('[data-kind="' + kind + '"]') || activeList)?.focus({ preventScroll: true });
   }
+}
+function render() {
+  state.day = calendarDay(new Date());
+  if (viewBeforeSearch) renderSearch();
+  else renderFeed();
+  const dialog = el('film-details');
+  if (!dialog.open) return;
+  if (!viewBeforeSearch && !busy(detailItem.id, 'favorite') && !favoriteMatchesList(detailItem)) {
+    dialog.close();
+    return;
+  }
+  const kind = dialog.contains(document.activeElement) && document.activeElement.dataset.kind;
+  dialog.querySelector('.card-history').replaceWith(cardHistory(detailItem));
+  dialog.querySelector('.card-marks').replaceWith(cardMarks(detailItem));
+  if (kind) dialog.querySelector('[data-kind="' + kind + '"]:enabled')?.focus({ preventScroll: true });
 }
 function setupLayouts() {
   try { if (localStorage.getItem(layoutKey) === 'grid') layout = 'grid'; }
@@ -1234,15 +1248,15 @@ function setupLayouts() {
   const dialog = el('film-details');
   dialog.addEventListener('close', () => {
     if (dialog.open || !detailItem) return;
-    const tile = el('records').querySelector('[data-id="' + CSS.escape(detailItem.id) + '"] .poster-open');
+    const tile = el('records').querySelector('[data-id="' + CSS.escape(detailItem.id) + '"] [aria-controls="film-details"]');
     detailItem = undefined;
-    if (!document.querySelector('dialog[open]') && desktop.matches) {
-      (tile || controls.querySelector('[aria-pressed=true]')).focus({preventScroll:true});
+    if (!document.querySelector('dialog[open]') && (viewBeforeSearch || desktop.matches)) {
+      (tile || (viewBeforeSearch ? el('catalog-query') : controls.querySelector('[aria-pressed=true]'))).focus({preventScroll:true});
     }
   });
   desktop.addEventListener('change', () => {
-    if (!desktop.matches && dialog.open) dialog.close();
-    if (layout === 'grid') render();
+    if (!desktop.matches && dialog.open && !viewBeforeSearch) dialog.close();
+    if (layout === 'grid' || viewBeforeSearch) render();
     if (el('schedule').open) renderSeasons(scheduleItem);
   });
 }
@@ -1417,7 +1431,11 @@ async function start() {
     const { search, ...base } = view;
     el('lists').scrollLeft = base.listScroll || 0;
     openSearch(base, search);
-  } else if (view) restorePosition(view);
+  } else if (view) {
+    el('lists').scrollLeft = view.listScroll || 0;
+    restoreDialogs(view);
+    restoreFeed(view);
+  }
   saveView({ initial: true });
   trackView();
   if (hosted) {
