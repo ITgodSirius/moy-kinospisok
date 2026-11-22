@@ -1,5 +1,4418 @@
 [
   {
+    "id": "tmdb-tv-157741-s1",
+    "title": "Лэндмен",
+    "type": "series",
+    "genres": [
+      "Драма"
+    ],
+    "studios": [
+      "MTV Entertainment Studios",
+      "101 Studios",
+      "Bosque Ranch Productions"
+    ],
+    "description": "Томми Норрис улаживает конфликты между владельцами земли, рабочими и нефтяной компанией в Западном Техасе. Когда его сын приходит на буровую, работа и семейная жизнь начинают пересекаться.",
+    "poster": "assets/tmdb-tv-157741-s1-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-157741-s1-still-1.jpg",
+      "assets/tmdb-tv-157741-s1-still-2.jpg"
+    ],
+    "releaseDate": "2024-11-17",
+    "rating": 8.2,
+    "ratingSource": "IMDb сериала",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=7zxh49-bsIk",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/157741/season/1?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt14186672/",
+      "official": "https://www.paramountplus.com/shows/landman/",
+      "metadata": "https://v3-cinemeta.strem.io/meta/series/tt14186672.json",
+      "release": "https://www.paramountplus.com/shows/landman/",
+      "episodes": "https://www.tvmaze.com/shows/53777/landman/episodes",
+      "poster": "https://static.tvmaze.com/uploads/images/original_untouched/541/1353213.jpg",
+      "gallery": [
+        "https://static.tvmaze.com/uploads/images/original_untouched/544/1360738.jpg",
+        "https://static.tvmaze.com/uploads/images/original_untouched/544/1360739.jpg"
+      ],
+      "seasons": "https://www.themoviedb.org/tv/157741/seasons"
+    },
+    "platforms": [
+      "Paramount+"
+    ],
+    "origin": "foreign",
+    "season": 1,
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2024-11-17",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2024-11-17",
+            "title": "Landman"
+          },
+          {
+            "number": 2,
+            "date": "2024-11-17",
+            "title": "Dreamers and Losers"
+          },
+          {
+            "number": 3,
+            "date": "2024-11-24",
+            "title": "Hell Has a Front Yard"
+          },
+          {
+            "number": 4,
+            "date": "2024-12-01",
+            "title": "The Sting of Second Chances"
+          },
+          {
+            "number": 5,
+            "date": "2024-12-08",
+            "title": "Where is Home"
+          },
+          {
+            "number": 6,
+            "date": "2024-12-15",
+            "title": "Beware the Second Beating"
+          },
+          {
+            "number": 7,
+            "date": "2024-12-22",
+            "title": "All Roads Lead to a Hole"
+          },
+          {
+            "number": 8,
+            "date": "2024-12-29",
+            "title": "Clumsy, This Life"
+          },
+          {
+            "number": 9,
+            "date": "2025-01-05",
+            "title": "WolfCamp"
+          },
+          {
+            "number": 10,
+            "date": "2025-01-12",
+            "title": "The Crumbs of Hope"
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "releaseDate": "2025-11-16",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2025-11-16",
+            "title": "Death and a Sunset"
+          },
+          {
+            "number": 2,
+            "date": "2025-11-23",
+            "title": "Sins of the Father"
+          },
+          {
+            "number": 3,
+            "date": "2025-11-30",
+            "title": "Almost a Home"
+          },
+          {
+            "number": 4,
+            "date": "2025-12-07",
+            "title": "Dancing Rainbows"
+          },
+          {
+            "number": 5,
+            "date": "2025-12-14",
+            "title": "The Pirate Dinner"
+          },
+          {
+            "number": 6,
+            "date": "2025-12-21",
+            "title": "Dark Night of the Soul"
+          },
+          {
+            "number": 7,
+            "date": "2025-12-28",
+            "title": "Forever Is an Instant"
+          },
+          {
+            "number": 8,
+            "date": "2026-01-04",
+            "title": "Handsome Touched Me"
+          },
+          {
+            "number": 9,
+            "date": "2026-01-11",
+            "title": "Plans, Tears, and Sirens"
+          },
+          {
+            "number": 10,
+            "date": "2026-01-18",
+            "title": "Tragedy and Flies"
+          }
+        ]
+      },
+      {
+        "number": 3,
+        "releaseDate": null,
+        "episodes": []
+      }
+    ],
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-tv-157741-s2",
+    "title": "Лэндмен",
+    "type": "series",
+    "genres": [
+      "Драма"
+    ],
+    "studios": [
+      "MTV Entertainment Studios",
+      "101 Studios",
+      "Bosque Ranch Productions"
+    ],
+    "description": "Томми получает больше ответственности в нефтяной компании. Пока Ками Миллер осваивается в роли руководителя, опасные сделки ставят под угрозу и бизнес, и его семью.",
+    "poster": "assets/tmdb-tv-157741-s2-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-157741-s2-still-1.jpg",
+      "assets/tmdb-tv-157741-s2-still-2.jpg"
+    ],
+    "releaseDate": "2025-11-16",
+    "rating": 8.2,
+    "ratingSource": "IMDb сериала",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=C1as_hRbBZg",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/157741/season/2?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt14186672/",
+      "official": "https://www.paramountplus.com/shows/landman/",
+      "metadata": "https://v3-cinemeta.strem.io/meta/series/tt14186672.json",
+      "release": "https://www.paramountplus.com/sneak-peak/landman-season-3-everything-you-need-to-know/",
+      "episodes": "https://www.tvmaze.com/shows/53777/landman/episodes",
+      "poster": "https://static.tvmaze.com/uploads/images/original_untouched/598/1495773.jpg",
+      "gallery": [
+        "https://static.tvmaze.com/uploads/images/original_untouched/598/1496301.jpg",
+        "https://static.tvmaze.com/uploads/images/original_untouched/599/1499430.jpg"
+      ],
+      "seasons": "https://www.themoviedb.org/tv/157741/seasons"
+    },
+    "platforms": [
+      "Paramount+"
+    ],
+    "origin": "foreign",
+    "season": 2,
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2024-11-17",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2024-11-17",
+            "title": "Landman"
+          },
+          {
+            "number": 2,
+            "date": "2024-11-17",
+            "title": "Dreamers and Losers"
+          },
+          {
+            "number": 3,
+            "date": "2024-11-24",
+            "title": "Hell Has a Front Yard"
+          },
+          {
+            "number": 4,
+            "date": "2024-12-01",
+            "title": "The Sting of Second Chances"
+          },
+          {
+            "number": 5,
+            "date": "2024-12-08",
+            "title": "Where is Home"
+          },
+          {
+            "number": 6,
+            "date": "2024-12-15",
+            "title": "Beware the Second Beating"
+          },
+          {
+            "number": 7,
+            "date": "2024-12-22",
+            "title": "All Roads Lead to a Hole"
+          },
+          {
+            "number": 8,
+            "date": "2024-12-29",
+            "title": "Clumsy, This Life"
+          },
+          {
+            "number": 9,
+            "date": "2025-01-05",
+            "title": "WolfCamp"
+          },
+          {
+            "number": 10,
+            "date": "2025-01-12",
+            "title": "The Crumbs of Hope"
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "releaseDate": "2025-11-16",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2025-11-16",
+            "title": "Death and a Sunset"
+          },
+          {
+            "number": 2,
+            "date": "2025-11-23",
+            "title": "Sins of the Father"
+          },
+          {
+            "number": 3,
+            "date": "2025-11-30",
+            "title": "Almost a Home"
+          },
+          {
+            "number": 4,
+            "date": "2025-12-07",
+            "title": "Dancing Rainbows"
+          },
+          {
+            "number": 5,
+            "date": "2025-12-14",
+            "title": "The Pirate Dinner"
+          },
+          {
+            "number": 6,
+            "date": "2025-12-21",
+            "title": "Dark Night of the Soul"
+          },
+          {
+            "number": 7,
+            "date": "2025-12-28",
+            "title": "Forever Is an Instant"
+          },
+          {
+            "number": 8,
+            "date": "2026-01-04",
+            "title": "Handsome Touched Me"
+          },
+          {
+            "number": 9,
+            "date": "2026-01-11",
+            "title": "Plans, Tears, and Sirens"
+          },
+          {
+            "number": 10,
+            "date": "2026-01-18",
+            "title": "Tragedy and Flies"
+          }
+        ]
+      },
+      {
+        "number": 3,
+        "releaseDate": null,
+        "episodes": []
+      }
+    ],
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-tv-94605-s1",
+    "title": "Аркейн",
+    "type": "series",
+    "genres": [
+      "Мультсериал",
+      "Фэнтези",
+      "Боевик",
+      "Драма"
+    ],
+    "studios": [
+      "Riot Games",
+      "Fortiche Production"
+    ],
+    "description": "Сёстры Вай и Паудер растут в подземном Зауне. Неудачная вылазка в Пилтовер запускает события, которые разлучают их и обостряют конфликт между городами.",
+    "poster": "assets/tmdb-tv-94605-s1-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-94605-s1-still-1.jpg",
+      "assets/tmdb-tv-94605-s1-still-2.jpg"
+    ],
+    "releaseDate": "2021-11-06",
+    "rating": 9,
+    "ratingSource": "IMDb сериала",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=fXmAurh012s",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/94605/season/1?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt11126994/",
+      "official": "https://media.netflix.com/en/only-on-netflix/81435684",
+      "metadata": "https://v3-cinemeta.strem.io/meta/series/tt11126994.json",
+      "release": "https://www.tvmaze.com/shows/55138/arcane-league-of-legends/episodeguide",
+      "episodes": "https://www.tvmaze.com/shows/55138/arcane-league-of-legends/episodes",
+      "poster": "https://static.tvmaze.com/uploads/images/original_untouched/380/951825.jpg",
+      "gallery": [
+        "https://static.tvmaze.com/uploads/images/original_untouched/373/933222.jpg",
+        "https://static.tvmaze.com/uploads/images/original_untouched/373/933223.jpg"
+      ],
+      "seasons": "https://www.themoviedb.org/tv/94605/seasons"
+    },
+    "platforms": [
+      "Netflix"
+    ],
+    "origin": "foreign",
+    "season": 1,
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2021-11-06",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2021-11-06",
+            "title": "Welcome to the Playground"
+          },
+          {
+            "number": 2,
+            "date": "2021-11-06",
+            "title": "Some Mysteries Are Better Left Unsolved"
+          },
+          {
+            "number": 3,
+            "date": "2021-11-06",
+            "title": "The Base Violence Necessary for Change"
+          },
+          {
+            "number": 4,
+            "date": "2021-11-13",
+            "title": "Happy Progress Day!"
+          },
+          {
+            "number": 5,
+            "date": "2021-11-13",
+            "title": "Everybody Wants to Be My Enemy"
+          },
+          {
+            "number": 6,
+            "date": "2021-11-13",
+            "title": "When These Walls Come Tumbling Down"
+          },
+          {
+            "number": 7,
+            "date": "2021-11-20",
+            "title": "The Boy Savior"
+          },
+          {
+            "number": 8,
+            "date": "2021-11-20",
+            "title": "Oil and Water"
+          },
+          {
+            "number": 9,
+            "date": "2021-11-20",
+            "title": "The Monster You Created"
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "releaseDate": "2024-11-09",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2024-11-09",
+            "title": "Heavy Is the Crown"
+          },
+          {
+            "number": 2,
+            "date": "2024-11-09",
+            "title": "Watch It All Burn"
+          },
+          {
+            "number": 3,
+            "date": "2024-11-09",
+            "title": "Finally Got the Name Right"
+          },
+          {
+            "number": 4,
+            "date": "2024-11-16",
+            "title": "Paint the Town Blue"
+          },
+          {
+            "number": 5,
+            "date": "2024-11-16",
+            "title": "Blisters and Bedrock"
+          },
+          {
+            "number": 6,
+            "date": "2024-11-16",
+            "title": "The Message Hidden Within the Pattern"
+          },
+          {
+            "number": 7,
+            "date": "2024-11-23",
+            "title": "Pretend Like It's the First Time"
+          },
+          {
+            "number": 8,
+            "date": "2024-11-23",
+            "title": "Killing Is a Cycle"
+          },
+          {
+            "number": 9,
+            "date": "2024-11-23",
+            "title": "The Dirt Under Your Nails"
+          }
+        ]
+      }
+    ],
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-tv-94605-s2",
+    "title": "Аркейн",
+    "type": "series",
+    "genres": [
+      "Мультсериал",
+      "Фэнтези",
+      "Боевик",
+      "Драма"
+    ],
+    "studios": [
+      "Riot Games",
+      "Fortiche Production"
+    ],
+    "description": "После нападения на совет Пилтовера Вай и Кейтлин пытаются остановить Джинкс. Противостояние городов доходит до войны, а Хекстек выходит из-под контроля создателей.",
+    "poster": "assets/tmdb-tv-94605-s2-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-94605-s2-still-1.jpg",
+      "assets/tmdb-tv-94605-s2-still-2.jpg"
+    ],
+    "releaseDate": "2024-11-09",
+    "rating": 9,
+    "ratingSource": "IMDb сериала",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=ysqiEC6bLUI",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/94605/season/2?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt11126994/",
+      "official": "https://media.netflix.com/en/only-on-netflix/81435684",
+      "metadata": "https://v3-cinemeta.strem.io/meta/series/tt11126994.json",
+      "release": "https://www.netflix.com/tudum/articles/arcane-season-2-release-date-photos",
+      "episodes": "https://www.tvmaze.com/shows/55138/arcane-league-of-legends/episodes",
+      "poster": "https://dnm.nflximg.net/api/v6/a01MIaQTUgSJoLaS_OCn68Eg3hU/AAAAQZwcS3VvgNz-uJulNsfqH7oUmx6b2nclrVVQ1CvqgmZyK7zVqWWRuqFCKaqQ1PheLP53RoqbBRa3UWwODraz6-xobj8Ap0tRpWQTKhc1BG5BYY_CJsx-GumuzMyBJEY99TIgItQL9TjebKh44tihPUqOvbQ.jpg?r=7c7",
+      "gallery": [
+        "https://static.tvmaze.com/uploads/images/original_untouched/543/1357689.jpg",
+        "https://static.tvmaze.com/uploads/images/original_untouched/543/1357690.jpg"
+      ],
+      "seasons": "https://www.themoviedb.org/tv/94605/seasons"
+    },
+    "platforms": [
+      "Netflix"
+    ],
+    "origin": "foreign",
+    "season": 2,
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2021-11-06",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2021-11-06",
+            "title": "Welcome to the Playground"
+          },
+          {
+            "number": 2,
+            "date": "2021-11-06",
+            "title": "Some Mysteries Are Better Left Unsolved"
+          },
+          {
+            "number": 3,
+            "date": "2021-11-06",
+            "title": "The Base Violence Necessary for Change"
+          },
+          {
+            "number": 4,
+            "date": "2021-11-13",
+            "title": "Happy Progress Day!"
+          },
+          {
+            "number": 5,
+            "date": "2021-11-13",
+            "title": "Everybody Wants to Be My Enemy"
+          },
+          {
+            "number": 6,
+            "date": "2021-11-13",
+            "title": "When These Walls Come Tumbling Down"
+          },
+          {
+            "number": 7,
+            "date": "2021-11-20",
+            "title": "The Boy Savior"
+          },
+          {
+            "number": 8,
+            "date": "2021-11-20",
+            "title": "Oil and Water"
+          },
+          {
+            "number": 9,
+            "date": "2021-11-20",
+            "title": "The Monster You Created"
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "releaseDate": "2024-11-09",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2024-11-09",
+            "title": "Heavy Is the Crown"
+          },
+          {
+            "number": 2,
+            "date": "2024-11-09",
+            "title": "Watch It All Burn"
+          },
+          {
+            "number": 3,
+            "date": "2024-11-09",
+            "title": "Finally Got the Name Right"
+          },
+          {
+            "number": 4,
+            "date": "2024-11-16",
+            "title": "Paint the Town Blue"
+          },
+          {
+            "number": 5,
+            "date": "2024-11-16",
+            "title": "Blisters and Bedrock"
+          },
+          {
+            "number": 6,
+            "date": "2024-11-16",
+            "title": "The Message Hidden Within the Pattern"
+          },
+          {
+            "number": 7,
+            "date": "2024-11-23",
+            "title": "Pretend Like It's the First Time"
+          },
+          {
+            "number": 8,
+            "date": "2024-11-23",
+            "title": "Killing Is a Cycle"
+          },
+          {
+            "number": 9,
+            "date": "2024-11-23",
+            "title": "The Dirt Under Your Nails"
+          }
+        ]
+      }
+    ],
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-tv-105-s1",
+    "title": "Секс в большом городе",
+    "type": "series",
+    "genres": [
+      "Комедия",
+      "Драма",
+      "Мелодрама"
+    ],
+    "studios": [
+      "HBO",
+      "Darren Star Productions"
+    ],
+    "description": "Нью-йоркская обозревательница Кэрри Брэдшоу пишет колонку об отношениях и обсуждает свидания с Самантой, Шарлоттой и Мирандой. В её жизни появляется мужчина, которого она называет мистером Бигом.",
+    "poster": "assets/tmdb-tv-105-s1-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-105-s1-still-1.jpg",
+      "assets/tmdb-tv-105-s1-still-2.jpg"
+    ],
+    "releaseDate": "1998-06-06",
+    "rating": 7.4,
+    "ratingSource": "IMDb сериала",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=GBxjBZ4plLE",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/105/season/1?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0159206/",
+      "official": "https://www.hbomax.com/show/2641fd06-387f-4d92-a322-accb8e180713",
+      "metadata": "https://v3-cinemeta.strem.io/meta/series/tt0159206.json",
+      "release": "https://www.tvmaze.com/shows/676/sex-and-the-city",
+      "episodes": "https://www.tvmaze.com/shows/676/sex-and-the-city/episodes",
+      "poster": "https://static.tvmaze.com/uploads/images/original_untouched/399/997749.jpg",
+      "gallery": [
+        "https://static.tvmaze.com/uploads/images/original_untouched/122/306547.jpg",
+        "https://static.tvmaze.com/uploads/images/original_untouched/122/306548.jpg"
+      ],
+      "seasons": "https://www.themoviedb.org/tv/105/seasons"
+    },
+    "platforms": [
+      "HBO"
+    ],
+    "origin": "foreign",
+    "season": 1,
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "1998-06-06",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "1998-06-06",
+            "title": "Sex and the City"
+          },
+          {
+            "number": 2,
+            "date": "1998-06-06",
+            "title": "Models and Mortals"
+          },
+          {
+            "number": 3,
+            "date": "1998-06-21",
+            "title": "Bay of Married Pigs"
+          },
+          {
+            "number": 4,
+            "date": "1998-06-28",
+            "title": "Valley of the Twenty-Something Guys"
+          },
+          {
+            "number": 5,
+            "date": "1998-07-05",
+            "title": "The Power of Female Sex"
+          },
+          {
+            "number": 6,
+            "date": "1998-07-12",
+            "title": "Secret Sex"
+          },
+          {
+            "number": 7,
+            "date": "1998-07-19",
+            "title": "The Monogamists"
+          },
+          {
+            "number": 8,
+            "date": "1998-07-26",
+            "title": "Three's a Crowd"
+          },
+          {
+            "number": 9,
+            "date": "1998-08-02",
+            "title": "The Turtle and the Hare"
+          },
+          {
+            "number": 10,
+            "date": "1998-08-09",
+            "title": "The Baby Shower"
+          },
+          {
+            "number": 11,
+            "date": "1998-08-16",
+            "title": "The Drought"
+          },
+          {
+            "number": 12,
+            "date": "1998-08-23",
+            "title": "Oh Come All Ye Faithful"
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "releaseDate": "1999-06-06",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "1999-06-06",
+            "title": "Take Me Out to the Ballgame"
+          },
+          {
+            "number": 2,
+            "date": "1999-06-13",
+            "title": "The Awful Truth"
+          },
+          {
+            "number": 3,
+            "date": "1999-06-20",
+            "title": "The Freak Show"
+          },
+          {
+            "number": 4,
+            "date": "1999-06-27",
+            "title": "They Shoot Single People, Don't They?"
+          },
+          {
+            "number": 5,
+            "date": "1999-07-04",
+            "title": "Four Women and a Funeral"
+          },
+          {
+            "number": 6,
+            "date": "1999-07-11",
+            "title": "The Cheating Curve"
+          },
+          {
+            "number": 7,
+            "date": "1999-07-18",
+            "title": "The Chicken Dance"
+          },
+          {
+            "number": 8,
+            "date": "1999-07-25",
+            "title": "The Man, The Myth, The Viagra"
+          },
+          {
+            "number": 9,
+            "date": "1999-08-01",
+            "title": "Old Dogs, New Dicks"
+          },
+          {
+            "number": 10,
+            "date": "1999-08-08",
+            "title": "The Caste System"
+          },
+          {
+            "number": 11,
+            "date": "1999-08-15",
+            "title": "Evolution"
+          },
+          {
+            "number": 12,
+            "date": "1999-08-22",
+            "title": "La Douleur Exquise!"
+          },
+          {
+            "number": 13,
+            "date": "1999-08-29",
+            "title": "Games People Play"
+          },
+          {
+            "number": 14,
+            "date": "1999-09-05",
+            "title": "The Fuck Buddy"
+          },
+          {
+            "number": 15,
+            "date": "1999-09-12",
+            "title": "Shortcomings"
+          },
+          {
+            "number": 16,
+            "date": "1999-09-19",
+            "title": "Was It Good for You?"
+          },
+          {
+            "number": 17,
+            "date": "1999-09-26",
+            "title": "Twenty-Something Girls vs. Thirty-Something Women"
+          },
+          {
+            "number": 18,
+            "date": "1999-10-03",
+            "title": "Ex and the City"
+          }
+        ]
+      },
+      {
+        "number": 3,
+        "releaseDate": "2000-06-04",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2000-06-04",
+            "title": "Where's There's Smoke..."
+          },
+          {
+            "number": 2,
+            "date": "2000-06-11",
+            "title": "Politically Erect"
+          },
+          {
+            "number": 3,
+            "date": "2000-06-18",
+            "title": "Attack of the Five Foot Ten Woman"
+          },
+          {
+            "number": 4,
+            "date": "2000-06-25",
+            "title": "Boy, Girl, Boy, Girl..."
+          },
+          {
+            "number": 5,
+            "date": "2000-07-09",
+            "title": "No Ifs, Ands, or Butts"
+          },
+          {
+            "number": 6,
+            "date": "2000-07-16",
+            "title": "Are We Sluts?"
+          },
+          {
+            "number": 7,
+            "date": "2000-07-23",
+            "title": "Drama Queens"
+          },
+          {
+            "number": 8,
+            "date": "2000-07-30",
+            "title": "The Big Time"
+          },
+          {
+            "number": 9,
+            "date": "2000-08-06",
+            "title": "Easy Come, Easy Go"
+          },
+          {
+            "number": 10,
+            "date": "2000-08-13",
+            "title": "All or Nothing"
+          },
+          {
+            "number": 11,
+            "date": "2000-08-20",
+            "title": "Running with Scissors"
+          },
+          {
+            "number": 12,
+            "date": "2000-08-27",
+            "title": "Don't Ask, Don't Tell"
+          },
+          {
+            "number": 13,
+            "date": "2000-09-10",
+            "title": "Escape from New York"
+          },
+          {
+            "number": 14,
+            "date": "2000-09-17",
+            "title": "Sex and Another City"
+          },
+          {
+            "number": 15,
+            "date": "2000-09-24",
+            "title": "Hot Child in the City"
+          },
+          {
+            "number": 16,
+            "date": "2000-10-01",
+            "title": "Frenemies"
+          },
+          {
+            "number": 17,
+            "date": "2000-10-08",
+            "title": "What Goes Around Comes Around"
+          },
+          {
+            "number": 18,
+            "date": "2000-10-15",
+            "title": "Cock a Doodle Do!"
+          }
+        ]
+      },
+      {
+        "number": 4,
+        "releaseDate": "2001-06-03",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2001-06-03",
+            "title": "The Agony and the 'Ex'-tacy"
+          },
+          {
+            "number": 2,
+            "date": "2001-06-03",
+            "title": "The Real Me"
+          },
+          {
+            "number": 3,
+            "date": "2001-06-10",
+            "title": "Defining Moments"
+          },
+          {
+            "number": 4,
+            "date": "2001-06-17",
+            "title": "What's Sex Got to Do with It?"
+          },
+          {
+            "number": 5,
+            "date": "2001-06-24",
+            "title": "Ghost Town"
+          },
+          {
+            "number": 6,
+            "date": "2001-07-01",
+            "title": "Baby, Talk is Cheap"
+          },
+          {
+            "number": 7,
+            "date": "2001-07-08",
+            "title": "Time and Punishment"
+          },
+          {
+            "number": 8,
+            "date": "2001-07-15",
+            "title": "My Motherboard, My Self"
+          },
+          {
+            "number": 9,
+            "date": "2001-07-22",
+            "title": "Sex and the Country"
+          },
+          {
+            "number": 10,
+            "date": "2001-07-29",
+            "title": "Belles of the Balls"
+          },
+          {
+            "number": 11,
+            "date": "2001-08-05",
+            "title": "Coulda, Woulda, Shoulda"
+          },
+          {
+            "number": 12,
+            "date": "2001-08-12",
+            "title": "Just Say Yes"
+          },
+          {
+            "number": 13,
+            "date": "2002-01-06",
+            "title": "The Good Fight"
+          },
+          {
+            "number": 14,
+            "date": "2002-01-13",
+            "title": "All That Glitters..."
+          },
+          {
+            "number": 15,
+            "date": "2002-01-20",
+            "title": "Change of a Dress"
+          },
+          {
+            "number": 16,
+            "date": "2002-01-27",
+            "title": "Ring a Ding Ding"
+          },
+          {
+            "number": 17,
+            "date": "2002-02-03",
+            "title": "A 'Vogue' Idea"
+          },
+          {
+            "number": 18,
+            "date": "2002-02-10",
+            "title": "I Heart NY"
+          }
+        ]
+      },
+      {
+        "number": 5,
+        "releaseDate": "2002-07-21",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2002-07-21",
+            "title": "Anchors Away"
+          },
+          {
+            "number": 2,
+            "date": "2002-07-28",
+            "title": "Unoriginal Sin"
+          },
+          {
+            "number": 3,
+            "date": "2002-08-04",
+            "title": "Luck Be an Old Lady"
+          },
+          {
+            "number": 4,
+            "date": "2002-08-11",
+            "title": "Cover Girl"
+          },
+          {
+            "number": 5,
+            "date": "2002-08-18",
+            "title": "Plus One is the Loneliest Number"
+          },
+          {
+            "number": 6,
+            "date": "2002-08-25",
+            "title": "Critical Condition"
+          },
+          {
+            "number": 7,
+            "date": "2002-09-01",
+            "title": "The Big Journey"
+          },
+          {
+            "number": 8,
+            "date": "2002-09-08",
+            "title": "I Love a Charade"
+          }
+        ]
+      },
+      {
+        "number": 6,
+        "releaseDate": "2003-06-22",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2003-06-22",
+            "title": "To Market, To Market"
+          },
+          {
+            "number": 2,
+            "date": "2003-06-29",
+            "title": "Great Sexpectations"
+          },
+          {
+            "number": 3,
+            "date": "2003-07-06",
+            "title": "The Perfect Present"
+          },
+          {
+            "number": 4,
+            "date": "2003-07-13",
+            "title": "Pick-a-Little, Talk-a-Little"
+          },
+          {
+            "number": 5,
+            "date": "2003-07-20",
+            "title": "Lights, Camera, Relationship"
+          },
+          {
+            "number": 6,
+            "date": "2003-07-27",
+            "title": "Hop, Skip and a Week"
+          },
+          {
+            "number": 7,
+            "date": "2003-08-03",
+            "title": "The Post-It Always Sticks Twice"
+          },
+          {
+            "number": 8,
+            "date": "2003-08-10",
+            "title": "The Catch"
+          },
+          {
+            "number": 9,
+            "date": "2003-08-17",
+            "title": "A Woman's Right to Shoes"
+          },
+          {
+            "number": 10,
+            "date": "2003-08-24",
+            "title": "Boy, Interrupted"
+          },
+          {
+            "number": 11,
+            "date": "2003-09-07",
+            "title": "The Domino Effect"
+          },
+          {
+            "number": 12,
+            "date": "2003-09-14",
+            "title": "One"
+          },
+          {
+            "number": 13,
+            "date": "2004-01-04",
+            "title": "Let There Be Light"
+          },
+          {
+            "number": 14,
+            "date": "2004-01-11",
+            "title": "The Ick Factor"
+          },
+          {
+            "number": 15,
+            "date": "2004-01-18",
+            "title": "Catch-38"
+          },
+          {
+            "number": 16,
+            "date": "2004-01-25",
+            "title": "Out of the Frying Pan"
+          },
+          {
+            "number": 17,
+            "date": "2004-02-01",
+            "title": "The Cold War"
+          },
+          {
+            "number": 18,
+            "date": "2004-02-08",
+            "title": "Splat!"
+          },
+          {
+            "number": 19,
+            "date": "2004-02-15",
+            "title": "An American Girl in Paris (Part Une)"
+          },
+          {
+            "number": 20,
+            "date": "2004-02-22",
+            "title": "An American Girl in Paris (Part Deux)"
+          }
+        ]
+      }
+    ],
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-tv-105-s2",
+    "title": "Секс в большом городе",
+    "type": "series",
+    "genres": [
+      "Комедия",
+      "Драма",
+      "Мелодрама"
+    ],
+    "studios": [
+      "HBO",
+      "Darren Star Productions"
+    ],
+    "description": "После расставания с Бигом Кэрри пытается начать с чистого листа, но старые чувства возвращаются. Миранда знакомится со Стивом, а Саманта и Шарлотта продолжают искать отношения на своих условиях.",
+    "poster": "assets/tmdb-tv-105-s2-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-105-s2-still-1.jpg",
+      "assets/tmdb-tv-105-s2-still-2.jpg"
+    ],
+    "releaseDate": "1999-06-06",
+    "rating": 7.4,
+    "ratingSource": "IMDb сериала",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=vJo1P932hOg",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/105/season/2?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0159206/",
+      "official": "https://www.hbomax.com/show/2641fd06-387f-4d92-a322-accb8e180713",
+      "metadata": "https://v3-cinemeta.strem.io/meta/series/tt0159206.json",
+      "release": "https://www.tvmaze.com/shows/676/sex-and-the-city",
+      "episodes": "https://www.tvmaze.com/shows/676/sex-and-the-city/episodes",
+      "poster": "https://static.tvmaze.com/uploads/images/original_untouched/399/997750.jpg",
+      "gallery": [
+        "https://static.tvmaze.com/uploads/images/original_untouched/122/306751.jpg",
+        "https://static.tvmaze.com/uploads/images/original_untouched/122/306759.jpg"
+      ],
+      "seasons": "https://www.themoviedb.org/tv/105/seasons"
+    },
+    "platforms": [
+      "HBO"
+    ],
+    "origin": "foreign",
+    "season": 2,
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "1998-06-06",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "1998-06-06",
+            "title": "Sex and the City"
+          },
+          {
+            "number": 2,
+            "date": "1998-06-06",
+            "title": "Models and Mortals"
+          },
+          {
+            "number": 3,
+            "date": "1998-06-21",
+            "title": "Bay of Married Pigs"
+          },
+          {
+            "number": 4,
+            "date": "1998-06-28",
+            "title": "Valley of the Twenty-Something Guys"
+          },
+          {
+            "number": 5,
+            "date": "1998-07-05",
+            "title": "The Power of Female Sex"
+          },
+          {
+            "number": 6,
+            "date": "1998-07-12",
+            "title": "Secret Sex"
+          },
+          {
+            "number": 7,
+            "date": "1998-07-19",
+            "title": "The Monogamists"
+          },
+          {
+            "number": 8,
+            "date": "1998-07-26",
+            "title": "Three's a Crowd"
+          },
+          {
+            "number": 9,
+            "date": "1998-08-02",
+            "title": "The Turtle and the Hare"
+          },
+          {
+            "number": 10,
+            "date": "1998-08-09",
+            "title": "The Baby Shower"
+          },
+          {
+            "number": 11,
+            "date": "1998-08-16",
+            "title": "The Drought"
+          },
+          {
+            "number": 12,
+            "date": "1998-08-23",
+            "title": "Oh Come All Ye Faithful"
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "releaseDate": "1999-06-06",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "1999-06-06",
+            "title": "Take Me Out to the Ballgame"
+          },
+          {
+            "number": 2,
+            "date": "1999-06-13",
+            "title": "The Awful Truth"
+          },
+          {
+            "number": 3,
+            "date": "1999-06-20",
+            "title": "The Freak Show"
+          },
+          {
+            "number": 4,
+            "date": "1999-06-27",
+            "title": "They Shoot Single People, Don't They?"
+          },
+          {
+            "number": 5,
+            "date": "1999-07-04",
+            "title": "Four Women and a Funeral"
+          },
+          {
+            "number": 6,
+            "date": "1999-07-11",
+            "title": "The Cheating Curve"
+          },
+          {
+            "number": 7,
+            "date": "1999-07-18",
+            "title": "The Chicken Dance"
+          },
+          {
+            "number": 8,
+            "date": "1999-07-25",
+            "title": "The Man, The Myth, The Viagra"
+          },
+          {
+            "number": 9,
+            "date": "1999-08-01",
+            "title": "Old Dogs, New Dicks"
+          },
+          {
+            "number": 10,
+            "date": "1999-08-08",
+            "title": "The Caste System"
+          },
+          {
+            "number": 11,
+            "date": "1999-08-15",
+            "title": "Evolution"
+          },
+          {
+            "number": 12,
+            "date": "1999-08-22",
+            "title": "La Douleur Exquise!"
+          },
+          {
+            "number": 13,
+            "date": "1999-08-29",
+            "title": "Games People Play"
+          },
+          {
+            "number": 14,
+            "date": "1999-09-05",
+            "title": "The Fuck Buddy"
+          },
+          {
+            "number": 15,
+            "date": "1999-09-12",
+            "title": "Shortcomings"
+          },
+          {
+            "number": 16,
+            "date": "1999-09-19",
+            "title": "Was It Good for You?"
+          },
+          {
+            "number": 17,
+            "date": "1999-09-26",
+            "title": "Twenty-Something Girls vs. Thirty-Something Women"
+          },
+          {
+            "number": 18,
+            "date": "1999-10-03",
+            "title": "Ex and the City"
+          }
+        ]
+      },
+      {
+        "number": 3,
+        "releaseDate": "2000-06-04",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2000-06-04",
+            "title": "Where's There's Smoke..."
+          },
+          {
+            "number": 2,
+            "date": "2000-06-11",
+            "title": "Politically Erect"
+          },
+          {
+            "number": 3,
+            "date": "2000-06-18",
+            "title": "Attack of the Five Foot Ten Woman"
+          },
+          {
+            "number": 4,
+            "date": "2000-06-25",
+            "title": "Boy, Girl, Boy, Girl..."
+          },
+          {
+            "number": 5,
+            "date": "2000-07-09",
+            "title": "No Ifs, Ands, or Butts"
+          },
+          {
+            "number": 6,
+            "date": "2000-07-16",
+            "title": "Are We Sluts?"
+          },
+          {
+            "number": 7,
+            "date": "2000-07-23",
+            "title": "Drama Queens"
+          },
+          {
+            "number": 8,
+            "date": "2000-07-30",
+            "title": "The Big Time"
+          },
+          {
+            "number": 9,
+            "date": "2000-08-06",
+            "title": "Easy Come, Easy Go"
+          },
+          {
+            "number": 10,
+            "date": "2000-08-13",
+            "title": "All or Nothing"
+          },
+          {
+            "number": 11,
+            "date": "2000-08-20",
+            "title": "Running with Scissors"
+          },
+          {
+            "number": 12,
+            "date": "2000-08-27",
+            "title": "Don't Ask, Don't Tell"
+          },
+          {
+            "number": 13,
+            "date": "2000-09-10",
+            "title": "Escape from New York"
+          },
+          {
+            "number": 14,
+            "date": "2000-09-17",
+            "title": "Sex and Another City"
+          },
+          {
+            "number": 15,
+            "date": "2000-09-24",
+            "title": "Hot Child in the City"
+          },
+          {
+            "number": 16,
+            "date": "2000-10-01",
+            "title": "Frenemies"
+          },
+          {
+            "number": 17,
+            "date": "2000-10-08",
+            "title": "What Goes Around Comes Around"
+          },
+          {
+            "number": 18,
+            "date": "2000-10-15",
+            "title": "Cock a Doodle Do!"
+          }
+        ]
+      },
+      {
+        "number": 4,
+        "releaseDate": "2001-06-03",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2001-06-03",
+            "title": "The Agony and the 'Ex'-tacy"
+          },
+          {
+            "number": 2,
+            "date": "2001-06-03",
+            "title": "The Real Me"
+          },
+          {
+            "number": 3,
+            "date": "2001-06-10",
+            "title": "Defining Moments"
+          },
+          {
+            "number": 4,
+            "date": "2001-06-17",
+            "title": "What's Sex Got to Do with It?"
+          },
+          {
+            "number": 5,
+            "date": "2001-06-24",
+            "title": "Ghost Town"
+          },
+          {
+            "number": 6,
+            "date": "2001-07-01",
+            "title": "Baby, Talk is Cheap"
+          },
+          {
+            "number": 7,
+            "date": "2001-07-08",
+            "title": "Time and Punishment"
+          },
+          {
+            "number": 8,
+            "date": "2001-07-15",
+            "title": "My Motherboard, My Self"
+          },
+          {
+            "number": 9,
+            "date": "2001-07-22",
+            "title": "Sex and the Country"
+          },
+          {
+            "number": 10,
+            "date": "2001-07-29",
+            "title": "Belles of the Balls"
+          },
+          {
+            "number": 11,
+            "date": "2001-08-05",
+            "title": "Coulda, Woulda, Shoulda"
+          },
+          {
+            "number": 12,
+            "date": "2001-08-12",
+            "title": "Just Say Yes"
+          },
+          {
+            "number": 13,
+            "date": "2002-01-06",
+            "title": "The Good Fight"
+          },
+          {
+            "number": 14,
+            "date": "2002-01-13",
+            "title": "All That Glitters..."
+          },
+          {
+            "number": 15,
+            "date": "2002-01-20",
+            "title": "Change of a Dress"
+          },
+          {
+            "number": 16,
+            "date": "2002-01-27",
+            "title": "Ring a Ding Ding"
+          },
+          {
+            "number": 17,
+            "date": "2002-02-03",
+            "title": "A 'Vogue' Idea"
+          },
+          {
+            "number": 18,
+            "date": "2002-02-10",
+            "title": "I Heart NY"
+          }
+        ]
+      },
+      {
+        "number": 5,
+        "releaseDate": "2002-07-21",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2002-07-21",
+            "title": "Anchors Away"
+          },
+          {
+            "number": 2,
+            "date": "2002-07-28",
+            "title": "Unoriginal Sin"
+          },
+          {
+            "number": 3,
+            "date": "2002-08-04",
+            "title": "Luck Be an Old Lady"
+          },
+          {
+            "number": 4,
+            "date": "2002-08-11",
+            "title": "Cover Girl"
+          },
+          {
+            "number": 5,
+            "date": "2002-08-18",
+            "title": "Plus One is the Loneliest Number"
+          },
+          {
+            "number": 6,
+            "date": "2002-08-25",
+            "title": "Critical Condition"
+          },
+          {
+            "number": 7,
+            "date": "2002-09-01",
+            "title": "The Big Journey"
+          },
+          {
+            "number": 8,
+            "date": "2002-09-08",
+            "title": "I Love a Charade"
+          }
+        ]
+      },
+      {
+        "number": 6,
+        "releaseDate": "2003-06-22",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2003-06-22",
+            "title": "To Market, To Market"
+          },
+          {
+            "number": 2,
+            "date": "2003-06-29",
+            "title": "Great Sexpectations"
+          },
+          {
+            "number": 3,
+            "date": "2003-07-06",
+            "title": "The Perfect Present"
+          },
+          {
+            "number": 4,
+            "date": "2003-07-13",
+            "title": "Pick-a-Little, Talk-a-Little"
+          },
+          {
+            "number": 5,
+            "date": "2003-07-20",
+            "title": "Lights, Camera, Relationship"
+          },
+          {
+            "number": 6,
+            "date": "2003-07-27",
+            "title": "Hop, Skip and a Week"
+          },
+          {
+            "number": 7,
+            "date": "2003-08-03",
+            "title": "The Post-It Always Sticks Twice"
+          },
+          {
+            "number": 8,
+            "date": "2003-08-10",
+            "title": "The Catch"
+          },
+          {
+            "number": 9,
+            "date": "2003-08-17",
+            "title": "A Woman's Right to Shoes"
+          },
+          {
+            "number": 10,
+            "date": "2003-08-24",
+            "title": "Boy, Interrupted"
+          },
+          {
+            "number": 11,
+            "date": "2003-09-07",
+            "title": "The Domino Effect"
+          },
+          {
+            "number": 12,
+            "date": "2003-09-14",
+            "title": "One"
+          },
+          {
+            "number": 13,
+            "date": "2004-01-04",
+            "title": "Let There Be Light"
+          },
+          {
+            "number": 14,
+            "date": "2004-01-11",
+            "title": "The Ick Factor"
+          },
+          {
+            "number": 15,
+            "date": "2004-01-18",
+            "title": "Catch-38"
+          },
+          {
+            "number": 16,
+            "date": "2004-01-25",
+            "title": "Out of the Frying Pan"
+          },
+          {
+            "number": 17,
+            "date": "2004-02-01",
+            "title": "The Cold War"
+          },
+          {
+            "number": 18,
+            "date": "2004-02-08",
+            "title": "Splat!"
+          },
+          {
+            "number": 19,
+            "date": "2004-02-15",
+            "title": "An American Girl in Paris (Part Une)"
+          },
+          {
+            "number": 20,
+            "date": "2004-02-22",
+            "title": "An American Girl in Paris (Part Deux)"
+          }
+        ]
+      }
+    ],
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-tv-105-s3",
+    "title": "Секс в большом городе",
+    "type": "series",
+    "genres": [
+      "Комедия",
+      "Драма",
+      "Мелодрама"
+    ],
+    "studios": [
+      "HBO",
+      "Darren Star Productions"
+    ],
+    "description": "Кэрри встречает Эйдана, но история с Бигом снова даёт о себе знать. Шарлотта узнаёт, что идеальный на первый взгляд брак может оказаться сложнее, чем она представляла.",
+    "poster": "assets/tmdb-tv-105-s3-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-105-s3-still-1.jpg",
+      "assets/tmdb-tv-105-s3-still-2.jpg"
+    ],
+    "releaseDate": "2000-06-04",
+    "rating": 7.4,
+    "ratingSource": "IMDb сериала",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=kQURgfUELxw",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/105/season/3?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0159206/",
+      "official": "https://www.hbomax.com/show/2641fd06-387f-4d92-a322-accb8e180713",
+      "metadata": "https://v3-cinemeta.strem.io/meta/series/tt0159206.json",
+      "release": "https://www.tvmaze.com/shows/676/sex-and-the-city",
+      "episodes": "https://www.tvmaze.com/shows/676/sex-and-the-city/episodes",
+      "poster": "https://static.tvmaze.com/uploads/images/original_untouched/399/997751.jpg",
+      "gallery": [
+        "https://static.tvmaze.com/uploads/images/original_untouched/122/307074.jpg",
+        "https://static.tvmaze.com/uploads/images/original_untouched/122/307075.jpg"
+      ],
+      "seasons": "https://www.themoviedb.org/tv/105/seasons"
+    },
+    "platforms": [
+      "HBO"
+    ],
+    "origin": "foreign",
+    "season": 3,
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "1998-06-06",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "1998-06-06",
+            "title": "Sex and the City"
+          },
+          {
+            "number": 2,
+            "date": "1998-06-06",
+            "title": "Models and Mortals"
+          },
+          {
+            "number": 3,
+            "date": "1998-06-21",
+            "title": "Bay of Married Pigs"
+          },
+          {
+            "number": 4,
+            "date": "1998-06-28",
+            "title": "Valley of the Twenty-Something Guys"
+          },
+          {
+            "number": 5,
+            "date": "1998-07-05",
+            "title": "The Power of Female Sex"
+          },
+          {
+            "number": 6,
+            "date": "1998-07-12",
+            "title": "Secret Sex"
+          },
+          {
+            "number": 7,
+            "date": "1998-07-19",
+            "title": "The Monogamists"
+          },
+          {
+            "number": 8,
+            "date": "1998-07-26",
+            "title": "Three's a Crowd"
+          },
+          {
+            "number": 9,
+            "date": "1998-08-02",
+            "title": "The Turtle and the Hare"
+          },
+          {
+            "number": 10,
+            "date": "1998-08-09",
+            "title": "The Baby Shower"
+          },
+          {
+            "number": 11,
+            "date": "1998-08-16",
+            "title": "The Drought"
+          },
+          {
+            "number": 12,
+            "date": "1998-08-23",
+            "title": "Oh Come All Ye Faithful"
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "releaseDate": "1999-06-06",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "1999-06-06",
+            "title": "Take Me Out to the Ballgame"
+          },
+          {
+            "number": 2,
+            "date": "1999-06-13",
+            "title": "The Awful Truth"
+          },
+          {
+            "number": 3,
+            "date": "1999-06-20",
+            "title": "The Freak Show"
+          },
+          {
+            "number": 4,
+            "date": "1999-06-27",
+            "title": "They Shoot Single People, Don't They?"
+          },
+          {
+            "number": 5,
+            "date": "1999-07-04",
+            "title": "Four Women and a Funeral"
+          },
+          {
+            "number": 6,
+            "date": "1999-07-11",
+            "title": "The Cheating Curve"
+          },
+          {
+            "number": 7,
+            "date": "1999-07-18",
+            "title": "The Chicken Dance"
+          },
+          {
+            "number": 8,
+            "date": "1999-07-25",
+            "title": "The Man, The Myth, The Viagra"
+          },
+          {
+            "number": 9,
+            "date": "1999-08-01",
+            "title": "Old Dogs, New Dicks"
+          },
+          {
+            "number": 10,
+            "date": "1999-08-08",
+            "title": "The Caste System"
+          },
+          {
+            "number": 11,
+            "date": "1999-08-15",
+            "title": "Evolution"
+          },
+          {
+            "number": 12,
+            "date": "1999-08-22",
+            "title": "La Douleur Exquise!"
+          },
+          {
+            "number": 13,
+            "date": "1999-08-29",
+            "title": "Games People Play"
+          },
+          {
+            "number": 14,
+            "date": "1999-09-05",
+            "title": "The Fuck Buddy"
+          },
+          {
+            "number": 15,
+            "date": "1999-09-12",
+            "title": "Shortcomings"
+          },
+          {
+            "number": 16,
+            "date": "1999-09-19",
+            "title": "Was It Good for You?"
+          },
+          {
+            "number": 17,
+            "date": "1999-09-26",
+            "title": "Twenty-Something Girls vs. Thirty-Something Women"
+          },
+          {
+            "number": 18,
+            "date": "1999-10-03",
+            "title": "Ex and the City"
+          }
+        ]
+      },
+      {
+        "number": 3,
+        "releaseDate": "2000-06-04",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2000-06-04",
+            "title": "Where's There's Smoke..."
+          },
+          {
+            "number": 2,
+            "date": "2000-06-11",
+            "title": "Politically Erect"
+          },
+          {
+            "number": 3,
+            "date": "2000-06-18",
+            "title": "Attack of the Five Foot Ten Woman"
+          },
+          {
+            "number": 4,
+            "date": "2000-06-25",
+            "title": "Boy, Girl, Boy, Girl..."
+          },
+          {
+            "number": 5,
+            "date": "2000-07-09",
+            "title": "No Ifs, Ands, or Butts"
+          },
+          {
+            "number": 6,
+            "date": "2000-07-16",
+            "title": "Are We Sluts?"
+          },
+          {
+            "number": 7,
+            "date": "2000-07-23",
+            "title": "Drama Queens"
+          },
+          {
+            "number": 8,
+            "date": "2000-07-30",
+            "title": "The Big Time"
+          },
+          {
+            "number": 9,
+            "date": "2000-08-06",
+            "title": "Easy Come, Easy Go"
+          },
+          {
+            "number": 10,
+            "date": "2000-08-13",
+            "title": "All or Nothing"
+          },
+          {
+            "number": 11,
+            "date": "2000-08-20",
+            "title": "Running with Scissors"
+          },
+          {
+            "number": 12,
+            "date": "2000-08-27",
+            "title": "Don't Ask, Don't Tell"
+          },
+          {
+            "number": 13,
+            "date": "2000-09-10",
+            "title": "Escape from New York"
+          },
+          {
+            "number": 14,
+            "date": "2000-09-17",
+            "title": "Sex and Another City"
+          },
+          {
+            "number": 15,
+            "date": "2000-09-24",
+            "title": "Hot Child in the City"
+          },
+          {
+            "number": 16,
+            "date": "2000-10-01",
+            "title": "Frenemies"
+          },
+          {
+            "number": 17,
+            "date": "2000-10-08",
+            "title": "What Goes Around Comes Around"
+          },
+          {
+            "number": 18,
+            "date": "2000-10-15",
+            "title": "Cock a Doodle Do!"
+          }
+        ]
+      },
+      {
+        "number": 4,
+        "releaseDate": "2001-06-03",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2001-06-03",
+            "title": "The Agony and the 'Ex'-tacy"
+          },
+          {
+            "number": 2,
+            "date": "2001-06-03",
+            "title": "The Real Me"
+          },
+          {
+            "number": 3,
+            "date": "2001-06-10",
+            "title": "Defining Moments"
+          },
+          {
+            "number": 4,
+            "date": "2001-06-17",
+            "title": "What's Sex Got to Do with It?"
+          },
+          {
+            "number": 5,
+            "date": "2001-06-24",
+            "title": "Ghost Town"
+          },
+          {
+            "number": 6,
+            "date": "2001-07-01",
+            "title": "Baby, Talk is Cheap"
+          },
+          {
+            "number": 7,
+            "date": "2001-07-08",
+            "title": "Time and Punishment"
+          },
+          {
+            "number": 8,
+            "date": "2001-07-15",
+            "title": "My Motherboard, My Self"
+          },
+          {
+            "number": 9,
+            "date": "2001-07-22",
+            "title": "Sex and the Country"
+          },
+          {
+            "number": 10,
+            "date": "2001-07-29",
+            "title": "Belles of the Balls"
+          },
+          {
+            "number": 11,
+            "date": "2001-08-05",
+            "title": "Coulda, Woulda, Shoulda"
+          },
+          {
+            "number": 12,
+            "date": "2001-08-12",
+            "title": "Just Say Yes"
+          },
+          {
+            "number": 13,
+            "date": "2002-01-06",
+            "title": "The Good Fight"
+          },
+          {
+            "number": 14,
+            "date": "2002-01-13",
+            "title": "All That Glitters..."
+          },
+          {
+            "number": 15,
+            "date": "2002-01-20",
+            "title": "Change of a Dress"
+          },
+          {
+            "number": 16,
+            "date": "2002-01-27",
+            "title": "Ring a Ding Ding"
+          },
+          {
+            "number": 17,
+            "date": "2002-02-03",
+            "title": "A 'Vogue' Idea"
+          },
+          {
+            "number": 18,
+            "date": "2002-02-10",
+            "title": "I Heart NY"
+          }
+        ]
+      },
+      {
+        "number": 5,
+        "releaseDate": "2002-07-21",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2002-07-21",
+            "title": "Anchors Away"
+          },
+          {
+            "number": 2,
+            "date": "2002-07-28",
+            "title": "Unoriginal Sin"
+          },
+          {
+            "number": 3,
+            "date": "2002-08-04",
+            "title": "Luck Be an Old Lady"
+          },
+          {
+            "number": 4,
+            "date": "2002-08-11",
+            "title": "Cover Girl"
+          },
+          {
+            "number": 5,
+            "date": "2002-08-18",
+            "title": "Plus One is the Loneliest Number"
+          },
+          {
+            "number": 6,
+            "date": "2002-08-25",
+            "title": "Critical Condition"
+          },
+          {
+            "number": 7,
+            "date": "2002-09-01",
+            "title": "The Big Journey"
+          },
+          {
+            "number": 8,
+            "date": "2002-09-08",
+            "title": "I Love a Charade"
+          }
+        ]
+      },
+      {
+        "number": 6,
+        "releaseDate": "2003-06-22",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2003-06-22",
+            "title": "To Market, To Market"
+          },
+          {
+            "number": 2,
+            "date": "2003-06-29",
+            "title": "Great Sexpectations"
+          },
+          {
+            "number": 3,
+            "date": "2003-07-06",
+            "title": "The Perfect Present"
+          },
+          {
+            "number": 4,
+            "date": "2003-07-13",
+            "title": "Pick-a-Little, Talk-a-Little"
+          },
+          {
+            "number": 5,
+            "date": "2003-07-20",
+            "title": "Lights, Camera, Relationship"
+          },
+          {
+            "number": 6,
+            "date": "2003-07-27",
+            "title": "Hop, Skip and a Week"
+          },
+          {
+            "number": 7,
+            "date": "2003-08-03",
+            "title": "The Post-It Always Sticks Twice"
+          },
+          {
+            "number": 8,
+            "date": "2003-08-10",
+            "title": "The Catch"
+          },
+          {
+            "number": 9,
+            "date": "2003-08-17",
+            "title": "A Woman's Right to Shoes"
+          },
+          {
+            "number": 10,
+            "date": "2003-08-24",
+            "title": "Boy, Interrupted"
+          },
+          {
+            "number": 11,
+            "date": "2003-09-07",
+            "title": "The Domino Effect"
+          },
+          {
+            "number": 12,
+            "date": "2003-09-14",
+            "title": "One"
+          },
+          {
+            "number": 13,
+            "date": "2004-01-04",
+            "title": "Let There Be Light"
+          },
+          {
+            "number": 14,
+            "date": "2004-01-11",
+            "title": "The Ick Factor"
+          },
+          {
+            "number": 15,
+            "date": "2004-01-18",
+            "title": "Catch-38"
+          },
+          {
+            "number": 16,
+            "date": "2004-01-25",
+            "title": "Out of the Frying Pan"
+          },
+          {
+            "number": 17,
+            "date": "2004-02-01",
+            "title": "The Cold War"
+          },
+          {
+            "number": 18,
+            "date": "2004-02-08",
+            "title": "Splat!"
+          },
+          {
+            "number": 19,
+            "date": "2004-02-15",
+            "title": "An American Girl in Paris (Part Une)"
+          },
+          {
+            "number": 20,
+            "date": "2004-02-22",
+            "title": "An American Girl in Paris (Part Deux)"
+          }
+        ]
+      }
+    ],
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-tv-105-s4",
+    "title": "Секс в большом городе",
+    "type": "series",
+    "genres": [
+      "Комедия",
+      "Драма",
+      "Мелодрама"
+    ],
+    "studios": [
+      "HBO",
+      "Darren Star Productions"
+    ],
+    "description": "Кэрри пытается восстановить доверие Эйдана. Пока Шарлотта решает, каким видит свой брак, Саманта и Миранда сталкиваются с переменами в личной жизни.",
+    "poster": "assets/tmdb-tv-105-s4-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-105-s4-still-1.jpg",
+      "assets/tmdb-tv-105-s4-still-2.jpg"
+    ],
+    "releaseDate": "2001-06-03",
+    "rating": 7.4,
+    "ratingSource": "IMDb сериала",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=CExf64jbtF8",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/105/season/4?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0159206/",
+      "official": "https://www.hbomax.com/show/2641fd06-387f-4d92-a322-accb8e180713",
+      "metadata": "https://v3-cinemeta.strem.io/meta/series/tt0159206.json",
+      "release": "https://www.tvmaze.com/shows/676/sex-and-the-city",
+      "episodes": "https://www.tvmaze.com/shows/676/sex-and-the-city/episodes",
+      "poster": "https://static.tvmaze.com/uploads/images/original_untouched/399/997752.jpg",
+      "gallery": [
+        "https://static.tvmaze.com/uploads/images/original_untouched/122/307224.jpg",
+        "https://static.tvmaze.com/uploads/images/original_untouched/122/307225.jpg"
+      ],
+      "seasons": "https://www.themoviedb.org/tv/105/seasons"
+    },
+    "platforms": [
+      "HBO"
+    ],
+    "origin": "foreign",
+    "season": 4,
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "1998-06-06",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "1998-06-06",
+            "title": "Sex and the City"
+          },
+          {
+            "number": 2,
+            "date": "1998-06-06",
+            "title": "Models and Mortals"
+          },
+          {
+            "number": 3,
+            "date": "1998-06-21",
+            "title": "Bay of Married Pigs"
+          },
+          {
+            "number": 4,
+            "date": "1998-06-28",
+            "title": "Valley of the Twenty-Something Guys"
+          },
+          {
+            "number": 5,
+            "date": "1998-07-05",
+            "title": "The Power of Female Sex"
+          },
+          {
+            "number": 6,
+            "date": "1998-07-12",
+            "title": "Secret Sex"
+          },
+          {
+            "number": 7,
+            "date": "1998-07-19",
+            "title": "The Monogamists"
+          },
+          {
+            "number": 8,
+            "date": "1998-07-26",
+            "title": "Three's a Crowd"
+          },
+          {
+            "number": 9,
+            "date": "1998-08-02",
+            "title": "The Turtle and the Hare"
+          },
+          {
+            "number": 10,
+            "date": "1998-08-09",
+            "title": "The Baby Shower"
+          },
+          {
+            "number": 11,
+            "date": "1998-08-16",
+            "title": "The Drought"
+          },
+          {
+            "number": 12,
+            "date": "1998-08-23",
+            "title": "Oh Come All Ye Faithful"
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "releaseDate": "1999-06-06",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "1999-06-06",
+            "title": "Take Me Out to the Ballgame"
+          },
+          {
+            "number": 2,
+            "date": "1999-06-13",
+            "title": "The Awful Truth"
+          },
+          {
+            "number": 3,
+            "date": "1999-06-20",
+            "title": "The Freak Show"
+          },
+          {
+            "number": 4,
+            "date": "1999-06-27",
+            "title": "They Shoot Single People, Don't They?"
+          },
+          {
+            "number": 5,
+            "date": "1999-07-04",
+            "title": "Four Women and a Funeral"
+          },
+          {
+            "number": 6,
+            "date": "1999-07-11",
+            "title": "The Cheating Curve"
+          },
+          {
+            "number": 7,
+            "date": "1999-07-18",
+            "title": "The Chicken Dance"
+          },
+          {
+            "number": 8,
+            "date": "1999-07-25",
+            "title": "The Man, The Myth, The Viagra"
+          },
+          {
+            "number": 9,
+            "date": "1999-08-01",
+            "title": "Old Dogs, New Dicks"
+          },
+          {
+            "number": 10,
+            "date": "1999-08-08",
+            "title": "The Caste System"
+          },
+          {
+            "number": 11,
+            "date": "1999-08-15",
+            "title": "Evolution"
+          },
+          {
+            "number": 12,
+            "date": "1999-08-22",
+            "title": "La Douleur Exquise!"
+          },
+          {
+            "number": 13,
+            "date": "1999-08-29",
+            "title": "Games People Play"
+          },
+          {
+            "number": 14,
+            "date": "1999-09-05",
+            "title": "The Fuck Buddy"
+          },
+          {
+            "number": 15,
+            "date": "1999-09-12",
+            "title": "Shortcomings"
+          },
+          {
+            "number": 16,
+            "date": "1999-09-19",
+            "title": "Was It Good for You?"
+          },
+          {
+            "number": 17,
+            "date": "1999-09-26",
+            "title": "Twenty-Something Girls vs. Thirty-Something Women"
+          },
+          {
+            "number": 18,
+            "date": "1999-10-03",
+            "title": "Ex and the City"
+          }
+        ]
+      },
+      {
+        "number": 3,
+        "releaseDate": "2000-06-04",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2000-06-04",
+            "title": "Where's There's Smoke..."
+          },
+          {
+            "number": 2,
+            "date": "2000-06-11",
+            "title": "Politically Erect"
+          },
+          {
+            "number": 3,
+            "date": "2000-06-18",
+            "title": "Attack of the Five Foot Ten Woman"
+          },
+          {
+            "number": 4,
+            "date": "2000-06-25",
+            "title": "Boy, Girl, Boy, Girl..."
+          },
+          {
+            "number": 5,
+            "date": "2000-07-09",
+            "title": "No Ifs, Ands, or Butts"
+          },
+          {
+            "number": 6,
+            "date": "2000-07-16",
+            "title": "Are We Sluts?"
+          },
+          {
+            "number": 7,
+            "date": "2000-07-23",
+            "title": "Drama Queens"
+          },
+          {
+            "number": 8,
+            "date": "2000-07-30",
+            "title": "The Big Time"
+          },
+          {
+            "number": 9,
+            "date": "2000-08-06",
+            "title": "Easy Come, Easy Go"
+          },
+          {
+            "number": 10,
+            "date": "2000-08-13",
+            "title": "All or Nothing"
+          },
+          {
+            "number": 11,
+            "date": "2000-08-20",
+            "title": "Running with Scissors"
+          },
+          {
+            "number": 12,
+            "date": "2000-08-27",
+            "title": "Don't Ask, Don't Tell"
+          },
+          {
+            "number": 13,
+            "date": "2000-09-10",
+            "title": "Escape from New York"
+          },
+          {
+            "number": 14,
+            "date": "2000-09-17",
+            "title": "Sex and Another City"
+          },
+          {
+            "number": 15,
+            "date": "2000-09-24",
+            "title": "Hot Child in the City"
+          },
+          {
+            "number": 16,
+            "date": "2000-10-01",
+            "title": "Frenemies"
+          },
+          {
+            "number": 17,
+            "date": "2000-10-08",
+            "title": "What Goes Around Comes Around"
+          },
+          {
+            "number": 18,
+            "date": "2000-10-15",
+            "title": "Cock a Doodle Do!"
+          }
+        ]
+      },
+      {
+        "number": 4,
+        "releaseDate": "2001-06-03",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2001-06-03",
+            "title": "The Agony and the 'Ex'-tacy"
+          },
+          {
+            "number": 2,
+            "date": "2001-06-03",
+            "title": "The Real Me"
+          },
+          {
+            "number": 3,
+            "date": "2001-06-10",
+            "title": "Defining Moments"
+          },
+          {
+            "number": 4,
+            "date": "2001-06-17",
+            "title": "What's Sex Got to Do with It?"
+          },
+          {
+            "number": 5,
+            "date": "2001-06-24",
+            "title": "Ghost Town"
+          },
+          {
+            "number": 6,
+            "date": "2001-07-01",
+            "title": "Baby, Talk is Cheap"
+          },
+          {
+            "number": 7,
+            "date": "2001-07-08",
+            "title": "Time and Punishment"
+          },
+          {
+            "number": 8,
+            "date": "2001-07-15",
+            "title": "My Motherboard, My Self"
+          },
+          {
+            "number": 9,
+            "date": "2001-07-22",
+            "title": "Sex and the Country"
+          },
+          {
+            "number": 10,
+            "date": "2001-07-29",
+            "title": "Belles of the Balls"
+          },
+          {
+            "number": 11,
+            "date": "2001-08-05",
+            "title": "Coulda, Woulda, Shoulda"
+          },
+          {
+            "number": 12,
+            "date": "2001-08-12",
+            "title": "Just Say Yes"
+          },
+          {
+            "number": 13,
+            "date": "2002-01-06",
+            "title": "The Good Fight"
+          },
+          {
+            "number": 14,
+            "date": "2002-01-13",
+            "title": "All That Glitters..."
+          },
+          {
+            "number": 15,
+            "date": "2002-01-20",
+            "title": "Change of a Dress"
+          },
+          {
+            "number": 16,
+            "date": "2002-01-27",
+            "title": "Ring a Ding Ding"
+          },
+          {
+            "number": 17,
+            "date": "2002-02-03",
+            "title": "A 'Vogue' Idea"
+          },
+          {
+            "number": 18,
+            "date": "2002-02-10",
+            "title": "I Heart NY"
+          }
+        ]
+      },
+      {
+        "number": 5,
+        "releaseDate": "2002-07-21",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2002-07-21",
+            "title": "Anchors Away"
+          },
+          {
+            "number": 2,
+            "date": "2002-07-28",
+            "title": "Unoriginal Sin"
+          },
+          {
+            "number": 3,
+            "date": "2002-08-04",
+            "title": "Luck Be an Old Lady"
+          },
+          {
+            "number": 4,
+            "date": "2002-08-11",
+            "title": "Cover Girl"
+          },
+          {
+            "number": 5,
+            "date": "2002-08-18",
+            "title": "Plus One is the Loneliest Number"
+          },
+          {
+            "number": 6,
+            "date": "2002-08-25",
+            "title": "Critical Condition"
+          },
+          {
+            "number": 7,
+            "date": "2002-09-01",
+            "title": "The Big Journey"
+          },
+          {
+            "number": 8,
+            "date": "2002-09-08",
+            "title": "I Love a Charade"
+          }
+        ]
+      },
+      {
+        "number": 6,
+        "releaseDate": "2003-06-22",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2003-06-22",
+            "title": "To Market, To Market"
+          },
+          {
+            "number": 2,
+            "date": "2003-06-29",
+            "title": "Great Sexpectations"
+          },
+          {
+            "number": 3,
+            "date": "2003-07-06",
+            "title": "The Perfect Present"
+          },
+          {
+            "number": 4,
+            "date": "2003-07-13",
+            "title": "Pick-a-Little, Talk-a-Little"
+          },
+          {
+            "number": 5,
+            "date": "2003-07-20",
+            "title": "Lights, Camera, Relationship"
+          },
+          {
+            "number": 6,
+            "date": "2003-07-27",
+            "title": "Hop, Skip and a Week"
+          },
+          {
+            "number": 7,
+            "date": "2003-08-03",
+            "title": "The Post-It Always Sticks Twice"
+          },
+          {
+            "number": 8,
+            "date": "2003-08-10",
+            "title": "The Catch"
+          },
+          {
+            "number": 9,
+            "date": "2003-08-17",
+            "title": "A Woman's Right to Shoes"
+          },
+          {
+            "number": 10,
+            "date": "2003-08-24",
+            "title": "Boy, Interrupted"
+          },
+          {
+            "number": 11,
+            "date": "2003-09-07",
+            "title": "The Domino Effect"
+          },
+          {
+            "number": 12,
+            "date": "2003-09-14",
+            "title": "One"
+          },
+          {
+            "number": 13,
+            "date": "2004-01-04",
+            "title": "Let There Be Light"
+          },
+          {
+            "number": 14,
+            "date": "2004-01-11",
+            "title": "The Ick Factor"
+          },
+          {
+            "number": 15,
+            "date": "2004-01-18",
+            "title": "Catch-38"
+          },
+          {
+            "number": 16,
+            "date": "2004-01-25",
+            "title": "Out of the Frying Pan"
+          },
+          {
+            "number": 17,
+            "date": "2004-02-01",
+            "title": "The Cold War"
+          },
+          {
+            "number": 18,
+            "date": "2004-02-08",
+            "title": "Splat!"
+          },
+          {
+            "number": 19,
+            "date": "2004-02-15",
+            "title": "An American Girl in Paris (Part Une)"
+          },
+          {
+            "number": 20,
+            "date": "2004-02-22",
+            "title": "An American Girl in Paris (Part Deux)"
+          }
+        ]
+      }
+    ],
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-tv-105-s5",
+    "title": "Секс в большом городе",
+    "type": "series",
+    "genres": [
+      "Комедия",
+      "Драма",
+      "Мелодрама"
+    ],
+    "studios": [
+      "HBO",
+      "Darren Star Productions"
+    ],
+    "description": "Кэрри готовит книгу из своих колонок, Миранда осваивается в роли матери, а Шарлотта начинает новые отношения. Саманта пытается решить, чего она ждёт от Ричарда.",
+    "poster": "assets/tmdb-tv-105-s5-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-105-s5-still-1.jpg",
+      "assets/tmdb-tv-105-s5-still-2.jpg"
+    ],
+    "releaseDate": "2002-07-21",
+    "rating": 7.4,
+    "ratingSource": "IMDb сериала",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=1LJ3qLFiwX8",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/105/season/5?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0159206/",
+      "official": "https://www.hbomax.com/show/2641fd06-387f-4d92-a322-accb8e180713",
+      "metadata": "https://v3-cinemeta.strem.io/meta/series/tt0159206.json",
+      "release": "https://www.tvmaze.com/shows/676/sex-and-the-city",
+      "episodes": "https://www.tvmaze.com/shows/676/sex-and-the-city/episodes",
+      "poster": "https://static.tvmaze.com/uploads/images/original_untouched/399/997753.jpg",
+      "gallery": [
+        "https://static.tvmaze.com/uploads/images/original_untouched/122/307449.jpg",
+        "https://static.tvmaze.com/uploads/images/original_untouched/122/307451.jpg"
+      ],
+      "seasons": "https://www.themoviedb.org/tv/105/seasons"
+    },
+    "platforms": [
+      "HBO"
+    ],
+    "origin": "foreign",
+    "season": 5,
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "1998-06-06",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "1998-06-06",
+            "title": "Sex and the City"
+          },
+          {
+            "number": 2,
+            "date": "1998-06-06",
+            "title": "Models and Mortals"
+          },
+          {
+            "number": 3,
+            "date": "1998-06-21",
+            "title": "Bay of Married Pigs"
+          },
+          {
+            "number": 4,
+            "date": "1998-06-28",
+            "title": "Valley of the Twenty-Something Guys"
+          },
+          {
+            "number": 5,
+            "date": "1998-07-05",
+            "title": "The Power of Female Sex"
+          },
+          {
+            "number": 6,
+            "date": "1998-07-12",
+            "title": "Secret Sex"
+          },
+          {
+            "number": 7,
+            "date": "1998-07-19",
+            "title": "The Monogamists"
+          },
+          {
+            "number": 8,
+            "date": "1998-07-26",
+            "title": "Three's a Crowd"
+          },
+          {
+            "number": 9,
+            "date": "1998-08-02",
+            "title": "The Turtle and the Hare"
+          },
+          {
+            "number": 10,
+            "date": "1998-08-09",
+            "title": "The Baby Shower"
+          },
+          {
+            "number": 11,
+            "date": "1998-08-16",
+            "title": "The Drought"
+          },
+          {
+            "number": 12,
+            "date": "1998-08-23",
+            "title": "Oh Come All Ye Faithful"
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "releaseDate": "1999-06-06",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "1999-06-06",
+            "title": "Take Me Out to the Ballgame"
+          },
+          {
+            "number": 2,
+            "date": "1999-06-13",
+            "title": "The Awful Truth"
+          },
+          {
+            "number": 3,
+            "date": "1999-06-20",
+            "title": "The Freak Show"
+          },
+          {
+            "number": 4,
+            "date": "1999-06-27",
+            "title": "They Shoot Single People, Don't They?"
+          },
+          {
+            "number": 5,
+            "date": "1999-07-04",
+            "title": "Four Women and a Funeral"
+          },
+          {
+            "number": 6,
+            "date": "1999-07-11",
+            "title": "The Cheating Curve"
+          },
+          {
+            "number": 7,
+            "date": "1999-07-18",
+            "title": "The Chicken Dance"
+          },
+          {
+            "number": 8,
+            "date": "1999-07-25",
+            "title": "The Man, The Myth, The Viagra"
+          },
+          {
+            "number": 9,
+            "date": "1999-08-01",
+            "title": "Old Dogs, New Dicks"
+          },
+          {
+            "number": 10,
+            "date": "1999-08-08",
+            "title": "The Caste System"
+          },
+          {
+            "number": 11,
+            "date": "1999-08-15",
+            "title": "Evolution"
+          },
+          {
+            "number": 12,
+            "date": "1999-08-22",
+            "title": "La Douleur Exquise!"
+          },
+          {
+            "number": 13,
+            "date": "1999-08-29",
+            "title": "Games People Play"
+          },
+          {
+            "number": 14,
+            "date": "1999-09-05",
+            "title": "The Fuck Buddy"
+          },
+          {
+            "number": 15,
+            "date": "1999-09-12",
+            "title": "Shortcomings"
+          },
+          {
+            "number": 16,
+            "date": "1999-09-19",
+            "title": "Was It Good for You?"
+          },
+          {
+            "number": 17,
+            "date": "1999-09-26",
+            "title": "Twenty-Something Girls vs. Thirty-Something Women"
+          },
+          {
+            "number": 18,
+            "date": "1999-10-03",
+            "title": "Ex and the City"
+          }
+        ]
+      },
+      {
+        "number": 3,
+        "releaseDate": "2000-06-04",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2000-06-04",
+            "title": "Where's There's Smoke..."
+          },
+          {
+            "number": 2,
+            "date": "2000-06-11",
+            "title": "Politically Erect"
+          },
+          {
+            "number": 3,
+            "date": "2000-06-18",
+            "title": "Attack of the Five Foot Ten Woman"
+          },
+          {
+            "number": 4,
+            "date": "2000-06-25",
+            "title": "Boy, Girl, Boy, Girl..."
+          },
+          {
+            "number": 5,
+            "date": "2000-07-09",
+            "title": "No Ifs, Ands, or Butts"
+          },
+          {
+            "number": 6,
+            "date": "2000-07-16",
+            "title": "Are We Sluts?"
+          },
+          {
+            "number": 7,
+            "date": "2000-07-23",
+            "title": "Drama Queens"
+          },
+          {
+            "number": 8,
+            "date": "2000-07-30",
+            "title": "The Big Time"
+          },
+          {
+            "number": 9,
+            "date": "2000-08-06",
+            "title": "Easy Come, Easy Go"
+          },
+          {
+            "number": 10,
+            "date": "2000-08-13",
+            "title": "All or Nothing"
+          },
+          {
+            "number": 11,
+            "date": "2000-08-20",
+            "title": "Running with Scissors"
+          },
+          {
+            "number": 12,
+            "date": "2000-08-27",
+            "title": "Don't Ask, Don't Tell"
+          },
+          {
+            "number": 13,
+            "date": "2000-09-10",
+            "title": "Escape from New York"
+          },
+          {
+            "number": 14,
+            "date": "2000-09-17",
+            "title": "Sex and Another City"
+          },
+          {
+            "number": 15,
+            "date": "2000-09-24",
+            "title": "Hot Child in the City"
+          },
+          {
+            "number": 16,
+            "date": "2000-10-01",
+            "title": "Frenemies"
+          },
+          {
+            "number": 17,
+            "date": "2000-10-08",
+            "title": "What Goes Around Comes Around"
+          },
+          {
+            "number": 18,
+            "date": "2000-10-15",
+            "title": "Cock a Doodle Do!"
+          }
+        ]
+      },
+      {
+        "number": 4,
+        "releaseDate": "2001-06-03",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2001-06-03",
+            "title": "The Agony and the 'Ex'-tacy"
+          },
+          {
+            "number": 2,
+            "date": "2001-06-03",
+            "title": "The Real Me"
+          },
+          {
+            "number": 3,
+            "date": "2001-06-10",
+            "title": "Defining Moments"
+          },
+          {
+            "number": 4,
+            "date": "2001-06-17",
+            "title": "What's Sex Got to Do with It?"
+          },
+          {
+            "number": 5,
+            "date": "2001-06-24",
+            "title": "Ghost Town"
+          },
+          {
+            "number": 6,
+            "date": "2001-07-01",
+            "title": "Baby, Talk is Cheap"
+          },
+          {
+            "number": 7,
+            "date": "2001-07-08",
+            "title": "Time and Punishment"
+          },
+          {
+            "number": 8,
+            "date": "2001-07-15",
+            "title": "My Motherboard, My Self"
+          },
+          {
+            "number": 9,
+            "date": "2001-07-22",
+            "title": "Sex and the Country"
+          },
+          {
+            "number": 10,
+            "date": "2001-07-29",
+            "title": "Belles of the Balls"
+          },
+          {
+            "number": 11,
+            "date": "2001-08-05",
+            "title": "Coulda, Woulda, Shoulda"
+          },
+          {
+            "number": 12,
+            "date": "2001-08-12",
+            "title": "Just Say Yes"
+          },
+          {
+            "number": 13,
+            "date": "2002-01-06",
+            "title": "The Good Fight"
+          },
+          {
+            "number": 14,
+            "date": "2002-01-13",
+            "title": "All That Glitters..."
+          },
+          {
+            "number": 15,
+            "date": "2002-01-20",
+            "title": "Change of a Dress"
+          },
+          {
+            "number": 16,
+            "date": "2002-01-27",
+            "title": "Ring a Ding Ding"
+          },
+          {
+            "number": 17,
+            "date": "2002-02-03",
+            "title": "A 'Vogue' Idea"
+          },
+          {
+            "number": 18,
+            "date": "2002-02-10",
+            "title": "I Heart NY"
+          }
+        ]
+      },
+      {
+        "number": 5,
+        "releaseDate": "2002-07-21",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2002-07-21",
+            "title": "Anchors Away"
+          },
+          {
+            "number": 2,
+            "date": "2002-07-28",
+            "title": "Unoriginal Sin"
+          },
+          {
+            "number": 3,
+            "date": "2002-08-04",
+            "title": "Luck Be an Old Lady"
+          },
+          {
+            "number": 4,
+            "date": "2002-08-11",
+            "title": "Cover Girl"
+          },
+          {
+            "number": 5,
+            "date": "2002-08-18",
+            "title": "Plus One is the Loneliest Number"
+          },
+          {
+            "number": 6,
+            "date": "2002-08-25",
+            "title": "Critical Condition"
+          },
+          {
+            "number": 7,
+            "date": "2002-09-01",
+            "title": "The Big Journey"
+          },
+          {
+            "number": 8,
+            "date": "2002-09-08",
+            "title": "I Love a Charade"
+          }
+        ]
+      },
+      {
+        "number": 6,
+        "releaseDate": "2003-06-22",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2003-06-22",
+            "title": "To Market, To Market"
+          },
+          {
+            "number": 2,
+            "date": "2003-06-29",
+            "title": "Great Sexpectations"
+          },
+          {
+            "number": 3,
+            "date": "2003-07-06",
+            "title": "The Perfect Present"
+          },
+          {
+            "number": 4,
+            "date": "2003-07-13",
+            "title": "Pick-a-Little, Talk-a-Little"
+          },
+          {
+            "number": 5,
+            "date": "2003-07-20",
+            "title": "Lights, Camera, Relationship"
+          },
+          {
+            "number": 6,
+            "date": "2003-07-27",
+            "title": "Hop, Skip and a Week"
+          },
+          {
+            "number": 7,
+            "date": "2003-08-03",
+            "title": "The Post-It Always Sticks Twice"
+          },
+          {
+            "number": 8,
+            "date": "2003-08-10",
+            "title": "The Catch"
+          },
+          {
+            "number": 9,
+            "date": "2003-08-17",
+            "title": "A Woman's Right to Shoes"
+          },
+          {
+            "number": 10,
+            "date": "2003-08-24",
+            "title": "Boy, Interrupted"
+          },
+          {
+            "number": 11,
+            "date": "2003-09-07",
+            "title": "The Domino Effect"
+          },
+          {
+            "number": 12,
+            "date": "2003-09-14",
+            "title": "One"
+          },
+          {
+            "number": 13,
+            "date": "2004-01-04",
+            "title": "Let There Be Light"
+          },
+          {
+            "number": 14,
+            "date": "2004-01-11",
+            "title": "The Ick Factor"
+          },
+          {
+            "number": 15,
+            "date": "2004-01-18",
+            "title": "Catch-38"
+          },
+          {
+            "number": 16,
+            "date": "2004-01-25",
+            "title": "Out of the Frying Pan"
+          },
+          {
+            "number": 17,
+            "date": "2004-02-01",
+            "title": "The Cold War"
+          },
+          {
+            "number": 18,
+            "date": "2004-02-08",
+            "title": "Splat!"
+          },
+          {
+            "number": 19,
+            "date": "2004-02-15",
+            "title": "An American Girl in Paris (Part Une)"
+          },
+          {
+            "number": 20,
+            "date": "2004-02-22",
+            "title": "An American Girl in Paris (Part Deux)"
+          }
+        ]
+      }
+    ],
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-tv-105-s6",
+    "title": "Секс в большом городе",
+    "type": "series",
+    "genres": [
+      "Комедия",
+      "Драма",
+      "Мелодрама"
+    ],
+    "studios": [
+      "HBO",
+      "Darren Star Productions"
+    ],
+    "description": "Кэрри заводит роман с художником, который зовёт её в Париж. Миранда и Шарлотта строят семьи, а Саманта пересматривает свои приоритеты после серьёзного диагноза.",
+    "poster": "assets/tmdb-tv-105-s6-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-105-s6-still-1.jpg",
+      "assets/tmdb-tv-105-s6-still-2.jpg"
+    ],
+    "releaseDate": "2003-06-22",
+    "rating": 7.4,
+    "ratingSource": "IMDb сериала",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=tZ91_cBiOUY",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/105/season/6?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0159206/",
+      "official": "https://www.hbomax.com/show/2641fd06-387f-4d92-a322-accb8e180713",
+      "metadata": "https://v3-cinemeta.strem.io/meta/series/tt0159206.json",
+      "release": "https://www.tvmaze.com/shows/676/sex-and-the-city",
+      "episodes": "https://www.tvmaze.com/shows/676/sex-and-the-city/episodes",
+      "poster": "https://static.tvmaze.com/uploads/images/original_untouched/399/997754.jpg",
+      "gallery": [
+        "https://static.tvmaze.com/uploads/images/original_untouched/123/307724.jpg",
+        "https://static.tvmaze.com/uploads/images/original_untouched/123/307742.jpg"
+      ],
+      "seasons": "https://www.themoviedb.org/tv/105/seasons"
+    },
+    "platforms": [
+      "HBO"
+    ],
+    "origin": "foreign",
+    "season": 6,
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "1998-06-06",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "1998-06-06",
+            "title": "Sex and the City"
+          },
+          {
+            "number": 2,
+            "date": "1998-06-06",
+            "title": "Models and Mortals"
+          },
+          {
+            "number": 3,
+            "date": "1998-06-21",
+            "title": "Bay of Married Pigs"
+          },
+          {
+            "number": 4,
+            "date": "1998-06-28",
+            "title": "Valley of the Twenty-Something Guys"
+          },
+          {
+            "number": 5,
+            "date": "1998-07-05",
+            "title": "The Power of Female Sex"
+          },
+          {
+            "number": 6,
+            "date": "1998-07-12",
+            "title": "Secret Sex"
+          },
+          {
+            "number": 7,
+            "date": "1998-07-19",
+            "title": "The Monogamists"
+          },
+          {
+            "number": 8,
+            "date": "1998-07-26",
+            "title": "Three's a Crowd"
+          },
+          {
+            "number": 9,
+            "date": "1998-08-02",
+            "title": "The Turtle and the Hare"
+          },
+          {
+            "number": 10,
+            "date": "1998-08-09",
+            "title": "The Baby Shower"
+          },
+          {
+            "number": 11,
+            "date": "1998-08-16",
+            "title": "The Drought"
+          },
+          {
+            "number": 12,
+            "date": "1998-08-23",
+            "title": "Oh Come All Ye Faithful"
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "releaseDate": "1999-06-06",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "1999-06-06",
+            "title": "Take Me Out to the Ballgame"
+          },
+          {
+            "number": 2,
+            "date": "1999-06-13",
+            "title": "The Awful Truth"
+          },
+          {
+            "number": 3,
+            "date": "1999-06-20",
+            "title": "The Freak Show"
+          },
+          {
+            "number": 4,
+            "date": "1999-06-27",
+            "title": "They Shoot Single People, Don't They?"
+          },
+          {
+            "number": 5,
+            "date": "1999-07-04",
+            "title": "Four Women and a Funeral"
+          },
+          {
+            "number": 6,
+            "date": "1999-07-11",
+            "title": "The Cheating Curve"
+          },
+          {
+            "number": 7,
+            "date": "1999-07-18",
+            "title": "The Chicken Dance"
+          },
+          {
+            "number": 8,
+            "date": "1999-07-25",
+            "title": "The Man, The Myth, The Viagra"
+          },
+          {
+            "number": 9,
+            "date": "1999-08-01",
+            "title": "Old Dogs, New Dicks"
+          },
+          {
+            "number": 10,
+            "date": "1999-08-08",
+            "title": "The Caste System"
+          },
+          {
+            "number": 11,
+            "date": "1999-08-15",
+            "title": "Evolution"
+          },
+          {
+            "number": 12,
+            "date": "1999-08-22",
+            "title": "La Douleur Exquise!"
+          },
+          {
+            "number": 13,
+            "date": "1999-08-29",
+            "title": "Games People Play"
+          },
+          {
+            "number": 14,
+            "date": "1999-09-05",
+            "title": "The Fuck Buddy"
+          },
+          {
+            "number": 15,
+            "date": "1999-09-12",
+            "title": "Shortcomings"
+          },
+          {
+            "number": 16,
+            "date": "1999-09-19",
+            "title": "Was It Good for You?"
+          },
+          {
+            "number": 17,
+            "date": "1999-09-26",
+            "title": "Twenty-Something Girls vs. Thirty-Something Women"
+          },
+          {
+            "number": 18,
+            "date": "1999-10-03",
+            "title": "Ex and the City"
+          }
+        ]
+      },
+      {
+        "number": 3,
+        "releaseDate": "2000-06-04",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2000-06-04",
+            "title": "Where's There's Smoke..."
+          },
+          {
+            "number": 2,
+            "date": "2000-06-11",
+            "title": "Politically Erect"
+          },
+          {
+            "number": 3,
+            "date": "2000-06-18",
+            "title": "Attack of the Five Foot Ten Woman"
+          },
+          {
+            "number": 4,
+            "date": "2000-06-25",
+            "title": "Boy, Girl, Boy, Girl..."
+          },
+          {
+            "number": 5,
+            "date": "2000-07-09",
+            "title": "No Ifs, Ands, or Butts"
+          },
+          {
+            "number": 6,
+            "date": "2000-07-16",
+            "title": "Are We Sluts?"
+          },
+          {
+            "number": 7,
+            "date": "2000-07-23",
+            "title": "Drama Queens"
+          },
+          {
+            "number": 8,
+            "date": "2000-07-30",
+            "title": "The Big Time"
+          },
+          {
+            "number": 9,
+            "date": "2000-08-06",
+            "title": "Easy Come, Easy Go"
+          },
+          {
+            "number": 10,
+            "date": "2000-08-13",
+            "title": "All or Nothing"
+          },
+          {
+            "number": 11,
+            "date": "2000-08-20",
+            "title": "Running with Scissors"
+          },
+          {
+            "number": 12,
+            "date": "2000-08-27",
+            "title": "Don't Ask, Don't Tell"
+          },
+          {
+            "number": 13,
+            "date": "2000-09-10",
+            "title": "Escape from New York"
+          },
+          {
+            "number": 14,
+            "date": "2000-09-17",
+            "title": "Sex and Another City"
+          },
+          {
+            "number": 15,
+            "date": "2000-09-24",
+            "title": "Hot Child in the City"
+          },
+          {
+            "number": 16,
+            "date": "2000-10-01",
+            "title": "Frenemies"
+          },
+          {
+            "number": 17,
+            "date": "2000-10-08",
+            "title": "What Goes Around Comes Around"
+          },
+          {
+            "number": 18,
+            "date": "2000-10-15",
+            "title": "Cock a Doodle Do!"
+          }
+        ]
+      },
+      {
+        "number": 4,
+        "releaseDate": "2001-06-03",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2001-06-03",
+            "title": "The Agony and the 'Ex'-tacy"
+          },
+          {
+            "number": 2,
+            "date": "2001-06-03",
+            "title": "The Real Me"
+          },
+          {
+            "number": 3,
+            "date": "2001-06-10",
+            "title": "Defining Moments"
+          },
+          {
+            "number": 4,
+            "date": "2001-06-17",
+            "title": "What's Sex Got to Do with It?"
+          },
+          {
+            "number": 5,
+            "date": "2001-06-24",
+            "title": "Ghost Town"
+          },
+          {
+            "number": 6,
+            "date": "2001-07-01",
+            "title": "Baby, Talk is Cheap"
+          },
+          {
+            "number": 7,
+            "date": "2001-07-08",
+            "title": "Time and Punishment"
+          },
+          {
+            "number": 8,
+            "date": "2001-07-15",
+            "title": "My Motherboard, My Self"
+          },
+          {
+            "number": 9,
+            "date": "2001-07-22",
+            "title": "Sex and the Country"
+          },
+          {
+            "number": 10,
+            "date": "2001-07-29",
+            "title": "Belles of the Balls"
+          },
+          {
+            "number": 11,
+            "date": "2001-08-05",
+            "title": "Coulda, Woulda, Shoulda"
+          },
+          {
+            "number": 12,
+            "date": "2001-08-12",
+            "title": "Just Say Yes"
+          },
+          {
+            "number": 13,
+            "date": "2002-01-06",
+            "title": "The Good Fight"
+          },
+          {
+            "number": 14,
+            "date": "2002-01-13",
+            "title": "All That Glitters..."
+          },
+          {
+            "number": 15,
+            "date": "2002-01-20",
+            "title": "Change of a Dress"
+          },
+          {
+            "number": 16,
+            "date": "2002-01-27",
+            "title": "Ring a Ding Ding"
+          },
+          {
+            "number": 17,
+            "date": "2002-02-03",
+            "title": "A 'Vogue' Idea"
+          },
+          {
+            "number": 18,
+            "date": "2002-02-10",
+            "title": "I Heart NY"
+          }
+        ]
+      },
+      {
+        "number": 5,
+        "releaseDate": "2002-07-21",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2002-07-21",
+            "title": "Anchors Away"
+          },
+          {
+            "number": 2,
+            "date": "2002-07-28",
+            "title": "Unoriginal Sin"
+          },
+          {
+            "number": 3,
+            "date": "2002-08-04",
+            "title": "Luck Be an Old Lady"
+          },
+          {
+            "number": 4,
+            "date": "2002-08-11",
+            "title": "Cover Girl"
+          },
+          {
+            "number": 5,
+            "date": "2002-08-18",
+            "title": "Plus One is the Loneliest Number"
+          },
+          {
+            "number": 6,
+            "date": "2002-08-25",
+            "title": "Critical Condition"
+          },
+          {
+            "number": 7,
+            "date": "2002-09-01",
+            "title": "The Big Journey"
+          },
+          {
+            "number": 8,
+            "date": "2002-09-08",
+            "title": "I Love a Charade"
+          }
+        ]
+      },
+      {
+        "number": 6,
+        "releaseDate": "2003-06-22",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2003-06-22",
+            "title": "To Market, To Market"
+          },
+          {
+            "number": 2,
+            "date": "2003-06-29",
+            "title": "Great Sexpectations"
+          },
+          {
+            "number": 3,
+            "date": "2003-07-06",
+            "title": "The Perfect Present"
+          },
+          {
+            "number": 4,
+            "date": "2003-07-13",
+            "title": "Pick-a-Little, Talk-a-Little"
+          },
+          {
+            "number": 5,
+            "date": "2003-07-20",
+            "title": "Lights, Camera, Relationship"
+          },
+          {
+            "number": 6,
+            "date": "2003-07-27",
+            "title": "Hop, Skip and a Week"
+          },
+          {
+            "number": 7,
+            "date": "2003-08-03",
+            "title": "The Post-It Always Sticks Twice"
+          },
+          {
+            "number": 8,
+            "date": "2003-08-10",
+            "title": "The Catch"
+          },
+          {
+            "number": 9,
+            "date": "2003-08-17",
+            "title": "A Woman's Right to Shoes"
+          },
+          {
+            "number": 10,
+            "date": "2003-08-24",
+            "title": "Boy, Interrupted"
+          },
+          {
+            "number": 11,
+            "date": "2003-09-07",
+            "title": "The Domino Effect"
+          },
+          {
+            "number": 12,
+            "date": "2003-09-14",
+            "title": "One"
+          },
+          {
+            "number": 13,
+            "date": "2004-01-04",
+            "title": "Let There Be Light"
+          },
+          {
+            "number": 14,
+            "date": "2004-01-11",
+            "title": "The Ick Factor"
+          },
+          {
+            "number": 15,
+            "date": "2004-01-18",
+            "title": "Catch-38"
+          },
+          {
+            "number": 16,
+            "date": "2004-01-25",
+            "title": "Out of the Frying Pan"
+          },
+          {
+            "number": 17,
+            "date": "2004-02-01",
+            "title": "The Cold War"
+          },
+          {
+            "number": 18,
+            "date": "2004-02-08",
+            "title": "Splat!"
+          },
+          {
+            "number": 19,
+            "date": "2004-02-15",
+            "title": "An American Girl in Paris (Part Une)"
+          },
+          {
+            "number": 20,
+            "date": "2004-02-22",
+            "title": "An American Girl in Paris (Part Deux)"
+          }
+        ]
+      }
+    ],
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-tv-224372-s1",
+    "title": "Рыцарь Семи Королевств",
+    "type": "series",
+    "genres": [
+      "Фэнтези",
+      "Приключения",
+      "Драма"
+    ],
+    "studios": [
+      "HBO"
+    ],
+    "description": "Странствующий рыцарь Дунк берёт в оруженосцы мальчика по прозвищу Эгг. На турнире в Эшфорде их знакомство с Таргариенами меняет судьбу обоих.",
+    "poster": "assets/tmdb-tv-224372-s1-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-224372-s1-still-1.jpg",
+      "assets/tmdb-tv-224372-s1-still-2.jpg"
+    ],
+    "releaseDate": "2026-01-18",
+    "rating": 8.6,
+    "ratingSource": "IMDb сериала",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=sItUCKJQLTU",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/224372/season/1?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt27497448/",
+      "official": "https://press.wbd.com/ca/media-release/hbo-0/knight-seven-kingdoms/hbo-original-drama-series-knight-seven-kingdoms-debuts-january-18",
+      "metadata": "https://v3-cinemeta.strem.io/meta/series/tt27497448.json",
+      "release": "https://press.wbd.com/ca/media-release/hbo-0/knight-seven-kingdoms/hbo-original-drama-series-knight-seven-kingdoms-debuts-january-18",
+      "episodes": "https://www.tvmaze.com/shows/53063/a-knight-of-the-seven-kingdoms/episodes",
+      "earlyEpisode": "https://press.wbd.com/us/media-release/hbo-0/knight-seven-kingdoms/hbo-max-announces-early-episode-debuts-industry-and-knight-seven-kingdoms-february-6",
+      "poster": "https://static.tvmaze.com/uploads/images/original_untouched/609/1524078.jpg",
+      "gallery": [
+        "https://static.tvmaze.com/uploads/images/original_untouched/609/1523273.jpg",
+        "https://static.tvmaze.com/uploads/images/original_untouched/610/1526352.jpg"
+      ],
+      "seasons": "https://www.themoviedb.org/tv/224372/seasons"
+    },
+    "platforms": [
+      "HBO"
+    ],
+    "origin": "foreign",
+    "season": 1,
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2026-01-18",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2026-01-18",
+            "title": "The Hedge Knight"
+          },
+          {
+            "number": 2,
+            "date": "2026-01-25",
+            "title": "Hard Salt Beef"
+          },
+          {
+            "number": 3,
+            "date": "2026-02-01",
+            "title": "The Squire"
+          },
+          {
+            "number": 4,
+            "date": "2026-02-06",
+            "title": "Seven"
+          },
+          {
+            "number": 5,
+            "date": "2026-02-15",
+            "title": "In the Name of the Mother"
+          },
+          {
+            "number": 6,
+            "date": "2026-02-22",
+            "title": "The Morrow"
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "releaseDate": null,
+        "episodes": []
+      }
+    ],
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-tv-164721-s1",
+    "title": "Гордость и предубеждение",
+    "type": "series",
+    "genres": [
+      "Драма",
+      "Мелодрама"
+    ],
+    "studios": [
+      "BBC",
+      "A&E Network"
+    ],
+    "description": "Элизабет Беннет принимает сдержанность мистера Дарси за высокомерие. Когда новые обстоятельства заставляют её пересмотреть своё суждение, Дарси тоже приходится отказаться от предубеждений. В главных ролях Дженнифер Эль и Колин Ферт.",
+    "poster": "assets/tmdb-tv-164721-s1-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-164721-s1-still-1.jpg",
+      "assets/tmdb-tv-164721-s1-still-2.jpg"
+    ],
+    "releaseDate": "1995-09-24",
+    "rating": 8.8,
+    "ratingSource": "IMDb сериала",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=NZKmzkdXPoo",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/164721/season/1?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0112130/",
+      "official": "https://www.britbox.com/us/pride_and_prejudice",
+      "metadata": "https://v3-cinemeta.strem.io/meta/series/tt0112130.json",
+      "release": "https://www.tvmaze.com/shows/2355/pride-and-prejudice",
+      "episodes": "https://www.tvmaze.com/shows/2355/pride-and-prejudice/episodes",
+      "poster": "https://images.metahub.space/poster/medium/tt0112130/img",
+      "gallery": [
+        "https://static.tvmaze.com/uploads/images/original_untouched/262/655296.jpg",
+        "https://static.tvmaze.com/uploads/images/original_untouched/262/655297.jpg"
+      ],
+      "seasons": "https://www.themoviedb.org/tv/164721/seasons"
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "season": 1,
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "1995-09-24",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "1995-09-24"
+          },
+          {
+            "number": 2,
+            "date": "1995-10-01"
+          },
+          {
+            "number": 3,
+            "date": "1995-10-08"
+          },
+          {
+            "number": 4,
+            "date": "1995-10-15"
+          },
+          {
+            "number": 5,
+            "date": "1995-10-22"
+          },
+          {
+            "number": 6,
+            "date": "1995-10-29"
+          }
+        ]
+      }
+    ],
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-4564",
+    "title": "Секс в большом городе",
+    "type": "movie",
+    "genres": [
+      "Комедия",
+      "Драма",
+      "Мелодрама"
+    ],
+    "studios": [
+      "New Line Cinema",
+      "HBO Films"
+    ],
+    "description": "Подруги готовятся к свадьбе Кэрри и Бига, но всё идёт иначе, чем было задумано. Кэрри ищет опору в дружбе, пока Саманта, Шарлотта и Миранда решают свои семейные проблемы.",
+    "poster": "assets/tmdb-movie-4564-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-4564-still-1.jpg",
+      "assets/tmdb-movie-4564-still-2.jpg"
+    ],
+    "releaseDate": "2008-06-19",
+    "rating": 5.7,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=8lofhd7Ubnk",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/4564?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt1000774/",
+      "official": "https://www.youtube.com/watch?v=8lofhd7Ubnk",
+      "releaseRussia": "https://www.kinopoisk.ru/film/281869/dates/",
+      "poster": "https://images.metahub.space/poster/medium/tt1000774/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt1000774/img",
+        "https://i.ytimg.com/vi/8lofhd7Ubnk/hq2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-37786",
+    "title": "Секс в большом городе 2",
+    "type": "movie",
+    "genres": [
+      "Комедия",
+      "Драма",
+      "Мелодрама"
+    ],
+    "studios": [
+      "New Line Cinema",
+      "HBO Films"
+    ],
+    "description": "Кэрри, Саманта, Шарлотта и Миранда вылетают в Абу-Даби. Поездка даёт им передышку от нью-йоркских забот, пока неожиданная встреча Кэрри с Эйданом не усложняет всё.",
+    "poster": "assets/tmdb-movie-37786-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-37786-still-1.jpg",
+      "assets/tmdb-movie-37786-still-2.jpg"
+    ],
+    "releaseDate": "2010-06-03",
+    "rating": 4.6,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=St6RP_AFc_I",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/37786?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt1261945/",
+      "official": "https://www.youtube.com/watch?v=St6RP_AFc_I",
+      "releaseRussia": "https://www.kinopoisk.ru/film/420475/dates/",
+      "poster": "https://images.metahub.space/poster/medium/tt1261945/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt1261945/img",
+        "https://i.ytimg.com/vi/St6RP_AFc_I/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-43818",
+    "title": "Гордость и предубеждение",
+    "type": "movie",
+    "genres": [
+      "Драма",
+      "Комедия",
+      "Мелодрама"
+    ],
+    "studios": [
+      "Metro-Goldwyn-Mayer"
+    ],
+    "description": "Миссис Беннет надеется выдать дочерей замуж, когда рядом поселяется состоятельный мистер Бингли. Его друг Дарси сразу вызывает у Элизабет неприязнь. В главных ролях Грир Гарсон и Лоренс Оливье.",
+    "poster": "assets/tmdb-movie-43818-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-43818-still-1.jpg",
+      "assets/tmdb-movie-43818-still-2.jpg"
+    ],
+    "releaseDate": "1940-07-26",
+    "rating": 7.3,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=oVAIwQbX9Y8",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/43818?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0032943/",
+      "official": "https://www.tcm.com/watchtcm/titles/2153",
+      "release": "https://catalog.afi.com/Film/5077-PRIDE-AND-PREJUDICE",
+      "poster": "https://images.metahub.space/poster/medium/tt0032943/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt0032943/img",
+        "https://i.ytimg.com/vi/oVAIwQbX9Y8/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-4348",
+    "title": "Гордость и предубеждение",
+    "type": "movie",
+    "genres": [
+      "Драма",
+      "Мелодрама"
+    ],
+    "studios": [
+      "Working Title Films",
+      "StudioCanal"
+    ],
+    "description": "Элизабет Беннет и мистер Дарси ошибаются друг в друге при первой встрече. Чтобы понять, что стоит за их взаимной неприязнью, им приходится пересмотреть чувства и привычные представления. В главных ролях Кира Найтли и Мэттью Макфэдьен.",
+    "poster": "assets/tmdb-movie-4348-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-4348-still-1.jpg",
+      "assets/tmdb-movie-4348-still-2.jpg"
+    ],
+    "releaseDate": "2006-01-12",
+    "rating": 7.8,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=Ur_DIHs92NM",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/4348?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0414387/",
+      "official": "https://www.focusfeatures.com/pride_and_prejudice",
+      "releaseRussia": "https://www.kinopoisk.ru/film/81733/",
+      "poster": "https://images.metahub.space/poster/medium/tt0414387/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt0414387/img",
+        "https://i.ytimg.com/vi/Ur_DIHs92NM/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-18087",
+    "title": "Гордость и предрассудки",
+    "type": "movie",
+    "genres": [
+      "Комедия",
+      "Мелодрама"
+    ],
+    "studios": [
+      "Bestboy Pictures"
+    ],
+    "description": "Начинающая писательница Элизабет Беннет живёт в современной Юте и сталкивается с резким британским издателем Уиллом Дарси. Историю Джейн Остин перенесли в студенческую среду.",
+    "poster": "assets/tmdb-movie-18087-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-18087-still-1.jpg",
+      "assets/tmdb-movie-18087-still-2.jpg"
+    ],
+    "releaseDate": "2003-12-05",
+    "rating": 5,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=42XYXw5FNKY",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/18087?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0366920/",
+      "official": "https://watch.afi.com/movie/pride-and-prejudice-2003",
+      "release": "https://watch.afi.com/movie/pride-and-prejudice-2003",
+      "poster": "https://images.metahub.space/poster/medium/tt0366920/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt0366920/img",
+        "https://i.ytimg.com/vi/42XYXw5FNKY/hq2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-57825",
+    "title": "Невеста и предрассудки",
+    "type": "movie",
+    "genres": [
+      "Комедия",
+      "Мелодрама",
+      "Мюзикл"
+    ],
+    "studios": [
+      "Pathé Pictures International",
+      "Bend It Films"
+    ],
+    "description": "Лалита Бакши знакомится на индийской свадьбе с американцем Уиллом Дарси. Недоверие друг к другу и давление семьи мешают им разобраться в своих чувствах.",
+    "poster": "assets/tmdb-movie-57825-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-57825-still-1.jpg",
+      "assets/tmdb-movie-57825-still-2.jpg"
+    ],
+    "releaseDate": "2005-02-17",
+    "rating": 6.2,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=53W6yV7i5zo",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/57825?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0361411/",
+      "official": "https://www.miramax.com/movie/bride-and-prejudice/",
+      "releaseRussia": "https://www.kinopoisk.ru/film/24204/",
+      "poster": "https://images.metahub.space/poster/medium/tt0361411/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt0361411/img",
+        "https://i.ytimg.com/vi/53W6yV7i5zo/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-58431",
+    "title": "Гордость и предубеждение и зомби",
+    "type": "movie",
+    "genres": [
+      "Ужасы",
+      "Боевик",
+      "Мелодрама"
+    ],
+    "studios": [
+      "Screen Gems",
+      "Cross Creek Pictures"
+    ],
+    "description": "В Англии эпохи Регентства сёстры Беннет учатся сражаться с зомби. Элизабет приходится объединиться с мистером Дарси, хотя личные разногласия между ними никуда не исчезли.",
+    "poster": "assets/tmdb-movie-58431-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-58431-still-1.jpg",
+      "assets/tmdb-movie-58431-still-2.jpg"
+    ],
+    "releaseDate": "2016-02-18",
+    "rating": 5.8,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=syjfmdvLu9c",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/58431?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt1374989/",
+      "official": "https://www.sonypictures.com/movies/prideandprejudiceandzombies",
+      "releaseRussia": "https://www.kinopoisk.ru/film/491816/",
+      "poster": "https://images.metahub.space/poster/medium/tt1374989/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt1374989/img",
+        "https://i.ytimg.com/vi/syjfmdvLu9c/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-605795",
+    "title": "Гордость и предубеждение: Атланта",
+    "type": "movie",
+    "genres": [
+      "Комедия",
+      "Драма",
+      "Мелодрама"
+    ],
+    "studios": [
+      "Swirl Films"
+    ],
+    "description": "Супруги Беннет живут в современной Атланте, и миссис Беннет ищет подходящих женихов для пяти дочерей. Элизабет знакомится с преуспевающим Уиллом Дарси, чья манера держаться вызывает у неё резкую неприязнь.",
+    "poster": "assets/tmdb-movie-605795-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-605795-still-1.jpg",
+      "assets/tmdb-movie-605795-still-2.jpg"
+    ],
+    "releaseDate": "2019-06-01",
+    "rating": 5.9,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=KlsNL8m0xBY",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/605795?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt9266486/",
+      "official": "https://swirlfilms.com/our-work/pride-and-prejudice-atlanta/",
+      "release": "https://www.ajc.com/blog/radiotvtalk/lifetime-modernizes-pride-and-prejudice-with-african-american-cast-atlanta/tcBbsn1xPfMnmnXtpnrXSM/",
+      "poster": "https://images.metahub.space/poster/medium/tt9266486/img",
+      "gallery": [
+        "https://i.ytimg.com/vi/KlsNL8m0xBY/sd3.jpg",
+        "https://i.ytimg.com/vi/KlsNL8m0xBY/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
     "id": "tmdb-movie-359724",
     "title": "Ford против Ferrari",
     "type": "movie",
