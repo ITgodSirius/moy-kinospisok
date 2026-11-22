@@ -103,16 +103,17 @@ function calendarDay(now) {
 function daysSince(date) {
   return (state.day - Date.parse(date)) / 86_400_000;
 }
+function favoriteMatchesList(item) {
+  return marked(item.id, 'favorite') === (state.list === 'favorite');
+}
 function listMatches(item) {
-  const watched = marked(item.id, 'watched');
-  const favorite = marked(item.id, 'favorite');
-  if (state.list === 'watched') return watched;
-  if (state.list === 'favorite') return favorite;
-  if (watched) return false;
+  if (!favoriteMatchesList(item)) return false;
+  if (state.list === 'favorite') return true;
+  if (marked(item.id, 'watched')) return state.list === 'watched';
   if (marked(item.id, 'watching')) return state.list === 'watching';
   if (item.status === 'backlog') return state.list === 'backlog';
   const released = item.status === 'available' || daysSince(item.releaseDate) >= 0;
-  return released ? state.list === 'available' : state.list === 'waiting' && !favorite;
+  return released ? state.list === 'available' : state.list === 'waiting';
 }
 function isAnimated(item) {
   return item.genres.some(genre => animationGenres.has(genre.trim().toLowerCase()));
@@ -1054,7 +1055,7 @@ function restorePosition(view) {
   el('lists').scrollLeft = view.listScroll || 0;
   if (view.detail && desktop.matches && layout === 'grid') {
     const item = state.catalog.find(item => item.id === view.detail);
-    if (item) {
+    if (item && (busy(item.id, 'favorite') || favoriteMatchesList(item))) {
       showDetails(item);
       el('film-details').querySelector('.film-body').scrollTop = view.detailScroll || 0;
     }
@@ -1090,6 +1091,7 @@ function render() {
   records.classList.toggle('poster-grid', grid && result.length > 0);
   records.replaceChildren(...(result.length ? result.map(grid ? posterCard : card) : [empty()]));
   const dialog = el('film-details');
+  if (dialog.open && !busy(detailItem.id, 'favorite') && !favoriteMatchesList(detailItem)) dialog.close();
   if (dialog.open) {
     dialog.querySelector('.card-history').replaceWith(cardHistory(detailItem));
     const marks = cardMarks(detailItem);
