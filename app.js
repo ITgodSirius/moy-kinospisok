@@ -46,11 +46,11 @@ posterBrandNames.forEach((aliases, row) => {
   for (const alias of aliases) posterBrandRows.set(brandKey(alias), row);
 });
 const listNames = { waiting: 'Жду', available: 'Новинки', backlog: 'Старое', watching: 'Смотрю сейчас', watched: 'Просмотрено', favorite: 'Любимые' };
-const markActions = [
-  { kind: 'watched', add: 'Отметить просмотренным', remove: 'Снять отметку просмотра', icon: 'check' },
-  { kind: 'favorite', add: 'В любимые', remove: 'Убрать из любимых', icon: 'heart' },
-  { kind: 'watching', add: 'Смотрю сейчас', remove: 'Отложить просмотр', icon: 'play' }
-];
+const markActions = {
+  watched: { add: 'Отметить просмотренным', remove: 'Снять отметку просмотра', icon: 'check' },
+  favorite: { add: 'В любимые', remove: 'Убрать из любимых', icon: 'heart' },
+  watching: { add: 'Смотрю сейчас', remove: 'Отложить просмотр', icon: 'play' }
+};
 const iconPaths = {
   thumb: '<path d="M7 10v10H3V10zm0 0 5-6c1-1.3 3-.8 3 1.1L14 9h5.2a2 2 0 0 1 2 2.4l-1.4 6.8a2.2 2.2 0 0 1-2.2 1.8H7"/>',
   neutral: '<path d="M5 12h14"/>',
@@ -471,11 +471,11 @@ function releaseDate(item, compact = false) {
   date.append(node('span', compact ? 'sr' : '', 'Дата выхода'), value);
   return date;
 }
-function mediaActions(item, compact = false) {
-  const links = node('div', compact ? 'poster-actions' : 'media-actions');
+function mediaActions(item) {
+  const links = node('div', 'media-actions');
   links.setAttribute('role', 'group');
   links.setAttribute('aria-label', 'Информация о проекте');
-  if (!compact && item.type === 'series') {
+  if (item.type === 'series') {
     const calendar = button('Сезоны и серии', '', 'calendar', () => showSchedule(item));
     calendar.setAttribute('aria-haspopup', 'dialog');
     calendar.setAttribute('aria-controls', 'schedule');
@@ -483,16 +483,17 @@ function mediaActions(item, compact = false) {
   }
   if (item.trailer) {
     const platform = item.trailer.startsWith('https://rutube.ru/') ? 'Rutube' : 'YouTube';
-    links.append(externalLink('Трейлер', 'play', item.trailer, 'Трейлер «' + item.title + '» на ' + platform + ' в новой вкладке', compact));
+    links.append(externalLink('Трейлер', 'play', item.trailer, 'Трейлер «' + item.title + '» на ' + platform + ' в новой вкладке'));
   }
-  links.append(externalLink('Найти', 'search', yandexSearchUrl(item), 'Найти «' + item.title + '» в Яндексе в новой вкладке', compact));
+  links.append(externalLink('Найти', 'search', yandexSearchUrl(item), 'Найти «' + item.title + '» в Яндексе в новой вкладке'));
   return links;
 }
-function cardMarks(item, iconsOnly = false) {
+function cardMarks(item, { kinds = Object.keys(markActions), iconsOnly = false } = {}) {
   const marks = node('div', 'card-marks');
   marks.setAttribute('role', 'group');
   marks.setAttribute('aria-label', 'Мои отметки');
-  for (const { kind, add, remove, icon } of markActions) {
+  for (const kind of kinds) {
+    const { add, remove, icon } = markActions[kind];
     const finished = kind === 'watching' && marked(item.id, 'watched');
     const active = !finished && marked(item.id, kind);
     const compact = iconsOnly || kind !== 'watching';
@@ -545,7 +546,7 @@ function posterCard(item) {
   open.onclick = () => showDetails(item);
   heading.append(open);
   const meta = node('div', 'poster-meta');
-  meta.append(releaseDate(item, true), mediaActions(item, true));
+  meta.append(releaseDate(item, true), cardMarks(item, { kinds: ['favorite', 'watched'] }));
   caption.append(heading, node('p', 'poster-genres', item.genres.join(' · ')), meta);
   if (marked(item.id, 'watched')) caption.append(reactionButtons(item, true));
   section.append(image, caption);
@@ -1119,7 +1120,7 @@ function searchResult(item) {
   info.append(heading, meta);
   const actions = node('div', 'search-result-actions');
   if (desktop.matches) actions.append(mediaActions(item));
-  actions.append(cardMarks(item, true));
+  actions.append(cardMarks(item, { iconsOnly: true }));
   if (desktop.matches && marked(item.id, 'watched')) actions.append(reactionButtons(item, true));
   row.append(info, actions);
   return row;

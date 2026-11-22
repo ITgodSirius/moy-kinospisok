@@ -198,9 +198,9 @@ details[open] summary svg{transform:rotate(180deg)}
  .poster-meta{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:8px}
  .poster-date{display:flex;align-items:center;gap:6px;font-size:.85rem;color:var(--blue)}
  .poster-date .ico{width:14px;height:14px}
- .poster-actions{position:relative;display:flex;gap:6px;margin-left:auto}
- .poster-actions .btn{width:38px;min-height:36px;padding:0}
- .poster-actions .btn:hover{color:var(--blue);border-color:var(--blue)}
+ .poster-meta .card-marks{position:relative;gap:6px;margin-left:auto}
+ .poster-meta .btn{min-width:38px;min-height:36px;padding:0}
+ .poster-meta .btn:hover:enabled{color:var(--blue);border-color:var(--blue)}
  #film-details{width:min(1060px,calc(100% - 64px));max-height:88dvh}
  #film-details::backdrop{background:rgba(12,15,23,.66)}
  #film-details .dialog-head{padding:19px 26px}
