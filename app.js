@@ -13,6 +13,7 @@ const formatBudget = new Intl.NumberFormat('ru-RU', { style: 'currency', currenc
 let layout = 'list';
 let detailItem;
 const state = { list: 'waiting', type: 'all', genres: new Set(), catalog: [], day: null };
+let viewBeforeSearch;
 const sortChoices = { available: 'release-new', other: 'added-new' };
 const filterIds = ['origin', 'studio', 'period', 'minimum'];
 const animationGenres = new Set(['мультфильм', 'мультсериал', 'анимация', 'мультипликация']);
@@ -106,14 +107,16 @@ function daysSince(date) {
 function favoriteMatchesList(item) {
   return marked(item.id, 'favorite') === (state.list === 'favorite');
 }
-function listMatches(item) {
-  if (!favoriteMatchesList(item)) return false;
-  if (state.list === 'favorite') return true;
-  if (marked(item.id, 'watched')) return state.list === 'watched';
-  if (marked(item.id, 'watching')) return state.list === 'watching';
-  if (item.status === 'backlog') return state.list === 'backlog';
+function itemList(item) {
+  if (marked(item.id, 'favorite')) return 'favorite';
+  if (marked(item.id, 'watched')) return 'watched';
+  if (marked(item.id, 'watching')) return 'watching';
+  if (item.status === 'backlog') return 'backlog';
   const released = item.status === 'available' || daysSince(item.releaseDate) >= 0;
-  return released ? state.list === 'available' : state.list === 'waiting';
+  return released ? 'available' : 'waiting';
+}
+function listMatches(item) {
+  return state.list === itemList(item);
 }
 function isAnimated(item) {
   return item.genres.some(genre => animationGenres.has(genre.trim().toLowerCase()));
@@ -316,9 +319,7 @@ function synopsis(item) {
   synopsisObserver.observe(paragraph);
   return box;
 }
-function cardHeader(item) {
-  const header = node('div', 'card-heading');
-  const title = node('div');
+function formatLabel(item) {
   const animated = isAnimated(item);
   let format = animated ? 'Мультфильм' : 'Фильм';
   if (item.type === 'series') {
@@ -326,7 +327,12 @@ function cardHeader(item) {
     if (item.dorama === true) format = 'Дорама';
     format += ' · Сезон ' + item.season;
   }
-  title.append(node('h2', '', item.title), node('p', 'kind', format));
+  return format;
+}
+function cardHeader(item) {
+  const header = node('div', 'card-heading');
+  const title = node('div');
+  title.append(node('h2', '', item.title), node('p', 'kind', formatLabel(item)));
   header.append(title);
   if (item.rating != null) header.append(cardRating(item));
   return header;
@@ -940,9 +946,17 @@ function reflectSort() {
   sort.style.setProperty('--sort-width', Math.min(236, width) + 'px');
 }
 let lastSavedFeed;
+function saveTabView(view) {
+  try { sessionStorage.setItem(viewKey, JSON.stringify(view)); }
+  catch { /* The catalog also works without browser storage. */ }
+}
 function saveView({ initial = false } = {}) {
   const feed = el('feed');
   if (feed.hidden) return;
+  if (viewBeforeSearch) {
+    saveTabView({ ...viewBeforeSearch, search: { query: el('catalog-query').value, scrollTop: feed.scrollTop } });
+    return;
+  }
   const top = feed.getBoundingClientRect().top;
   const first = [...el('records').children].find(card => card.dataset.id && card.getBoundingClientRect().bottom > top);
   const dialog = document.querySelector('#filters[open], #schedule[open]');
@@ -972,8 +986,8 @@ function saveView({ initial = false } = {}) {
     series: dialog?.id === 'schedule' ? scheduleItem.id : undefined,
     season: desktop.matches ? undefined : openSeason ? Number(openSeason.dataset.season) : null
   };
-  try { sessionStorage.setItem(viewKey, JSON.stringify(tabView)); }
-  catch { /* The catalog also works without browser storage. */ }
+  saveTabView(tabView);
+  return view;
 }
 function readSavedView() {
   let tabView;
@@ -1075,8 +1089,88 @@ function restorePosition(view) {
   if (body) body.scrollTop = view.dialogScroll || 0;
   restoreFeed(view);
 }
+function searchText(text) {
+  return text.toLowerCase().replaceAll('ё', 'е').replace(/[^\p{L}\p{N}]+/gu, ' ').trim();
+}
+function searchResult(item) {
+  const row = node('article', 'search-result');
+  row.dataset.id = item.id;
+  const src = item.poster || item.gallery?.[0];
+  if (src) {
+    const img = node('img');
+    img.alt = '';
+    img.loading = 'lazy';
+    img.src = src;
+    row.append(img);
+  }
+  const info = node('div');
+  const list = itemList(item);
+  const location = list === 'waiting' && !item.releaseDate ? 'Жду · Анонсы' : listNames[list];
+  info.append(node('h2', '', item.title), node('p', '', [formatLabel(item), location, dateText(item.releaseDate)].join(' · ')));
+  row.append(info);
+  return row;
+}
+function renderSearch() {
+  const query = searchText(el('catalog-query').value);
+  const terms = query.split(' ');
+  const result = query ? state.catalog.filter(item => {
+    const title = searchText(item.title + (item.type === 'series' ? ' сезон ' + item.season : ''));
+    return terms.every(term => title.includes(term));
+  }).sort((a, b) => collator.compare(a.title, b.title) || (a.season || 0) - (b.season || 0)) : [];
+  el('search-status').textContent = !query ? 'Введите название фильма или сериала.' :
+    result.length ? 'Найдено совпадений: ' + result.length : 'Ничего не найдено. Попробуйте другое название.';
+  el('records').replaceChildren(...result.map(searchResult));
+}
+function setSearchOpen(open) {
+  el('catalog-search').hidden = !open;
+  el('search-status').hidden = !open;
+  el('search-toggle').setAttribute('aria-expanded', String(open));
+  const controls = el('cinema-header').querySelectorAll('#list-navigation, #types, #genres, #selected-genres, .tools > :not(#search-toggle)');
+  for (const control of controls) control.inert = open;
+  el('feed').setAttribute('aria-label', open ? 'Результаты поиска по киносписку' : 'Лента · ' + listNames[state.list]);
+}
+function openSearch(base = saveView(), search = {}) {
+  viewBeforeSearch = base;
+  const input = el('catalog-query');
+  input.value = search.query || '';
+  setSearchOpen(true);
+  synopsisObserver.disconnect();
+  el('records').classList.remove('poster-grid');
+  renderSearch();
+  el('feed').scrollTop = search.scrollTop || 0;
+  input.focus({ preventScroll: true });
+}
+function closeSearch() {
+  const base = viewBeforeSearch;
+  viewBeforeSearch = undefined;
+  setSearchOpen(false);
+  el('catalog-query').value = '';
+  render();
+  restoreFeed(base);
+  el('search-toggle').focus({ preventScroll: true });
+  saveView();
+}
+function setupSearch() {
+  el('search-toggle').onclick = () => viewBeforeSearch ? closeSearch() : openSearch();
+  el('search-close').onclick = closeSearch;
+  el('catalog-query').oninput = () => {
+    renderSearch();
+    el('feed').scrollTop = 0;
+    saveView();
+  };
+  document.addEventListener('keydown', event => {
+    if (viewBeforeSearch && event.key === 'Escape' && !event.isComposing) {
+      event.preventDefault();
+      closeSearch();
+    }
+  });
+}
 function render() {
   state.day = calendarDay(new Date());
+  if (viewBeforeSearch) {
+    renderSearch();
+    return;
+  }
   const focused = document.activeElement;
   const kind = focused?.dataset.kind;
   const id = focused?.closest('.entry, .poster-card')?.dataset.id;
@@ -1310,7 +1404,12 @@ async function start() {
     if (!wishMark && !event.key?.startsWith('film-list:view:')) render();
   });
   trackCalendarDay();
-  if (view) restorePosition(view);
+  setupSearch();
+  if (view?.search) {
+    const { search, ...base } = view;
+    el('lists').scrollLeft = base.listScroll || 0;
+    openSearch(base, search);
+  } else if (view) restorePosition(view);
   saveView({ initial: true });
   trackView();
   if (hosted) {

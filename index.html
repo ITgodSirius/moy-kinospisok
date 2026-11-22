@@ -9,8 +9,8 @@
   <meta name="history-mode" content="local">
   <title>Мой киносписок</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%231443ef'/%3E%3Cpath d='M18 18h28v29L32 38l-14 9z' fill='white'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./style.css?v=e7620f251a95">
-  <script type="module" src="./app.js?v=029f9bed03cf"></script>
+  <link rel="stylesheet" href="./style.css?v=0cc2ef0bf13e">
+  <script type="module" src="./app.js?v=73a33e53796a"></script>
 </head>
 <body>
   <a class="skip" href="#feed">К фильмам и сериалам</a>
@@ -47,6 +47,7 @@
         </div>
         <p class="last-update" hidden>Обновлено <time id="site-updated"></time></p>
         <div class="tools">
+          <button type="button" id="search-toggle" class="icon-button" aria-label="Поиск по всем разделам киносписка" title="Поиск по всем разделам киносписка" aria-controls="catalog-search" aria-expanded="false"><span data-icon="search"></span></button>
           <button id="filters-open" class="quiet" aria-haspopup="dialog" aria-controls="filters">Фильтры <span id="filter-count" hidden></span><span data-icon="chevron"></span></button>
           <label class="quiet genre-control">Жанры <span data-icon="chevron"></span>
             <select id="genre-select" aria-label="Жанры"><option hidden disabled selected>Жанры</option></select>
@@ -71,10 +72,17 @@
         </div>
         <div id="selected-genres" class="genre-badges" role="group" aria-label="Выбранные жанры" hidden></div>
       </div>
+      <div id="catalog-search" role="search" aria-label="Поиск по киносписку" hidden>
+        <input type="search" id="catalog-query" aria-label="Название фильма или сериала" placeholder="Поиск по всем разделам киносписка" aria-controls="records" autocomplete="off" enterkeyhint="search">
+        <button type="button" id="search-close" class="quiet" aria-label="Закрыть поиск">Закрыть</button>
+      </div>
     </div>
   </header>
   <main id="feed" tabindex="-1" aria-label="Лента фильмов и сериалов">
-    <div class="wrap"><div id="records"><p class="loading">Загрузка каталога…</p></div></div>
+    <div class="wrap">
+      <p id="search-status" role="status" hidden></p>
+      <div id="records"><p class="loading">Загрузка каталога…</p></div>
+    </div>
   </main>
   <section id="wishlist" aria-label="Мой вишлист" hidden>
     <header class="masthead">
