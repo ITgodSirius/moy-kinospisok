@@ -1,5 +1,1291 @@
 [
   {
+    "id": "tmdb-movie-37799",
+    "title": "Социальная сеть",
+    "type": "movie",
+    "genres": [
+      "Драма",
+      "Биография"
+    ],
+    "studios": [
+      "Columbia Pictures",
+      "Relativity Media"
+    ],
+    "description": "Гарвардский студент Марк Цукерберг запускает Facebook. Пока сеть набирает пользователей, бывший партнёр и другие студенты оспаривают его роль в создании проекта.",
+    "poster": "assets/tmdb-movie-37799-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-37799-still-1.jpg",
+      "assets/tmdb-movie-37799-still-2.jpg"
+    ],
+    "releaseDate": "2010-10-28",
+    "rating": 7.8,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=2KP5tGQrG90",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/37799?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt1285016/",
+      "official": "https://www.sonypictures.com/movies/thesocialnetwork",
+      "releaseRussia": "https://www.proficinema.com/picture-making/detail.php?ID=89929",
+      "poster": "https://images.metahub.space/poster/medium/tt1285016/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt1285016/img",
+        "https://i.ytimg.com/vi/2KP5tGQrG90/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-269149",
+    "title": "Зверополис",
+    "type": "movie",
+    "genres": [
+      "Мультфильм",
+      "Семейный",
+      "Детектив",
+      "Комедия"
+    ],
+    "studios": [
+      "Walt Disney Animation Studios"
+    ],
+    "description": "Крольчиха Джуди Хопс становится полицейской в городе, где живут самые разные животные. Для расследования исчезновений ей приходится объединиться с находчивым лисом Ником Уайлдом.",
+    "poster": "assets/tmdb-movie-269149-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-269149-still-1.jpg",
+      "assets/tmdb-movie-269149-still-2.jpg"
+    ],
+    "releaseDate": "2016-03-03",
+    "rating": 8,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=jWM0ct-OLsM",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/269149?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt2948356/",
+      "official": "https://movies.disney.com/zootopia",
+      "releaseRussia": "https://www.kinopoisk.ru/film/775276/dates/",
+      "poster": "https://images.metahub.space/poster/medium/tt2948356/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt2948356/img",
+        "https://i.ytimg.com/vi/jWM0ct-OLsM/sd2.jpg"
+      ]
+    },
+    "platforms": [
+      "Disney"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-153518",
+    "title": "Angry Birds в кино",
+    "type": "movie",
+    "genres": [
+      "Мультфильм",
+      "Семейный",
+      "Комедия",
+      "Приключения"
+    ],
+    "studios": [
+      "Rovio Animation",
+      "Columbia Pictures"
+    ],
+    "description": "На остров нелетающих птиц приплывают зелёные свиньи. Пока жители приветствуют гостей, вспыльчивый Ред и его друзья Чак и Бомб пытаются выяснить, зачем те приехали.",
+    "poster": "assets/tmdb-movie-153518-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-153518-still-1.jpg",
+      "assets/tmdb-movie-153518-still-2.jpg"
+    ],
+    "releaseDate": "2016-05-12",
+    "rating": 6.3,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=3Gotyq44ZUc",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/153518?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt1985949/",
+      "official": "https://www.sonypictures.com/movies/theangrybirdsmovie",
+      "releaseRussia": "https://www.kinometro.ru/release/card/id/18292",
+      "poster": "https://images.metahub.space/poster/medium/tt1985949/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt1985949/img",
+        "https://i.ytimg.com/vi/3Gotyq44ZUc/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-500",
+    "title": "Бешеные псы",
+    "type": "movie",
+    "genres": [
+      "Криминал",
+      "Триллер"
+    ],
+    "studios": [
+      "Live America",
+      "Dog Eat Dog Productions"
+    ],
+    "description": "После сорванного ограбления ювелирного магазина выжившие участники встречаются на складе. Они подозревают, что кто-то из команды работал на полицию.",
+    "poster": "assets/tmdb-movie-500-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-500-still-1.jpg",
+      "assets/tmdb-movie-500-still-2.jpg"
+    ],
+    "releaseDate": "1992-10-23",
+    "rating": 8.2,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=udLnbEVKBuo",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/500?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0105236/",
+      "official": "https://watch.afi.com/movie/reservoir-dogs",
+      "release": "https://catalog.afi.com/Film/59373-RESERVOIR-DOGS?cxt=filmography",
+      "poster": "https://images.metahub.space/poster/medium/tt0105236/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt0105236/img",
+        "https://i.ytimg.com/vi/udLnbEVKBuo/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-680",
+    "title": "Криминальное чтиво",
+    "type": "movie",
+    "genres": [
+      "Криминал",
+      "Драма"
+    ],
+    "studios": [
+      "Miramax",
+      "A Band Apart",
+      "Jersey Films"
+    ],
+    "description": "В Лос-Анджелесе пересекаются истории двух киллеров, боксёра, нарушившего договорённость с преступным боссом, и пары мелких грабителей. События показаны вразнобой, и связь между ними становится ясна постепенно.",
+    "poster": "assets/tmdb-movie-680-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-680-still-1.jpg",
+      "assets/tmdb-movie-680-still-2.jpg"
+    ],
+    "releaseDate": "1995-09-29",
+    "rating": 8.8,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=tGpTpVyI_OQ",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/680?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0110912/",
+      "official": "https://www.miramax.com/movie/pulp-fiction/",
+      "releaseRussia": "https://www.kinopoisk.ru/film/342/dates/",
+      "poster": "https://images.metahub.space/poster/medium/tt0110912/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt0110912/img",
+        "https://i.ytimg.com/vi/tGpTpVyI_OQ/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-5",
+    "title": "Четыре комнаты",
+    "type": "movie",
+    "genres": [
+      "Комедия"
+    ],
+    "studios": [
+      "A Band Apart"
+    ],
+    "description": "В новогоднюю ночь коридорный Тед остаётся один на смене и попадает в четыре странные истории с постояльцами отеля. Квентин Тарантино поставил заключительную новеллу и сыграл в ней.",
+    "poster": "assets/tmdb-movie-5-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-5-still-1.jpg",
+      "assets/tmdb-movie-5-still-2.jpg"
+    ],
+    "releaseDate": "1995-12-25",
+    "rating": 6.7,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=0hu12MP7b1U",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/5?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0113101/",
+      "official": "https://www.miramax.com/movie/four-rooms/",
+      "release": "https://catalog.afi.com/Catalog/moviedetails/59891",
+      "poster": "https://images.metahub.space/poster/medium/tt0113101/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt0113101/img",
+        "https://i.ytimg.com/vi/0hu12MP7b1U/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-184",
+    "title": "Джеки Браун",
+    "type": "movie",
+    "genres": [
+      "Криминал",
+      "Драма",
+      "Триллер"
+    ],
+    "studios": [
+      "Miramax",
+      "A Band Apart"
+    ],
+    "description": "Федеральные агенты задерживают стюардессу Джеки Браун, которая перевозит деньги торговца оружием. Ей приходится вести переговоры с обеими сторонами и придумать, как выйти из игры вместе с деньгами.",
+    "poster": "assets/tmdb-movie-184-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-184-still-1.jpg",
+      "assets/tmdb-movie-184-still-2.jpg"
+    ],
+    "releaseDate": "1998-02-27",
+    "rating": 7.5,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=Mr5aO3Ltrdg",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/184?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0119396/",
+      "official": "https://www.miramax.com/movie/jackie-brown/",
+      "releaseRussia": "https://www.kinopoisk.ru/film/4628/dates/",
+      "poster": "https://images.metahub.space/poster/medium/tt0119396/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt0119396/img",
+        "https://i.ytimg.com/vi/Mr5aO3Ltrdg/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-24",
+    "title": "Убить Билла",
+    "type": "movie",
+    "genres": [
+      "Боевик",
+      "Криминал",
+      "Триллер"
+    ],
+    "studios": [
+      "Miramax",
+      "A Band Apart"
+    ],
+    "description": "Бывшая наёмная убийца приходит в себя после четырёх лет комы. Она по очереди разыскивает участников отряда, напавших на неё во время репетиции свадьбы.",
+    "poster": "assets/tmdb-movie-24-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-24-still-1.jpg",
+      "assets/tmdb-movie-24-still-2.jpg"
+    ],
+    "releaseDate": "2003-12-04",
+    "rating": 8.2,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=7kSuas6mRpk",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/24?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0266697/",
+      "official": "https://staging.miramax.com/movie/kill-bill-volume-i/",
+      "releaseRussia": "https://www.kinopoisk.ru/film/2717/dates/",
+      "poster": "https://images.metahub.space/poster/medium/tt0266697/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt0266697/img",
+        "https://i.ytimg.com/vi/7kSuas6mRpk/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-393",
+    "title": "Убить Билла 2",
+    "type": "movie",
+    "genres": [
+      "Боевик",
+      "Криминал",
+      "Триллер"
+    ],
+    "studios": [
+      "Miramax",
+      "A Band Apart"
+    ],
+    "description": "Невеста продолжает искать Билла и оставшихся членов его отряда. По пути к последней встрече она вспоминает жизнь с Биллом и годы обучения у Пэй Мэя.",
+    "poster": "assets/tmdb-movie-393-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-393-still-1.jpg",
+      "assets/tmdb-movie-393-still-2.jpg"
+    ],
+    "releaseDate": "2004-06-18",
+    "rating": 8,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=DUwZQ6-uZ0k",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/393?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0378194/",
+      "official": "https://www.festival-cannes.com/en/f/kill-bill-vol-2/",
+      "releaseRussia": "https://www.kinometro.ru/release/card/id/12017",
+      "poster": "https://images.metahub.space/poster/medium/tt0378194/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt0378194/img",
+        "https://i.ytimg.com/vi/DUwZQ6-uZ0k/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-187",
+    "title": "Город грехов",
+    "type": "movie",
+    "genres": [
+      "Криминал",
+      "Триллер",
+      "Боевик"
+    ],
+    "studios": [
+      "Dimension Films",
+      "Troublemaker Studios"
+    ],
+    "description": "В коррумпированном Бейсин-Сити переплетаются истории полицейского Хартигана, мстителя Марва и Дуайта, который пытается предотвратить войну за Старый город. Квентин Тарантино поставил одну сцену в качестве приглашённого режиссёра.",
+    "poster": "assets/tmdb-movie-187-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-187-still-1.jpg",
+      "assets/tmdb-movie-187-still-2.jpg"
+    ],
+    "releaseDate": "2005-05-26",
+    "rating": 8,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=T2Dj6ktPU5c",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/187?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0401792/",
+      "official": "https://www.miramax.com/movie/sin-city/",
+      "releaseRussia": "https://www.kinopoisk.ru/film/77443/dates/",
+      "poster": "https://images.metahub.space/poster/medium/tt0401792/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt0401792/img",
+        "https://i.ytimg.com/vi/T2Dj6ktPU5c/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-285923",
+    "title": "Грайндхаус",
+    "type": "movie",
+    "genres": [
+      "Боевик",
+      "Триллер",
+      "Ужасы"
+    ],
+    "studios": [
+      "Dimension Films",
+      "Troublemaker Studios",
+      "A Band Apart"
+    ],
+    "description": "Два фильма в одном киносеансе. В «Планете страха» Роберта Родригеса город охватывает эпидемия, а в «Доказательстве смерти» Квентина Тарантино каскадёр преследует девушек на машине. Между фильмами идут вымышленные трейлеры.",
+    "poster": "assets/tmdb-movie-285923-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-285923-still-1.jpg",
+      "assets/tmdb-movie-285923-still-2.jpg"
+    ],
+    "releaseDate": "2007-04-06",
+    "rating": 7.5,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=6RYHBpiuvaQ",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/285923?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0462322/",
+      "official": "https://www.youtube.com/watch?v=6RYHBpiuvaQ",
+      "release": "https://catalog.afi.com/Film/64289-GRINDHOUSE",
+      "poster": "https://images.metahub.space/poster/medium/tt0462322/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt0462322/img",
+        "https://i.ytimg.com/vi/6RYHBpiuvaQ/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-1991",
+    "title": "Доказательство смерти",
+    "type": "movie",
+    "genres": [
+      "Триллер",
+      "Боевик"
+    ],
+    "studios": [
+      "Dimension Films",
+      "Troublemaker Studios",
+      "A Band Apart"
+    ],
+    "description": "Каскадёр Майк преследует девушек на автомобиле, приспособленном для опасных трюков. Когда он выбирает новую группу жертв, те дают ему отпор. Отдельная прокатная версия фильма из «Грайндхауса».",
+    "poster": "assets/tmdb-movie-1991-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-1991-still-1.jpg",
+      "assets/tmdb-movie-1991-still-2.jpg"
+    ],
+    "releaseDate": "2007-06-07",
+    "rating": 7,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=nJWggeh_TDc",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/1991?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt1028528/",
+      "official": "https://www.festival-cannes.com/en/f/death-proof/",
+      "releaseRussia": "https://www.kinometro.ru/release/card/id/5720",
+      "poster": "https://images.metahub.space/poster/medium/tt1028528/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt1028528/img",
+        "https://i.ytimg.com/vi/nJWggeh_TDc/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-16869",
+    "title": "Бесславные ублюдки",
+    "type": "movie",
+    "genres": [
+      "Военный",
+      "Драма",
+      "Боевик"
+    ],
+    "studios": [
+      "Universal Pictures",
+      "The Weinstein Company",
+      "A Band Apart"
+    ],
+    "description": "В оккупированной Франции владелица кинотеатра Шошанна и американский отряд под командованием Альдо Рейна независимо друг от друга готовят покушение на нацистское руководство. Их планы сходятся на одном кинопоказе.",
+    "poster": "assets/tmdb-movie-16869-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-16869-still-1.jpg",
+      "assets/tmdb-movie-16869-still-2.jpg"
+    ],
+    "releaseDate": "2009-08-20",
+    "rating": 8.4,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=uSEDz-my7XQ",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/16869?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0361748/",
+      "official": "https://www.festival-cannes.com/f/inglourious-basterds/",
+      "releaseRussia": "https://www.kinopoisk.ru/film/9691/box/rus/",
+      "poster": "https://images.metahub.space/poster/medium/tt0361748/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt0361748/img",
+        "https://i.ytimg.com/vi/uSEDz-my7XQ/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-68718",
+    "title": "Джанго освобождённый",
+    "type": "movie",
+    "genres": [
+      "Вестерн",
+      "Драма"
+    ],
+    "studios": [
+      "Columbia Pictures",
+      "The Weinstein Company"
+    ],
+    "description": "Охотник за головами Кинг Шульц освобождает Джанго и берёт его в напарники. Вместе они отправляются на плантацию Кэлвина Кэнди, чтобы спасти жену Джанго.",
+    "poster": "assets/tmdb-movie-68718-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-68718-still-1.jpg",
+      "assets/tmdb-movie-68718-still-2.jpg"
+    ],
+    "releaseDate": "2013-01-17",
+    "rating": 8.5,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=2dY7Ad9YhEk",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/68718?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt1853728/",
+      "official": "https://www.sonypictures.com/movies/djangounchained",
+      "releaseRussia": "https://www.kinopoisk.ru/film/586397/dates/",
+      "poster": "https://images.metahub.space/poster/medium/tt1853728/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt1853728/img",
+        "https://i.ytimg.com/vi/2dY7Ad9YhEk/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-273248",
+    "title": "Омерзительная восьмёрка",
+    "type": "movie",
+    "genres": [
+      "Вестерн",
+      "Детектив",
+      "Триллер"
+    ],
+    "studios": [
+      "The Weinstein Company",
+      "Double Feature Films"
+    ],
+    "description": "Метель останавливает охотников за головами, арестантку и нескольких незнакомцев в придорожной лавке. Пока дороги занесены снегом, люди под одной крышей пытаются выяснить, кому можно верить.",
+    "poster": "assets/tmdb-movie-273248-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-273248-still-1.jpg",
+      "assets/tmdb-movie-273248-still-2.jpg"
+    ],
+    "releaseDate": "2016-01-14",
+    "rating": 7.8,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=juaP_vRyIGY",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/273248?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt3460252/",
+      "official": "https://www.youtube.com/watch?v=juaP_vRyIGY",
+      "releaseRussia": "https://www.kinopoisk.ru/film/819101/dates/",
+      "poster": "https://images.metahub.space/poster/medium/tt3460252/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt3460252/img",
+        "https://i.ytimg.com/vi/juaP_vRyIGY/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-466272",
+    "title": "Однажды в… Голливуде",
+    "type": "movie",
+    "genres": [
+      "Драма",
+      "Комедия"
+    ],
+    "studios": [
+      "Columbia Pictures",
+      "Heyday Films",
+      "Bona Film Group"
+    ],
+    "description": "В Голливуде 1969 года актёр Рик Далтон и его дублёр Клифф Бут ищут работу в меняющейся киноиндустрии. По соседству с Риком живёт Шэрон Тейт, чья история постепенно пересекается с их собственной.",
+    "poster": "assets/tmdb-movie-466272-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-466272-still-1.jpg",
+      "assets/tmdb-movie-466272-still-2.jpg"
+    ],
+    "releaseDate": "2019-08-08",
+    "rating": 7.6,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=ELeMaP8EPAA",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/466272?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt7131622/",
+      "official": "https://www.sonypictures.com/movies/onceuponatimeinhollywood",
+      "releaseRussia": "https://www.kinometro.ru/release/card/id/33560",
+      "poster": "https://images.metahub.space/poster/medium/tt7131622/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt7131622/img",
+        "https://i.ytimg.com/vi/ELeMaP8EPAA/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-414419",
+    "title": "Убить Билла: Кровавое дело целиком",
+    "type": "movie",
+    "genres": [
+      "Боевик",
+      "Криминал",
+      "Триллер"
+    ],
+    "studios": [
+      "Miramax",
+      "A Band Apart"
+    ],
+    "description": "Квентин Тарантино объединил обе части «Убить Билла» в один фильм. Полная версия истории мести Невесты включает новые фрагменты, в том числе расширенную анимационную главу.",
+    "poster": "assets/tmdb-movie-414419-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-414419-still-1.jpg",
+      "assets/tmdb-movie-414419-still-2.jpg"
+    ],
+    "releaseDate": "2026-05-28",
+    "rating": 8.7,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=-SzkFgEqB6Y",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/414419?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt6019206/",
+      "official": "https://www.youtube.com/watch?v=-SzkFgEqB6Y",
+      "releaseRussia": "https://www.rbc.ru/life/news/6a1ed5119a7947bb25d16ce4",
+      "poster": "https://images.metahub.space/poster/medium/tt6019206/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt6019206/img",
+        "https://i.ytimg.com/vi/-SzkFgEqB6Y/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-72710",
+    "title": "Гостья",
+    "type": "movie",
+    "genres": [
+      "Фантастика",
+      "Мелодрама",
+      "Приключения"
+    ],
+    "studios": [
+      "Chockstone Pictures",
+      "Nick Wechsler Productions"
+    ],
+    "description": "Инопланетные существа захватывают тела людей. Мелани сохраняет сознание, когда в её тело вселяется Странница. Вместе им приходится искать выживших, которым ни одна из них не может сразу довериться.",
+    "poster": "assets/tmdb-movie-72710-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-72710-still-1.jpg",
+      "assets/tmdb-movie-72710-still-2.jpg"
+    ],
+    "releaseDate": "2013-03-28",
+    "rating": 5.8,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=syUlVFpw_f4",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/72710?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt1517260/",
+      "official": "https://www.youtube.com/watch?v=syUlVFpw_f4",
+      "releaseRussia": "https://www.kinometro.ru/release/card/id/7577",
+      "poster": "https://images.metahub.space/poster/medium/tt1517260/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt1517260/img",
+        "https://i.ytimg.com/vi/syUlVFpw_f4/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-22"
+  },
+  {
+    "id": "tmdb-movie-100",
+    "title": "Карты, деньги, два ствола",
+    "type": "movie",
+    "genres": [
+      "Криминал",
+      "Комедия"
+    ],
+    "studios": [
+      "SKA Films",
+      "HandMade Films"
+    ],
+    "description": "Четверо лондонских друзей оказываются в долгу у криминального авторитета после карточной игры. План быстро раздобыть деньги втягивает их в разборки нескольких банд.",
+    "poster": "assets/tmdb-movie-100-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-100-still-1.jpg",
+      "assets/tmdb-movie-100-still-2.jpg"
+    ],
+    "releaseDate": "1999-05-06",
+    "rating": 8.1,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=EP8uyxGUWaM",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/100?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0120735/",
+      "official": "https://www.youtube.com/watch?v=EP8uyxGUWaM",
+      "releaseRussia": "https://www.kinopoisk.ru/film/522/dates/",
+      "poster": "https://images.metahub.space/poster/medium/tt0120735/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt0120735/img",
+        "https://i.ytimg.com/vi/EP8uyxGUWaM/sd3.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-22"
+  },
+  {
+    "id": "tmdb-movie-107",
+    "title": "Большой куш",
+    "type": "movie",
+    "genres": [
+      "Криминал",
+      "Комедия"
+    ],
+    "studios": [
+      "SKA Films"
+    ],
+    "description": "Пока криминальные группировки разыскивают украденный бриллиант, боксёрский промоутер Турецкий пытается спасти сорвавшийся бой. Две истории сталкиваются в лондонском преступном мире.",
+    "poster": "assets/tmdb-movie-107-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-107-still-1.jpg",
+      "assets/tmdb-movie-107-still-2.jpg"
+    ],
+    "releaseDate": "2001-05-10",
+    "rating": 8.2,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=9Jar2XkBboo",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/107?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0208092/",
+      "official": "https://www.sonypictures.com/movies/snatch",
+      "releaseRussia": "https://www.kinopoisk.ru/film/526/dates/",
+      "poster": "https://images.metahub.space/poster/medium/tt0208092/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt0208092/img",
+        "https://i.ytimg.com/vi/9Jar2XkBboo/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-22"
+  },
+  {
+    "id": "tmdb-movie-12779",
+    "title": "Унесённые",
+    "type": "movie",
+    "genres": [
+      "Мелодрама",
+      "Комедия"
+    ],
+    "studios": [
+      "SKA Films"
+    ],
+    "description": "Состоятельная Эмбер и матрос Джузеппе после аварии оказываются вдвоём на необитаемом острове. Зависимость друг от друга меняет их отношения и привычное соотношение сил.",
+    "poster": "assets/tmdb-movie-12779-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-12779-still-1.jpg",
+      "assets/tmdb-movie-12779-still-2.jpg"
+    ],
+    "releaseDate": "2002-10-11",
+    "rating": 3.6,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=b6nSGbvxucE",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/12779?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0291502/",
+      "official": "https://www.sonypictures.com/movies/sweptaway",
+      "release": "https://www.boxofficemojo.com/release/rl762676737/",
+      "poster": "https://images.metahub.space/poster/medium/tt0291502/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt0291502/img",
+        "https://i.ytimg.com/vi/b6nSGbvxucE/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-22"
+  },
+  {
+    "id": "tmdb-movie-13809",
+    "title": "Рок-н-рольщик",
+    "type": "movie",
+    "genres": [
+      "Криминал",
+      "Боевик",
+      "Комедия"
+    ],
+    "studios": [
+      "Dark Castle Entertainment"
+    ],
+    "description": "Сделка с недвижимостью приносит в лондонский криминальный мир крупную сумму денег. За ней охотится несколько группировок, а пропажа картины и появление считавшегося погибшим музыканта нарушают их планы.",
+    "poster": "assets/tmdb-movie-13809-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-13809-still-1.jpg",
+      "assets/tmdb-movie-13809-still-2.jpg"
+    ],
+    "releaseDate": "2009-01-29",
+    "rating": 7.2,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=QiQCdLIz3BY",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/13809?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt1032755/",
+      "official": "https://www.youtube.com/watch?v=QiQCdLIz3BY",
+      "releaseRussia": "https://www.kinobusiness.com/movies/RocknRolla/",
+      "poster": "https://images.metahub.space/poster/medium/tt1032755/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt1032755/img",
+        "https://i.ytimg.com/vi/QiQCdLIz3BY/hq2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-22"
+  },
+  {
+    "id": "tmdb-movie-10528",
+    "title": "Шерлок Холмс",
+    "type": "movie",
+    "genres": [
+      "Детектив",
+      "Приключения",
+      "Боевик"
+    ],
+    "studios": [
+      "Warner Bros. Pictures",
+      "Village Roadshow Pictures",
+      "Silver Pictures"
+    ],
+    "description": "Лорд Блэквуд, которого Холмс и Ватсон помогли отправить на виселицу, загадочно возвращается. Сыщики пытаются объяснить череду новых преступлений и выяснить, зачем кому-то понадобилось изображать сверхъестественное.",
+    "poster": "assets/tmdb-movie-10528-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-10528-still-1.jpg",
+      "assets/tmdb-movie-10528-still-2.jpg"
+    ],
+    "releaseDate": "2009-12-31",
+    "rating": 7.5,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=iKUzhzustok",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/10528?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0988045/",
+      "official": "https://www.youtube.com/watch?v=iKUzhzustok",
+      "releaseRussia": "https://www.proficinema.com/picture-making/detail.php?ID=55249",
+      "poster": "https://images.metahub.space/poster/medium/tt0988045/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt0988045/img",
+        "https://i.ytimg.com/vi/iKUzhzustok/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-22"
+  },
+  {
+    "id": "tmdb-movie-58574",
+    "title": "Шерлок Холмс: Игра теней",
+    "type": "movie",
+    "genres": [
+      "Детектив",
+      "Приключения",
+      "Боевик"
+    ],
+    "studios": [
+      "Warner Bros. Pictures",
+      "Silver Pictures"
+    ],
+    "description": "Холмс связывает серию загадочных преступлений с профессором Мориарти. Погоня ведёт его и Ватсона через Европу, где замысел противника может спровоцировать войну.",
+    "poster": "assets/tmdb-movie-58574-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-58574-still-1.jpg",
+      "assets/tmdb-movie-58574-still-2.jpg"
+    ],
+    "releaseDate": "2011-12-28",
+    "rating": 7.4,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=9FozQnaEZl8",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/58574?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt1515091/",
+      "official": "https://www.youtube.com/watch?v=9FozQnaEZl8",
+      "releaseRussia": "https://www.kinometro.ru/release/card/id/2831",
+      "poster": "https://images.metahub.space/poster/medium/tt1515091/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt1515091/img",
+        "https://i.ytimg.com/vi/9FozQnaEZl8/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-22"
+  },
+  {
+    "id": "tmdb-movie-203801",
+    "title": "Агенты А.Н.К.Л.",
+    "type": "movie",
+    "genres": [
+      "Боевик",
+      "Приключения",
+      "Комедия"
+    ],
+    "studios": [
+      "Warner Bros. Pictures",
+      "Davis Entertainment"
+    ],
+    "description": "На пике холодной войны агент ЦРУ Наполеон Соло и разведчик КГБ Илья Курякин получают общее задание. Вместе с Габи Теллер они пытаются остановить организацию, которая разрабатывает ядерное оружие.",
+    "poster": "assets/tmdb-movie-203801-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-203801-still-1.jpg",
+      "assets/tmdb-movie-203801-still-2.jpg"
+    ],
+    "releaseDate": "2015-08-13",
+    "rating": 7.2,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=CzYRlISYE8Y",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/203801?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt1638355/",
+      "official": "https://www.youtube.com/watch?v=CzYRlISYE8Y",
+      "releaseRussia": "https://www.kinopoisk.ru/film/518042/dates/",
+      "poster": "https://images.metahub.space/poster/medium/tt1638355/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt1638355/img",
+        "https://i.ytimg.com/vi/CzYRlISYE8Y/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-22"
+  },
+  {
+    "id": "tmdb-movie-274857",
+    "title": "Меч короля Артура",
+    "type": "movie",
+    "genres": [
+      "Фэнтези",
+      "Приключения",
+      "Боевик"
+    ],
+    "studios": [
+      "Warner Bros. Pictures",
+      "Village Roadshow Pictures"
+    ],
+    "description": "Артур вырос на улицах Лондиниума и ничего не знает о своём происхождении. Вытащив Экскалибур из камня, он узнаёт, что может вернуть трон, захваченный его дядей.",
+    "poster": "assets/tmdb-movie-274857-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-274857-still-1.jpg",
+      "assets/tmdb-movie-274857-still-2.jpg"
+    ],
+    "releaseDate": "2017-05-11",
+    "rating": 6.7,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=jIM4-HLtUM0",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/274857?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt1972591/",
+      "official": "https://www.youtube.com/watch?v=jIM4-HLtUM0",
+      "releaseRussia": "https://www.kinopoisk.ru/film/824437/box/rus/",
+      "poster": "https://images.metahub.space/poster/medium/tt1972591/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt1972591/img",
+        "https://i.ytimg.com/vi/jIM4-HLtUM0/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-22"
+  },
+  {
+    "id": "tmdb-movie-420817",
+    "title": "Аладдин",
+    "type": "movie",
+    "genres": [
+      "Фэнтези",
+      "Приключения",
+      "Мюзикл",
+      "Семейный"
+    ],
+    "studios": [
+      "Walt Disney Pictures"
+    ],
+    "description": "Уличный вор Аладдин находит волшебную лампу и получает три желания. Пока он пытается сблизиться с принцессой Жасмин, придворный визирь Джафар ищет способ завладеть лампой.",
+    "poster": "assets/tmdb-movie-420817-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-420817-still-1.jpg",
+      "assets/tmdb-movie-420817-still-2.jpg"
+    ],
+    "releaseDate": "2019-05-23",
+    "rating": 6.9,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=-G5XI61Y9ms",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/420817?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt6139732/",
+      "official": "https://movies.disney.com/aladdin-2019",
+      "releaseRussia": "https://www.kinometro.ru/release/card/id/35371",
+      "poster": "https://images.metahub.space/poster/medium/tt6139732/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt6139732/img",
+        "https://i.ytimg.com/vi/-G5XI61Y9ms/sd2.jpg"
+      ]
+    },
+    "platforms": [
+      "Disney"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-22"
+  },
+  {
+    "id": "tmdb-movie-522627",
+    "title": "Джентльмены",
+    "type": "movie",
+    "genres": [
+      "Криминал",
+      "Комедия",
+      "Боевик"
+    ],
+    "studios": [
+      "Miramax",
+      "Toff Guy Films"
+    ],
+    "description": "Американец Микки Пирсон решает продать подпольный бизнес в Великобритании. Новость о сделке запускает цепочку шантажа и подстав, в которой у каждого претендента свои планы.",
+    "poster": "assets/tmdb-movie-522627-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-522627-still-1.jpg",
+      "assets/tmdb-movie-522627-still-2.jpg"
+    ],
+    "releaseDate": "2020-02-13",
+    "rating": 7.8,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=2B0RpUGss2c",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/522627?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt8367814/",
+      "official": "https://www.youtube.com/watch?v=2B0RpUGss2c",
+      "releaseRussia": "https://www.kinopoisk.ru/film/1143242/box/rus/",
+      "poster": "https://images.metahub.space/poster/medium/tt8367814/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt8367814/img",
+        "https://i.ytimg.com/vi/2B0RpUGss2c/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-22"
+  },
+  {
+    "id": "tmdb-movie-637649",
+    "title": "Гнев человеческий",
+    "type": "movie",
+    "genres": [
+      "Боевик",
+      "Криминал",
+      "Триллер"
+    ],
+    "studios": [
+      "Miramax"
+    ],
+    "description": "Новый охранник инкассаторской компании останавливает вооружённое ограбление и выдаёт навыки, которых коллеги от него не ожидали. Постепенно становится ясно, зачем он устроился именно туда.",
+    "poster": "assets/tmdb-movie-637649-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-637649-still-1.jpg",
+      "assets/tmdb-movie-637649-still-2.jpg"
+    ],
+    "releaseDate": "2021-04-22",
+    "rating": 7.1,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=EFYEni2gsK0",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/637649?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt11083552/",
+      "official": "https://www.youtube.com/watch?v=EFYEni2gsK0",
+      "releaseRussia": "https://www.kinometro.ru/release/card/id/42271",
+      "poster": "https://images.metahub.space/poster/medium/tt11083552/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt11083552/img",
+        "https://i.ytimg.com/vi/EFYEni2gsK0/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-22"
+  },
+  {
+    "id": "tmdb-movie-739405",
+    "title": "Операция «Фортуна»: Искусство побеждать",
+    "type": "movie",
+    "genres": [
+      "Боевик",
+      "Комедия",
+      "Приключения"
+    ],
+    "studios": [
+      "Miramax",
+      "STXfilms"
+    ],
+    "description": "Агент Орсон Форчун собирает команду, чтобы сорвать сделку по продаже опасной технологии. Для доступа к покупателю ему приходится привлечь голливудского актёра, которого тот давно мечтает встретить.",
+    "poster": "assets/tmdb-movie-739405-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-739405-still-1.jpg",
+      "assets/tmdb-movie-739405-still-2.jpg"
+    ],
+    "releaseDate": "2023-01-12",
+    "rating": 6.3,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=WdZ-BWWQcWQ",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/739405?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt7985704/",
+      "official": "https://www.youtube.com/watch?v=WdZ-BWWQcWQ",
+      "releaseRussia": "https://www.kinopoisk.ru/film/1405508/",
+      "poster": "https://images.metahub.space/poster/medium/tt7985704/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt7985704/img",
+        "https://i.ytimg.com/vi/WdZ-BWWQcWQ/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-22"
+  },
+  {
+    "id": "tmdb-movie-882569",
+    "title": "Переводчик",
+    "type": "movie",
+    "genres": [
+      "Боевик",
+      "Драма",
+      "Триллер"
+    ],
+    "studios": [
+      "STXfilms",
+      "Toff Guy Films"
+    ],
+    "description": "Афганский переводчик Ахмед спасает раненого американского сержанта Джона Кинли. Вернувшись домой, Кинли узнаёт, что Ахмед и его семья в опасности, и пытается вывезти их из страны.",
+    "poster": "assets/tmdb-movie-882569-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-882569-still-1.jpg",
+      "assets/tmdb-movie-882569-still-2.jpg"
+    ],
+    "releaseDate": "2023-06-01",
+    "rating": 7.5,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=02PPMPArNEQ",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/882569?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt4873118/",
+      "official": "https://www.youtube.com/watch?v=02PPMPArNEQ",
+      "releaseRussia": "https://www.kinobusiness.com/news/volga-perenesla-vykhod-boevika-gaya-richi-perevodchik-na-pervyy-letniy-den/",
+      "poster": "https://images.metahub.space/poster/medium/tt4873118/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt4873118/img",
+        "https://i.ytimg.com/vi/02PPMPArNEQ/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-22"
+  },
+  {
+    "id": "tmdb-movie-799583",
+    "title": "Министерство неджентльменских дел",
+    "type": "movie",
+    "genres": [
+      "Боевик",
+      "Военный",
+      "Комедия"
+    ],
+    "studios": [
+      "Jerry Bruckheimer Films",
+      "Black Bear Pictures"
+    ],
+    "description": "Во время Второй мировой войны британское командование собирает отряд для тайной операции в Атлантике. Его участники должны лишить немецкие подлодки снабжения, действуя вне обычных военных правил.",
+    "poster": "assets/tmdb-movie-799583-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-799583-still-1.jpg",
+      "assets/tmdb-movie-799583-still-2.jpg"
+    ],
+    "releaseDate": "2024-08-01",
+    "rating": 6.8,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=zvwDen1Wrx8",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/799583?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt5177120/",
+      "official": "https://www.lionsgatepublicity.com/theatrical/the-ministry-of-ungentlemanly-warfare",
+      "releaseRussia": "https://wink.ru/blog/data-premery-ministerstvo-nedzhentlmenskih-del-film-gaya-richi-teper-dostupen-na-wink",
+      "poster": "https://images.metahub.space/poster/medium/tt5177120/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt5177120/img",
+        "https://i.ytimg.com/vi/zvwDen1Wrx8/sd2.jpg"
+      ]
+    },
+    "platforms": [
+      "Wink"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-22"
+  },
+  {
+    "id": "tmdb-movie-1098006",
+    "title": "Источник вечной молодости",
+    "type": "movie",
+    "genres": [
+      "Приключения",
+      "Фэнтези",
+      "Боевик"
+    ],
+    "studios": [
+      "Apple Studios",
+      "Skydance"
+    ],
+    "description": "Охотник за древностями Люк убеждает сестру Шарлотту присоединиться к поискам легендарного источника молодости. Подсказки в произведениях искусства ведут их через несколько стран и сводят с соперниками.",
+    "poster": "assets/tmdb-movie-1098006-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-1098006-still-1.jpg",
+      "assets/tmdb-movie-1098006-still-2.jpg"
+    ],
+    "releaseDate": "2025-05-23",
+    "rating": 5.7,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=1gB9h0ELEf0",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/1098006?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt27075958/",
+      "official": "https://www.apple.com/tv-pr/originals/fountain-of-youth/",
+      "release": "https://www.apple.com/tv-pr/originals/fountain-of-youth/",
+      "poster": "https://images.metahub.space/poster/medium/tt27075958/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt27075958/img",
+        "https://i.ytimg.com/vi/1gB9h0ELEf0/sd2.jpg"
+      ]
+    },
+    "platforms": [
+      "Apple"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-22"
+  },
+  {
     "id": "tmdb-movie-50544",
     "title": "Секс по дружбе",
     "type": "movie",
