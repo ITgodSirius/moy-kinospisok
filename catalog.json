@@ -1,5 +1,1920 @@
 [
   {
+    "id": "tmdb-movie-44833",
+    "title": "Морской бой",
+    "type": "movie",
+    "genres": [
+      "Фантастика",
+      "Боевик",
+      "Приключения"
+    ],
+    "studios": [
+      "Universal Pictures",
+      "Hasbro",
+      "Bluegrass Films"
+    ],
+    "description": "Во время международных учений у Гавайев флот сталкивается с инопланетными кораблями. Оказавшись отрезанным от остальных сил, лейтенант Алекс Хоппер пытается остановить вторжение.",
+    "poster": "assets/tmdb-movie-44833-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-44833-still-1.jpg",
+      "assets/tmdb-movie-44833-still-2.jpg"
+    ],
+    "releaseDate": "2012-04-19",
+    "rating": 5.8,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=okOsyezoR7s",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/44833?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt1440129/",
+      "official": "https://www.youtube.com/watch?v=okOsyezoR7s",
+      "releaseRussia": "https://www.kinopoisk.ru/film/466844/",
+      "poster": "https://images.metahub.space/poster/medium/tt1440129/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt1440129/img",
+        "https://i.ytimg.com/vi/okOsyezoR7s/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-671",
+    "title": "Гарри Поттер и философский камень",
+    "type": "movie",
+    "genres": [
+      "Фэнтези",
+      "Приключения",
+      "Семейный"
+    ],
+    "studios": [
+      "Warner Bros. Pictures",
+      "Heyday Films"
+    ],
+    "description": "В одиннадцать лет Гарри узнаёт, что он волшебник, и отправляется в Хогвартс. Там он знакомится с Роном и Гермионой и пытается выяснить, кто охотится за философским камнем.",
+    "poster": "assets/tmdb-movie-671-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-671-still-1.jpg",
+      "assets/tmdb-movie-671-still-2.jpg"
+    ],
+    "releaseDate": "2002-03-21",
+    "rating": 7.7,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=SJVmeJaS44s",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/671?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0241527/",
+      "official": "https://www.youtube.com/watch?v=SJVmeJaS44s",
+      "releaseRussia": "https://www.kinopoisk.ru/film/689/",
+      "poster": "https://images.metahub.space/poster/medium/tt0241527/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt0241527/img",
+        "https://i.ytimg.com/vi/SJVmeJaS44s/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-672",
+    "title": "Гарри Поттер и Тайная комната",
+    "type": "movie",
+    "genres": [
+      "Фэнтези",
+      "Приключения",
+      "Семейный"
+    ],
+    "studios": [
+      "Warner Bros. Pictures",
+      "Heyday Films"
+    ],
+    "description": "На втором году учёбы Гарри слышит загадочный голос в стенах Хогвартса. Когда на учеников начинают нападать, он вместе с друзьями ищет вход в Тайную комнату.",
+    "poster": "assets/tmdb-movie-672-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-672-still-1.jpg",
+      "assets/tmdb-movie-672-still-2.jpg"
+    ],
+    "releaseDate": "2002-12-26",
+    "rating": 7.5,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=nE11U5iBnH0",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/672?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0295297/",
+      "official": "https://www.youtube.com/watch?v=nE11U5iBnH0",
+      "releaseRussia": "https://www.kinopoisk.ru/film/688/",
+      "poster": "https://images.metahub.space/poster/medium/tt0295297/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt0295297/img",
+        "https://i.ytimg.com/vi/nE11U5iBnH0/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-673",
+    "title": "Гарри Поттер и узник Азкабана",
+    "type": "movie",
+    "genres": [
+      "Фэнтези",
+      "Приключения",
+      "Семейный"
+    ],
+    "studios": [
+      "Warner Bros. Pictures",
+      "Heyday Films"
+    ],
+    "description": "Из тюрьмы Азкабан бежит Сириус Блэк, которого подозревают в предательстве родителей Гарри. Пока Хогвартс охраняют дементоры, Гарри выясняет, что произошло в ночь гибели его семьи.",
+    "poster": "assets/tmdb-movie-673-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-673-still-1.jpg",
+      "assets/tmdb-movie-673-still-2.jpg"
+    ],
+    "releaseDate": "2004-06-03",
+    "rating": 7.9,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=OgLy1LgSdjM",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/673?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0304141/",
+      "official": "https://www.youtube.com/watch?v=OgLy1LgSdjM",
+      "releaseRussia": "https://www.kinopoisk.ru/film/322/",
+      "poster": "https://images.metahub.space/poster/medium/tt0304141/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt0304141/img",
+        "https://i.ytimg.com/vi/OgLy1LgSdjM/hq2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-674",
+    "title": "Гарри Поттер и Кубок огня",
+    "type": "movie",
+    "genres": [
+      "Фэнтези",
+      "Приключения",
+      "Семейный"
+    ],
+    "studios": [
+      "Warner Bros. Pictures",
+      "Heyday Films"
+    ],
+    "description": "Кубок огня неожиданно выбирает Гарри четвёртым участником Турнира трёх волшебников. Пока он готовится к испытаниям, кто-то использует турнир для возвращения Волан-де-Морта.",
+    "poster": "assets/tmdb-movie-674-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-674-still-1.jpg",
+      "assets/tmdb-movie-674-still-2.jpg"
+    ],
+    "releaseDate": "2005-12-22",
+    "rating": 7.7,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=80kuiBq95So",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/674?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0330373/",
+      "official": "https://www.youtube.com/watch?v=80kuiBq95So",
+      "releaseRussia": "https://www.kinopoisk.ru/film/8408/dates/",
+      "poster": "https://images.metahub.space/poster/medium/tt0330373/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt0330373/img",
+        "https://i.ytimg.com/vi/80kuiBq95So/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-675",
+    "title": "Гарри Поттер и Орден Феникса",
+    "type": "movie",
+    "genres": [
+      "Фэнтези",
+      "Приключения"
+    ],
+    "studios": [
+      "Warner Bros. Pictures",
+      "Heyday Films"
+    ],
+    "description": "Министерство магии отказывается признать возвращение Волан-де-Морта и ставит Хогвартс под контроль Долорес Амбридж. Гарри и его друзья создают тайный отряд, чтобы учиться защите самостоятельно.",
+    "poster": "assets/tmdb-movie-675-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-675-still-1.jpg",
+      "assets/tmdb-movie-675-still-2.jpg"
+    ],
+    "releaseDate": "2007-07-19",
+    "rating": 7.5,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=LLAaW1EgyY8",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/675?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0373889/",
+      "official": "https://www.youtube.com/watch?v=LLAaW1EgyY8",
+      "releaseRussia": "https://www.kinopoisk.ru/film/48356/",
+      "poster": "https://images.metahub.space/poster/medium/tt0373889/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt0373889/img",
+        "https://i.ytimg.com/vi/LLAaW1EgyY8/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-767",
+    "title": "Гарри Поттер и Принц-полукровка",
+    "type": "movie",
+    "genres": [
+      "Фэнтези",
+      "Приключения"
+    ],
+    "studios": [
+      "Warner Bros. Pictures",
+      "Heyday Films"
+    ],
+    "description": "Дамблдор показывает Гарри воспоминания о юности Тома Реддла. Пока друзья пытаются разгадать секрет крестражей, Гарри замечает, что Драко Малфой готовит что-то в Хогвартсе.",
+    "poster": "assets/tmdb-movie-767-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-767-still-1.jpg",
+      "assets/tmdb-movie-767-still-2.jpg"
+    ],
+    "releaseDate": "2009-07-16",
+    "rating": 7.6,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=tAiy66Xrsz4",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/767?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0417741/",
+      "official": "https://www.youtube.com/watch?v=tAiy66Xrsz4",
+      "releaseRussia": "https://www.kinopoisk.ru/film/89515/",
+      "poster": "https://images.metahub.space/poster/medium/tt0417741/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt0417741/img",
+        "https://i.ytimg.com/vi/tAiy66Xrsz4/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-12444",
+    "title": "Гарри Поттер и Дары Смерти: Часть I",
+    "type": "movie",
+    "genres": [
+      "Фэнтези",
+      "Приключения"
+    ],
+    "studios": [
+      "Warner Bros. Pictures",
+      "Heyday Films"
+    ],
+    "description": "Гарри, Рон и Гермиона покидают Хогвартс и отправляются на поиски крестражей. Пока они скрываются от Пожирателей смерти, им открывается история трёх Даров Смерти.",
+    "poster": "assets/tmdb-movie-12444-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-12444-still-1.jpg",
+      "assets/tmdb-movie-12444-still-2.jpg"
+    ],
+    "releaseDate": "2010-11-19",
+    "rating": 7.7,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=Jfpy9dmuyUQ",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/12444?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0926084/",
+      "official": "https://www.youtube.com/watch?v=Jfpy9dmuyUQ",
+      "releaseRussia": "https://www.kinopoisk.ru/film/276762/",
+      "poster": "https://images.metahub.space/poster/medium/tt0926084/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt0926084/img",
+        "https://i.ytimg.com/vi/Jfpy9dmuyUQ/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-12445",
+    "title": "Гарри Поттер и Дары Смерти: Часть II",
+    "type": "movie",
+    "genres": [
+      "Фэнтези",
+      "Приключения"
+    ],
+    "studios": [
+      "Warner Bros. Pictures",
+      "Heyday Films"
+    ],
+    "description": "Поиски оставшихся крестражей возвращают Гарри, Рона и Гермиону в Хогвартс. Ученики и преподаватели готовятся защищать школу, когда Волан-де-Морт собирает силы для последней атаки.",
+    "poster": "assets/tmdb-movie-12445-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-12445-still-1.jpg",
+      "assets/tmdb-movie-12445-still-2.jpg"
+    ],
+    "releaseDate": "2011-07-13",
+    "rating": 8.1,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=mObK5XD8udk",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/12445?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt1201607/",
+      "official": "https://www.youtube.com/watch?v=mObK5XD8udk",
+      "releaseRussia": "https://www.kinopoisk.ru/film/407636/",
+      "poster": "https://images.metahub.space/poster/medium/tt1201607/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt1201607/img",
+        "https://i.ytimg.com/vi/mObK5XD8udk/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-1930",
+    "title": "Новый Человек-паук",
+    "type": "movie",
+    "genres": [
+      "Фантастика",
+      "Боевик",
+      "Приключения"
+    ],
+    "studios": [
+      "Columbia Pictures",
+      "Marvel Entertainment"
+    ],
+    "description": "Укус лабораторного паука даёт старшекласснику Питеру Паркеру необычные способности. Ища следы исчезнувших родителей, он знакомится с доктором Коннорсом и сталкивается с последствиями его эксперимента.",
+    "poster": "assets/tmdb-movie-1930-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-1930-still-1.jpg",
+      "assets/tmdb-movie-1930-still-2.jpg"
+    ],
+    "releaseDate": "2012-07-05",
+    "rating": 7,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=-tnxzJ0SSOw",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/1930?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0948470/",
+      "official": "https://www.youtube.com/watch?v=-tnxzJ0SSOw",
+      "releaseRussia": "https://www.kinopoisk.ru/film/278217/",
+      "poster": "https://images.metahub.space/poster/medium/tt0948470/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt0948470/img",
+        "https://i.ytimg.com/vi/-tnxzJ0SSOw/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-102382",
+    "title": "Новый Человек-паук: Высокое напряжение",
+    "type": "movie",
+    "genres": [
+      "Фантастика",
+      "Боевик",
+      "Приключения"
+    ],
+    "studios": [
+      "Columbia Pictures",
+      "Marvel Entertainment"
+    ],
+    "description": "Питер пытается совместить отношения с Гвен и жизнь Человека-паука. В Нью-Йорке появляется Электро, а возвращение Гарри Озборна приближает Питера к разгадке прошлого его семьи.",
+    "poster": "assets/tmdb-movie-102382-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-102382-still-1.jpg",
+      "assets/tmdb-movie-102382-still-2.jpg"
+    ],
+    "releaseDate": "2014-04-24",
+    "rating": 6.6,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=nbp3Ra3Yp74",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/102382?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt1872181/",
+      "official": "https://www.sonypictures.com/movies/theamazingspiderman2",
+      "releaseRussia": "https://www.kinopoisk.ru/film/602409/dates/",
+      "poster": "https://images.metahub.space/poster/medium/tt1872181/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt1872181/img",
+        "https://i.ytimg.com/vi/nbp3Ra3Yp74/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-22",
+    "title": "Пираты Карибского моря: Проклятие Чёрной жемчужины",
+    "type": "movie",
+    "genres": [
+      "Приключения",
+      "Фэнтези",
+      "Боевик"
+    ],
+    "studios": [
+      "Walt Disney Pictures",
+      "Jerry Bruckheimer Films"
+    ],
+    "description": "Пираты с «Чёрной жемчужины» похищают Элизабет Суонн. Кузнец Уилл Тёрнер объединяется с Джеком Воробьём, чтобы её спасти, и узнаёт о проклятии экипажа.",
+    "poster": "assets/tmdb-movie-22-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-22-still-1.jpg",
+      "assets/tmdb-movie-22-still-2.jpg"
+    ],
+    "releaseDate": "2003-08-20",
+    "rating": 8.1,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=naQr0uTrH_s",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/22?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0325980/",
+      "official": "https://www.youtube.com/watch?v=naQr0uTrH_s",
+      "releaseRussia": "https://www.kinopoisk.ru/film/4374/",
+      "poster": "https://images.metahub.space/poster/medium/tt0325980/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt0325980/img",
+        "https://i.ytimg.com/vi/naQr0uTrH_s/sd2.jpg"
+      ]
+    },
+    "platforms": [
+      "Disney"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-58",
+    "title": "Пираты Карибского моря: Сундук мертвеца",
+    "type": "movie",
+    "genres": [
+      "Приключения",
+      "Фэнтези",
+      "Боевик"
+    ],
+    "studios": [
+      "Walt Disney Pictures",
+      "Jerry Bruckheimer Films"
+    ],
+    "description": "Джек Воробей должен отдать старый долг Дэйви Джонсу. В поисках сундука, который может спасти его от расплаты, Джек втягивает в погоню Уилла и Элизабет.",
+    "poster": "assets/tmdb-movie-58-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-58-still-1.jpg",
+      "assets/tmdb-movie-58-still-2.jpg"
+    ],
+    "releaseDate": "2006-07-13",
+    "rating": 7.4,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=SNA-Ezahmok",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/58?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0383574/",
+      "official": "https://www.youtube.com/watch?v=SNA-Ezahmok",
+      "releaseRussia": "https://www.kinopoisk.ru/film/63991/",
+      "poster": "https://images.metahub.space/poster/medium/tt0383574/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt0383574/img",
+        "https://i.ytimg.com/vi/SNA-Ezahmok/sd2.jpg"
+      ]
+    },
+    "platforms": [
+      "Disney"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-285",
+    "title": "Пираты Карибского моря: На краю света",
+    "type": "movie",
+    "genres": [
+      "Приключения",
+      "Фэнтези",
+      "Боевик"
+    ],
+    "studios": [
+      "Walt Disney Pictures",
+      "Jerry Bruckheimer Films"
+    ],
+    "description": "Уилл, Элизабет и Барбосса отправляются за Джеком Воробьём в тайник Дэйви Джонса. Тем временем Ост-Индская компания объявляет пиратам войну, и капитанам приходится объединиться.",
+    "poster": "assets/tmdb-movie-285-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-285-still-1.jpg",
+      "assets/tmdb-movie-285-still-2.jpg"
+    ],
+    "releaseDate": "2007-05-24",
+    "rating": 7.2,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=HKSZtp_OGHY",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/285?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0449088/",
+      "official": "https://pirates.disney.com/pirates-of-the-caribbean-at-worlds-end/video",
+      "releaseRussia": "https://www.kinopoisk.ru/film/102124/",
+      "poster": "https://images.metahub.space/poster/medium/tt0449088/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt0449088/img",
+        "https://i.ytimg.com/vi/HKSZtp_OGHY/sd2.jpg"
+      ]
+    },
+    "platforms": [
+      "Disney"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-1865",
+    "title": "Пираты Карибского моря: На странных берегах",
+    "type": "movie",
+    "genres": [
+      "Приключения",
+      "Фэнтези",
+      "Боевик"
+    ],
+    "studios": [
+      "Walt Disney Pictures",
+      "Jerry Bruckheimer Films"
+    ],
+    "description": "Джек Воробей попадает на корабль Чёрной Бороды и отправляется на поиски Источника вечной молодости. Туда же направляются Барбосса и испанская экспедиция.",
+    "poster": "assets/tmdb-movie-1865-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-1865-still-1.jpg",
+      "assets/tmdb-movie-1865-still-2.jpg"
+    ],
+    "releaseDate": "2011-05-18",
+    "rating": 6.6,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=Ax6md6HoZ2o",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/1865?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt1298650/",
+      "official": "https://www.youtube.com/watch?v=Ax6md6HoZ2o",
+      "releaseRussia": "https://www.kinopoisk.ru/film/427076/",
+      "poster": "https://images.metahub.space/poster/medium/tt1298650/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt1298650/img",
+        "https://i.ytimg.com/vi/Ax6md6HoZ2o/sd2.jpg"
+      ]
+    },
+    "platforms": [
+      "Disney"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-166426",
+    "title": "Пираты Карибского моря: Мертвецы не рассказывают сказки",
+    "type": "movie",
+    "genres": [
+      "Приключения",
+      "Фэнтези",
+      "Боевик"
+    ],
+    "studios": [
+      "Walt Disney Pictures",
+      "Jerry Bruckheimer Films"
+    ],
+    "description": "Капитан Салазар вырывается из Дьявольского треугольника и отправляется за Джеком Воробьём. Джек вместе с Генри Тёрнером и Кариной Смит ищет трезубец Посейдона.",
+    "poster": "assets/tmdb-movie-166426-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-166426-still-1.jpg",
+      "assets/tmdb-movie-166426-still-2.jpg"
+    ],
+    "releaseDate": "2017-05-25",
+    "rating": 6.5,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=8_Gs_rc4hck",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/166426?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt1790809/",
+      "official": "https://movies.disney.com/pirates-of-the-caribbean-dead-men-tell-no-tales",
+      "releaseRussia": "https://www.kinopoisk.ru/film/575180/",
+      "poster": "https://images.metahub.space/poster/medium/tt1790809/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt1790809/img",
+        "https://i.ytimg.com/vi/8_Gs_rc4hck/sd2.jpg"
+      ]
+    },
+    "platforms": [
+      "Disney"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-1858",
+    "title": "Трансформеры",
+    "type": "movie",
+    "genres": [
+      "Фантастика",
+      "Боевик",
+      "Приключения"
+    ],
+    "studios": [
+      "DreamWorks Pictures",
+      "Paramount Pictures",
+      "Hasbro"
+    ],
+    "description": "Школьник Сэм Уитвики узнаёт, что его автомобиль — автобот Бамблби. Сэм оказывается в центре войны за артефакт, который может изменить судьбу Земли.",
+    "poster": "assets/tmdb-movie-1858-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-1858-still-1.jpg",
+      "assets/tmdb-movie-1858-still-2.jpg"
+    ],
+    "releaseDate": "2007-07-04",
+    "rating": 7.1,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=CbX_SIz_9fk",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/1858?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0418279/",
+      "official": "https://www.youtube.com/watch?v=CbX_SIz_9fk",
+      "releaseRussia": "https://www.kinopoisk.ru/film/81288/",
+      "poster": "https://images.metahub.space/poster/medium/tt0418279/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt0418279/img",
+        "https://i.ytimg.com/vi/CbX_SIz_9fk/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-8373",
+    "title": "Трансформеры: Месть падших",
+    "type": "movie",
+    "genres": [
+      "Фантастика",
+      "Боевик",
+      "Приключения"
+    ],
+    "studios": [
+      "DreamWorks Pictures",
+      "Paramount Pictures",
+      "Hasbro"
+    ],
+    "description": "Перед поступлением в колледж Сэм Уитвики начинает видеть загадочные символы. Вместе с автоботами он пытается выяснить, почему они связаны с древним десептиконом по имени Фоллен.",
+    "poster": "assets/tmdb-movie-8373-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-8373-still-1.jpg",
+      "assets/tmdb-movie-8373-still-2.jpg"
+    ],
+    "releaseDate": "2009-06-24",
+    "rating": 6,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=kBlxfC1NvbQ",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/8373?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt1055369/",
+      "official": "https://www.youtube.com/watch?v=kBlxfC1NvbQ",
+      "releaseRussia": "https://www.proficinema.com/picture-making/detail.php?ID=45785",
+      "poster": "https://images.metahub.space/poster/medium/tt1055369/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt1055369/img",
+        "https://i.ytimg.com/vi/kBlxfC1NvbQ/sd3.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-38356",
+    "title": "Трансформеры 3: Тёмная сторона Луны",
+    "type": "movie",
+    "genres": [
+      "Фантастика",
+      "Боевик",
+      "Приключения"
+    ],
+    "studios": [
+      "Paramount Pictures",
+      "Hasbro",
+      "Di Bonaventura Pictures"
+    ],
+    "description": "Автоботы узнают, что на Луне спрятан их старый корабль. Пока Оптимус Прайм пытается спасти его капитана, десептиконы готовят захват Чикаго.",
+    "poster": "assets/tmdb-movie-38356-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-38356-still-1.jpg",
+      "assets/tmdb-movie-38356-still-2.jpg"
+    ],
+    "releaseDate": "2011-06-29",
+    "rating": 6.2,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=XeUtb5L9iNE",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/38356?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt1399103/",
+      "official": "https://www.youtube.com/watch?v=XeUtb5L9iNE",
+      "releaseRussia": "https://www.kinopoisk.ru/film/452899/",
+      "poster": "https://images.metahub.space/poster/medium/tt1399103/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt1399103/img",
+        "https://i.ytimg.com/vi/XeUtb5L9iNE/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-272",
+    "title": "Бэтмен: Начало",
+    "type": "movie",
+    "genres": [
+      "Боевик",
+      "Криминал",
+      "Драма"
+    ],
+    "studios": [
+      "Warner Bros. Pictures",
+      "Legendary Pictures",
+      "Syncopy"
+    ],
+    "description": "Брюс Уэйн возвращается в Готэм после долгих странствий и начинает бороться с преступностью в образе Бэтмена. Вскоре ему приходится защищать город от заговора Лиги теней.",
+    "poster": "assets/tmdb-movie-272-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-272-still-1.jpg",
+      "assets/tmdb-movie-272-still-2.jpg"
+    ],
+    "releaseDate": "2005-06-16",
+    "rating": 8.2,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=FiL1_5DWV7Y",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/272?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0372784/",
+      "official": "https://www.youtube.com/watch?v=FiL1_5DWV7Y",
+      "releaseRussia": "https://www.kinopoisk.ru/film/47237/",
+      "poster": "https://images.metahub.space/poster/medium/tt0372784/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt0372784/img",
+        "https://i.ytimg.com/vi/FiL1_5DWV7Y/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-155",
+    "title": "Тёмный рыцарь",
+    "type": "movie",
+    "genres": [
+      "Боевик",
+      "Криминал",
+      "Драма"
+    ],
+    "studios": [
+      "Warner Bros. Pictures",
+      "Legendary Pictures",
+      "Syncopy"
+    ],
+    "description": "Бэтмен, комиссар Гордон и прокурор Харви Дент наступают на готэмскую мафию. Их планы рушит Джокер, который пытается поссорить защитников города и лишить жителей доверия к ним.",
+    "poster": "assets/tmdb-movie-155-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-155-still-1.jpg",
+      "assets/tmdb-movie-155-still-2.jpg"
+    ],
+    "releaseDate": "2008-08-14",
+    "rating": 9.1,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=TQfATDZY5Y4",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/155?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0468569/",
+      "official": "https://www.youtube.com/watch?v=TQfATDZY5Y4",
+      "releaseRussia": "https://www.kinopoisk.ru/film/111543/",
+      "poster": "https://images.metahub.space/poster/medium/tt0468569/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt0468569/img",
+        "https://i.ytimg.com/vi/TQfATDZY5Y4/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-49026",
+    "title": "Тёмный рыцарь: Возрождение легенды",
+    "type": "movie",
+    "genres": [
+      "Боевик",
+      "Криминал",
+      "Драма"
+    ],
+    "studios": [
+      "Warner Bros. Pictures",
+      "Legendary Pictures",
+      "Syncopy"
+    ],
+    "description": "Спустя восемь лет после исчезновения Бэтмена в Готэм приходит Бэйн. Брюс Уэйн возвращается к роли защитника города и пытается выяснить, насколько глубоко зашёл заговор.",
+    "poster": "assets/tmdb-movie-49026-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-49026-still-1.jpg",
+      "assets/tmdb-movie-49026-still-2.jpg"
+    ],
+    "releaseDate": "2012-07-26",
+    "rating": 8.4,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=g8evyE9TuYk",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/49026?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt1345836/",
+      "official": "https://www.youtube.com/watch?v=g8evyE9TuYk",
+      "releaseRussia": "https://www.kinopoisk.ru/film/437410/",
+      "poster": "https://images.metahub.space/poster/medium/tt1345836/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt1345836/img",
+        "https://i.ytimg.com/vi/g8evyE9TuYk/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-42694",
+    "title": "Кто стучится в дверь ко мне?",
+    "type": "movie",
+    "genres": [
+      "Драма",
+      "Мелодрама"
+    ],
+    "studios": [
+      "Trimod Films"
+    ],
+    "description": "Джэй Ар проводит время с друзьями в нью-йоркской Маленькой Италии и влюбляется в незнакомку. Когда она доверяет ему историю своего прошлого, ему приходится столкнуться с собственными предубеждениями.",
+    "poster": "assets/tmdb-movie-42694-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-42694-still-1.jpg",
+      "assets/tmdb-movie-42694-still-2.jpg"
+    ],
+    "releaseDate": "1969-03-14",
+    "rating": 6.5,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=wh1yj9lMtVQ",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/42694?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0063803/",
+      "official": "https://www.youtube.com/watch?v=wh1yj9lMtVQ",
+      "release": "https://catalog.afi.com/Film/21659-WHOS-THAT-KNOCKING-AT-MY-DOOR?cxt=filmography",
+      "poster": "https://images.metahub.space/poster/medium/tt0063803/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt0063803/img",
+        "https://i.ytimg.com/vi/wh1yj9lMtVQ/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-22784",
+    "title": "Берта по прозвищу «Товарный вагон»",
+    "type": "movie",
+    "genres": [
+      "Криминал",
+      "Драма"
+    ],
+    "studios": [
+      "American International Pictures"
+    ],
+    "description": "Во времена Великой депрессии Берта и профсоюзный активист Билл объединяются с другими беглецами. Их попытки выжить приводят к ограблениям и конфликту с железнодорожной компанией.",
+    "poster": "assets/tmdb-movie-22784-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-22784-still-1.jpg",
+      "assets/tmdb-movie-22784-still-2.jpg"
+    ],
+    "releaseDate": "1972-06-14",
+    "rating": 6,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=ZZl1WHkVlec",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/22784?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0068309/",
+      "official": "https://www.youtube.com/watch?v=ZZl1WHkVlec",
+      "release": "https://www.boxofficemojo.com/calendar/1972-06-01/",
+      "poster": "https://images.metahub.space/poster/medium/tt0068309/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt0068309/img",
+        "https://i.ytimg.com/vi/ZZl1WHkVlec/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-203",
+    "title": "Злые улицы",
+    "type": "movie",
+    "genres": [
+      "Криминал",
+      "Драма"
+    ],
+    "studios": [
+      "Warner Bros. Pictures",
+      "Taplin-Perry-Scorsese Productions"
+    ],
+    "description": "Чарли пытается заслужить доверие мафиозного дяди и одновременно прикрывает своего безрассудного друга Джонни Боя. Долги Джонни ставят под угрозу обоих.",
+    "poster": "assets/tmdb-movie-203-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-203-still-1.jpg",
+      "assets/tmdb-movie-203-still-2.jpg"
+    ],
+    "releaseDate": "1973-10-14",
+    "rating": 7.1,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=g9xHpS10CZ0",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/203?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0070379/",
+      "official": "https://www.youtube.com/watch?v=g9xHpS10CZ0",
+      "release": "https://catalog.afi.com/Film/55020-MEAN-STREETS?cxt=filmography",
+      "poster": "https://images.metahub.space/poster/medium/tt0070379/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt0070379/img",
+        "https://i.ytimg.com/vi/g9xHpS10CZ0/hq2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-16153",
+    "title": "Алиса здесь больше не живёт",
+    "type": "movie",
+    "genres": [
+      "Драма",
+      "Мелодрама"
+    ],
+    "studios": [
+      "Warner Bros. Pictures"
+    ],
+    "description": "После гибели мужа Алиса вместе с сыном отправляется на запад, чтобы снова стать певицей. Деньги заканчиваются в Аризоне, где она устраивается в закусочную и заводит новые знакомства.",
+    "poster": "assets/tmdb-movie-16153-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-16153-still-1.jpg",
+      "assets/tmdb-movie-16153-still-2.jpg"
+    ],
+    "releaseDate": "1974-12-09",
+    "rating": 7.3,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=H8jV98slav8",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/16153?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0071115/",
+      "official": "https://www.youtube.com/watch?v=H8jV98slav8",
+      "release": "https://catalog.afi.com/Film/53907-ALICE-DOESNT-LIVE-HERE-ANYMORE?cxt=filmography",
+      "poster": "https://images.metahub.space/poster/medium/tt0071115/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt0071115/img",
+        "https://i.ytimg.com/vi/H8jV98slav8/hq2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-103",
+    "title": "Таксист",
+    "type": "movie",
+    "genres": [
+      "Драма",
+      "Криминал"
+    ],
+    "studios": [
+      "Columbia Pictures",
+      "Bill/Phillips Productions"
+    ],
+    "description": "Ветеран Трэвис Бикл работает ночным таксистом в Нью-Йорке и всё сильнее отдаляется от окружающих. Знакомство с юной Айрис превращает его навязчивое желание спасти кого-то в опасный план.",
+    "poster": "assets/tmdb-movie-103-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-103-still-1.jpg",
+      "assets/tmdb-movie-103-still-2.jpg"
+    ],
+    "releaseDate": "2021-06-24",
+    "rating": 8.2,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=T5IligQP7Fo",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/103?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0075314/",
+      "official": "https://www.youtube.com/watch?v=T5IligQP7Fo",
+      "releaseRussia": "https://www.kinopoisk.ru/film/358/dates/",
+      "poster": "https://images.metahub.space/poster/medium/tt0075314/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt0075314/img",
+        "https://i.ytimg.com/vi/T5IligQP7Fo/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-12637",
+    "title": "Нью-Йорк, Нью-Йорк",
+    "type": "movie",
+    "genres": [
+      "Драма",
+      "Мелодрама",
+      "Музыка"
+    ],
+    "studios": [
+      "United Artists",
+      "Chartoff-Winkler Productions"
+    ],
+    "description": "После Второй мировой войны саксофонист Джимми встречает певицу Франсин. Пока они строят музыкальную карьеру, их отношения всё чаще сталкиваются с несовместимыми амбициями.",
+    "poster": "assets/tmdb-movie-12637-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-12637-still-1.jpg",
+      "assets/tmdb-movie-12637-still-2.jpg"
+    ],
+    "releaseDate": "1977-06-22",
+    "rating": 6.6,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=alyW0SvO61o",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/12637?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0076451/",
+      "official": "https://www.youtube.com/watch?v=alyW0SvO61o",
+      "release": "https://catalog.afi.com/Film/53904-NEW-YORK-NEW-YORK?cxt=filmography",
+      "poster": "https://images.metahub.space/poster/medium/tt0076451/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt0076451/img",
+        "https://i.ytimg.com/vi/alyW0SvO61o/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-1578",
+    "title": "Бешеный бык",
+    "type": "movie",
+    "genres": [
+      "Драма",
+      "Биография",
+      "Спорт"
+    ],
+    "studios": [
+      "United Artists",
+      "Chartoff-Winkler Productions"
+    ],
+    "description": "Боксёр Джейк Ламотта пробивается к чемпионскому титулу в среднем весе. Его ревность и вспыльчивость за пределами ринга разрушают отношения с близкими.",
+    "poster": "assets/tmdb-movie-1578-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-1578-still-1.jpg",
+      "assets/tmdb-movie-1578-still-2.jpg"
+    ],
+    "releaseDate": "1980-11-14",
+    "rating": 8.1,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=F2UKuKxCJqc",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/1578?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0081398/",
+      "official": "https://www.youtube.com/watch?v=F2UKuKxCJqc",
+      "release": "https://catalog.afi.com/Film/54882-RAGING-BULL?cxt=filmography",
+      "poster": "https://images.metahub.space/poster/medium/tt0081398/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt0081398/img",
+        "https://i.ytimg.com/vi/F2UKuKxCJqc/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-262",
+    "title": "Король комедии",
+    "type": "movie",
+    "genres": [
+      "Драма",
+      "Комедия",
+      "Криминал"
+    ],
+    "studios": [
+      "20th Century Fox"
+    ],
+    "description": "Начинающий комик Руперт Папкин мечтает попасть на телевидение к своему кумиру Джерри Лэнгфорду. Когда обычные попытки пробиться в эфир проваливаются, он придумывает способ вынудить ведущего дать ему сцену.",
+    "poster": "assets/tmdb-movie-262-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-262-still-1.jpg",
+      "assets/tmdb-movie-262-still-2.jpg"
+    ],
+    "releaseDate": "1983-02-18",
+    "rating": 7.8,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=tXYC0sAIvuo",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/262?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0085794/",
+      "official": "https://www.youtube.com/watch?v=tXYC0sAIvuo",
+      "release": "https://catalog.afi.com/Film/67056-THE-KING-OF-COMEDY?cxt=filmography",
+      "poster": "https://images.metahub.space/poster/medium/tt0085794/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt0085794/img",
+        "https://i.ytimg.com/vi/tXYC0sAIvuo/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-10843",
+    "title": "После работы",
+    "type": "movie",
+    "genres": [
+      "Комедия",
+      "Триллер"
+    ],
+    "studios": [
+      "Warner Bros. Pictures",
+      "Double Play Productions"
+    ],
+    "description": "Офисный работник Пол едет ночью в Сохо на свидание. Потеряв деньги на обратную дорогу, он всё глубже запутывается в цепочке встреч и недоразумений.",
+    "poster": "assets/tmdb-movie-10843-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-10843-still-1.jpg",
+      "assets/tmdb-movie-10843-still-2.jpg"
+    ],
+    "releaseDate": "1985-09-13",
+    "rating": 7.6,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=wixOBXjZvtw",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/10843?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0088680/",
+      "official": "https://www.youtube.com/watch?v=wixOBXjZvtw",
+      "release": "https://catalog.afi.com/Film/67023-AFTER-HOURS?cxt=filmography",
+      "poster": "https://images.metahub.space/poster/medium/tt0088680/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt0088680/img",
+        "https://i.ytimg.com/vi/wixOBXjZvtw/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-11873",
+    "title": "Цвет денег",
+    "type": "movie",
+    "genres": [
+      "Драма",
+      "Спорт"
+    ],
+    "studios": [
+      "Touchstone Pictures",
+      "Silver Screen Partners II"
+    ],
+    "description": "Бывший игрок Эдди Фелсон берёт под крыло талантливого бильярдиста Винсента. Поездка по турнирным залам возвращает Эдди азарт и превращает партнёрство в соперничество.",
+    "poster": "assets/tmdb-movie-11873-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-11873-still-1.jpg",
+      "assets/tmdb-movie-11873-still-2.jpg"
+    ],
+    "releaseDate": "1986-10-17",
+    "rating": 7,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=vzm0uR6XyPU",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/11873?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0090863/",
+      "official": "https://www.youtube.com/watch?v=vzm0uR6XyPU",
+      "release": "https://catalog.afi.com/Film/57292-THE-COLOR-OF-MONEY?cxt=filmography",
+      "poster": "https://images.metahub.space/poster/medium/tt0090863/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt0090863/img",
+        "https://i.ytimg.com/vi/vzm0uR6XyPU/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-11051",
+    "title": "Последнее искушение Христа",
+    "type": "movie",
+    "genres": [
+      "Драма"
+    ],
+    "studios": [
+      "Universal Pictures",
+      "Cineplex Odeon Films"
+    ],
+    "description": "Иисус из Назарета сомневается в своём предназначении, собирает учеников и идёт к распятию. В решающий момент ему открывается возможность прожить обычную человеческую жизнь.",
+    "poster": "assets/tmdb-movie-11051-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-11051-still-1.jpg",
+      "assets/tmdb-movie-11051-still-2.jpg"
+    ],
+    "releaseDate": "1988-08-12",
+    "rating": 7.5,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=IiJoTT6NDqU",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/11051?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0095497/",
+      "official": "https://www.youtube.com/watch?v=IiJoTT6NDqU",
+      "release": "https://catalog.afi.com/Film/68264-THE-LAST-TEMPTATION-OF-CHRIST?cxt=filmography",
+      "poster": "https://images.metahub.space/poster/medium/tt0095497/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt0095497/img",
+        "https://i.ytimg.com/vi/IiJoTT6NDqU/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-9686",
+    "title": "Нью-йоркские истории",
+    "type": "movie",
+    "genres": [
+      "Драма",
+      "Комедия",
+      "Мелодрама"
+    ],
+    "studios": [
+      "Touchstone Pictures",
+      "Silver Screen Partners IV"
+    ],
+    "description": "Три новеллы о жителях Нью-Йорка сняли Мартин Скорсезе, Фрэнсис Форд Коппола и Вуди Аллен. Скорсезе поставил «Уроки жизни», историю художника и его молодой помощницы.",
+    "poster": "assets/tmdb-movie-9686-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-9686-still-1.jpg",
+      "assets/tmdb-movie-9686-still-2.jpg"
+    ],
+    "releaseDate": "1989-03-03",
+    "rating": 6.4,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=mqNoTUstmDc",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/9686?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0097965/",
+      "official": "https://www.youtube.com/watch?v=mqNoTUstmDc",
+      "release": "https://catalog.afi.com/Film/58206-NEW-YORK-STORIES?cxt=filmography",
+      "poster": "https://images.metahub.space/poster/medium/tt0097965/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt0097965/img",
+        "https://i.ytimg.com/vi/mqNoTUstmDc/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-769",
+    "title": "Славные парни",
+    "type": "movie",
+    "genres": [
+      "Криминал",
+      "Драма",
+      "Биография"
+    ],
+    "studios": [
+      "Warner Bros. Pictures"
+    ],
+    "description": "Генри Хилл с юности работает на нью-йоркскую мафию и сближается с Джимми и Томми. По мере роста его влияния ошибки друзей и внимание полиции делают эту жизнь всё опаснее.",
+    "poster": "assets/tmdb-movie-769-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-769-still-1.jpg",
+      "assets/tmdb-movie-769-still-2.jpg"
+    ],
+    "releaseDate": "1994-10-25",
+    "rating": 8.7,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=2ilzidi_J8Q",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/769?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0099685/",
+      "official": "https://www.youtube.com/watch?v=2ilzidi_J8Q",
+      "releaseRussia": "https://www.kinopoisk.ru/film/350/dates/",
+      "poster": "https://images.metahub.space/poster/medium/tt0099685/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt0099685/img",
+        "https://i.ytimg.com/vi/2ilzidi_J8Q/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-1598",
+    "title": "Мыс страха",
+    "type": "movie",
+    "genres": [
+      "Триллер",
+      "Криминал"
+    ],
+    "studios": [
+      "Universal Pictures",
+      "Amblin Entertainment"
+    ],
+    "description": "Освободившись из тюрьмы, Макс Кейди начинает преследовать адвоката Сэма Боудена, которого винит в своём приговоре. Семья Сэма пытается скрыться, когда угрозы становятся всё серьёзнее.",
+    "poster": "assets/tmdb-movie-1598-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-1598-still-1.jpg",
+      "assets/tmdb-movie-1598-still-2.jpg"
+    ],
+    "releaseDate": "1991-11-13",
+    "rating": 7.3,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=SBsH1aareN4",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/1598?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0101540/",
+      "official": "https://www.youtube.com/watch?v=SBsH1aareN4",
+      "release": "https://catalog.afi.com/Film/58793-CAPE-FEAR?cxt=filmography",
+      "poster": "https://images.metahub.space/poster/medium/tt0101540/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt0101540/img",
+        "https://i.ytimg.com/vi/SBsH1aareN4/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-10436",
+    "title": "Эпоха невинности",
+    "type": "movie",
+    "genres": [
+      "Драма",
+      "Мелодрама"
+    ],
+    "studios": [
+      "Columbia Pictures",
+      "Cappa Productions"
+    ],
+    "description": "В Нью-Йорке XIX века адвокат Ньюленд Арчер помолвлен с Мэй Уэлланд, но влюбляется в её кузину Эллен Оленскую. Их сближение ставит под угрозу репутацию обеих семей.",
+    "poster": "assets/tmdb-movie-10436-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-10436-still-1.jpg",
+      "assets/tmdb-movie-10436-still-2.jpg"
+    ],
+    "releaseDate": "1993-09-17",
+    "rating": 7.2,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=I3Mx8OSlNYM",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/10436?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0106226/",
+      "official": "https://www.youtube.com/watch?v=I3Mx8OSlNYM",
+      "release": "https://catalog.afi.com/Film/59449-THE-AGE-OF-INNOCENCE?cxt=filmography",
+      "poster": "https://images.metahub.space/poster/medium/tt0106226/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt0106226/img",
+        "https://i.ytimg.com/vi/I3Mx8OSlNYM/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-524",
+    "title": "Казино",
+    "type": "movie",
+    "genres": [
+      "Криминал",
+      "Драма"
+    ],
+    "studios": [
+      "Universal Pictures",
+      "Syalis D.A.",
+      "Légende Entreprises"
+    ],
+    "description": "Сэм Ротстин управляет казино в Лас-Вегасе от имени мафии. Его брак с Джинджер и рискованные выходки старого друга Ники постепенно расшатывают налаженный бизнес.",
+    "poster": "assets/tmdb-movie-524-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-524-still-1.jpg",
+      "assets/tmdb-movie-524-still-2.jpg"
+    ],
+    "releaseDate": "1995-11-22",
+    "rating": 8.2,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=j-D0QiMpGKc",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/524?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0112641/",
+      "official": "https://www.youtube.com/watch?v=j-D0QiMpGKc",
+      "release": "https://catalog.afi.com/Film/59846-CASINO?cxt=filmography",
+      "poster": "https://images.metahub.space/poster/medium/tt0112641/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt0112641/img",
+        "https://i.ytimg.com/vi/j-D0QiMpGKc/hq2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-9746",
+    "title": "Кундун",
+    "type": "movie",
+    "genres": [
+      "Драма",
+      "Биография",
+      "История"
+    ],
+    "studios": [
+      "Touchstone Pictures",
+      "Cappa Productions"
+    ],
+    "description": "В маленьком тибетском мальчике признают нового Далай-ламу. Он взрослеет среди монахов и пытается сохранить самостоятельность Тибета, когда на страну усиливается давление Китая.",
+    "poster": "assets/tmdb-movie-9746-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-9746-still-1.jpg",
+      "assets/tmdb-movie-9746-still-2.jpg"
+    ],
+    "releaseDate": "1999-01-14",
+    "rating": 7,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=Jg7LPlk1gFc",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/9746?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0119485/",
+      "official": "https://www.youtube.com/watch?v=Jg7LPlk1gFc",
+      "releaseRussia": "https://www.kinopoisk.ru/film/11077/dates/",
+      "poster": "https://images.metahub.space/poster/medium/tt0119485/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt0119485/img",
+        "https://i.ytimg.com/vi/Jg7LPlk1gFc/maxresdefault.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-8649",
+    "title": "Воскрешая мертвецов",
+    "type": "movie",
+    "genres": [
+      "Драма",
+      "Триллер"
+    ],
+    "studios": [
+      "Paramount Pictures",
+      "Touchstone Pictures"
+    ],
+    "description": "Фельдшер Фрэнк Пирс три ночи подряд ездит на вызовы по Нью-Йорку. Его преследуют воспоминания о тех, кого он не смог спасти, и он сближается с дочерью одного из пациентов.",
+    "poster": "assets/tmdb-movie-8649-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-8649-still-1.jpg",
+      "assets/tmdb-movie-8649-still-2.jpg"
+    ],
+    "releaseDate": "1999-10-22",
+    "rating": 6.8,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=8TMg9WlKgsU",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/8649?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0163988/",
+      "official": "https://www.youtube.com/watch?v=8TMg9WlKgsU",
+      "release": "https://catalog.afi.com/Film/60919-BRINGING-OUT-THE-DEAD?cxt=filmography",
+      "poster": "https://images.metahub.space/poster/medium/tt0163988/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt0163988/img",
+        "https://i.ytimg.com/vi/8TMg9WlKgsU/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-3131",
+    "title": "Банды Нью-Йорка",
+    "type": "movie",
+    "genres": [
+      "Драма",
+      "Криминал",
+      "История"
+    ],
+    "studios": [
+      "Miramax",
+      "Initial Entertainment Group"
+    ],
+    "description": "Амстердам Валлон возвращается в нью-йоркский район Файв-Пойнтс, чтобы отомстить за отца. Чтобы подобраться к убийце, ему приходится втереться в доверие к его банде.",
+    "poster": "assets/tmdb-movie-3131-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-3131-still-1.jpg",
+      "assets/tmdb-movie-3131-still-2.jpg"
+    ],
+    "releaseDate": "2003-03-27",
+    "rating": 7.5,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=qHVUPri5tjA",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/3131?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0217505/",
+      "official": "https://www.youtube.com/watch?v=qHVUPri5tjA",
+      "releaseRussia": "https://www.kinopoisk.ru/film/678/",
+      "poster": "https://images.metahub.space/poster/medium/tt0217505/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt0217505/img",
+        "https://i.ytimg.com/vi/qHVUPri5tjA/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-2567",
+    "title": "Авиатор",
+    "type": "movie",
+    "genres": [
+      "Драма",
+      "Биография"
+    ],
+    "studios": [
+      "Miramax",
+      "Warner Bros. Pictures",
+      "Initial Entertainment Group"
+    ],
+    "description": "Говард Хьюз снимает дорогие голливудские фильмы, строит самолёты и вступает в борьбу за маршруты своей авиакомпании. На пике успеха его всё сильнее ограничивают навязчивые страхи.",
+    "poster": "assets/tmdb-movie-2567-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-2567-still-1.jpg",
+      "assets/tmdb-movie-2567-still-2.jpg"
+    ],
+    "releaseDate": "2005-02-03",
+    "rating": 7.5,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=dkwypzOQf8o",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/2567?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0338751/",
+      "official": "https://www.youtube.com/watch?v=dkwypzOQf8o",
+      "releaseRussia": "https://www.kinopoisk.ru/film/6374/",
+      "poster": "https://images.metahub.space/poster/medium/tt0338751/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt0338751/img",
+        "https://i.ytimg.com/vi/dkwypzOQf8o/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-1422",
+    "title": "Отступники",
+    "type": "movie",
+    "genres": [
+      "Криминал",
+      "Триллер",
+      "Драма"
+    ],
+    "studios": [
+      "Warner Bros. Pictures",
+      "Plan B Entertainment",
+      "Initial Entertainment Group"
+    ],
+    "description": "В Бостоне полицейский под прикрытием внедряется в банду Фрэнка Костелло, а человек Костелло работает в полиции. Когда обе стороны узнают об утечках, каждый пытается первым вычислить другого.",
+    "poster": "assets/tmdb-movie-1422-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-1422-still-1.jpg",
+      "assets/tmdb-movie-1422-still-2.jpg"
+    ],
+    "releaseDate": "2006-10-05",
+    "rating": 8.5,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=r-MiSNsCdQ4",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/1422?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0407887/",
+      "official": "https://www.youtube.com/watch?v=r-MiSNsCdQ4",
+      "releaseRussia": "https://www.kinopoisk.ru/film/81314/",
+      "poster": "https://images.metahub.space/poster/medium/tt0407887/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt0407887/img",
+        "https://i.ytimg.com/vi/r-MiSNsCdQ4/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-11324",
+    "title": "Остров проклятых",
+    "type": "movie",
+    "genres": [
+      "Детектив",
+      "Триллер",
+      "Драма"
+    ],
+    "studios": [
+      "Paramount Pictures",
+      "Phoenix Pictures",
+      "Appian Way"
+    ],
+    "description": "Два федеральных маршала прибывают в психиатрическую больницу на острове, где пропала пациентка. Шторм отрезает их от материка, а расследование заставляет Тедди Дэниелса сомневаться в рассказах персонала.",
+    "poster": "assets/tmdb-movie-11324-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-11324-still-1.jpg",
+      "assets/tmdb-movie-11324-still-2.jpg"
+    ],
+    "releaseDate": "2010-02-18",
+    "rating": 8.2,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=v8yrZSkKxTA",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/11324?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt1130884/",
+      "official": "https://www.youtube.com/watch?v=v8yrZSkKxTA",
+      "releaseRussia": "https://www.kinopoisk.ru/film/397667/",
+      "poster": "https://images.metahub.space/poster/medium/tt1130884/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt1130884/img",
+        "https://i.ytimg.com/vi/v8yrZSkKxTA/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-44826",
+    "title": "Хранитель времени",
+    "type": "movie",
+    "genres": [
+      "Приключения",
+      "Семейный",
+      "Драма"
+    ],
+    "studios": [
+      "GK Films",
+      "Infinitum Nihil"
+    ],
+    "description": "Парижский сирота Юго тайком обслуживает часы вокзала и чинит механическую фигурку, оставшуюся от отца. Загадка механизма приводит его к Жоржу Мельесу и первым годам кинематографа.",
+    "poster": "assets/tmdb-movie-44826-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-44826-still-1.jpg",
+      "assets/tmdb-movie-44826-still-2.jpg"
+    ],
+    "releaseDate": "2012-01-05",
+    "rating": 7.5,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=Hv3obL9HqyY",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/44826?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0970179/",
+      "official": "https://www.youtube.com/watch?v=Hv3obL9HqyY",
+      "releaseRussia": "https://www.kinopoisk.ru/film/462247/",
+      "poster": "https://images.metahub.space/poster/medium/tt0970179/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt0970179/img",
+        "https://i.ytimg.com/vi/Hv3obL9HqyY/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-106646",
+    "title": "Волк с Уолл-стрит",
+    "type": "movie",
+    "genres": [
+      "Драма",
+      "Криминал",
+      "Биография"
+    ],
+    "studios": [
+      "Red Granite Pictures",
+      "Appian Way",
+      "Sikelia Productions"
+    ],
+    "description": "Брокер Джордан Белфорт создаёт фирму, которая обогащается на продаже сомнительных акций. Пока его команда празднует успехи, сделками начинают интересоваться федеральные следователи.",
+    "poster": "assets/tmdb-movie-106646-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-106646-still-1.jpg",
+      "assets/tmdb-movie-106646-still-2.jpg"
+    ],
+    "releaseDate": "2014-02-06",
+    "rating": 8.2,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=iszwuX1AK6A",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/106646?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0993846/",
+      "official": "https://www.youtube.com/watch?v=iszwuX1AK6A",
+      "releaseRussia": "https://www.kinopoisk.ru/film/462682/dates/",
+      "poster": "https://images.metahub.space/poster/medium/tt0993846/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt0993846/img",
+        "https://i.ytimg.com/vi/iszwuX1AK6A/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-68730",
+    "title": "Молчание",
+    "type": "movie",
+    "genres": [
+      "Драма",
+      "История"
+    ],
+    "studios": [
+      "Sikelia Productions",
+      "Emmett/Furla/Oasis Films"
+    ],
+    "description": "Два португальских иезуита тайно отправляются в Японию XVII века за пропавшим наставником. Вместе с местными христианами они сталкиваются с преследованиями и испытанием собственной веры.",
+    "poster": "assets/tmdb-movie-68730-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-68730-still-1.jpg",
+      "assets/tmdb-movie-68730-still-2.jpg"
+    ],
+    "releaseDate": "2017-01-26",
+    "rating": 7.2,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=IqrgxZLd_gE",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/68730?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0490215/",
+      "official": "https://www.paramountpictures.com/movies/silence",
+      "releaseRussia": "https://www.kinopoisk.ru/film/260898/dates/",
+      "poster": "https://images.metahub.space/poster/medium/tt0490215/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt0490215/img",
+        "https://i.ytimg.com/vi/IqrgxZLd_gE/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-398978",
+    "title": "Ирландец",
+    "type": "movie",
+    "genres": [
+      "Драма",
+      "Криминал",
+      "Биография"
+    ],
+    "studios": [
+      "Tribeca Productions",
+      "Sikelia Productions"
+    ],
+    "description": "Пожилой Фрэнк Ширан вспоминает знакомство с мафией и дружбу с профсоюзным лидером Джимми Хоффой. Когда интересы Хоффы расходятся с интересами мафии, Фрэнку приходится выбирать, кому он верен.",
+    "poster": "assets/tmdb-movie-398978-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-398978-still-1.jpg",
+      "assets/tmdb-movie-398978-still-2.jpg"
+    ],
+    "releaseDate": "2019-11-28",
+    "rating": 7.8,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=WHXxVmeGQUc",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/398978?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt1302006/",
+      "official": "https://www.netflix.com/title/80175798",
+      "releaseRussia": "https://www.kinopoisk.ru/film/462305/dates/",
+      "poster": "https://images.metahub.space/poster/medium/tt1302006/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt1302006/img",
+        "https://i.ytimg.com/vi/WHXxVmeGQUc/sd2.jpg"
+      ]
+    },
+    "platforms": [
+      "Netflix"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-466420",
+    "title": "Убийцы цветочной луны",
+    "type": "movie",
+    "genres": [
+      "Драма",
+      "Криминал",
+      "История"
+    ],
+    "studios": [
+      "Apple Studios",
+      "Imperative Entertainment",
+      "Sikelia Productions",
+      "Appian Way"
+    ],
+    "description": "В Оклахоме 1920-х членов народа осейджей убивают из-за прав на нефтяные доходы. Молли Бёркхарт теряет близких, а федеральные следователи пытаются установить, кто стоит за преступлениями.",
+    "poster": "assets/tmdb-movie-466420-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-466420-still-1.jpg",
+      "assets/tmdb-movie-466420-still-2.jpg"
+    ],
+    "releaseDate": "2024-01-12",
+    "rating": 7.5,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=EP34Yoxs3FQ",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/466420?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt5537002/",
+      "official": "https://www.apple.com/tv-pr/originals/killers-of-the-flower-moon/",
+      "releaseRussia": "https://www.kinopoisk.ru/film/1077781/",
+      "poster": "https://images.metahub.space/poster/medium/tt5537002/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt5537002/img",
+        "https://i.ytimg.com/vi/EP34Yoxs3FQ/sd2.jpg"
+      ]
+    },
+    "platforms": [
+      "Apple"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
     "id": "tmdb-movie-37799",
     "title": "Социальная сеть",
     "type": "movie",
