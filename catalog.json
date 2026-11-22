@@ -1,5 +1,85 @@
 [
   {
+    "id": "tmdb-movie-1726",
+    "title": "Железный человек",
+    "type": "movie",
+    "genres": [
+      "Фантастика",
+      "Боевик",
+      "Приключения"
+    ],
+    "studios": [
+      "Marvel Studios"
+    ],
+    "description": "Оружейный промышленник Тони Старк попадает в плен и собирает бронированный костюм, чтобы сбежать. Вернувшись домой, он решает выяснить, как оружие его компании оказалось у захватчиков.",
+    "poster": "assets/tmdb-movie-1726-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-1726-still-1.jpg",
+      "assets/tmdb-movie-1726-still-2.jpg"
+    ],
+    "releaseDate": "2008-05-01",
+    "rating": 7.9,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=805l8AP1rfs",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/1726?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0371746/",
+      "official": "https://www.disneyplus.com/browse/entity-3ac839c4-864b-41ed-ad98-043d6b4ac564",
+      "releaseRussia": "https://www.kinobusiness.com/movies/Iron-Man/",
+      "poster": "https://images.metahub.space/poster/medium/tt0371746/img",
+      "gallery": [
+        "https://www.latimes.com/projects/la_et_stan_lee_timeline_obituary/static/img/Iron_man_movie.jpg",
+        "https://assets-jpcust.jwpsrv.com/thumbnails/xt95mdq1-1280.jpg"
+      ]
+    },
+    "platforms": [
+      "Disney"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-22"
+  },
+  {
+    "id": "tmdb-movie-100402",
+    "title": "Первый мститель: Другая война",
+    "type": "movie",
+    "genres": [
+      "Фантастика",
+      "Боевик",
+      "Приключения"
+    ],
+    "studios": [
+      "Marvel Studios"
+    ],
+    "description": "После нападения на Ника Фьюри Стив Роджерс и Наташа Романофф раскрывают заговор внутри Щ.И.Т.а. Им помогает Сэм Уилсон, а на их след выходит таинственный Зимний солдат.",
+    "poster": "assets/tmdb-movie-100402-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-100402-still-1.jpg",
+      "assets/tmdb-movie-100402-still-2.jpg"
+    ],
+    "releaseDate": "2014-04-03",
+    "rating": 7.7,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=7SlILk2WMTI",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/100402?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt1843866/",
+      "official": "https://movies.disney.com/captain-america-the-winter-soldier",
+      "releaseRussia": "https://www.kinometro.ru/release/card/id/9953",
+      "poster": "https://images.metahub.space/poster/medium/tt1843866/img",
+      "gallery": [
+        "https://cdn.mos.cms.futurecdn.net/nhkRBYT3kVshqQQozwpguZ-1920-80.jpg",
+        "https://cdn.mos.cms.futurecdn.net/fkofKxuTSUKC9bNNoMZuVN.jpg"
+      ]
+    },
+    "platforms": [
+      "Disney"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-22"
+  },
+  {
     "id": "tmdb-movie-20526",
     "title": "Трон: Наследие",
     "type": "movie",
