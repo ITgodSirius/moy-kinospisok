@@ -1,5 +1,42 @@
 [
   {
+    "id": "tmdb-movie-50544",
+    "title": "Секс по дружбе",
+    "type": "movie",
+    "genres": [
+      "Комедия",
+      "Мелодрама"
+    ],
+    "studios": [
+      "Screen Gems"
+    ],
+    "description": "Джейми помогает Дилану устроиться на работу в Нью-Йорке. Они становятся друзьями и договариваются о близости без обязательств. Со временем обоим приходится разобраться, чего они на самом деле хотят друг от друга.",
+    "poster": "assets/tmdb-movie-50544-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-50544-still-1.jpg",
+      "assets/tmdb-movie-50544-still-2.jpg"
+    ],
+    "releaseDate": "2011-07-28",
+    "rating": 6.5,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=VzXg-Vr1sMA",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/50544?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt1632708/",
+      "official": "https://www.sonypictures.com/movies/friendswithbenefits",
+      "releaseRussia": "https://www.kinometro.ru/release/card/id/3910",
+      "poster": "https://www.sonypictures.com/sites/default/files/styles/max_860x460/public/title-key-art/fwb_rating_onesheet_1400x2100.jpg?itok=Sce8SXjH",
+      "gallery": [
+        "https://de.web.img3.acsta.net/r_1280_720/medias/nmedia/18/82/69/35/19759512.jpg",
+        "https://assets.vogue.com/photos/60706ff0f6400d6eae773570/16%3A9/w_1280%2Cc_limit/MCDFRWI_EC136.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-22"
+  },
+  {
     "id": "tmdb-movie-1726",
     "title": "Железный человек",
     "type": "movie",
