@@ -1,5 +1,119 @@
 [
   {
+    "id": "tmdb-movie-20526",
+    "title": "Трон: Наследие",
+    "type": "movie",
+    "genres": [
+      "Фантастика",
+      "Боевик",
+      "Приключения"
+    ],
+    "studios": [
+      "Walt Disney Pictures"
+    ],
+    "description": "Сэм Флинн идёт по следу пропавшего отца и попадает в цифровой мир, где людей заставляют участвовать в смертельных играх. Вместе с Кворрой он пытается найти отца и выбраться из Сети.",
+    "poster": "assets/tmdb-movie-20526-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-20526-still-1.jpg",
+      "assets/tmdb-movie-20526-still-2.jpg"
+    ],
+    "releaseDate": "2010-12-23",
+    "rating": 6.8,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=P78pl1FUXfA",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/20526?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt1104001/",
+      "official": "https://movies.disney.com/tron-legacy",
+      "releaseRussia": "https://www.kinometro.ru/release/card/id/2393",
+      "poster": "https://images.metahub.space/poster/medium/tt1104001/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt1104001/img",
+        "https://m.media-amazon.com/images/M/MV5BMjI5NDUyOTY0MF5BMl5BanBnXkFtZTcwNjMzNjM4NA%40%40._V1_.jpg"
+      ]
+    },
+    "platforms": [
+      "Disney"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-22"
+  },
+  {
+    "id": "tmdb-movie-295699",
+    "title": "Каждому своё",
+    "type": "movie",
+    "genres": [
+      "Комедия"
+    ],
+    "studios": [
+      "Annapurna Pictures",
+      "Detour Filmproduction"
+    ],
+    "description": "В 1980 году первокурсник Джейк переезжает в дом университетской бейсбольной команды. За несколько дней до начала занятий он знакомится с товарищами по команде и пробует понять, чего хочет от жизни вне поля.",
+    "poster": "assets/tmdb-movie-295699-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-295699-still-1.jpg",
+      "assets/tmdb-movie-295699-still-2.jpg"
+    ],
+    "releaseDate": "2016-04-07",
+    "rating": 6.9,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=WyuCY_UT7KY",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/295699?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt2937696/",
+      "official": "https://www.annapurna.com/film/everybody-wants-some",
+      "releaseRussia": "https://www.kinopoisk.ru/film/770683/box/rus/",
+      "poster": "https://images.metahub.space/poster/medium/tt2937696/img",
+      "gallery": [
+        "https://m.media-amazon.com/images/M/MV5BYzVhYjE2NDItNjcyOC00YjVlLTliZDctMmYyYjMxMmYxNWU4XkEyXkFqcGc%40._V1_.jpg",
+        "https://static.standard.co.uk/s3fs-public/thumbnails/image/2016/05/13/10/everybody-wants-some-review.jpg?auto=webp&crop=5%3A3%2Csmart&quality=75&width=1200"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-22"
+  },
+  {
+    "id": "tmdb-movie-115782",
+    "title": "Джобс: Империя соблазна",
+    "type": "movie",
+    "genres": [
+      "Биография",
+      "Драма"
+    ],
+    "studios": [
+      "Five Star Feature Films"
+    ],
+    "description": "Стив Джобс и Стив Возняк начинают собирать компьютеры в гараже. По мере роста Apple стремление Джобса контролировать каждую деталь приводит к конфликтам с коллегами и в итоге ставит под угрозу его место в собственной компании.",
+    "poster": "assets/tmdb-movie-115782-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-115782-still-1.jpg",
+      "assets/tmdb-movie-115782-still-2.jpg"
+    ],
+    "releaseDate": "2013-09-19",
+    "rating": 6,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=uMlBzsObomo",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/115782?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt2357129/",
+      "official": "https://www.youtube.com/watch?v=uMlBzsObomo",
+      "releaseRussia": "https://www.kinobusiness.com/movies/dzhobs-imperiya-soblazna/",
+      "poster": "https://images.metahub.space/poster/medium/tt2357129/img",
+      "gallery": [
+        "https://m.media-amazon.com/images/M/MV5BNzg5NDUwMzA0MV5BMl5BanBnXkFtZTgwMzE3NTYwMDE%40._V1_.jpg",
+        "https://media.bizj.us/view/img/869971/jobs-movie%2A1200xx2223-1667-139-0.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-22"
+  },
+  {
     "id": "tmdb-movie-9319",
     "title": "Последний бойскаут",
     "type": "movie",
