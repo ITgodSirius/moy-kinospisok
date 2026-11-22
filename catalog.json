@@ -1,5 +1,128 @@
 [
   {
+    "id": "tmdb-movie-359724",
+    "title": "Ford против Ferrari",
+    "type": "movie",
+    "genres": [
+      "Драма",
+      "Биография",
+      "Спорт"
+    ],
+    "studios": [
+      "20th Century Fox",
+      "Chernin Entertainment",
+      "TSG Entertainment"
+    ],
+    "description": "Автоконструктор Кэрролл Шелби и гонщик Кен Майлз готовят Ford GT40 к гонке «24 часа Ле-Мана» 1966 года. Чтобы бросить вызов Ferrari, им приходится отстаивать свои решения и на трассе, и перед руководством Ford.",
+    "poster": "assets/tmdb-movie-359724-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-359724-still-1.jpg",
+      "assets/tmdb-movie-359724-still-2.jpg"
+    ],
+    "releaseDate": "2019-11-14",
+    "rating": 8.1,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=zyYgDtY2AMY",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/359724?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt1950186/",
+      "official": "https://www.20thcenturystudios.com/movies/ford-v-ferrari",
+      "releaseRussia": "https://www.kinopoisk.ru/film/835086/dates/",
+      "poster": "https://images.metahub.space/poster/medium/tt1950186/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt1950186/img",
+        "https://i.ytimg.com/vi/zyYgDtY2AMY/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-911430",
+    "title": "Формула-1 (F1)",
+    "type": "movie",
+    "genres": [
+      "Драма",
+      "Спорт"
+    ],
+    "studios": [
+      "Apple Studios",
+      "Jerry Bruckheimer Films",
+      "Plan B Entertainment",
+      "Dawn Apollo Films"
+    ],
+    "description": "Ветеран гонок Сонни Хейс возвращается в «Формулу-1», чтобы помочь команде старого друга. Его напарник, амбициозный новичок Джошуа Пирс, хочет доказать, что способен побеждать на своих условиях.",
+    "poster": "assets/tmdb-movie-911430-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-911430-still-1.jpg",
+      "assets/tmdb-movie-911430-still-2.jpg"
+    ],
+    "releaseDate": "2025-12-12",
+    "rating": 7.6,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=KsBNOAAXiCY",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/911430?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt16311594/",
+      "official": "https://www.apple.com/tv-pr/originals/f1/",
+      "releaseRussia": "https://www.kinopoisk.ru/film/5003510/",
+      "poster": "https://images.metahub.space/poster/medium/tt16311594/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt16311594/img",
+        "https://i.ytimg.com/vi/KsBNOAAXiCY/sd2.jpg"
+      ]
+    },
+    "platforms": [
+      "Apple"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-19995",
+    "title": "Аватар",
+    "type": "movie",
+    "genres": [
+      "Фантастика",
+      "Приключения",
+      "Боевик"
+    ],
+    "studios": [
+      "20th Century Fox",
+      "Lightstorm Entertainment"
+    ],
+    "description": "Бывший морпех Джейк Салли прибывает на Пандору и с помощью тела-аватара знакомится с народом на’ви. Пока люди готовятся захватить месторождение, Джейку приходится решить, на чьей он стороне.",
+    "poster": "assets/tmdb-movie-19995-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-19995-still-1.jpg",
+      "assets/tmdb-movie-19995-still-2.jpg"
+    ],
+    "releaseDate": "2009-12-17",
+    "rating": 7.9,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=5PSNL1qE6VY",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/19995?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt0499549/",
+      "official": "https://www.avatar.com/movies/avatar/",
+      "releaseRussia": "https://www.kinopoisk.ru/film/251733/",
+      "poster": "https://images.metahub.space/poster/medium/tt0499549/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt0499549/img",
+        "https://i.ytimg.com/vi/5PSNL1qE6VY/sd2.jpg"
+      ]
+    },
+    "platforms": [
+      "Disney"
+    ],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
     "id": "tmdb-movie-44833",
     "title": "Морской бой",
     "type": "movie",
