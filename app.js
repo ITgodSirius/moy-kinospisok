@@ -8,13 +8,14 @@ const viewKey = 'film-list:view:' + location.pathname;
 const persistentViewKey = viewKey.replace(/\/index\.html$/, '/');
 const layoutKey = viewKey + ':layout';
 const wishLayoutKey = persistentViewKey + ':wish-layout';
+const sortKeyPrefix = persistentViewKey + ':sort:';
 const wishes = { items: null, loading: false, status: 'wanted', category: 'all', layout: 'grid', detail: null };
 const formatBudget = new Intl.NumberFormat('ru-RU', { style: 'currency', currency: 'RUB', maximumFractionDigits: 0 });
 let layout = 'list';
 let detailItem;
 const state = { list: 'waiting', type: 'all', genres: new Set(), catalog: [], day: null };
 let viewBeforeSearch;
-const sortChoices = { available: 'release-new', other: 'added-new' };
+const wishSortChoices = { wanted: 'added', fulfilled: 'added' };
 const filterIds = ['origin', 'studio', 'period', 'minimum'];
 const animationGenres = new Set(['мультфильм', 'мультсериал', 'анимация', 'мультипликация']);
 const originLabels = { russian: 'Российское', foreign: 'Зарубежное' };
@@ -46,6 +47,7 @@ posterBrandNames.forEach((aliases, row) => {
   for (const alias of aliases) posterBrandRows.set(brandKey(alias), row);
 });
 const listNames = { waiting: 'Жду', available: 'Новинки', backlog: 'Старое', watching: 'Смотрю сейчас', watched: 'Просмотрено', favorite: 'Любимые' };
+const sortChoices = Object.fromEntries(Object.keys(listNames).map(list => [list, list === 'available' ? 'release-new' : 'added-new']));
 const markActions = {
   watched: { add: 'Отметить просмотренным', remove: 'Снять отметку просмотра', icon: 'check' },
   favorite: { add: 'В любимые', remove: 'Убрать из любимых', icon: 'heart' },
@@ -136,11 +138,36 @@ function matchesFilters(item) {
     && (!el('minimum').value || (item.rating != null && item.rating >= Number(el('minimum').value)))
     && (!el('period').value || (ageDays >= 0 && ageDays < Number(el('period').value)));
 }
-function sortScope() {
-  return state.list === 'available' ? 'available' : 'other';
+function setupPageSort(select, choices, currentPage, feed, refresh) {
+  const allowed = new Set([...select.options].map(option => option.value));
+  for (const page of Object.keys(choices)) {
+    try {
+      const saved = localStorage.getItem(sortKeyPrefix + page);
+      if (allowed.has(saved)) choices[page] = saved;
+    } catch { /* Use the tab's choice when storage is unavailable. */ }
+  }
+  select.value = choices[currentPage()];
+  select.onchange = () => {
+    const page = currentPage();
+    choices[page] = select.value;
+    try { localStorage.setItem(sortKeyPrefix + page, select.value); }
+    catch { /* Keep the in-memory choice for this tab. */ }
+    refresh();
+    feed.scrollTop = 0;
+  };
+  window.addEventListener('storage', ({ key, newValue }) => {
+    if (!key?.startsWith(sortKeyPrefix) || !allowed.has(newValue)) return;
+    const page = key.slice(sortKeyPrefix.length);
+    if (!Object.hasOwn(choices, page)) return;
+    choices[page] = newValue;
+    if (page === currentPage()) {
+      select.value = newValue;
+      refresh();
+    }
+  });
 }
 function compare(a, b) {
-  let sort = sortChoices[sortScope()];
+  let sort = sortChoices[state.list];
   if (sort === 'russian-first' || sort === 'foreign-first') {
     const first = sort === 'russian-first' ? 'russian' : 'foreign';
     const rank = origin => origin == null ? 2 : Number(origin !== first);
@@ -709,6 +736,7 @@ function setupWishlist() {
       const value = event.target.closest('button')?.dataset[attribute];
       if (!value || value === wishes[key]) return;
       wishes[key] = value;
+      if (key === 'status') el('wish-sort').value = wishSortChoices[value];
       if (key === 'layout') {
         try { localStorage.setItem(wishLayoutKey, value); }
         catch { /* The layout can still be changed for this tab. */ }
@@ -718,10 +746,7 @@ function setupWishlist() {
       el('wish-feed').scrollTop = 0;
     };
   }
-  el('wish-sort').onchange = () => {
-    renderWishlist();
-    el('wish-feed').scrollTop = 0;
-  };
+  setupPageSort(el('wish-sort'), wishSortChoices, () => wishes.status, el('wish-feed'), renderWishlist);
   el('edit-dialog').addEventListener('keydown', event => {
     if (event.key === 'Escape' && el('wish-details').open) {
       event.preventDefault();
@@ -942,7 +967,7 @@ function reflectControls() {
 }
 function reflectSort() {
   const sort = el('sort');
-  sort.value = sortChoices[sortScope()];
+  sort.value = sortChoices[state.list];
   const width = sort.selectedOptions[0].textContent.length * 8.25 + 32;
   sort.style.setProperty('--sort-width', Math.min(236, width) + 'px');
 }
@@ -1031,8 +1056,9 @@ function restoreChoices(view, availableGenres) {
     available: view.list === 'available' && view.sort !== 'added-new' ? view.sort : undefined
   };
   const validSorts = new Set([...el('sort').options].map(option => option.value));
-  for (const scope of Object.keys(sortChoices)) {
-    if (validSorts.has(savedSorts[scope])) sortChoices[scope] = savedSorts[scope];
+  for (const list of Object.keys(sortChoices)) {
+    const value = savedSorts[list] ?? (list !== 'available' ? savedSorts.other : undefined);
+    if (validSorts.has(value)) sortChoices[list] = value;
   }
   for (const id of filterIds) {
     const select = el(id);
@@ -1042,7 +1068,6 @@ function restoreChoices(view, availableGenres) {
   if (Array.isArray(view.expanded)) {
     for (const id of view.expanded) expandedDescriptions.add(id);
   }
-  reflectControls();
 }
 function restoreFeed(view) {
   const feed = el('feed');
@@ -1396,14 +1421,13 @@ async function start() {
   setupLayouts();
   const view = readSavedView();
   if (view) restoreChoices(view, availableGenres);
-  else reflectControls();
+  setupPageSort(el('sort'), sortChoices, () => state.list, el('feed'), () => {
+    reflectSort();
+    render();
+  });
+  reflectControls();
   wireGroup('list-navigation','list'); wireGroup('types','type');
   for (const id of filterIds) el(id).addEventListener('change', render);
-  el('sort').onchange = () => {
-    sortChoices[sortScope()] = el('sort').value;
-    reflectSort();
-    render(); el('feed').scrollTop = 0;
-  };
   el('filters-open').onclick = () => el('filters').showModal();
   el('clear').onclick = resetFilters;
   el('apply').onclick = () => { el('filters').close(); el('feed').scrollTop = 0; };
