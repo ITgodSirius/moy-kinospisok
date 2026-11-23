@@ -154,6 +154,7 @@ export async function connectHistory(token) {
 }
 export function forgetCredential() {
   localStorage.removeItem(storagePrefix + 'writer-token');
+  window.dispatchEvent(new Event('writer-key-removed'));
 }
 if (shared) {
   function restoreSnapshot(raw) {

@@ -1,13 +1,10 @@
-import { mkdir, readFile, writeFile, copyFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile, copyFile, rm } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { root, mime, publicFiles } from './public-files.mjs';
-import { quoteFields } from './quote-record.mjs';
 const path = name => new URL(name, root);
 const catalog = JSON.parse(await readFile(path('catalog.json'), 'utf8'));
 const wishlist = JSON.parse(await readFile(path('wishlist.json'), 'utf8'));
-const quotes = JSON.parse(await readFile(path('quotes.json'), 'utf8'));
-if (!Array.isArray(quotes)) throw new Error('Каталог цитат в quotes.json должен быть массивом.');
 const files = await publicFiles();
 const ids = new Set();
 const trailerUrls = [
@@ -36,21 +33,16 @@ for (const item of wishlist) {
   if (item.budget != null && (!Number.isFinite(item.budget) || item.budget < 0)) throw new Error('Проверьте бюджет желания: ' + item.title);
   wishIds.add(item.id);
 }
-const quoteIds = new Set();
-for (const item of quotes) {
-  const { id } = quoteFields(item);
-  if (quoteIds.has(id) || !/^\d{4}-\d{2}-\d{2}$/.test(item.addedDate)) throw new Error('Проверьте ID и дату цитаты: ' + id);
-  quoteIds.add(id);
-}
 // Pages serves the repository root. Update its asset URLs before making the other builds.
-const [history, css, originalApp, originalPage] = await Promise.all(
-  ['history.js', 'style.css', 'app.js', 'index.html'].map(name => readFile(path(name), 'utf8'))
+const [history, training, privateStore, css, originalApp, originalPage] = await Promise.all(
+  ['history.js', 'training.js', 'private-store.js', 'style.css', 'app.js', 'index.html'].map(name => readFile(path(name), 'utf8'))
 );
 function versionedUrl(name, content) {
   return './' + name + '?v=' + createHash('sha256').update(content).digest('hex').slice(0, 12);
 }
-const historyUrl = versionedUrl('history.js', history);
-const app = originalApp.replace(/'\.\/history\.js(?:\?v=[a-f0-9]+)?'/, "'" + historyUrl + "'");
+const modules = new Map([['history.js', history], ['training.js', training], ['private-store.js', privateStore]]);
+const app = originalApp.replace(/'\.\/(history|training|private-store)\.js(?:\?v=[a-f0-9]+)?'/g,
+  (_, name) => "'" + versionedUrl(name + '.js', modules.get(name + '.js')) + "'");
 const styleUrl = versionedUrl('style.css', css);
 const appUrl = versionedUrl('app.js', app);
 const page = originalPage
@@ -61,6 +53,8 @@ if (page !== originalPage) await writeFile(path('index.html'), page);
 // Bundles can also be opened without HTTP publication metadata.
 const builtPage = page.replace('<time id="site-updated">', '<time id="site-updated" datetime="' + new Date().toISOString() + '">');
 const assets = Object.create(null);
+// Older builds copied the quote collection into the public distribution.
+await rm(path('dist/pages/quotes.json'), { force: true });
 await mkdir(path('dist/pages/assets/'), {recursive:true});
 for (const file of files) {
   let bytes = file === 'index.html' ? Buffer.from(builtPage) : await readFile(path(file));
@@ -82,17 +76,16 @@ const dataUrl = file => {
 };
 const offline = catalog.map(item => ({ ...item, poster: dataUrl(item.poster), gallery: (item.gallery || []).map(dataUrl) }));
 const offlineWishlist = wishlist.map(item => ({ ...item, image: dataUrl(item.image) }));
-const code = app.replace("'" + historyUrl + "'", () => "'" + dataUrl('history.js') + "'");
+const code = app.replace(/'\.\/(history|training|private-store)\.js\?v=[a-f0-9]+'/g,
+  (_, name) => "'" + dataUrl(name + '.js') + "'");
 const json = JSON.stringify(offline).replaceAll('<','\\u003c');
 const wishJson = JSON.stringify(offlineWishlist).replaceAll('<', '\\u003c');
-const quoteJson = JSON.stringify(quotes).replaceAll('<', '\\u003c');
 const offlineCss = css.replace(/url\("\.\/(assets\/[^"]+)"\)/g, (_, file) => 'url("' + dataUrl(file) + '")');
 const html = builtPage
   .replace('<link rel="stylesheet" href="' + styleUrl + '">', () => '<style>' + offlineCss + '</style>')
   .replace('<script type="module" src="' + appUrl + '"></script>', () => [
     '<script type="application/json" id="offline-catalog">' + json + '</script>',
     '<script type="application/json" id="offline-wishlist">' + wishJson + '</script>',
-    '<script type="application/json" id="offline-quotes">' + quoteJson + '</script>',
     '<script type="module">' + code + '</script>'
   ].join('\n'));
 await writeFile(path('dist/Мой киносписок.html'), html);

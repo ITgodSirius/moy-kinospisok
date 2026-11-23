@@ -1,4 +1,7 @@
-import { hosted, shared, historySnapshotKey, credential, connectHistory, marked, markTime, reactionValue, busy, refreshHistory, setMark } from './history.js?v=90f98fde78d9';
+import { hosted, shared, historySnapshotKey, credential, connectHistory, marked, markTime, reactionValue, busy, refreshHistory, setMark } from './history.js?v=0147301cae10';
+
+import { KeyError, verifyOwner, openPrivateFile, savePrivateFile } from './private-store.js?v=a2b978699a6e';
+import { setupTraining, emptyTraining } from './training.js?v=7d8982728a75';
 
 const el = id => document.getElementById(id);
 let pendingActions = 0;
@@ -61,6 +64,7 @@ const markActions = {
   watching: { add: 'Смотрю сейчас', remove: 'Отложить просмотр', icon: 'play' }
 };
 const iconPaths = {
+  barbell: '<path d="M3 10v4m3-7v10m3-12v14m0-7h6m0-7v14m3-12v10m3-7v4"/>',
   thumb: '<path d="M7 10v10H3V10zm0 0 5-6c1-1.3 3-.8 3 1.1L14 9h5.2a2 2 0 0 1 2 2.4l-1.4 6.8a2.2 2.2 0 0 1-2.2 1.8H7"/>',
   neutral: '<path d="M5 12h14"/>',
   quote: '<path d="M3 6h7v7a5 5 0 0 1-5 5m9-12h7v7a5 5 0 0 1-5 5"/>',
@@ -237,15 +241,15 @@ function showSchedule(item, openSeason) {
   el('seasons').scrollTop = 0;
   el('schedule').showModal();
 }
-async function requestMarkAccess() {
+async function requestMarkAccess(ownerOnly = false, reason = '') {
   if (!shared) {
     announce('Редактирование доступно на основном сайте киносписка.');
     return false;
   }
-  if (credential()) return true;
+  if (credential() && !reason) return true;
   const dialog = el('sync-dialog');
   if (dialog.open) return false;
-  openKeyDialog();
+  openKeyDialog(ownerOnly, reason);
   return new Promise(resolve => dialog.addEventListener('close', () => resolve(dialog.returnValue === 'connected'), { once: true }));
 }
 async function saveMark(id, kind, value, update) {
@@ -823,11 +827,10 @@ function quoteCard(quote) {
   card.append(type, block, caption);
   return card;
 }
-function setupQuotes(onUnlock) {
+function setupQuotes() {
   const search = el('quote-search');
   const categories = el('quote-categories');
   const records = el('quote-records');
-  let loading;
   let entries = null;
   let category = 'all';
 
@@ -854,38 +857,13 @@ function setupQuotes(onUnlock) {
     renderQuotes();
     el('quote-feed').scrollTop = 0;
   };
-  async function loadQuotes() {
-    if (loading) return;
-    const request = new AbortController();
-    loading = request;
-    records.replaceChildren(node('p', 'loading quote-empty', 'Загрузка цитат…'));
-    try {
-      const embedded = el('offline-quotes');
-      let quotes;
-      if (embedded) quotes = JSON.parse(embedded.textContent);
-      else quotes = await withLoading(readCollectionFile('./quotes.json', request));
-      if (request.signal.aborted) return;
+  return {
+    open(quotes) {
       if (!Array.isArray(quotes)) throw new Error('Неверный формат каталога цитат.');
       entries = quotes;
       renderQuotes();
-    } catch {
-      if (loading !== request) return;
-      entries = null;
-      const failure = node('section', 'empty quote-empty');
-      failure.append(node('h2', '', 'Не удалось открыть цитаты'), button('Повторить', '', null, loadQuotes));
-      records.replaceChildren(failure);
-    } finally {
-      if (loading === request) loading = undefined;
-    }
-  }
-  return {
-    request() {
-      onUnlock();
-      loadQuotes();
     },
     lock() {
-      loading?.abort();
-      loading = undefined;
       entries = null;
       search.value = '';
       records.replaceChildren();
@@ -901,12 +879,41 @@ function setupCollections() {
   const screens = {
     cinema: { surfaces: [el('cinema-header'), feed], feed, focus: el('open-wishlist'), title: 'Мой киносписок', skipText: 'К фильмам и сериалам' },
     wishlist: { surfaces: [el('wishlist')], feed: wishFeed, focus: el('open-cinema'), title: 'Мой вишлист', skipText: 'К желаниям' },
+    training: { surfaces: [el('training')], feed: el('training-feed'), focus: el('training-heading'), title: 'Тренировки', skipText: 'К тренировкам' },
     quotes: { surfaces: [el('quotes')], feed: el('quote-feed'), focus: el('quotes-heading'), title: 'Мои цитаты', skipText: 'К цитатам' }
   };
-  const positions = { cinema: 0, wishlist: 0, quotes: 0 };
+  const positions = { cinema: 0, wishlist: 0, quotes: 0, training: 0 };
   let current = 'cinema';
   let listScroll = 0;
-  const quotes = setupQuotes(() => show('quotes'));
+  const quotes = setupQuotes();
+  const workouts = setupTraining({ el, node, button, announce, withLoading, credential, savePrivateFile });
+  let navigation = 0;
+  let activeKey;
+  function isPrivate(name) { return name === 'quotes' || name === 'training'; }
+  async function navigate(next) {
+    const attempt = ++navigation;
+    if (!isPrivate(next)) return show(next);
+    if (!await requestMarkAccess(true) || attempt !== navigation) return;
+    const token = credential();
+    try {
+      const file = await withLoading((async () => {
+        await verifyOwner(token);
+        return next === 'quotes' ? openPrivateFile(token, 'quotes.json', () => [])
+          : openPrivateFile(token, 'training.json', emptyTraining);
+      })());
+      if (attempt !== navigation || token !== credential()) return;
+      if (next === 'quotes') quotes.open(file.data);
+      else workouts.open(file);
+      show(next);
+      activeKey = token;
+      if (!file.available && next === 'quotes') el('quote-records').replaceChildren(node('p', 'quote-empty', 'Закрытое хранилище цитат не подключено.'));
+    } catch (error) {
+      if (attempt !== navigation) return;
+      if (error instanceof KeyError) {
+        if (await requestMarkAccess(true, error.message) && attempt === navigation) return navigate(next);
+      } else announce(error.message);
+    }
+  }
   function show(next) {
     if (current === next) return;
     if (current === 'cinema') {
@@ -917,6 +924,8 @@ function setupCollections() {
     positions[current] = current === 'quotes' ? 0 : previous.feed.scrollTop;
     for (const surface of previous.surfaces) surface.hidden = true;
     if (current === 'quotes') quotes.lock();
+    if (current === 'training') workouts.lock();
+    activeKey = null;
     current = next;
     const screen = screens[current];
     for (const surface of screen.surfaces) surface.hidden = false;
@@ -930,10 +939,22 @@ function setupCollections() {
   }
   for (const button of document.querySelectorAll('[data-collection]')) {
     const next = button.dataset.collection;
-    button.onclick = next === 'quotes' ? quotes.request : () => show(next);
+    button.onclick = () => navigate(next);
   }
-  window.addEventListener('pagehide', () => {
-    if (current === 'quotes') show('cinema');
+  function lockPrivate() {
+    navigation++;
+    if (isPrivate(current)) show('cinema');
+  }
+  window.addEventListener('pagehide', lockPrivate);
+  window.addEventListener('storage', () => { if (activeKey && activeKey !== credential()) lockPrivate(); });
+  window.addEventListener('writer-key-removed', lockPrivate);
+  document.addEventListener('visibilitychange', async () => {
+    if (document.hidden || !activeKey) return;
+    const key = activeKey;
+    try {
+      if (key !== credential()) return lockPrivate();
+      await verifyOwner(key);
+    } catch { if (key === activeKey) lockPrivate(); }
   });
 }
 function resetFilters() {
@@ -1339,13 +1360,14 @@ async function sync() {
   try { await refreshViews(); }
   catch (error) { announce(shared ? error.message : 'Нет связи с историей просмотра. Повторим синхронизацию.'); }
 }
-function openKeyDialog() {
+function openKeyDialog(ownerOnly, reason) {
   const dialog = el('sync-dialog');
   const input = el('sync-token');
+  dialog.dataset.ownerOnly = String(ownerOnly);
   dialog.returnValue = '';
   input.value = '';
   input.removeAttribute('aria-invalid');
-  el('sync-error').textContent = '';
+  el('sync-error').textContent = reason;
   dialog.showModal();
   input.select();
 }
@@ -1369,7 +1391,10 @@ function setupKeyDialog() {
     try {
       if (!/^github_pat_[A-Za-z0-9_]+$/.test(token)) throw new Error('Введите полный ключ GitHub, начинающийся с github_pat_.');
       saving = true;
-      await withLoading(connectHistory(token));
+      await withLoading((async () => {
+        if (dialog.dataset.ownerOnly === 'true') await verifyOwner(token);
+        await connectHistory(token);
+      })());
       renderHistory();
       dialog.close('connected');
     } catch (error) {
@@ -1467,6 +1492,7 @@ async function start() {
   document.querySelectorAll('[data-icon]').forEach(holder => holder.replaceWith(icon(holder.dataset.icon)));
   document.querySelectorAll('[data-close]').forEach(b => b.onclick = () => b.closest('dialog').close());
   setupWishlist();
+  setupKeyDialog();
   setupCollections();
   const embedded = document.getElementById('offline-catalog');
   let modified;
@@ -1477,7 +1503,6 @@ async function start() {
     state.catalog = await response.json();
     modified = response.headers.get('Last-Modified');
   }
-  setupKeyDialog();
   showLastUpdate(modified);
   const studios = new Set([...studioChoices, ...state.catalog.flatMap(i => [...i.studios, ...(i.platforms || [])])]);
   for (const studio of studios) el('studio').add(new Option(studio, studio));
