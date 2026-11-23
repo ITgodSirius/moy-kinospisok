@@ -578,7 +578,10 @@ a.quote-source:hover{color:var(--blue)}
 .training-days { display:flex; align-self:start; flex-direction:column; align-items:stretch; gap:6px; min-height:0; max-height:100%; overflow-y:auto; border-right:1px solid var(--line); padding-right:14px }
 .training-days .btn[aria-pressed] { justify-content:flex-start; background:transparent; border-color:transparent }
 .training-days .btn[aria-pressed=true] { color:var(--blue); background:var(--tint) }
-.training-copy-workouts { width:100%; margin-top:6px }
+.training-copy-workouts.btn {
+  align-self:flex-start; width:fit-content; max-width:min(100%,10.5rem); min-height:32px; margin-top:4px;
+  padding:2px 8px; font-size:.8125rem; line-height:1.2; text-wrap:balance
+}
 .training-table { border:1px solid var(--line); border-radius:10px; background:var(--surface); padding:14px }
 .training-exercise + .training-exercise { border-top:1px solid var(--line); padding-top:14px }
 .training-exercise > .btn { justify-self:start }

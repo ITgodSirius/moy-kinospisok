@@ -486,7 +486,7 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
       b.setAttribute('aria-pressed', String(selectedDay === id)); sidebar.append(b);
     }
     const sessions = logged.filter(s => s.dayId === selectedDay).sort((a,b) => b.date.localeCompare(a.date));
-    const copyButton = btn('Копировать JSON', () => copyWorkoutJson(sessions, 'История подпрограммы скопирована'));
+    const copyButton = btn('Копировать историю всех тренировок', () => copyWorkoutJson(sessions, 'История подпрограммы скопирована'));
     copyButton.classList.add('training-copy-workouts');
     copyButton.title = 'Скопировать все тренировки выбранной подпрограммы в этом зале';
     copyButton.disabled = !sessions.length;
