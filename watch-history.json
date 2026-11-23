@@ -776,12 +776,6 @@
       "markedAt": "2026-11-21T00:30:34.843Z"
     },
     {
-      "card": "tmdb-tv-254630-s1",
-      "kind": "watching",
-      "value": true,
-      "markedAt": "2026-11-22T20:32:08.250Z"
-    },
-    {
       "card": "tmdb-tv-255661-s1",
       "kind": "reaction",
       "value": "like",
@@ -883,5 +877,8 @@
       "value": true,
       "markedAt": "2026-11-23T17:48:07.589Z"
     }
+  ],
+  "removed": [
+    "tmdb-tv-254630-s1/watching"
   ]
 }
