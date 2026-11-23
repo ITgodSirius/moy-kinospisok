@@ -514,7 +514,6 @@ a.quote-source:hover{color:var(--blue)}
     border:0; border-radius:inherit; background:transparent; font-size:0; transform:none;
   }
   .training-card-open:is(:hover,:focus-visible) { outline:2px solid var(--blue); outline-offset:-1px }
-  .training-card-copy { position:relative; z-index:1 }
   .training-mobile-back,.training-row:has(> .training-mobile-back:only-child) { display:none }
 }
 .training-default { margin-inline-start:10px; font-size:.85rem; color:var(--blue) }
@@ -579,7 +578,7 @@ a.quote-source:hover{color:var(--blue)}
 .training-days { display:flex; align-self:start; flex-direction:column; align-items:stretch; gap:6px; min-height:0; max-height:100%; overflow-y:auto; border-right:1px solid var(--line); padding-right:14px }
 .training-days .btn[aria-pressed] { justify-content:flex-start; background:transparent; border-color:transparent }
 .training-days .btn[aria-pressed=true] { color:var(--blue); background:var(--tint) }
-.training-program-history { width:100%; margin-top:6px }
+.training-copy-workouts { width:100%; margin-top:6px }
 .training-table { border:1px solid var(--line); border-radius:10px; background:var(--surface); padding:14px }
 .training-exercise + .training-exercise { border-top:1px solid var(--line); padding-top:14px }
 .training-exercise > .btn { justify-self:start }

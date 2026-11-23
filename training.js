@@ -471,7 +471,7 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     for (const session of logged) {
       if (!days.has(session.dayId)) days.set(session.dayId, session.day);
     }
-    if (!days.has(selectedDay)) selectedDay = program.days[0].id;
+    if (!days.has(selectedDay)) selectedDay = days.keys().next().value;
     const sidebar = node('nav', 'training-days');
     if (options.length > 1) {
       const label = node('label', 'training-field'), select = node('select');
@@ -485,9 +485,12 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
       const b = btn(name, () => { selectedDay = id; render(); });
       b.setAttribute('aria-pressed', String(selectedDay === id)); sidebar.append(b);
     }
-    const historyButton = btn('История изменений', () => openTimeline(program));
-    historyButton.classList.add('training-program-history');
-    sidebar.append(historyButton);
+    const sessions = logged.filter(s => s.dayId === selectedDay).sort((a,b) => b.date.localeCompare(a.date));
+    const copyButton = btn('Копировать JSON', () => copyWorkoutJson(sessions, 'История подпрограммы скопирована'));
+    copyButton.classList.add('training-copy-workouts');
+    copyButton.title = 'Скопировать все тренировки выбранной подпрограммы в этом зале';
+    copyButton.disabled = !sessions.length;
+    sidebar.append(copyButton);
     const main = node('div', 'training-history');
     const header = section('История тренировок');
     header.firstElementChild.id = 'training-history-title';
@@ -495,7 +498,6 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     cards.setAttribute('aria-labelledby', 'training-history-title');
     cards.tabIndex = 0;
     main.append(header, cards);
-    const sessions = logged.filter(s => s.dayId === selectedDay).sort((a,b) => b.date.localeCompare(a.date));
     if (!sessions.length) cards.append(hint('Тренировок пока нет.'));
     for (const s of sessions) {
       const sets = s.exercises.flatMap(e => e.sets).filter(set => set.status === 'done').length;
@@ -509,9 +511,7 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
       open.classList.add('training-card-open');
       open.id = 'open-workout-' + s.id;
       open.setAttribute('aria-describedby', date.id);
-      const copyButton = btn('Копировать JSON', () => copySession(s));
-      copyButton.classList.add('training-card-copy');
-      card.append(caption, row(open, copyButton));
+      card.append(caption, open);
       cards.append(card);
     }
     const grid = node('div', 'training-layout'); grid.append(sidebar, main); page(grid);
@@ -606,9 +606,10 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     const id = activeId;
     return change(next => edit(next.sessions.find(s => s.id === id)), after);
   }
-  async function copySession(s) {
+  async function copyWorkoutJson(records, message = 'JSON скопирован') {
     try {
-      await navigator.clipboard.writeText(JSON.stringify(s, null, 2)); announce('JSON скопирован');
+      await navigator.clipboard.writeText(JSON.stringify(records, null, 2));
+      announce(message);
     } catch { announce('Браузер не разрешил копирование.'); }
   }
   function setEditor(ei, set, si, editable, editors, updateSave) {
@@ -707,7 +708,7 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
         for (const { ei, si, values } of updates) Object.assign(record.exercises[ei].sets[si], values);
       }, () => { finishEditing(); announce('Изменения сохранены'); });
     }
-    const controls = row(btn('Копировать JSON', () => copySession(s)));
+    const controls = row(btn('Копировать JSON', () => copyWorkoutJson(s)));
     const definition = historyProgram(s.programId);
     if (definition && s.dayId) controls.append(btn('История подпрограммы', () => openTimeline(definition, 'day')));
     if (editable) { updateSave(); controls.append(save); }
