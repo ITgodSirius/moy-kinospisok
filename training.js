@@ -3,6 +3,14 @@ export function emptyTraining() {
     baselines: {}, sessions: [], nutrition: {}, body: {}, weightHistory: [] };
 }
 
+function validateTraining(data) {
+  if (data?.version !== 1 || !['gyms','programs','sessions'].every(k => Array.isArray(data[k])) ||
+      !['nutrition','body'].every(k => data[k] && typeof data[k] === 'object' && !Array.isArray(data[k])) ||
+      (data.baselines != null && (typeof data.baselines !== 'object' || Array.isArray(data.baselines)))) {
+    throw new Error('Неизвестный формат дневника тренировок.');
+  }
+}
+
 const uid = () => crypto.randomUUID();
 const copy = value => structuredClone(value);
 const dateLabel = value => value.length === 10 ? dayLabel(value) : new Date(value).toLocaleString('ru-RU', { dateStyle: 'long', timeStyle: 'short' });
@@ -175,11 +183,12 @@ function importWeightHistory(announce) {
   }
 }
 
-export function setupTraining({ setupNutrition, el, node, button, announce, withLoading, credential, savePrivateFile }) {
+export function setupTraining({ setupNutrition, el, node, button, announce, withLoading, credential, openPrivateFile, savePrivateFile }) {
   const root = el('training-content');
   const feed = el('training-feed');
   let openImportedWeights = false;
   let navigationId;
+  let workoutDraft;
   let snapshot, ownerKey, tab, settings, selectedDay, selectedProgram, activeId, saving = false, generation = 0;
   // Both mobile disclosures use the same buttons and actions as the desktop toolbars.
   const training = el('training');
@@ -277,6 +286,16 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     const nextId = route.sessionId || null;
     if (activeId !== nextId) { historyEdit = false; drafts.clear(); }
     activeId = nextId;
+    if (workoutDraft && workoutDraft.id !== activeId) workoutDraft = null;
+    if (activeId && !workoutDraft && route.fromStart) {
+      const saved = session();
+      if (saved && !saved.finished) workoutDraft = copy(saved);
+    }
+    if (activeId && !session()) {
+      // The browser can revisit an unsaved workout after its form has been closed.
+      activeId = null;
+      history.replaceState({ ...history.state, workout: { navigationId, program: selectedProgram, day: selectedDay } }, '');
+    }
     if (route.view === 'timeline') {
       const program = historyProgram(route.timelineId);
       if (program) programTimeline(program, route.scope === 'day' ? session() : null);
@@ -324,16 +343,27 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
       b.setAttribute('aria-pressed', String(b.dataset.trainingTab === tab));
     }
   }
-  async function change(edit, after = render) {
+  async function change(edit, after = render, refresh = false) {
     if (saving || !snapshot) return;
     const rev = generation;
     saving = true;
     try {
       if (credential() !== ownerKey) throw new Error('Заново откройте раздел с ключом владельца.');
-      const next = copy(db());
-      edit(next);
-      const result = await withLoading(savePrivateFile(ownerKey, 'training.json', snapshot, next));
-      if (generation === rev) { snapshot = result; after(); }
+      const key = ownerKey;
+      const result = await withLoading((async () => {
+        const base = refresh ? await openPrivateFile(key, 'training.json', emptyTraining) : snapshot;
+        if (generation !== rev || key !== credential()) return;
+        const next = copy(base.data);
+        if (refresh) validateTraining(next);
+        const changed = edit(next);
+        if (refresh && changed === false) return base;
+        return savePrivateFile(key, 'training.json', base, next);
+      })());
+      if (result && generation === rev && key === credential()) {
+        if (refresh) clearLegacyStartingTargets(result.data.sessions);
+        snapshot = result;
+        after();
+      }
     } catch (error) { if (generation === rev) announce(error.message); }
     finally { if (generation === rev) saving = false; }
   }
@@ -643,6 +673,9 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
   }
   function prepare(gym, program, day) {
     const latest = db().sessions.filter(s => s.gymId === gym.id && s.programId === program.id && s.dayId === day.id).sort((a,b) => b.date.localeCompare(a.date));
+    if (workoutDraft?.gymId === gym.id && workoutDraft.programId === program.id && workoutDraft.dayId === day.id) {
+      return openSession(workoutDraft, true);
+    }
     const unfinished = latest.find(s => !s.finished);
     if (unfinished) return openSession(unfinished, true);
     const exercises = day.exercises.map(ex => {
@@ -660,7 +693,8 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     });
     const session = { id: uid(), date: new Date().toISOString(), gymId: gym.id, gym: gym.name, programId: program.id, program: program.name, programRevision: db().programHistory?.[program.id]?.at(-1)?.date ?? null,
       dayId: day.id, day: day.name, finished: false, exercises };
-    return change(next => next.sessions.push(session), () => openSession(session, true));
+    workoutDraft = session;
+    openSession(session, true);
   }
   let historyEdit = false;
   const drafts = new Map();
@@ -679,8 +713,15 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
       showWorkout(list);
     }
   }
-  function session() { return db().sessions.find(s => s.id === activeId); }
+  function session() {
+    return workoutDraft && workoutDraft.id === activeId ? workoutDraft : db().sessions.find(s => s.id === activeId);
+  }
   function updateSession(edit, after = sessionPage) {
+    if (workoutDraft && workoutDraft.id === activeId) {
+      edit(workoutDraft);
+      after();
+      return;
+    }
     const id = activeId;
     return change(next => edit(next.sessions.find(s => s.id === id)), after);
   }
@@ -765,12 +806,12 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     const s = session();
     if (!s) return home();
     const scroll = root.dataset.session === s.id ? workoutScrollArea().scrollTop : 0;
+    const isDraft = s === workoutDraft;
     const editable = !s.finished || historyEdit;
     const editors = new Map();
-    const save = btn('Сохранить', () => saveSets(false), true);
-    const cancel = btn('Отменить', finishEditing);
-    cancel.classList.add('training-cancel');
+    let save, cancel;
     function updateActions() {
+      if (!save) return;
       save.disabled = !historyEdit && ![...drafts.values()].some(draft => draft.changed);
       cancel.disabled = !historyEdit && drafts.size === 0;
     }
@@ -788,7 +829,11 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
         updates.push(update);
       }
       if (!updates.length && !completeWorkout) return finishEditing();
-      updateSession(record => {
+      const original = db().sessions.find(record => record.id === s.id);
+      change(next => {
+        const index = next.sessions.findIndex(record => record.id === s.id);
+        const stored = next.sessions[index];
+        const record = isDraft ? copy(s) : stored;
         for (const { ei, si, values } of updates) Object.assign(record.exercises[ei].sets[si], values);
         if (completeWorkout) {
           for (const exercise of record.exercises) {
@@ -798,36 +843,63 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
           }
           record.finished = true;
         }
+        if (isDraft) {
+          // A retry after a lost response can find this exact workout already saved.
+          if (stored && JSON.stringify(stored) === JSON.stringify(record)) return false;
+          if (stored) clearLegacyStartingTargets([stored]);
+          if (JSON.stringify(stored) !== JSON.stringify(original)) {
+            throw new Error('Эта тренировка изменилась на другом устройстве. Обновите историю перед редактированием.');
+          }
+          if (index < 0) next.sessions.push(record);
+          else next.sessions[index] = record;
+        }
       }, () => {
-        if (completeWorkout) return returnToList(s);
-        finishEditing();
-        announce('Изменения сохранены');
-      });
+        if (completeWorkout) {
+          returnToList(s);
+          announce('Тренировка сохранена');
+        } else {
+          finishEditing();
+          announce('Изменения сохранены');
+        }
+      }, isDraft);
     }
-    const extras = row(btn('Копировать JSON', () => copyWorkoutJson(s)));
-    extras.id = 'training-session-extras';
-    extras.classList.add('training-menu-panel');
-    const more = node('button', 'btn training-menu-toggle', 'Ещё');
-    more.type = 'button';
-    more.setAttribute('aria-expanded', 'false');
-    more.setAttribute('aria-controls', extras.id);
-    const controls = row(more, extras);
-    controls.classList.add('training-session-actions');
-    const definition = historyProgram(s.programId);
-    if (definition && s.dayId) extras.append(btn('История подпрограммы', () => openTimeline(definition, 'day')));
-    if (editable) { updateActions(); controls.append(save); extras.append(cancel); }
-    else controls.append(btn('Изменить', () => { historyEdit = true; sessionPage(); }));
-    const remove = btn('Удалить', () => {
-      if (!window.confirm(`Удалить тренировку «${s.day}» за ${dateLabel(s.date)} вместе со всеми подходами?`)) return;
-      change(next => {
-        next.sessions = next.sessions.filter(record => record.id !== s.id);
-      }, () => {
-        returnToList(s);
-        announce('Тренировка удалена');
+    function savedActions() {
+      const extras = row(btn('Копировать JSON', () => copyWorkoutJson(s)));
+      extras.id = 'training-session-extras';
+      extras.classList.add('training-menu-panel');
+      const more = node('button', 'btn training-menu-toggle', 'Ещё');
+      more.type = 'button';
+      more.setAttribute('aria-expanded', 'false');
+      more.setAttribute('aria-controls', extras.id);
+      const controls = row(more, extras);
+      controls.classList.add('training-session-actions');
+      const definition = historyProgram(s.programId);
+      if (definition && s.dayId) extras.append(btn('История подпрограммы', () => openTimeline(definition, 'day')));
+      if (editable) {
+        save = btn('Сохранить', () => saveSets(false), true);
+        cancel = btn('Отменить', finishEditing);
+        cancel.classList.add('training-cancel');
+        updateActions();
+        controls.append(save);
+        extras.append(cancel);
+      } else controls.append(btn('Изменить', () => { historyEdit = true; sessionPage(); }));
+      const remove = btn('Удалить', () => {
+        if (!window.confirm(`Удалить тренировку «${s.day}» за ${dateLabel(s.date)} вместе со всеми подходами?`)) return;
+        change(next => {
+          next.sessions = next.sessions.filter(record => record.id !== s.id);
+        }, () => {
+          returnToList(s);
+          announce('Тренировка удалена');
+        });
       });
-    });
-    remove.classList.add('training-delete');
-    extras.append(remove);
+      remove.classList.add('training-delete');
+      extras.append(remove);
+      return controls;
+    }
+    const controls = isDraft ? row(
+      btn('К истории', () => returnToList(s)),
+      btn('Сохранить тренировку', () => saveSets(true), true)
+    ) : savedActions();
     const meta = hint([s.gym, s.program, dateLabel(s.date)].join(' · '));
     const header = node('header', 'training-session-heading');
     const sessionTitle = section(s.day, controls);
@@ -871,13 +943,16 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
       })));
       group.append(block);
     }
-    const footer = row(backButton('К истории', () => returnToList(s)));
-    if (!s.finished) footer.append(btn('Завершить тренировку', () => saveSets(true), true));
     const body = node('div', 'training-session-body');
     body.tabIndex = 0;
     body.setAttribute('role', 'region');
     body.setAttribute('aria-label', 'Упражнения и подходы');
-    body.append(group, footer);
+    body.append(group);
+    if (!isDraft) {
+      const footer = row(backButton('К истории', () => returnToList(s)));
+      if (!s.finished) footer.append(btn('Завершить тренировку', () => saveSets(true), true));
+      body.append(footer);
+    }
     page(header, body);
     root.dataset.session = s.id;
     body.scrollTop = scroll;
@@ -1134,14 +1209,10 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     },
     open(file, route) {
       const data = file.data;
-      if (data?.version !== 1 || !['gyms','programs','sessions'].every(k => Array.isArray(data[k])) ||
-          !['nutrition','body'].every(k => data[k] && typeof data[k] === 'object' && !Array.isArray(data[k])) ||
-          (data.baselines != null && (typeof data.baselines !== 'object' || Array.isArray(data.baselines)))) {
-        throw new Error('Неизвестный формат дневника тренировок.');
-      }
+      validateTraining(data);
       clearLegacyStartingTargets(data.sessions);
       generation++; snapshot = file; ownerKey = credential(); saving = false; navigationId = route?.navigationId || uid();
-      tab = 'sessions'; settings = 'programs'; selectedDay = null; selectedProgram = null; activeId = null; drafts.clear();
+      tab = 'sessions'; settings = 'programs'; selectedDay = null; selectedProgram = null; activeId = null; workoutDraft = null; drafts.clear();
       if (openImportedWeights) {
         openImportedWeights = false;
         tab = 'body';
@@ -1152,7 +1223,7 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     },
     lock() {
       closeMenu();
-      generation++; snapshot = null; ownerKey = null; activeId = null; drafts.clear(); root.replaceChildren();
+      generation++; snapshot = null; ownerKey = null; activeId = null; workoutDraft = null; drafts.clear(); root.replaceChildren();
     }
   };
 }
