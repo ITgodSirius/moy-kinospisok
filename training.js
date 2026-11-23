@@ -762,7 +762,8 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     return chart;
   }
   function weightPage() {
-    const records = new Map(storedWeights().map(record => [record.day, record]));
+    const sharedHistory = Array.isArray(db().weightHistory) ? db().weightHistory : [];
+    const records = new Map([...storedWeights(), ...sharedHistory].map(record => [record.day, record]));
     for (const [day, values] of Object.entries(db().body)) {
       const weight = values['Вес, кг'];
       if (Number.isFinite(weight) && weight > 0) records.set(day, { ...records.get(day), day, weight });
