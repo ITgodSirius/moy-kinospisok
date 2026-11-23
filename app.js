@@ -1,6 +1,16 @@
-import { hosted, shared, historySnapshotKey, credential, localHistory, connectHistory, forgetCredential, marked, markTime, reactionValue, busy, refreshHistory, setMark } from './history.js?v=e4f9bbf4249b';
+import { hosted, shared, historySnapshotKey, credential, localHistory, connectHistory, forgetCredential, marked, markTime, reactionValue, busy, refreshHistory, setMark } from './history.js?v=1ac47d6572a8';
 
 const el = id => document.getElementById(id);
+let pendingActions = 0;
+async function withLoading(request) {
+  const dialog = el('action-loading');
+  if (++pendingActions === 1) dialog.showModal();
+  try {
+    return await request;
+  } finally {
+    if (--pendingActions === 0) dialog.close();
+  }
+}
 const editAccessKey = 'film-list:edit-unlocked';
 const editPinHash = '9c6c088d75eb59217e0431d1796f5c787d2039f56d3681df53e6348c5d32d05c';
 const editPinSalt = '60bb843cedd8d5985c0f4a5a932cfea0';
@@ -301,12 +311,20 @@ function markFailure(error, fallback) {
   announce(shared ? error.message : fallback);
   if (hosted) sync();
 }
+async function saveMark(id, kind, value, update) {
+  try {
+    const request = setMark(id, kind, value);
+    await (shared || hosted ? withLoading(request) : request);
+  } finally {
+    update();
+  }
+}
 async function toggleMark(item, kind) {
   const value = !marked(item.id, kind);
   if (!await requestMarkAccess() || marked(item.id, kind) === value || busy(item.id, kind)) return;
   if (kind === 'watching' && marked(item.id, 'watched')) return;
   try {
-    await setMark(item.id, kind, value, render);
+    await saveMark(item.id, kind, value, render);
     announce((value ? 'Добавлено в «' : 'Убрано из «') + listNames[kind] + '»');
   } catch (error) {
     markFailure(error, hosted ? 'Не удалось подтвердить сохранение. Проверьте соединение.' : 'Не удалось сохранить отметку в этом браузере.');
@@ -434,7 +452,7 @@ function reactionButtons(item, compact = false) {
       if (!await requestMarkAccess() || !marked(item.id, 'watched') || busy(item.id, 'reaction')) return;
       const next = reactionValue(item.id) === value ? null : value;
       try {
-        await setMark(item.id, 'reaction', next, render);
+        await saveMark(item.id, 'reaction', next, render);
         announce(next ? 'Моя оценка · ' + label : 'Оценка снята');
       } catch (error) {
         markFailure(error, 'Не удалось сохранить оценку.');
@@ -618,7 +636,7 @@ async function toggleWish(item) {
   const fulfilled = !marked(item.id, 'fulfilled');
   if (!await requestMarkAccess() || marked(item.id, 'fulfilled') === fulfilled || busy(item.id, 'fulfilled')) return;
   try {
-    await setMark(item.id, 'fulfilled', fulfilled, renderWishlist);
+    await saveMark(item.id, 'fulfilled', fulfilled, renderWishlist);
     announce(fulfilled ? 'Добавлено в «Сбылось»' : 'Возвращено в «Хочу»');
   } catch (error) {
     markFailure(error, 'Не удалось сохранить отметку желания.');
@@ -704,6 +722,16 @@ function renderWishlist() {
     else if (!dialog.open && !el('wishlist').hidden) el('wish-status').querySelector('[aria-pressed="true"]').focus({ preventScroll: true });
   }
 }
+async function readCollectionFile(file, controller = new AbortController()) {
+  const timeout = setTimeout(() => controller.abort(), 15000);
+  try {
+    const response = await fetch(file, { cache: 'no-cache', signal: controller.signal });
+    if (!response.ok) throw new Error('Не удалось загрузить список.');
+    return await response.json();
+  } finally {
+    clearTimeout(timeout);
+  }
+}
 async function loadWishlist() {
   if (wishes.items || wishes.loading) return;
   wishes.loading = true;
@@ -712,11 +740,7 @@ async function loadWishlist() {
   try {
     const embedded = el('offline-wishlist');
     if (embedded) wishes.items = JSON.parse(embedded.textContent);
-    else {
-      const response = await fetch('./wishlist.json', { cache: 'no-cache' });
-      if (!response.ok) throw new Error('Вишлист недоступен');
-      wishes.items = await response.json();
-    }
+    else wishes.items = await withLoading(readCollectionFile('./wishlist.json'));
     renderWishlist();
   } catch {
     wishes.items = null;
@@ -844,17 +868,13 @@ function setupQuotes(onUnlock) {
       const embedded = el('offline-quotes');
       let quotes;
       if (embedded) quotes = JSON.parse(embedded.textContent);
-      else {
-        const response = await fetch('./quotes.json', { cache: 'no-cache', signal: request.signal });
-        if (!response.ok) throw new Error('Каталог цитат недоступен.');
-        quotes = await response.json();
-      }
+      else quotes = await withLoading(readCollectionFile('./quotes.json', request));
       if (request.signal.aborted) return;
       if (!Array.isArray(quotes)) throw new Error('Неверный формат каталога цитат.');
       entries = quotes;
       renderQuotes();
     } catch {
-      if (request.signal.aborted) return;
+      if (loading !== request) return;
       entries = null;
       const failure = node('section', 'empty quote-empty');
       failure.append(node('h2', '', 'Не удалось открыть цитаты'), button('Повторить', '', null, loadQuotes));
@@ -1356,7 +1376,7 @@ async function openHistorySync(forEdit = false) {
   try {
     const count = showConnection();
     el('sync-settings').open = forEdit || count > 0;
-    await refreshViews();
+    await withLoading(refreshViews());
     if (attempt === syncAttempt) syncMessage('Общая история обновлена.');
   } catch (error) {
     if (attempt === syncAttempt) syncMessage(error.message, true);
@@ -1371,7 +1391,7 @@ function setupHistorySync() {
   if (hosted) {
     button.onclick = async () => {
       button.disabled = true;
-      try { await refreshViews(); announce('История синхронизирована.'); }
+      try { await withLoading(refreshViews()); announce('История синхронизирована.'); }
       catch { announce('Не удалось синхронизировать историю.'); }
       finally { button.disabled = false; }
     };
@@ -1403,7 +1423,7 @@ function setupHistorySync() {
     save.disabled = el('sync-forget').disabled = true;
     syncMessage('Синхронизируем отметки…');
     try {
-      await connectHistory(token);
+      await withLoading(connectHistory(token));
       input.value = '';
       showConnection();
       renderHistory();
@@ -1502,6 +1522,7 @@ function showLastUpdate(modified) {
   setTimeout(() => updateLine.classList.add('expired'), 5000);
 }
 async function start() {
+  el('action-loading').addEventListener('cancel', event => event.preventDefault());
   document.querySelectorAll('[data-icon]').forEach(holder => holder.replaceWith(icon(holder.dataset.icon)));
   el('edit-form').onsubmit = confirmEdit;
   el('edit-pin').oninput = () => {
@@ -1549,7 +1570,7 @@ async function start() {
       }
     });
   }
-  for (const dialog of document.querySelectorAll('dialog')) dialog.addEventListener('click', e => {
+  for (const dialog of document.querySelectorAll('dialog:not(#action-loading)')) dialog.addEventListener('click', e => {
     if (e.target !== dialog) return;
     const r = dialog.getBoundingClientRect();
     if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) dialog.close();

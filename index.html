@@ -9,8 +9,8 @@
   <meta name="history-mode" content="local">
   <title>Мой киносписок</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%231443ef'/%3E%3Cpath d='M18 18h28v29L32 38l-14 9z' fill='white'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./style.css?v=81c2eb75b3e5">
-  <script type="module" src="./app.js?v=0354c1a53a3b"></script>
+  <link rel="stylesheet" href="./style.css?v=61a9f07ae37e">
+  <script type="module" src="./app.js?v=80e0b475d49a"></script>
 </head>
 <body>
   <a class="skip" href="#feed">К фильмам и сериалам</a>
@@ -205,6 +205,9 @@
   <dialog id="schedule" aria-labelledby="schedule-title" aria-describedby="series-title">
     <div class="dialog-head"><div><h2 id="schedule-title">Сезоны и серии</h2><p id="series-title"></p></div><button class="icon-button" data-close aria-label="Закрыть расписание"><span data-icon="close"></span></button></div>
     <div id="seasons" class="dialog-body"></div>
+  </dialog>
+  <dialog id="action-loading" aria-label="Загрузка" closedby="none">
+    <span class="loading-spinner" aria-hidden="true"></span>
   </dialog>
   <noscript>Включите JavaScript, чтобы открыть личный киносписок.</noscript>
 </body>

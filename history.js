@@ -217,13 +217,12 @@ export async function refreshHistory() {
   loaded = true;
   return changed;
 }
-export async function setMark(id, kind, value, update) {
+export async function setMark(id, kind, value) {
   const mark = { value, markedAt: new Date().toISOString() };
   if (shared) {
     const key = id + '/' + kind;
     if (inFlight.has(key)) return;
     inFlight.add(key);
-    update();
     try {
       await enqueue(() => changeFile(credential(), (rows, removed) => {
         if (kind === 'reaction' && value && !rows.has(id + '/watched')) throw new Error('Сначала отметьте просмотр.');
@@ -240,14 +239,12 @@ export async function setMark(id, kind, value, update) {
       }));
     } finally {
       inFlight.delete(key);
-      update();
     }
     return;
   }
   if (!hosted) {
     if (value) localStorage.setItem(prefixes[kind] + id, kind === 'reaction' ? JSON.stringify(mark) : mark.markedAt);
     else localStorage.removeItem(prefixes[kind] + id);
-    update();
     return;
   }
   const key = id + '/' + kind;
@@ -256,7 +253,6 @@ export async function setMark(id, kind, value, update) {
   inFlight.add(key);
   revision++;
   if (value) remote.set(key, mark); else remote.delete(key);
-  update();
   try {
     const res = await fetch('./api/history', { method: 'PUT', headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ card: id, kind, ...(kind === 'reaction' ? { reaction: value } : { marked: value }) }), signal: AbortSignal.timeout(12000) });
@@ -267,6 +263,5 @@ export async function setMark(id, kind, value, update) {
     throw error;
   } finally {
     inFlight.delete(key);
-    update();
   }
 }
