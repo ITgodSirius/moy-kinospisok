@@ -22,7 +22,7 @@ h1{font-size:clamp(1.5rem,2.55vw,2.25rem);font-weight:730;white-space:nowrap}
 #lists button{position:relative;white-space:nowrap;font-weight:520;font-size:clamp(.9375rem,1.3vw,1.08rem)}
 #lists button[aria-pressed=true]{font-weight:700}
 #lists button:is([aria-pressed=true],:active){color:var(--blue)}
-.list-divider{align-self:center;margin-inline:clamp(24px,2.5vw,40px);color:var(--muted);user-select:none}
+.list-divider{align-self:center;margin-inline:clamp(18px,calc(2.5vw - 6px),34px);color:var(--muted);user-select:none}
 #lists button[aria-pressed=true]::after{content:"";position:absolute;bottom:0;left:0;right:0;height:3px;border-radius:3px;background:var(--blue)}
 .icon-button{border-radius:8px;display:grid;place-items:center;width:42px;height:42px;flex:none;font-size:21px}
 .icon-button:active,.quiet:active,.sort:active{background:var(--tint);color:var(--blue)}
@@ -262,7 +262,7 @@ details[open] summary svg{transform:rotate(180deg)}
  .toolbar{min-height:54px}.entry{gap:18px;grid-template-columns:minmax(0,.85fr) minmax(0,1fr)}
 }
 @media(max-width:760px){
- .list-divider{margin-inline:18px}
+ .list-divider{margin-inline:12px}
  .toolbar{grid-template-columns:minmax(0,1fr);grid-template-areas:"types" "genres" "tools" "updated"}
  .tools{justify-self:stretch;justify-content:space-between}
 }
@@ -329,6 +329,9 @@ details[open] summary svg{transform:rotate(180deg)}
 .collection-switch{display:inline-flex;align-items:center;gap:12px;color:var(--ink);font:inherit;letter-spacing:inherit}
 .collection-destination{display:inline-flex;align-items:center;gap:6px;min-height:30px;padding:4px 8px;border:1px solid var(--line);border-radius:7px;background:var(--surface);color:var(--blue);font-size:.8125rem;font-weight:550;letter-spacing:normal}
 .collection-destination .ico{width:15px;height:15px}
+@media(min-width:641px){
+ #cinema-header .collection-destination{min-height:28px;padding:3px 7px;font-size:.78125rem}
+}
 .collection-switch:hover .collection-destination{border-color:var(--blue);background:var(--tint)}
 #wishlist:not([hidden]){display:flex;flex:1;flex-direction:column;min-height:0}
 .wish-top{display:flex}
