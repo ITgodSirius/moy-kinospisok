@@ -3,6 +3,7 @@ const keys = Object.keys(nutrients);
 const unit = key => key === 'kcal' ? 'ккал' : 'г';
 const decimal = new Intl.NumberFormat('ru-RU', { maximumFractionDigits: 2, useGrouping: false });
 const normalized = value => value.trim().toLocaleLowerCase('ru').replace(/\s+/g, ' ');
+const localPlansKey = 'moy-kinospisok:local-meal-plans';
 const amountPattern = /^\s*(≈?)\s*(\d+(?:[.,]\d+)?)(?:\s*[–—-]\s*(\d+(?:[.,]\d+)?))?\s*$/;
 function amount(value) {
   const match = amountPattern.exec(value ?? '');
@@ -100,9 +101,65 @@ function costLabel(cost, days) {
   return (cost.approximate ? '≈ ' : '') + (low === high ? low : 'от ' + low + ' до ' + high) + ' ₽';
 }
 
+function localNutrition() {
+  try {
+    const data = JSON.parse(localStorage.getItem(localPlansKey));
+    if (Array.isArray(data?.mealPlans)) return data;
+  } catch { /* The browser may block storage. */ }
+  return { mealPlans: [] };
+}
+
+function validImportedPlan(plan) {
+  const text = value => typeof value === 'string' && value.trim().length > 0;
+  const validValues = values => values && Object.entries(values).every(([key, value]) => keys.includes(key) && amount(value));
+  return text(plan?.id) && text(plan.name) && Array.isArray(plan.products) && Array.isArray(plan.meals) &&
+    Array.isArray(plan.supplements) && (plan.foodTotals == null || validValues(plan.foodTotals)) &&
+    plan.products.every(item => text(item?.id) && text(item.name) && text(item.quantity) && validValues(item.nutrients)) &&
+    [...plan.meals, ...plan.supplements].every(item => text(item?.name) && validValues(item.nutrients));
+}
+
 export function setupNutrition({ db, change, page, node, btn, field, row, announce, legacy }) {
-  const plans = () => db().mealPlans || [];
-  const current = () => plans().find(p => p.id === db().currentMealPlan) || plans()[0];
+  const isLocal = id => localNutrition().mealPlans.some(plan => plan.id === id);
+  const plans = () => {
+    const local = localNutrition().mealPlans;
+    const ids = new Set(local.map(plan => plan.id));
+    return [...local, ...(db().mealPlans || []).filter(plan => !ids.has(plan.id))];
+  };
+  const current = () => plans().find(p => p.id === (localNutrition().currentMealPlan || db().currentMealPlan)) || plans()[0];
+  function changeLocal(edit, after) {
+    try {
+      const next = localNutrition();
+      edit(next);
+      localStorage.setItem(localPlansKey, JSON.stringify(next));
+      after();
+    } catch (error) { announce(error.message); }
+  }
+  async function importLocalPlans() {
+    const prefix = '#rations-import=';
+    if (!location.hash.startsWith(prefix)) return false;
+    const payload = location.hash.slice(prefix.length);
+    history.replaceState(history.state, '', location.pathname + location.search);
+    try {
+      const compressed = Uint8Array.from(atob(payload.replaceAll('-', '+').replaceAll('_', '/')), c => c.charCodeAt(0));
+      const stream = new Blob([compressed]).stream().pipeThrough(new DecompressionStream('gzip'));
+      const { mealPlans } = JSON.parse(await new Response(stream).text());
+      if (!Array.isArray(mealPlans) || !mealPlans.length || !mealPlans.every(validImportedPlan)) {
+        throw new Error('Неверный формат рационов.');
+      }
+      const local = localNutrition();
+      const existing = new Set(local.mealPlans.map(plan => plan.id));
+      for (const plan of mealPlans) {
+        if (existing.has(plan.id)) continue;
+        local.mealPlans.push(plan);
+        existing.add(plan.id);
+      }
+      localStorage.setItem(localPlansKey, JSON.stringify(local));
+      return true;
+    } catch (error) {
+      announce('Не удалось загрузить рационы. ' + error.message);
+      return false;
+    }
+  }
   const line = (...children) => { const box = node('div', 'nutrition-line'); box.append(...children); return box; };
   const heading = (name, actions) => {
     const box = node('div', 'nutrition-heading');
@@ -123,6 +180,7 @@ export function setupNutrition({ db, change, page, node, btn, field, row, announ
       const name = node('div');
       name.append(node('strong', '', plan.name));
       if (plan.id === current()?.id) name.append(node('span', 'training-default', 'Текущий план'));
+      if (isLocal(plan.id)) name.append(node('span', 'training-default', 'В этом браузере'));
       name.append(node('p', 'training-hint', [display(values.kcal, 'kcal'), ...['protein','fat','carbs'].map(k => nutrients[k] + ' ' + display(values[k], k))].join(' · ')));
       entry.append(name, btn('Открыть', () => detail(plan.id)));
       list.append(entry);
@@ -189,9 +247,11 @@ export function setupNutrition({ db, change, page, node, btn, field, row, announ
     const panel = node('section', 'nutrition-products');
     const table = node('table', 'nutrition-table');
     const costs = node('div', 'nutrition-costs');
+    const local = isLocal(plan.id);
+    const prices = () => local ? { ...db().foodPrices, ...localNutrition().foodPrices } : db().foodPrices;
     costs.setAttribute('aria-live', 'polite');
     function updateCosts() {
-      const cost = rationCost(plan.products, db().foodPrices);
+      const cost = rationCost(plan.products, prices());
       costs.replaceChildren();
       for (const [label, days] of [['Стоимость за день', 1], ['За неделю', 7]]) {
         const cell = node('div');
@@ -221,7 +281,7 @@ export function setupNutrition({ db, change, page, node, btn, field, row, announ
       }
       const priceCell = tr.insertCell();
       function drawPrice() {
-        const price = db().foodPrices?.[product.id];
+        const price = prices()?.[product.id];
         const b = btn(price ? describePrice(price) : '+ Указать', () => {
           closeEditor?.();
           const editorRow = node('tr', 'nutrition-price-row');
@@ -232,7 +292,7 @@ export function setupNutrition({ db, change, page, node, btn, field, row, announ
           priceCell.replaceChildren(node('span', '', 'Редактирование'));
           closeEditor = () => { editorRow.remove(); tr.classList.remove('editing'); drawPrice(); closeEditor = null; };
           const finish = () => { closeEditor(); updateCosts(); priceCell.querySelector('button').focus({ preventScroll: true }); };
-          cell.append(priceEditor(product, price, finish));
+          cell.append(priceEditor(product, price, finish, local ? changeLocal : change));
           cell.querySelector('input').focus({ preventScroll: true });
         });
         b.setAttribute('aria-label', (price ? 'Изменить цену: ' : 'Указать цену: ') + product.name);
@@ -251,7 +311,7 @@ export function setupNutrition({ db, change, page, node, btn, field, row, announ
     return panel;
   }
 
-  function priceEditor(product, price, close) {
+  function priceEditor(product, price, close, save) {
     const form = node('form', 'nutrition-price-editor');
     const selector = node('div', 'nutrition-mode');
     selector.setAttribute('role','group'); selector.setAttribute('aria-label','Тип цены');
@@ -288,7 +348,7 @@ export function setupNutrition({ db, change, page, node, btn, field, row, announ
         high.input.setCustomValidity('Верхняя цена должна быть не меньше нижней.'); high.input.reportValidity(); return;
       }
       const value = { mode, min, ...(mode === 'range' ? { max } : {}), quantity:quantity.input.valueAsNumber, unit:select.value };
-      change(next => { next.foodPrices ||= {}; next.foodPrices[product.id] = value; }, () => { close(); announce('Цена сохранена'); });
+      save(next => { next.foodPrices ||= {}; next.foodPrices[product.id] = value; }, () => { close(); announce('Цена сохранена'); });
     };
     return form;
   }
@@ -300,8 +360,16 @@ export function setupNutrition({ db, change, page, node, btn, field, row, announ
     const header = node('div', 'nutrition-heading nutrition-title');
     const name = line(node('h2', '', plan.name));
     const actions = line(btn('Редактировать', () => editPlan(plan)), btn('Новый план', () => editPlan(), true));
+    if (isLocal(id)) name.append(node('span', 'nutrition-badge', 'В этом браузере'));
     if (current()?.id === id) name.append(node('span', 'nutrition-badge', 'Текущий план'));
-    else actions.prepend(btn('Сделать текущим', () => change(next => { next.currentMealPlan = id; }, () => detail(id))));
+    else actions.prepend(btn('Сделать текущим', () => {
+      const select = next => { next.currentMealPlan = id; };
+      if (isLocal(id)) changeLocal(select, () => detail(id));
+      else change(select, () => {
+        if (localNutrition().currentMealPlan) changeLocal(next => { delete next.currentMealPlan; }, () => detail(id));
+        else detail(id);
+      });
+    }));
     header.append(name, actions);
     const summary = node('div', 'nutrition-summary');
     for (const k of ['kcal','protein','fat','carbs','fiber']) {
@@ -424,7 +492,8 @@ export function setupNutrition({ db, change, page, node, btn, field, row, announ
     form.onsubmit = e => {
       e.preventDefault();
       if (!name.input.value.trim()) return name.input.focus();
-      change(next => {
+      const save = isLocal(plan.id) ? changeLocal : change;
+      save(next => {
         const value = { ...plan, name:name.input.value.trim(), products:products.read(), meals:meals.read(),
           supplements:supplements.read(), notes:notes.value.trim(), foodTotals:manual.checked ? overrides.read() : null };
         if (new Set(value.products.map(p => normalized(p.name))).size !== value.products.length) throw new Error('Объедините одинаковые продукты в одну строку.');
@@ -436,5 +505,5 @@ export function setupNutrition({ db, change, page, node, btn, field, row, announ
     };
     page(back('Все планы питания', library), node('h2','',original ? 'Редактировать план' : 'Новый план питания'), form);
   }
-  return { open() { const plan = current(); if (plan) detail(plan.id); else library(); } };
+  return { importLocalPlans, library, open() { const plan = current(); if (plan) detail(plan.id); else library(); } };
 }

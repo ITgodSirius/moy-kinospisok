@@ -1,8 +1,8 @@
 import { hosted, shared, historySnapshotKey, credential, connectHistory, marked, markTime, reactionValue, busy, refreshHistory, setMark } from './history.js?v=0147301cae10';
 
 import { KeyError, verifyOwner, openPrivateFile, savePrivateFile } from './private-store.js?v=041c70d8f2eb';
-import { setupNutrition } from './nutrition.js?v=13f3368483dc';
-import { setupTraining, emptyTraining } from './training.js?v=6d32d7bfb955';
+import { setupNutrition } from './nutrition.js?v=befdd8ffcf90';
+import { setupTraining, emptyTraining } from './training.js?v=a033682dbcac';
 
 const el = id => document.getElementById(id);
 let pendingActions = 0;
@@ -956,11 +956,11 @@ function setupCollections() {
       await verifyOwner(key);
     } catch { if (key === activeKey) lockPrivate(); }
   });
-  function openWeightImport() {
-    if (workouts.importWeights()) navigate('training');
+  async function openTrainingImport() {
+    if (workouts.importWeights() || await workouts.importMeals()) navigate('training');
   }
-  window.addEventListener('hashchange', openWeightImport);
-  openWeightImport();
+  window.addEventListener('hashchange', openTrainingImport);
+  openTrainingImport();
 }
 function resetFilters() {
   for (const id of filterIds) el(id).value = '';

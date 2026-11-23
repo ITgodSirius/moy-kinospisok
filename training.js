@@ -120,6 +120,7 @@ function importWeightHistory(announce) {
 export function setupTraining({ setupNutrition, el, node, button, announce, withLoading, credential, savePrivateFile }) {
   const root = el('training-content');
   let openImportedWeights = false;
+  let openImportedMeals = false;
   let snapshot, ownerKey, tab, settings, selectedDay, selectedProgram, activeId, saving = false, generation = 0;
   const db = () => snapshot.data;
   const btn = (label, handler, primary = false) => button(label, primary ? 'training-primary' : '', null, handler);
@@ -827,6 +828,11 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
       openImportedWeights = true;
       return true;
     },
+    async importMeals() {
+      if (!await plans.importLocalPlans()) return false;
+      openImportedMeals = true;
+      return true;
+    },
     open(file) {
       const data = file.data;
       if (data?.version !== 1 || !['gyms','programs','sessions'].every(k => Array.isArray(data[k])) ||
@@ -840,6 +846,11 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
         tab = 'body';
         tabs();
         weightPage();
+      } else if (openImportedMeals) {
+        openImportedMeals = false;
+        tab = 'nutrition';
+        tabs();
+        plans.library();
       } else render();
     },
     lock() {
