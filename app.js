@@ -1,4 +1,4 @@
-import { hosted, marked, markTime, reactionValue, busy, refreshHistory, setMark } from './history.js?v=798413576a21';
+import { hosted, shared, credential, localHistory, connectHistory, forgetCredential, marked, markTime, reactionValue, busy, refreshHistory, setMark } from './history.js?v=dfe9f74481f9';
 
 const el = id => document.getElementById(id);
 const editAccessKey = 'film-list:edit-unlocked';
@@ -289,16 +289,26 @@ async function confirmEdit(event) {
   }
   dialog.close('confirmed');
 }
+async function requestMarkAccess() {
+  if (!await requestEditAccess()) return false;
+  if (!shared || credential()) return true;
+  const dialog = el('sync-dialog');
+  openHistorySync(true);
+  return new Promise(resolve => dialog.addEventListener('close', () => resolve(dialog.returnValue === 'connected'), { once: true }));
+}
+function markFailure(error, fallback) {
+  announce(shared ? error.message : fallback);
+  if (hosted) sync();
+}
 async function toggleMark(item, kind) {
   const value = !marked(item.id, kind);
-  if (!await requestEditAccess() || marked(item.id, kind) === value || busy(item.id, kind)) return;
+  if (!await requestMarkAccess() || marked(item.id, kind) === value || busy(item.id, kind)) return;
   if (kind === 'watching' && marked(item.id, 'watched')) return;
   try {
     await setMark(item.id, kind, value, render);
     announce((value ? 'Добавлено в «' : 'Убрано из «') + listNames[kind] + '»');
-  } catch {
-    announce(hosted ? 'Не удалось подтвердить сохранение. Проверьте соединение.' : 'Не удалось сохранить отметку в этом браузере.');
-    if (hosted) sync();
+  } catch (error) {
+    markFailure(error, hosted ? 'Не удалось подтвердить сохранение. Проверьте соединение.' : 'Не удалось сохранить отметку в этом браузере.');
   }
 }
 function gallery(item) {
@@ -420,14 +430,13 @@ function reactionButtons(item, compact = false) {
   const current = reactionValue(item.id);
   for (const [value, label] of Object.entries(opinions)) {
     const control = button(label, '', value === 'neutral' ? 'neutral' : 'thumb', async () => {
-      if (!await requestEditAccess() || !marked(item.id, 'watched') || busy(item.id, 'reaction')) return;
+      if (!await requestMarkAccess() || !marked(item.id, 'watched') || busy(item.id, 'reaction')) return;
       const next = reactionValue(item.id) === value ? null : value;
       try {
         await setMark(item.id, 'reaction', next, render);
         announce(next ? 'Моя оценка · ' + label : 'Оценка снята');
-      } catch {
-        announce('Не удалось сохранить оценку.');
-        if (hosted) sync();
+      } catch (error) {
+        markFailure(error, 'Не удалось сохранить оценку.');
       }
     }, compact);
     control.dataset.kind = value;
@@ -606,13 +615,12 @@ function wishImage(item) {
 }
 async function toggleWish(item) {
   const fulfilled = !marked(item.id, 'fulfilled');
-  if (!await requestEditAccess() || marked(item.id, 'fulfilled') === fulfilled || busy(item.id, 'fulfilled')) return;
+  if (!await requestMarkAccess() || marked(item.id, 'fulfilled') === fulfilled || busy(item.id, 'fulfilled')) return;
   try {
     await setMark(item.id, 'fulfilled', fulfilled, renderWishlist);
     announce(fulfilled ? 'Добавлено в «Сбылось»' : 'Возвращено в «Хочу»');
-  } catch {
-    announce('Не удалось сохранить отметку желания.');
-    if (hosted) sync();
+  } catch (error) {
+    markFailure(error, 'Не удалось сохранить отметку желания.');
   }
 }
 function wishActions(item, compact) {
@@ -1173,7 +1181,7 @@ function setSearchOpen(open) {
   el('catalog-search').hidden = !open;
   el('search-status').hidden = !open;
   el('search-toggle').setAttribute('aria-expanded', String(open));
-  const controls = el('cinema-header').querySelectorAll('#list-navigation, #types, #genres, #selected-genres, .tools > :not(#search-toggle)');
+  const controls = el('cinema-header').querySelectorAll('#list-navigation, #types, #genres, #selected-genres, #history-sync, .tools > :not(#search-toggle)');
   for (const control of controls) control.inert = open;
   el('feed').setAttribute('aria-label', open ? 'Результаты поиска по киносписку' : 'Лента · ' + listNames[state.list]);
 }
@@ -1301,15 +1309,106 @@ function trackCalendarDay() {
   document.addEventListener('visibilitychange', () => { if (!document.hidden) refresh(); });
   refresh();
 }
-async function sync() {
-  if (!hosted) return;
-  try {
-    if (await refreshHistory()) {
-      render();
-      renderWishlist();
-    }
+function renderHistory() {
+  render();
+  renderWishlist();
+}
+let refreshing;
+let lastRefresh = 0;
+function refreshViews() {
+  if (!refreshing) {
+    lastRefresh = Date.now();
+    refreshing = refreshHistory().then(changed => { if (changed) renderHistory(); })
+      .finally(() => { refreshing = null; });
   }
-  catch { announce('Нет связи с историей просмотра. Повторим синхронизацию.'); }
+  return refreshing;
+}
+async function sync() {
+  try { await refreshViews(); }
+  catch (error) { announce(shared ? error.message : 'Нет связи с историей просмотра. Повторим синхронизацию.'); }
+}
+let syncToEdit = false;
+let syncAttempt = 0;
+function syncMessage(message, error = false) {
+  const status = el('sync-status');
+  status.classList.toggle('error', error);
+  status.textContent = message;
+}
+function showConnection() {
+  const connected = Boolean(credential());
+  const count = localHistory().size;
+  const local = el('sync-local');
+  local.hidden = !count;
+  local.textContent = count ? 'Отметок в этом браузере: ' + count + '. После переноса они будут видны всем, кто откроет киносписок.' : '';
+  el('sync-settings').querySelector('summary').textContent = connected ? 'Настройки доступа' : 'Подключить редактирование';
+  el('sync-forget').hidden = !connected;
+  el('sync-token').required = !connected;
+  el('sync-save').textContent = count ? 'Перенести отметки и подключить' : connected ? 'Сохранить ключ' : 'Подключить';
+  return count;
+}
+async function openHistorySync(forEdit = false) {
+  const dialog = el('sync-dialog');
+  const attempt = ++syncAttempt;
+  syncToEdit = forEdit;
+  dialog.returnValue = '';
+  if (!dialog.open) dialog.showModal();
+  syncMessage('Проверяем общую историю…');
+  try {
+    const count = showConnection();
+    el('sync-settings').open = forEdit || count > 0;
+    await refreshViews();
+    if (attempt === syncAttempt) syncMessage('Общая история обновлена.');
+  } catch (error) {
+    if (attempt === syncAttempt) syncMessage(error.message, true);
+  }
+}
+function setupHistorySync() {
+  const button = el('history-sync');
+  if (!shared && !hosted) {
+    button.replaceWith(button.querySelector('.update-date'));
+    return;
+  }
+  if (hosted) {
+    button.onclick = async () => {
+      button.disabled = true;
+      try { await refreshViews(); announce('История синхронизирована.'); }
+      catch { announce('Не удалось синхронизировать историю.'); }
+      finally { button.disabled = false; }
+    };
+    return;
+  }
+  const dialog = el('sync-dialog');
+  button.setAttribute('aria-haspopup', 'dialog');
+  button.setAttribute('aria-controls', dialog.id);
+  button.onclick = () => openHistorySync();
+  const input = el('sync-token');
+  dialog.addEventListener('close', () => { input.value = ''; });
+  el('sync-forget').onclick = () => {
+    forgetCredential();
+    input.value = '';
+    showConnection();
+    syncMessage('Ключ удалён с этого устройства.');
+  };
+  el('sync-form').onsubmit = async event => {
+    event.preventDefault();
+    const save = el('sync-save');
+    if (save.disabled || !await requestEditAccess('Подключить историю')) return;
+    const token = input.value.trim() || credential();
+    if (!token) { input.focus(); return; }
+    ++syncAttempt;
+    save.disabled = el('sync-forget').disabled = true;
+    syncMessage('Синхронизируем отметки…');
+    try {
+      await connectHistory(token);
+      input.value = '';
+      showConnection();
+      renderHistory();
+      el('sync-settings').open = false;
+      syncMessage('История синхронизирована. Новые отметки сохраняются автоматически.');
+      if (syncToEdit && dialog.open) dialog.close('connected');
+    } catch (error) { syncMessage(error.message, true); }
+    finally { save.disabled = el('sync-forget').disabled = false; }
+  };
 }
 function wireGroup(id, key) {
   el(id).addEventListener('click', event => {
@@ -1382,14 +1481,19 @@ function showLastUpdate(modified) {
   const time = el('site-updated');
   const published = Date.parse(modified);
   const date = new Date(Number.isFinite(published) ? published : time.dateTime);
-  if (!Number.isFinite(date.getTime())) return;
+  const updateLine = time.closest('.last-update');
+  const button = el('history-sync');
+  if (!Number.isFinite(date.getTime())) {
+    if (button) { button.classList.add('undated'); updateLine.hidden = false; }
+    return;
+  }
   const formatter = new Intl.DateTimeFormat('ru-RU', {
     day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit',
     timeZone: 'Europe/Moscow'
   });
   time.dateTime = date.toISOString();
   time.textContent = formatter.format(date) + ' МСК';
-  const updateLine = time.parentElement;
+  if (button) button.setAttribute('aria-label', 'Обновлено ' + time.textContent + '. Синхронизация истории');
   updateLine.hidden = false;
   setTimeout(() => updateLine.classList.add('expired'), 5000);
 }
@@ -1413,6 +1517,7 @@ async function start() {
     state.catalog = await response.json();
     modified = response.headers.get('Last-Modified');
   }
+  setupHistorySync();
   showLastUpdate(modified);
   const studios = new Set([...studioChoices, ...state.catalog.flatMap(i => [...i.studios, ...(i.platforms || [])])]);
   for (const studio of studios) el('studio').add(new Option(studio, studio));
@@ -1463,12 +1568,13 @@ async function start() {
   }
   saveView({ initial: true });
   trackView();
-  if (hosted) {
+  if (hosted || shared) {
     await sync();
-    window.addEventListener('focus', sync);
-    document.addEventListener('visibilitychange', () => { if (!document.hidden) sync(); });
+    const onReturn = () => { if (!document.hidden && Date.now() - lastRefresh > 3000) sync(); };
+    window.addEventListener('focus', onReturn);
+    document.addEventListener('visibilitychange', onReturn);
     window.addEventListener('online', sync);
-    setInterval(() => { if (!document.hidden) sync(); }, 30000);
+    setInterval(() => { if (!document.hidden) sync(); }, shared ? 180000 : 30000);
   }
 }
 start().catch(() => {
