@@ -461,12 +461,7 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
       for (const label of fieldsBodyComposition) add(label, compositionInputs);
       for (const label of Object.values(records).flatMap(Object.keys)) add(label);
       composition.append(node('legend', '', 'Состав тела'), compositionInputs);
-      const custom = field('Свой замер');
-      content.append(dateRow, list, composition, row(custom.wrap, btn('Добавить замер', () => {
-        const label = custom.input.value.trim();
-        if (!label) return custom.input.focus();
-        add(label); custom.input.value = ''; inputs.get(label).focus();
-      })));
+      content.append(dateRow, list, composition);
     } else {
       const date = field('Дата', day, { type: 'date', required: true });
       date.input.onchange = () => { if (date.input.value) diary(kind, date.input.value); };
