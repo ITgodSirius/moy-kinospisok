@@ -36,14 +36,6 @@ h1{font-size:clamp(1.5rem,2.55vw,2.25rem);font-weight:730;white-space:nowrap}
 .sync-short{display:none}
 #history-sync.undated .update-date{display:none}
 #history-sync.undated .sync-short{display:inline}
-#sync-dialog .dialog-body{gap:14px}
-#sync-dialog details{border:0;padding:0}
-#sync-dialog summary{color:var(--blue)}
-#sync-form{padding:12px 0 0}
-#sync-form p,#sync-local{font-size:.875rem;color:var(--muted)}
-#sync-form a{color:var(--blue);text-decoration:underline}
-#sync-forget[hidden]{display:none}
-#sync-status.error{color:#ffacb8}
 @media(min-width:641px){.last-update{color:#7e8492;font-size:.6875rem}}
 .type-switch button{padding:6px 14px;border-radius:7px;font-size:.9375rem;min-height:36px}
 .type-switch button:is([aria-pressed=true],:active){background:var(--tint);color:var(--blue);font-weight:680}

@@ -1,4 +1,4 @@
-import { hosted, shared, credential, localHistory, connectHistory, forgetCredential, marked, markTime, reactionValue, busy, refreshHistory, setMark } from './history.js?v=eba42e57fac2';
+import { hosted, shared, hasDevice, checkDevicePin, rememberDevice, localHistory, importLocalHistory, marked, markTime, reactionValue, busy, refreshHistory, setMark } from './history.js?v=b837947b4947';
 
 const el = id => document.getElementById(id);
 const editAccessKey = 'film-list:edit-unlocked';
@@ -56,7 +56,7 @@ const markActions = {
 const iconPaths = {
   thumb: '<path d="M7 10v10H3V10zm0 0 5-6c1-1.3 3-.8 3 1.1L14 9h5.2a2 2 0 0 1 2 2.4l-1.4 6.8a2.2 2.2 0 0 1-2.2 1.8H7"/>',
   neutral: '<path d="M5 12h14"/>',
-  lock: '<rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 4v2"/>',
+  quote: '<path d="M3 6h7v7a5 5 0 0 1-5 5m9-12h7v7a5 5 0 0 1-5 5"/>',
   book: '<path d="M12 6c-2.6-2.1-5.6-2.7-9-1.5v14c3.2-1 6.2-.4 9 1.5 2.8-1.9 5.8-2.5 9-1.5v-14c-3.4-1.2-6.4-.6-9 1.5Zm0 0v14"/>',
   ear: '<path d="M6 9a6 6 0 1 1 10.55 3.91c-1.29 1.54-2.3 2.33-2.55 4.09-.25 1.7-1.15 3-3 3-1.66 0-3-1.34-3-3m2-8a2 2 0 1 1 3.35 1.48c-.81.74-1.35 1.43-1.35 2.52"/>',
   copy: '<rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/>',
@@ -234,7 +234,7 @@ let pinAttempt = 0;
 function requestEditAccess(title = 'Изменить отметку') {
   if (hosted) return true;
   try {
-    if (localStorage.getItem(editAccessKey) === editPinHash) return true;
+    if (shared ? hasDevice() : localStorage.getItem(editAccessKey) === editPinHash) return true;
   } catch { /* The dialog will report a storage error on confirmation. */ }
 
   const dialog = el('edit-dialog');
@@ -267,11 +267,12 @@ async function confirmEdit(event) {
   const pin = el('edit-pin');
   const dialog = el('edit-dialog');
   const attempt = ++pinAttempt;
-  let error = '';
+  let error = '', device;
   try {
-    if (!await matchesEditPin(pin.value)) error = pin.value ? 'Неверный пароль. Попробуй ещё раз.' : 'Введи пароль.';
-  } catch {
-    error = 'Браузеру не удалось проверить пароль.';
+    if (shared) device = await checkDevicePin(pin.value);
+    else if (!await matchesEditPin(pin.value)) error = pin.value ? 'Неверный пароль. Попробуй ещё раз.' : 'Введи пароль.';
+  } catch (failure) {
+    error = shared ? failure.message : 'Браузеру не удалось проверить пароль.';
   }
   if (attempt !== pinAttempt || !dialog.open) return;
   if (error) {
@@ -282,7 +283,8 @@ async function confirmEdit(event) {
     return;
   }
   try {
-    localStorage.setItem(editAccessKey, editPinHash);
+    if (shared) rememberDevice(device);
+    else localStorage.setItem(editAccessKey, editPinHash);
   } catch {
     el('edit-error').textContent = 'Браузеру нужен доступ к данным сайта, чтобы запомнить разрешение.';
     return;
@@ -291,10 +293,11 @@ async function confirmEdit(event) {
 }
 async function requestMarkAccess() {
   if (!await requestEditAccess()) return false;
-  if (!shared || credential()) return true;
-  const dialog = el('sync-dialog');
-  openHistorySync(true);
-  return new Promise(resolve => dialog.addEventListener('close', () => resolve(dialog.returnValue === 'connected'), { once: true }));
+  if (shared) {
+    try { await importLocalHistory(); }
+    catch (error) { announce(error.message); return false; }
+  }
+  return true;
 }
 function markFailure(error, fallback) {
   announce(shared ? error.message : fallback);
@@ -863,8 +866,7 @@ function setupQuotes(onUnlock) {
     }
   }
   return {
-    async request() {
-      if (!await requestEditAccess('Открыть «Мои цитаты»')) return;
+    request() {
       onUnlock();
       loadQuotes();
     },
@@ -1327,87 +1329,26 @@ async function sync() {
   try { await refreshViews(); }
   catch (error) { announce(shared ? error.message : 'Нет связи с историей просмотра. Повторим синхронизацию.'); }
 }
-let syncToEdit = false;
-let syncAttempt = 0;
-function syncMessage(message, error = false) {
-  const status = el('sync-status');
-  status.classList.toggle('error', error);
-  status.textContent = message;
-}
-function showConnection() {
-  const connected = Boolean(credential());
-  const count = localHistory().size;
-  const local = el('sync-local');
-  local.hidden = !count;
-  local.textContent = count ? 'Отметок в этом браузере: ' + count + '. После переноса они будут видны всем, кто откроет киносписок.' : '';
-  el('sync-settings').querySelector('summary').textContent = connected ? 'Настройки доступа' : 'Подключить редактирование';
-  el('sync-forget').hidden = !connected;
-  el('sync-token').required = !connected;
-  el('sync-save').textContent = count ? 'Перенести отметки и подключить' : connected ? 'Сохранить ключ' : 'Подключить';
-  return count;
-}
-async function openHistorySync(forEdit = false) {
-  const dialog = el('sync-dialog');
-  const attempt = ++syncAttempt;
-  syncToEdit = forEdit;
-  dialog.returnValue = '';
-  if (!dialog.open) dialog.showModal();
-  syncMessage('Проверяем общую историю…');
-  try {
-    const count = showConnection();
-    el('sync-settings').open = forEdit || count > 0;
-    await refreshViews();
-    if (attempt === syncAttempt) syncMessage('Общая история обновлена.');
-  } catch (error) {
-    if (attempt === syncAttempt) syncMessage(error.message, true);
-  }
-}
 function setupHistorySync() {
   const button = el('history-sync');
   if (!shared && !hosted) {
     button.replaceWith(button.querySelector('.update-date'));
     return;
   }
-  if (hosted) {
-    button.onclick = async () => {
-      button.disabled = true;
-      try { await refreshViews(); announce('История синхронизирована.'); }
-      catch { announce('Не удалось синхронизировать историю.'); }
-      finally { button.disabled = false; }
-    };
-    return;
-  }
-  const dialog = el('sync-dialog');
-  button.setAttribute('aria-haspopup', 'dialog');
-  button.setAttribute('aria-controls', dialog.id);
-  button.onclick = () => openHistorySync();
-  const input = el('sync-token');
-  dialog.addEventListener('close', () => { input.value = ''; });
-  el('sync-forget').onclick = () => {
-    forgetCredential();
-    input.value = '';
-    showConnection();
-    syncMessage('Ключ удалён с этого устройства.');
-  };
-  el('sync-form').onsubmit = async event => {
-    event.preventDefault();
-    const save = el('sync-save');
-    if (save.disabled || !await requestEditAccess('Подключить историю')) return;
-    const token = input.value.trim() || credential();
-    if (!token) { input.focus(); return; }
-    ++syncAttempt;
-    save.disabled = el('sync-forget').disabled = true;
-    syncMessage('Синхронизируем отметки…');
+  button.onclick = async () => {
+    button.disabled = true;
     try {
-      await connectHistory(token);
-      input.value = '';
-      showConnection();
-      renderHistory();
-      el('sync-settings').open = false;
-      syncMessage('История синхронизирована. Новые отметки сохраняются автоматически.');
-      if (syncToEdit && dialog.open) dialog.close('connected');
-    } catch (error) { syncMessage(error.message, true); }
-    finally { save.disabled = el('sync-forget').disabled = false; }
+      if (shared && localHistory().size) {
+        if (!await requestEditAccess('Перенести отметки в общую историю')) return;
+        await importLocalHistory();
+        renderHistory();
+        announce('Отметки перенесены в общую историю.');
+      } else {
+        await refreshViews();
+        announce('История синхронизирована.');
+      }
+    } catch (error) { announce(error.message || 'Не удалось синхронизировать историю.'); }
+    finally { button.disabled = false; }
   };
 }
 function wireGroup(id, key) {
@@ -1574,7 +1515,7 @@ async function start() {
     window.addEventListener('focus', onReturn);
     document.addEventListener('visibilitychange', onReturn);
     window.addEventListener('online', sync);
-    setInterval(() => { if (!document.hidden) sync(); }, shared ? 180000 : 30000);
+    setInterval(() => { if (!document.hidden) sync(); }, 30000);
   }
 }
 start().catch(() => {

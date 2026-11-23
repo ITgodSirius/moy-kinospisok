@@ -4,11 +4,10 @@ const prefixes = {
   fulfilled: 'wish-list:fulfilled:', reaction: 'film-list:reaction:'
 };
 export const hosted = document.querySelector('meta[name="history-mode"]').content === 'server';
-// Only the owner's Pages site can use a saved repository credential.
+// Device permissions are scoped to the published cinema site.
 export const shared = !hosted && location.origin === 'https://itgodsirius.github.io'
   && location.pathname.startsWith('/moy-kinospisok/') && !document.getElementById('offline-catalog');
-const historyURL = 'https://api.github.com/repos/ITgodSirius/moy-kinospisok/contents/watch-history.json';
-const historyBranch = 'watch-history';
+const historyURL = 'https://moy-kinospisok-history-sync.simpleclay16.chatgpt.site';
 const storagePrefix = 'moy-kinospisok:github:';
 const remote = new Map();
 const inFlight = new Set();
@@ -23,7 +22,7 @@ function enqueue(operation) {
 function preference(name) {
   try { return localStorage.getItem(storagePrefix + name); } catch { return null; }
 }
-export const credential = () => preference('token') || '';
+export const hasDevice = () => Boolean(preference('device'));
 let migrated = shared && preference('imported') === '1';
 function expected(kind, mark) {
   return Object.hasOwn(prefixes, kind) && typeof mark?.markedAt === 'string' &&
@@ -52,12 +51,12 @@ function decodeRows(data) {
   }
   return rows;
 }
-function encodeRows(rows) {
+function toRecords(rows) {
   const marks = Array.from(rows, ([key, mark]) => {
     const split = key.lastIndexOf('/');
     return { card: key.slice(0, split), kind: key.slice(split + 1), ...mark };
   });
-  return JSON.stringify({ version: 1, marks }, null, 2) + '\n';
+  return marks;
 }
 function applySnapshot(rows, cache = true) {
   const changed = !loaded || rows.size !== remote.size || Array.from(rows).some(([key, mark]) =>
@@ -66,89 +65,56 @@ function applySnapshot(rows, cache = true) {
     remote.clear();
     for (const [key, mark] of rows) remote.set(key, mark);
     if (cache) {
-      try { localStorage.setItem(storagePrefix + 'snapshot', encodeRows(rows)); }
+      try { localStorage.setItem(storagePrefix + 'snapshot', JSON.stringify({ version: 1, marks: toRecords(rows) })); }
       catch { /* The shared file is already available even if the local cache is full. */ }
     }
   }
   loaded = true;
   return changed;
 }
-async function githubRequest(token, body) {
-  const headers = { Accept: 'application/vnd.github+json' };
-  if (token) headers.Authorization = 'Bearer ' + token;
+async function requestHistory(path, body) {
+  const headers = {};
+  const device = preference('device');
   if (body) headers['Content-Type'] = 'application/json';
+  if (body && path !== '/device' && device) headers['X-Kino-Device'] = device;
   let response;
   try {
-    response = await fetch(historyURL + (body ? '' : '?ref=' + historyBranch), {
-      method: body ? 'PUT' : 'GET', headers, body: body && JSON.stringify(body),
+    response = await fetch(historyURL + path, {
+      method: body ? 'POST' : 'GET', headers, body: body && JSON.stringify(body),
       cache: 'no-store', credentials: 'omit', redirect: 'error', signal: AbortSignal.timeout(15000)
     });
-  } catch { throw new Error('Нет связи с GitHub. Повторите синхронизацию.'); }
-  if (response.ok || (body && response.status === 409)) return response;
-  if (response.status === 401) throw new Error('GitHub отклонил ключ. Введите действующий ключ.');
-  if (response.status === 403 || response.status === 429) {
-    if (response.headers.get('x-ratelimit-remaining') === '0' || response.status === 429) throw new Error('GitHub временно ограничил запросы. Попробуйте позже.');
-    throw new Error('GitHub отказал в доступе. Проверьте у ключа право Contents — Read and write.');
+  } catch { throw new Error('Нет связи с общей историей. Повторите позже.'); }
+  const data = await response.json().catch(() => null);
+  if (!response.ok || !data) {
+    if (response.status === 401 && path !== '/device' && preference('device') === device) localStorage.removeItem(storagePrefix + 'device');
+    throw new Error(data?.message || 'Синхронизация недоступна. Повторите позже.');
   }
-  throw new Error('Не удалось синхронизировать историю с GitHub (код ' + response.status + ').');
+  return data;
 }
-async function readPublicHistory() {
-  const url = 'https://raw.githubusercontent.com/ITgodSirius/moy-kinospisok/' + historyBranch + '/watch-history.json';
-  let response;
-  try {
-    response = await fetch(url + '?sync=' + Date.now(), {
-      cache: 'no-store', credentials: 'omit', signal: AbortSignal.timeout(15000)
-    });
-  } catch { throw new Error('Нет связи с GitHub. Повторите синхронизацию.'); }
-  if (!response.ok) throw new Error('Не удалось загрузить общую историю (код ' + response.status + ').');
-  return decodeRows(await response.json());
+export async function checkDevicePin(pin) {
+  const { device } = await requestHistory('/device', { pin });
+  if (typeof device !== 'string' || !device) throw new Error('Не удалось подтвердить устройство.');
+  return device;
 }
-async function readFile(token) {
-  const response = await githubRequest(token);
-  const { sha, content, encoding } = await response.json();
-  if (!sha || encoding !== 'base64' || !content) throw new Error('GitHub не вернул файл истории.');
-  const bytes = Uint8Array.from(atob(content), ch => ch.charCodeAt(0));
-  return { sha, rows: decodeRows(JSON.parse(new TextDecoder().decode(bytes))) };
-}
-// Reapply only this device's change when another device saves first.
-async function changeFile(token, change) {
-  if (!token) throw new Error('Подключите ключ GitHub для записи истории.');
-  for (let attempt = 0; attempt < 4; attempt++) {
-    const { sha, rows } = await readFile(token);
-    if (change(rows)) {
-      const bytes = new TextEncoder().encode(encodeRows(rows));
-      const content = btoa(Array.from(bytes, byte => String.fromCharCode(byte)).join(''));
-      const saved = await githubRequest(token, { message: 'Обновить отметки киносписка', branch: historyBranch, sha, content });
-      if (saved.status === 409) continue;
-    }
-    applySnapshot(rows);
-    return;
-  }
-  throw new Error('История менялась на другом устройстве. Повторите синхронизацию.');
-}
-export function connectHistory(token) {
+export function rememberDevice(device) { localStorage.setItem(storagePrefix + 'device', device); }
+export function importLocalHistory() {
   return enqueue(async () => {
-    const local = localHistory();
-    await changeFile(token, rows => {
-      let changed = false;
-      for (const [key, mark] of local) {
-        if (!rows.has(key)) { rows.set(key, mark); changed = true; }
-      }
-      return changed;
-    });
-    localStorage.setItem(storagePrefix + 'token', token);
+    if (migrated) return;
+    const records = toRecords(localHistory());
+    for (let i = 0; i < records.length; i += 250) {
+      const data = await requestHistory('/import', { marks: records.slice(i, i + 250) });
+      applySnapshot(decodeRows(data));
+    }
     localStorage.setItem(storagePrefix + 'imported', '1');
     migrated = true;
   });
-}
-export function forgetCredential() {
-  localStorage.removeItem(storagePrefix + 'token');
 }
 if (shared) {
   function restoreSnapshot(raw) {
     try { if (raw) applySnapshot(decodeRows(JSON.parse(raw)), false); }
     catch { /* The next read will replace an invalid cache. */ }
   }
+  try { localStorage.removeItem(storagePrefix + 'token'); } catch { /* Read-only browsing is available without storage. */ }
   restoreSnapshot(preference('snapshot'));
   window.addEventListener('storage', event => {
     if (!event.key || event.key === storagePrefix + 'imported') migrated = preference('imported') === '1';
@@ -183,7 +149,7 @@ export function busy(id, kind) {
   return (hosted && !loaded) || inFlight.has(id + '/' + kind);
 }
 export async function refreshHistory() {
-  if (shared) return enqueue(async () => applySnapshot(await readPublicHistory()));
+  if (shared) return enqueue(async () => applySnapshot(decodeRows(await requestHistory('/history'))));
   if (!hosted || inFlight.size) return false;
   const version = ++revision;
   const response = await fetch('./api/history', { cache: 'no-store', signal: AbortSignal.timeout(12000) });
@@ -208,13 +174,10 @@ export async function setMark(id, kind, value, update) {
     inFlight.add(key);
     update();
     try {
-      await enqueue(() => changeFile(credential(), rows => {
-        if (kind === 'reaction' && value && !rows.has(id + '/watched')) throw new Error('Сначала отметьте просмотр.');
-        if (!value) return rows.delete(key);
-        if (rows.get(key)?.value === value) return false;
-        rows.set(key, mark);
-        return true;
-      }));
+      await enqueue(async () => {
+        const data = await requestHistory('/mark', { card: id, kind, value });
+        applySnapshot(decodeRows(data));
+      });
     } finally {
       inFlight.delete(key);
       update();
