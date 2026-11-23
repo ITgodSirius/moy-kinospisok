@@ -473,24 +473,28 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     }
     if (!days.has(selectedDay)) selectedDay = days.keys().next().value;
     const sidebar = node('nav', 'training-days');
+    const dayOptions = node('div', 'training-day-options');
     if (options.length > 1) {
       const label = node('label', 'training-field'), select = node('select');
       for (const p of options) select.add(new Option(p.name, p.id));
       select.value = program.id;
       select.onchange = () => { selectedProgram = select.value; selectedDay = null; home(); };
-      label.append(node('span', '', 'Программа'), select); sidebar.append(label);
-    } else sidebar.append(node('strong', '', program.name));
-    sidebar.append(hint(gym.name));
+      label.append(node('span', '', 'Программа'), select); dayOptions.append(label);
+    } else dayOptions.append(node('strong', '', program.name));
+    dayOptions.append(hint(gym.name));
     for (const [id, name] of days) {
       const b = btn(name, () => { selectedDay = id; render(); });
-      b.setAttribute('aria-pressed', String(selectedDay === id)); sidebar.append(b);
+      b.setAttribute('aria-pressed', String(selectedDay === id)); dayOptions.append(b);
     }
     const sessions = logged.filter(s => s.dayId === selectedDay).sort((a,b) => b.date.localeCompare(a.date));
-    const copyButton = btn('Копировать историю всех тренировок', () => copyWorkoutJson(sessions, 'История подпрограммы скопирована'));
+    const copyButton = btn('Копировать историю всех тренировок в JSON', () => copyWorkoutJson(sessions, 'История подпрограммы скопирована'));
+    const clipboardIcon = node('span', '', '📋');
+    clipboardIcon.setAttribute('aria-hidden', 'true');
+    copyButton.prepend(clipboardIcon);
     copyButton.classList.add('training-copy-workouts');
     copyButton.title = 'Скопировать все тренировки выбранной подпрограммы в этом зале';
     copyButton.disabled = !sessions.length;
-    sidebar.append(copyButton);
+    sidebar.append(dayOptions, copyButton);
     const main = node('div', 'training-history');
     const header = section('История тренировок');
     header.firstElementChild.id = 'training-history-title';

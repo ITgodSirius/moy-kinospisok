@@ -575,12 +575,14 @@ a.quote-source:hover{color:var(--blue)}
 .training-history { min-height:0; grid-template-rows:auto minmax(0,1fr) }
 .training-history-cards { display:grid; align-content:start; gap:12px; overflow:auto; overscroll-behavior:contain; padding-bottom:max(48px,env(safe-area-inset-bottom)) }
 .training-history-cards:focus-visible { outline-offset:-3px }
-.training-days { display:flex; align-self:start; flex-direction:column; align-items:stretch; gap:6px; min-height:0; max-height:100%; overflow-y:auto; border-right:1px solid var(--line); padding-right:14px }
+.training-days { display:grid; grid-template-rows:minmax(0,1fr) auto; grid-template-columns:minmax(0,1fr); gap:8px; min-height:0; border-right:1px solid var(--line); padding:0 14px max(12px,env(safe-area-inset-bottom)) 0 }
+.training-day-options { display:flex; flex-direction:column; gap:6px; min-height:0; overflow-y:auto }
+.training-day-options>* { flex-shrink:0 }
 .training-days .btn[aria-pressed] { justify-content:flex-start; background:transparent; border-color:transparent }
 .training-days .btn[aria-pressed=true] { color:var(--blue); background:var(--tint) }
-.training-copy-workouts.btn {
-  align-self:flex-start; width:fit-content; max-width:min(100%,10.5rem); min-height:32px; margin-top:4px;
-  padding:2px 8px; font-size:.8125rem; line-height:1.2; text-wrap:balance
+#training .btn.training-copy-workouts {
+  width:100%; min-height:26px; gap:5px; padding:2px 6px;
+  font-size:.75rem; line-height:1.15; text-wrap:balance
 }
 .training-table { border:1px solid var(--line); border-radius:10px; background:var(--surface); padding:14px }
 .training-exercise + .training-exercise { border-top:1px solid var(--line); padding-top:14px }
@@ -598,7 +600,8 @@ a.quote-source:hover{color:var(--blue)}
 .training-set [hidden] { display:none }
 @media(max-width:820px) {
   .training-layout { grid-template-columns:minmax(0,1fr); grid-template-rows:fit-content(45%) minmax(0,1fr) }
-  .training-days { flex-direction:row; flex-wrap:wrap; align-items:center; border-right:0; border-bottom:1px solid var(--line); padding:0 0 10px }
+  .training-days { border-right:0; border-bottom:1px solid var(--line); padding:0 0 10px }
+  .training-day-options { flex-direction:row; flex-wrap:wrap; align-content:start; align-items:center }
   .training-top { display:flex; padding-block:10px; gap:8px 12px }
   .training-tabs { min-height:44px; gap:2px }
   .training-tabs button { min-height:44px; padding-inline:8px }
