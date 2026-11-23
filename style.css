@@ -720,8 +720,7 @@ a.quote-source:hover{color:var(--blue)}
 
 .training-revisions ul,.training-revisions ol { margin:8px 0; padding-inline-start:22px }
 .training-revisions li+li { margin-top:4px }
-.training-revisions summary,.training-source summary { cursor:pointer; color:var(--blue) }
-.training-source p { margin-top:10px; white-space:pre-line; overflow-wrap:anywhere }
+.training-revisions summary { cursor:pointer; color:var(--blue) }
 .training-field select { min-height:40px; max-width:100%; padding:6px 9px; border:1px solid var(--line); border-radius:6px; background:var(--surface); color:var(--ink); font:inherit }
 
 .training-program-parts { display:flex; flex-wrap:wrap; gap:6px; list-style:none; margin:10px 0 0; padding:0 }

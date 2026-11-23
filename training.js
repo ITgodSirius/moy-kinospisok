@@ -664,11 +664,6 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     else controls.append(btn('Изменить', () => { historyEdit = true; sessionPage(); }));
     const meta = hint([s.gym, s.program, dateLabel(s.date)].join(' · '));
     const items = [section(s.day + (s.finished ? ' · история' : ' · тренировка'), controls), meta];
-    if (s.sourceNote) {
-      const source = node('details', 'training-source');
-      source.append(node('summary', '', 'Строки из дневника'), node('p', '', s.sourceNote));
-      items.push(source);
-    }
     if (historyEdit) {
       const date = field('Дата и время', s.date.length === 10 ? s.date : localDate(new Date(s.date)), { type: s.date.length === 10 ? 'date' : 'datetime-local', required: true });
       items.push(row(date.wrap, btn('Сохранить дату', () => {
