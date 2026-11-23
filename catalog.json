@@ -1,5 +1,6900 @@
 [
   {
+    "id": "tmdb-tv-47450-s1",
+    "title": "В пустыне смерти",
+    "type": "series",
+    "genres": [
+      "Боевик",
+      "Приключения",
+      "Фэнтези"
+    ],
+    "studios": [
+      "AMC Studios",
+      "Double Feature Films"
+    ],
+    "description": "В землях, поделённых между баронами, воин Санни встречает подростка с необычной силой. Санни ищет путь за пределы этой территории, пока его хозяин пытается удержать власть.",
+    "poster": "assets/tmdb-tv-47450-s1-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-47450-s1-still-1.jpg",
+      "assets/tmdb-tv-47450-s1-still-2.jpg"
+    ],
+    "releaseDate": "2015-11-15",
+    "rating": 7.9,
+    "ratingSource": "IMDb сериала",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=5KyHy4KRvIc",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/47450/season/1?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt3865236/",
+      "official": "https://www.amc.com/shows/into-the-badlands",
+      "metadata": "https://v3-cinemeta.strem.io/meta/series/tt3865236.json",
+      "release": "https://www.tvmaze.com/shows/2300/into-the-badlands/episodes",
+      "poster": "https://static.tvmaze.com/uploads/images/original_untouched/34/86641.jpg",
+      "gallery": [
+        "https://static.tvmaze.com/uploads/images/original_untouched/28/72471.jpg",
+        "https://static.tvmaze.com/uploads/images/original_untouched/31/79061.jpg"
+      ],
+      "seasons": "https://www.themoviedb.org/tv/47450/seasons"
+    },
+    "platforms": [
+      "AMC"
+    ],
+    "origin": "foreign",
+    "season": 1,
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2015-11-15",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2015-11-15",
+            "title": "The Fort"
+          },
+          {
+            "number": 2,
+            "date": "2015-11-22",
+            "title": "Fist Like a Bullet"
+          },
+          {
+            "number": 3,
+            "date": "2015-11-29",
+            "title": "White Stork Spreads Wings"
+          },
+          {
+            "number": 4,
+            "date": "2015-12-06",
+            "title": "Two Tigers Subdue Dragons"
+          },
+          {
+            "number": 5,
+            "date": "2015-12-13",
+            "title": "Snake Creeps Down"
+          },
+          {
+            "number": 6,
+            "date": "2015-12-20",
+            "title": "Hand of Five Poisons"
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "releaseDate": "2017-03-19",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2017-03-19",
+            "title": "Tiger Pushes Mountain"
+          },
+          {
+            "number": 2,
+            "date": "2017-03-26",
+            "title": "Force of Eagle's Claws"
+          },
+          {
+            "number": 3,
+            "date": "2017-04-02",
+            "title": "Red Sun, Silver Moon"
+          },
+          {
+            "number": 4,
+            "date": "2017-04-09",
+            "title": "Palm of the Iron Fox"
+          },
+          {
+            "number": 5,
+            "date": "2017-04-16",
+            "title": "Monkey Leaps Through Mist"
+          },
+          {
+            "number": 6,
+            "date": "2017-04-23",
+            "title": "Leopard Stalks in Snow"
+          },
+          {
+            "number": 7,
+            "date": "2017-04-30",
+            "title": "Black Heart, White Mountain"
+          },
+          {
+            "number": 8,
+            "date": "2017-05-07",
+            "title": "Sting of the Scorpion's Tail"
+          },
+          {
+            "number": 9,
+            "date": "2017-05-14",
+            "title": "Nightingale Sings No More"
+          },
+          {
+            "number": 10,
+            "date": "2017-05-21",
+            "title": "Wolf's Breath, Dragon Fire"
+          }
+        ]
+      },
+      {
+        "number": 3,
+        "releaseDate": "2018-04-22",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2018-04-22",
+            "title": "Enter the Phoenix"
+          },
+          {
+            "number": 2,
+            "date": "2018-04-29",
+            "title": "Moon Rises, Raven Seeks"
+          },
+          {
+            "number": 3,
+            "date": "2018-05-06",
+            "title": "Leopard Snares Rabbit"
+          },
+          {
+            "number": 4,
+            "date": "2018-05-13",
+            "title": "Blind Cannibal Assassins"
+          },
+          {
+            "number": 5,
+            "date": "2018-05-20",
+            "title": "Carry Tiger to Mountain"
+          },
+          {
+            "number": 6,
+            "date": "2018-06-03",
+            "title": "Black Wind Howls"
+          },
+          {
+            "number": 7,
+            "date": "2018-06-10",
+            "title": "Dragonfly's Last Dance"
+          },
+          {
+            "number": 8,
+            "date": "2018-06-17",
+            "title": "Leopard Catches Cloud"
+          },
+          {
+            "number": 9,
+            "date": "2019-03-24",
+            "title": "Chamber of the Scorpion"
+          },
+          {
+            "number": 10,
+            "date": "2019-03-25",
+            "title": "Raven's Feather, Phoenix Blood"
+          },
+          {
+            "number": 11,
+            "date": "2019-04-01",
+            "title": "The Boar and the Butterfly"
+          },
+          {
+            "number": 12,
+            "date": "2019-04-08",
+            "title": "Cobra Fang, Panther Claw"
+          },
+          {
+            "number": 13,
+            "date": "2019-04-15",
+            "title": "Black Lotus, White Rose"
+          },
+          {
+            "number": 14,
+            "date": "2019-04-22",
+            "title": "Curse of the Red Rain"
+          },
+          {
+            "number": 15,
+            "date": "2019-04-29",
+            "title": "Requiem for the Fallen"
+          },
+          {
+            "number": 16,
+            "date": "2019-05-06",
+            "title": "Seven Strike as One"
+          }
+        ]
+      }
+    ],
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-tv-47450-s2",
+    "title": "В пустыне смерти",
+    "type": "series",
+    "genres": [
+      "Боевик",
+      "Приключения",
+      "Фэнтези"
+    ],
+    "studios": [
+      "AMC Studios",
+      "Double Feature Films"
+    ],
+    "description": "Санни попадает в плен за пределами пустынных земель и ищет способ вернуться к семье. М.К. тем временем пытается понять свою силу и научиться управлять ею.",
+    "poster": "assets/tmdb-tv-47450-s2-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-47450-s2-still-1.jpg",
+      "assets/tmdb-tv-47450-s2-still-2.jpg"
+    ],
+    "releaseDate": "2017-03-19",
+    "rating": 7.9,
+    "ratingSource": "IMDb сериала",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=-c-QH6_EdLg",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/47450/season/2?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt3865236/",
+      "official": "https://www.amc.com/shows/into-the-badlands",
+      "metadata": "https://v3-cinemeta.strem.io/meta/series/tt3865236.json",
+      "release": "https://www.tvmaze.com/shows/2300/into-the-badlands/episodes",
+      "poster": "https://static.tvmaze.com/uploads/images/original_untouched/101/252542.jpg",
+      "gallery": [
+        "https://static.tvmaze.com/uploads/images/original_untouched/102/257294.jpg",
+        "https://static.tvmaze.com/uploads/images/original_untouched/104/260293.jpg"
+      ],
+      "seasons": "https://www.themoviedb.org/tv/47450/seasons"
+    },
+    "platforms": [
+      "AMC"
+    ],
+    "origin": "foreign",
+    "season": 2,
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2015-11-15",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2015-11-15",
+            "title": "The Fort"
+          },
+          {
+            "number": 2,
+            "date": "2015-11-22",
+            "title": "Fist Like a Bullet"
+          },
+          {
+            "number": 3,
+            "date": "2015-11-29",
+            "title": "White Stork Spreads Wings"
+          },
+          {
+            "number": 4,
+            "date": "2015-12-06",
+            "title": "Two Tigers Subdue Dragons"
+          },
+          {
+            "number": 5,
+            "date": "2015-12-13",
+            "title": "Snake Creeps Down"
+          },
+          {
+            "number": 6,
+            "date": "2015-12-20",
+            "title": "Hand of Five Poisons"
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "releaseDate": "2017-03-19",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2017-03-19",
+            "title": "Tiger Pushes Mountain"
+          },
+          {
+            "number": 2,
+            "date": "2017-03-26",
+            "title": "Force of Eagle's Claws"
+          },
+          {
+            "number": 3,
+            "date": "2017-04-02",
+            "title": "Red Sun, Silver Moon"
+          },
+          {
+            "number": 4,
+            "date": "2017-04-09",
+            "title": "Palm of the Iron Fox"
+          },
+          {
+            "number": 5,
+            "date": "2017-04-16",
+            "title": "Monkey Leaps Through Mist"
+          },
+          {
+            "number": 6,
+            "date": "2017-04-23",
+            "title": "Leopard Stalks in Snow"
+          },
+          {
+            "number": 7,
+            "date": "2017-04-30",
+            "title": "Black Heart, White Mountain"
+          },
+          {
+            "number": 8,
+            "date": "2017-05-07",
+            "title": "Sting of the Scorpion's Tail"
+          },
+          {
+            "number": 9,
+            "date": "2017-05-14",
+            "title": "Nightingale Sings No More"
+          },
+          {
+            "number": 10,
+            "date": "2017-05-21",
+            "title": "Wolf's Breath, Dragon Fire"
+          }
+        ]
+      },
+      {
+        "number": 3,
+        "releaseDate": "2018-04-22",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2018-04-22",
+            "title": "Enter the Phoenix"
+          },
+          {
+            "number": 2,
+            "date": "2018-04-29",
+            "title": "Moon Rises, Raven Seeks"
+          },
+          {
+            "number": 3,
+            "date": "2018-05-06",
+            "title": "Leopard Snares Rabbit"
+          },
+          {
+            "number": 4,
+            "date": "2018-05-13",
+            "title": "Blind Cannibal Assassins"
+          },
+          {
+            "number": 5,
+            "date": "2018-05-20",
+            "title": "Carry Tiger to Mountain"
+          },
+          {
+            "number": 6,
+            "date": "2018-06-03",
+            "title": "Black Wind Howls"
+          },
+          {
+            "number": 7,
+            "date": "2018-06-10",
+            "title": "Dragonfly's Last Dance"
+          },
+          {
+            "number": 8,
+            "date": "2018-06-17",
+            "title": "Leopard Catches Cloud"
+          },
+          {
+            "number": 9,
+            "date": "2019-03-24",
+            "title": "Chamber of the Scorpion"
+          },
+          {
+            "number": 10,
+            "date": "2019-03-25",
+            "title": "Raven's Feather, Phoenix Blood"
+          },
+          {
+            "number": 11,
+            "date": "2019-04-01",
+            "title": "The Boar and the Butterfly"
+          },
+          {
+            "number": 12,
+            "date": "2019-04-08",
+            "title": "Cobra Fang, Panther Claw"
+          },
+          {
+            "number": 13,
+            "date": "2019-04-15",
+            "title": "Black Lotus, White Rose"
+          },
+          {
+            "number": 14,
+            "date": "2019-04-22",
+            "title": "Curse of the Red Rain"
+          },
+          {
+            "number": 15,
+            "date": "2019-04-29",
+            "title": "Requiem for the Fallen"
+          },
+          {
+            "number": 16,
+            "date": "2019-05-06",
+            "title": "Seven Strike as One"
+          }
+        ]
+      }
+    ],
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-tv-47450-s3",
+    "title": "В пустыне смерти",
+    "type": "series",
+    "genres": [
+      "Боевик",
+      "Приключения",
+      "Фэнтези"
+    ],
+    "studios": [
+      "AMC Studios",
+      "Double Feature Films"
+    ],
+    "description": "Война между баронами ослабляет их владения. Санни ищет помощи для сына, а новый лидер Пилигрим собирает людей, обещая им найти легендарную Азру.",
+    "poster": "assets/tmdb-tv-47450-s3-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-47450-s3-still-1.jpg",
+      "assets/tmdb-tv-47450-s3-still-2.jpg"
+    ],
+    "releaseDate": "2018-04-22",
+    "rating": 7.9,
+    "ratingSource": "IMDb сериала",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=YtkpNqs43ZM",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/47450/season/3?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt3865236/",
+      "official": "https://www.amc.com/shows/into-the-badlands",
+      "metadata": "https://v3-cinemeta.strem.io/meta/series/tt3865236.json",
+      "release": "https://www.tvmaze.com/shows/2300/into-the-badlands/episodes",
+      "poster": "https://static.tvmaze.com/uploads/images/original_untouched/152/382406.jpg",
+      "gallery": [
+        "https://static.tvmaze.com/uploads/images/original_untouched/153/384966.jpg",
+        "https://static.tvmaze.com/uploads/images/original_untouched/154/386316.jpg"
+      ],
+      "seasons": "https://www.themoviedb.org/tv/47450/seasons"
+    },
+    "platforms": [
+      "AMC"
+    ],
+    "origin": "foreign",
+    "season": 3,
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2015-11-15",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2015-11-15",
+            "title": "The Fort"
+          },
+          {
+            "number": 2,
+            "date": "2015-11-22",
+            "title": "Fist Like a Bullet"
+          },
+          {
+            "number": 3,
+            "date": "2015-11-29",
+            "title": "White Stork Spreads Wings"
+          },
+          {
+            "number": 4,
+            "date": "2015-12-06",
+            "title": "Two Tigers Subdue Dragons"
+          },
+          {
+            "number": 5,
+            "date": "2015-12-13",
+            "title": "Snake Creeps Down"
+          },
+          {
+            "number": 6,
+            "date": "2015-12-20",
+            "title": "Hand of Five Poisons"
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "releaseDate": "2017-03-19",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2017-03-19",
+            "title": "Tiger Pushes Mountain"
+          },
+          {
+            "number": 2,
+            "date": "2017-03-26",
+            "title": "Force of Eagle's Claws"
+          },
+          {
+            "number": 3,
+            "date": "2017-04-02",
+            "title": "Red Sun, Silver Moon"
+          },
+          {
+            "number": 4,
+            "date": "2017-04-09",
+            "title": "Palm of the Iron Fox"
+          },
+          {
+            "number": 5,
+            "date": "2017-04-16",
+            "title": "Monkey Leaps Through Mist"
+          },
+          {
+            "number": 6,
+            "date": "2017-04-23",
+            "title": "Leopard Stalks in Snow"
+          },
+          {
+            "number": 7,
+            "date": "2017-04-30",
+            "title": "Black Heart, White Mountain"
+          },
+          {
+            "number": 8,
+            "date": "2017-05-07",
+            "title": "Sting of the Scorpion's Tail"
+          },
+          {
+            "number": 9,
+            "date": "2017-05-14",
+            "title": "Nightingale Sings No More"
+          },
+          {
+            "number": 10,
+            "date": "2017-05-21",
+            "title": "Wolf's Breath, Dragon Fire"
+          }
+        ]
+      },
+      {
+        "number": 3,
+        "releaseDate": "2018-04-22",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2018-04-22",
+            "title": "Enter the Phoenix"
+          },
+          {
+            "number": 2,
+            "date": "2018-04-29",
+            "title": "Moon Rises, Raven Seeks"
+          },
+          {
+            "number": 3,
+            "date": "2018-05-06",
+            "title": "Leopard Snares Rabbit"
+          },
+          {
+            "number": 4,
+            "date": "2018-05-13",
+            "title": "Blind Cannibal Assassins"
+          },
+          {
+            "number": 5,
+            "date": "2018-05-20",
+            "title": "Carry Tiger to Mountain"
+          },
+          {
+            "number": 6,
+            "date": "2018-06-03",
+            "title": "Black Wind Howls"
+          },
+          {
+            "number": 7,
+            "date": "2018-06-10",
+            "title": "Dragonfly's Last Dance"
+          },
+          {
+            "number": 8,
+            "date": "2018-06-17",
+            "title": "Leopard Catches Cloud"
+          },
+          {
+            "number": 9,
+            "date": "2019-03-24",
+            "title": "Chamber of the Scorpion"
+          },
+          {
+            "number": 10,
+            "date": "2019-03-25",
+            "title": "Raven's Feather, Phoenix Blood"
+          },
+          {
+            "number": 11,
+            "date": "2019-04-01",
+            "title": "The Boar and the Butterfly"
+          },
+          {
+            "number": 12,
+            "date": "2019-04-08",
+            "title": "Cobra Fang, Panther Claw"
+          },
+          {
+            "number": 13,
+            "date": "2019-04-15",
+            "title": "Black Lotus, White Rose"
+          },
+          {
+            "number": 14,
+            "date": "2019-04-22",
+            "title": "Curse of the Red Rain"
+          },
+          {
+            "number": 15,
+            "date": "2019-04-29",
+            "title": "Requiem for the Fallen"
+          },
+          {
+            "number": 16,
+            "date": "2019-05-06",
+            "title": "Seven Strike as One"
+          }
+        ]
+      }
+    ],
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-tv-34967-s1",
+    "title": "Рухнувшие небеса",
+    "type": "series",
+    "genres": [
+      "Фантастика",
+      "Боевик",
+      "Драма"
+    ],
+    "studios": [
+      "DreamWorks Television",
+      "Amblin Television"
+    ],
+    "description": "После вторжения пришельцев преподаватель истории Том Мейсон присоединяется к ополчению. Вместе с другими выжившими он ищет пропавшего сына и помогает защищать гражданских.",
+    "poster": "assets/tmdb-tv-34967-s1-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-34967-s1-still-1.jpg",
+      "assets/tmdb-tv-34967-s1-still-2.jpg"
+    ],
+    "releaseDate": "2011-06-19",
+    "rating": 7.1,
+    "ratingSource": "IMDb сериала",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=MP7vrlvu9qk",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/34967/season/1?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt1462059/",
+      "official": "https://amblin.com/tv/falling-skies/",
+      "metadata": "https://v3-cinemeta.strem.io/meta/series/tt1462059.json",
+      "release": "https://www.tvmaze.com/shows/95/falling-skies/episodes",
+      "poster": "https://static.tvmaze.com/uploads/images/original_untouched/24/60626.jpg",
+      "gallery": [
+        "https://static.tvmaze.com/uploads/images/original_untouched/15/38055.jpg",
+        "https://static.tvmaze.com/uploads/images/original_untouched/15/38064.jpg"
+      ],
+      "seasons": "https://www.themoviedb.org/tv/34967/seasons"
+    },
+    "platforms": [
+      "TNT"
+    ],
+    "origin": "foreign",
+    "season": 1,
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2011-06-19",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2011-06-19",
+            "title": "Live and Learn"
+          },
+          {
+            "number": 2,
+            "date": "2011-06-19",
+            "title": "The Armory"
+          },
+          {
+            "number": 3,
+            "date": "2011-06-26",
+            "title": "Prisoner of War"
+          },
+          {
+            "number": 4,
+            "date": "2011-07-03",
+            "title": "Grace"
+          },
+          {
+            "number": 5,
+            "date": "2011-07-10",
+            "title": "Silent Kill"
+          },
+          {
+            "number": 6,
+            "date": "2011-07-17",
+            "title": "Sanctuary (1)"
+          },
+          {
+            "number": 7,
+            "date": "2011-07-24",
+            "title": "Sanctuary (2)"
+          },
+          {
+            "number": 8,
+            "date": "2011-07-31",
+            "title": "What Hides Beneath"
+          },
+          {
+            "number": 9,
+            "date": "2011-08-07",
+            "title": "Mutiny"
+          },
+          {
+            "number": 10,
+            "date": "2011-08-07",
+            "title": "Eight Hours"
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "releaseDate": "2012-06-17",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2012-06-17",
+            "title": "Worlds Apart"
+          },
+          {
+            "number": 2,
+            "date": "2012-06-17",
+            "title": "Shall We Gather at the River"
+          },
+          {
+            "number": 3,
+            "date": "2012-06-24",
+            "title": "Compass"
+          },
+          {
+            "number": 4,
+            "date": "2012-07-01",
+            "title": "Young Bloods"
+          },
+          {
+            "number": 5,
+            "date": "2012-07-08",
+            "title": "Love and Other Acts of Courage"
+          },
+          {
+            "number": 6,
+            "date": "2012-07-15",
+            "title": "Homecoming"
+          },
+          {
+            "number": 7,
+            "date": "2012-07-22",
+            "title": "Molon Labe"
+          },
+          {
+            "number": 8,
+            "date": "2012-08-05",
+            "title": "Death March"
+          },
+          {
+            "number": 9,
+            "date": "2012-08-12",
+            "title": "The Price of Greatness"
+          },
+          {
+            "number": 10,
+            "date": "2012-08-19",
+            "title": "A More Perfect Union"
+          }
+        ]
+      },
+      {
+        "number": 3,
+        "releaseDate": "2013-06-09",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2013-06-09",
+            "title": "On Thin Ice"
+          },
+          {
+            "number": 2,
+            "date": "2013-06-09",
+            "title": "Collateral Damage"
+          },
+          {
+            "number": 3,
+            "date": "2013-06-16",
+            "title": "Badlands"
+          },
+          {
+            "number": 4,
+            "date": "2013-06-23",
+            "title": "At All Costs (1)"
+          },
+          {
+            "number": 5,
+            "date": "2013-06-30",
+            "title": "Search and Recover (2)"
+          },
+          {
+            "number": 6,
+            "date": "2013-07-07",
+            "title": "Be Silent and Come Out"
+          },
+          {
+            "number": 7,
+            "date": "2013-07-14",
+            "title": "The Pickett Line"
+          },
+          {
+            "number": 8,
+            "date": "2013-07-21",
+            "title": "Strange Brew"
+          },
+          {
+            "number": 9,
+            "date": "2013-07-28",
+            "title": "Journey to Xibalba"
+          },
+          {
+            "number": 10,
+            "date": "2013-08-04",
+            "title": "Brazil"
+          }
+        ]
+      },
+      {
+        "number": 4,
+        "releaseDate": "2014-06-22",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2014-06-22",
+            "title": "Ghost in the Machine"
+          },
+          {
+            "number": 2,
+            "date": "2014-06-29",
+            "title": "The Eye"
+          },
+          {
+            "number": 3,
+            "date": "2014-07-06",
+            "title": "Exodus"
+          },
+          {
+            "number": 4,
+            "date": "2014-07-13",
+            "title": "Evolve or Die"
+          },
+          {
+            "number": 5,
+            "date": "2014-07-20",
+            "title": "Mind Wars"
+          },
+          {
+            "number": 6,
+            "date": "2014-07-27",
+            "title": "Door Number Three"
+          },
+          {
+            "number": 7,
+            "date": "2014-08-03",
+            "title": "Saturday Night Massacre"
+          },
+          {
+            "number": 8,
+            "date": "2014-08-10",
+            "title": "A Thing With Feathers"
+          },
+          {
+            "number": 9,
+            "date": "2014-08-17",
+            "title": "Till Death Do Us Part"
+          },
+          {
+            "number": 10,
+            "date": "2014-08-24",
+            "title": "Drawing Straws"
+          },
+          {
+            "number": 11,
+            "date": "2014-08-31",
+            "title": "Space Oddity"
+          },
+          {
+            "number": 12,
+            "date": "2014-08-31",
+            "title": "Shoot the Moon"
+          }
+        ]
+      },
+      {
+        "number": 5,
+        "releaseDate": "2015-06-28",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2015-06-28",
+            "title": "Find Your Warrior"
+          },
+          {
+            "number": 2,
+            "date": "2015-07-05",
+            "title": "Hunger Pains"
+          },
+          {
+            "number": 3,
+            "date": "2015-07-12",
+            "title": "Hatchlings"
+          },
+          {
+            "number": 4,
+            "date": "2015-07-19",
+            "title": "Pope Breaks Bad"
+          },
+          {
+            "number": 5,
+            "date": "2015-07-26",
+            "title": "Non-Essential Personnel"
+          },
+          {
+            "number": 6,
+            "date": "2015-08-02",
+            "title": "Respite"
+          },
+          {
+            "number": 7,
+            "date": "2015-08-09",
+            "title": "Everybody Has Their Reasons"
+          },
+          {
+            "number": 8,
+            "date": "2015-08-16",
+            "title": "Stalag 14th Virginia"
+          },
+          {
+            "number": 9,
+            "date": "2015-08-23",
+            "title": "Reunion"
+          },
+          {
+            "number": 10,
+            "date": "2015-08-30",
+            "title": "Reborn"
+          }
+        ]
+      }
+    ],
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-tv-34967-s2",
+    "title": "Рухнувшие небеса",
+    "type": "series",
+    "genres": [
+      "Фантастика",
+      "Боевик",
+      "Драма"
+    ],
+    "studios": [
+      "DreamWorks Television",
+      "Amblin Television"
+    ],
+    "description": "Том возвращается после исчезновения, но бывшие товарищи сомневаются, можно ли ему доверять. Пока отряд ищет безопасное место, среди противников пришельцев появляются неожиданные союзники.",
+    "poster": "assets/tmdb-tv-34967-s2-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-34967-s2-still-1.jpg",
+      "assets/tmdb-tv-34967-s2-still-2.jpg"
+    ],
+    "releaseDate": "2012-06-17",
+    "rating": 7.1,
+    "ratingSource": "IMDb сериала",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=0U4tCk7PeDs",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/34967/season/2?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt1462059/",
+      "official": "https://amblin.com/tv/falling-skies/",
+      "metadata": "https://v3-cinemeta.strem.io/meta/series/tt1462059.json",
+      "release": "https://www.tvmaze.com/shows/95/falling-skies/episodes",
+      "poster": "https://static.tvmaze.com/uploads/images/original_untouched/24/60627.jpg",
+      "gallery": [
+        "https://static.tvmaze.com/uploads/images/original_untouched/15/38065.jpg",
+        "https://static.tvmaze.com/uploads/images/original_untouched/15/38066.jpg"
+      ],
+      "seasons": "https://www.themoviedb.org/tv/34967/seasons"
+    },
+    "platforms": [
+      "TNT"
+    ],
+    "origin": "foreign",
+    "season": 2,
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2011-06-19",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2011-06-19",
+            "title": "Live and Learn"
+          },
+          {
+            "number": 2,
+            "date": "2011-06-19",
+            "title": "The Armory"
+          },
+          {
+            "number": 3,
+            "date": "2011-06-26",
+            "title": "Prisoner of War"
+          },
+          {
+            "number": 4,
+            "date": "2011-07-03",
+            "title": "Grace"
+          },
+          {
+            "number": 5,
+            "date": "2011-07-10",
+            "title": "Silent Kill"
+          },
+          {
+            "number": 6,
+            "date": "2011-07-17",
+            "title": "Sanctuary (1)"
+          },
+          {
+            "number": 7,
+            "date": "2011-07-24",
+            "title": "Sanctuary (2)"
+          },
+          {
+            "number": 8,
+            "date": "2011-07-31",
+            "title": "What Hides Beneath"
+          },
+          {
+            "number": 9,
+            "date": "2011-08-07",
+            "title": "Mutiny"
+          },
+          {
+            "number": 10,
+            "date": "2011-08-07",
+            "title": "Eight Hours"
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "releaseDate": "2012-06-17",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2012-06-17",
+            "title": "Worlds Apart"
+          },
+          {
+            "number": 2,
+            "date": "2012-06-17",
+            "title": "Shall We Gather at the River"
+          },
+          {
+            "number": 3,
+            "date": "2012-06-24",
+            "title": "Compass"
+          },
+          {
+            "number": 4,
+            "date": "2012-07-01",
+            "title": "Young Bloods"
+          },
+          {
+            "number": 5,
+            "date": "2012-07-08",
+            "title": "Love and Other Acts of Courage"
+          },
+          {
+            "number": 6,
+            "date": "2012-07-15",
+            "title": "Homecoming"
+          },
+          {
+            "number": 7,
+            "date": "2012-07-22",
+            "title": "Molon Labe"
+          },
+          {
+            "number": 8,
+            "date": "2012-08-05",
+            "title": "Death March"
+          },
+          {
+            "number": 9,
+            "date": "2012-08-12",
+            "title": "The Price of Greatness"
+          },
+          {
+            "number": 10,
+            "date": "2012-08-19",
+            "title": "A More Perfect Union"
+          }
+        ]
+      },
+      {
+        "number": 3,
+        "releaseDate": "2013-06-09",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2013-06-09",
+            "title": "On Thin Ice"
+          },
+          {
+            "number": 2,
+            "date": "2013-06-09",
+            "title": "Collateral Damage"
+          },
+          {
+            "number": 3,
+            "date": "2013-06-16",
+            "title": "Badlands"
+          },
+          {
+            "number": 4,
+            "date": "2013-06-23",
+            "title": "At All Costs (1)"
+          },
+          {
+            "number": 5,
+            "date": "2013-06-30",
+            "title": "Search and Recover (2)"
+          },
+          {
+            "number": 6,
+            "date": "2013-07-07",
+            "title": "Be Silent and Come Out"
+          },
+          {
+            "number": 7,
+            "date": "2013-07-14",
+            "title": "The Pickett Line"
+          },
+          {
+            "number": 8,
+            "date": "2013-07-21",
+            "title": "Strange Brew"
+          },
+          {
+            "number": 9,
+            "date": "2013-07-28",
+            "title": "Journey to Xibalba"
+          },
+          {
+            "number": 10,
+            "date": "2013-08-04",
+            "title": "Brazil"
+          }
+        ]
+      },
+      {
+        "number": 4,
+        "releaseDate": "2014-06-22",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2014-06-22",
+            "title": "Ghost in the Machine"
+          },
+          {
+            "number": 2,
+            "date": "2014-06-29",
+            "title": "The Eye"
+          },
+          {
+            "number": 3,
+            "date": "2014-07-06",
+            "title": "Exodus"
+          },
+          {
+            "number": 4,
+            "date": "2014-07-13",
+            "title": "Evolve or Die"
+          },
+          {
+            "number": 5,
+            "date": "2014-07-20",
+            "title": "Mind Wars"
+          },
+          {
+            "number": 6,
+            "date": "2014-07-27",
+            "title": "Door Number Three"
+          },
+          {
+            "number": 7,
+            "date": "2014-08-03",
+            "title": "Saturday Night Massacre"
+          },
+          {
+            "number": 8,
+            "date": "2014-08-10",
+            "title": "A Thing With Feathers"
+          },
+          {
+            "number": 9,
+            "date": "2014-08-17",
+            "title": "Till Death Do Us Part"
+          },
+          {
+            "number": 10,
+            "date": "2014-08-24",
+            "title": "Drawing Straws"
+          },
+          {
+            "number": 11,
+            "date": "2014-08-31",
+            "title": "Space Oddity"
+          },
+          {
+            "number": 12,
+            "date": "2014-08-31",
+            "title": "Shoot the Moon"
+          }
+        ]
+      },
+      {
+        "number": 5,
+        "releaseDate": "2015-06-28",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2015-06-28",
+            "title": "Find Your Warrior"
+          },
+          {
+            "number": 2,
+            "date": "2015-07-05",
+            "title": "Hunger Pains"
+          },
+          {
+            "number": 3,
+            "date": "2015-07-12",
+            "title": "Hatchlings"
+          },
+          {
+            "number": 4,
+            "date": "2015-07-19",
+            "title": "Pope Breaks Bad"
+          },
+          {
+            "number": 5,
+            "date": "2015-07-26",
+            "title": "Non-Essential Personnel"
+          },
+          {
+            "number": 6,
+            "date": "2015-08-02",
+            "title": "Respite"
+          },
+          {
+            "number": 7,
+            "date": "2015-08-09",
+            "title": "Everybody Has Their Reasons"
+          },
+          {
+            "number": 8,
+            "date": "2015-08-16",
+            "title": "Stalag 14th Virginia"
+          },
+          {
+            "number": 9,
+            "date": "2015-08-23",
+            "title": "Reunion"
+          },
+          {
+            "number": 10,
+            "date": "2015-08-30",
+            "title": "Reborn"
+          }
+        ]
+      }
+    ],
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-tv-34967-s3",
+    "title": "Рухнувшие небеса",
+    "type": "series",
+    "genres": [
+      "Фантастика",
+      "Боевик",
+      "Драма"
+    ],
+    "studios": [
+      "DreamWorks Television",
+      "Amblin Television"
+    ],
+    "description": "Выжившие пытаются наладить жизнь в Чарлстоне. Том берёт на себя руководство, а помощь новых союзников вызывает у части людей подозрения.",
+    "poster": "assets/tmdb-tv-34967-s3-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-34967-s3-still-1.jpg",
+      "assets/tmdb-tv-34967-s3-still-2.jpg"
+    ],
+    "releaseDate": "2013-06-09",
+    "rating": 7.1,
+    "ratingSource": "IMDb сериала",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=qiZiiHtivs8",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/34967/season/3?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt1462059/",
+      "official": "https://amblin.com/tv/falling-skies/",
+      "metadata": "https://v3-cinemeta.strem.io/meta/series/tt1462059.json",
+      "release": "https://www.tvmaze.com/shows/95/falling-skies/episodes",
+      "poster": "https://static.tvmaze.com/uploads/images/original_untouched/24/60630.jpg",
+      "gallery": [
+        "https://static.tvmaze.com/uploads/images/original_untouched/15/38075.jpg",
+        "https://static.tvmaze.com/uploads/images/original_untouched/15/38076.jpg"
+      ],
+      "seasons": "https://www.themoviedb.org/tv/34967/seasons"
+    },
+    "platforms": [
+      "TNT"
+    ],
+    "origin": "foreign",
+    "season": 3,
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2011-06-19",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2011-06-19",
+            "title": "Live and Learn"
+          },
+          {
+            "number": 2,
+            "date": "2011-06-19",
+            "title": "The Armory"
+          },
+          {
+            "number": 3,
+            "date": "2011-06-26",
+            "title": "Prisoner of War"
+          },
+          {
+            "number": 4,
+            "date": "2011-07-03",
+            "title": "Grace"
+          },
+          {
+            "number": 5,
+            "date": "2011-07-10",
+            "title": "Silent Kill"
+          },
+          {
+            "number": 6,
+            "date": "2011-07-17",
+            "title": "Sanctuary (1)"
+          },
+          {
+            "number": 7,
+            "date": "2011-07-24",
+            "title": "Sanctuary (2)"
+          },
+          {
+            "number": 8,
+            "date": "2011-07-31",
+            "title": "What Hides Beneath"
+          },
+          {
+            "number": 9,
+            "date": "2011-08-07",
+            "title": "Mutiny"
+          },
+          {
+            "number": 10,
+            "date": "2011-08-07",
+            "title": "Eight Hours"
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "releaseDate": "2012-06-17",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2012-06-17",
+            "title": "Worlds Apart"
+          },
+          {
+            "number": 2,
+            "date": "2012-06-17",
+            "title": "Shall We Gather at the River"
+          },
+          {
+            "number": 3,
+            "date": "2012-06-24",
+            "title": "Compass"
+          },
+          {
+            "number": 4,
+            "date": "2012-07-01",
+            "title": "Young Bloods"
+          },
+          {
+            "number": 5,
+            "date": "2012-07-08",
+            "title": "Love and Other Acts of Courage"
+          },
+          {
+            "number": 6,
+            "date": "2012-07-15",
+            "title": "Homecoming"
+          },
+          {
+            "number": 7,
+            "date": "2012-07-22",
+            "title": "Molon Labe"
+          },
+          {
+            "number": 8,
+            "date": "2012-08-05",
+            "title": "Death March"
+          },
+          {
+            "number": 9,
+            "date": "2012-08-12",
+            "title": "The Price of Greatness"
+          },
+          {
+            "number": 10,
+            "date": "2012-08-19",
+            "title": "A More Perfect Union"
+          }
+        ]
+      },
+      {
+        "number": 3,
+        "releaseDate": "2013-06-09",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2013-06-09",
+            "title": "On Thin Ice"
+          },
+          {
+            "number": 2,
+            "date": "2013-06-09",
+            "title": "Collateral Damage"
+          },
+          {
+            "number": 3,
+            "date": "2013-06-16",
+            "title": "Badlands"
+          },
+          {
+            "number": 4,
+            "date": "2013-06-23",
+            "title": "At All Costs (1)"
+          },
+          {
+            "number": 5,
+            "date": "2013-06-30",
+            "title": "Search and Recover (2)"
+          },
+          {
+            "number": 6,
+            "date": "2013-07-07",
+            "title": "Be Silent and Come Out"
+          },
+          {
+            "number": 7,
+            "date": "2013-07-14",
+            "title": "The Pickett Line"
+          },
+          {
+            "number": 8,
+            "date": "2013-07-21",
+            "title": "Strange Brew"
+          },
+          {
+            "number": 9,
+            "date": "2013-07-28",
+            "title": "Journey to Xibalba"
+          },
+          {
+            "number": 10,
+            "date": "2013-08-04",
+            "title": "Brazil"
+          }
+        ]
+      },
+      {
+        "number": 4,
+        "releaseDate": "2014-06-22",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2014-06-22",
+            "title": "Ghost in the Machine"
+          },
+          {
+            "number": 2,
+            "date": "2014-06-29",
+            "title": "The Eye"
+          },
+          {
+            "number": 3,
+            "date": "2014-07-06",
+            "title": "Exodus"
+          },
+          {
+            "number": 4,
+            "date": "2014-07-13",
+            "title": "Evolve or Die"
+          },
+          {
+            "number": 5,
+            "date": "2014-07-20",
+            "title": "Mind Wars"
+          },
+          {
+            "number": 6,
+            "date": "2014-07-27",
+            "title": "Door Number Three"
+          },
+          {
+            "number": 7,
+            "date": "2014-08-03",
+            "title": "Saturday Night Massacre"
+          },
+          {
+            "number": 8,
+            "date": "2014-08-10",
+            "title": "A Thing With Feathers"
+          },
+          {
+            "number": 9,
+            "date": "2014-08-17",
+            "title": "Till Death Do Us Part"
+          },
+          {
+            "number": 10,
+            "date": "2014-08-24",
+            "title": "Drawing Straws"
+          },
+          {
+            "number": 11,
+            "date": "2014-08-31",
+            "title": "Space Oddity"
+          },
+          {
+            "number": 12,
+            "date": "2014-08-31",
+            "title": "Shoot the Moon"
+          }
+        ]
+      },
+      {
+        "number": 5,
+        "releaseDate": "2015-06-28",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2015-06-28",
+            "title": "Find Your Warrior"
+          },
+          {
+            "number": 2,
+            "date": "2015-07-05",
+            "title": "Hunger Pains"
+          },
+          {
+            "number": 3,
+            "date": "2015-07-12",
+            "title": "Hatchlings"
+          },
+          {
+            "number": 4,
+            "date": "2015-07-19",
+            "title": "Pope Breaks Bad"
+          },
+          {
+            "number": 5,
+            "date": "2015-07-26",
+            "title": "Non-Essential Personnel"
+          },
+          {
+            "number": 6,
+            "date": "2015-08-02",
+            "title": "Respite"
+          },
+          {
+            "number": 7,
+            "date": "2015-08-09",
+            "title": "Everybody Has Their Reasons"
+          },
+          {
+            "number": 8,
+            "date": "2015-08-16",
+            "title": "Stalag 14th Virginia"
+          },
+          {
+            "number": 9,
+            "date": "2015-08-23",
+            "title": "Reunion"
+          },
+          {
+            "number": 10,
+            "date": "2015-08-30",
+            "title": "Reborn"
+          }
+        ]
+      }
+    ],
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-tv-34967-s4",
+    "title": "Рухнувшие небеса",
+    "type": "series",
+    "genres": [
+      "Фантастика",
+      "Боевик",
+      "Драма"
+    ],
+    "studios": [
+      "DreamWorks Television",
+      "Amblin Television"
+    ],
+    "description": "После нового наступления пришельцев Мейсоны оказываются в разных местах. Том пытается собрать семью, а его дочь Лекси ищет своё место в войне.",
+    "poster": "assets/tmdb-tv-34967-s4-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-34967-s4-still-1.jpg",
+      "assets/tmdb-tv-34967-s4-still-2.jpg"
+    ],
+    "releaseDate": "2014-06-22",
+    "rating": 7.1,
+    "ratingSource": "IMDb сериала",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=yk0g2OR9H50",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/34967/season/4?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt1462059/",
+      "official": "https://amblin.com/tv/falling-skies/",
+      "metadata": "https://v3-cinemeta.strem.io/meta/series/tt1462059.json",
+      "release": "https://www.tvmaze.com/shows/95/falling-skies/episodes",
+      "poster": "https://static.tvmaze.com/uploads/images/original_untouched/24/60632.jpg",
+      "gallery": [
+        "https://static.tvmaze.com/uploads/images/original_untouched/15/38085.jpg",
+        "https://static.tvmaze.com/uploads/images/original_untouched/15/38086.jpg"
+      ],
+      "seasons": "https://www.themoviedb.org/tv/34967/seasons"
+    },
+    "platforms": [
+      "TNT"
+    ],
+    "origin": "foreign",
+    "season": 4,
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2011-06-19",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2011-06-19",
+            "title": "Live and Learn"
+          },
+          {
+            "number": 2,
+            "date": "2011-06-19",
+            "title": "The Armory"
+          },
+          {
+            "number": 3,
+            "date": "2011-06-26",
+            "title": "Prisoner of War"
+          },
+          {
+            "number": 4,
+            "date": "2011-07-03",
+            "title": "Grace"
+          },
+          {
+            "number": 5,
+            "date": "2011-07-10",
+            "title": "Silent Kill"
+          },
+          {
+            "number": 6,
+            "date": "2011-07-17",
+            "title": "Sanctuary (1)"
+          },
+          {
+            "number": 7,
+            "date": "2011-07-24",
+            "title": "Sanctuary (2)"
+          },
+          {
+            "number": 8,
+            "date": "2011-07-31",
+            "title": "What Hides Beneath"
+          },
+          {
+            "number": 9,
+            "date": "2011-08-07",
+            "title": "Mutiny"
+          },
+          {
+            "number": 10,
+            "date": "2011-08-07",
+            "title": "Eight Hours"
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "releaseDate": "2012-06-17",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2012-06-17",
+            "title": "Worlds Apart"
+          },
+          {
+            "number": 2,
+            "date": "2012-06-17",
+            "title": "Shall We Gather at the River"
+          },
+          {
+            "number": 3,
+            "date": "2012-06-24",
+            "title": "Compass"
+          },
+          {
+            "number": 4,
+            "date": "2012-07-01",
+            "title": "Young Bloods"
+          },
+          {
+            "number": 5,
+            "date": "2012-07-08",
+            "title": "Love and Other Acts of Courage"
+          },
+          {
+            "number": 6,
+            "date": "2012-07-15",
+            "title": "Homecoming"
+          },
+          {
+            "number": 7,
+            "date": "2012-07-22",
+            "title": "Molon Labe"
+          },
+          {
+            "number": 8,
+            "date": "2012-08-05",
+            "title": "Death March"
+          },
+          {
+            "number": 9,
+            "date": "2012-08-12",
+            "title": "The Price of Greatness"
+          },
+          {
+            "number": 10,
+            "date": "2012-08-19",
+            "title": "A More Perfect Union"
+          }
+        ]
+      },
+      {
+        "number": 3,
+        "releaseDate": "2013-06-09",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2013-06-09",
+            "title": "On Thin Ice"
+          },
+          {
+            "number": 2,
+            "date": "2013-06-09",
+            "title": "Collateral Damage"
+          },
+          {
+            "number": 3,
+            "date": "2013-06-16",
+            "title": "Badlands"
+          },
+          {
+            "number": 4,
+            "date": "2013-06-23",
+            "title": "At All Costs (1)"
+          },
+          {
+            "number": 5,
+            "date": "2013-06-30",
+            "title": "Search and Recover (2)"
+          },
+          {
+            "number": 6,
+            "date": "2013-07-07",
+            "title": "Be Silent and Come Out"
+          },
+          {
+            "number": 7,
+            "date": "2013-07-14",
+            "title": "The Pickett Line"
+          },
+          {
+            "number": 8,
+            "date": "2013-07-21",
+            "title": "Strange Brew"
+          },
+          {
+            "number": 9,
+            "date": "2013-07-28",
+            "title": "Journey to Xibalba"
+          },
+          {
+            "number": 10,
+            "date": "2013-08-04",
+            "title": "Brazil"
+          }
+        ]
+      },
+      {
+        "number": 4,
+        "releaseDate": "2014-06-22",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2014-06-22",
+            "title": "Ghost in the Machine"
+          },
+          {
+            "number": 2,
+            "date": "2014-06-29",
+            "title": "The Eye"
+          },
+          {
+            "number": 3,
+            "date": "2014-07-06",
+            "title": "Exodus"
+          },
+          {
+            "number": 4,
+            "date": "2014-07-13",
+            "title": "Evolve or Die"
+          },
+          {
+            "number": 5,
+            "date": "2014-07-20",
+            "title": "Mind Wars"
+          },
+          {
+            "number": 6,
+            "date": "2014-07-27",
+            "title": "Door Number Three"
+          },
+          {
+            "number": 7,
+            "date": "2014-08-03",
+            "title": "Saturday Night Massacre"
+          },
+          {
+            "number": 8,
+            "date": "2014-08-10",
+            "title": "A Thing With Feathers"
+          },
+          {
+            "number": 9,
+            "date": "2014-08-17",
+            "title": "Till Death Do Us Part"
+          },
+          {
+            "number": 10,
+            "date": "2014-08-24",
+            "title": "Drawing Straws"
+          },
+          {
+            "number": 11,
+            "date": "2014-08-31",
+            "title": "Space Oddity"
+          },
+          {
+            "number": 12,
+            "date": "2014-08-31",
+            "title": "Shoot the Moon"
+          }
+        ]
+      },
+      {
+        "number": 5,
+        "releaseDate": "2015-06-28",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2015-06-28",
+            "title": "Find Your Warrior"
+          },
+          {
+            "number": 2,
+            "date": "2015-07-05",
+            "title": "Hunger Pains"
+          },
+          {
+            "number": 3,
+            "date": "2015-07-12",
+            "title": "Hatchlings"
+          },
+          {
+            "number": 4,
+            "date": "2015-07-19",
+            "title": "Pope Breaks Bad"
+          },
+          {
+            "number": 5,
+            "date": "2015-07-26",
+            "title": "Non-Essential Personnel"
+          },
+          {
+            "number": 6,
+            "date": "2015-08-02",
+            "title": "Respite"
+          },
+          {
+            "number": 7,
+            "date": "2015-08-09",
+            "title": "Everybody Has Their Reasons"
+          },
+          {
+            "number": 8,
+            "date": "2015-08-16",
+            "title": "Stalag 14th Virginia"
+          },
+          {
+            "number": 9,
+            "date": "2015-08-23",
+            "title": "Reunion"
+          },
+          {
+            "number": 10,
+            "date": "2015-08-30",
+            "title": "Reborn"
+          }
+        ]
+      }
+    ],
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-tv-34967-s5",
+    "title": "Рухнувшие небеса",
+    "type": "series",
+    "genres": [
+      "Фантастика",
+      "Боевик",
+      "Драма"
+    ],
+    "studios": [
+      "DreamWorks Television",
+      "Amblin Television"
+    ],
+    "description": "Сопротивление готовится к последней попытке освободить Землю. Тому приходится понять, кому можно доверять, когда прежние союзы меняются.",
+    "poster": "assets/tmdb-tv-34967-s5-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-34967-s5-still-1.jpg",
+      "assets/tmdb-tv-34967-s5-still-2.jpg"
+    ],
+    "releaseDate": "2015-06-28",
+    "rating": 7.1,
+    "ratingSource": "IMDb сериала",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=DMS66zQlr2M",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/34967/season/5?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt1462059/",
+      "official": "https://amblin.com/tv/falling-skies/",
+      "metadata": "https://v3-cinemeta.strem.io/meta/series/tt1462059.json",
+      "release": "https://www.tvmaze.com/shows/95/falling-skies/episodes",
+      "poster": "https://static.tvmaze.com/uploads/images/original_untouched/392/980890.jpg",
+      "gallery": [
+        "https://static.tvmaze.com/uploads/images/original_untouched/12/31772.jpg",
+        "https://static.tvmaze.com/uploads/images/original_untouched/12/32208.jpg"
+      ],
+      "seasons": "https://www.themoviedb.org/tv/34967/seasons"
+    },
+    "platforms": [
+      "TNT"
+    ],
+    "origin": "foreign",
+    "season": 5,
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2011-06-19",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2011-06-19",
+            "title": "Live and Learn"
+          },
+          {
+            "number": 2,
+            "date": "2011-06-19",
+            "title": "The Armory"
+          },
+          {
+            "number": 3,
+            "date": "2011-06-26",
+            "title": "Prisoner of War"
+          },
+          {
+            "number": 4,
+            "date": "2011-07-03",
+            "title": "Grace"
+          },
+          {
+            "number": 5,
+            "date": "2011-07-10",
+            "title": "Silent Kill"
+          },
+          {
+            "number": 6,
+            "date": "2011-07-17",
+            "title": "Sanctuary (1)"
+          },
+          {
+            "number": 7,
+            "date": "2011-07-24",
+            "title": "Sanctuary (2)"
+          },
+          {
+            "number": 8,
+            "date": "2011-07-31",
+            "title": "What Hides Beneath"
+          },
+          {
+            "number": 9,
+            "date": "2011-08-07",
+            "title": "Mutiny"
+          },
+          {
+            "number": 10,
+            "date": "2011-08-07",
+            "title": "Eight Hours"
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "releaseDate": "2012-06-17",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2012-06-17",
+            "title": "Worlds Apart"
+          },
+          {
+            "number": 2,
+            "date": "2012-06-17",
+            "title": "Shall We Gather at the River"
+          },
+          {
+            "number": 3,
+            "date": "2012-06-24",
+            "title": "Compass"
+          },
+          {
+            "number": 4,
+            "date": "2012-07-01",
+            "title": "Young Bloods"
+          },
+          {
+            "number": 5,
+            "date": "2012-07-08",
+            "title": "Love and Other Acts of Courage"
+          },
+          {
+            "number": 6,
+            "date": "2012-07-15",
+            "title": "Homecoming"
+          },
+          {
+            "number": 7,
+            "date": "2012-07-22",
+            "title": "Molon Labe"
+          },
+          {
+            "number": 8,
+            "date": "2012-08-05",
+            "title": "Death March"
+          },
+          {
+            "number": 9,
+            "date": "2012-08-12",
+            "title": "The Price of Greatness"
+          },
+          {
+            "number": 10,
+            "date": "2012-08-19",
+            "title": "A More Perfect Union"
+          }
+        ]
+      },
+      {
+        "number": 3,
+        "releaseDate": "2013-06-09",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2013-06-09",
+            "title": "On Thin Ice"
+          },
+          {
+            "number": 2,
+            "date": "2013-06-09",
+            "title": "Collateral Damage"
+          },
+          {
+            "number": 3,
+            "date": "2013-06-16",
+            "title": "Badlands"
+          },
+          {
+            "number": 4,
+            "date": "2013-06-23",
+            "title": "At All Costs (1)"
+          },
+          {
+            "number": 5,
+            "date": "2013-06-30",
+            "title": "Search and Recover (2)"
+          },
+          {
+            "number": 6,
+            "date": "2013-07-07",
+            "title": "Be Silent and Come Out"
+          },
+          {
+            "number": 7,
+            "date": "2013-07-14",
+            "title": "The Pickett Line"
+          },
+          {
+            "number": 8,
+            "date": "2013-07-21",
+            "title": "Strange Brew"
+          },
+          {
+            "number": 9,
+            "date": "2013-07-28",
+            "title": "Journey to Xibalba"
+          },
+          {
+            "number": 10,
+            "date": "2013-08-04",
+            "title": "Brazil"
+          }
+        ]
+      },
+      {
+        "number": 4,
+        "releaseDate": "2014-06-22",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2014-06-22",
+            "title": "Ghost in the Machine"
+          },
+          {
+            "number": 2,
+            "date": "2014-06-29",
+            "title": "The Eye"
+          },
+          {
+            "number": 3,
+            "date": "2014-07-06",
+            "title": "Exodus"
+          },
+          {
+            "number": 4,
+            "date": "2014-07-13",
+            "title": "Evolve or Die"
+          },
+          {
+            "number": 5,
+            "date": "2014-07-20",
+            "title": "Mind Wars"
+          },
+          {
+            "number": 6,
+            "date": "2014-07-27",
+            "title": "Door Number Three"
+          },
+          {
+            "number": 7,
+            "date": "2014-08-03",
+            "title": "Saturday Night Massacre"
+          },
+          {
+            "number": 8,
+            "date": "2014-08-10",
+            "title": "A Thing With Feathers"
+          },
+          {
+            "number": 9,
+            "date": "2014-08-17",
+            "title": "Till Death Do Us Part"
+          },
+          {
+            "number": 10,
+            "date": "2014-08-24",
+            "title": "Drawing Straws"
+          },
+          {
+            "number": 11,
+            "date": "2014-08-31",
+            "title": "Space Oddity"
+          },
+          {
+            "number": 12,
+            "date": "2014-08-31",
+            "title": "Shoot the Moon"
+          }
+        ]
+      },
+      {
+        "number": 5,
+        "releaseDate": "2015-06-28",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2015-06-28",
+            "title": "Find Your Warrior"
+          },
+          {
+            "number": 2,
+            "date": "2015-07-05",
+            "title": "Hunger Pains"
+          },
+          {
+            "number": 3,
+            "date": "2015-07-12",
+            "title": "Hatchlings"
+          },
+          {
+            "number": 4,
+            "date": "2015-07-19",
+            "title": "Pope Breaks Bad"
+          },
+          {
+            "number": 5,
+            "date": "2015-07-26",
+            "title": "Non-Essential Personnel"
+          },
+          {
+            "number": 6,
+            "date": "2015-08-02",
+            "title": "Respite"
+          },
+          {
+            "number": 7,
+            "date": "2015-08-09",
+            "title": "Everybody Has Their Reasons"
+          },
+          {
+            "number": 8,
+            "date": "2015-08-16",
+            "title": "Stalag 14th Virginia"
+          },
+          {
+            "number": 9,
+            "date": "2015-08-23",
+            "title": "Reunion"
+          },
+          {
+            "number": 10,
+            "date": "2015-08-30",
+            "title": "Reborn"
+          }
+        ]
+      }
+    ],
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-tv-60802-s1",
+    "title": "Последний корабль",
+    "type": "series",
+    "genres": [
+      "Фантастика",
+      "Драма",
+      "Боевик"
+    ],
+    "studios": [
+      "Platinum Dunes"
+    ],
+    "description": "Экипаж эсминца «Нейтан Джеймс» узнаёт, что мир охвачен пандемией. Пока учёная Рэйчел Скотт ищет лекарство, военные пытаются доставить её работу на берег.",
+    "poster": "assets/tmdb-tv-60802-s1-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-60802-s1-still-1.jpg",
+      "assets/tmdb-tv-60802-s1-still-2.jpg"
+    ],
+    "releaseDate": "2014-06-22",
+    "rating": 7.4,
+    "ratingSource": "IMDb сериала",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=2Vng00SYRL0",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/60802/season/1?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt2402207/",
+      "official": "https://www.tntdrama.com/shows/the-last-ship",
+      "metadata": "https://v3-cinemeta.strem.io/meta/series/tt2402207.json",
+      "release": "https://www.tvmaze.com/shows/21/the-last-ship/episodes",
+      "poster": "https://static.tvmaze.com/uploads/images/original_untouched/24/60810.jpg",
+      "gallery": [
+        "https://static.tvmaze.com/uploads/images/original_untouched/68/171442.jpg",
+        "https://static.tvmaze.com/uploads/images/original_untouched/68/171443.jpg"
+      ],
+      "seasons": "https://www.themoviedb.org/tv/60802/seasons"
+    },
+    "platforms": [
+      "TNT"
+    ],
+    "origin": "foreign",
+    "season": 1,
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2014-06-22",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2014-06-22",
+            "title": "Phase Six"
+          },
+          {
+            "number": 2,
+            "date": "2014-06-29",
+            "title": "Welcome to Gitmo"
+          },
+          {
+            "number": 3,
+            "date": "2014-07-06",
+            "title": "Dead Reckoning"
+          },
+          {
+            "number": 4,
+            "date": "2014-07-13",
+            "title": "We'll Get There"
+          },
+          {
+            "number": 5,
+            "date": "2014-07-20",
+            "title": "El Toro"
+          },
+          {
+            "number": 6,
+            "date": "2014-07-27",
+            "title": "Lockdown"
+          },
+          {
+            "number": 7,
+            "date": "2014-08-03",
+            "title": "SOS"
+          },
+          {
+            "number": 8,
+            "date": "2014-08-10",
+            "title": "Two Sailors Walk Into a Bar"
+          },
+          {
+            "number": 9,
+            "date": "2014-08-17",
+            "title": "Trials"
+          },
+          {
+            "number": 10,
+            "date": "2014-08-24",
+            "title": "No Place Like Home"
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "releaseDate": "2015-06-21",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2015-06-21",
+            "title": "Unreal City"
+          },
+          {
+            "number": 2,
+            "date": "2015-06-21",
+            "title": "Fight the Ship"
+          },
+          {
+            "number": 3,
+            "date": "2015-06-28",
+            "title": "It's Not a Rumor"
+          },
+          {
+            "number": 4,
+            "date": "2015-07-05",
+            "title": "Solace"
+          },
+          {
+            "number": 5,
+            "date": "2015-07-12",
+            "title": "Achilles"
+          },
+          {
+            "number": 6,
+            "date": "2015-07-19",
+            "title": "Long Day's Journey"
+          },
+          {
+            "number": 7,
+            "date": "2015-07-26",
+            "title": "Alone and Unafraid"
+          },
+          {
+            "number": 8,
+            "date": "2015-08-02",
+            "title": "Safe Zone"
+          },
+          {
+            "number": 9,
+            "date": "2015-08-09",
+            "title": "Uneasy Lies the Head"
+          },
+          {
+            "number": 10,
+            "date": "2015-08-16",
+            "title": "Friendly Fire"
+          },
+          {
+            "number": 11,
+            "date": "2015-08-23",
+            "title": "Valkyrie"
+          },
+          {
+            "number": 12,
+            "date": "2015-08-30",
+            "title": "Cry Havoc"
+          },
+          {
+            "number": 13,
+            "date": "2015-09-06",
+            "title": "A More Perfect Union"
+          }
+        ]
+      },
+      {
+        "number": 3,
+        "releaseDate": "2016-06-19",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2016-06-19",
+            "title": "The Scott Effect"
+          },
+          {
+            "number": 2,
+            "date": "2016-06-19",
+            "title": "Rising Sun"
+          },
+          {
+            "number": 3,
+            "date": "2016-06-26",
+            "title": "Shanzhai"
+          },
+          {
+            "number": 4,
+            "date": "2016-07-03",
+            "title": "Devil May Care"
+          },
+          {
+            "number": 5,
+            "date": "2016-07-10",
+            "title": "Minefield"
+          },
+          {
+            "number": 6,
+            "date": "2016-07-17",
+            "title": "Dog Day"
+          },
+          {
+            "number": 7,
+            "date": "2016-07-24",
+            "title": "In the Dark"
+          },
+          {
+            "number": 8,
+            "date": "2016-07-31",
+            "title": "Sea Change"
+          },
+          {
+            "number": 9,
+            "date": "2016-08-14",
+            "title": "Paradise"
+          },
+          {
+            "number": 10,
+            "date": "2016-08-21",
+            "title": "Scuttle"
+          },
+          {
+            "number": 11,
+            "date": "2016-08-28",
+            "title": "Legacy"
+          },
+          {
+            "number": 12,
+            "date": "2016-09-04",
+            "title": "Resistance"
+          },
+          {
+            "number": 13,
+            "date": "2016-09-11",
+            "title": "Don't Look Back"
+          }
+        ]
+      },
+      {
+        "number": 4,
+        "releaseDate": "2017-08-20",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2017-08-20",
+            "title": "In Medias Res"
+          },
+          {
+            "number": 2,
+            "date": "2017-08-20",
+            "title": "The Pillars of Hercules"
+          },
+          {
+            "number": 3,
+            "date": "2017-08-27",
+            "title": "Bread & Circuses"
+          },
+          {
+            "number": 4,
+            "date": "2017-09-03",
+            "title": "Nostos"
+          },
+          {
+            "number": 5,
+            "date": "2017-09-10",
+            "title": "Allegiance"
+          },
+          {
+            "number": 6,
+            "date": "2017-09-17",
+            "title": "Tempest"
+          },
+          {
+            "number": 7,
+            "date": "2017-09-24",
+            "title": "Feast"
+          },
+          {
+            "number": 8,
+            "date": "2017-10-01",
+            "title": "Lazaretto"
+          },
+          {
+            "number": 9,
+            "date": "2017-10-08",
+            "title": "Detect, Deceive, Destroy"
+          },
+          {
+            "number": 10,
+            "date": "2017-10-08",
+            "title": "Endgame"
+          }
+        ]
+      },
+      {
+        "number": 5,
+        "releaseDate": "2018-09-09",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2018-09-09",
+            "title": "Casus Belli"
+          },
+          {
+            "number": 2,
+            "date": "2018-09-16",
+            "title": "Fog of War"
+          },
+          {
+            "number": 3,
+            "date": "2018-09-23",
+            "title": "El Puente"
+          },
+          {
+            "number": 4,
+            "date": "2018-09-30",
+            "title": "Tropic of Cancer"
+          },
+          {
+            "number": 5,
+            "date": "2018-10-07",
+            "title": "Warriors"
+          },
+          {
+            "number": 6,
+            "date": "2018-10-14",
+            "title": "Air Drop"
+          },
+          {
+            "number": 7,
+            "date": "2018-10-21",
+            "title": "Somos la Sangre"
+          },
+          {
+            "number": 8,
+            "date": "2018-10-28",
+            "title": "Honor"
+          },
+          {
+            "number": 9,
+            "date": "2018-11-04",
+            "title": "Courage"
+          },
+          {
+            "number": 10,
+            "date": "2018-11-11",
+            "title": "Commitment"
+          }
+        ]
+      }
+    ],
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-tv-60802-s2",
+    "title": "Последний корабль",
+    "type": "series",
+    "genres": [
+      "Фантастика",
+      "Драма",
+      "Боевик"
+    ],
+    "studios": [
+      "Platinum Dunes"
+    ],
+    "description": "У экипажа есть шанс распространить лекарство, но власти и вооружённые группы борются за контроль над выжившими. Тому Чендлеру приходится искать тех, кому можно доверить поставки.",
+    "poster": "assets/tmdb-tv-60802-s2-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-60802-s2-still-1.jpg",
+      "assets/tmdb-tv-60802-s2-still-2.jpg"
+    ],
+    "releaseDate": "2015-06-21",
+    "rating": 7.4,
+    "ratingSource": "IMDb сериала",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=g8kPr6keFqc",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/60802/season/2?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt2402207/",
+      "official": "https://www.tntdrama.com/shows/the-last-ship",
+      "metadata": "https://v3-cinemeta.strem.io/meta/series/tt2402207.json",
+      "release": "https://www.tvmaze.com/shows/21/the-last-ship/episodes",
+      "poster": "https://static.tvmaze.com/uploads/images/original_untouched/24/60811.jpg",
+      "gallery": [
+        "https://static.tvmaze.com/uploads/images/original_untouched/17/44941.jpg",
+        "https://static.tvmaze.com/uploads/images/original_untouched/17/44946.jpg"
+      ],
+      "seasons": "https://www.themoviedb.org/tv/60802/seasons"
+    },
+    "platforms": [
+      "TNT"
+    ],
+    "origin": "foreign",
+    "season": 2,
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2014-06-22",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2014-06-22",
+            "title": "Phase Six"
+          },
+          {
+            "number": 2,
+            "date": "2014-06-29",
+            "title": "Welcome to Gitmo"
+          },
+          {
+            "number": 3,
+            "date": "2014-07-06",
+            "title": "Dead Reckoning"
+          },
+          {
+            "number": 4,
+            "date": "2014-07-13",
+            "title": "We'll Get There"
+          },
+          {
+            "number": 5,
+            "date": "2014-07-20",
+            "title": "El Toro"
+          },
+          {
+            "number": 6,
+            "date": "2014-07-27",
+            "title": "Lockdown"
+          },
+          {
+            "number": 7,
+            "date": "2014-08-03",
+            "title": "SOS"
+          },
+          {
+            "number": 8,
+            "date": "2014-08-10",
+            "title": "Two Sailors Walk Into a Bar"
+          },
+          {
+            "number": 9,
+            "date": "2014-08-17",
+            "title": "Trials"
+          },
+          {
+            "number": 10,
+            "date": "2014-08-24",
+            "title": "No Place Like Home"
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "releaseDate": "2015-06-21",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2015-06-21",
+            "title": "Unreal City"
+          },
+          {
+            "number": 2,
+            "date": "2015-06-21",
+            "title": "Fight the Ship"
+          },
+          {
+            "number": 3,
+            "date": "2015-06-28",
+            "title": "It's Not a Rumor"
+          },
+          {
+            "number": 4,
+            "date": "2015-07-05",
+            "title": "Solace"
+          },
+          {
+            "number": 5,
+            "date": "2015-07-12",
+            "title": "Achilles"
+          },
+          {
+            "number": 6,
+            "date": "2015-07-19",
+            "title": "Long Day's Journey"
+          },
+          {
+            "number": 7,
+            "date": "2015-07-26",
+            "title": "Alone and Unafraid"
+          },
+          {
+            "number": 8,
+            "date": "2015-08-02",
+            "title": "Safe Zone"
+          },
+          {
+            "number": 9,
+            "date": "2015-08-09",
+            "title": "Uneasy Lies the Head"
+          },
+          {
+            "number": 10,
+            "date": "2015-08-16",
+            "title": "Friendly Fire"
+          },
+          {
+            "number": 11,
+            "date": "2015-08-23",
+            "title": "Valkyrie"
+          },
+          {
+            "number": 12,
+            "date": "2015-08-30",
+            "title": "Cry Havoc"
+          },
+          {
+            "number": 13,
+            "date": "2015-09-06",
+            "title": "A More Perfect Union"
+          }
+        ]
+      },
+      {
+        "number": 3,
+        "releaseDate": "2016-06-19",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2016-06-19",
+            "title": "The Scott Effect"
+          },
+          {
+            "number": 2,
+            "date": "2016-06-19",
+            "title": "Rising Sun"
+          },
+          {
+            "number": 3,
+            "date": "2016-06-26",
+            "title": "Shanzhai"
+          },
+          {
+            "number": 4,
+            "date": "2016-07-03",
+            "title": "Devil May Care"
+          },
+          {
+            "number": 5,
+            "date": "2016-07-10",
+            "title": "Minefield"
+          },
+          {
+            "number": 6,
+            "date": "2016-07-17",
+            "title": "Dog Day"
+          },
+          {
+            "number": 7,
+            "date": "2016-07-24",
+            "title": "In the Dark"
+          },
+          {
+            "number": 8,
+            "date": "2016-07-31",
+            "title": "Sea Change"
+          },
+          {
+            "number": 9,
+            "date": "2016-08-14",
+            "title": "Paradise"
+          },
+          {
+            "number": 10,
+            "date": "2016-08-21",
+            "title": "Scuttle"
+          },
+          {
+            "number": 11,
+            "date": "2016-08-28",
+            "title": "Legacy"
+          },
+          {
+            "number": 12,
+            "date": "2016-09-04",
+            "title": "Resistance"
+          },
+          {
+            "number": 13,
+            "date": "2016-09-11",
+            "title": "Don't Look Back"
+          }
+        ]
+      },
+      {
+        "number": 4,
+        "releaseDate": "2017-08-20",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2017-08-20",
+            "title": "In Medias Res"
+          },
+          {
+            "number": 2,
+            "date": "2017-08-20",
+            "title": "The Pillars of Hercules"
+          },
+          {
+            "number": 3,
+            "date": "2017-08-27",
+            "title": "Bread & Circuses"
+          },
+          {
+            "number": 4,
+            "date": "2017-09-03",
+            "title": "Nostos"
+          },
+          {
+            "number": 5,
+            "date": "2017-09-10",
+            "title": "Allegiance"
+          },
+          {
+            "number": 6,
+            "date": "2017-09-17",
+            "title": "Tempest"
+          },
+          {
+            "number": 7,
+            "date": "2017-09-24",
+            "title": "Feast"
+          },
+          {
+            "number": 8,
+            "date": "2017-10-01",
+            "title": "Lazaretto"
+          },
+          {
+            "number": 9,
+            "date": "2017-10-08",
+            "title": "Detect, Deceive, Destroy"
+          },
+          {
+            "number": 10,
+            "date": "2017-10-08",
+            "title": "Endgame"
+          }
+        ]
+      },
+      {
+        "number": 5,
+        "releaseDate": "2018-09-09",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2018-09-09",
+            "title": "Casus Belli"
+          },
+          {
+            "number": 2,
+            "date": "2018-09-16",
+            "title": "Fog of War"
+          },
+          {
+            "number": 3,
+            "date": "2018-09-23",
+            "title": "El Puente"
+          },
+          {
+            "number": 4,
+            "date": "2018-09-30",
+            "title": "Tropic of Cancer"
+          },
+          {
+            "number": 5,
+            "date": "2018-10-07",
+            "title": "Warriors"
+          },
+          {
+            "number": 6,
+            "date": "2018-10-14",
+            "title": "Air Drop"
+          },
+          {
+            "number": 7,
+            "date": "2018-10-21",
+            "title": "Somos la Sangre"
+          },
+          {
+            "number": 8,
+            "date": "2018-10-28",
+            "title": "Honor"
+          },
+          {
+            "number": 9,
+            "date": "2018-11-04",
+            "title": "Courage"
+          },
+          {
+            "number": 10,
+            "date": "2018-11-11",
+            "title": "Commitment"
+          }
+        ]
+      }
+    ],
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-tv-60802-s3",
+    "title": "Последний корабль",
+    "type": "series",
+    "genres": [
+      "Фантастика",
+      "Драма",
+      "Боевик"
+    ],
+    "studios": [
+      "Platinum Dunes"
+    ],
+    "description": "Чендлер отправляется в Азию, чтобы выяснить, почему лечение перестало доходить до части стран. Дома борьба за власть осложняет работу команды.",
+    "poster": "assets/tmdb-tv-60802-s3-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-60802-s3-still-1.jpg",
+      "assets/tmdb-tv-60802-s3-still-2.jpg"
+    ],
+    "releaseDate": "2016-06-19",
+    "rating": 7.4,
+    "ratingSource": "IMDb сериала",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=HI-EE1St2Zs",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/60802/season/3?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt2402207/",
+      "official": "https://www.tntdrama.com/shows/the-last-ship",
+      "metadata": "https://v3-cinemeta.strem.io/meta/series/tt2402207.json",
+      "release": "https://www.tvmaze.com/shows/21/the-last-ship/episodes",
+      "poster": "https://static.tvmaze.com/uploads/images/original_untouched/67/167893.jpg",
+      "gallery": [
+        "https://static.tvmaze.com/uploads/images/original_untouched/62/155452.jpg",
+        "https://static.tvmaze.com/uploads/images/original_untouched/63/157954.jpg"
+      ],
+      "seasons": "https://www.themoviedb.org/tv/60802/seasons"
+    },
+    "platforms": [
+      "TNT"
+    ],
+    "origin": "foreign",
+    "season": 3,
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2014-06-22",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2014-06-22",
+            "title": "Phase Six"
+          },
+          {
+            "number": 2,
+            "date": "2014-06-29",
+            "title": "Welcome to Gitmo"
+          },
+          {
+            "number": 3,
+            "date": "2014-07-06",
+            "title": "Dead Reckoning"
+          },
+          {
+            "number": 4,
+            "date": "2014-07-13",
+            "title": "We'll Get There"
+          },
+          {
+            "number": 5,
+            "date": "2014-07-20",
+            "title": "El Toro"
+          },
+          {
+            "number": 6,
+            "date": "2014-07-27",
+            "title": "Lockdown"
+          },
+          {
+            "number": 7,
+            "date": "2014-08-03",
+            "title": "SOS"
+          },
+          {
+            "number": 8,
+            "date": "2014-08-10",
+            "title": "Two Sailors Walk Into a Bar"
+          },
+          {
+            "number": 9,
+            "date": "2014-08-17",
+            "title": "Trials"
+          },
+          {
+            "number": 10,
+            "date": "2014-08-24",
+            "title": "No Place Like Home"
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "releaseDate": "2015-06-21",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2015-06-21",
+            "title": "Unreal City"
+          },
+          {
+            "number": 2,
+            "date": "2015-06-21",
+            "title": "Fight the Ship"
+          },
+          {
+            "number": 3,
+            "date": "2015-06-28",
+            "title": "It's Not a Rumor"
+          },
+          {
+            "number": 4,
+            "date": "2015-07-05",
+            "title": "Solace"
+          },
+          {
+            "number": 5,
+            "date": "2015-07-12",
+            "title": "Achilles"
+          },
+          {
+            "number": 6,
+            "date": "2015-07-19",
+            "title": "Long Day's Journey"
+          },
+          {
+            "number": 7,
+            "date": "2015-07-26",
+            "title": "Alone and Unafraid"
+          },
+          {
+            "number": 8,
+            "date": "2015-08-02",
+            "title": "Safe Zone"
+          },
+          {
+            "number": 9,
+            "date": "2015-08-09",
+            "title": "Uneasy Lies the Head"
+          },
+          {
+            "number": 10,
+            "date": "2015-08-16",
+            "title": "Friendly Fire"
+          },
+          {
+            "number": 11,
+            "date": "2015-08-23",
+            "title": "Valkyrie"
+          },
+          {
+            "number": 12,
+            "date": "2015-08-30",
+            "title": "Cry Havoc"
+          },
+          {
+            "number": 13,
+            "date": "2015-09-06",
+            "title": "A More Perfect Union"
+          }
+        ]
+      },
+      {
+        "number": 3,
+        "releaseDate": "2016-06-19",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2016-06-19",
+            "title": "The Scott Effect"
+          },
+          {
+            "number": 2,
+            "date": "2016-06-19",
+            "title": "Rising Sun"
+          },
+          {
+            "number": 3,
+            "date": "2016-06-26",
+            "title": "Shanzhai"
+          },
+          {
+            "number": 4,
+            "date": "2016-07-03",
+            "title": "Devil May Care"
+          },
+          {
+            "number": 5,
+            "date": "2016-07-10",
+            "title": "Minefield"
+          },
+          {
+            "number": 6,
+            "date": "2016-07-17",
+            "title": "Dog Day"
+          },
+          {
+            "number": 7,
+            "date": "2016-07-24",
+            "title": "In the Dark"
+          },
+          {
+            "number": 8,
+            "date": "2016-07-31",
+            "title": "Sea Change"
+          },
+          {
+            "number": 9,
+            "date": "2016-08-14",
+            "title": "Paradise"
+          },
+          {
+            "number": 10,
+            "date": "2016-08-21",
+            "title": "Scuttle"
+          },
+          {
+            "number": 11,
+            "date": "2016-08-28",
+            "title": "Legacy"
+          },
+          {
+            "number": 12,
+            "date": "2016-09-04",
+            "title": "Resistance"
+          },
+          {
+            "number": 13,
+            "date": "2016-09-11",
+            "title": "Don't Look Back"
+          }
+        ]
+      },
+      {
+        "number": 4,
+        "releaseDate": "2017-08-20",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2017-08-20",
+            "title": "In Medias Res"
+          },
+          {
+            "number": 2,
+            "date": "2017-08-20",
+            "title": "The Pillars of Hercules"
+          },
+          {
+            "number": 3,
+            "date": "2017-08-27",
+            "title": "Bread & Circuses"
+          },
+          {
+            "number": 4,
+            "date": "2017-09-03",
+            "title": "Nostos"
+          },
+          {
+            "number": 5,
+            "date": "2017-09-10",
+            "title": "Allegiance"
+          },
+          {
+            "number": 6,
+            "date": "2017-09-17",
+            "title": "Tempest"
+          },
+          {
+            "number": 7,
+            "date": "2017-09-24",
+            "title": "Feast"
+          },
+          {
+            "number": 8,
+            "date": "2017-10-01",
+            "title": "Lazaretto"
+          },
+          {
+            "number": 9,
+            "date": "2017-10-08",
+            "title": "Detect, Deceive, Destroy"
+          },
+          {
+            "number": 10,
+            "date": "2017-10-08",
+            "title": "Endgame"
+          }
+        ]
+      },
+      {
+        "number": 5,
+        "releaseDate": "2018-09-09",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2018-09-09",
+            "title": "Casus Belli"
+          },
+          {
+            "number": 2,
+            "date": "2018-09-16",
+            "title": "Fog of War"
+          },
+          {
+            "number": 3,
+            "date": "2018-09-23",
+            "title": "El Puente"
+          },
+          {
+            "number": 4,
+            "date": "2018-09-30",
+            "title": "Tropic of Cancer"
+          },
+          {
+            "number": 5,
+            "date": "2018-10-07",
+            "title": "Warriors"
+          },
+          {
+            "number": 6,
+            "date": "2018-10-14",
+            "title": "Air Drop"
+          },
+          {
+            "number": 7,
+            "date": "2018-10-21",
+            "title": "Somos la Sangre"
+          },
+          {
+            "number": 8,
+            "date": "2018-10-28",
+            "title": "Honor"
+          },
+          {
+            "number": 9,
+            "date": "2018-11-04",
+            "title": "Courage"
+          },
+          {
+            "number": 10,
+            "date": "2018-11-11",
+            "title": "Commitment"
+          }
+        ]
+      }
+    ],
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-tv-60802-s4",
+    "title": "Последний корабль",
+    "type": "series",
+    "genres": [
+      "Фантастика",
+      "Драма",
+      "Боевик"
+    ],
+    "studios": [
+      "Platinum Dunes"
+    ],
+    "description": "Кризис с продовольствием ставит под угрозу восстановление мира. Команда ищет семена, способные пережить новую угрозу, а Чендлер возвращается к экипажу.",
+    "poster": "assets/tmdb-tv-60802-s4-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-60802-s4-still-1.jpg",
+      "assets/tmdb-tv-60802-s4-still-2.jpg"
+    ],
+    "releaseDate": "2017-08-20",
+    "rating": 7.4,
+    "ratingSource": "IMDb сериала",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=s647PzJFuPk",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/60802/season/4?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt2402207/",
+      "official": "https://www.tntdrama.com/shows/the-last-ship",
+      "metadata": "https://v3-cinemeta.strem.io/meta/series/tt2402207.json",
+      "release": "https://www.tvmaze.com/shows/21/the-last-ship/episodes",
+      "poster": "https://static.tvmaze.com/uploads/images/original_untouched/165/412510.jpg",
+      "gallery": [
+        "https://static.tvmaze.com/uploads/images/original_untouched/124/312452.jpg",
+        "https://static.tvmaze.com/uploads/images/original_untouched/124/312454.jpg"
+      ],
+      "seasons": "https://www.themoviedb.org/tv/60802/seasons"
+    },
+    "platforms": [
+      "TNT"
+    ],
+    "origin": "foreign",
+    "season": 4,
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2014-06-22",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2014-06-22",
+            "title": "Phase Six"
+          },
+          {
+            "number": 2,
+            "date": "2014-06-29",
+            "title": "Welcome to Gitmo"
+          },
+          {
+            "number": 3,
+            "date": "2014-07-06",
+            "title": "Dead Reckoning"
+          },
+          {
+            "number": 4,
+            "date": "2014-07-13",
+            "title": "We'll Get There"
+          },
+          {
+            "number": 5,
+            "date": "2014-07-20",
+            "title": "El Toro"
+          },
+          {
+            "number": 6,
+            "date": "2014-07-27",
+            "title": "Lockdown"
+          },
+          {
+            "number": 7,
+            "date": "2014-08-03",
+            "title": "SOS"
+          },
+          {
+            "number": 8,
+            "date": "2014-08-10",
+            "title": "Two Sailors Walk Into a Bar"
+          },
+          {
+            "number": 9,
+            "date": "2014-08-17",
+            "title": "Trials"
+          },
+          {
+            "number": 10,
+            "date": "2014-08-24",
+            "title": "No Place Like Home"
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "releaseDate": "2015-06-21",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2015-06-21",
+            "title": "Unreal City"
+          },
+          {
+            "number": 2,
+            "date": "2015-06-21",
+            "title": "Fight the Ship"
+          },
+          {
+            "number": 3,
+            "date": "2015-06-28",
+            "title": "It's Not a Rumor"
+          },
+          {
+            "number": 4,
+            "date": "2015-07-05",
+            "title": "Solace"
+          },
+          {
+            "number": 5,
+            "date": "2015-07-12",
+            "title": "Achilles"
+          },
+          {
+            "number": 6,
+            "date": "2015-07-19",
+            "title": "Long Day's Journey"
+          },
+          {
+            "number": 7,
+            "date": "2015-07-26",
+            "title": "Alone and Unafraid"
+          },
+          {
+            "number": 8,
+            "date": "2015-08-02",
+            "title": "Safe Zone"
+          },
+          {
+            "number": 9,
+            "date": "2015-08-09",
+            "title": "Uneasy Lies the Head"
+          },
+          {
+            "number": 10,
+            "date": "2015-08-16",
+            "title": "Friendly Fire"
+          },
+          {
+            "number": 11,
+            "date": "2015-08-23",
+            "title": "Valkyrie"
+          },
+          {
+            "number": 12,
+            "date": "2015-08-30",
+            "title": "Cry Havoc"
+          },
+          {
+            "number": 13,
+            "date": "2015-09-06",
+            "title": "A More Perfect Union"
+          }
+        ]
+      },
+      {
+        "number": 3,
+        "releaseDate": "2016-06-19",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2016-06-19",
+            "title": "The Scott Effect"
+          },
+          {
+            "number": 2,
+            "date": "2016-06-19",
+            "title": "Rising Sun"
+          },
+          {
+            "number": 3,
+            "date": "2016-06-26",
+            "title": "Shanzhai"
+          },
+          {
+            "number": 4,
+            "date": "2016-07-03",
+            "title": "Devil May Care"
+          },
+          {
+            "number": 5,
+            "date": "2016-07-10",
+            "title": "Minefield"
+          },
+          {
+            "number": 6,
+            "date": "2016-07-17",
+            "title": "Dog Day"
+          },
+          {
+            "number": 7,
+            "date": "2016-07-24",
+            "title": "In the Dark"
+          },
+          {
+            "number": 8,
+            "date": "2016-07-31",
+            "title": "Sea Change"
+          },
+          {
+            "number": 9,
+            "date": "2016-08-14",
+            "title": "Paradise"
+          },
+          {
+            "number": 10,
+            "date": "2016-08-21",
+            "title": "Scuttle"
+          },
+          {
+            "number": 11,
+            "date": "2016-08-28",
+            "title": "Legacy"
+          },
+          {
+            "number": 12,
+            "date": "2016-09-04",
+            "title": "Resistance"
+          },
+          {
+            "number": 13,
+            "date": "2016-09-11",
+            "title": "Don't Look Back"
+          }
+        ]
+      },
+      {
+        "number": 4,
+        "releaseDate": "2017-08-20",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2017-08-20",
+            "title": "In Medias Res"
+          },
+          {
+            "number": 2,
+            "date": "2017-08-20",
+            "title": "The Pillars of Hercules"
+          },
+          {
+            "number": 3,
+            "date": "2017-08-27",
+            "title": "Bread & Circuses"
+          },
+          {
+            "number": 4,
+            "date": "2017-09-03",
+            "title": "Nostos"
+          },
+          {
+            "number": 5,
+            "date": "2017-09-10",
+            "title": "Allegiance"
+          },
+          {
+            "number": 6,
+            "date": "2017-09-17",
+            "title": "Tempest"
+          },
+          {
+            "number": 7,
+            "date": "2017-09-24",
+            "title": "Feast"
+          },
+          {
+            "number": 8,
+            "date": "2017-10-01",
+            "title": "Lazaretto"
+          },
+          {
+            "number": 9,
+            "date": "2017-10-08",
+            "title": "Detect, Deceive, Destroy"
+          },
+          {
+            "number": 10,
+            "date": "2017-10-08",
+            "title": "Endgame"
+          }
+        ]
+      },
+      {
+        "number": 5,
+        "releaseDate": "2018-09-09",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2018-09-09",
+            "title": "Casus Belli"
+          },
+          {
+            "number": 2,
+            "date": "2018-09-16",
+            "title": "Fog of War"
+          },
+          {
+            "number": 3,
+            "date": "2018-09-23",
+            "title": "El Puente"
+          },
+          {
+            "number": 4,
+            "date": "2018-09-30",
+            "title": "Tropic of Cancer"
+          },
+          {
+            "number": 5,
+            "date": "2018-10-07",
+            "title": "Warriors"
+          },
+          {
+            "number": 6,
+            "date": "2018-10-14",
+            "title": "Air Drop"
+          },
+          {
+            "number": 7,
+            "date": "2018-10-21",
+            "title": "Somos la Sangre"
+          },
+          {
+            "number": 8,
+            "date": "2018-10-28",
+            "title": "Honor"
+          },
+          {
+            "number": 9,
+            "date": "2018-11-04",
+            "title": "Courage"
+          },
+          {
+            "number": 10,
+            "date": "2018-11-11",
+            "title": "Commitment"
+          }
+        ]
+      }
+    ],
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-tv-60802-s5",
+    "title": "Последний корабль",
+    "type": "series",
+    "genres": [
+      "Фантастика",
+      "Драма",
+      "Боевик"
+    ],
+    "studios": [
+      "Platinum Dunes"
+    ],
+    "description": "Спустя несколько лет страны пытаются восстановиться после пандемии. Нападение срывает планы флота и вынуждает Чендлера снова действовать вместе с командой.",
+    "poster": "assets/tmdb-tv-60802-s5-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-60802-s5-still-1.jpg",
+      "assets/tmdb-tv-60802-s5-still-2.jpg"
+    ],
+    "releaseDate": "2018-09-09",
+    "rating": 7.4,
+    "ratingSource": "IMDb сериала",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=7uhAdJ_T0qE",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/60802/season/5?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt2402207/",
+      "official": "https://www.tntdrama.com/shows/the-last-ship",
+      "metadata": "https://v3-cinemeta.strem.io/meta/series/tt2402207.json",
+      "release": "https://www.tvmaze.com/shows/21/the-last-ship/episodes",
+      "poster": "https://static.tvmaze.com/uploads/images/original_untouched/165/412509.jpg",
+      "gallery": [
+        "https://static.tvmaze.com/uploads/images/original_untouched/167/419361.jpg",
+        "https://static.tvmaze.com/uploads/images/original_untouched/167/419979.jpg"
+      ],
+      "seasons": "https://www.themoviedb.org/tv/60802/seasons"
+    },
+    "platforms": [
+      "TNT"
+    ],
+    "origin": "foreign",
+    "season": 5,
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2014-06-22",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2014-06-22",
+            "title": "Phase Six"
+          },
+          {
+            "number": 2,
+            "date": "2014-06-29",
+            "title": "Welcome to Gitmo"
+          },
+          {
+            "number": 3,
+            "date": "2014-07-06",
+            "title": "Dead Reckoning"
+          },
+          {
+            "number": 4,
+            "date": "2014-07-13",
+            "title": "We'll Get There"
+          },
+          {
+            "number": 5,
+            "date": "2014-07-20",
+            "title": "El Toro"
+          },
+          {
+            "number": 6,
+            "date": "2014-07-27",
+            "title": "Lockdown"
+          },
+          {
+            "number": 7,
+            "date": "2014-08-03",
+            "title": "SOS"
+          },
+          {
+            "number": 8,
+            "date": "2014-08-10",
+            "title": "Two Sailors Walk Into a Bar"
+          },
+          {
+            "number": 9,
+            "date": "2014-08-17",
+            "title": "Trials"
+          },
+          {
+            "number": 10,
+            "date": "2014-08-24",
+            "title": "No Place Like Home"
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "releaseDate": "2015-06-21",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2015-06-21",
+            "title": "Unreal City"
+          },
+          {
+            "number": 2,
+            "date": "2015-06-21",
+            "title": "Fight the Ship"
+          },
+          {
+            "number": 3,
+            "date": "2015-06-28",
+            "title": "It's Not a Rumor"
+          },
+          {
+            "number": 4,
+            "date": "2015-07-05",
+            "title": "Solace"
+          },
+          {
+            "number": 5,
+            "date": "2015-07-12",
+            "title": "Achilles"
+          },
+          {
+            "number": 6,
+            "date": "2015-07-19",
+            "title": "Long Day's Journey"
+          },
+          {
+            "number": 7,
+            "date": "2015-07-26",
+            "title": "Alone and Unafraid"
+          },
+          {
+            "number": 8,
+            "date": "2015-08-02",
+            "title": "Safe Zone"
+          },
+          {
+            "number": 9,
+            "date": "2015-08-09",
+            "title": "Uneasy Lies the Head"
+          },
+          {
+            "number": 10,
+            "date": "2015-08-16",
+            "title": "Friendly Fire"
+          },
+          {
+            "number": 11,
+            "date": "2015-08-23",
+            "title": "Valkyrie"
+          },
+          {
+            "number": 12,
+            "date": "2015-08-30",
+            "title": "Cry Havoc"
+          },
+          {
+            "number": 13,
+            "date": "2015-09-06",
+            "title": "A More Perfect Union"
+          }
+        ]
+      },
+      {
+        "number": 3,
+        "releaseDate": "2016-06-19",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2016-06-19",
+            "title": "The Scott Effect"
+          },
+          {
+            "number": 2,
+            "date": "2016-06-19",
+            "title": "Rising Sun"
+          },
+          {
+            "number": 3,
+            "date": "2016-06-26",
+            "title": "Shanzhai"
+          },
+          {
+            "number": 4,
+            "date": "2016-07-03",
+            "title": "Devil May Care"
+          },
+          {
+            "number": 5,
+            "date": "2016-07-10",
+            "title": "Minefield"
+          },
+          {
+            "number": 6,
+            "date": "2016-07-17",
+            "title": "Dog Day"
+          },
+          {
+            "number": 7,
+            "date": "2016-07-24",
+            "title": "In the Dark"
+          },
+          {
+            "number": 8,
+            "date": "2016-07-31",
+            "title": "Sea Change"
+          },
+          {
+            "number": 9,
+            "date": "2016-08-14",
+            "title": "Paradise"
+          },
+          {
+            "number": 10,
+            "date": "2016-08-21",
+            "title": "Scuttle"
+          },
+          {
+            "number": 11,
+            "date": "2016-08-28",
+            "title": "Legacy"
+          },
+          {
+            "number": 12,
+            "date": "2016-09-04",
+            "title": "Resistance"
+          },
+          {
+            "number": 13,
+            "date": "2016-09-11",
+            "title": "Don't Look Back"
+          }
+        ]
+      },
+      {
+        "number": 4,
+        "releaseDate": "2017-08-20",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2017-08-20",
+            "title": "In Medias Res"
+          },
+          {
+            "number": 2,
+            "date": "2017-08-20",
+            "title": "The Pillars of Hercules"
+          },
+          {
+            "number": 3,
+            "date": "2017-08-27",
+            "title": "Bread & Circuses"
+          },
+          {
+            "number": 4,
+            "date": "2017-09-03",
+            "title": "Nostos"
+          },
+          {
+            "number": 5,
+            "date": "2017-09-10",
+            "title": "Allegiance"
+          },
+          {
+            "number": 6,
+            "date": "2017-09-17",
+            "title": "Tempest"
+          },
+          {
+            "number": 7,
+            "date": "2017-09-24",
+            "title": "Feast"
+          },
+          {
+            "number": 8,
+            "date": "2017-10-01",
+            "title": "Lazaretto"
+          },
+          {
+            "number": 9,
+            "date": "2017-10-08",
+            "title": "Detect, Deceive, Destroy"
+          },
+          {
+            "number": 10,
+            "date": "2017-10-08",
+            "title": "Endgame"
+          }
+        ]
+      },
+      {
+        "number": 5,
+        "releaseDate": "2018-09-09",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2018-09-09",
+            "title": "Casus Belli"
+          },
+          {
+            "number": 2,
+            "date": "2018-09-16",
+            "title": "Fog of War"
+          },
+          {
+            "number": 3,
+            "date": "2018-09-23",
+            "title": "El Puente"
+          },
+          {
+            "number": 4,
+            "date": "2018-09-30",
+            "title": "Tropic of Cancer"
+          },
+          {
+            "number": 5,
+            "date": "2018-10-07",
+            "title": "Warriors"
+          },
+          {
+            "number": 6,
+            "date": "2018-10-14",
+            "title": "Air Drop"
+          },
+          {
+            "number": 7,
+            "date": "2018-10-21",
+            "title": "Somos la Sangre"
+          },
+          {
+            "number": 8,
+            "date": "2018-10-28",
+            "title": "Honor"
+          },
+          {
+            "number": 9,
+            "date": "2018-11-04",
+            "title": "Courage"
+          },
+          {
+            "number": 10,
+            "date": "2018-11-11",
+            "title": "Commitment"
+          }
+        ]
+      }
+    ],
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-tv-66761-s1",
+    "title": "Медичи",
+    "type": "series",
+    "genres": [
+      "Драма",
+      "История"
+    ],
+    "studios": [
+      "Lux Vide",
+      "Big Light Productions",
+      "Rai Fiction"
+    ],
+    "description": "После смерти Джованни Медичи его сын Козимо наследует семейный банк. Ему приходится бороться за влияние во Флоренции и выяснять, кто стоял за гибелью отца.",
+    "poster": "assets/tmdb-tv-66761-s1-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-66761-s1-still-1.jpg",
+      "assets/tmdb-tv-66761-s1-still-2.jpg"
+    ],
+    "releaseDate": "2016-10-18",
+    "rating": 7.8,
+    "ratingSource": "IMDb сериала",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=NvKzPZl3Bds",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/66761/season/1?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt5057130/",
+      "official": "https://www.raiplay.it/programmi/imedici",
+      "metadata": "https://v3-cinemeta.strem.io/meta/series/tt5057130.json",
+      "release": "https://www.tvmaze.com/shows/18999/medici/episodes",
+      "poster": "https://artworks.thetvdb.com/banners/seasons/313024-1.jpg",
+      "gallery": [
+        "https://static.tvmaze.com/uploads/images/original_untouched/176/441191.jpg",
+        "https://static.tvmaze.com/uploads/images/original_untouched/176/441192.jpg"
+      ],
+      "seasons": "https://www.themoviedb.org/tv/66761/seasons"
+    },
+    "platforms": [
+      "Netflix"
+    ],
+    "origin": "foreign",
+    "season": 1,
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2016-10-18",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2016-10-18",
+            "title": "Peccato originale"
+          },
+          {
+            "number": 2,
+            "date": "2016-10-18",
+            "title": "La cupola e la dimora"
+          },
+          {
+            "number": 3,
+            "date": "2016-10-25",
+            "title": "La peste"
+          },
+          {
+            "number": 4,
+            "date": "2016-10-25",
+            "title": "Il giorno del giudizio"
+          },
+          {
+            "number": 5,
+            "date": "2016-11-01",
+            "title": "La tentazione"
+          },
+          {
+            "number": 6,
+            "date": "2016-11-01",
+            "title": "Predominio"
+          },
+          {
+            "number": 7,
+            "date": "2016-11-08",
+            "title": "Il purgatorio"
+          },
+          {
+            "number": 8,
+            "date": "2016-11-08",
+            "title": "L'epifania"
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "releaseDate": "2018-10-23",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2018-10-23",
+            "title": "Vecchi rancori"
+          },
+          {
+            "number": 2,
+            "date": "2018-10-23",
+            "title": "Un uomo solo"
+          },
+          {
+            "number": 3,
+            "date": "2018-10-30",
+            "title": "Ostacoli e opportunità"
+          },
+          {
+            "number": 4,
+            "date": "2018-10-30",
+            "title": "Il sangue versato"
+          },
+          {
+            "number": 5,
+            "date": "2018-11-06",
+            "title": "Legami"
+          },
+          {
+            "number": 6,
+            "date": "2018-11-06",
+            "title": "Alleanza"
+          },
+          {
+            "number": 7,
+            "date": "2018-11-13",
+            "title": "Tradimento"
+          },
+          {
+            "number": 8,
+            "date": "2018-11-13",
+            "title": "Consacrazione"
+          }
+        ]
+      },
+      {
+        "number": 3,
+        "releaseDate": "2019-12-02",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2019-12-02",
+            "title": "Sopravvivenza"
+          },
+          {
+            "number": 2,
+            "date": "2019-12-02",
+            "title": "I Dieci"
+          },
+          {
+            "number": 3,
+            "date": "2019-12-03",
+            "title": "Fiducia"
+          },
+          {
+            "number": 4,
+            "date": "2019-12-03",
+            "title": "Innocenti"
+          },
+          {
+            "number": 5,
+            "date": "2019-12-09",
+            "title": "La Santa Sede"
+          },
+          {
+            "number": 6,
+            "date": "2019-12-09",
+            "title": "Un uomo senza importanza"
+          },
+          {
+            "number": 7,
+            "date": "2019-12-11",
+            "title": "Anime perdute"
+          },
+          {
+            "number": 8,
+            "date": "2019-12-11",
+            "title": "Il destino della città"
+          }
+        ]
+      }
+    ],
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-tv-66761-s2",
+    "title": "Медичи",
+    "type": "series",
+    "genres": [
+      "Драма",
+      "История"
+    ],
+    "studios": [
+      "Lux Vide",
+      "Big Light Productions",
+      "Rai Fiction"
+    ],
+    "description": "Молодой Лоренцо Медичи берёт на себя дела семьи. Соперничество с домом Пацци ставит под угрозу его политические планы и близких.",
+    "poster": "assets/tmdb-tv-66761-s2-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-66761-s2-still-1.jpg",
+      "assets/tmdb-tv-66761-s2-still-2.jpg"
+    ],
+    "releaseDate": "2018-10-23",
+    "rating": 7.8,
+    "ratingSource": "IMDb сериала",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=3DbbWz8wKhw",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/66761/season/2?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt5057130/",
+      "official": "https://www.raiplay.it/programmi/imedici",
+      "metadata": "https://v3-cinemeta.strem.io/meta/series/tt5057130.json",
+      "release": "https://www.tvmaze.com/shows/18999/medici/episodes",
+      "poster": "https://artworks.thetvdb.com/banners/seasons/5bcc50e349edd.jpg",
+      "gallery": [
+        "https://static.tvmaze.com/uploads/images/original_untouched/219/548780.jpg",
+        "https://static.tvmaze.com/uploads/images/original_untouched/219/549014.jpg"
+      ],
+      "seasons": "https://www.themoviedb.org/tv/66761/seasons"
+    },
+    "platforms": [
+      "Netflix"
+    ],
+    "origin": "foreign",
+    "season": 2,
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2016-10-18",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2016-10-18",
+            "title": "Peccato originale"
+          },
+          {
+            "number": 2,
+            "date": "2016-10-18",
+            "title": "La cupola e la dimora"
+          },
+          {
+            "number": 3,
+            "date": "2016-10-25",
+            "title": "La peste"
+          },
+          {
+            "number": 4,
+            "date": "2016-10-25",
+            "title": "Il giorno del giudizio"
+          },
+          {
+            "number": 5,
+            "date": "2016-11-01",
+            "title": "La tentazione"
+          },
+          {
+            "number": 6,
+            "date": "2016-11-01",
+            "title": "Predominio"
+          },
+          {
+            "number": 7,
+            "date": "2016-11-08",
+            "title": "Il purgatorio"
+          },
+          {
+            "number": 8,
+            "date": "2016-11-08",
+            "title": "L'epifania"
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "releaseDate": "2018-10-23",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2018-10-23",
+            "title": "Vecchi rancori"
+          },
+          {
+            "number": 2,
+            "date": "2018-10-23",
+            "title": "Un uomo solo"
+          },
+          {
+            "number": 3,
+            "date": "2018-10-30",
+            "title": "Ostacoli e opportunità"
+          },
+          {
+            "number": 4,
+            "date": "2018-10-30",
+            "title": "Il sangue versato"
+          },
+          {
+            "number": 5,
+            "date": "2018-11-06",
+            "title": "Legami"
+          },
+          {
+            "number": 6,
+            "date": "2018-11-06",
+            "title": "Alleanza"
+          },
+          {
+            "number": 7,
+            "date": "2018-11-13",
+            "title": "Tradimento"
+          },
+          {
+            "number": 8,
+            "date": "2018-11-13",
+            "title": "Consacrazione"
+          }
+        ]
+      },
+      {
+        "number": 3,
+        "releaseDate": "2019-12-02",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2019-12-02",
+            "title": "Sopravvivenza"
+          },
+          {
+            "number": 2,
+            "date": "2019-12-02",
+            "title": "I Dieci"
+          },
+          {
+            "number": 3,
+            "date": "2019-12-03",
+            "title": "Fiducia"
+          },
+          {
+            "number": 4,
+            "date": "2019-12-03",
+            "title": "Innocenti"
+          },
+          {
+            "number": 5,
+            "date": "2019-12-09",
+            "title": "La Santa Sede"
+          },
+          {
+            "number": 6,
+            "date": "2019-12-09",
+            "title": "Un uomo senza importanza"
+          },
+          {
+            "number": 7,
+            "date": "2019-12-11",
+            "title": "Anime perdute"
+          },
+          {
+            "number": 8,
+            "date": "2019-12-11",
+            "title": "Il destino della città"
+          }
+        ]
+      }
+    ],
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-tv-66761-s3",
+    "title": "Медичи",
+    "type": "series",
+    "genres": [
+      "Драма",
+      "История"
+    ],
+    "studios": [
+      "Lux Vide",
+      "Big Light Productions",
+      "Rai Fiction"
+    ],
+    "description": "Лоренцо пытается удержать власть после заговора Пацци. В то же время проповеди Савонаролы и конфликты внутри семьи меняют Флоренцию.",
+    "poster": "assets/tmdb-tv-66761-s3-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-66761-s3-still-1.jpg",
+      "assets/tmdb-tv-66761-s3-still-2.jpg"
+    ],
+    "releaseDate": "2019-12-02",
+    "rating": 7.8,
+    "ratingSource": "IMDb сериала",
+    "status": "available",
+    "trailer": "https://www.youtube.com/watch?v=vI8T2OCV7HE",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/66761/season/3?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt5057130/",
+      "official": "https://www.raiplay.it/programmi/imedici",
+      "metadata": "https://v3-cinemeta.strem.io/meta/series/tt5057130.json",
+      "release": "https://www.tvmaze.com/shows/18999/medici/episodes",
+      "poster": "https://image.tmdb.org/t/p/w500/hvdi2SF6l54XSDq1tLohXDvTA0i.jpg",
+      "gallery": [
+        "https://static.tvmaze.com/uploads/images/original_untouched/224/560245.jpg",
+        "https://static.tvmaze.com/uploads/images/original_untouched/224/560246.jpg"
+      ],
+      "seasons": "https://www.themoviedb.org/tv/66761/seasons"
+    },
+    "platforms": [
+      "Netflix"
+    ],
+    "origin": "foreign",
+    "season": 3,
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2016-10-18",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2016-10-18",
+            "title": "Peccato originale"
+          },
+          {
+            "number": 2,
+            "date": "2016-10-18",
+            "title": "La cupola e la dimora"
+          },
+          {
+            "number": 3,
+            "date": "2016-10-25",
+            "title": "La peste"
+          },
+          {
+            "number": 4,
+            "date": "2016-10-25",
+            "title": "Il giorno del giudizio"
+          },
+          {
+            "number": 5,
+            "date": "2016-11-01",
+            "title": "La tentazione"
+          },
+          {
+            "number": 6,
+            "date": "2016-11-01",
+            "title": "Predominio"
+          },
+          {
+            "number": 7,
+            "date": "2016-11-08",
+            "title": "Il purgatorio"
+          },
+          {
+            "number": 8,
+            "date": "2016-11-08",
+            "title": "L'epifania"
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "releaseDate": "2018-10-23",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2018-10-23",
+            "title": "Vecchi rancori"
+          },
+          {
+            "number": 2,
+            "date": "2018-10-23",
+            "title": "Un uomo solo"
+          },
+          {
+            "number": 3,
+            "date": "2018-10-30",
+            "title": "Ostacoli e opportunità"
+          },
+          {
+            "number": 4,
+            "date": "2018-10-30",
+            "title": "Il sangue versato"
+          },
+          {
+            "number": 5,
+            "date": "2018-11-06",
+            "title": "Legami"
+          },
+          {
+            "number": 6,
+            "date": "2018-11-06",
+            "title": "Alleanza"
+          },
+          {
+            "number": 7,
+            "date": "2018-11-13",
+            "title": "Tradimento"
+          },
+          {
+            "number": 8,
+            "date": "2018-11-13",
+            "title": "Consacrazione"
+          }
+        ]
+      },
+      {
+        "number": 3,
+        "releaseDate": "2019-12-02",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2019-12-02",
+            "title": "Sopravvivenza"
+          },
+          {
+            "number": 2,
+            "date": "2019-12-02",
+            "title": "I Dieci"
+          },
+          {
+            "number": 3,
+            "date": "2019-12-03",
+            "title": "Fiducia"
+          },
+          {
+            "number": 4,
+            "date": "2019-12-03",
+            "title": "Innocenti"
+          },
+          {
+            "number": 5,
+            "date": "2019-12-09",
+            "title": "La Santa Sede"
+          },
+          {
+            "number": 6,
+            "date": "2019-12-09",
+            "title": "Un uomo senza importanza"
+          },
+          {
+            "number": 7,
+            "date": "2019-12-11",
+            "title": "Anime perdute"
+          },
+          {
+            "number": 8,
+            "date": "2019-12-11",
+            "title": "Il destino della città"
+          }
+        ]
+      }
+    ],
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-tv-73544-s2",
+    "title": "Воин",
+    "type": "series",
+    "genres": [
+      "Боевик",
+      "Криминал",
+      "Драма"
+    ],
+    "studios": [
+      "Perfect Storm Entertainment",
+      "Bruce Lee Entertainment"
+    ],
+    "description": "Ах Сам оказывается между противоборствующими группировками Чайна-тауна. Пока в городе растёт напряжение, его сестра Май Лин ищет способ укрепить собственную власть.",
+    "poster": "assets/tmdb-tv-73544-s2-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-73544-s2-still-1.jpg",
+      "assets/tmdb-tv-73544-s2-still-2.jpg"
+    ],
+    "releaseDate": "2020-10-02",
+    "rating": 8.4,
+    "ratingSource": "IMDb сериала",
+    "status": "available",
+    "trailer": "https://www.youtube.com/watch?v=V_wSj_1fWtY",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/73544/season/2?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt5743796/",
+      "official": "https://press.wbd.com/us/property/warrior",
+      "metadata": "https://v3-cinemeta.strem.io/meta/series/tt5743796.json",
+      "release": "https://www.tvmaze.com/shows/20651/warrior/episodes",
+      "poster": "https://static.tvmaze.com/uploads/images/original_untouched/286/716882.jpg",
+      "gallery": [
+        "https://static.tvmaze.com/uploads/images/original_untouched/276/690769.jpg",
+        "https://static.tvmaze.com/uploads/images/original_untouched/276/692080.jpg"
+      ],
+      "seasons": "https://www.themoviedb.org/tv/73544/seasons"
+    },
+    "platforms": [
+      "HBO"
+    ],
+    "origin": "foreign",
+    "season": 2,
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2019-04-05",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2019-04-05",
+            "title": "The Itchy Onion"
+          },
+          {
+            "number": 2,
+            "date": "2019-04-12",
+            "title": "There's No China in the Bible"
+          },
+          {
+            "number": 3,
+            "date": "2019-04-19",
+            "title": "John Chinaman"
+          },
+          {
+            "number": 4,
+            "date": "2019-04-26",
+            "title": "The White Mountain"
+          },
+          {
+            "number": 5,
+            "date": "2019-05-03",
+            "title": "The Blood and the Sh*t"
+          },
+          {
+            "number": 6,
+            "date": "2019-05-10",
+            "title": "Chewed Up, Spit Out, and Stepped On"
+          },
+          {
+            "number": 7,
+            "date": "2019-05-17",
+            "title": "The Tiger and the Fox"
+          },
+          {
+            "number": 8,
+            "date": "2019-05-24",
+            "title": "They Don't Pay Us Enough to Think"
+          },
+          {
+            "number": 9,
+            "date": "2019-05-31",
+            "title": "Chinese Boxing"
+          },
+          {
+            "number": 10,
+            "date": "2019-06-07",
+            "title": "If You're Going to Bow, Bow Low"
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "releaseDate": "2020-10-02",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2020-10-02",
+            "title": "Learn to Endure, or Hire a Bodyguard"
+          },
+          {
+            "number": 2,
+            "date": "2020-10-09",
+            "title": "The Chinese Connection"
+          },
+          {
+            "number": 3,
+            "date": "2020-10-16",
+            "title": "Not How We Do Business"
+          },
+          {
+            "number": 4,
+            "date": "2020-10-23",
+            "title": "If You Don't See Blood, You Didn't Come to Play"
+          },
+          {
+            "number": 5,
+            "date": "2020-10-30",
+            "title": "Not for a Drink, a F*ck, or a G**damn Prayer"
+          },
+          {
+            "number": 6,
+            "date": "2020-11-06",
+            "title": "To a Man with a Hammer, Everything Looks Like a Nail"
+          },
+          {
+            "number": 7,
+            "date": "2020-11-13",
+            "title": "If You Wait by the River Long Enough"
+          },
+          {
+            "number": 8,
+            "date": "2020-11-20",
+            "title": "All Enemies, Foreign and Domestic"
+          },
+          {
+            "number": 9,
+            "date": "2020-11-27",
+            "title": "Enter the Dragon"
+          },
+          {
+            "number": 10,
+            "date": "2020-12-04",
+            "title": "Man on the Wall"
+          }
+        ]
+      },
+      {
+        "number": 3,
+        "releaseDate": "2023-06-29",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2023-06-29",
+            "title": "Exactly the Wrong Time to Get Proud"
+          },
+          {
+            "number": 2,
+            "date": "2023-06-29",
+            "title": "Anything Short of a Blow to the Head"
+          },
+          {
+            "number": 3,
+            "date": "2023-06-29",
+            "title": "No Time for F... Chemistry"
+          },
+          {
+            "number": 4,
+            "date": "2023-07-06",
+            "title": "In Chinatown, No One Thinks About Forever"
+          },
+          {
+            "number": 5,
+            "date": "2023-07-13",
+            "title": "Whiskey and Sticky and All the Rest Can Wait"
+          },
+          {
+            "number": 6,
+            "date": "2023-07-20",
+            "title": "A Soft Heart Won't Do You No Favors"
+          },
+          {
+            "number": 7,
+            "date": "2023-07-27",
+            "title": "Gotta Be Crooked to Get Along in a Crooked World"
+          },
+          {
+            "number": 8,
+            "date": "2023-08-03",
+            "title": "You Know When You're Losing a Fight"
+          },
+          {
+            "number": 9,
+            "date": "2023-08-10",
+            "title": "All of Death is Going Home"
+          },
+          {
+            "number": 10,
+            "date": "2023-08-17",
+            "title": "A Window of F*cking Opportunity"
+          }
+        ]
+      }
+    ],
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-tv-73544-s3",
+    "title": "Воин",
+    "type": "series",
+    "genres": [
+      "Боевик",
+      "Криминал",
+      "Драма"
+    ],
+    "studios": [
+      "Perfect Storm Entertainment",
+      "Bruce Lee Entertainment"
+    ],
+    "description": "После беспорядков Ах Сам пытается помочь своей группировке вернуться к делам. Май Лин заводит новые связи, а полиция усиливает давление на Чайна-таун.",
+    "poster": "assets/tmdb-tv-73544-s3-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-73544-s3-still-1.jpg",
+      "assets/tmdb-tv-73544-s3-still-2.jpg"
+    ],
+    "releaseDate": "2023-06-29",
+    "rating": 8.4,
+    "ratingSource": "IMDb сериала",
+    "status": "available",
+    "trailer": "https://www.youtube.com/watch?v=89dEEKEzglw",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/73544/season/3?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt5743796/",
+      "official": "https://press.wbd.com/us/property/warrior",
+      "metadata": "https://v3-cinemeta.strem.io/meta/series/tt5743796.json",
+      "release": "https://www.tvmaze.com/shows/20651/warrior/episodes",
+      "poster": "https://static.tvmaze.com/uploads/images/original_untouched/467/1169065.jpg",
+      "gallery": [
+        "https://static.tvmaze.com/uploads/images/original_untouched/466/1167332.jpg",
+        "https://static.tvmaze.com/uploads/images/original_untouched/466/1167329.jpg"
+      ],
+      "seasons": "https://www.themoviedb.org/tv/73544/seasons"
+    },
+    "platforms": [
+      "HBO"
+    ],
+    "origin": "foreign",
+    "season": 3,
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2019-04-05",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2019-04-05",
+            "title": "The Itchy Onion"
+          },
+          {
+            "number": 2,
+            "date": "2019-04-12",
+            "title": "There's No China in the Bible"
+          },
+          {
+            "number": 3,
+            "date": "2019-04-19",
+            "title": "John Chinaman"
+          },
+          {
+            "number": 4,
+            "date": "2019-04-26",
+            "title": "The White Mountain"
+          },
+          {
+            "number": 5,
+            "date": "2019-05-03",
+            "title": "The Blood and the Sh*t"
+          },
+          {
+            "number": 6,
+            "date": "2019-05-10",
+            "title": "Chewed Up, Spit Out, and Stepped On"
+          },
+          {
+            "number": 7,
+            "date": "2019-05-17",
+            "title": "The Tiger and the Fox"
+          },
+          {
+            "number": 8,
+            "date": "2019-05-24",
+            "title": "They Don't Pay Us Enough to Think"
+          },
+          {
+            "number": 9,
+            "date": "2019-05-31",
+            "title": "Chinese Boxing"
+          },
+          {
+            "number": 10,
+            "date": "2019-06-07",
+            "title": "If You're Going to Bow, Bow Low"
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "releaseDate": "2020-10-02",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2020-10-02",
+            "title": "Learn to Endure, or Hire a Bodyguard"
+          },
+          {
+            "number": 2,
+            "date": "2020-10-09",
+            "title": "The Chinese Connection"
+          },
+          {
+            "number": 3,
+            "date": "2020-10-16",
+            "title": "Not How We Do Business"
+          },
+          {
+            "number": 4,
+            "date": "2020-10-23",
+            "title": "If You Don't See Blood, You Didn't Come to Play"
+          },
+          {
+            "number": 5,
+            "date": "2020-10-30",
+            "title": "Not for a Drink, a F*ck, or a G**damn Prayer"
+          },
+          {
+            "number": 6,
+            "date": "2020-11-06",
+            "title": "To a Man with a Hammer, Everything Looks Like a Nail"
+          },
+          {
+            "number": 7,
+            "date": "2020-11-13",
+            "title": "If You Wait by the River Long Enough"
+          },
+          {
+            "number": 8,
+            "date": "2020-11-20",
+            "title": "All Enemies, Foreign and Domestic"
+          },
+          {
+            "number": 9,
+            "date": "2020-11-27",
+            "title": "Enter the Dragon"
+          },
+          {
+            "number": 10,
+            "date": "2020-12-04",
+            "title": "Man on the Wall"
+          }
+        ]
+      },
+      {
+        "number": 3,
+        "releaseDate": "2023-06-29",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2023-06-29",
+            "title": "Exactly the Wrong Time to Get Proud"
+          },
+          {
+            "number": 2,
+            "date": "2023-06-29",
+            "title": "Anything Short of a Blow to the Head"
+          },
+          {
+            "number": 3,
+            "date": "2023-06-29",
+            "title": "No Time for F... Chemistry"
+          },
+          {
+            "number": 4,
+            "date": "2023-07-06",
+            "title": "In Chinatown, No One Thinks About Forever"
+          },
+          {
+            "number": 5,
+            "date": "2023-07-13",
+            "title": "Whiskey and Sticky and All the Rest Can Wait"
+          },
+          {
+            "number": 6,
+            "date": "2023-07-20",
+            "title": "A Soft Heart Won't Do You No Favors"
+          },
+          {
+            "number": 7,
+            "date": "2023-07-27",
+            "title": "Gotta Be Crooked to Get Along in a Crooked World"
+          },
+          {
+            "number": 8,
+            "date": "2023-08-03",
+            "title": "You Know When You're Losing a Fight"
+          },
+          {
+            "number": 9,
+            "date": "2023-08-10",
+            "title": "All of Death is Going Home"
+          },
+          {
+            "number": 10,
+            "date": "2023-08-17",
+            "title": "A Window of F*cking Opportunity"
+          }
+        ]
+      }
+    ],
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-tv-66980-s1",
+    "title": "Вавилон-Берлин",
+    "type": "series",
+    "genres": [
+      "Криминал",
+      "Драма",
+      "Детектив"
+    ],
+    "studios": [
+      "X Filme Creative Pool",
+      "Beta Film",
+      "ARD Degeto"
+    ],
+    "description": "Полицейский Гереон Рат приезжает из Кёльна в Берлин 1929 года. Вместе с Шарлоттой Риттер он расследует дело, которое выводит их на преступные и политические связи.",
+    "poster": "assets/tmdb-tv-66980-s1-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-66980-s1-still-1.jpg",
+      "assets/tmdb-tv-66980-s1-still-2.jpg"
+    ],
+    "releaseDate": "2017-10-13",
+    "rating": 8.4,
+    "ratingSource": "IMDb сериала",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=HAn3RXeCrLg",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/66980/season/1?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt4378376/",
+      "official": "https://www.betafilm.com/news/1128",
+      "metadata": "https://v3-cinemeta.strem.io/meta/series/tt4378376.json",
+      "release": "https://www.tvmaze.com/shows/25245/babylon-berlin/episodes",
+      "poster": "https://static.tvmaze.com/uploads/images/original_untouched/288/721758.jpg",
+      "gallery": [
+        "https://static.tvmaze.com/uploads/images/original_untouched/401/1004893.jpg",
+        "https://static.tvmaze.com/uploads/images/original_untouched/401/1004894.jpg"
+      ],
+      "seasons": "https://www.themoviedb.org/tv/66980/seasons"
+    },
+    "platforms": [
+      "Sky"
+    ],
+    "origin": "foreign",
+    "season": 1,
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2017-10-13",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2017-10-13"
+          },
+          {
+            "number": 2,
+            "date": "2017-10-13"
+          },
+          {
+            "number": 3,
+            "date": "2017-10-20"
+          },
+          {
+            "number": 4,
+            "date": "2017-10-20"
+          },
+          {
+            "number": 5,
+            "date": "2017-10-27"
+          },
+          {
+            "number": 6,
+            "date": "2017-10-27"
+          },
+          {
+            "number": 7,
+            "date": "2017-11-03"
+          },
+          {
+            "number": 8,
+            "date": "2017-11-03"
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "releaseDate": "2017-11-10",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2017-11-10"
+          },
+          {
+            "number": 2,
+            "date": "2017-11-10"
+          },
+          {
+            "number": 3,
+            "date": "2017-11-17"
+          },
+          {
+            "number": 4,
+            "date": "2017-11-17"
+          },
+          {
+            "number": 5,
+            "date": "2017-11-24"
+          },
+          {
+            "number": 6,
+            "date": "2017-11-24"
+          },
+          {
+            "number": 7,
+            "date": "2017-12-01"
+          },
+          {
+            "number": 8,
+            "date": "2017-12-01"
+          }
+        ]
+      },
+      {
+        "number": 3,
+        "releaseDate": "2020-01-24",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2020-01-24"
+          },
+          {
+            "number": 2,
+            "date": "2020-01-24"
+          },
+          {
+            "number": 3,
+            "date": "2020-01-31"
+          },
+          {
+            "number": 4,
+            "date": "2020-01-31"
+          },
+          {
+            "number": 5,
+            "date": "2020-02-07"
+          },
+          {
+            "number": 6,
+            "date": "2020-02-07"
+          },
+          {
+            "number": 7,
+            "date": "2020-02-14"
+          },
+          {
+            "number": 8,
+            "date": "2020-02-14"
+          },
+          {
+            "number": 9,
+            "date": "2020-02-21"
+          },
+          {
+            "number": 10,
+            "date": "2020-02-21"
+          },
+          {
+            "number": 11,
+            "date": "2020-02-28"
+          },
+          {
+            "number": 12,
+            "date": "2020-02-28"
+          }
+        ]
+      },
+      {
+        "number": 4,
+        "releaseDate": "2022-10-08",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2022-10-08"
+          },
+          {
+            "number": 2,
+            "date": "2022-10-08"
+          },
+          {
+            "number": 3,
+            "date": "2022-10-15"
+          },
+          {
+            "number": 4,
+            "date": "2022-10-15"
+          },
+          {
+            "number": 5,
+            "date": "2022-10-22"
+          },
+          {
+            "number": 6,
+            "date": "2022-10-22"
+          },
+          {
+            "number": 7,
+            "date": "2022-10-29"
+          },
+          {
+            "number": 8,
+            "date": "2022-10-29"
+          },
+          {
+            "number": 9,
+            "date": "2022-11-05"
+          },
+          {
+            "number": 10,
+            "date": "2022-11-05"
+          },
+          {
+            "number": 11,
+            "date": "2022-11-12"
+          },
+          {
+            "number": 12,
+            "date": "2022-11-12"
+          }
+        ]
+      },
+      {
+        "number": 5,
+        "releaseDate": "2026-09-10",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2026-09-10"
+          },
+          {
+            "number": 2,
+            "date": "2026-09-10"
+          },
+          {
+            "number": 3,
+            "date": "2026-09-10"
+          },
+          {
+            "number": 4,
+            "date": "2026-09-10"
+          },
+          {
+            "number": 5,
+            "date": "2026-09-10"
+          },
+          {
+            "number": 6,
+            "date": "2026-09-10"
+          },
+          {
+            "number": 7,
+            "date": "2026-09-10"
+          },
+          {
+            "number": 8,
+            "date": "2026-09-10"
+          }
+        ]
+      }
+    ],
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-tv-66980-s2",
+    "title": "Вавилон-Берлин",
+    "type": "series",
+    "genres": [
+      "Криминал",
+      "Драма",
+      "Детектив"
+    ],
+    "studios": [
+      "X Filme Creative Pool",
+      "Beta Film",
+      "ARD Degeto"
+    ],
+    "description": "Расследование Рата и Шарлотты выводит их на пропавшее золото и людей, заинтересованных в его исчезновении. За происходящим стоят силы, которые борются за власть в республике.",
+    "poster": "assets/tmdb-tv-66980-s2-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-66980-s2-still-1.jpg",
+      "assets/tmdb-tv-66980-s2-still-2.jpg"
+    ],
+    "releaseDate": "2017-11-10",
+    "rating": 8.4,
+    "ratingSource": "IMDb сериала",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=6DAmDLdg6Dk",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/66980/season/2?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt4378376/",
+      "official": "https://www.betafilm.com/news/1128",
+      "metadata": "https://v3-cinemeta.strem.io/meta/series/tt4378376.json",
+      "release": "https://www.tvmaze.com/shows/25245/babylon-berlin/episodes",
+      "poster": "https://static.tvmaze.com/uploads/images/original_untouched/288/721759.jpg",
+      "gallery": [
+        "https://static.tvmaze.com/uploads/images/original_untouched/173/434173.jpg",
+        "https://static.tvmaze.com/uploads/images/original_untouched/401/1004901.jpg"
+      ],
+      "seasons": "https://www.themoviedb.org/tv/66980/seasons"
+    },
+    "platforms": [
+      "Sky"
+    ],
+    "origin": "foreign",
+    "season": 2,
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2017-10-13",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2017-10-13"
+          },
+          {
+            "number": 2,
+            "date": "2017-10-13"
+          },
+          {
+            "number": 3,
+            "date": "2017-10-20"
+          },
+          {
+            "number": 4,
+            "date": "2017-10-20"
+          },
+          {
+            "number": 5,
+            "date": "2017-10-27"
+          },
+          {
+            "number": 6,
+            "date": "2017-10-27"
+          },
+          {
+            "number": 7,
+            "date": "2017-11-03"
+          },
+          {
+            "number": 8,
+            "date": "2017-11-03"
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "releaseDate": "2017-11-10",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2017-11-10"
+          },
+          {
+            "number": 2,
+            "date": "2017-11-10"
+          },
+          {
+            "number": 3,
+            "date": "2017-11-17"
+          },
+          {
+            "number": 4,
+            "date": "2017-11-17"
+          },
+          {
+            "number": 5,
+            "date": "2017-11-24"
+          },
+          {
+            "number": 6,
+            "date": "2017-11-24"
+          },
+          {
+            "number": 7,
+            "date": "2017-12-01"
+          },
+          {
+            "number": 8,
+            "date": "2017-12-01"
+          }
+        ]
+      },
+      {
+        "number": 3,
+        "releaseDate": "2020-01-24",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2020-01-24"
+          },
+          {
+            "number": 2,
+            "date": "2020-01-24"
+          },
+          {
+            "number": 3,
+            "date": "2020-01-31"
+          },
+          {
+            "number": 4,
+            "date": "2020-01-31"
+          },
+          {
+            "number": 5,
+            "date": "2020-02-07"
+          },
+          {
+            "number": 6,
+            "date": "2020-02-07"
+          },
+          {
+            "number": 7,
+            "date": "2020-02-14"
+          },
+          {
+            "number": 8,
+            "date": "2020-02-14"
+          },
+          {
+            "number": 9,
+            "date": "2020-02-21"
+          },
+          {
+            "number": 10,
+            "date": "2020-02-21"
+          },
+          {
+            "number": 11,
+            "date": "2020-02-28"
+          },
+          {
+            "number": 12,
+            "date": "2020-02-28"
+          }
+        ]
+      },
+      {
+        "number": 4,
+        "releaseDate": "2022-10-08",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2022-10-08"
+          },
+          {
+            "number": 2,
+            "date": "2022-10-08"
+          },
+          {
+            "number": 3,
+            "date": "2022-10-15"
+          },
+          {
+            "number": 4,
+            "date": "2022-10-15"
+          },
+          {
+            "number": 5,
+            "date": "2022-10-22"
+          },
+          {
+            "number": 6,
+            "date": "2022-10-22"
+          },
+          {
+            "number": 7,
+            "date": "2022-10-29"
+          },
+          {
+            "number": 8,
+            "date": "2022-10-29"
+          },
+          {
+            "number": 9,
+            "date": "2022-11-05"
+          },
+          {
+            "number": 10,
+            "date": "2022-11-05"
+          },
+          {
+            "number": 11,
+            "date": "2022-11-12"
+          },
+          {
+            "number": 12,
+            "date": "2022-11-12"
+          }
+        ]
+      },
+      {
+        "number": 5,
+        "releaseDate": "2026-09-10",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2026-09-10"
+          },
+          {
+            "number": 2,
+            "date": "2026-09-10"
+          },
+          {
+            "number": 3,
+            "date": "2026-09-10"
+          },
+          {
+            "number": 4,
+            "date": "2026-09-10"
+          },
+          {
+            "number": 5,
+            "date": "2026-09-10"
+          },
+          {
+            "number": 6,
+            "date": "2026-09-10"
+          },
+          {
+            "number": 7,
+            "date": "2026-09-10"
+          },
+          {
+            "number": 8,
+            "date": "2026-09-10"
+          }
+        ]
+      }
+    ],
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-tv-66980-s3",
+    "title": "Вавилон-Берлин",
+    "type": "series",
+    "genres": [
+      "Криминал",
+      "Драма",
+      "Детектив"
+    ],
+    "studios": [
+      "X Filme Creative Pool",
+      "Beta Film",
+      "ARD Degeto"
+    ],
+    "description": "На съёмочной площадке гибнет актриса. Расследование знакомит Рата и Шарлотту с индустрией кино, пока финансовый кризис меняет жизнь Берлина.",
+    "poster": "assets/tmdb-tv-66980-s3-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-66980-s3-still-1.jpg",
+      "assets/tmdb-tv-66980-s3-still-2.jpg"
+    ],
+    "releaseDate": "2020-01-24",
+    "rating": 8.4,
+    "ratingSource": "IMDb сериала",
+    "status": "available",
+    "trailer": "https://www.youtube.com/watch?v=L9uwhSDGOfI",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/66980/season/3?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt4378376/",
+      "official": "https://www.betafilm.com/news/1128",
+      "metadata": "https://v3-cinemeta.strem.io/meta/series/tt4378376.json",
+      "release": "https://www.tvmaze.com/shows/25245/babylon-berlin/episodes",
+      "poster": "https://static.tvmaze.com/uploads/images/original_untouched/288/721760.jpg",
+      "gallery": [
+        "https://static.tvmaze.com/uploads/images/original_untouched/401/1004905.jpg",
+        "https://static.tvmaze.com/uploads/images/original_untouched/401/1004906.jpg"
+      ],
+      "seasons": "https://www.themoviedb.org/tv/66980/seasons"
+    },
+    "platforms": [
+      "Sky"
+    ],
+    "origin": "foreign",
+    "season": 3,
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2017-10-13",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2017-10-13"
+          },
+          {
+            "number": 2,
+            "date": "2017-10-13"
+          },
+          {
+            "number": 3,
+            "date": "2017-10-20"
+          },
+          {
+            "number": 4,
+            "date": "2017-10-20"
+          },
+          {
+            "number": 5,
+            "date": "2017-10-27"
+          },
+          {
+            "number": 6,
+            "date": "2017-10-27"
+          },
+          {
+            "number": 7,
+            "date": "2017-11-03"
+          },
+          {
+            "number": 8,
+            "date": "2017-11-03"
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "releaseDate": "2017-11-10",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2017-11-10"
+          },
+          {
+            "number": 2,
+            "date": "2017-11-10"
+          },
+          {
+            "number": 3,
+            "date": "2017-11-17"
+          },
+          {
+            "number": 4,
+            "date": "2017-11-17"
+          },
+          {
+            "number": 5,
+            "date": "2017-11-24"
+          },
+          {
+            "number": 6,
+            "date": "2017-11-24"
+          },
+          {
+            "number": 7,
+            "date": "2017-12-01"
+          },
+          {
+            "number": 8,
+            "date": "2017-12-01"
+          }
+        ]
+      },
+      {
+        "number": 3,
+        "releaseDate": "2020-01-24",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2020-01-24"
+          },
+          {
+            "number": 2,
+            "date": "2020-01-24"
+          },
+          {
+            "number": 3,
+            "date": "2020-01-31"
+          },
+          {
+            "number": 4,
+            "date": "2020-01-31"
+          },
+          {
+            "number": 5,
+            "date": "2020-02-07"
+          },
+          {
+            "number": 6,
+            "date": "2020-02-07"
+          },
+          {
+            "number": 7,
+            "date": "2020-02-14"
+          },
+          {
+            "number": 8,
+            "date": "2020-02-14"
+          },
+          {
+            "number": 9,
+            "date": "2020-02-21"
+          },
+          {
+            "number": 10,
+            "date": "2020-02-21"
+          },
+          {
+            "number": 11,
+            "date": "2020-02-28"
+          },
+          {
+            "number": 12,
+            "date": "2020-02-28"
+          }
+        ]
+      },
+      {
+        "number": 4,
+        "releaseDate": "2022-10-08",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2022-10-08"
+          },
+          {
+            "number": 2,
+            "date": "2022-10-08"
+          },
+          {
+            "number": 3,
+            "date": "2022-10-15"
+          },
+          {
+            "number": 4,
+            "date": "2022-10-15"
+          },
+          {
+            "number": 5,
+            "date": "2022-10-22"
+          },
+          {
+            "number": 6,
+            "date": "2022-10-22"
+          },
+          {
+            "number": 7,
+            "date": "2022-10-29"
+          },
+          {
+            "number": 8,
+            "date": "2022-10-29"
+          },
+          {
+            "number": 9,
+            "date": "2022-11-05"
+          },
+          {
+            "number": 10,
+            "date": "2022-11-05"
+          },
+          {
+            "number": 11,
+            "date": "2022-11-12"
+          },
+          {
+            "number": 12,
+            "date": "2022-11-12"
+          }
+        ]
+      },
+      {
+        "number": 5,
+        "releaseDate": "2026-09-10",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2026-09-10"
+          },
+          {
+            "number": 2,
+            "date": "2026-09-10"
+          },
+          {
+            "number": 3,
+            "date": "2026-09-10"
+          },
+          {
+            "number": 4,
+            "date": "2026-09-10"
+          },
+          {
+            "number": 5,
+            "date": "2026-09-10"
+          },
+          {
+            "number": 6,
+            "date": "2026-09-10"
+          },
+          {
+            "number": 7,
+            "date": "2026-09-10"
+          },
+          {
+            "number": 8,
+            "date": "2026-09-10"
+          }
+        ]
+      }
+    ],
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-tv-66980-s4",
+    "title": "Вавилон-Берлин",
+    "type": "series",
+    "genres": [
+      "Криминал",
+      "Драма",
+      "Детектив"
+    ],
+    "studios": [
+      "X Filme Creative Pool",
+      "Beta Film",
+      "ARD Degeto"
+    ],
+    "description": "Берлин начала 1930-х становится всё опаснее. Шарлотта пытается разобраться в преступлениях, связанных с судебной системой, а исчезновение привычных союзов осложняет работу Рата.",
+    "poster": "assets/tmdb-tv-66980-s4-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-66980-s4-still-1.jpg",
+      "assets/tmdb-tv-66980-s4-still-2.jpg"
+    ],
+    "releaseDate": "2022-10-08",
+    "rating": 8.4,
+    "ratingSource": "IMDb сериала",
+    "status": "available",
+    "trailer": "https://www.youtube.com/watch?v=cWnCxbdpqK4",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/66980/season/4?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt4378376/",
+      "official": "https://www.betafilm.com/news/1128",
+      "metadata": "https://v3-cinemeta.strem.io/meta/series/tt4378376.json",
+      "release": "https://www.tvmaze.com/shows/25245/babylon-berlin/episodes",
+      "poster": "https://static.tvmaze.com/uploads/images/original_untouched/430/1075694.jpg",
+      "gallery": [
+        "https://static.tvmaze.com/uploads/images/original_untouched/424/1061489.jpg",
+        "https://static.tvmaze.com/uploads/images/original_untouched/424/1061490.jpg"
+      ],
+      "seasons": "https://www.themoviedb.org/tv/66980/seasons"
+    },
+    "platforms": [
+      "Sky"
+    ],
+    "origin": "foreign",
+    "season": 4,
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2017-10-13",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2017-10-13"
+          },
+          {
+            "number": 2,
+            "date": "2017-10-13"
+          },
+          {
+            "number": 3,
+            "date": "2017-10-20"
+          },
+          {
+            "number": 4,
+            "date": "2017-10-20"
+          },
+          {
+            "number": 5,
+            "date": "2017-10-27"
+          },
+          {
+            "number": 6,
+            "date": "2017-10-27"
+          },
+          {
+            "number": 7,
+            "date": "2017-11-03"
+          },
+          {
+            "number": 8,
+            "date": "2017-11-03"
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "releaseDate": "2017-11-10",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2017-11-10"
+          },
+          {
+            "number": 2,
+            "date": "2017-11-10"
+          },
+          {
+            "number": 3,
+            "date": "2017-11-17"
+          },
+          {
+            "number": 4,
+            "date": "2017-11-17"
+          },
+          {
+            "number": 5,
+            "date": "2017-11-24"
+          },
+          {
+            "number": 6,
+            "date": "2017-11-24"
+          },
+          {
+            "number": 7,
+            "date": "2017-12-01"
+          },
+          {
+            "number": 8,
+            "date": "2017-12-01"
+          }
+        ]
+      },
+      {
+        "number": 3,
+        "releaseDate": "2020-01-24",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2020-01-24"
+          },
+          {
+            "number": 2,
+            "date": "2020-01-24"
+          },
+          {
+            "number": 3,
+            "date": "2020-01-31"
+          },
+          {
+            "number": 4,
+            "date": "2020-01-31"
+          },
+          {
+            "number": 5,
+            "date": "2020-02-07"
+          },
+          {
+            "number": 6,
+            "date": "2020-02-07"
+          },
+          {
+            "number": 7,
+            "date": "2020-02-14"
+          },
+          {
+            "number": 8,
+            "date": "2020-02-14"
+          },
+          {
+            "number": 9,
+            "date": "2020-02-21"
+          },
+          {
+            "number": 10,
+            "date": "2020-02-21"
+          },
+          {
+            "number": 11,
+            "date": "2020-02-28"
+          },
+          {
+            "number": 12,
+            "date": "2020-02-28"
+          }
+        ]
+      },
+      {
+        "number": 4,
+        "releaseDate": "2022-10-08",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2022-10-08"
+          },
+          {
+            "number": 2,
+            "date": "2022-10-08"
+          },
+          {
+            "number": 3,
+            "date": "2022-10-15"
+          },
+          {
+            "number": 4,
+            "date": "2022-10-15"
+          },
+          {
+            "number": 5,
+            "date": "2022-10-22"
+          },
+          {
+            "number": 6,
+            "date": "2022-10-22"
+          },
+          {
+            "number": 7,
+            "date": "2022-10-29"
+          },
+          {
+            "number": 8,
+            "date": "2022-10-29"
+          },
+          {
+            "number": 9,
+            "date": "2022-11-05"
+          },
+          {
+            "number": 10,
+            "date": "2022-11-05"
+          },
+          {
+            "number": 11,
+            "date": "2022-11-12"
+          },
+          {
+            "number": 12,
+            "date": "2022-11-12"
+          }
+        ]
+      },
+      {
+        "number": 5,
+        "releaseDate": "2026-09-10",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2026-09-10"
+          },
+          {
+            "number": 2,
+            "date": "2026-09-10"
+          },
+          {
+            "number": 3,
+            "date": "2026-09-10"
+          },
+          {
+            "number": 4,
+            "date": "2026-09-10"
+          },
+          {
+            "number": 5,
+            "date": "2026-09-10"
+          },
+          {
+            "number": 6,
+            "date": "2026-09-10"
+          },
+          {
+            "number": 7,
+            "date": "2026-09-10"
+          },
+          {
+            "number": 8,
+            "date": "2026-09-10"
+          }
+        ]
+      }
+    ],
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-tv-66980-s5",
+    "title": "Вавилон-Берлин",
+    "type": "series",
+    "genres": [
+      "Криминал",
+      "Драма",
+      "Детектив"
+    ],
+    "studios": [
+      "X Filme Creative Pool",
+      "Beta Film",
+      "ARD Degeto"
+    ],
+    "description": "В начале 1933 года приход нацистов к власти меняет правила жизни в Берлине. Рат и Шарлотта пытаются действовать в городе, где их работа и безопасность зависят от новых властей.",
+    "poster": "assets/tmdb-tv-66980-s5-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-66980-s5-still-1.jpg",
+      "assets/tmdb-tv-66980-s5-still-2.jpg"
+    ],
+    "releaseDate": "2026-09-10",
+    "rating": 8.4,
+    "ratingSource": "IMDb сериала",
+    "status": "available",
+    "trailer": "https://www.youtube.com/watch?v=LG18iGQ_jdg",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/66980/season/5?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt4378376/",
+      "official": "https://www.betafilm.com/news/1128",
+      "metadata": "https://v3-cinemeta.strem.io/meta/series/tt4378376.json",
+      "release": "https://www.tvmaze.com/shows/25245/babylon-berlin/episodes",
+      "poster": "https://static.tvmaze.com/uploads/images/original_untouched/645/1614046.jpg",
+      "gallery": [
+        "https://static.tvmaze.com/uploads/images/original_untouched/640/1602363.jpg",
+        "https://static.tvmaze.com/uploads/images/original_untouched/640/1602364.jpg"
+      ],
+      "seasons": "https://www.themoviedb.org/tv/66980/seasons"
+    },
+    "platforms": [
+      "Sky"
+    ],
+    "origin": "foreign",
+    "season": 5,
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2017-10-13",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2017-10-13"
+          },
+          {
+            "number": 2,
+            "date": "2017-10-13"
+          },
+          {
+            "number": 3,
+            "date": "2017-10-20"
+          },
+          {
+            "number": 4,
+            "date": "2017-10-20"
+          },
+          {
+            "number": 5,
+            "date": "2017-10-27"
+          },
+          {
+            "number": 6,
+            "date": "2017-10-27"
+          },
+          {
+            "number": 7,
+            "date": "2017-11-03"
+          },
+          {
+            "number": 8,
+            "date": "2017-11-03"
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "releaseDate": "2017-11-10",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2017-11-10"
+          },
+          {
+            "number": 2,
+            "date": "2017-11-10"
+          },
+          {
+            "number": 3,
+            "date": "2017-11-17"
+          },
+          {
+            "number": 4,
+            "date": "2017-11-17"
+          },
+          {
+            "number": 5,
+            "date": "2017-11-24"
+          },
+          {
+            "number": 6,
+            "date": "2017-11-24"
+          },
+          {
+            "number": 7,
+            "date": "2017-12-01"
+          },
+          {
+            "number": 8,
+            "date": "2017-12-01"
+          }
+        ]
+      },
+      {
+        "number": 3,
+        "releaseDate": "2020-01-24",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2020-01-24"
+          },
+          {
+            "number": 2,
+            "date": "2020-01-24"
+          },
+          {
+            "number": 3,
+            "date": "2020-01-31"
+          },
+          {
+            "number": 4,
+            "date": "2020-01-31"
+          },
+          {
+            "number": 5,
+            "date": "2020-02-07"
+          },
+          {
+            "number": 6,
+            "date": "2020-02-07"
+          },
+          {
+            "number": 7,
+            "date": "2020-02-14"
+          },
+          {
+            "number": 8,
+            "date": "2020-02-14"
+          },
+          {
+            "number": 9,
+            "date": "2020-02-21"
+          },
+          {
+            "number": 10,
+            "date": "2020-02-21"
+          },
+          {
+            "number": 11,
+            "date": "2020-02-28"
+          },
+          {
+            "number": 12,
+            "date": "2020-02-28"
+          }
+        ]
+      },
+      {
+        "number": 4,
+        "releaseDate": "2022-10-08",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2022-10-08"
+          },
+          {
+            "number": 2,
+            "date": "2022-10-08"
+          },
+          {
+            "number": 3,
+            "date": "2022-10-15"
+          },
+          {
+            "number": 4,
+            "date": "2022-10-15"
+          },
+          {
+            "number": 5,
+            "date": "2022-10-22"
+          },
+          {
+            "number": 6,
+            "date": "2022-10-22"
+          },
+          {
+            "number": 7,
+            "date": "2022-10-29"
+          },
+          {
+            "number": 8,
+            "date": "2022-10-29"
+          },
+          {
+            "number": 9,
+            "date": "2022-11-05"
+          },
+          {
+            "number": 10,
+            "date": "2022-11-05"
+          },
+          {
+            "number": 11,
+            "date": "2022-11-12"
+          },
+          {
+            "number": 12,
+            "date": "2022-11-12"
+          }
+        ]
+      },
+      {
+        "number": 5,
+        "releaseDate": "2026-09-10",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2026-09-10"
+          },
+          {
+            "number": 2,
+            "date": "2026-09-10"
+          },
+          {
+            "number": 3,
+            "date": "2026-09-10"
+          },
+          {
+            "number": 4,
+            "date": "2026-09-10"
+          },
+          {
+            "number": 5,
+            "date": "2026-09-10"
+          },
+          {
+            "number": 6,
+            "date": "2026-09-10"
+          },
+          {
+            "number": 7,
+            "date": "2026-09-10"
+          },
+          {
+            "number": 8,
+            "date": "2026-09-10"
+          }
+        ]
+      }
+    ],
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-tv-318354-s1",
+    "title": "Холод",
+    "type": "series",
+    "genres": [
+      "Драма",
+      "Триллер"
+    ],
+    "studios": [
+      "МТС Медиа"
+    ],
+    "description": "Женя оказывается в тюрьме после обвинения в преступлении, которого не совершала. Спустя годы она возвращается и пытается выяснить, кто разрушил её семью.",
+    "poster": "assets/tmdb-tv-318354-s1-poster.jpg",
+    "gallery": [
+      "assets/tmdb-tv-318354-s1-still-1.jpg",
+      "assets/tmdb-tv-318354-s1-still-2.jpg"
+    ],
+    "releaseDate": "2026-07-16",
+    "rating": 6.6,
+    "ratingSource": "IMDb сериала",
+    "status": "available",
+    "trailer": "https://www.youtube.com/watch?v=9bvk1ViOtRk",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/tv/318354/season/1?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt36118534/",
+      "official": "https://start.ru/watch/holod",
+      "metadata": "https://v3-cinemeta.strem.io/meta/series/tt36118534.json",
+      "releaseRussia": "https://wink.ru/blog/serial-holod-data-vyhoda-seriy-na-wink-kogda-smotret-novye-epizody",
+      "poster": "https://images.metahub.space/poster/medium/tt36118534/img",
+      "gallery": [
+        "https://episodes.metahub.space/tt36118534/1/1/w780.jpg",
+        "https://episodes.metahub.space/tt36118534/1/2/w780.jpg"
+      ],
+      "seasons": "https://www.themoviedb.org/tv/318354/seasons"
+    },
+    "platforms": [
+      "Иви",
+      "START",
+      "Wink"
+    ],
+    "origin": "russian",
+    "season": 1,
+    "seasons": [
+      {
+        "number": 1,
+        "releaseDate": "2026-07-16",
+        "episodes": [
+          {
+            "number": 1,
+            "date": "2026-07-16"
+          },
+          {
+            "number": 2,
+            "date": "2026-07-23"
+          },
+          {
+            "number": 3,
+            "date": "2026-07-30"
+          },
+          {
+            "number": 4,
+            "date": "2026-08-06"
+          },
+          {
+            "number": 5,
+            "date": "2026-08-13"
+          },
+          {
+            "number": 6,
+            "date": "2026-08-20"
+          },
+          {
+            "number": 7,
+            "date": "2026-08-27"
+          },
+          {
+            "number": 8,
+            "date": "2026-09-03"
+          },
+          {
+            "number": 9,
+            "date": "2026-09-10"
+          },
+          {
+            "number": 10,
+            "date": "2026-09-17"
+          }
+        ]
+      }
+    ],
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-1381071",
+    "title": "Годзилла: Минус ноль",
+    "type": "movie",
+    "genres": [
+      "Фантастика",
+      "Боевик",
+      "Драма"
+    ],
+    "studios": [
+      "Toho"
+    ],
+    "description": "Япония пытается оправиться после разрушений, когда Годзилла появляется вновь. Возвращение чудовища ставит под угрозу людей, которые только начали восстанавливать свои жизни.",
+    "poster": "assets/tmdb-movie-1381071-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-1381071-still-1.jpg",
+      "assets/tmdb-movie-1381071-still-2.jpg"
+    ],
+    "releaseDate": "2026-11-03",
+    "rating": 7.8,
+    "ratingSource": "IMDb",
+    "status": "available",
+    "trailer": "https://www.youtube.com/watch?v=Pu0pH5BuCPM",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/1381071?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt34384661/",
+      "official": "https://godzilla-minuszero.toho-movie.jp/",
+      "release": "https://godzilla.com/en-gb/pages/godzilla-minus-zero",
+      "rating": "https://www.kinopoisk.ru/film/6469214/",
+      "poster": "https://images.metahub.space/poster/medium/tt34384661/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt34384661/img",
+        "https://i.ytimg.com/vi/Pu0pH5BuCPM/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-1400336",
+    "title": "Знакомство с Факерами: Новая глава",
+    "type": "movie",
+    "genres": [
+      "Комедия"
+    ],
+    "studios": [
+      "Universal Pictures",
+      "Tribeca Productions"
+    ],
+    "description": "Сын Грега Факера знакомит семью со своей избранницей. Теперь Грег сам оказывается в роли подозрительного будущего свёкра и невольно повторяет ошибки своего тестя Джека.",
+    "poster": "assets/tmdb-movie-1400336-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-1400336-still-1.jpg",
+      "assets/tmdb-movie-1400336-still-2.jpg"
+    ],
+    "releaseDate": "2026-11-25",
+    "rating": null,
+    "ratingSource": null,
+    "status": "waiting",
+    "trailer": "https://www.youtube.com/watch?v=vyISuWUWcFs",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/1400336?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt34966140/",
+      "official": "https://www.universalpictures.com/movies/focker-in-law/home/",
+      "release": "https://www.universalpictures.com/movies/focker-in-law/synopsis/",
+      "poster": "https://images.metahub.space/poster/medium/tt34966140/img",
+      "gallery": [
+        "https://live.metahub.space/background/medium/tt34966140/img",
+        "https://i.ytimg.com/vi/vyISuWUWcFs/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-227719",
+    "title": "Континуум",
+    "type": "movie",
+    "genres": [
+      "Фантастика",
+      "Триллер",
+      "Приключения"
+    ],
+    "studios": [
+      "Platinum Dunes",
+      "Paramount Pictures",
+      "MTV Films"
+    ],
+    "description": "Подросток Дэвид с друзьями собирает машину времени по чертежам отца. Попытки исправить личные неудачи меняют судьбы других людей, и друзьям приходится разбираться с последствиями.",
+    "poster": "assets/tmdb-movie-227719-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-227719-still-1.jpg",
+      "assets/tmdb-movie-227719-still-2.jpg"
+    ],
+    "releaseDate": "2015-01-29",
+    "rating": 6.4,
+    "ratingSource": "IMDb",
+    "status": "backlog",
+    "trailer": "https://www.youtube.com/watch?v=DWMSHpjsqaw",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/227719?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt2436386/",
+      "official": "https://www.youtube.com/watch?v=DWMSHpjsqaw",
+      "releaseRussia": "https://www.kinopoisk.ru/film/711454/",
+      "poster": "https://images.metahub.space/poster/medium/tt2436386/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt2436386/img",
+        "https://i.ytimg.com/vi/DWMSHpjsqaw/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-1119449",
+    "title": "Удачи, веселья, не сдохни",
+    "type": "movie",
+    "genres": [
+      "Фантастика",
+      "Комедия",
+      "Боевик"
+    ],
+    "studios": [
+      "Constantin Film",
+      "Blind Wink Productions"
+    ],
+    "description": "Незнакомец заходит в закусочную и объявляет, что прибыл из будущего. Он просит посетителей помочь ему остановить искусственный интеллект, который угрожает человечеству.",
+    "poster": "assets/tmdb-movie-1119449-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-1119449-still-1.jpg",
+      "assets/tmdb-movie-1119449-still-2.jpg"
+    ],
+    "releaseDate": "2026-02-13",
+    "rating": 7,
+    "ratingSource": "IMDb",
+    "status": "available",
+    "trailer": "https://www.youtube.com/watch?v=Nm4WbapDzDQ",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/1119449?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt1341338/",
+      "official": "https://www.youtube.com/watch?v=Nm4WbapDzDQ",
+      "release": "https://www.youtube.com/watch?v=Nm4WbapDzDQ",
+      "poster": "https://images.metahub.space/poster/medium/tt1341338/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt1341338/img",
+        "https://i.ytimg.com/vi/Nm4WbapDzDQ/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-1003596",
+    "title": "Мстители: Доктор Дум",
+    "type": "movie",
+    "genres": [
+      "Фантастика",
+      "Боевик",
+      "Приключения"
+    ],
+    "studios": [
+      "Marvel Studios"
+    ],
+    "description": "Появление Доктора Дума сталкивает героев из разных миров. К Мстителям в новом фильме братьев Руссо присоединяются Фантастическая четвёрка и Люди Икс.",
+    "poster": "assets/tmdb-movie-1003596-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-1003596-still-1.jpg",
+      "assets/tmdb-movie-1003596-still-2.jpg"
+    ],
+    "releaseDate": "2026-12-18",
+    "rating": null,
+    "ratingSource": null,
+    "status": "waiting",
+    "trailer": "https://www.youtube.com/watch?v=irVNGjRFZGk",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/1003596?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt21357150/",
+      "official": "https://movies.disney.com/avengers-doomsday",
+      "release": "https://www.youtube.com/watch?v=irVNGjRFZGk",
+      "poster": "https://lumiere-a.akamaihd.net/v1/images/p_movies_avengersdoomsday_d23update_poster_v1_2b797e84.jpeg",
+      "gallery": [
+        "https://i.ytimg.com/vi/irVNGjRFZGk/sd1.jpg",
+        "https://i.ytimg.com/vi/irVNGjRFZGk/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-1437511",
+    "title": "Как ограбить банк",
+    "type": "movie",
+    "genres": [
+      "Боевик",
+      "Триллер",
+      "Криминал"
+    ],
+    "studios": [
+      "Amazon MGM Studios",
+      "87North Productions"
+    ],
+    "description": "Группа грабителей превращает преступления в вирусные ролики. Когда за ними начинают охотиться агент ФБР и программист, успех в интернете становится для команды проблемой.",
+    "poster": "assets/tmdb-movie-1437511-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-1437511-still-1.jpg",
+      "assets/tmdb-movie-1437511-still-2.jpg"
+    ],
+    "releaseDate": "2026-11-13",
+    "rating": 6.5,
+    "ratingSource": "IMDb",
+    "status": "available",
+    "trailer": "https://www.youtube.com/watch?v=B9XOzCUvFB8",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/1437511?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt35866986/",
+      "official": "https://www.youtube.com/watch?v=B9XOzCUvFB8",
+      "release": "https://www.kinopoisk.ru/film/7708133/dates/",
+      "rating": "https://www.kinopoisk.ru/film/7708133/",
+      "poster": "https://images.metahub.space/poster/medium/tt35866986/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt35866986/img",
+        "https://i.ytimg.com/vi/B9XOzCUvFB8/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-891621",
+    "title": "Дикая лошадь",
+    "type": "movie",
+    "genres": [
+      "Драма",
+      "Криминал",
+      "Триллер"
+    ],
+    "studios": [
+      "Searchlight Pictures",
+      "Blueprint Pictures"
+    ],
+    "description": "В начале 1970-х два сотрудника ЦРУ выполняют задание в Чили. Поездка на остров Пасхи заставляет их пересмотреть отношение к своей работе и друг к другу.",
+    "poster": "assets/tmdb-movie-891621-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-891621-still-1.jpg",
+      "assets/tmdb-movie-891621-still-2.jpg"
+    ],
+    "releaseDate": "2026-11-06",
+    "rating": 8.1,
+    "ratingSource": "IMDb",
+    "status": "available",
+    "trailer": "https://www.youtube.com/watch?v=kqxuamKxRTo",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/891621?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt15799564/",
+      "official": "https://press.searchlightpictures.com/wild-horse-nine",
+      "release": "https://press.searchlightpictures.com/wild-horse-nine",
+      "rating": "https://www.kinopoisk.ru/film/7149768/",
+      "poster": "https://images.metahub.space/poster/medium/tt15799564/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt15799564/img",
+        "https://i.ytimg.com/vi/kqxuamKxRTo/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-542830",
+    "title": "Маленькие секреты большой компании",
+    "type": "movie",
+    "genres": [
+      "Комедия",
+      "Драма"
+    ],
+    "studios": [
+      "Trésor Films",
+      "Pathé",
+      "Artemis Productions"
+    ],
+    "description": "Старые друзья приезжают к Максу на побережье, чтобы устроить ему сюрприз на день рождения. Их встреча поднимает давние обиды и напоминает, почему компания когда-то разошлась.",
+    "poster": "assets/tmdb-movie-542830-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-542830-still-1.jpg",
+      "assets/tmdb-movie-542830-still-2.jpg"
+    ],
+    "releaseDate": "2019-08-29",
+    "rating": 6.4,
+    "ratingSource": "IMDb",
+    "status": "available",
+    "trailer": "https://www.youtube.com/watch?v=RjfF0V5blEE",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/542830?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt8201404/",
+      "official": "https://www.artemisproductions.com/en/films/Little_White_Lies_2",
+      "releaseRussia": "https://www.kinopoisk.ru/film/1127012/",
+      "poster": "https://images.metahub.space/poster/medium/tt8201404/img",
+      "gallery": [
+        "https://images.metahub.space/background/medium/tt8201404/img",
+        "https://i.ytimg.com/vi/RjfF0V5blEE/sd2.jpg"
+      ]
+    },
+    "platforms": [],
+    "origin": "foreign",
+    "addedDate": "2026-11-23"
+  },
+  {
+    "id": "tmdb-movie-1259230",
+    "title": "Девятая планета",
+    "type": "movie",
+    "genres": [
+      "Фантастика",
+      "Приключения"
+    ],
+    "studios": [
+      "Централ Партнершип"
+    ],
+    "description": "После несчастного случая автомеханик Дима Хруст вспоминает жизнь на далёкой планете и девушку по имени Полина. Воспоминания кажутся невозможными, но Дима пытается найти подтверждение тому, что видел.",
+    "poster": "assets/tmdb-movie-1259230-poster.jpg",
+    "gallery": [
+      "assets/tmdb-movie-1259230-still-1.jpg",
+      "assets/tmdb-movie-1259230-still-2.jpg"
+    ],
+    "releaseDate": "2026-09-24",
+    "rating": 4.8,
+    "ratingSource": "IMDb",
+    "status": "available",
+    "trailer": "https://www.youtube.com/watch?v=HzyFIiBiSuM",
+    "sources": {
+      "tmdb": "https://www.themoviedb.org/movie/1259230?language=ru-RU",
+      "imdb": "https://www.imdb.com/title/tt32880884/",
+      "official": "https://premier.one/show/devyataya-planeta",
+      "releaseRussia": "https://www.kinopoisk.ru/film/5426247/",
+      "poster": "https://images.metahub.space/poster/medium/tt32880884/img",
+      "gallery": [
+        "https://live.metahub.space/background/medium/tt32880884/img",
+        "https://i.ytimg.com/vi/HzyFIiBiSuM/sd2.jpg"
+      ]
+    },
+    "platforms": [
+      "Premier"
+    ],
+    "origin": "russian",
+    "addedDate": "2026-11-23"
+  },
+  {
     "id": "tmdb-movie-509967",
     "title": "Призрачная шестёрка",
     "type": "movie",
@@ -14337,7 +21232,7 @@
     "releaseDate": "2019-04-05",
     "rating": 8.4,
     "ratingSource": "IMDb сериала",
-    "status": "backlog",
+    "status": "available",
     "trailer": "https://www.youtube.com/watch?v=J0QMqpHXYeM",
     "sources": {
       "tmdb": "https://www.themoviedb.org/tv/73544/season/1?language=ru-RU",
@@ -14384,7 +21279,7 @@
           {
             "number": 5,
             "date": "2019-05-03",
-            "title": "The Blood and the Shit"
+            "title": "The Blood and the Sh*t"
           },
           {
             "number": 6,
@@ -14450,7 +21345,7 @@
           {
             "number": 7,
             "date": "2020-11-13",
-            "title": "If You Wait by the River Long Enough…"
+            "title": "If You Wait by the River Long Enough"
           },
           {
             "number": 8,
@@ -14486,7 +21381,7 @@
           {
             "number": 3,
             "date": "2023-06-29",
-            "title": "No Time for F*cking Chemistry"
+            "title": "No Time for F... Chemistry"
           },
           {
             "number": 4,
@@ -14501,7 +21396,7 @@
           {
             "number": 6,
             "date": "2023-07-20",
-            "title": "A Soft Heart Won’t Do You No Favors"
+            "title": "A Soft Heart Won't Do You No Favors"
           },
           {
             "number": 7,
@@ -14511,12 +21406,12 @@
           {
             "number": 8,
             "date": "2023-08-03",
-            "title": "You Know When You’re Losing a Fight"
+            "title": "You Know When You're Losing a Fight"
           },
           {
             "number": 9,
             "date": "2023-08-10",
-            "title": "All of Death Is a Going Home"
+            "title": "All of Death is Going Home"
           },
           {
             "number": 10,
