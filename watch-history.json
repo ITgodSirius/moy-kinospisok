@@ -870,10 +870,15 @@
       "kind": "favorite",
       "value": true,
       "markedAt": "2026-11-22T21:31:38.806Z"
+    },
+    {
+      "card": "tmdb-tv-254630-s1",
+      "kind": "favorite",
+      "value": true,
+      "markedAt": "2026-11-23T18:04:53.292Z"
     }
   ],
   "removed": [
-    "tmdb-tv-254630-s1/favorite",
     "tmdb-tv-254630-s1/watching"
   ]
 }
