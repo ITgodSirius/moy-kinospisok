@@ -113,23 +113,39 @@ export function setupNutrition({ db, change, page, node, btn, field, row, announ
   const back = (label, fn) => { const b = btn('← ' + label, fn); b.classList.add('nutrition-back'); return b; };
   const display = (value, key) => value ? value + ' ' + unit(key) : '—';
 
-  function library() {
+  function makeCurrentButton(plan, afterSave) {
+    return btn('Сделать текущим', () => change(next => { next.currentMealPlan = plan.id; }, () => {
+      afterSave(plan.id);
+      announce(plan.name + ' — текущий план');
+    }));
+  }
+
+  function library(selectedId) {
     const head = node('div', 'nutrition-heading');
     head.append(node('h2', '', 'Планы питания'));
     const list = node('div', 'nutrition-library');
+    const currentId = current()?.id;
+    let selectedButton;
     for (const plan of plans()) {
       const entry = node('article', 'training-line-card');
+      entry.setAttribute('aria-label', plan.name);
       const values = totals(plan).total;
       const name = node('div');
       name.append(node('strong', '', plan.name));
-      if (plan.id === current()?.id) name.append(node('span', 'training-default', 'Текущий план'));
+      const actions = line();
+      if (plan.id === currentId) name.append(node('span', 'training-default', 'Текущий план'));
+      else actions.append(makeCurrentButton(plan, library));
       name.append(node('p', 'training-hint', [display(values.kcal, 'kcal'), ...['protein','fat','carbs'].map(k => nutrients[k] + ' ' + display(values[k], k))].join(' · ')));
-      entry.append(name, btn('Открыть', () => detail(plan.id)));
+      const open = btn('Открыть', () => detail(plan.id));
+      if (plan.id === selectedId) selectedButton = open;
+      actions.append(open);
+      entry.append(name, actions);
       list.append(entry);
     }
     if (!plans().length) list.append(node('p', 'training-hint', 'Планов питания пока нет.'));
     if (Object.keys(db().nutrition || {}).length) list.append(btn('Прежние записи БЖУ по датам', legacy));
     page(head, list);
+    selectedButton?.focus();
   }
 
   function carousel(meals) {
@@ -301,7 +317,7 @@ export function setupNutrition({ db, change, page, node, btn, field, row, announ
     const name = line(node('h2', '', plan.name));
     const actions = line(btn('Редактировать', () => editPlan(plan)));
     if (current()?.id === id) name.append(node('span', 'nutrition-badge', 'Текущий план'));
-    else actions.prepend(btn('Сделать текущим', () => change(next => { next.currentMealPlan = id; }, () => detail(id))));
+    else actions.prepend(makeCurrentButton(plan, detail));
     header.append(name, actions);
     const summary = node('div', 'nutrition-summary');
     for (const k of ['kcal','protein','fat','carbs','fiber']) {
