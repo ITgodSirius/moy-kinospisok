@@ -2,7 +2,7 @@ import { hosted, shared, historySnapshotKey, credential, connectHistory, marked,
 
 import { KeyError, verifyOwner, openPrivateFile, savePrivateFile } from './private-store.js?v=041c70d8f2eb';
 import { setupNutrition } from './nutrition.js?v=13f3368483dc';
-import { setupTraining, emptyTraining } from './training.js?v=3af3f16978cc';
+import { setupTraining, emptyTraining } from './training.js?v=53b1e2d1bacd';
 
 const el = id => document.getElementById(id);
 let pendingActions = 0;

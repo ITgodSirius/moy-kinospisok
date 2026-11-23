@@ -167,9 +167,12 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     root.replaceChildren(...children);
     feed.scrollTop = 0;
   }
+  function workoutScrollArea() {
+    return root.querySelector('.training-history-cards') || feed;
+  }
   function visitWorkout(from, to) {
     const context = { navigationId, program: selectedProgram, day: selectedDay };
-    const previous = { ...context, ...from, scroll: feed.scrollTop };
+    const previous = { ...context, ...from, scroll: workoutScrollArea().scrollTop };
     const next = { ...context, ...to };
     history.replaceState({ ...history.state, workout: previous }, '');
     history.pushState({ ...history.state, workout: next }, '');
@@ -191,7 +194,7 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     else if (tab === 'settings') {
       settings = 'programs'; settingsPage();
     } else render();
-    if (route.scroll != null) feed.scrollTop = route.scroll;
+    if (route.scroll != null) workoutScrollArea().scrollTop = route.scroll;
     const focus = (route.focusId && document.getElementById(route.focusId)) || root.querySelector('h2');
     if (focus) {
       if (focus.tagName === 'H2') focus.tabIndex = -1;
@@ -443,9 +446,14 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     historyButton.classList.add('training-program-history');
     sidebar.append(historyButton);
     const main = node('div', 'training-history');
-    main.append(section('История тренировок'));
+    const header = section('История тренировок');
+    header.firstElementChild.id = 'training-history-title';
+    const cards = node('section', 'training-history-cards');
+    cards.setAttribute('aria-labelledby', 'training-history-title');
+    cards.tabIndex = 0;
+    main.append(header, cards);
     const sessions = logged.filter(s => s.dayId === selectedDay).sort((a,b) => b.date.localeCompare(a.date));
-    if (!sessions.length) main.append(hint('Тренировок пока нет.'));
+    if (!sessions.length) cards.append(hint('Тренировок пока нет.'));
     for (const s of sessions) {
       const sets = s.exercises.flatMap(e => e.sets).filter(set => set.status === 'done').length;
       const card = node('article', 'training-line-card training-session-card');
@@ -461,7 +469,7 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
       const copyButton = btn('Копировать JSON', () => copySession(s));
       copyButton.classList.add('training-card-copy');
       card.append(caption, row(open, copyButton));
-      main.append(card);
+      cards.append(card);
     }
     const grid = node('div', 'training-layout'); grid.append(sidebar, main); page(grid);
   }
