@@ -882,6 +882,12 @@
       "kind": "watching",
       "value": true,
       "markedAt": "2026-11-20T23:06:37.497Z"
+    },
+    {
+      "card": "tmdb-movie-1568060",
+      "kind": "favorite",
+      "value": true,
+      "markedAt": "2026-11-23T18:05:35.311Z"
     }
   ],
   "removed": [
