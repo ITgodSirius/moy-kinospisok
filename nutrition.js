@@ -40,6 +40,66 @@ function describePrice(price) {
   return value + ' ₽ / ' + decimal.format(price.quantity) + ' ' + price.unit;
 }
 
+const priceUnits = {
+  'г': { base: 'г', factor: 1 }, 'кг': { base: 'г', factor: 1000 },
+  'шт.': { base: 'шт.', factor: 1 },
+  'мл': { base: 'мл', factor: 1 }, 'л': { base: 'мл', factor: 1000 }
+};
+const portionPattern = /^(≈?)\s*(\d+(?:[.,]\d+)?(?:\s*[–—-]\s*\d+(?:[.,]\d+)?)?)\s*([а-яё]+)\.?/iu;
+const unitNames = new Map([
+  ['г', ['г', 'гр', 'грамм', 'грамма', 'граммов']], ['кг', ['кг', 'килограмм', 'килограмма', 'килограммов']],
+  ['л', ['л', 'литр', 'литра', 'литров']], ['мл', ['мл', 'миллилитр', 'миллилитра', 'миллилитров']],
+  ['шт.', ['шт', 'штука', 'штуки', 'штук', 'яйцо', 'яйца', 'яиц']]
+].flatMap(([symbol, names]) => names.map(name => [name, symbol])));
+function dailyPortions(quantity) {
+  let rest = String(quantity ?? '').trim().replaceAll('~', '≈');
+  const portions = [];
+  // A portion may give equivalent quantities, e.g. «3 шт. ≈157,5 г без скорлупы».
+  while (rest) {
+    const match = portionPattern.exec(rest);
+    if (!match) break;
+    const value = amount(match[1] + match[2]);
+    const symbol = unitNames.get(match[3].toLowerCase());
+    if (!value || !symbol) break;
+    portions.push({ ...value, unit: symbol });
+    rest = rest.slice(match[0].length).trim();
+    if (!/\d/.test(rest)) break;
+    if (!/^(?:≈|=|\(|или\s)/iu.test(rest)) return [];
+    rest = rest.replace(/^(?:=|\(|или\s+)\s*/iu, '');
+  }
+  return portions;
+}
+
+function rationCost(products, prices) {
+  const cost = { min: 0, max: 0, counted: 0, approximate: false, unmatched: [] };
+  for (const product of products) {
+    const price = prices?.[product.id];
+    if (!price) continue;
+    const pack = priceUnits[price.unit];
+    const portion = dailyPortions(product.quantity).find(p => priceUnits[p.unit].base === pack?.base);
+    const upper = price.mode === 'range' ? price.max : price.min;
+    if (!portion || !Number.isFinite(price.quantity) || price.quantity <= 0 ||
+        !Number.isFinite(price.min) || !Number.isFinite(upper) || price.min < 0 || upper < price.min) {
+      cost.unmatched.push(product.name);
+      continue;
+    }
+    const ratio = priceUnits[portion.unit].factor / (pack.factor * price.quantity);
+    cost.min += price.min * portion.min * ratio;
+    cost.max += upper * portion.max * ratio;
+    cost.counted++;
+    cost.approximate ||= portion.approximate;
+  }
+  return cost;
+}
+
+const rubles = new Intl.NumberFormat('ru-RU', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+function costLabel(cost, days) {
+  if (!cost.counted) return '—';
+  const format = value => rubles.format(value * days).replace(/,00$/, '');
+  const low = format(cost.min), high = format(cost.max);
+  return (cost.approximate ? '≈ ' : '') + (low === high ? low : 'от ' + low + ' до ' + high) + ' ₽';
+}
+
 export function setupNutrition({ db, change, page, node, btn, field, row, announce, legacy }) {
   const plans = () => db().mealPlans || [];
   const current = () => plans().find(p => p.id === db().currentMealPlan) || plans()[0];
@@ -128,6 +188,23 @@ export function setupNutrition({ db, change, page, node, btn, field, row, announ
   function productTable(plan, foodTotals) {
     const panel = node('section', 'nutrition-products');
     const table = node('table', 'nutrition-table');
+    const costs = node('div', 'nutrition-costs');
+    costs.setAttribute('aria-live', 'polite');
+    function updateCosts() {
+      const cost = rationCost(plan.products, db().foodPrices);
+      costs.replaceChildren();
+      for (const [label, days] of [['Стоимость за день', 1], ['За неделю', 7]]) {
+        const cell = node('div');
+        cell.append(node('span', '', label), node('strong', '', costLabel(cost, days)));
+        costs.append(cell);
+      }
+      let note = '';
+      if (!plan.products.length) note = 'В плане пока нет продуктов.';
+      else if (!cost.counted && !cost.unmatched.length) note = 'Укажи цены продуктов для расчёта.';
+      else if (cost.counted < plan.products.length) note = 'В расчёт вошло ' + cost.counted + ' из ' + plan.products.length + ' продуктов.';
+      if (cost.unmatched.length) note += ' Проверь количество порции и единицу цены у продуктов: ' + cost.unmatched.join(', ') + '.';
+      if (note) costs.append(node('p', '', note));
+    }
     const head = table.createTHead().insertRow();
     for (const label of ['Продукт','Количество', ...keys.map(k => k === 'kcal' ? 'Ккал' : nutrients[k] + ', г'), 'Цена']) {
       const th = node('th', '', label); th.scope = 'col'; head.append(th);
@@ -154,7 +231,7 @@ export function setupNutrition({ db, change, page, node, btn, field, row, announ
           tr.classList.add('editing');
           priceCell.replaceChildren(node('span', '', 'Редактирование'));
           closeEditor = () => { editorRow.remove(); tr.classList.remove('editing'); drawPrice(); closeEditor = null; };
-          const finish = () => { closeEditor(); priceCell.querySelector('button').focus({ preventScroll: true }); };
+          const finish = () => { closeEditor(); updateCosts(); priceCell.querySelector('button').focus({ preventScroll: true }); };
           cell.append(priceEditor(product, price, finish));
           cell.querySelector('input').focus({ preventScroll: true });
         });
@@ -168,7 +245,8 @@ export function setupNutrition({ db, change, page, node, btn, field, row, announ
     const label = foot.insertCell(); label.colSpan = 2; label.textContent = 'Итого без БАДов';
     for (const key of keys) { const td = foot.insertCell(); td.textContent = foodTotals[key] || '—'; td.dataset.label = nutrients[key]; }
     foot.insertCell();
-    const frame = node('div', 'nutrition-table-frame'); frame.append(table);
+    updateCosts();
+    const frame = node('div', 'nutrition-table-frame'); frame.append(table, costs);
     panel.append(heading('Продукты на день'), frame);
     return panel;
   }
@@ -182,12 +260,12 @@ export function setupNutrition({ db, change, page, node, btn, field, row, announ
     const money = { type:'number', min:0, step:0.01, required:true };
     const low = field('Цена, ₽', price?.min, money);
     const high = field('До, ₽', price?.max, money);
-    const unitMatch = product.quantity.match(/^[≈~]?\s*(\d+(?:[.,]\d+)?)\s*(кг|г|мл|л|шт\.?)/i);
-    const quantity = field('За количество', price?.quantity ?? unitMatch?.[1].replace(',', '.') ?? 1, {type:'number',min:0.001,step:'any',required:true});
+    const [portion] = dailyPortions(product.quantity);
+    const quantity = field('За количество', price?.quantity ?? portion?.min ?? 1, {type:'number',min:0.001,step:'any',required:true});
     const select = node('select');
     select.setAttribute('aria-label','Единица количества');
-    for (const u of ['г','кг','шт.','мл','л']) select.add(new Option(u,u));
-    select.value = price?.unit || (unitMatch?.[2]?.startsWith('шт') ? 'шт.' : unitMatch?.[2]) || 'г';
+    for (const u of Object.keys(priceUnits)) select.add(new Option(u,u));
+    select.value = price?.unit || portion?.unit || 'г';
     let mode = price?.mode || 'fixed';
     function switchMode(next) {
       mode = next;

@@ -1,7 +1,7 @@
 import { hosted, shared, historySnapshotKey, credential, connectHistory, marked, markTime, reactionValue, busy, refreshHistory, setMark } from './history.js?v=0147301cae10';
 
 import { KeyError, verifyOwner, openPrivateFile, savePrivateFile } from './private-store.js?v=041c70d8f2eb';
-import { setupNutrition } from './nutrition.js?v=d2738e9e185d';
+import { setupNutrition } from './nutrition.js?v=13f3368483dc';
 import { setupTraining, emptyTraining } from './training.js?v=b2351924bdc1';
 
 const el = id => document.getElementById(id);

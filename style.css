@@ -609,6 +609,11 @@ a.quote-source:hover{color:var(--blue)}
 .nutrition-product td:last-child button,.nutrition-product.editing td:last-child span { padding:2px 3px; border:0; background:none; color:var(--blue); font-size:.85rem; min-height:28px; text-align:left }
 .nutrition-table tfoot td { border:0; font-weight:680; color:var(--ink); background:var(--tint) }
 .nutrition-table tfoot td:nth-child(2) { color:var(--ink); text-align:right }
+.nutrition-costs { display:flex; flex-wrap:wrap; gap:8px 24px; padding:12px 14px; border-top:1px solid var(--line) }
+.nutrition-costs > div { flex:1 1 145px; min-width:0; display:grid; gap:3px }
+.nutrition-costs span,.nutrition-costs p { color:var(--muted); font-size:.84rem }
+.nutrition-costs strong { color:var(--ink); font-size:1.1rem; font-variant-numeric:tabular-nums; overflow-wrap:anywhere }
+.nutrition-costs p { flex-basis:100%; margin:0 }
 .nutrition-product.editing,.nutrition-price-row { background:#242c3c; box-shadow:inset 3px 0 var(--blue) }
 .nutrition-table .nutrition-price-row td { padding:12px }
 .nutrition-price-editor { display:flex; align-items:flex-end; flex-wrap:wrap; gap:8px 12px }
