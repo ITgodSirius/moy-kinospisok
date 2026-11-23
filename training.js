@@ -1081,7 +1081,7 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
       openImportedWeights = true;
       return true;
     },
-    open(file) {
+    open(file, route) {
       const data = file.data;
       if (data?.version !== 1 || !['gyms','programs','sessions'].every(k => Array.isArray(data[k])) ||
           !['nutrition','body'].every(k => data[k] && typeof data[k] === 'object' && !Array.isArray(data[k])) ||
@@ -1089,14 +1089,15 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
         throw new Error('Неизвестный формат дневника тренировок.');
       }
       clearLegacyStartingTargets(data.sessions);
-      generation++; snapshot = file; ownerKey = credential(); saving = false; navigationId = uid();
+      generation++; snapshot = file; ownerKey = credential(); saving = false; navigationId = route?.navigationId || uid();
       tab = 'sessions'; settings = 'programs'; selectedDay = null; selectedProgram = null; activeId = null; drafts.clear();
       if (openImportedWeights) {
         openImportedWeights = false;
         tab = 'body';
         tabs();
         weightPage();
-      } else render();
+      } else if (route?.navigationId) showWorkout(route);
+      else render();
     },
     lock() {
       generation++; snapshot = null; ownerKey = null; activeId = null; drafts.clear(); root.replaceChildren();

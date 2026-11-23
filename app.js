@@ -2,7 +2,7 @@ import { hosted, shared, historySnapshotKey, credential, connectHistory, marked,
 
 import { KeyError, verifyOwner, openPrivateFile, savePrivateFile } from './private-store.js?v=041c70d8f2eb';
 import { setupNutrition } from './nutrition.js?v=3a2728e6df4c';
-import { setupTraining, emptyTraining } from './training.js?v=8bf272bf293f';
+import { setupTraining, emptyTraining } from './training.js?v=607e7ee55031';
 
 const el = id => document.getElementById(id);
 let pendingActions = 0;
@@ -892,12 +892,25 @@ function setupCollections() {
   let navigation = 0;
   let activeKey;
   function isPrivate(name) { return name === 'quotes' || name === 'training'; }
-  async function navigate(next) {
+  function sectionFromUrl() {
+    const section = new URL(location.href).searchParams.get('section');
+    return Object.hasOwn(screens, section) ? section : 'cinema';
+  }
+  function writeSection(section, replace) {
+    const url = new URL(location.href);
+    if (url.searchParams.get('section') === section || url.protocol === 'file:') return;
+    url.searchParams.set('section', section);
+    const state = { ...history.state };
+    delete state.workout;
+    if (replace) history.replaceState(state, '', url);
+    else history.pushState(state, '', url);
+  }
+  async function navigate(next, replace = false, reopen = false) {
     const attempt = ++navigation;
-    if (!isPrivate(next)) return show(next);
-    if (!await requestMarkAccess(true) || attempt !== navigation) return;
-    const token = credential();
     try {
+      if ((next === current && !reopen) || !isPrivate(next)) return show(next);
+      if (!await requestMarkAccess(true) || attempt !== navigation) return;
+      const token = credential();
       const file = await withLoading((async () => {
         await verifyOwner(token);
         return next === 'quotes' ? openPrivateFile(token, 'quotes.json', () => [])
@@ -905,14 +918,16 @@ function setupCollections() {
       })());
       if (attempt !== navigation || token !== credential()) return;
       if (next === 'quotes') quotes.open(file.data);
-      else workouts.open(file);
+      else workouts.open(file, replace ? history.state?.workout : null);
       show(next);
       activeKey = token;
     } catch (error) {
       if (attempt !== navigation) return;
       if (error instanceof KeyError) {
-        if (await requestMarkAccess(true, error.message) && attempt === navigation) return navigate(next);
+        if (await requestMarkAccess(true, error.message) && attempt === navigation) return navigate(next, replace, reopen);
       } else announce(error.message);
+    } finally {
+      if (attempt === navigation) writeSection(current, replace);
     }
   }
   function show(next) {
@@ -922,6 +937,7 @@ function setupCollections() {
       listScroll = lists.scrollLeft;
     }
     const previous = screens[current];
+    for (const dialog of document.querySelectorAll('#film-details[open], #wish-details[open], #schedule[open], #filters[open]')) dialog.close();
     positions[current] = current === 'quotes' ? 0 : previous.feed.scrollTop;
     for (const surface of previous.surfaces) surface.hidden = true;
     if (current === 'quotes') quotes.lock();
@@ -942,11 +958,15 @@ function setupCollections() {
     const next = button.dataset.collection;
     button.onclick = () => navigate(next);
   }
-  function lockPrivate() {
+  function hidePrivate() {
     navigation++;
     if (isPrivate(current)) show('cinema');
   }
-  window.addEventListener('pagehide', lockPrivate);
+  function lockPrivate() {
+    hidePrivate();
+    writeSection(current, true);
+  }
+  window.addEventListener('pagehide', hidePrivate);
   window.addEventListener('storage', () => { if (activeKey && activeKey !== credential()) lockPrivate(); });
   window.addEventListener('writer-key-removed', lockPrivate);
   document.addEventListener('visibilitychange', async () => {
@@ -957,11 +977,20 @@ function setupCollections() {
       await verifyOwner(key);
     } catch { if (key === activeKey) lockPrivate(); }
   });
-  function openWeightImport() {
-    if (workouts.importWeights()) navigate('training');
+  function openFromUrl() {
+    const imported = workouts.importWeights();
+    navigate(imported ? 'training' : sectionFromUrl(), true, imported);
   }
-  window.addEventListener('hashchange', openWeightImport);
-  openWeightImport();
+  window.addEventListener('popstate', () => {
+    if (el('sync-dialog').open) el('sync-dialog').close();
+    openFromUrl();
+  });
+  window.addEventListener('hashchange', () => {
+    if (workouts.importWeights()) navigate('training', true, true);
+  });
+  window.addEventListener('pageshow', event => { if (event.persisted) openFromUrl(); });
+  openFromUrl();
+  return () => current === 'cinema' && sectionFromUrl() === 'cinema' && !el('sync-dialog').open;
 }
 function resetFilters() {
   for (const id of filterIds) el(id).value = '';
@@ -1499,7 +1528,7 @@ async function start() {
   document.querySelectorAll('[data-close]').forEach(b => b.onclick = () => b.closest('dialog').close());
   setupWishlist();
   setupKeyDialog();
-  setupCollections();
+  const cinemaIsOpen = setupCollections();
   const embedded = document.getElementById('offline-catalog');
   let modified;
   if (embedded) state.catalog = JSON.parse(embedded.textContent);
@@ -1552,14 +1581,15 @@ async function start() {
   });
   trackCalendarDay();
   setupSearch();
-  if (view?.search) {
-    const { search, ...base } = view;
-    el('lists').scrollLeft = base.listScroll || 0;
-    openSearch(base, search);
-  } else if (view) {
+  if (view && cinemaIsOpen()) {
     el('lists').scrollLeft = view.listScroll || 0;
-    restoreDialogs(view);
-    restoreFeed(view);
+    if (view.search) {
+      const { search, ...base } = view;
+      openSearch(base, search);
+    } else {
+      restoreDialogs(view);
+      restoreFeed(view);
+    }
   }
   saveView({ initial: true });
   trackView();
