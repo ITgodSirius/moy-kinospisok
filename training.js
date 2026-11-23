@@ -38,9 +38,13 @@ function programChanges(before, after) {
     const prefix = after.days.length > 1 ? day.name + ' · ' : '';
     compareList(prev.exercises, day.exercises, prefix, (a, b) => {
       if (a.name !== b.name) changes.push(prefix + a.name + ' → ' + b.name);
+      if ((a.count == null) !== (b.count == null)) {
+        changes.push(prefix + b.name + (b.count == null ? ' · Убраны параметры подходов' : ' · Заданы параметры подходов'));
+        return;
+      }
       const fields = [];
       for (const [key, label] of Object.entries(exerciseFields)) {
-        if (!(key in a || key in b) || a.count == null || b.count == null) continue;
+        if (!(key in a || key in b)) continue;
         const fallback = key === 'progressAt' ? 15 : '—';
         const oldValue = a[key] ?? fallback, newValue = b[key] ?? fallback;
         if (oldValue !== newValue) fields.push(label + ' ' + oldValue + ' → ' + newValue);
@@ -49,6 +53,21 @@ function programChanges(before, after) {
     });
   });
   return changes;
+}
+function timelineEntries(revisions, workout, usedIndex) {
+  const entries = [];
+  let previous;
+  for (const [i, revision] of revisions.entries()) {
+    const snapshot = workout ? { days: revision.program.days.filter(day => day.id === workout.dayId) } : revision.program;
+    const changes = previous ? programChanges(previous, snapshot) : [];
+    if (!workout || changes.length || (!previous && snapshot.days.length)) {
+      entries.push({ revision, days: snapshot.days, changes });
+    }
+    // A workout can reference a program revision that only changed a different day.
+    if (i === usedIndex && snapshot.days.length) entries.at(-1).used = true;
+    previous = snapshot;
+  }
+  return entries;
 }
 function saveProgram(data, program) {
   const index = data.programs.findIndex(p => p.id === program.id);
@@ -187,8 +206,8 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     if (activeId !== nextId) { historyEdit = false; drafts.clear(); }
     activeId = nextId;
     if (route.view === 'timeline') {
-      const program = db().programs.find(p => p.id === route.timelineId);
-      if (program) programTimeline(program, route.revision);
+      const program = historyProgram(route.timelineId);
+      if (program) programTimeline(program, route.scope === 'day' ? session() : null);
       else render();
     } else if (route.view === 'start') start();
     else if (tab === 'settings') {
@@ -210,10 +229,13 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     b.classList.add('training-mobile-back');
     return b;
   }
-  function openTimeline(program, revision) {
+  function historyProgram(id) {
+    return db().programs.find(p => p.id === id) || db().programHistory?.[id]?.at(-1)?.program;
+  }
+  function openTimeline(program, scope = 'program') {
     const from = { tab, sessionId: tab === 'sessions' ? activeId : null };
     if (from.sessionId) from.fromStart = history.state?.workout?.fromStart;
-    visitWorkout(from, { ...from, view: 'timeline', timelineId: program.id, revision });
+    visitWorkout(from, { ...from, view: 'timeline', timelineId: program.id, scope });
   }
   const bodyTabs = node('nav', 'training-subtabs');
   bodyTabs.setAttribute('aria-label', 'Информация о теле');
@@ -298,31 +320,40 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     page(section(item ? 'Изменить зал' : 'Новый зал'), box);
     name.input.focus();
   }
-  function programTimeline(program, sessionRevision) {
-    const revisions = db().programHistory?.[program.id] || [{ date: null, program }];
+  function programTimeline(program, workout) {
+    const saved = db().programHistory?.[program.id] || [];
+    let usedIndex = -1;
+    if (workout) {
+      usedIndex = workout.programRevision ? saved.findIndex(v => v.date === workout.programRevision)
+        : saved.findLastIndex(v => !v.date || Date.parse(v.date) <= Date.parse(workout.date));
+    }
+    const entries = timelineEntries(saved.length ? saved : [{ date: null, program }], workout, usedIndex).reverse();
     const list = node('div', 'training-settings-list training-revisions');
-    for (let i = revisions.length - 1; i >= 0; i--) {
-      const version = revisions[i], snap = version.program;
+    for (const [index, entry] of entries.entries()) {
+      const { revision: version, days, changes, used } = entry;
+      const snap = version.program;
       const card = node('article', 'training-editor-group');
-      const label = version.date ? dateLabel(version.date) : 'До начала истории';
-      card.append(node('strong', '', label + (i === revisions.length - 1 ? ' · Текущая версия' : '')));
-      if (version.source) card.append(hint(version.source));
-      if (i) {
-        const changes = programChanges(revisions[i-1].program, snap);
-        if (changes.length) {
-          const items = node('ul');
-          changes.forEach(text => items.append(node('li', '', text)));
-          card.append(items);
-        }
+      const labels = [];
+      if (saved.length) labels.push(version.date ? dateLabel(version.date) : 'До начала истории');
+      if (index === 0 && (!workout || days.length)) labels.push('Текущая версия');
+      card.append(node('strong', '', labels.join(' · ')));
+      if (used) card.append(hint(workout.programRevision ? 'Версия этой тренировки' : 'Версия по дате тренировки'));
+      if (!workout && version.source) card.append(hint(version.source));
+      if (changes.length) {
+        const items = node('ul');
+        changes.forEach(text => items.append(node('li', '', text)));
+        card.append(items);
       }
+      list.append(card);
+      if (workout && !days.length) continue;
       const details = node('details');
-      if (version.date && version.date === sessionRevision) {
-        details.open = true; card.append(hint('Версия этой тренировки'));
+      details.open = Boolean(used);
+      details.append(node('summary', '', workout ? 'Состав подпрограммы' : 'Состав программы'));
+      if (!workout) {
+        const gym = db().gyms.find(g => g.id === snap.gymId);
+        details.append(hint([snap.name, gym?.name].filter(Boolean).join(' · ')));
       }
-      details.append(node('summary', '', 'Состав программы'));
-      const gym = db().gyms.find(g => g.id === snap.gymId);
-      details.append(hint([snap.name, gym?.name].filter(Boolean).join(' · ')));
-      for (const day of snap.days) {
+      for (const day of days) {
         details.append(node('h3', '', day.name));
         const items = node('ol');
         for (const ex of day.exercises) {
@@ -333,10 +364,12 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
         }
         details.append(items);
       }
-      card.append(details); list.append(card);
+      card.append(details);
     }
-    page(section('История изменений', backButton('Назад')), hint(program.name), list);
-    if (sessionRevision) list.querySelector('details[open]')?.closest('article')?.scrollIntoView({ block: 'start' });
+    if (!entries.length) list.append(hint('История этой подпрограммы пока пуста.'));
+    page(section(workout ? 'История подпрограммы' : 'История изменений', backButton('Назад')), hint(workout?.day || program.name), list);
+    const marked = list.querySelector('details[open]')?.closest('article');
+    if (marked && marked !== list.firstElementChild) marked.scrollIntoView({ block: 'start' });
   }
   function editProgram(item) {
     const name = field('Название программы', item?.name, { required: true });
@@ -670,8 +703,8 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     const scroll = root.dataset.session === s.id ? el('training-feed').scrollTop : 0;
     const editable = !s.finished || historyEdit;
     const controls = row(btn('Копировать JSON', () => copySession(s)));
-    const definition = db().programs.find(p => p.id === s.programId);
-    if (s.programRevision && definition) controls.append(btn('Версия программы', () => openTimeline(definition, s.programRevision)));
+    const definition = historyProgram(s.programId);
+    if (definition && s.dayId) controls.append(btn('История подпрограммы', () => openTimeline(definition, 'day')));
     if (editable) controls.append(btn('Изменить упражнения', () => editSessionExercises(s)));
     else controls.append(btn('Изменить', () => { historyEdit = true; sessionPage(); }));
     const meta = hint([s.gym, s.program, dateLabel(s.date)].join(' · '));
