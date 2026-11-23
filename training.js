@@ -205,21 +205,27 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
       const heading = node('div');
       heading.append(node('strong', '', item.name));
       if (db()[key] === item.id) heading.append(node('span', 'training-default', 'По умолчанию'));
-      const sub = programs ? [db().gyms.find(g => g.id === item.gymId)?.name, ...item.days.map(d => d.name)].filter(Boolean).join(' · ') : item.address;
+      const sub = programs ? db().gyms.find(g => g.id === item.gymId)?.name : item.address;
       if (sub) heading.append(hint(sub));
+      if (programs) {
+        const parts = node('ul', 'training-program-parts');
+        parts.setAttribute('aria-label', 'Подпрограммы');
+        for (const part of item.days) parts.append(node('li', '', part.name));
+        heading.append(parts);
+      }
       const actions = row();
-      if (db()[key] !== item.id) actions.append(btn('Использовать по умолчанию', () => change(next => { next[key] = item.id; selectedProgram = null; })));
+      if (db()[key] !== item.id) actions.append(btn('Использовать по умолчанию', () => change(next => { next[key] = item.id; }, () => { selectedProgram = null; render(); })));
       if (programs) actions.append(btn('История изменений', () => programTimeline(item, settingsPage)));
       actions.append(btn('Изменить', () => edit(item)));
       card.append(heading, actions); group.append(card);
     }
     if (!entries.length) group.append(hint(programs ? 'Программ пока нет.' : 'Залов пока нет.'));
-    return [section(programs ? 'Программы тренировок' : 'Мои залы',
+    return [section(programs ? 'Состав программы' : 'Мои залы',
       btn(programs ? 'Создать программу' : 'Добавить зал', () => edit())), group];
   }
   function settingsPage() {
     const choices = node('nav', 'training-subtabs');
-    for (const [key, label] of [['programs', 'Программа тренировок'], ['gyms', 'Зал']]) {
+    for (const [key, label] of [['programs', 'Состав программы'], ['gyms', 'Зал']]) {
       const b = btn(label, () => { settings = key; render(); });
       b.setAttribute('aria-pressed', String(key === settings)); choices.append(b);
     }
@@ -291,8 +297,11 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     const days = node('div', 'training-editor-list');
     const readers = new Map();
     function addDay(day = { id: uid(), name: '', exercises: [] }) {
-      const group = node('fieldset', 'training-editor-group');
-      const name = field('Название дня', day.name, { required: true });
+      const group = node('details', 'training-program-part');
+      group.open = !day.name || item?.days.length === 1;
+      const summary = node('summary', '', day.name || 'Новая подпрограмма');
+      const name = field('Название подпрограммы', day.name, { required: true });
+      name.input.oninput = () => { summary.textContent = name.input.value.trim() || 'Новая подпрограмма'; };
       const exercises = node('div', 'training-editor-list');
       const readExercise = new Map();
       function move(element, delta) {
@@ -321,23 +330,29 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
       }
       day.exercises.forEach(addExercise);
       if (!day.exercises.length) addExercise();
-      group.append(name.wrap, exercises, row(btn('Добавить упражнение', () => addExercise()), btn('Убрать день', () => group.remove())));
+      const body = node('div', 'training-editor-list');
+      body.append(name.wrap, exercises, row(btn('Добавить упражнение', () => addExercise()), btn('Убрать подпрограмму', () => group.remove())));
+      group.append(summary, body);
       days.append(group);
       readers.set(group, () => {
-        if (!name.input.value.trim() || !exercises.childElementCount) throw new Error('Укажите название дня и добавьте упражнение.');
+        if (!name.input.value.trim() || !exercises.childElementCount) throw new Error('Укажите название подпрограммы и добавьте упражнение.');
         return { id: day.id, name: name.input.value.trim(), exercises: [...exercises.children].map(element => readExercise.get(element)()) };
       });
     }
     (item?.days || []).forEach(addDay);
     if (!days.childElementCount) addDay();
     const { box, content } = form(() => {
-      if (!days.childElementCount || !name.input.value.trim()) return announce('Укажите название программы и добавьте тренировочный день.');
+      if (!days.childElementCount || !name.input.value.trim()) return announce('Укажите название программы и добавьте подпрограмму.');
       change(next => {
         const program = { ...item, id: item?.id || uid(), name: name.input.value.trim(), gymId: gym.value || null, days: [...days.children].map(d => readers.get(d)()) };
         saveProgram(next, program);
       });
     }, 'Сохранить программу', render);
-    content.append(name.wrap, gymField, days, btn('Добавить день', () => addDay()));
+    box.addEventListener('invalid', event => {
+      const part = event.target.closest('details');
+      if (part) part.open = true;
+    }, true);
+    content.append(name.wrap, gymField, days, btn('Добавить подпрограмму', () => addDay()));
     page(section(item ? 'Изменить программу' : 'Новая программа'), box);
   }
   function defaults(includeHistory = false) {
@@ -352,7 +367,7 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     if (!gym || !program) {
       const panel = node('section', 'training-welcome');
       const heading = gym ? 'Создай программу тренировок' : 'Добавь свой первый зал';
-      panel.append(title(heading), hint(gym ? 'Добавь тренировочные дни, упражнения и подходы.' : 'Для каждого зала будут свои рабочие веса и настройки тренажёров.'),
+      panel.append(title(heading), hint(gym ? 'Добавь подпрограммы по группам мышц, упражнения и подходы.' : 'Для каждого зала будут свои рабочие веса и настройки тренажёров.'),
         btn(gym ? 'Создать программу' : 'Добавить зал', () => gym ? editProgram() : editGym(), true));
       page(panel);
       return;
@@ -398,7 +413,7 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     if (!program) return editProgram();
     const choices = node('div', 'training-choice-list');
     for (const day of program.days) choices.append(btn(day.name, () => prepare(gym, program, day)));
-    page(section('Выбери тренировочный день'), hint(gym.name + ' · ' + program.name), choices);
+    page(section('Выбери подпрограмму'), hint(gym.name + ' · ' + program.name), choices);
   }
   function prepare(gym, program, day) {
     const latest = db().sessions.filter(s => s.gymId === gym.id && s.programId === program.id && s.dayId === day.id).sort((a,b) => b.date.localeCompare(a.date));
