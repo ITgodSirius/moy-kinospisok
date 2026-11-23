@@ -686,11 +686,11 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     const scroll = root.dataset.session === s.id ? workoutScrollArea().scrollTop : 0;
     const editable = !s.finished || historyEdit;
     const editors = new Map();
-    const save = btn('Сохранить', saveSets, true);
+    const save = btn('Сохранить', () => saveSets(false), true);
     function updateSave() {
       save.disabled = !historyEdit && ![...drafts.values()].some(draft => draft.changed);
     }
-    function saveSets() {
+    function saveSets(completeWorkout) {
       const updates = [];
       for (const [key, read] of editors) {
         if (!drafts.get(key)?.changed) continue;
@@ -703,10 +703,22 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
         historyEdit = false;
         sessionPage();
       }
-      if (!updates.length) return finishEditing();
+      if (!updates.length && !completeWorkout) return finishEditing();
       updateSession(record => {
         for (const { ei, si, values } of updates) Object.assign(record.exercises[ei].sets[si], values);
-      }, () => { finishEditing(); announce('Изменения сохранены'); });
+        if (completeWorkout) {
+          for (const exercise of record.exercises) {
+            for (const set of exercise.sets) {
+              if (set.status === 'planned' && set.actual == null) set.status = 'skipped';
+            }
+          }
+          record.finished = true;
+        }
+      }, () => {
+        if (completeWorkout) return returnToList(s);
+        finishEditing();
+        announce('Изменения сохранены');
+      });
     }
     const controls = row(btn('Копировать JSON', () => copyWorkoutJson(s)));
     const definition = historyProgram(s.programId);
@@ -740,17 +752,7 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
       group.append(block);
     }
     const footer = row(backButton('К истории', () => returnToList(s)));
-    if (!s.finished) footer.append(btn('Завершить тренировку', () => {
-      if ([...drafts.values()].some(draft => draft.changed)) return announce('Сохраните изменённые подходы или отметьте их пропущенными.');
-      updateSession(record => {
-        for (const exercise of record.exercises) {
-          for (const set of exercise.sets) {
-            if (set.status === 'planned' && set.actual == null) set.status = 'skipped';
-          }
-        }
-        record.finished = true;
-      }, () => returnToList(s));
-    }, true));
+    if (!s.finished) footer.append(btn('Завершить тренировку', () => saveSets(true), true));
     const body = node('div', 'training-session-body');
     body.tabIndex = 0;
     body.setAttribute('role', 'region');
