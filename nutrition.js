@@ -115,7 +115,7 @@ export function setupNutrition({ db, change, page, node, btn, field, row, announ
 
   function library() {
     const head = node('div', 'nutrition-heading');
-    head.append(node('h2', '', 'Планы питания'), btn('Новый план', () => editPlan(), true));
+    head.append(node('h2', '', 'Планы питания'));
     const list = node('div', 'nutrition-library');
     for (const plan of plans()) {
       const entry = node('article', 'training-line-card');
@@ -299,7 +299,7 @@ export function setupNutrition({ db, change, page, node, btn, field, row, announ
     const { food, total } = totals(plan);
     const header = node('div', 'nutrition-heading nutrition-title');
     const name = line(node('h2', '', plan.name));
-    const actions = line(btn('Редактировать', () => editPlan(plan)), btn('Новый план', () => editPlan(), true));
+    const actions = line(btn('Редактировать', () => editPlan(plan)));
     if (current()?.id === id) name.append(node('span', 'nutrition-badge', 'Текущий план'));
     else actions.prepend(btn('Сделать текущим', () => change(next => { next.currentMealPlan = id; }, () => detail(id))));
     header.append(name, actions);
