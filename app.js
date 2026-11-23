@@ -1,4 +1,4 @@
-import { hosted, shared, historySnapshotKey, credential, connectHistory, forgetCredential, marked, markTime, reactionValue, busy, refreshHistory, setMark } from './history.js?v=90f98fde78d9';
+import { hosted, shared, historySnapshotKey, credential, connectHistory, marked, markTime, reactionValue, busy, refreshHistory, setMark } from './history.js?v=90f98fde78d9';
 
 const el = id => document.getElementById(id);
 let pendingActions = 0;
@@ -1125,7 +1125,7 @@ function restoreDialogs(view) {
   }
   if (view.dialog === 'filters') {
     el('filters-open').focus({preventScroll:true});
-    showFilters();
+    el('filters').showModal();
   } else if (view.dialog === 'schedule') {
     const item = state.catalog.find(item => item.id === view.series && item.type === 'series');
     if (item) {
@@ -1339,25 +1339,19 @@ async function sync() {
   try { await refreshViews(); }
   catch (error) { announce(shared ? error.message : 'Нет связи с историей просмотра. Повторим синхронизацию.'); }
 }
-const maskedKey = '••••••••';
 function openKeyDialog() {
   const dialog = el('sync-dialog');
   const input = el('sync-token');
   dialog.returnValue = '';
-  input.value = credential() ? maskedKey : '';
+  input.value = '';
   input.removeAttribute('aria-invalid');
   el('sync-error').textContent = '';
   dialog.showModal();
   input.select();
 }
-function showFilters() {
-  el('manage-key').hidden = !shared || !credential();
-  el('filters').showModal();
-}
 function setupKeyDialog() {
   if (!shared) return;
   const dialog = el('sync-dialog');
-  el('manage-key').onclick = openKeyDialog;
   const input = el('sync-token');
   const errorMessage = el('sync-error');
   dialog.addEventListener('close', () => {
@@ -1373,17 +1367,6 @@ function setupKeyDialog() {
     if (saving) return;
     const token = input.value.trim();
     try {
-      if (token === maskedKey && credential()) {
-        dialog.close();
-        return;
-      }
-      if (!token && credential()) {
-        forgetCredential();
-        el('manage-key').hidden = true;
-        dialog.close();
-        announce('Ключ удалён с этого устройства.');
-        return;
-      }
       if (!/^github_pat_[A-Za-z0-9_]+$/.test(token)) throw new Error('Введите полный ключ GitHub, начинающийся с github_pat_.');
       saving = true;
       await withLoading(connectHistory(token));
@@ -1510,13 +1493,13 @@ async function start() {
   reflectControls();
   wireGroup('list-navigation','list'); wireGroup('types','type');
   for (const id of filterIds) el(id).addEventListener('change', render);
-  el('filters-open').onclick = showFilters;
+  el('filters-open').onclick = () => el('filters').showModal();
   el('clear').onclick = resetFilters;
   el('apply').onclick = () => { el('filters').close(); el('feed').scrollTop = 0; };
   // A restored pair of dialogs can share one native Escape dismissal.
   for (const child of [el('schedule'), el('sync-dialog')]) {
     child.addEventListener('keydown', event => {
-      if (event.key === 'Escape' && (el('film-details').open || el('wish-details').open || el('filters').open)) {
+      if (event.key === 'Escape' && (el('film-details').open || el('wish-details').open)) {
         event.preventDefault();
         child.close();
       }
