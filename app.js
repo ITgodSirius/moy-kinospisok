@@ -1,4 +1,4 @@
-import { hosted, shared, historySnapshotKey, credential, localHistory, connectHistory, forgetCredential, marked, markTime, reactionValue, busy, refreshHistory, setMark } from './history.js?v=1ac47d6572a8';
+import { hosted, shared, historySnapshotKey, credential, connectHistory, forgetCredential, marked, markTime, reactionValue, busy, refreshHistory, setMark } from './history.js?v=90f98fde78d9';
 
 const el = id => document.getElementById(id);
 let pendingActions = 0;
@@ -11,9 +11,6 @@ async function withLoading(request) {
     if (--pendingActions === 0) dialog.close();
   }
 }
-const editAccessKey = 'film-list:edit-unlocked';
-const editPinHash = '9c6c088d75eb59217e0431d1796f5c787d2039f56d3681df53e6348c5d32d05c';
-const editPinSalt = '60bb843cedd8d5985c0f4a5a932cfea0';
 const viewKey = 'film-list:view:' + location.pathname;
 const persistentViewKey = viewKey.replace(/\/index\.html$/, '/');
 const layoutKey = viewKey + ':layout';
@@ -240,81 +237,20 @@ function showSchedule(item, openSeason) {
   el('seasons').scrollTop = 0;
   el('schedule').showModal();
 }
-let pinAttempt = 0;
-function requestEditAccess(title = 'Изменить отметку') {
-  if (hosted) return true;
-  try {
-    if (localStorage.getItem(editAccessKey) === editPinHash) return true;
-  } catch { /* The dialog will report a storage error on confirmation. */ }
-
-  const dialog = el('edit-dialog');
-  if (dialog.open) return false;
-  el('edit-title').textContent = title;
-  dialog.returnValue = '';
-  dialog.showModal();
-  el('edit-pin').focus();
-  return new Promise(resolve => {
-    dialog.addEventListener('close', () => {
-      pinAttempt++;
-      el('edit-form').reset();
-      el('edit-error').textContent = '';
-      el('edit-pin').removeAttribute('aria-invalid');
-      resolve(dialog.returnValue === 'confirmed');
-    }, { once: true });
-  });
-}
-async function matchesEditPin(value) {
-  if (!/^[0-9]{5}$/.test(value)) return false;
-  const encoder = new TextEncoder();
-  const key = await crypto.subtle.importKey('raw', encoder.encode(value), 'PBKDF2', false, ['deriveBits']);
-  const bits = await crypto.subtle.deriveBits({
-    name: 'PBKDF2', hash: 'SHA-256', salt: encoder.encode(editPinSalt), iterations: 600000
-  }, key, 256);
-  return Array.from(new Uint8Array(bits), byte => byte.toString(16).padStart(2, '0')).join('') === editPinHash;
-}
-async function confirmEdit(event) {
-  event.preventDefault();
-  const pin = el('edit-pin');
-  const dialog = el('edit-dialog');
-  const attempt = ++pinAttempt;
-  let error = '';
-  try {
-    if (!await matchesEditPin(pin.value)) error = pin.value ? 'Неверный пароль. Попробуй ещё раз.' : 'Введи пароль.';
-  } catch {
-    error = 'Браузеру не удалось проверить пароль.';
-  }
-  if (attempt !== pinAttempt || !dialog.open) return;
-  if (error) {
-    el('edit-error').textContent = error;
-    pin.setAttribute('aria-invalid', 'true');
-    pin.focus();
-    pin.select();
-    return;
-  }
-  try {
-    localStorage.setItem(editAccessKey, editPinHash);
-  } catch {
-    el('edit-error').textContent = 'Браузеру нужен доступ к данным сайта, чтобы запомнить разрешение.';
-    return;
-  }
-  dialog.close('confirmed');
-}
 async function requestMarkAccess() {
-  if (!shared) return requestEditAccess();
+  if (!shared) {
+    announce('Редактирование доступно на основном сайте киносписка.');
+    return false;
+  }
   if (credential()) return true;
   const dialog = el('sync-dialog');
   if (dialog.open) return false;
-  openHistorySync(true);
+  openKeyDialog();
   return new Promise(resolve => dialog.addEventListener('close', () => resolve(dialog.returnValue === 'connected'), { once: true }));
-}
-function markFailure(error, fallback) {
-  announce(shared ? error.message : fallback);
-  if (hosted) sync();
 }
 async function saveMark(id, kind, value, update) {
   try {
-    const request = setMark(id, kind, value);
-    await (shared || hosted ? withLoading(request) : request);
+    await withLoading(setMark(id, kind, value));
   } finally {
     update();
   }
@@ -327,7 +263,7 @@ async function toggleMark(item, kind) {
     await saveMark(item.id, kind, value, render);
     announce((value ? 'Добавлено в «' : 'Убрано из «') + listNames[kind] + '»');
   } catch (error) {
-    markFailure(error, hosted ? 'Не удалось подтвердить сохранение. Проверьте соединение.' : 'Не удалось сохранить отметку в этом браузере.');
+    announce(error.message);
   }
 }
 function gallery(item) {
@@ -455,7 +391,7 @@ function reactionButtons(item, compact = false) {
         await saveMark(item.id, 'reaction', next, render);
         announce(next ? 'Моя оценка · ' + label : 'Оценка снята');
       } catch (error) {
-        markFailure(error, 'Не удалось сохранить оценку.');
+        announce(error.message);
       }
     }, compact);
     control.dataset.kind = value;
@@ -704,7 +640,7 @@ async function toggleWish(item) {
     await saveMark(item.id, 'fulfilled', fulfilled, renderWishlist);
     announce(fulfilled ? 'Добавлено в «Сбылось»' : 'Возвращено в «Хочу»');
   } catch (error) {
-    markFailure(error, 'Не удалось сохранить отметку желания.');
+    announce(error.message);
   }
 }
 function wishActions(item, compact) {
@@ -845,12 +781,6 @@ function setupWishlist() {
     };
   }
   setupPageSort(el('wish-sort'), wishSortChoices, () => wishes.status, el('wish-feed'), renderWishlist);
-  el('edit-dialog').addEventListener('keydown', event => {
-    if (event.key === 'Escape' && el('wish-details').open) {
-      event.preventDefault();
-      el('edit-dialog').close();
-    }
-  });
 }
 const quoteKinds = {
   film: ['Фильм', 'play'],
@@ -1409,40 +1339,16 @@ async function sync() {
   try { await refreshViews(); }
   catch (error) { announce(shared ? error.message : 'Нет связи с историей просмотра. Повторим синхронизацию.'); }
 }
-let syncToEdit = false;
-let syncAttempt = 0;
-function syncMessage(message, error = false) {
-  const status = el('sync-status');
-  status.classList.toggle('error', error);
-  status.textContent = message;
-}
-function showConnection() {
-  const connected = Boolean(credential());
-  const count = localHistory().size;
-  const local = el('sync-local');
-  local.hidden = !count;
-  local.textContent = count ? 'Отметок в этом браузере: ' + count + '. После переноса они будут видны всем, кто откроет киносписок.' : '';
-  el('sync-settings').querySelector('summary').textContent = connected ? 'Настройки доступа' : 'Подключить редактирование';
-  el('sync-forget').hidden = !connected;
-  el('sync-token').required = !connected;
-  el('sync-save').textContent = count ? 'Перенести отметки и подключить' : connected ? 'Сохранить ключ' : 'Подключить';
-  return count;
-}
-async function openHistorySync(forEdit = false) {
+const maskedKey = '••••••••';
+function openKeyDialog(message = '') {
   const dialog = el('sync-dialog');
-  const attempt = ++syncAttempt;
-  syncToEdit = forEdit;
+  const input = el('sync-token');
   dialog.returnValue = '';
-  if (!dialog.open) dialog.showModal();
-  syncMessage('Проверяем общую историю…');
-  try {
-    const count = showConnection();
-    el('sync-settings').open = forEdit || count > 0;
-    await withLoading(refreshViews());
-    if (attempt === syncAttempt) syncMessage('Общая история обновлена.');
-  } catch (error) {
-    if (attempt === syncAttempt) syncMessage(error.message, true);
-  }
+  input.value = credential() ? maskedKey : '';
+  input.removeAttribute('aria-invalid');
+  el('sync-error').textContent = message;
+  dialog.showModal();
+  input.select();
 }
 function setupHistorySync() {
   const button = el('history-sync');
@@ -1462,38 +1368,49 @@ function setupHistorySync() {
   const dialog = el('sync-dialog');
   button.setAttribute('aria-haspopup', 'dialog');
   button.setAttribute('aria-controls', dialog.id);
-  button.onclick = () => openHistorySync();
-  const input = el('sync-token');
-  dialog.addEventListener('close', () => { input.value = ''; });
-  el('sync-forget').onclick = () => {
-    forgetCredential();
-    input.value = '';
-    showConnection();
-    syncMessage('Ключ удалён с этого устройства.');
+  button.onclick = async () => {
+    try {
+      await withLoading(refreshViews());
+      openKeyDialog();
+    } catch (error) { openKeyDialog(error.message); }
   };
+
+  const input = el('sync-token');
+  const errorMessage = el('sync-error');
+  dialog.addEventListener('close', () => {
+    if (!dialog.open) input.value = '';
+  });
+  input.oninput = () => {
+    input.removeAttribute('aria-invalid');
+    errorMessage.textContent = '';
+  };
+  let saving = false;
   el('sync-form').onsubmit = async event => {
     event.preventDefault();
-    const save = el('sync-save');
-    if (save.disabled) return;
-    const token = input.value.trim() || credential();
-    if (!/^github_pat_[A-Za-z0-9_]+$/.test(token)) {
-      syncMessage('Вставьте ключ GitHub, который начинается с github_pat_.', true);
-      input.focus();
-      return;
-    }
-    ++syncAttempt;
-    save.disabled = el('sync-forget').disabled = true;
-    syncMessage('Синхронизируем отметки…');
+    if (saving) return;
+    const token = input.value.trim();
     try {
+      if (token === maskedKey && credential()) {
+        dialog.close();
+        return;
+      }
+      if (!token && credential()) {
+        forgetCredential();
+        dialog.close();
+        announce('Ключ удалён с этого устройства.');
+        return;
+      }
+      if (!/^github_pat_[A-Za-z0-9_]+$/.test(token)) throw new Error('Введите полный ключ GitHub, начинающийся с github_pat_.');
+      saving = true;
       await withLoading(connectHistory(token));
-      input.value = '';
-      showConnection();
       renderHistory();
-      el('sync-settings').open = false;
-      syncMessage('Ключ сохранён в этом браузере.');
-      if (syncToEdit && dialog.open) dialog.close('connected');
-    } catch (error) { syncMessage(error.message, true); }
-    finally { save.disabled = el('sync-forget').disabled = false; }
+      dialog.close('connected');
+    } catch (error) {
+      errorMessage.textContent = error.message;
+      input.setAttribute('aria-invalid', 'true');
+      input.focus();
+      input.select();
+    } finally { saving = false; }
   };
 }
 function wireGroup(id, key) {
@@ -1586,12 +1503,6 @@ function showLastUpdate(modified) {
 async function start() {
   el('action-loading').addEventListener('cancel', event => event.preventDefault());
   document.querySelectorAll('[data-icon]').forEach(holder => holder.replaceWith(icon(holder.dataset.icon)));
-  el('edit-form').onsubmit = confirmEdit;
-  el('edit-pin').oninput = () => {
-    pinAttempt++;
-    el('edit-error').textContent = '';
-    el('edit-pin').removeAttribute('aria-invalid');
-  };
   document.querySelectorAll('[data-close]').forEach(b => b.onclick = () => b.closest('dialog').close());
   setupWishlist();
   setupCollections();
@@ -1624,9 +1535,9 @@ async function start() {
   el('clear').onclick = resetFilters;
   el('apply').onclick = () => { el('filters').close(); el('feed').scrollTop = 0; };
   // A restored pair of dialogs can share one native Escape dismissal.
-  for (const child of [el('schedule'), el('edit-dialog')]) {
+  for (const child of [el('schedule'), el('sync-dialog')]) {
     child.addEventListener('keydown', event => {
-      if (event.key === 'Escape' && el('film-details').open) {
+      if (event.key === 'Escape' && (el('film-details').open || el('wish-details').open)) {
         event.preventDefault();
         child.close();
       }

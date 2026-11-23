@@ -13,7 +13,6 @@ const storagePrefix = 'moy-kinospisok:github:';
 export const historySnapshotKey = storagePrefix + 'snapshot-v2';
 const remote = new Map();
 const inFlight = new Set();
-let revision = 0;
 let loaded = false;
 let queue = Promise.resolve();
 function enqueue(operation) {
@@ -30,7 +29,7 @@ function expected(kind, mark) {
   return Object.hasOwn(prefixes, kind) && typeof mark?.markedAt === 'string' &&
     (kind === 'reaction' ? ['like', 'neutral', 'dislike'].includes(mark.value) : mark.value === true);
 }
-export function localHistory() {
+function localHistory() {
   const rows = new Map();
   if (!shared || migrated) return rows;
   for (let i = 0; i < localStorage.length; i++) {
@@ -137,7 +136,8 @@ async function changeFile(token, change) {
   }
   throw new Error('История менялась на другом устройстве. Повторите синхронизацию.');
 }
-export function connectHistory(token) {
+export async function connectHistory(token) {
+  if (!shared) throw new Error('Подключение ключа доступно на основном сайте киносписка.');
   return enqueue(async () => {
     const local = localHistory();
     await changeFile(token, (rows, removed) => {
@@ -201,12 +201,10 @@ export async function refreshHistory() {
     if (credential() !== token) return false;
     return applySnapshot(rows);
   });
-  if (!hosted || inFlight.size) return false;
-  const version = ++revision;
+  if (!hosted) return false;
   const response = await fetch('./api/history', { cache: 'no-store', signal: AbortSignal.timeout(12000) });
   if (!response.ok) throw new Error('История недоступна');
   const rows = await response.json();
-  if (version !== revision || inFlight.size) return false;
   const entries = rows.map(row => [row.card + '/' + row.kind, { value: row.reaction ?? true, markedAt: row.markedAt ?? '' }]);
   const changed = !loaded || remote.size !== entries.length || entries.some(([key, mark]) =>
     remote.get(key)?.markedAt !== mark.markedAt || remote.get(key)?.value !== mark.value);
@@ -218,49 +216,25 @@ export async function refreshHistory() {
   return changed;
 }
 export async function setMark(id, kind, value) {
+  if (!shared) throw new Error('Редактирование доступно на основном сайте киносписка.');
   const mark = { value, markedAt: new Date().toISOString() };
-  if (shared) {
-    const key = id + '/' + kind;
-    if (inFlight.has(key)) return;
-    inFlight.add(key);
-    try {
-      await enqueue(() => changeFile(credential(), (rows, removed) => {
-        if (kind === 'reaction' && value && !rows.has(id + '/watched')) throw new Error('Сначала отметьте просмотр.');
-        if (!value) {
-          if (!rows.delete(key)) return false;
-          removed.add(key);
-          return true;
-        }
-        if (kind === 'watching' && rows.has(id + '/watched')) throw new Error('Карточка уже отмечена просмотренной.');
-        removed.delete(key);
-        if (rows.get(key)?.value === value) return false;
-        rows.set(key, mark);
-        return true;
-      }));
-    } finally {
-      inFlight.delete(key);
-    }
-    return;
-  }
-  if (!hosted) {
-    if (value) localStorage.setItem(prefixes[kind] + id, kind === 'reaction' ? JSON.stringify(mark) : mark.markedAt);
-    else localStorage.removeItem(prefixes[kind] + id);
-    return;
-  }
   const key = id + '/' + kind;
-  if (busy(id, kind)) return;
-  const before = remote.get(key);
+  if (inFlight.has(key)) return;
   inFlight.add(key);
-  revision++;
-  if (value) remote.set(key, mark); else remote.delete(key);
   try {
-    const res = await fetch('./api/history', { method: 'PUT', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ card: id, kind, ...(kind === 'reaction' ? { reaction: value } : { marked: value }) }), signal: AbortSignal.timeout(12000) });
-    if (!res.ok) throw new Error('Отметка не сохранена');
-    if (value) mark.markedAt = (await res.json()).markedAt ?? '';
-  } catch (error) {
-    if (before) remote.set(key, before); else remote.delete(key);
-    throw error;
+    await enqueue(() => changeFile(credential(), (rows, removed) => {
+      if (kind === 'reaction' && value && !rows.has(id + '/watched')) throw new Error('Сначала отметьте просмотр.');
+      if (!value) {
+        if (!rows.delete(key)) return false;
+        removed.add(key);
+        return true;
+      }
+      if (kind === 'watching' && rows.has(id + '/watched')) throw new Error('Карточка уже отмечена просмотренной.');
+      removed.delete(key);
+      if (rows.get(key)?.value === value) return false;
+      rows.set(key, mark);
+      return true;
+    }));
   } finally {
     inFlight.delete(key);
   }
