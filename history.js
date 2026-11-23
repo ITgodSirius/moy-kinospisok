@@ -10,6 +10,7 @@ export const shared = !hosted && location.origin === 'https://itgodsirius.github
 const historyURL = 'https://api.github.com/repos/ITgodSirius/moy-kinospisok/contents/watch-history.json';
 const historyBranch = 'watch-history';
 const storagePrefix = 'moy-kinospisok:github:';
+export const historySnapshotKey = storagePrefix + 'snapshot-v2';
 const remote = new Map();
 const inFlight = new Set();
 let revision = 0;
@@ -66,7 +67,7 @@ function applySnapshot(rows, cache = true) {
     remote.clear();
     for (const [key, mark] of rows) remote.set(key, mark);
     if (cache) {
-      try { localStorage.setItem(storagePrefix + 'snapshot', encodeRows(rows)); }
+      try { localStorage.setItem(historySnapshotKey, encodeRows(rows)); }
       catch { /* The shared file is already available even if the local cache is full. */ }
     }
   }
@@ -79,7 +80,7 @@ async function githubRequest(token, body) {
   if (body) headers['Content-Type'] = 'application/json';
   let response;
   try {
-    response = await fetch(historyURL + (body ? '' : '?ref=' + historyBranch), {
+    response = await fetch(historyURL + (body ? '' : '?ref=' + historyBranch + '&sync=' + Date.now()), {
       method: body ? 'PUT' : 'GET', headers, body: body && JSON.stringify(body),
       cache: 'no-store', credentials: 'omit', redirect: 'error', signal: AbortSignal.timeout(15000)
     });
@@ -160,10 +161,9 @@ if (shared) {
     catch { /* The next read will replace an invalid cache. */ }
   }
   try { localStorage.removeItem(storagePrefix + 'device'); } catch { /* Storage may be disabled. */ }
-  restoreSnapshot(preference('snapshot'));
+  restoreSnapshot(preference('snapshot-v2') ?? preference('snapshot'));
   window.addEventListener('storage', event => {
     if (!event.key || event.key === storagePrefix + 'imported') migrated = preference('imported') === '1';
-    if (event.key === storagePrefix + 'snapshot') restoreSnapshot(event.newValue);
   });
 }
 
@@ -194,7 +194,13 @@ export function busy(id, kind) {
   return (hosted && !loaded) || inFlight.has(id + '/' + kind);
 }
 export async function refreshHistory() {
-  if (shared) return enqueue(async () => applySnapshot(await readPublicHistory()));
+  if (shared) return enqueue(async () => {
+    const token = credential();
+    // Read from the same branch API that accepted the edit. The public CDN can lag behind.
+    const rows = token ? (await readFile(token)).rows : await readPublicHistory();
+    if (credential() !== token) return false;
+    return applySnapshot(rows);
+  });
   if (!hosted || inFlight.size) return false;
   const version = ++revision;
   const response = await fetch('./api/history', { cache: 'no-store', signal: AbortSignal.timeout(12000) });

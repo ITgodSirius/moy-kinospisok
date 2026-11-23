@@ -1,4 +1,4 @@
-import { hosted, shared, credential, localHistory, connectHistory, forgetCredential, marked, markTime, reactionValue, busy, refreshHistory, setMark } from './history.js?v=394d794a8d48';
+import { hosted, shared, historySnapshotKey, credential, localHistory, connectHistory, forgetCredential, marked, markTime, reactionValue, busy, refreshHistory, setMark } from './history.js?v=e4f9bbf4249b';
 
 const el = id => document.getElementById(id);
 const editAccessKey = 'film-list:edit-unlocked';
@@ -1555,6 +1555,10 @@ async function start() {
     if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) dialog.close();
   });
   if (!hosted) window.addEventListener('storage', event => {
+    if (shared && event.key === historySnapshotKey) {
+      sync();
+      return;
+    }
     const wishMark = event.key?.startsWith('wish-list:fulfilled:');
     if (!event.key || wishMark) renderWishlist();
     if (!wishMark && !event.key?.startsWith('film-list:view:')) render();
