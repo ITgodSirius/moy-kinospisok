@@ -519,6 +519,9 @@ a.quote-source:hover{color:var(--blue)}
 .training-editor-group { display:grid; gap:12px; background:var(--paper) }
 .training-editor-group legend,.training-exercise h3 { margin:0; font-weight:650; font-size:1.125rem }
 .training-measurements { display:grid; grid-template-columns:repeat(auto-fit,minmax(126px,1fr)); gap:12px }
+.training-composition { min-inline-size:0; margin:0; padding:0; border:0 }
+.training-composition legend { margin-bottom:8px; padding:0; font-weight:650 }
+.training-composition .training-measurements { align-items:end }
 .training-layout { display:grid; grid-template-columns:minmax(160px,230px) minmax(0,1fr); gap:24px }
 .training-days { display:flex; align-self:start; flex-direction:column; align-items:stretch; gap:6px; border-right:1px solid var(--line); padding-right:14px }
 .training-days .btn { justify-content:flex-start; background:transparent; border-color:transparent }

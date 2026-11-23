@@ -6,6 +6,7 @@ export function emptyTraining() {
 const uid = () => crypto.randomUUID();
 const copy = value => structuredClone(value);
 const dateLabel = value => new Date(value).toLocaleString('ru-RU', { dateStyle: 'long', timeStyle: 'short' });
+const dayLabel = day => new Date(day + 'T12:00:00').toLocaleDateString('ru-RU');
 function localDate(date = new Date()) {
   return new Date(date.getTime() - date.getTimezoneOffset() * 60000).toISOString().slice(0, 16);
 }
@@ -17,7 +18,9 @@ export function nextTarget(previous, step, restartReps) {
   return reps >= 15 ? { weight: Number((weight + step).toFixed(3)), reps: restartReps }
     : { weight, reps: reps + 1 };
 }
-const fieldsBody = ['Вес, кг', 'Плечи, см', 'Грудь, см', 'Талия, см', 'Бёдра, см', 'Бедро, см'];
+const fieldsBody = ['Вес, кг', 'Шея, см', 'Плечи, см', 'Грудь, см', 'Бицепс, см', 'Предплечье, см',
+  'Талия, см', 'Живот, см', 'Бёдра, см', 'Бедро, см', 'Голень, см'];
+const fieldsBodyComposition = ['Масса скелетных мышц, кг', 'Масса жира, кг', 'Доля жира, %'];
 const fieldsNutrition = ['Белки, г', 'Жиры, г', 'Углеводы, г'];
 
 export function setupTraining({ setupNutrition, el, node, button, announce, withLoading, credential, savePrivateFile }) {
@@ -435,37 +438,46 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     const body = kind === 'body';
     const records = db()[kind];
     const existing = records[day] || {};
-    const date = field('Дата', day, { type: 'date', required: true });
-    date.input.onchange = () => { if (date.input.value) diary(kind, date.input.value); };
     const inputs = new Map();
     const list = node('div', 'training-measurements');
-    function add(label) {
+    function add(label, group = list) {
       if (!label || inputs.has(label)) return;
       const value = number(label, existing[label], !body, 'any');
-      list.append(value.wrap); inputs.set(label, value.input);
+      group.append(value.wrap); inputs.set(label, value.input);
     }
-    const labels = body ? new Set([...fieldsBody, ...Object.values(records).flatMap(r => Object.keys(r))]) : fieldsNutrition;
-    for (const label of labels) add(label);
+    for (const label of body ? fieldsBody : fieldsNutrition) add(label);
     const { box, content } = form(() => {
       const values = Object.fromEntries([...inputs].filter(([,input]) => input.value !== '').map(([label,input]) => [label,input.valueAsNumber]));
       if (!Object.keys(values).length) return announce('Заполните хотя бы одно значение.');
       change(next => { next[kind][day] = values; }, () => { diary(kind, day); announce('Запись сохранена'); });
     }, 'Сохранить запись');
-    content.append(date.wrap, list);
     if (body) {
+      const date = node('time', 'training-hint', dayLabel(day));
+      date.dateTime = day;
+      const dateRow = row(date);
+      if (day !== localDate().slice(0, 10)) dateRow.append(btn('К сегодняшним замерам', () => diary(kind)));
+      const composition = node('fieldset', 'training-composition');
+      const compositionInputs = node('div', 'training-measurements');
+      for (const label of fieldsBodyComposition) add(label, compositionInputs);
+      for (const label of Object.values(records).flatMap(Object.keys)) add(label);
+      composition.append(node('legend', '', 'Состав тела'), compositionInputs);
       const custom = field('Свой замер');
-      content.append(row(custom.wrap, btn('Добавить замер', () => {
+      content.append(dateRow, list, composition, row(custom.wrap, btn('Добавить замер', () => {
         const label = custom.input.value.trim();
         if (!label) return custom.input.focus();
         add(label); custom.input.value = ''; inputs.get(label).focus();
       })));
+    } else {
+      const date = field('Дата', day, { type: 'date', required: true });
+      date.input.onchange = () => { if (date.input.value) diary(kind, date.input.value); };
+      content.append(date.wrap, list);
     }
     const history = node('div', 'training-settings-list');
     const dates = Object.keys(records).sort().reverse();
     if (!dates.length) history.append(hint('Записей пока нет.'));
     for (const d of dates) {
       const card = node('div', 'training-line-card');
-      card.append(node('strong', '', new Date(d + 'T12:00:00').toLocaleDateString('ru-RU')),
+      card.append(node('strong', '', dayLabel(d)),
         hint(Object.entries(records[d]).map(([k,v]) => k + ': ' + v).join(' · ')), btn('Изменить', () => diary(kind,d)));
       history.append(card);
     }
