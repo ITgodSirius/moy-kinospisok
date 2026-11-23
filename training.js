@@ -64,7 +64,6 @@ export function setupTraining({ el, node, button, announce, withLoading, credent
   function page(...children) {
     delete root.dataset.session;
     root.replaceChildren(...children);
-    if (!snapshot.available) root.append(hint('Хранилище личных записей пока не подключено.'));
     el('training-feed').scrollTop = 0;
   }
   function tabs() {

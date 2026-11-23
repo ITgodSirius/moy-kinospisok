@@ -1,9 +1,9 @@
-// Personal records are read only through GitHub's authenticated API. Never use a public/raw URL.
+// The app gates these sections by owner key. The data branch itself is public.
 const account = 'ITgodSirius';
-const repository = '/repos/' + account + '/moy-kinospisok-private';
+const repository = '/repos/' + account + '/moy-kinospisok';
+const branch = 'watch-history';
 const api = 'https://api.github.com';
 const files = new Set(['training.json', 'quotes.json']);
-const unavailable = 'Для сохранения добавьте закрытый репозиторий moy-kinospisok-private в доступ этого ключа GitHub.';
 
 async function request(token, path, options = {}) {
   if (!token) throw new Error('Введите ключ GitHub.');
@@ -28,35 +28,28 @@ export async function verifyOwner(token) {
   if ((await res.json()).login?.toLowerCase() !== account.toLowerCase()) throw new KeyError('Этот раздел доступен только владельцу киносписка.');
 }
 
-export async function openPrivateFile(token, filename, empty) {
+function filePath(filename) {
   if (!files.has(filename)) throw new Error('Неизвестный файл.');
-  const metadata = await request(token, repository);
-  if (metadata.status === 404) return { data: empty(), available: false, sha: null };
-  if (!metadata.ok) throw new Error('Не удалось проверить доступ к личным записям в GitHub.');
-  const repo = await metadata.json();
-  if (repo.private !== true || repo.full_name?.toLowerCase() !== repository.slice(7).toLowerCase()) {
-    throw new Error('Личные записи можно открывать только из закрытого репозитория владельца.');
-  }
-  const path = repository + '/contents/' + filename;
-  const response = await request(token, path);
-  if (response.status === 404) return { data: empty(), available: true, sha: null };
+  return repository + '/contents/' + filename;
+}
+
+export async function openPrivateFile(token, filename, empty) {
+  const response = await request(token, filePath(filename) + '?ref=' + branch);
+  if (response.status === 404) return { data: empty(), sha: null };
   if (!response.ok) throw new Error('Не удалось прочитать личные записи. Проверьте доступ ключа к содержимому репозитория.');
   const { sha, content, encoding } = await response.json();
   if (!sha || encoding !== 'base64') throw new Error('Не удалось прочитать формат файла.');
-  return { data: JSON.parse(new TextDecoder().decode(Uint8Array.from(atob(content), c => c.charCodeAt(0)))), sha, available: true };
+  return { data: JSON.parse(new TextDecoder().decode(Uint8Array.from(atob(content), c => c.charCodeAt(0)))), sha };
 }
 
 // The displayed revision is required for a save. A second device can never overwrite a newer revision.
 export async function savePrivateFile(token, filename, snapshot, data) {
-  const current = await openPrivateFile(token, filename, () => null);
-  if (!current.available) throw new Error(unavailable);
-  if (snapshot.sha !== current.sha) throw new Error('Записи изменились на другом устройстве. Откройте раздел заново перед сохранением.');
   const bytes = new TextEncoder().encode(JSON.stringify(data) + '\n');
   const content = btoa(Array.from(bytes, byte => String.fromCharCode(byte)).join(''));
-  const res = await request(token, repository + '/contents/' + filename, {
-    method: 'PUT', body: JSON.stringify({ message: 'Сохранить личную запись', content, ...(current.sha ? { sha: current.sha } : {}) })
+  const res = await request(token, filePath(filename), {
+    method: 'PUT', body: JSON.stringify({ message: 'Сохранить личную запись', branch, content, ...(snapshot.sha ? { sha: snapshot.sha } : {}) })
   });
   if (res.status === 409 || res.status === 422) throw new Error('Файл изменился. Откройте раздел заново и проверьте запись.');
   if (!res.ok) throw new Error('GitHub не сохранил запись. Проверьте право Contents → Read and write.');
-  return { data, available: true, sha: (await res.json()).content.sha };
+  return { data, sha: (await res.json()).content.sha };
 }

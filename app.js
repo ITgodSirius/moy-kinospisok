@@ -1,7 +1,7 @@
 import { hosted, shared, historySnapshotKey, credential, connectHistory, marked, markTime, reactionValue, busy, refreshHistory, setMark } from './history.js?v=0147301cae10';
 
-import { KeyError, verifyOwner, openPrivateFile, savePrivateFile } from './private-store.js?v=a2b978699a6e';
-import { setupTraining, emptyTraining } from './training.js?v=7d8982728a75';
+import { KeyError, verifyOwner, openPrivateFile, savePrivateFile } from './private-store.js?v=041c70d8f2eb';
+import { setupTraining, emptyTraining } from './training.js?v=3485ed2809a1';
 
 const el = id => document.getElementById(id);
 let pendingActions = 0;
@@ -906,7 +906,6 @@ function setupCollections() {
       else workouts.open(file);
       show(next);
       activeKey = token;
-      if (!file.available && next === 'quotes') el('quote-records').replaceChildren(node('p', 'quote-empty', 'Закрытое хранилище цитат не подключено.'));
     } catch (error) {
       if (attempt !== navigation) return;
       if (error instanceof KeyError) {
