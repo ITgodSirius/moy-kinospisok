@@ -92,6 +92,17 @@ async function githubRequest(token, body) {
   }
   throw new Error('Не удалось синхронизировать историю с GitHub (код ' + response.status + ').');
 }
+async function readPublicHistory() {
+  const url = 'https://raw.githubusercontent.com/ITgodSirius/moy-kinospisok/' + historyBranch + '/watch-history.json';
+  let response;
+  try {
+    response = await fetch(url + '?sync=' + Date.now(), {
+      cache: 'no-store', credentials: 'omit', signal: AbortSignal.timeout(15000)
+    });
+  } catch { throw new Error('Нет связи с GitHub. Повторите синхронизацию.'); }
+  if (!response.ok) throw new Error('Не удалось загрузить общую историю (код ' + response.status + ').');
+  return decodeRows(await response.json());
+}
 async function readFile(token) {
   const response = await githubRequest(token);
   const { sha, content, encoding } = await response.json();
@@ -172,7 +183,7 @@ export function busy(id, kind) {
   return (hosted && !loaded) || inFlight.has(id + '/' + kind);
 }
 export async function refreshHistory() {
-  if (shared) return enqueue(async () => applySnapshot((await readFile(credential())).rows));
+  if (shared) return enqueue(async () => applySnapshot(await readPublicHistory()));
   if (!hosted || inFlight.size) return false;
   const version = ++revision;
   const response = await fetch('./api/history', { cache: 'no-store', signal: AbortSignal.timeout(12000) });
