@@ -616,7 +616,7 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
       announce(message);
     } catch { announce('Браузер не разрешил копирование.'); }
   }
-  function setEditor(ei, set, si, editable, editors, updateSave) {
+  function setEditor(ei, set, si, editable, editors, updateActions) {
     const key = ei + '/' + si;
     const item = node('div', 'training-set');
     const caption = node('div', 'training-set-number', (set.extra ? 'Доп. ' : '') + (si + 1));
@@ -648,7 +648,7 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
       drafts.set(key, { weight: weight.input.value, reps: reps.input.value, reserve: reserve.input.value, note: note.input.value, showNote: !note.wrap.hidden, changed });
       if (completed) completed.input.checked = changed;
       target.hidden = set.target.reps == null || reps.input.valueAsNumber === set.target.reps;
-      updateSave();
+      updateActions();
     }
     const inputs = [weight.input, reps.input, reserve.input, note.input];
     for (const input of inputs) input.oninput = () => {
@@ -691,8 +691,15 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     const editable = !s.finished || historyEdit;
     const editors = new Map();
     const save = btn('Сохранить', () => saveSets(false), true);
-    function updateSave() {
+    const cancel = btn('Отменить', finishEditing);
+    function updateActions() {
       save.disabled = !historyEdit && ![...drafts.values()].some(draft => draft.changed);
+      cancel.disabled = !historyEdit && drafts.size === 0;
+    }
+    function finishEditing() {
+      drafts.clear();
+      historyEdit = false;
+      sessionPage();
     }
     function saveSets(completeWorkout) {
       const updates = [];
@@ -701,11 +708,6 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
         const update = read();
         if (!update) return;
         updates.push(update);
-      }
-      function finishEditing() {
-        drafts.clear();
-        historyEdit = false;
-        sessionPage();
       }
       if (!updates.length && !completeWorkout) return finishEditing();
       updateSession(record => {
@@ -727,8 +729,19 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     const controls = row(btn('Копировать JSON', () => copyWorkoutJson(s)));
     const definition = historyProgram(s.programId);
     if (definition && s.dayId) controls.append(btn('История подпрограммы', () => openTimeline(definition, 'day')));
-    if (editable) { updateSave(); controls.append(save); }
+    if (editable) { updateActions(); controls.append(save, cancel); }
     else controls.append(btn('Изменить', () => { historyEdit = true; sessionPage(); }));
+    const remove = btn('Удалить', () => {
+      if (!window.confirm(`Удалить тренировку «${s.day}» за ${dateLabel(s.date)} вместе со всеми подходами?`)) return;
+      change(next => {
+        next.sessions = next.sessions.filter(record => record.id !== s.id);
+      }, () => {
+        returnToList(s);
+        announce('Тренировка удалена');
+      });
+    });
+    remove.classList.add('training-delete');
+    controls.append(remove);
     const meta = hint([s.gym, s.program, dateLabel(s.date)].join(' · '));
     const header = node('header', 'training-session-heading');
     header.append(section(s.day + (s.finished ? ' · история' : ' · тренировка'), controls), meta);
@@ -749,7 +762,7 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
       const labels = node('div', 'training-set training-column-head');
       for (const label of ['Подход', 'Прошлый раз', 'Вес, кг', 'Повторы', 'В запасе', 'Запись']) labels.append(node('span', '', label));
       block.append(labels);
-      ex.sets.forEach((set,si) => block.append(setEditor(ei, set, si, editable, editors, updateSave)));
+      ex.sets.forEach((set,si) => block.append(setEditor(ei, set, si, editable, editors, updateActions)));
       if (editable) block.append(btn('+ Подход', () => updateSession(record => {
         record.exercises[ei].sets.push({ ...freshSet(copy(ex.sets.at(-1)?.target)), extra: true });
       })));

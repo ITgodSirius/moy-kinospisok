@@ -533,7 +533,7 @@ a.quote-source:hover{color:var(--blue)}
 .training-composition .training-measurements { align-items:end }
 .training-body-diary,.training-body-editor,.training-body-history { display:grid; min-width:0; align-content:start; gap:14px }
 .training-body-history .training-line-card { display:grid; gap:8px; overflow-wrap:anywhere }
-.training-body-history .training-delete,.training-form .training-delete { color:#ffadb3 }
+.training-body-history .training-delete,.training-form .training-delete,.training-session-heading .training-delete { color:#ffadb3 }
 .training-weight { display:grid; gap:16px; max-width:1080px; min-width:0 }
 .training-weight-summary { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; margin:0 }
 .training-weight-summary>div,.training-weight-chart,.training-weight-month { padding:clamp(10px,1.5vw,18px); border:1px solid var(--line); border-radius:9px; background:var(--surface) }
