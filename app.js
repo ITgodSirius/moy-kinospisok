@@ -1,4 +1,4 @@
-import { hosted, shared, hasDevice, checkDevicePin, rememberDevice, localHistory, importLocalHistory, marked, markTime, reactionValue, busy, refreshHistory, setMark } from './history.js?v=b837947b4947';
+import { hosted, shared, credential, localHistory, connectHistory, forgetCredential, marked, markTime, reactionValue, busy, refreshHistory, setMark } from './history.js?v=394d794a8d48';
 
 const el = id => document.getElementById(id);
 const editAccessKey = 'film-list:edit-unlocked';
@@ -234,7 +234,7 @@ let pinAttempt = 0;
 function requestEditAccess(title = 'Изменить отметку') {
   if (hosted) return true;
   try {
-    if (shared ? hasDevice() : localStorage.getItem(editAccessKey) === editPinHash) return true;
+    if (localStorage.getItem(editAccessKey) === editPinHash) return true;
   } catch { /* The dialog will report a storage error on confirmation. */ }
 
   const dialog = el('edit-dialog');
@@ -267,12 +267,11 @@ async function confirmEdit(event) {
   const pin = el('edit-pin');
   const dialog = el('edit-dialog');
   const attempt = ++pinAttempt;
-  let error = '', device;
+  let error = '';
   try {
-    if (shared) device = await checkDevicePin(pin.value);
-    else if (!await matchesEditPin(pin.value)) error = pin.value ? 'Неверный пароль. Попробуй ещё раз.' : 'Введи пароль.';
-  } catch (failure) {
-    error = shared ? failure.message : 'Браузеру не удалось проверить пароль.';
+    if (!await matchesEditPin(pin.value)) error = pin.value ? 'Неверный пароль. Попробуй ещё раз.' : 'Введи пароль.';
+  } catch {
+    error = 'Браузеру не удалось проверить пароль.';
   }
   if (attempt !== pinAttempt || !dialog.open) return;
   if (error) {
@@ -283,8 +282,7 @@ async function confirmEdit(event) {
     return;
   }
   try {
-    if (shared) rememberDevice(device);
-    else localStorage.setItem(editAccessKey, editPinHash);
+    localStorage.setItem(editAccessKey, editPinHash);
   } catch {
     el('edit-error').textContent = 'Браузеру нужен доступ к данным сайта, чтобы запомнить разрешение.';
     return;
@@ -292,12 +290,12 @@ async function confirmEdit(event) {
   dialog.close('confirmed');
 }
 async function requestMarkAccess() {
-  if (!await requestEditAccess()) return false;
-  if (shared) {
-    try { await importLocalHistory(); }
-    catch (error) { announce(error.message); return false; }
-  }
-  return true;
+  if (!shared) return requestEditAccess();
+  if (credential()) return true;
+  const dialog = el('sync-dialog');
+  if (dialog.open) return false;
+  openHistorySync(true);
+  return new Promise(resolve => dialog.addEventListener('close', () => resolve(dialog.returnValue === 'connected'), { once: true }));
 }
 function markFailure(error, fallback) {
   announce(shared ? error.message : fallback);
@@ -1329,26 +1327,91 @@ async function sync() {
   try { await refreshViews(); }
   catch (error) { announce(shared ? error.message : 'Нет связи с историей просмотра. Повторим синхронизацию.'); }
 }
+let syncToEdit = false;
+let syncAttempt = 0;
+function syncMessage(message, error = false) {
+  const status = el('sync-status');
+  status.classList.toggle('error', error);
+  status.textContent = message;
+}
+function showConnection() {
+  const connected = Boolean(credential());
+  const count = localHistory().size;
+  const local = el('sync-local');
+  local.hidden = !count;
+  local.textContent = count ? 'Отметок в этом браузере: ' + count + '. После переноса они будут видны всем, кто откроет киносписок.' : '';
+  el('sync-settings').querySelector('summary').textContent = connected ? 'Настройки доступа' : 'Подключить редактирование';
+  el('sync-forget').hidden = !connected;
+  el('sync-token').required = !connected;
+  el('sync-save').textContent = count ? 'Перенести отметки и подключить' : connected ? 'Сохранить ключ' : 'Подключить';
+  return count;
+}
+async function openHistorySync(forEdit = false) {
+  const dialog = el('sync-dialog');
+  const attempt = ++syncAttempt;
+  syncToEdit = forEdit;
+  dialog.returnValue = '';
+  if (!dialog.open) dialog.showModal();
+  syncMessage('Проверяем общую историю…');
+  try {
+    const count = showConnection();
+    el('sync-settings').open = forEdit || count > 0;
+    await refreshViews();
+    if (attempt === syncAttempt) syncMessage('Общая история обновлена.');
+  } catch (error) {
+    if (attempt === syncAttempt) syncMessage(error.message, true);
+  }
+}
 function setupHistorySync() {
   const button = el('history-sync');
   if (!shared && !hosted) {
     button.replaceWith(button.querySelector('.update-date'));
     return;
   }
-  button.onclick = async () => {
-    button.disabled = true;
+  if (hosted) {
+    button.onclick = async () => {
+      button.disabled = true;
+      try { await refreshViews(); announce('История синхронизирована.'); }
+      catch { announce('Не удалось синхронизировать историю.'); }
+      finally { button.disabled = false; }
+    };
+    return;
+  }
+  const dialog = el('sync-dialog');
+  button.setAttribute('aria-haspopup', 'dialog');
+  button.setAttribute('aria-controls', dialog.id);
+  button.onclick = () => openHistorySync();
+  const input = el('sync-token');
+  dialog.addEventListener('close', () => { input.value = ''; });
+  el('sync-forget').onclick = () => {
+    forgetCredential();
+    input.value = '';
+    showConnection();
+    syncMessage('Ключ удалён с этого устройства.');
+  };
+  el('sync-form').onsubmit = async event => {
+    event.preventDefault();
+    const save = el('sync-save');
+    if (save.disabled) return;
+    const token = input.value.trim() || credential();
+    if (!/^github_pat_[A-Za-z0-9_]+$/.test(token)) {
+      syncMessage('Вставьте ключ GitHub, который начинается с github_pat_.', true);
+      input.focus();
+      return;
+    }
+    ++syncAttempt;
+    save.disabled = el('sync-forget').disabled = true;
+    syncMessage('Синхронизируем отметки…');
     try {
-      if (shared && localHistory().size) {
-        if (!await requestEditAccess('Перенести отметки в общую историю')) return;
-        await importLocalHistory();
-        renderHistory();
-        announce('Отметки перенесены в общую историю.');
-      } else {
-        await refreshViews();
-        announce('История синхронизирована.');
-      }
-    } catch (error) { announce(error.message || 'Не удалось синхронизировать историю.'); }
-    finally { button.disabled = false; }
+      await connectHistory(token);
+      input.value = '';
+      showConnection();
+      renderHistory();
+      el('sync-settings').open = false;
+      syncMessage('Ключ сохранён в этом браузере.');
+      if (syncToEdit && dialog.open) dialog.close('connected');
+    } catch (error) { syncMessage(error.message, true); }
+    finally { save.disabled = el('sync-forget').disabled = false; }
   };
 }
 function wireGroup(id, key) {
