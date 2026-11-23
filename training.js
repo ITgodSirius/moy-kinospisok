@@ -181,6 +181,34 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
   let openImportedWeights = false;
   let navigationId;
   let snapshot, ownerKey, tab, settings, selectedDay, selectedProgram, activeId, saving = false, generation = 0;
+  // Both mobile disclosures use the same buttons and actions as the desktop toolbars.
+  const training = el('training');
+  let openMenu;
+  function closeMenu() {
+    openMenu?.setAttribute('aria-expanded', 'false');
+    openMenu = null;
+  }
+  document.addEventListener('click', event => {
+    const toggle = event.target.closest('#training .training-menu-toggle');
+    const wasOpen = toggle && toggle === openMenu;
+    closeMenu();
+    if (toggle && !wasOpen) {
+      toggle.setAttribute('aria-expanded', 'true');
+      openMenu = toggle;
+    }
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && openMenu) {
+      openMenu.focus();
+      closeMenu();
+      event.preventDefault();
+    }
+  });
+  training.addEventListener('focusout', event => {
+    if (openMenu && event.relatedTarget && event.relatedTarget !== openMenu &&
+        !el(openMenu.getAttribute('aria-controls'))?.contains(event.relatedTarget)) closeMenu();
+  });
+  matchMedia('(max-width: 820px)').addEventListener('change', closeMenu);
   const db = () => snapshot.data;
   const btn = (label, handler, primary = false) => button(label, primary ? 'training-primary' : '', null, handler);
   const title = text => node('h2', '', text);
@@ -225,6 +253,7 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     return { box, content };
   }
   function page(...children) {
+    closeMenu();
     delete root.dataset.session;
     root.replaceChildren(...children);
     feed.scrollTop = 0;
@@ -556,16 +585,16 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
       label.append(node('span', '', 'Программа'), select); dayOptions.append(label);
     } else dayOptions.append(node('strong', '', program.name));
     dayOptions.append(hint(gym.name));
+    const dayButtons = node('div', 'training-day-buttons');
     for (const [id, name] of days) {
       const b = btn(name, () => { selectedDay = id; render(); });
-      b.setAttribute('aria-pressed', String(selectedDay === id)); dayOptions.append(b);
+      b.setAttribute('aria-pressed', String(selectedDay === id)); dayButtons.append(b);
     }
     const sessions = logged.filter(s => s.dayId === selectedDay).sort((a,b) => b.date.localeCompare(a.date));
-    const copyButton = btn('Копировать историю всех тренировок в JSON', () => copyWorkoutJson(sessions, 'История подпрограммы скопирована'));
-    const clipboardIcon = node('span', '', '📋');
-    clipboardIcon.setAttribute('aria-hidden', 'true');
-    copyButton.prepend(clipboardIcon);
-    copyButton.classList.add('training-copy-workouts');
+    dayOptions.append(dayButtons);
+    const copyLabel = 'Копировать историю всех тренировок в JSON';
+    const copyButton = button(copyLabel, 'training-copy-workouts', 'copy', () => copyWorkoutJson(sessions, 'История подпрограммы скопирована'), true);
+    copyButton.append(node('span', 'training-wide-label', copyLabel));
     copyButton.title = 'Скопировать все тренировки выбранной подпрограммы в этом зале';
     copyButton.disabled = !sessions.length;
     sidebar.append(dayOptions, copyButton);
@@ -583,7 +612,12 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
       const caption = node('div');
       const date = node('strong', '', dateLabel(s.date));
       date.id = 'workout-date-' + s.id;
-      caption.append(date, hint([s.gym, s.program, 'Записано подходов: ' + sets].join(' · ')));
+      const details = hint('');
+      const context = node('span', '', [s.gym, s.program].filter(Boolean).join(' · '));
+      if (s.gym === gym.name && s.program === program.name) context.className = 'training-wide-label';
+      if (context.textContent) { context.append(' · '); details.append(context); }
+      details.append('Записано подходов: ' + sets);
+      caption.append(date, details);
       if (!s.finished) date.append(node('span', 'training-default', 'В процессе'));
       const open = btn(s.finished ? 'Открыть' : 'Продолжить', () => openSession(s));
       open.classList.add('training-card-open');
@@ -593,6 +627,10 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
       cards.append(card);
     }
     const grid = node('div', 'training-layout'); grid.append(sidebar, main); page(grid);
+    const selected = dayButtons.querySelector('[aria-pressed=true]');
+    if (selected && dayButtons.scrollWidth > dayButtons.clientWidth) {
+      dayButtons.scrollLeft = selected.offsetLeft - (dayButtons.clientWidth - selected.offsetWidth) / 2;
+    }
   }
   function start() {
     tab = 'sessions'; tabs();
@@ -731,6 +769,7 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     const editors = new Map();
     const save = btn('Сохранить', () => saveSets(false), true);
     const cancel = btn('Отменить', finishEditing);
+    cancel.classList.add('training-cancel');
     function updateActions() {
       save.disabled = !historyEdit && ![...drafts.values()].some(draft => draft.changed);
       cancel.disabled = !historyEdit && drafts.size === 0;
@@ -765,10 +804,18 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
         announce('Изменения сохранены');
       });
     }
-    const controls = row(btn('Копировать JSON', () => copyWorkoutJson(s)));
+    const extras = row(btn('Копировать JSON', () => copyWorkoutJson(s)));
+    extras.id = 'training-session-extras';
+    extras.classList.add('training-menu-panel');
+    const more = node('button', 'btn training-menu-toggle', 'Ещё');
+    more.type = 'button';
+    more.setAttribute('aria-expanded', 'false');
+    more.setAttribute('aria-controls', extras.id);
+    const controls = row(more, extras);
+    controls.classList.add('training-session-actions');
     const definition = historyProgram(s.programId);
-    if (definition && s.dayId) controls.append(btn('История подпрограммы', () => openTimeline(definition, 'day')));
-    if (editable) { updateActions(); controls.append(save, cancel); }
+    if (definition && s.dayId) extras.append(btn('История подпрограммы', () => openTimeline(definition, 'day')));
+    if (editable) { updateActions(); controls.append(save); extras.append(cancel); }
     else controls.append(btn('Изменить', () => { historyEdit = true; sessionPage(); }));
     const remove = btn('Удалить', () => {
       if (!window.confirm(`Удалить тренировку «${s.day}» за ${dateLabel(s.date)} вместе со всеми подходами?`)) return;
@@ -780,10 +827,14 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
       });
     });
     remove.classList.add('training-delete');
-    controls.append(remove);
+    extras.append(remove);
     const meta = hint([s.gym, s.program, dateLabel(s.date)].join(' · '));
     const header = node('header', 'training-session-heading');
-    header.append(section(s.day + (s.finished ? ' · история' : ' · тренировка'), controls), meta);
+    const sessionTitle = section(s.day, controls);
+    const suffix = s.finished ? ' · история' : ' · тренировка';
+    sessionTitle.firstElementChild.append(node('span', s.finished ? '' : 'training-wide-label', suffix));
+    sessionTitle.firstElementChild.setAttribute('aria-label', s.day + suffix);
+    header.append(sessionTitle, meta);
     const group = node('div', 'training-table');
     const revisions = db().programHistory?.[s.programId] || [];
     const sessionProgram = revisions[workoutRevisionIndex(revisions, s)]?.program;
@@ -1100,6 +1151,7 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
       else render();
     },
     lock() {
+      closeMenu();
       generation++; snapshot = null; ownerKey = null; activeId = null; drafts.clear(); root.replaceChildren();
     }
   };

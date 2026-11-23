@@ -507,13 +507,18 @@ a.quote-source:hover{color:var(--blue)}
 .training-subtabs [aria-pressed=true] { box-shadow:inset 0 -2px var(--blue); color:var(--blue) }
 .training-settings-list,.training-form-content,.training-editor-list,.training-history,.training-table,.training-exercise { display:grid; gap:12px; min-width:0 }
 .training-line-card,.training-editor-group,.training-form { min-width:0; margin:0; padding:16px; background:var(--surface); border:1px solid var(--line); border-radius:9px }
+.training-day-buttons,.training-session-actions > .training-menu-panel { display:contents }
+.training-day-buttons > button { flex-shrink:0 }
+.training-menu-toggle,.training-short-label { display:none }
+.training-session-actions > .btn:not(.training-menu-toggle) { order:1 }
+.training-session-actions .training-menu-panel > .training-cancel,.training-session-actions .training-delete { order:2 }
+.training-session-card { position:relative; isolation:isolate }
+.training-session-card .training-card-open {
+  position:absolute; inset:0; width:100%; height:100%; min-height:0; padding:0;
+  border:0; border-radius:inherit; background:transparent; font-size:0; transform:none;
+}
+.training-card-open:is(:hover,:focus-visible) { outline:2px solid var(--blue); outline-offset:-1px }
 @media (min-width:821px) {
-  .training-session-card { position:relative; isolation:isolate }
-  .training-session-card .training-card-open {
-    position:absolute; inset:0; width:100%; height:100%; min-height:0; padding:0;
-    border:0; border-radius:inherit; background:transparent; font-size:0; transform:none;
-  }
-  .training-card-open:is(:hover,:focus-visible) { outline:2px solid var(--blue); outline-offset:-1px }
   .training-mobile-back,.training-row:has(> .training-mobile-back:only-child) { display:none }
 }
 .training-default { margin-inline-start:10px; font-size:.85rem; color:var(--blue) }
@@ -600,35 +605,90 @@ a.quote-source:hover{color:var(--blue)}
 .training-set .btn { min-height:36px; padding-inline:8px }
 .training-set [hidden] { display:none }
 @media(max-width:820px) {
-  .training-layout { grid-template-columns:minmax(0,1fr); grid-template-rows:fit-content(45%) minmax(0,1fr) }
-  .training-days { border-right:0; border-bottom:1px solid var(--line); padding:0 0 10px }
-  .training-day-options { flex-direction:row; flex-wrap:wrap; align-content:start; align-items:center }
-  .training-top { display:flex; padding-block:10px; gap:8px 12px }
-  .training-tabs { min-height:44px; gap:2px }
-  .training-tabs button { min-height:44px; padding-inline:8px }
+  #training .wrap { padding-inline:clamp(12px,3.8vw,22px) }
+  #training-content { gap:12px; padding-top:14px; grid-template-columns:minmax(0,1fr) }
   #training .btn,#training .collection-destination { min-height:44px }
-  #training .training-row>.btn { min-width:44px }
-  .training-table { gap:18px; padding:10px }
-  .training-set { grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; padding:12px 0 }
+  .training-wide-label { display:none }
+  .training-short-label { display:inline }
+  .training-top { position:relative; display:flex; align-items:center; min-height:60px; flex-wrap:nowrap; gap:8px; padding-block:6px }
+  .training-top h1 { font-size:1.42rem; line-height:1.15 }
+  .training-menu-toggle { display:inline-flex; align-items:center; justify-content:center; min-width:44px; min-height:44px; border-radius:8px }
+  .training-site-switch { order:-1; color:var(--blue); background:var(--surface); border:1px solid var(--line) }
+  .training-top .training-primary { white-space:nowrap; padding-inline:12px }
+  #training .training-menu-panel {
+    position:absolute; z-index:3; display:none; gap:2px; padding:5px; width:max-content;
+    max-width:100%; border:1px solid var(--line); border-radius:10px; background:var(--surface); box-shadow:0 8px 24px #0006
+  }
+  #training .training-menu-toggle[aria-expanded=true] + .training-menu-panel { display:grid }
+  .training-site-switch + nav { left:0; top:calc(100% - 4px) }
+  #training .training-menu-panel > button { justify-content:flex-start; background:transparent; border-color:transparent; padding-inline:14px; font-size:.94rem }
+  #training .training-menu-panel > button:is(:hover,:focus-visible) { background:var(--tint) }
+  .training-tabs { display:flex; flex-wrap:nowrap; gap:3px; min-height:44px; padding:0; overflow-x:auto; scrollbar-width:none }
+  .training-tabs button { position:relative; flex:1 0 auto; min-height:44px; white-space:nowrap; padding:6px; font-size:.88rem }
+  .training-tabs button[aria-pressed=true] { color:var(--blue); background:transparent; box-shadow:inset 0 -3px var(--blue); border-radius:0 }
+  .training-tabs button:focus-visible,.training-day-buttons button:focus-visible { outline-offset:-3px }
+
+  .training-layout { grid-template-columns:minmax(0,1fr); grid-template-rows:auto minmax(0,1fr); gap:16px }
+  .training-days { position:relative; display:block; padding:12px 12px 8px; border:1px solid var(--line); border-radius:12px; background:var(--surface) }
+  .training-day-options { display:grid; gap:2px; overflow:visible }
+  .training-day-options > :is(strong,label,.training-hint) { margin-right:46px; overflow-wrap:anywhere }
+  .training-day-options > strong { font-size:1.05rem }
+  .training-day-options > .training-hint { font-size:.85rem }
+  .training-day-buttons { position:relative; display:flex; gap:4px; min-width:0; margin-top:8px; padding-top:6px; overflow-x:auto; border-top:1px solid var(--line); scrollbar-width:thin }
+  .training-day-buttons > .btn { max-width:100%; padding-inline:10px; font-size:.87rem }
+  #training .btn.training-copy-workouts { position:absolute; top:6px; right:6px; width:44px; min-height:44px; padding:0; background:transparent; border-color:transparent; color:var(--muted) }
+  .training-copy-workouts .ico { width:18px; height:18px }
+  .training-history { gap:10px }
+  .training-history-cards { gap:8px }
+  .training-session-card { padding:12px 42px 12px 14px; border-radius:10px }
+  .training-session-card::after { content:''; position:absolute; right:17px; top:50%; width:7px; height:7px; border:solid var(--blue); border-width:1.5px 1.5px 0 0; transform:translateY(-50%) rotate(45deg); pointer-events:none }
+  .training-session-card .training-hint { margin-top:4px; font-size:.85rem }
+  .training-session-card .training-default { display:inline-block }
+
+  .training-session-heading { position:relative; z-index:1; gap:4px }
+  .training-session-heading .training-section-head { align-items:flex-start; gap:8px }
+  .training-session-heading h2 { flex:1 1 160px; font-size:1.2rem; align-self:center; overflow-wrap:anywhere }
+  .training-session-heading > .training-hint { font-size:.82rem }
+  .training-session-actions { position:relative; flex-wrap:nowrap; gap:4px }
+  .training-session-actions > .btn:not(.training-menu-toggle) { order:-1 }
+  #training .training-session-actions > .training-menu-panel { top:100%; right:0; max-width:calc(100vw - 32px) }
+  .training-session-actions .training-menu-toggle { border-color:transparent; color:var(--blue); background:transparent }
+  .training-session-body { padding-bottom:max(24px,env(safe-area-inset-bottom)) }
+  .training-table { gap:14px; padding:0; background:transparent; border:0 }
+  .training-exercise,.training-exercise + .training-exercise { gap:8px; min-width:0; padding:12px; background:var(--surface); border:1px solid var(--line); border-radius:12px }
+  .training-exercise > .training-section-head { display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:start; gap:8px }
+  .training-exercise h3 { font-size:1.08rem; line-height:1.28 }
+  .training-exercise > .training-section-head .training-hint { padding:3px 7px; border-radius:6px; background:var(--chip); color:var(--muted); font-size:.8rem; font-variant-numeric:tabular-nums }
+  .training-exercise > .training-hint,.training-progression { font-size:.86rem }
+  .training-set { grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; padding:9px 0 0; border:0; border-top:1px solid var(--line) }
   .training-column-head { display:none }
   .training-set-number::before { content:'Подход ' }
-  .training-set-number { grid-column:1/3 }
-  .training-past { text-align:right; font-size:.81rem }
+  .training-set-number { font-weight:650; font-size:.9rem }
+  .training-past { grid-column:2/-1; text-align:right; overflow-wrap:anywhere; font-size:.82rem }
   .training-past::before { content:'Было '; color:var(--muted) }
-  .training-set .training-field > span { position:static; clip-path:none; width:auto; height:auto }
+  .training-set .training-field { gap:2px }
+  #training .training-field :is(input:not([type=checkbox]),select) { min-height:44px; font-size:1rem }
+  .training-set .training-field > span { position:static; clip-path:none; width:auto; height:auto; font-size:.79rem }
   .training-set > .training-row,.training-set > .training-hint { grid-column:1/-1 }
-  .training-stat::before { display:block; color:var(--muted); font-size:.8rem }
+  .training-set .training-row { gap:4px 8px }
+  .training-set-completed { min-height:44px; font-size:.9rem }
+  .training-set .training-row > button { min-width:44px }
+  .training-set .training-row > button[aria-label] { margin-left:auto }
+  .training-rest { padding-block:3px; color:var(--blue); font-size:.8rem }
+  .training-stat::before { display:block; color:var(--muted); font-size:.79rem }
   .training-stat:nth-child(3)::before { content:'Вес, кг' }
   .training-stat:nth-child(4)::before { content:'Повторы' }
   .training-stat:nth-child(5)::before { content:'В запасе' }
+  .training-session-body > .training-row { justify-content:space-between }
+  .training-choice-list { display:grid; gap:8px }
+  .training-choice-list .btn { min-height:48px; justify-content:flex-start; padding-inline:14px; background:var(--surface); border-color:var(--line) }
+}
+@media(max-width:820px) and (max-height:580px) {
+  #training-content:has(> .training-layout),#training-content[data-session] { height:auto; grid-template-rows:auto }
+  .training-layout,.training-history { grid-template-rows:auto }
+  .training-history-cards,.training-session-body { overflow:visible }
 }
 @media(max-width:640px) {
-  #training-content { gap:14px; padding-top:16px }
-  .training-top .quote-collections { flex-wrap:wrap }
-  .training-top .training-primary { flex-basis:100%; margin:0 }
-  .training-tabs { flex-wrap:wrap }
-  .training-tabs button { font-size:.85rem; padding-inline:7px }
-  .training-field input { min-height:44px }
   .training-section-head .btn { white-space:normal }
   #cinema-header .collection-brand { flex-wrap:wrap }
   #quotes .quote-top { flex-wrap:wrap }
