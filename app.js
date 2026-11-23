@@ -2,7 +2,7 @@ import { hosted, shared, historySnapshotKey, credential, connectHistory, marked,
 
 import { KeyError, verifyOwner, openPrivateFile, savePrivateFile } from './private-store.js?v=041c70d8f2eb';
 import { setupNutrition } from './nutrition.js?v=13f3368483dc';
-import { setupTraining, emptyTraining } from './training.js?v=fe62c23c695d';
+import { setupTraining, emptyTraining } from './training.js?v=08ce147f7413';
 
 const el = id => document.getElementById(id);
 let pendingActions = 0;
@@ -956,6 +956,11 @@ function setupCollections() {
       await verifyOwner(key);
     } catch { if (key === activeKey) lockPrivate(); }
   });
+  function openWeightImport() {
+    if (workouts.importWeights()) navigate('training');
+  }
+  window.addEventListener('hashchange', openWeightImport);
+  openWeightImport();
 }
 function resetFilters() {
   for (const id of filterIds) el(id).value = '';

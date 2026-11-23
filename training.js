@@ -77,9 +77,49 @@ const fieldsBody = ['Вес, кг', 'Шея, см', 'Плечи, см', 'Гру�
   'Талия, см', 'Живот, см', 'Бёдра, см', 'Бедро, см', 'Голень, см'];
 const fieldsBodyComposition = ['Масса скелетных мышц, кг', 'Масса жира, кг', 'Доля жира, %'];
 const fieldsNutrition = ['Белки, г', 'Жиры, г', 'Углеводы, г'];
+const weightHistoryKey = 'moy-kinospisok:weight-history';
+const weightNumber = new Intl.NumberFormat('ru-RU', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+const weightMonth = new Intl.DateTimeFormat('ru-RU', { month: 'long', year: 'numeric', timeZone: 'UTC' });
+
+function storedWeights() {
+  try {
+    const records = JSON.parse(localStorage.getItem(weightHistoryKey));
+    return Array.isArray(records) ? records : [];
+  } catch {
+    return [];
+  }
+}
+
+function importWeightHistory(announce) {
+  const prefix = '#weight-import=';
+  if (!location.hash.startsWith(prefix)) return false;
+  try {
+    const rows = decodeURIComponent(location.hash.slice(prefix.length)).trim().split('\n');
+    const records = new Map(storedWeights().map(record => [record.day, record]));
+    for (const row of rows) {
+      const [day, kg = '', inches = '', note = ''] = row.split(';').map(value => value.trim());
+      const date = new Date(day + 'T00:00:00Z');
+      const weight = kg ? Number(kg.replace(',', '.')) : null;
+      const waist = inches ? Number(inches.replace(',', '.')) : null;
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(day) || !Number.isFinite(+date) || date.toISOString().slice(0, 10) !== day ||
+          [weight, waist].some(value => value !== null && (!Number.isFinite(value) || value <= 0))) {
+        throw new Error('Проверьте ссылку на историю веса.');
+      }
+      records.set(day, { day, weight, waist, note });
+    }
+    localStorage.setItem(weightHistoryKey, JSON.stringify([...records.values()]));
+    return true;
+  } catch (error) {
+    announce(error.message);
+    return false;
+  } finally {
+    history.replaceState(history.state, '', location.pathname + location.search);
+  }
+}
 
 export function setupTraining({ setupNutrition, el, node, button, announce, withLoading, credential, savePrivateFile }) {
   const root = el('training-content');
+  let openImportedWeights = false;
   let snapshot, ownerKey, tab, settings, selectedDay, selectedProgram, activeId, saving = false, generation = 0;
   const db = () => snapshot.data;
   const btn = (label, handler, primary = false) => button(label, primary ? 'training-primary' : '', null, handler);
@@ -123,6 +163,16 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     delete root.dataset.session;
     root.replaceChildren(...children);
     el('training-feed').scrollTop = 0;
+  }
+  const bodyTabs = node('nav', 'training-subtabs');
+  bodyTabs.setAttribute('aria-label', 'Информация о теле');
+  const measurementsButton = btn('Замеры тела', () => { diary('body'); measurementsButton.focus(); });
+  const weightButton = btn('Динамика веса', () => { weightPage(); weightButton.focus(); });
+  bodyTabs.append(measurementsButton, weightButton);
+  function bodyPage(showWeight, ...children) {
+    measurementsButton.setAttribute('aria-pressed', String(!showWeight));
+    weightButton.setAttribute('aria-pressed', String(showWeight));
+    page(bodyTabs, ...children);
   }
   function tabs() {
     for (const b of document.querySelectorAll('[data-training-tab]')) {
@@ -647,8 +697,102 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     editor.append(section('Замеры тела'), box);
     archive.append(historyHeading, history);
     layout.append(editor, archive);
-    page(layout);
+    bodyPage(false, layout);
     if (focusEditor) editor.focus({ preventScroll: true });
+  }
+  function weightChart(points) {
+    const first = points[0];
+    const last = points.at(-1);
+    const weights = points.map(point => point.weight);
+    const min = Math.min(...weights);
+    const max = Math.max(...weights);
+    const step = Math.max(1, Math.ceil((max - min) / 5));
+    const bottom = Math.floor(min / step) * step;
+    const top = Math.max(bottom + step, Math.ceil(max / step) * step);
+    const chart = node('figure', 'training-weight-chart');
+    chart.setAttribute('aria-label', 'График веса в килограммах');
+    const axis = node('div', 'training-weight-axis');
+    const plot = node('div', 'training-weight-plot');
+    const grid = node('div', 'training-weight-grid');
+    for (let tick = top; tick >= bottom; tick -= step) {
+      axis.append(node('span', '', String(tick)));
+      grid.append(node('span'));
+    }
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('viewBox', '-4 -4 1008 248');
+    svg.setAttribute('preserveAspectRatio', 'none');
+    svg.setAttribute('aria-hidden', 'true');
+    const start = Date.parse(first.day);
+    const duration = Date.parse(last.day) - start;
+    const coordinates = points.map(({ day, weight }) => [
+      duration ? (Date.parse(day) - start) / duration * 1000 : 500,
+      (top - weight) / (top - bottom) * 240
+    ]);
+    const line = document.createElementNS(svg.namespaceURI, 'polyline');
+    line.setAttribute('points', coordinates.map(point => point.join(',')).join(' '));
+    line.setAttribute('vector-effect', 'non-scaling-stroke');
+    svg.append(line);
+    if (points.length === 1) {
+      const point = document.createElementNS(svg.namespaceURI, 'circle');
+      point.setAttribute('cx', String(coordinates[0][0]));
+      point.setAttribute('cy', String(coordinates[0][1]));
+      point.setAttribute('r', '5');
+      svg.append(point);
+    }
+    plot.append(grid, svg);
+    const dates = node('figcaption', 'training-weight-chart-dates');
+    dates.append(node('span', '', dayLabel(first.day)));
+    if (duration) dates.append(node('span', '', dayLabel(last.day)));
+    chart.append(axis, plot, dates);
+    return chart;
+  }
+  function weightPage() {
+    const records = new Map(storedWeights().map(record => [record.day, record]));
+    for (const [day, values] of Object.entries(db().body)) {
+      const weight = values['Вес, кг'];
+      if (Number.isFinite(weight) && weight > 0) records.set(day, { ...records.get(day), day, weight });
+    }
+    const dates = [...records.keys()].sort();
+    const points = dates.map(day => records.get(day)).filter(record => record.weight !== null);
+    const panel = node('section', 'training-weight');
+    panel.append(section('Динамика веса'));
+    if (points.length) {
+      const first = points[0].weight;
+      const last = points.at(-1).weight;
+      const summary = node('dl', 'training-weight-summary');
+      const signedWeight = new Intl.NumberFormat('ru-RU', { minimumFractionDigits: 1, maximumFractionDigits: 1, signDisplay: 'exceptZero' });
+      for (const [label, value] of [['Первый замер', weightNumber.format(first)], ['Последний замер', weightNumber.format(last)],
+        ['Изменение', signedWeight.format(last - first)]]) {
+        const item = node('div');
+        item.append(node('dt', '', label), node('dd', '', value + ' кг'));
+        summary.append(item);
+      }
+      panel.append(summary, weightChart(points));
+    }
+    if (!dates.length) panel.append(hint('Вес из замеров тела появится здесь после сохранения записи.'));
+    const months = node('div', 'training-weight-months');
+    let currentMonth, monthList;
+    for (const day of dates) {
+      const month = day.slice(0, 7);
+      if (month !== currentMonth) {
+        currentMonth = month;
+        const monthCard = node('section', 'training-weight-month');
+        const monthLabel = weightMonth.format(new Date(day));
+        monthList = node('ul');
+        monthCard.append(node('h3', '', monthLabel[0].toUpperCase() + monthLabel.slice(1)), monthList);
+        months.append(monthCard);
+      }
+      const { weight, waist, note } = records.get(day);
+      const entry = node('li');
+      const date = node('time', '', dayLabel(day).slice(0, 5));
+      date.dateTime = day;
+      entry.append(date, node('span', '', weight === null ? 'Вес не записан' : weightNumber.format(weight) + ' кг'));
+      if (waist != null) entry.append(node('p', 'training-hint', 'Талия ' + weightNumber.format(waist) + '″'));
+      if (note) entry.append(node('p', 'training-weight-note', note));
+      monthList.append(entry);
+    }
+    if (dates.length) panel.append(months);
+    bodyPage(true, panel);
   }
   function render() {
     if (!snapshot) return;
@@ -663,6 +807,11 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
   };
   el('training-today').onclick = start;
   return {
+    importWeights() {
+      if (!importWeightHistory(announce)) return false;
+      openImportedWeights = true;
+      return true;
+    },
     open(file) {
       const data = file.data;
       if (data?.version !== 1 || !['gyms','programs','sessions'].every(k => Array.isArray(data[k])) ||
@@ -671,7 +820,12 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
       }
       generation++; snapshot = file; ownerKey = credential(); saving = false;
       tab = 'sessions'; settings = 'programs'; selectedDay = null; selectedProgram = null; activeId = null; drafts.clear();
-      render();
+      if (openImportedWeights) {
+        openImportedWeights = false;
+        tab = 'body';
+        tabs();
+        weightPage();
+      } else render();
     },
     lock() {
       generation++; snapshot = null; ownerKey = null; activeId = null; drafts.clear(); root.replaceChildren();
