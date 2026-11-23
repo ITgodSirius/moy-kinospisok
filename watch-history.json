@@ -872,12 +872,6 @@
       "markedAt": "2026-11-22T21:31:38.806Z"
     },
     {
-      "card": "tmdb-movie-1700884",
-      "kind": "watching",
-      "value": true,
-      "markedAt": "2026-11-20T23:06:37.497Z"
-    },
-    {
       "card": "tmdb-movie-1568060",
       "kind": "favorite",
       "value": true,
@@ -891,6 +885,7 @@
     }
   ],
   "removed": [
+    "tmdb-movie-1700884/watching",
     "tmdb-tv-254630-s1/favorite"
   ]
 }
