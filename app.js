@@ -1314,7 +1314,7 @@ function renderFeed() {
   el('filter-count').hidden = !count; el('filter-count').textContent = count;
   el('apply').textContent = 'Показать (' + result.length + ')';
   const grid = desktop.matches && layout === 'grid';
-  const records = showFeedPanel(state.list + '/' + state.type);
+  const records = showFeedPanel([state.list, state.type, grid ? 'grid' : 'list'].join('/'));
   records.classList.toggle('poster-grid', grid && result.length > 0);
   displayCards(records, result.length ? result.map(item => feedCard(item, grid)) : [empty()]);
   if (kind && id) {
