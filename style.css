@@ -567,6 +567,11 @@ a.quote-source:hover{color:var(--blue)}
   .training-body-history { grid-area:history }
 }
 #training-content:has(> .training-layout) { height:100%; grid-template-rows:minmax(0,1fr); padding-bottom:0 }
+#training-content[data-session] { height:100%; grid-template-rows:auto minmax(0,1fr); padding-bottom:0 }
+.training-session-heading { display:grid; gap:8px }
+.training-session-body { min-height:0; overflow:auto; overscroll-behavior:contain; padding-bottom:max(48px,env(safe-area-inset-bottom)); scroll-padding-block:12px }
+.training-session-body:focus-visible { outline-offset:-3px }
+.training-session-body>.training-row { margin-top:14px }
 .training-layout { display:grid; grid-template-columns:minmax(160px,230px) minmax(0,1fr); grid-template-rows:minmax(0,1fr); gap:24px }
 .training-history { min-height:0; grid-template-rows:auto minmax(0,1fr) }
 .training-history-cards { display:grid; align-content:start; gap:12px; overflow:auto; overscroll-behavior:contain; padding-bottom:max(48px,env(safe-area-inset-bottom)) }
@@ -583,6 +588,8 @@ a.quote-source:hover{color:var(--blue)}
 .training-column-head { color:var(--muted); font-size:.82rem }
 .training-set .training-field > span { position:absolute; clip-path:inset(50%); width:1px; height:1px; overflow:hidden }
 .training-target,.training-saved { color:var(--blue) }
+.training-set-completed { display:inline-flex; gap:6px; align-items:center; min-height:36px; cursor:pointer }
+.training-set-completed input { width:18px; height:18px; accent-color:var(--blue) }
 .training-set-note { grid-column:1/-1 }
 .training-set-number,.training-stat { font-variant-numeric:tabular-nums }
 .training-set .btn { min-height:36px; padding-inline:8px }

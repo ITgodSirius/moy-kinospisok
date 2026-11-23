@@ -193,7 +193,7 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     feed.scrollTop = 0;
   }
   function workoutScrollArea() {
-    return root.querySelector('.training-history-cards') || feed;
+    return root.querySelector('.training-history-cards, .training-session-body') || feed;
   }
   function visitWorkout(from, to) {
     const context = { navigationId, program: selectedProgram, day: selectedDay };
@@ -610,7 +610,7 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
       await navigator.clipboard.writeText(JSON.stringify(s, null, 2)); announce('JSON скопирован');
     } catch { announce('Браузер не разрешил копирование.'); }
   }
-  function setEditor(ex, ei, set, si, editable) {
+  function setEditor(ei, set, si, editable, editors, updateSave) {
     const key = ei + '/' + si;
     const item = node('div', 'training-set');
     const caption = node('div', 'training-set-number', (set.extra ? 'Доп. ' : '') + (si + 1));
@@ -618,9 +618,6 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     const previous = set.previous;
     const last = node('span', 'training-past', previous ? (previous.loadLabel ?? previous.weight ?? '—') + ' × ' + previous.reps + (previous.reserve != null ? ' (' + (previous.reserveLabel ?? previous.reserve) + ')' : '') : '—');
     const edit = () => { drafts.set(key, { ...set.actual, note: set.note }); sessionPage(); };
-    const changeSet = (values) => updateSession(s => { Object.assign(s.exercises[ei].sets[si], values); }, () => {
-      drafts.delete(key); sessionPage();
-    });
     item.append(caption, last);
     if ((set.status !== 'planned' && !drafts.has(key)) || !editable) {
       const a = set.actual;
@@ -640,19 +637,38 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     note.wrap.hidden = !note.input.value && !draft.showNote;
     const actions = row();
     const target = node('small', 'training-target', 'Цель ' + set.target.reps);
-    function remember() {
-      drafts.set(key, { weight: weight.input.value, reps: reps.input.value, reserve: reserve.input.value, note: note.input.value, showNote: !note.wrap.hidden });
+    const completed = set.status === 'planned' ? field('Выполнен', '', { type: 'checkbox' }) : null;
+    function remember(changed) {
+      drafts.set(key, { weight: weight.input.value, reps: reps.input.value, reserve: reserve.input.value, note: note.input.value, showNote: !note.wrap.hidden, changed });
+      if (completed) completed.input.checked = changed;
       target.hidden = set.target.reps == null || reps.input.valueAsNumber === set.target.reps;
+      updateSave();
     }
-    for (const input of [weight.input, reps.input, reserve.input, note.input]) input.oninput = remember;
+    for (const input of [weight.input, reps.input, reserve.input, note.input]) input.oninput = () => remember(true);
     target.hidden = set.target.reps == null || reps.input.valueAsNumber === set.target.reps;
     reps.wrap.append(target);
-    actions.append(btn('Сохранить', () => {
-      if (![weight.input, reps.input, reserve.input].every(input => input.reportValidity())) return;
-      changeSet({ actual: { weight: weight.input.valueAsNumber, reps: reps.input.valueAsNumber, reserve: reserve.input.value === '' ? null : reserve.input.valueAsNumber }, note: note.input.value, status: 'done' });
-    }), btn('Пропустить', () => changeSet({ actual: null, status: 'skipped', note: note.input.value })));
+    editors.set(key, () => {
+      if (![weight.input, reps.input, reserve.input].every(input => input.reportValidity())) return null;
+      const actual = { ...set.actual, weight: weight.input.valueAsNumber, reps: reps.input.valueAsNumber, reserve: reserve.input.value === '' ? null : reserve.input.valueAsNumber };
+      if (actual.weight !== set.actual?.weight) delete actual.loadLabel;
+      if (actual.reserve !== set.actual?.reserve) delete actual.reserveLabel;
+      return { ei, si, values: { actual, note: note.input.value, status: 'done' } };
+    });
+    if (completed) {
+      completed.wrap.className = 'training-set-completed';
+      completed.wrap.prepend(completed.input);
+      completed.input.checked = !!draft.changed;
+      completed.input.onchange = () => {
+        if (completed.input.checked) remember(true);
+        else { drafts.delete(key); sessionPage(); }
+      };
+      actions.append(completed.wrap);
+    }
+    actions.append(btn('Пропустить', () => updateSession(s => {
+      Object.assign(s.exercises[ei].sets[si], { actual: null, status: 'skipped', note: note.input.value });
+    }, () => { drafts.delete(key); sessionPage(); })));
     if (drafts.has(key) && set.status !== 'planned') actions.append(btn('Отмена', () => { drafts.delete(key); sessionPage(); }));
-    const addNote = btn('+', () => { note.wrap.hidden = false; remember(); note.input.focus(); });
+    const addNote = btn('+', () => { note.wrap.hidden = false; remember(!!drafts.get(key)?.changed); note.input.focus(); });
     addNote.setAttribute('aria-label', 'Заметка к подходу ' + (si+1));
     actions.append(addNote);
     item.append(weight.wrap, reps.wrap, reserve.wrap, actions, note.wrap);
@@ -661,14 +677,39 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
   function sessionPage() {
     const s = session();
     if (!s) return home();
-    const scroll = root.dataset.session === s.id ? el('training-feed').scrollTop : 0;
+    const scroll = root.dataset.session === s.id ? workoutScrollArea().scrollTop : 0;
     const editable = !s.finished || historyEdit;
+    const editors = new Map();
+    const save = btn('Сохранить', saveSets, true);
+    function updateSave() {
+      save.disabled = !historyEdit && ![...drafts.values()].some(draft => draft.changed);
+    }
+    function saveSets() {
+      const updates = [];
+      for (const [key, read] of editors) {
+        if (!drafts.get(key)?.changed) continue;
+        const update = read();
+        if (!update) return;
+        updates.push(update);
+      }
+      function finishEditing() {
+        drafts.clear();
+        historyEdit = false;
+        sessionPage();
+      }
+      if (!updates.length) return finishEditing();
+      updateSession(record => {
+        for (const { ei, si, values } of updates) Object.assign(record.exercises[ei].sets[si], values);
+      }, () => { finishEditing(); announce('Изменения сохранены'); });
+    }
     const controls = row(btn('Копировать JSON', () => copySession(s)));
     const definition = historyProgram(s.programId);
     if (definition && s.dayId) controls.append(btn('История подпрограммы', () => openTimeline(definition, 'day')));
-    if (!editable) controls.append(btn('Изменить', () => { historyEdit = true; sessionPage(); }));
+    if (editable) { updateSave(); controls.append(save); }
+    else controls.append(btn('Изменить', () => { historyEdit = true; sessionPage(); }));
     const meta = hint([s.gym, s.program, dateLabel(s.date)].join(' · '));
-    const items = [section(s.day + (s.finished ? ' · история' : ' · тренировка'), controls), meta];
+    const header = node('header', 'training-session-heading');
+    header.append(section(s.day + (s.finished ? ' · история' : ' · тренировка'), controls), meta);
     const group = node('div', 'training-table');
     for (const [ei, ex] of s.exercises.entries()) {
       const block = node('section', 'training-exercise');
@@ -686,7 +727,7 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
       const labels = node('div', 'training-set training-column-head');
       for (const label of ['Подход', 'Прошлый раз', 'Вес, кг', 'Повторы', 'В запасе', 'Запись']) labels.append(node('span', '', label));
       block.append(labels);
-      ex.sets.forEach((set,si) => block.append(setEditor(ex, ei, set, si, editable)));
+      ex.sets.forEach((set,si) => block.append(setEditor(ei, set, si, editable, editors, updateSave)));
       if (editable) block.append(btn('+ Подход', () => updateSession(record => {
         record.exercises[ei].sets.push({ ...freshSet(copy(ex.sets.at(-1)?.target)), extra: true });
       })));
@@ -694,13 +735,17 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     }
     const footer = row(backButton('К истории', () => returnToList(s)));
     if (!s.finished) footer.append(btn('Завершить тренировку', () => {
-      if (drafts.size) return announce('Сохраните изменённые подходы или отметьте их пропущенными.');
+      if ([...drafts.values()].some(draft => draft.changed)) return announce('Сохраните изменённые подходы или отметьте их пропущенными.');
       updateSession(record => { record.finished = true; }, () => returnToList(s));
     }, true));
-    else if (historyEdit) footer.append(btn('Готово', () => { historyEdit = false; drafts.clear(); sessionPage(); }));
-    items.push(group, footer); page(...items);
+    const body = node('div', 'training-session-body');
+    body.tabIndex = 0;
+    body.setAttribute('role', 'region');
+    body.setAttribute('aria-label', 'Упражнения и подходы');
+    body.append(group, footer);
+    page(header, body);
     root.dataset.session = s.id;
-    el('training-feed').scrollTop = scroll;
+    body.scrollTop = scroll;
   }
   function diary(kind, day = today(), focusEditor = false) {
     const body = kind === 'body';
