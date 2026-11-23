@@ -34,14 +34,14 @@ for (const item of wishlist) {
   wishIds.add(item.id);
 }
 // Pages serves the repository root. Update its asset URLs before making the other builds.
-const [history, training, privateStore, css, originalApp, originalPage] = await Promise.all(
-  ['history.js', 'training.js', 'private-store.js', 'style.css', 'app.js', 'index.html'].map(name => readFile(path(name), 'utf8'))
+const [history, training, nutrition, privateStore, css, originalApp, originalPage] = await Promise.all(
+  ['history.js', 'training.js', 'nutrition.js', 'private-store.js', 'style.css', 'app.js', 'index.html'].map(name => readFile(path(name), 'utf8'))
 );
 function versionedUrl(name, content) {
   return './' + name + '?v=' + createHash('sha256').update(content).digest('hex').slice(0, 12);
 }
-const modules = new Map([['history.js', history], ['training.js', training], ['private-store.js', privateStore]]);
-const app = originalApp.replace(/'\.\/(history|training|private-store)\.js(?:\?v=[a-f0-9]+)?'/g,
+const modules = new Map([['history.js', history], ['training.js', training], ['nutrition.js', nutrition], ['private-store.js', privateStore]]);
+const app = originalApp.replace(/'\.\/(history|training|nutrition|private-store)\.js(?:\?v=[a-f0-9]+)?'/g,
   (_, name) => "'" + versionedUrl(name + '.js', modules.get(name + '.js')) + "'");
 const styleUrl = versionedUrl('style.css', css);
 const appUrl = versionedUrl('app.js', app);
@@ -76,7 +76,7 @@ const dataUrl = file => {
 };
 const offline = catalog.map(item => ({ ...item, poster: dataUrl(item.poster), gallery: (item.gallery || []).map(dataUrl) }));
 const offlineWishlist = wishlist.map(item => ({ ...item, image: dataUrl(item.image) }));
-const code = app.replace(/'\.\/(history|training|private-store)\.js\?v=[a-f0-9]+'/g,
+const code = app.replace(/'\.\/(history|training|nutrition|private-store)\.js\?v=[a-f0-9]+'/g,
   (_, name) => "'" + dataUrl(name + '.js') + "'");
 const json = JSON.stringify(offline).replaceAll('<','\\u003c');
 const wishJson = JSON.stringify(offlineWishlist).replaceAll('<', '\\u003c');

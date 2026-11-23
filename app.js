@@ -1,7 +1,8 @@
 import { hosted, shared, historySnapshotKey, credential, connectHistory, marked, markTime, reactionValue, busy, refreshHistory, setMark } from './history.js?v=0147301cae10';
 
 import { KeyError, verifyOwner, openPrivateFile, savePrivateFile } from './private-store.js?v=041c70d8f2eb';
-import { setupTraining, emptyTraining } from './training.js?v=3485ed2809a1';
+import { setupNutrition } from './nutrition.js?v=d2738e9e185d';
+import { setupTraining, emptyTraining } from './training.js?v=b2351924bdc1';
 
 const el = id => document.getElementById(id);
 let pendingActions = 0;
@@ -886,7 +887,7 @@ function setupCollections() {
   let current = 'cinema';
   let listScroll = 0;
   const quotes = setupQuotes();
-  const workouts = setupTraining({ el, node, button, announce, withLoading, credential, savePrivateFile });
+  const workouts = setupTraining({ setupNutrition, el, node, button, announce, withLoading, credential, savePrivateFile });
   let navigation = 0;
   let activeKey;
   function isPrivate(name) { return name === 'quotes' || name === 'training'; }

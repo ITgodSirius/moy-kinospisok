@@ -20,7 +20,7 @@ export function nextTarget(previous, step, restartReps) {
 const fieldsBody = ['Вес, кг', 'Плечи, см', 'Грудь, см', 'Талия, см', 'Бёдра, см', 'Бедро, см'];
 const fieldsNutrition = ['Белки, г', 'Жиры, г', 'Углеводы, г'];
 
-export function setupTraining({ el, node, button, announce, withLoading, credential, savePrivateFile }) {
+export function setupTraining({ setupNutrition, el, node, button, announce, withLoading, credential, savePrivateFile }) {
   const root = el('training-content');
   let snapshot, ownerKey, tab, settings, selectedDay, activeId, saving = false, generation = 0;
   const db = () => snapshot.data;
@@ -84,6 +84,8 @@ export function setupTraining({ el, node, button, announce, withLoading, credent
     } catch (error) { if (generation === rev) announce(error.message); }
     finally { if (generation === rev) saving = false; }
   }
+  const plans = setupNutrition({ db, change, page, node, btn, field, row, announce,
+    legacy: () => diary('nutrition') });
   function settingList(kind) {
     const programs = kind === 'programs';
     const entries = db()[kind];
@@ -474,7 +476,8 @@ export function setupTraining({ el, node, button, announce, withLoading, credent
     tabs();
     if (tab === 'settings') settingsPage();
     else if (tab === 'sessions') activeId ? sessionPage() : home();
-    else diary(tab);
+    else if (tab === 'nutrition') plans.open();
+    else diary('body');
   }
   for (const b of document.querySelectorAll('[data-training-tab]')) b.onclick = () => {
     tab = b.dataset.trainingTab; render();
