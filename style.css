@@ -188,8 +188,9 @@ details[open] summary svg{transform:rotate(180deg)}
  .view-switch button{display:flex;align-items:center;gap:6px;min-height:32px;padding:0 9px;border-radius:5px;font-size:.875rem;font-weight:550}
  .view-switch button[aria-pressed=true]{background:var(--tint);color:var(--blue)}
  .view-switch .ico{width:16px;height:16px}
- #feed>.wrap:has(>.poster-grid){width:min(100%,1264px);padding:20px 24px 28px}
+ #feed>.wrap:has(>#records.poster-grid){width:min(100%,1264px);padding:20px 24px 28px}
  .poster-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+ .poster-grid[hidden]{display:none}
  .poster-card{position:relative;display:flex;flex-direction:column;min-width:0;overflow:hidden;border:1px solid var(--line);border-radius:13px;background:var(--surface)}
  .poster-card.recent-release{border-color:#c5a45a}
  .poster-image{position:relative;aspect-ratio:2/3;background:var(--chip)}

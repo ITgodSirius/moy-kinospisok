@@ -607,6 +607,71 @@ function posterCard(item) {
   section.append(image, caption);
   return section;
 }
+
+// The catalog objects live for the lifetime of the page. Each layout needs at
+// most one card per title, even when a mark moves it to a different section.
+const listCards = new WeakMap();
+const gridCards = new WeakMap();
+const historyKinds = [...Object.keys(markActions), 'reaction'];
+function feedCard(item, grid) {
+  const cache = grid ? gridCards : listCards;
+  const history = JSON.stringify([reactionValue(item.id), ...historyKinds.map(kind =>
+    [markTime(item.id, kind), busy(item.id, kind)])]);
+  let saved = cache.get(item);
+  if (!saved) {
+    saved = { element: grid ? posterCard(item) : card(item), history };
+    cache.set(item, saved);
+  }
+  const section = saved.element;
+  if (saved.history !== history) {
+    section.querySelector('.card-marks').replaceWith(cardMarks(item, grid ? { kinds: ['favorite', 'watched'] } : undefined));
+    if (grid) {
+      section.querySelector('.reactions')?.remove();
+      if (marked(item.id, 'watched')) section.querySelector('.poster-caption').append(reactionButtons(item, true));
+    } else {
+      section.querySelector('.card-history').replaceWith(cardHistory(item));
+    }
+    saved.history = history;
+  }
+  if (section.classList.contains('recent-release') !== isRecent(item)) {
+    section.classList.toggle('recent-release', isRecent(item));
+    section.querySelector(grid ? '.poster-date' : '.date').replaceWith(releaseDate(item, grid));
+  }
+  return section;
+}
+
+function displayCards(container, cards) {
+  const wanted = new Set(cards);
+  for (const child of Array.from(container.children)) {
+    if (!wanted.has(child)) child.remove();
+  }
+  let next = container.firstElementChild;
+  for (const card of cards) {
+    if (card === next) next = next.nextElementSibling;
+    else container.insertBefore(card, next);
+  }
+}
+
+// Leave visited feeds mounted. Only the visible panel is the target of the
+// search control, keyboard focus and scroll restoration.
+const feedPanels = new Map();
+function showFeedPanel(key) {
+  const current = el('records');
+  if (!feedPanels.size) feedPanels.set(key, current);
+  let panel = feedPanels.get(key);
+  if (!panel) {
+    panel = node('div');
+    current.after(panel);
+    feedPanels.set(key, panel);
+  }
+  if (current !== panel) {
+    current.hidden = true;
+    current.removeAttribute('id');
+    panel.id = 'records';
+    panel.hidden = false;
+  }
+  return panel;
+}
 function showDetails(item) {
   const dialog = el('film-details');
   detailItem = item;
@@ -1187,7 +1252,7 @@ function renderSearch() {
   }).sort((a, b) => collator.compare(a.title, b.title) || (a.season || 0) - (b.season || 0)) : [];
   el('search-status').textContent = !query ? 'Введите название фильма или сериала.' :
     result.length ? 'Найдено совпадений: ' + result.length : 'Ничего не найдено. Попробуйте другое название.';
-  const records = el('records');
+  const records = showFeedPanel('search');
   const focused = document.activeElement;
   const id = focused.closest('.search-result')?.dataset.id;
   records.replaceChildren(...result.map(searchResult));
@@ -1210,8 +1275,6 @@ function openSearch(base = saveView(), search = {}) {
   const input = el('catalog-query');
   input.value = search.query || '';
   setSearchOpen(true);
-  synopsisObserver.disconnect();
-  el('records').classList.remove('poster-grid');
   renderSearch();
   el('feed').scrollTop = search.scrollTop || 0;
   input.focus({ preventScroll: true });
@@ -1250,11 +1313,10 @@ function renderFeed() {
   const count = filterIds.filter(id => el(id).value).length;
   el('filter-count').hidden = !count; el('filter-count').textContent = count;
   el('apply').textContent = 'Показать (' + result.length + ')';
-  synopsisObserver.disconnect();
   const grid = desktop.matches && layout === 'grid';
-  const records = el('records');
+  const records = showFeedPanel(state.list + '/' + state.type);
   records.classList.toggle('poster-grid', grid && result.length > 0);
-  records.replaceChildren(...(result.length ? result.map(grid ? posterCard : card) : [empty()]));
+  displayCards(records, result.length ? result.map(item => feedCard(item, grid)) : [empty()]);
   if (kind && id) {
     const same = el('records').querySelector('[data-id="' + CSS.escape(id) + '"]');
     const activeList = [...document.querySelectorAll('[data-list][aria-pressed="true"]')].find(button => button.getClientRects().length);
