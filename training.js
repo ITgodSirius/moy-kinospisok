@@ -645,7 +645,11 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
       target.hidden = set.target.reps == null || reps.input.valueAsNumber === set.target.reps;
       updateSave();
     }
-    for (const input of [weight.input, reps.input, reserve.input, note.input]) input.oninput = () => remember(true);
+    const inputs = [weight.input, reps.input, reserve.input, note.input];
+    for (const input of inputs) input.oninput = () => {
+      const hasInput = inputs.some(field => field.value !== '' || field.validity.badInput);
+      remember(set.status !== 'planned' || hasInput || !!set.note);
+    };
     target.hidden = set.target.reps == null || reps.input.valueAsNumber === set.target.reps;
     reps.wrap.append(target);
     editors.set(key, () => {
@@ -737,7 +741,14 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     const footer = row(backButton('К истории', () => returnToList(s)));
     if (!s.finished) footer.append(btn('Завершить тренировку', () => {
       if ([...drafts.values()].some(draft => draft.changed)) return announce('Сохраните изменённые подходы или отметьте их пропущенными.');
-      updateSession(record => { record.finished = true; }, () => returnToList(s));
+      updateSession(record => {
+        for (const exercise of record.exercises) {
+          for (const set of exercise.sets) {
+            if (set.status === 'planned' && set.actual == null) set.status = 'skipped';
+          }
+        }
+        record.finished = true;
+      }, () => returnToList(s));
     }, true));
     const body = node('div', 'training-session-body');
     body.tabIndex = 0;
