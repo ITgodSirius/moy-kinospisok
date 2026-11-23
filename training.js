@@ -434,7 +434,7 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     root.dataset.session = s.id;
     el('training-feed').scrollTop = scroll;
   }
-  function diary(kind, day = localDate().slice(0, 10)) {
+  function diary(kind, day = localDate().slice(0, 10), focusEditor = false) {
     const body = kind === 'body';
     const records = db()[kind];
     const existing = records[day] || {};
@@ -472,16 +472,46 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
       date.input.onchange = () => { if (date.input.value) diary(kind, date.input.value); };
       content.append(date.wrap, list);
     }
+    const historyHeading = section('История записей');
     const history = node('div', 'training-settings-list');
     const dates = Object.keys(records).sort().reverse();
     if (!dates.length) history.append(hint('Записей пока нет.'));
     for (const d of dates) {
       const card = node('div', 'training-line-card');
-      card.append(node('strong', '', dayLabel(d)),
-        hint(Object.entries(records[d]).map(([k,v]) => k + ': ' + v).join(' · ')), btn('Изменить', () => diary(kind,d)));
+      const label = dayLabel(d);
+      const edit = btn('Изменить', () => diary(kind, d, body));
+      card.append(node('strong', '', label), hint(Object.entries(records[d]).map(([k,v]) => k + ': ' + v).join(' · ')));
+      if (body) {
+        const remove = btn('Удалить', () => {
+          if (!window.confirm(`Удалить запись за ${label}?`)) return;
+          change(next => { delete next.body[d]; }, () => {
+            if (d === day) diary(kind, undefined, true);
+            else {
+              card.remove();
+              if (!history.childElementCount) history.append(hint('Записей пока нет.'));
+              historyHeading.focus({ preventScroll: true });
+            }
+            announce('Запись удалена');
+          });
+        });
+        edit.setAttribute('aria-label', `Изменить запись за ${label}`);
+        remove.setAttribute('aria-label', `Удалить запись за ${label}`);
+        remove.classList.add('training-delete');
+        card.append(row(edit, remove));
+      } else card.append(edit);
       history.append(card);
     }
-    page(section(body ? 'Замеры тела' : 'Дневник БЖУ'), box, section('История записей'), history);
+    if (!body) return page(section('Дневник БЖУ'), box, historyHeading, history);
+    const layout = node('div', 'training-body-diary');
+    const editor = node('section', 'training-body-editor');
+    const archive = node('section', 'training-body-history');
+    editor.tabIndex = -1;
+    historyHeading.tabIndex = -1;
+    editor.append(section('Замеры тела'), box);
+    archive.append(historyHeading, history);
+    layout.append(editor, archive);
+    page(layout);
+    if (focusEditor) editor.focus({ preventScroll: true });
   }
   function render() {
     if (!snapshot) return;
