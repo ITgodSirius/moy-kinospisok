@@ -11,8 +11,24 @@ function today() {
   const date = new Date();
   return new Date(date.getTime() - date.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
 }
+function pairKey(g, p, d, e) { return [g, p, d, e].join('/'); }
 function freshSet(target) {
   return { target: target ?? { weight: null, reps: null }, actual: null, status: 'planned', note: '', extra: false };
+}
+function clearLegacyStartingTargets(sessions) {
+  for (const session of sessions) {
+    if (session.finished) continue;
+    for (const exercise of session.exercises) {
+      // Additional sets copy the target of the preceding set.
+      let hasPrevious = false;
+      for (const set of exercise.sets) {
+        if (!set.extra) hasPrevious = Boolean(set.previous);
+        if (set.status === 'planned' && !hasPrevious && !set.actual && (set.target?.weight != null || set.target?.reps != null)) {
+          set.target = { weight: null, reps: null };
+        }
+      }
+    }
+  }
 }
 const defaultReserve = 2;
 function setDefaults(day, exercise) {
@@ -104,7 +120,7 @@ function saveProgram(data, program) {
         const old = oldDay?.exercises.find(e => e.id === ex.id);
         if (!old || old.name === ex.name) continue;
         for (const gym of data.gyms) {
-          const base = data.baselines[[gym.id, program.id, day.id, ex.id].join('/')];
+          const base = data.baselines?.[pairKey(gym.id, program.id, day.id, ex.id)];
           if (base?.name === old.name) base.name = ex.name;
         }
       }
@@ -315,11 +331,7 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
       }
       const actions = row();
       if (db()[key] !== item.id) actions.append(btn('Использовать по умолчанию', () => change(next => { next[key] = item.id; }, () => { selectedProgram = null; render(); })));
-      if (programs) {
-        const gym = db().gyms.find(g => g.id === (item.gymId || db().defaultGym));
-        if (gym) actions.append(btn('Стартовые значения', () => chooseDay(gym, item, editBaselines)));
-        actions.append(btn('История изменений', () => openTimeline(item)));
-      }
+      if (programs) actions.append(btn('История изменений', () => openTimeline(item)));
       actions.append(btn('Изменить', () => edit(item)));
       card.append(heading, actions); group.append(card);
     }
@@ -407,6 +419,8 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     if (marked && marked !== list.firstElementChild) marked.scrollIntoView({ block: 'start' });
   }
   function editProgram(item) {
+    const programId = item?.id || uid();
+    const gymEdits = new Map();
     const name = field('Название программы', item?.name, { required: true });
     const gymField = node('label', 'training-field'), gym = node('select');
     gym.add(new Option('Любой зал', ''));
@@ -444,6 +458,31 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
         const threshold = number('Прибавлять вес с повторов', exercise.progressAt ?? 15, true, 1, 1);
         card.append(exName.wrap, row(count.wrap, low.wrap, high.wrap, reserve.wrap, rest.wrap, increment.wrap, threshold.wrap),
           row(btn('Выше', () => move(card, -1)), btn('Ниже', () => move(card, 1)), btn('Убрать упражнение', () => card.remove())));
+        const equipment = node('details');
+        const summary = node('summary');
+        const alias = field('Название упражнения в этом зале');
+        const machine = field('Настройки тренажёра');
+        const technique = field('Заметка по технике');
+        let gymKey;
+        function showEquipment() {
+          const selectedGym = db().gyms.find(g => g.id === (gym.value || db().defaultGym));
+          equipment.hidden = !selectedGym;
+          if (!selectedGym) return;
+          gymKey = pairKey(selectedGym.id, programId, day.id, exercise.id);
+          summary.textContent = 'Тренажёр и техника · ' + selectedGym.name;
+          const info = gymEdits.get(gymKey)?.values || db().baselines?.[gymKey];
+          alias.input.placeholder = exName.input.value;
+          alias.input.value = info?.name || '';
+          machine.input.value = info?.machine || '';
+          technique.input.value = info?.technique || '';
+        }
+        equipment.oninput = () => gymEdits.set(gymKey, { card, values: {
+          name: alias.input.value.trim(), machine: machine.input.value.trim(), technique: technique.input.value.trim()
+        } });
+        equipment.append(summary, row(alias.wrap, machine.wrap, technique.wrap));
+        gym.addEventListener('change', showEquipment);
+        showEquipment();
+        card.append(equipment);
         exercises.append(card);
         readExercise.set(card, () => {
           if (!exName.input.value.trim() || high.input.valueAsNumber < low.input.valueAsNumber) throw new Error('Проверьте название и диапазон повторов упражнения.');
@@ -468,7 +507,12 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     const { box, content } = form(() => {
       if (!days.childElementCount || !name.input.value.trim()) return announce('Укажите название программы и добавьте подпрограмму.');
       change(next => {
-        const program = { ...item, id: item?.id || uid(), name: name.input.value.trim(), gymId: gym.value || null, days: [...days.children].map(d => readers.get(d)()) };
+        const program = { ...item, id: programId, name: name.input.value.trim(), gymId: gym.value || null, days: [...days.children].map(d => readers.get(d)()) };
+        for (const [key, { card, values }] of gymEdits) {
+          if (!box.contains(card)) continue;
+          next.baselines ||= {};
+          next.baselines[key] = { ...next.baselines[key], ...values };
+        }
         saveProgram(next, program);
       });
     }, 'Сохранить программу', render);
@@ -550,17 +594,13 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     }
     const grid = node('div', 'training-layout'); grid.append(sidebar, main); page(grid);
   }
-  function pairKey(g, p, d, e) { return [g, p, d, e].join('/'); }
   function start() {
     tab = 'sessions'; tabs();
     const { gym, program } = defaults();
     if (!gym) return editGym();
     if (!program) return editProgram();
-    chooseDay(gym, program, prepare);
-  }
-  function chooseDay(gym, program, onSelect) {
     const choices = node('div', 'training-choice-list');
-    for (const day of program.days) choices.append(btn(day.name, () => onSelect(gym, program, day)));
+    for (const day of program.days) choices.append(btn(day.name, () => prepare(gym, program, day)));
     page(section('Выбери подпрограмму'), hint(gym.name + ' · ' + program.name), choices);
   }
   function prepare(gym, program, day) {
@@ -569,54 +609,20 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     if (unfinished) return openSession(unfinished, true);
     const exercises = day.exercises.map(ex => {
       const key = pairKey(gym.id, program.id, day.id, ex.id);
-      const base = db().baselines[key];
-      const displayName = base?.name || ex.name;
+      const gymSettings = db().baselines?.[key];
+      const displayName = gymSettings?.name || ex.name;
       const previous = latest.flatMap(s => s.exercises.filter(e => e.id === ex.id && e.name === displayName));
       const sets = Array.from({ length: ex.count }, (_, i) => {
         const past = previous.map(e => e.sets.filter(set => !set.extra)[i]).find(s => s?.status === 'done' && Number.isFinite(s.actual?.weight) && Number.isFinite(s.actual?.reps));
-        const set = freshSet(past ? nextTarget(past.actual, ex.step, ex.low, ex.progressAt) : base?.sets?.[i]);
+        const set = freshSet(past ? nextTarget(past.actual, ex.step, ex.low, ex.progressAt) : null);
         if (past) set.previous = copy(past.actual);
         return set;
       });
-      return { ...ex, ...setDefaults(day, ex), name: displayName, machine: base?.machine || '', technique: base?.technique || '', sets };
+      return { ...ex, ...setDefaults(day, ex), name: displayName, machine: gymSettings?.machine || '', technique: gymSettings?.technique || '', sets };
     });
     const session = { id: uid(), date: new Date().toISOString(), gymId: gym.id, gym: gym.name, programId: program.id, program: program.name, programRevision: db().programHistory?.[program.id]?.at(-1)?.date ?? null,
       dayId: day.id, day: day.name, finished: false, exercises };
     return change(next => next.sessions.push(session), () => openSession(session, true));
-  }
-  function editBaselines(gym, program, day) {
-    const edits = new Map();
-    const { box, content } = form(() => {
-      if (!edits.size) return settingsPage();
-      change(next => {
-        for (const [key, read] of edits) next.baselines[key] = read();
-      }, settingsPage);
-    }, 'Сохранить стартовые значения', settingsPage);
-    for (const ex of day.exercises) {
-      const key = pairKey(gym.id, program.id, day.id, ex.id);
-      const base = db().baselines[key];
-      const card = node('fieldset', 'training-editor-group');
-      const name = field('Упражнение в этом зале', base?.name || ex.name);
-      const machine = field('Настройки тренажёра', base?.machine);
-      const technique = field('Заметка по технике', base?.technique);
-      card.append(node('legend', '', ex.name), name.wrap, row(machine.wrap, technique.wrap));
-      const pairs = Array.from({ length: ex.count }, (_, i) => {
-        const target = base?.sets?.[i];
-        const weight = number('Вес, кг', target?.weight, false, 'any');
-        const reps = number('Повторы', target?.reps, false, 1, 1);
-        card.append(row(node('strong', '', 'Подход ' + (i+1)), weight.wrap, reps.wrap)); return [weight.input, reps.input];
-      });
-      function read() {
-        const sets = [...(base?.sets || [])];
-        pairs.forEach(([weight, reps], i) => {
-          sets[i] = { ...sets[i], weight: weight.value === '' ? null : weight.valueAsNumber, reps: reps.value === '' ? null : reps.valueAsNumber };
-        });
-        return { ...base, name: name.input.value.trim() || ex.name, machine: machine.input.value.trim(), technique: technique.input.value.trim(), sets };
-      }
-      card.oninput = () => edits.set(key, read);
-      content.append(card);
-    }
-    page(section(day.name + ' · стартовые значения'), hint(gym.name + ' · ' + program.name), box);
   }
   let historyEdit = false;
   const drafts = new Map();
@@ -1078,9 +1084,11 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     open(file) {
       const data = file.data;
       if (data?.version !== 1 || !['gyms','programs','sessions'].every(k => Array.isArray(data[k])) ||
-          !['nutrition','body','baselines'].every(k => data[k] && typeof data[k] === 'object' && !Array.isArray(data[k]))) {
+          !['nutrition','body'].every(k => data[k] && typeof data[k] === 'object' && !Array.isArray(data[k])) ||
+          (data.baselines != null && (typeof data.baselines !== 'object' || Array.isArray(data.baselines)))) {
         throw new Error('Неизвестный формат дневника тренировок.');
       }
+      clearLegacyStartingTargets(data.sessions);
       generation++; snapshot = file; ownerKey = credential(); saving = false; navigationId = uid();
       tab = 'sessions'; settings = 'programs'; selectedDay = null; selectedProgram = null; activeId = null; drafts.clear();
       if (openImportedWeights) {
