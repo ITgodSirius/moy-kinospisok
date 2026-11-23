@@ -14,6 +14,10 @@ function today() {
 function freshSet(target) {
   return { target: target ?? { weight: null, reps: null }, actual: null, status: 'planned', note: '', extra: false };
 }
+const defaultReserve = 2;
+function setDefaults(day, exercise) {
+  return { reserve: exercise.reserve ?? day?.reserve ?? defaultReserve, rest: exercise.rest ?? day?.rest ?? null };
+}
 export function nextTarget(previous, step, restartReps, threshold = 15) {
   const { weight, reps } = previous;
   return reps >= threshold ? { weight: Number((weight + step).toFixed(3)), reps: restartReps }
@@ -37,6 +41,10 @@ function programChanges(before, after) {
   compareList(before.days, after.days, '', (prev, day) => {
     if (prev.name !== day.name) changes.push(prev.name + ' → ' + day.name);
     const prefix = after.days.length > 1 ? day.name + ' · ' : '';
+    for (const [key, label, fallback] of [['reserve', 'Запас повторов', defaultReserve], ['rest', 'Отдых между подходами (мин)', 'Не задан']]) {
+      const from = prev[key] ?? fallback, to = day[key] ?? fallback;
+      if (from !== to) changes.push(prefix + label + ' по умолчанию ' + from + ' → ' + to);
+    }
     compareList(prev.exercises, day.exercises, prefix, (a, b) => {
       if (a.name !== b.name) changes.push(prefix + a.name + ' → ' + b.name);
       if ((a.count == null) !== (b.count == null)) {
@@ -77,6 +85,19 @@ function saveProgram(data, program) {
   if (!revisions.length && before) revisions.push({ date: null, program: copy(before) });
   if (!before || programChanges(before, program).length) revisions.push({ date: new Date().toISOString(), program: copy(program) });
   if (before) {
+    for (const session of data.sessions) {
+      if (session.finished || session.programId !== program.id) continue;
+      const day = program.days.find(d => d.id === session.dayId);
+      const previousDay = before.days.find(d => d.id === session.dayId);
+      for (const exercise of session.exercises) {
+        const configured = day?.exercises.find(ex => ex.id === exercise.id);
+        const previous = previousDay?.exercises.find(ex => ex.id === exercise.id);
+        if (!configured || !previous) continue;
+        const from = setDefaults(previousDay, previous), to = setDefaults(day, configured);
+        if (from.reserve !== to.reserve) exercise.reserve = to.reserve;
+        if (from.rest !== to.rest) exercise.rest = to.rest;
+      }
+    }
     for (const day of program.days) {
       const oldDay = before.days.find(d => d.id === day.id);
       for (const ex of day.exercises) {
@@ -330,13 +351,13 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     page(section(item ? 'Изменить зал' : 'Новый зал'), box);
     name.input.focus();
   }
+  function workoutRevisionIndex(revisions, workout) {
+    return workout.programRevision ? revisions.findIndex(v => v.date === workout.programRevision)
+      : revisions.findLastIndex(v => !v.date || Date.parse(v.date) <= Date.parse(workout.date));
+  }
   function programTimeline(program, workout) {
     const saved = db().programHistory?.[program.id] || [];
-    let usedIndex = -1;
-    if (workout) {
-      usedIndex = workout.programRevision ? saved.findIndex(v => v.date === workout.programRevision)
-        : saved.findLastIndex(v => !v.date || Date.parse(v.date) <= Date.parse(workout.date));
-    }
+    const usedIndex = workout ? workoutRevisionIndex(saved, workout) : -1;
     const entries = timelineEntries(saved.length ? saved : [{ date: null, program }], workout, usedIndex).reverse();
     const list = node('div', 'training-settings-list training-revisions');
     for (const [index, entry] of entries.entries()) {
@@ -365,6 +386,10 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
       }
       for (const day of days) {
         details.append(node('h3', '', day.name));
+        if (day.reserve != null || day.rest != null) {
+          details.append(hint('Запас по умолчанию · ' + (day.reserve ?? defaultReserve) +
+            ' · Отдых между подходами · ' + (day.rest == null ? 'Не задан' : day.rest.toLocaleString('ru-RU') + ' мин')));
+        }
         const items = node('ol');
         for (const ex of day.exercises) {
           const values = [ex.count != null && 'подходов ' + ex.count,
@@ -395,6 +420,9 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
       group.open = !day.name || item?.days.length === 1;
       const summary = node('summary', '', day.name || 'Новая подпрограмма');
       const name = field('Название подпрограммы', day.name, { required: true });
+      const reserve = number('Запас повторов по умолчанию', day.reserve ?? defaultReserve);
+      const rest = number('Отдых между подходами по умолчанию, мин', day.rest, false, 'any');
+      rest.input.placeholder = 'Не задан';
       name.input.oninput = () => { summary.textContent = name.input.value.trim() || 'Новая подпрограмма'; };
       const exercises = node('div', 'training-editor-list');
       const readExercise = new Map();
@@ -410,7 +438,8 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
         const low = number('Повторы от', exercise.low ?? 10, true, 1, 1);
         const high = number('Повторы до', exercise.high ?? 15, true, 1, 1);
         const reserve = number('Запас повторов', exercise.reserve, false);
-        const rest = number('Отдых, мин', exercise.rest, false, 'any');
+        const rest = number('Отдых между подходами, мин', exercise.rest, false, 'any');
+        reserve.input.placeholder = rest.input.placeholder = 'Из подпрограммы';
         const increment = number('Прибавка веса, кг', exercise.step ?? 2.5, true, 'any', 0.001);
         const threshold = number('Прибавлять вес с повторов', exercise.progressAt ?? 15, true, 1, 1);
         card.append(exName.wrap, row(count.wrap, low.wrap, high.wrap, reserve.wrap, rest.wrap, increment.wrap, threshold.wrap),
@@ -425,12 +454,13 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
       day.exercises.forEach(addExercise);
       if (!day.exercises.length) addExercise();
       const body = node('div', 'training-editor-list');
-      body.append(name.wrap, exercises, row(btn('Добавить упражнение', () => addExercise()), btn('Убрать подпрограмму', () => group.remove())));
+      body.append(name.wrap, row(reserve.wrap, rest.wrap), exercises, row(btn('Добавить упражнение', () => addExercise()), btn('Убрать подпрограмму', () => group.remove())));
       group.append(summary, body);
       days.append(group);
       readers.set(group, () => {
         if (!name.input.value.trim() || !exercises.childElementCount) throw new Error('Укажите название подпрограммы и добавьте упражнение.');
-        return { id: day.id, name: name.input.value.trim(), exercises: [...exercises.children].map(element => readExercise.get(element)()) };
+        return { id: day.id, name: name.input.value.trim(), reserve: reserve.input.valueAsNumber,
+          rest: rest.input.value === '' ? null : rest.input.valueAsNumber, exercises: [...exercises.children].map(element => readExercise.get(element)()) };
       });
     }
     (item?.days || []).forEach(addDay);
@@ -548,7 +578,7 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
         if (past) set.previous = copy(past.actual);
         return set;
       });
-      return { ...ex, name: displayName, machine: base?.machine || '', technique: base?.technique || '', sets };
+      return { ...ex, ...setDefaults(day, ex), name: displayName, machine: base?.machine || '', technique: base?.technique || '', sets };
     });
     const session = { id: uid(), date: new Date().toISOString(), gymId: gym.id, gym: gym.name, programId: program.id, program: program.name, programRevision: db().programHistory?.[program.id]?.at(-1)?.date ?? null,
       dayId: day.id, day: day.name, finished: false, exercises };
@@ -616,7 +646,7 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
       announce(message);
     } catch { announce('Браузер не разрешил копирование.'); }
   }
-  function setEditor(ei, set, si, editable, editors, updateActions) {
+  function setEditor(ei, set, si, plannedReserve, editable, editors, updateActions) {
     const key = ei + '/' + si;
     const item = node('div', 'training-set');
     const caption = node('div', 'training-set-number', (set.extra ? 'Доп. ' : '') + (si + 1));
@@ -637,7 +667,7 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     const draft = drafts.get(key) || {};
     const weight = number('Вес, кг', draft.weight ?? set.target.weight, true, 'any');
     const reps = number('Повторы', draft.reps ?? set.target.reps);
-    const reserve = number('В запасе', draft.reserve, false);
+    const reserve = number('В запасе', draft.reserve ?? (set.status === 'planned' ? plannedReserve : null), false);
     const note = field('Заметка', draft.note ?? set.note);
     note.wrap.classList.add('training-set-note');
     note.wrap.hidden = !note.input.value && !draft.showNote;
@@ -652,7 +682,10 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     }
     const inputs = [weight.input, reps.input, reserve.input, note.input];
     for (const input of inputs) input.oninput = () => {
-      const hasInput = inputs.some(field => field.value !== '' || field.validity.badInput);
+      const hasInput = inputs.some(field => {
+        if (field === reserve.input && field.valueAsNumber === plannedReserve) return false;
+        return field.value !== '' || field.validity.badInput;
+      });
       remember(set.status !== 'planned' || hasInput || !!set.note);
     };
     target.hidden = set.target.reps == null || reps.input.valueAsNumber === set.target.reps;
@@ -746,13 +779,16 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     const header = node('header', 'training-session-heading');
     header.append(section(s.day + (s.finished ? ' · история' : ' · тренировка'), controls), meta);
     const group = node('div', 'training-table');
+    const revisions = db().programHistory?.[s.programId] || [];
+    const sessionProgram = revisions[workoutRevisionIndex(revisions, s)]?.program;
+    const sessionDay = sessionProgram?.days.find(day => day.id === s.dayId);
     for (const [ei, ex] of s.exercises.entries()) {
       const block = node('section', 'training-exercise');
       const planned = ex.sets.filter(set => !set.extra);
       const extra = ex.sets.filter(set => set.extra && set.status === 'done').length;
       const done = planned.filter(set => set.status === 'done').length;
       const head = node('div', 'training-section-head');
-      head.append(node('h3', '', ex.name), hint([ex.rest != null ? 'Отдых ' + ex.rest + ' мин' : '', done + ' из ' + planned.length + (extra ? ' + ' + extra + ' доп.' : '')].filter(Boolean).join(' · ')));
+      head.append(node('h3', '', ex.name), hint(done + ' из ' + planned.length + (extra ? ' + ' + extra + ' доп.' : '')));
       block.append(head);
       const settingsText = [ex.machine, ex.technique].filter(Boolean).join(' · ');
       if (settingsText) block.append(hint(settingsText));
@@ -762,7 +798,17 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
       const labels = node('div', 'training-set training-column-head');
       for (const label of ['Подход', 'Прошлый раз', 'Вес, кг', 'Повторы', 'В запасе', 'Запись']) labels.append(node('span', '', label));
       block.append(labels);
-      ex.sets.forEach((set,si) => block.append(setEditor(ei, set, si, editable, editors, updateActions)));
+      const programExercise = sessionDay?.exercises.find(exercise => exercise.id === ex.id);
+      const defaults = setDefaults(sessionDay, programExercise || {});
+      const rest = ex.rest === undefined ? defaults.rest : ex.rest;
+      const reserve = ex.reserve ?? defaults.reserve;
+      ex.sets.forEach((set, si) => {
+        if (si > 0) {
+          const pause = rest == null ? 'Не задан' : rest.toLocaleString('ru-RU') + ' мин';
+          block.append(node('p', 'training-rest', 'Отдых между подходами · ' + pause));
+        }
+        block.append(setEditor(ei, set, si, reserve, editable, editors, updateActions));
+      });
       if (editable) block.append(btn('+ Подход', () => updateSession(record => {
         record.exercises[ei].sets.push({ ...freshSet(copy(ex.sets.at(-1)?.target)), extra: true });
       })));

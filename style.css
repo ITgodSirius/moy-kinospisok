@@ -587,6 +587,7 @@ a.quote-source:hover{color:var(--blue)}
 .training-table { border:1px solid var(--line); border-radius:10px; background:var(--surface); padding:14px }
 .training-exercise + .training-exercise { border-top:1px solid var(--line); padding-top:14px }
 .training-exercise > .btn { justify-self:start }
+.training-rest { margin:0; color:var(--muted); font-size:.875rem }
 .training-progression { padding:6px 10px; border-radius:6px; background:var(--tint); color:var(--blue) }
 .training-set { display:grid; grid-template-columns:minmax(55px,.45fr) minmax(70px,.8fr) repeat(3,minmax(68px,.7fr)) minmax(200px,2fr); gap:10px; align-items:center; border-bottom:1px solid var(--line); padding-bottom:8px }
 .training-column-head { color:var(--muted); font-size:.82rem }
