@@ -22,7 +22,7 @@ h1{font-size:clamp(1.5rem,2.55vw,2.25rem);font-weight:730;white-space:nowrap}
 #lists button{position:relative;white-space:nowrap;font-weight:520;font-size:clamp(.9375rem,1.3vw,1.08rem)}
 #lists button[aria-pressed=true]{font-weight:700}
 #lists button:is([aria-pressed=true],:active){color:var(--blue)}
-.list-divider{align-self:center;margin-inline:clamp(18px,calc(2.5vw - 6px),34px);color:var(--muted);user-select:none}
+.list-divider{align-self:center;margin-inline:clamp(14px,calc(2.5vw - 10px),30px);color:var(--muted);user-select:none}
 #lists button[aria-pressed=true]::after{content:"";position:absolute;bottom:0;left:0;right:0;height:3px;border-radius:3px;background:var(--blue)}
 .icon-button{border-radius:8px;display:grid;place-items:center;width:42px;height:42px;flex:none;font-size:21px}
 .icon-button:active,.quiet:active,.sort:active{background:var(--tint);color:var(--blue)}
@@ -262,7 +262,7 @@ details[open] summary svg{transform:rotate(180deg)}
  .toolbar{min-height:54px}.entry{gap:18px;grid-template-columns:minmax(0,.85fr) minmax(0,1fr)}
 }
 @media(max-width:760px){
- .list-divider{margin-inline:12px}
+ .list-divider{margin-inline:8px}
  .toolbar{grid-template-columns:minmax(0,1fr);grid-template-areas:"types" "genres" "tools" "updated"}
  .tools{justify-self:stretch;justify-content:space-between}
 }
