@@ -439,8 +439,11 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
       const b = btn(name, () => { selectedDay = id; render(); });
       b.setAttribute('aria-pressed', String(selectedDay === id)); sidebar.append(b);
     }
+    const historyButton = btn('История изменений', () => openTimeline(program));
+    historyButton.classList.add('training-program-history');
+    sidebar.append(historyButton);
     const main = node('div', 'training-history');
-    main.append(section(days.get(selectedDay), btn('История изменений', () => openTimeline(program))), hint('История тренировок'));
+    main.append(section('История тренировок'));
     const sessions = logged.filter(s => s.dayId === selectedDay).sort((a,b) => b.date.localeCompare(a.date));
     if (!sessions.length) main.append(hint('Тренировок пока нет.'));
     for (const s of sessions) {

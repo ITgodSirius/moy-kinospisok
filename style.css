@@ -573,8 +573,9 @@ a.quote-source:hover{color:var(--blue)}
 }
 .training-layout { display:grid; grid-template-columns:minmax(160px,230px) minmax(0,1fr); gap:24px }
 .training-days { display:flex; align-self:start; flex-direction:column; align-items:stretch; gap:6px; border-right:1px solid var(--line); padding-right:14px }
-.training-days .btn { justify-content:flex-start; background:transparent; border-color:transparent }
+.training-days .btn[aria-pressed] { justify-content:flex-start; background:transparent; border-color:transparent }
 .training-days .btn[aria-pressed=true] { color:var(--blue); background:var(--tint) }
+.training-program-history { width:100%; margin-top:6px }
 .training-table { border:1px solid var(--line); border-radius:10px; background:var(--surface); padding:14px }
 .training-exercise + .training-exercise { border-top:1px solid var(--line); padding-top:14px }
 .training-exercise > .btn { justify-self:start }
