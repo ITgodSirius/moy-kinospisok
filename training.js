@@ -7,8 +7,9 @@ const uid = () => crypto.randomUUID();
 const copy = value => structuredClone(value);
 const dateLabel = value => value.length === 10 ? dayLabel(value) : new Date(value).toLocaleString('ru-RU', { dateStyle: 'long', timeStyle: 'short' });
 const dayLabel = day => new Date(day + 'T12:00:00').toLocaleDateString('ru-RU');
-function localDate(date = new Date()) {
-  return new Date(date.getTime() - date.getTimezoneOffset() * 60000).toISOString().slice(0, 16);
+function today() {
+  const date = new Date();
+  return new Date(date.getTime() - date.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
 }
 function freshSet(target = { weight: null, reps: null }) {
   return { target, actual: null, status: 'planned', note: '', extra: false };
@@ -147,6 +148,11 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
   const btn = (label, handler, primary = false) => button(label, primary ? 'training-primary' : '', null, handler);
   const title = text => node('h2', '', text);
   const hint = text => node('p', 'training-hint', text);
+  function displayDay(day) {
+    const date = node('time', 'training-hint', dayLabel(day));
+    date.dateTime = day;
+    return date;
+  }
   const row = (...children) => {
     const wrap = node('div', 'training-row');
     wrap.append(...children); return wrap;
@@ -597,7 +603,7 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
   function session() { return db().sessions.find(s => s.id === activeId); }
   function updateSession(edit, after = sessionPage) {
     const id = activeId;
-    return change(next => edit(next.sessions.find(s => s.id === id), next), after);
+    return change(next => edit(next.sessions.find(s => s.id === id)), after);
   }
   async function copySession(s) {
     try {
@@ -652,51 +658,6 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     item.append(weight.wrap, reps.wrap, reserve.wrap, actions, note.wrap);
     return item;
   }
-  function editSessionExercises(s) {
-    const exercises = node('div', 'training-editor-list');
-    const readers = new Map();
-    const program = db().programs.find(p => p.id === s.programId);
-    const day = program?.days.find(d => d.id === s.dayId);
-    const apply = field('Обновить состав программы для следующих тренировок', '', { type: 'checkbox' });
-    function add(ex) {
-      const card = node('fieldset', 'training-editor-group');
-      const name = field('Упражнение', ex.name, { required: true });
-      const machine = field('Настройки тренажёра', ex.machine);
-      const technique = field('Заметка по технике', ex.technique);
-      const persist = field('Запомнить для этого зала и программы', '', { type: 'checkbox' });
-      const up = btn('Выше', () => { if (card.previousElementSibling) card.previousElementSibling.before(card); });
-      const down = btn('Ниже', () => { if (card.nextElementSibling) card.nextElementSibling.after(card); });
-      card.append(name.wrap, row(machine.wrap, technique.wrap), persist.wrap, row(up, down, btn('Убрать упражнение', () => card.remove())));
-      exercises.append(card);
-      readers.set(card, next => {
-        const edited = { ...copy(ex), name: name.input.value.trim(), machine: machine.input.value.trim(), technique: technique.input.value.trim() };
-        const key = pairKey(s.gymId, s.programId, s.dayId, ex.id);
-        if (persist.input.checked) next.baselines[key] = { ...next.baselines[key], sets: ex.sets.map(set => copy(set.target)), name: edited.name, machine: edited.machine, technique: edited.technique };
-        return edited;
-      });
-    }
-    s.exercises.forEach(add);
-    const { box, content } = form(() => {
-      if (!exercises.childElementCount) return announce('Добавьте хотя бы одно упражнение.');
-      updateSession((record, next) => {
-        record.exercises = [...exercises.children].map(e => readers.get(e)(next));
-        if (!s.finished && day && apply.input.checked) {
-          const updated = copy(program);
-          const editedDay = updated.days.find(d => d.id === day.id);
-          editedDay.exercises = record.exercises.map(ex => {
-            const prior = day.exercises.find(e => e.id === ex.id);
-            return { ...(prior || { id: ex.id, count: Math.max(1, ex.sets.filter(set => !set.extra).length), low: 10, high: 15,
-              reserve: null, rest: ex.rest ?? null, step: ex.step ?? 2.5 }), name: ex.name };
-          });
-          saveProgram(next, updated);
-          record.programRevision = next.programHistory[program.id].at(-1).date;
-        }
-      }, () => { drafts.clear(); sessionPage(); });
-    }, 'Сохранить изменения', sessionPage);
-    content.append(exercises, btn('Добавить упражнение', () => add({ id: uid(), name: '', machine: '', technique: '', step: 2.5, sets: [freshSet()] })));
-    if (day && !s.finished) content.append(apply.wrap);
-    page(section('Упражнения на эту тренировку'), box);
-  }
   function sessionPage() {
     const s = session();
     if (!s) return home();
@@ -705,16 +666,9 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     const controls = row(btn('Копировать JSON', () => copySession(s)));
     const definition = historyProgram(s.programId);
     if (definition && s.dayId) controls.append(btn('История подпрограммы', () => openTimeline(definition, 'day')));
-    if (editable) controls.append(btn('Изменить упражнения', () => editSessionExercises(s)));
-    else controls.append(btn('Изменить', () => { historyEdit = true; sessionPage(); }));
+    if (!editable) controls.append(btn('Изменить', () => { historyEdit = true; sessionPage(); }));
     const meta = hint([s.gym, s.program, dateLabel(s.date)].join(' · '));
     const items = [section(s.day + (s.finished ? ' · история' : ' · тренировка'), controls), meta];
-    if (historyEdit) {
-      const date = field('Дата и время', s.date.length === 10 ? s.date : localDate(new Date(s.date)), { type: s.date.length === 10 ? 'date' : 'datetime-local', required: true });
-      items.push(row(date.wrap, btn('Сохранить дату', () => {
-        if (date.input.reportValidity()) updateSession(record => { record.date = date.input.type === 'date' ? date.input.value : new Date(date.input.value).toISOString(); });
-      })));
-    }
     const group = node('div', 'training-table');
     for (const [ei, ex] of s.exercises.entries()) {
       const block = node('section', 'training-exercise');
@@ -748,7 +702,7 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     root.dataset.session = s.id;
     el('training-feed').scrollTop = scroll;
   }
-  function diary(kind, day = localDate().slice(0, 10), focusEditor = false) {
+  function diary(kind, day = today(), focusEditor = false) {
     const body = kind === 'body';
     const records = db()[kind];
     const existing = records[day] || {};
@@ -763,23 +717,20 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     const { box, content } = form(() => {
       const values = Object.fromEntries([...inputs].filter(([,input]) => input.value !== '').map(([label,input]) => [label,input.valueAsNumber]));
       if (!Object.keys(values).length) return announce('Заполните хотя бы одно значение.');
-      change(next => { next[kind][day] = values; }, () => { diary(kind, day); announce('Запись сохранена'); });
+      const target = records[day] ? day : today();
+      if (target !== day && records[target]) return announce('За сегодня уже есть запись. Откройте её в истории.');
+      change(next => { next[kind][target] = values; }, () => { diary(kind, target); announce('Запись сохранена'); });
     }, 'Сохранить запись');
+    const dateRow = row(displayDay(day));
+    if (day !== today()) dateRow.append(btn(body ? 'К сегодняшним замерам' : 'К сегодняшней записи', () => diary(kind)));
+    content.append(dateRow, list);
     if (body) {
-      const date = node('time', 'training-hint', dayLabel(day));
-      date.dateTime = day;
-      const dateRow = row(date);
-      if (day !== localDate().slice(0, 10)) dateRow.append(btn('К сегодняшним замерам', () => diary(kind)));
       const composition = node('fieldset', 'training-composition');
       const compositionInputs = node('div', 'training-measurements');
       for (const label of fieldsBodyComposition) add(label, compositionInputs);
       for (const label of Object.values(records).flatMap(Object.keys)) add(label);
       composition.append(node('legend', '', 'Состав тела'), compositionInputs);
-      content.append(dateRow, list, composition);
-    } else {
-      const date = field('Дата', day, { type: 'date', required: true });
-      date.input.onchange = () => { if (date.input.value) diary(kind, date.input.value); };
-      content.append(date.wrap, list);
+      content.append(composition);
     }
     const historyHeading = section('История записей');
     const history = node('div', 'training-settings-list');
@@ -894,38 +845,27 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
       archived = record && (record.waist != null || record.note) ? { ...record, weight: null } : null;
     }
     const history = (data.weightHistory || []).filter(entry => entry.day !== day);
-    // A removed or moved day must also hide a copy from an older browser import.
+    // A deleted day must also hide a copy from an older browser import.
     history.push(archived || { day, deleted: true });
     data.weightHistory = history;
   }
-  function weightEditor(records, original, back) {
-    const day = field('Дата', original?.day ?? localDate().slice(0, 10), { type: 'date', required: true });
+  function weightEditor(original, back) {
     const weight = number('Вес, кг', original?.weight, false, 'any');
     const waist = number('Талия, дюймы', original?.waist, false, 'any');
     const note = field('Заметка', original?.note);
     const fromBody = !!original && db().body[original.day]?.['Вес, кг'] > 0;
     const { box, content } = form(() => {
-      const target = day.input.value;
-      if (target !== original?.day && records.has(target)) {
-        day.input.setCustomValidity('За эту дату уже есть запись. Её можно изменить в истории.');
-        day.input.reportValidity();
-        return;
-      }
+      const target = original?.day ?? today();
+      if (!original && weightRecords().has(target)) return announce('За сегодня уже есть запись. Откройте её в истории.');
       const readNumber = input => input.value === '' ? null : input.valueAsNumber;
       const record = { ...original, day: target, weight: readNumber(weight.input), waist: readNumber(waist.input), note: note.input.value.trim() };
       if (record.weight === null && record.waist === null && !record.note) return announce('Укажите вес, талию или заметку.');
-      change(next => {
-        if (original && original.day !== target) writeWeightDay(next, original.day, null, fromBody);
-        writeWeightDay(next, target, record, fromBody);
-      }, () => { back(target); announce('Запись сохранена'); });
+      change(next => writeWeightDay(next, target, record, fromBody), () => { back(target); announce('Запись сохранена'); });
     }, 'Сохранить запись', () => back(original?.day));
-    day.input.oninput = () => day.input.setCustomValidity('');
     for (const { input } of [weight, waist]) input.oninput = () => {
       input.setCustomValidity(input.valueAsNumber <= 0 ? 'Укажите значение больше нуля.' : '');
     };
-    const fields = node('div', 'training-weight-fields');
-    fields.append(day.wrap, weight.wrap, waist.wrap);
-    content.append(fields, note.wrap);
+    content.append(displayDay(original?.day ?? today()), row(weight.wrap, waist.wrap), note.wrap);
     if (original) {
       const remove = btn('Удалить запись', () => {
         if (!window.confirm('Удалить запись о весе за ' + dayLabel(original.day) + '?')) return;
@@ -944,9 +884,9 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     const panel = node('section', 'training-weight');
     function edit(record) {
       const position = feed.scrollTop;
-      weightEditor(records, record, day => weightPage(day, position));
+      weightEditor(record, day => weightPage(day, position));
     }
-    const add = btn('Добавить запись', () => edit(), true);
+    const add = btn(records.has(today()) ? 'Изменить запись за сегодня' : 'Добавить запись', () => edit(records.get(today())), true);
     let focusTarget = add;
     panel.append(section('Динамика веса', add));
     if (points.length) {

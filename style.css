@@ -536,11 +536,6 @@ a.quote-source:hover{color:var(--blue)}
 .training-body-history .training-line-card { display:grid; gap:8px; overflow-wrap:anywhere }
 .training-body-history .training-delete,.training-form .training-delete { color:#ffadb3 }
 .training-weight { display:grid; gap:16px; max-width:1080px; min-width:0 }
-.training-weight-fields { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px }
-@media (max-width:640px) {
-  .training-weight-fields { grid-template-columns:repeat(2,minmax(0,1fr)) }
-  .training-weight-fields .training-field:first-child { grid-column:1/-1 }
-}
 .training-weight-summary { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; margin:0 }
 .training-weight-summary>div,.training-weight-chart,.training-weight-month { padding:clamp(10px,1.5vw,18px); border:1px solid var(--line); border-radius:9px; background:var(--surface) }
 .training-weight-summary dt,.training-weight-axis,.training-weight-chart-dates { font-size:.85rem; color:var(--muted) }
