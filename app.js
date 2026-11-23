@@ -2,7 +2,7 @@ import { hosted, shared, historySnapshotKey, credential, connectHistory, marked,
 
 import { KeyError, verifyOwner, openPrivateFile, savePrivateFile } from './private-store.js?v=041c70d8f2eb';
 import { setupNutrition } from './nutrition.js?v=13f3368483dc';
-import { setupTraining, emptyTraining } from './training.js?v=85f46012d88d';
+import { setupTraining, emptyTraining } from './training.js?v=7d8c56dbab77';
 
 const el = id => document.getElementById(id);
 let pendingActions = 0;
@@ -65,6 +65,7 @@ const markActions = {
   watching: { add: 'Смотрю сейчас', remove: 'Отложить просмотр', icon: 'play' }
 };
 const iconPaths = {
+  pencil: '<path d="m15 5 4 4M4 20l4.5-1 11-11a2.8 2.8 0 0 0-4-4l-11 11L4 20Z"/>',
   barbell: '<path d="M3 10v4m3-7v10m3-12v14m0-7h6m0-7v14m3-12v10m3-7v4"/>',
   thumb: '<path d="M7 10v10H3V10zm0 0 5-6c1-1.3 3-.8 3 1.1L14 9h5.2a2 2 0 0 1 2 2.4l-1.4 6.8a2.2 2.2 0 0 1-2.2 1.8H7"/>',
   neutral: '<path d="M5 12h14"/>',

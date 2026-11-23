@@ -1,6 +1,6 @@
 export function emptyTraining() {
   return { version: 1, gyms: [], programs: [], defaultGym: null, defaultProgram: null,
-    baselines: {}, sessions: [], nutrition: {}, body: {} };
+    baselines: {}, sessions: [], nutrition: {}, body: {}, weightHistory: [] };
 }
 
 const uid = () => crypto.randomUUID();
@@ -78,7 +78,8 @@ const fieldsBody = ['Вес, кг', 'Шея, см', 'Плечи, см', 'Гру�
 const fieldsBodyComposition = ['Масса скелетных мышц, кг', 'Масса жира, кг', 'Доля жира, %'];
 const fieldsNutrition = ['Белки, г', 'Жиры, г', 'Углеводы, г'];
 const weightHistoryKey = 'moy-kinospisok:weight-history';
-const weightNumber = new Intl.NumberFormat('ru-RU', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+const weightFormat = { minimumFractionDigits: 1, maximumFractionDigits: 3 };
+const weightNumber = new Intl.NumberFormat('ru-RU', weightFormat);
 const weightMonth = new Intl.DateTimeFormat('ru-RU', { month: 'long', year: 'numeric', timeZone: 'UTC' });
 
 function storedWeights() {
@@ -823,22 +824,92 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     chart.append(axis, plot, dates);
     return chart;
   }
-  function weightPage() {
+  function weightRecords() {
     const sharedHistory = Array.isArray(db().weightHistory) ? db().weightHistory : [];
-    const records = new Map([...storedWeights(), ...sharedHistory].map(record => [record.day, record]));
+    const records = new Map(storedWeights().map(record => [record.day, record]));
+    for (const record of sharedHistory) {
+      if (record.deleted) records.delete(record.day);
+      else records.set(record.day, record);
+    }
     for (const [day, values] of Object.entries(db().body)) {
       const weight = values['Вес, кг'];
       if (Number.isFinite(weight) && weight > 0) records.set(day, { ...records.get(day), day, weight });
     }
+    return records;
+  }
+  function writeWeightDay(data, day, record, fromBody) {
+    let archived = record;
+    if (fromBody) {
+      if (record?.weight != null) {
+        (data.body[day] ||= {})['Вес, кг'] = record.weight;
+      } else if (data.body[day]) {
+        delete data.body[day]['Вес, кг'];
+        if (!Object.keys(data.body[day]).length) delete data.body[day];
+      }
+      // The body diary owns this day's weight. Keep only its extra history fields here.
+      archived = record && (record.waist != null || record.note) ? { ...record, weight: null } : null;
+    }
+    const history = (data.weightHistory || []).filter(entry => entry.day !== day);
+    // A removed or moved day must also hide a copy from an older browser import.
+    history.push(archived || { day, deleted: true });
+    data.weightHistory = history;
+  }
+  function weightEditor(records, original, back) {
+    const day = field('Дата', original?.day ?? localDate().slice(0, 10), { type: 'date', required: true });
+    const weight = number('Вес, кг', original?.weight, false, 'any');
+    const waist = number('Талия, дюймы', original?.waist, false, 'any');
+    const note = field('Заметка', original?.note);
+    const fromBody = !!original && db().body[original.day]?.['Вес, кг'] > 0;
+    const { box, content } = form(() => {
+      const target = day.input.value;
+      if (target !== original?.day && records.has(target)) {
+        day.input.setCustomValidity('За эту дату уже есть запись. Её можно изменить в истории.');
+        day.input.reportValidity();
+        return;
+      }
+      const readNumber = input => input.value === '' ? null : input.valueAsNumber;
+      const record = { ...original, day: target, weight: readNumber(weight.input), waist: readNumber(waist.input), note: note.input.value.trim() };
+      if (record.weight === null && record.waist === null && !record.note) return announce('Укажите вес, талию или заметку.');
+      change(next => {
+        if (original && original.day !== target) writeWeightDay(next, original.day, null, fromBody);
+        writeWeightDay(next, target, record, fromBody);
+      }, () => { back(target); announce('Запись сохранена'); });
+    }, 'Сохранить запись', () => back(original?.day));
+    day.input.oninput = () => day.input.setCustomValidity('');
+    for (const { input } of [weight, waist]) input.oninput = () => {
+      input.setCustomValidity(input.valueAsNumber <= 0 ? 'Укажите значение больше нуля.' : '');
+    };
+    const fields = node('div', 'training-weight-fields');
+    fields.append(day.wrap, weight.wrap, waist.wrap);
+    content.append(fields, note.wrap);
+    if (original) {
+      const remove = btn('Удалить запись', () => {
+        if (!window.confirm('Удалить запись о весе за ' + dayLabel(original.day) + '?')) return;
+        change(next => writeWeightDay(next, original.day, null, fromBody), () => { back(); announce('Запись удалена'); });
+      });
+      remove.classList.add('training-delete');
+      box.lastElementChild.append(remove);
+    }
+    bodyPage(true, section(original ? 'Редактировать запись' : 'Добавить запись о весе'), box);
+    weight.input.focus();
+  }
+  function weightPage(focusDay, scroll) {
+    const records = weightRecords();
     const dates = [...records.keys()].sort();
-    const points = dates.map(day => records.get(day)).filter(record => record.weight !== null);
+    const points = dates.map(day => records.get(day)).filter(record => Number.isFinite(record.weight) && record.weight > 0);
     const panel = node('section', 'training-weight');
-    panel.append(section('Динамика веса'));
+    function edit(record) {
+      const position = feed.scrollTop;
+      weightEditor(records, record, day => weightPage(day, position));
+    }
+    const add = btn('Добавить запись', () => edit(), true);
+    let focusTarget = add;
+    panel.append(section('Динамика веса', add));
     if (points.length) {
       const first = points[0].weight;
       const last = points.at(-1).weight;
       const summary = node('dl', 'training-weight-summary');
-      const signedWeight = new Intl.NumberFormat('ru-RU', { minimumFractionDigits: 1, maximumFractionDigits: 1, signDisplay: 'exceptZero' });
+      const signedWeight = new Intl.NumberFormat('ru-RU', { ...weightFormat, signDisplay: 'exceptZero' });
       for (const [label, value] of [['Первый замер', weightNumber.format(first)], ['Последний замер', weightNumber.format(last)],
         ['Изменение', signedWeight.format(last - first)]]) {
         const item = node('div');
@@ -847,7 +918,7 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
       }
       panel.append(summary, weightChart(points));
     }
-    if (!dates.length) panel.append(hint('Вес из замеров тела появится здесь после сохранения записи.'));
+    if (!dates.length) panel.append(hint('Взвешиваний пока нет.'));
     const months = node('div', 'training-weight-months');
     let currentMonth, monthList;
     for (const day of dates) {
@@ -864,13 +935,20 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
       const entry = node('li');
       const date = node('time', '', dayLabel(day).slice(0, 5));
       date.dateTime = day;
-      entry.append(date, node('span', '', weight === null ? 'Вес не записан' : weightNumber.format(weight) + ' кг'));
+      const editButton = button('Изменить запись за ' + dayLabel(day), 'training-weight-edit', 'pencil', () => edit(records.get(day)), true);
+      if (day === focusDay) focusTarget = editButton;
+      entry.append(date, node('span', '', weight == null ? 'Вес не записан' : weightNumber.format(weight) + ' кг'), editButton);
       if (waist != null) entry.append(node('p', 'training-hint', 'Талия ' + weightNumber.format(waist) + '″'));
       if (note) entry.append(node('p', 'training-weight-note', note));
       monthList.append(entry);
     }
     if (dates.length) panel.append(months);
     bodyPage(true, panel);
+    if (scroll != null) {
+      feed.scrollTop = scroll;
+      focusTarget.focus({ preventScroll: true });
+      focusTarget.scrollIntoView({ block: 'nearest' });
+    }
   }
   function render() {
     if (!snapshot) return;
