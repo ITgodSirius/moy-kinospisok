@@ -31,11 +31,6 @@ h1{font-size:clamp(1.5rem,2.55vw,2.25rem);font-weight:730;white-space:nowrap}
 .type-switch{grid-area:types;gap:3px}
 .last-update{grid-area:updated;text-align:center;color:var(--muted);font-size:.8125rem;font-variant-numeric:tabular-nums}
 .last-update time{white-space:nowrap}
-#history-sync{max-width:100%;min-height:28px;padding-inline:3px;border-radius:4px;color:inherit;font:inherit}
-#history-sync:is(:hover,:focus-visible){color:var(--blue);text-decoration:underline;text-underline-offset:3px}
-.sync-short{display:none}
-#history-sync.undated .update-date{display:none}
-#history-sync.undated .sync-short{display:inline}
 @media(min-width:641px){.last-update{color:#7e8492;font-size:.6875rem}}
 .type-switch button{padding:6px 14px;border-radius:7px;font-size:.9375rem;min-height:36px}
 .type-switch button:is([aria-pressed=true],:active){background:var(--tint);color:var(--blue);font-weight:680}
@@ -156,6 +151,7 @@ dialog::backdrop{background:rgba(12,15,23,.52)}
 .dialog-foot{border:0;border-top:1px solid var(--line);justify-content:flex-end}.dialog-foot .btn{min-width:100px}
 .filters-body{display:grid;gap:14px;padding-block:18px}.filters-body label{display:grid;gap:4px;font-size:.9rem;font-weight:600}
 .filters-body select{background:var(--paper);border:1px solid var(--line);border-radius:7px;color:var(--ink);padding:8px;min-height:42px;font-weight:400}
+#manage-key{justify-self:start;color:var(--blue);font-size:.875rem;min-height:32px}
 .field-body{display:grid;gap:8px;padding-block:16px}
 .field-body input{width:100%;min-width:0;padding:10px;border:1px solid var(--line);border-radius:7px;background:var(--paper);color:var(--ink);font:inherit}
 #sync-error{color:#ffacb8;font-size:.9rem}
@@ -283,8 +279,7 @@ details[open] summary svg{transform:rotate(180deg)}
  #lists button{flex:none;min-height:42px;font-size:.875rem}
  #lists button:focus-visible{outline-offset:-3px}
  .toolbar{grid-template-areas:"types" "tools" "genres" "updated";gap:0;padding:3px 0}.type-switch button{padding:4px 12px;min-height:32px;font-size:.875rem}
- .last-update.expired:not(:has(#history-sync)),.last-update.expired .update-date{display:none}
- .last-update.expired .sync-short{display:inline}
+ .last-update.expired{display:none}
  .genre-switch{display:none}
  .tools .genre-control{position:relative;display:flex;color:var(--button-text)}
  .genre-control select{position:absolute;inset:0;width:100%;height:100%;margin:0;appearance:none;opacity:0;cursor:pointer}

@@ -1125,7 +1125,7 @@ function restoreDialogs(view) {
   }
   if (view.dialog === 'filters') {
     el('filters-open').focus({preventScroll:true});
-    el('filters').showModal();
+    showFilters();
   } else if (view.dialog === 'schedule') {
     const item = state.catalog.find(item => item.id === view.series && item.type === 'series');
     if (item) {
@@ -1196,7 +1196,7 @@ function setSearchOpen(open) {
   el('catalog-search').hidden = !open;
   el('search-status').hidden = !open;
   el('search-toggle').setAttribute('aria-expanded', String(open));
-  const controls = el('cinema-header').querySelectorAll('#list-navigation, #types, #genres, #selected-genres, #history-sync, .tools > :not(#search-toggle)');
+  const controls = el('cinema-header').querySelectorAll('#list-navigation, #types, #genres, #selected-genres, .tools > :not(#search-toggle)');
   for (const control of controls) control.inert = open;
   el('feed').setAttribute('aria-label', open ? 'Результаты поиска по киносписку' : 'Лента · ' + listNames[state.list]);
 }
@@ -1340,41 +1340,24 @@ async function sync() {
   catch (error) { announce(shared ? error.message : 'Нет связи с историей просмотра. Повторим синхронизацию.'); }
 }
 const maskedKey = '••••••••';
-function openKeyDialog(message = '') {
+function openKeyDialog() {
   const dialog = el('sync-dialog');
   const input = el('sync-token');
   dialog.returnValue = '';
   input.value = credential() ? maskedKey : '';
   input.removeAttribute('aria-invalid');
-  el('sync-error').textContent = message;
+  el('sync-error').textContent = '';
   dialog.showModal();
   input.select();
 }
-function setupHistorySync() {
-  const button = el('history-sync');
-  if (!shared && !hosted) {
-    button.replaceWith(button.querySelector('.update-date'));
-    return;
-  }
-  if (hosted) {
-    button.onclick = async () => {
-      button.disabled = true;
-      try { await withLoading(refreshViews()); announce('История синхронизирована.'); }
-      catch { announce('Не удалось синхронизировать историю.'); }
-      finally { button.disabled = false; }
-    };
-    return;
-  }
+function showFilters() {
+  el('manage-key').hidden = !shared || !credential();
+  el('filters').showModal();
+}
+function setupKeyDialog() {
+  if (!shared) return;
   const dialog = el('sync-dialog');
-  button.setAttribute('aria-haspopup', 'dialog');
-  button.setAttribute('aria-controls', dialog.id);
-  button.onclick = async () => {
-    try {
-      await withLoading(refreshViews());
-      openKeyDialog();
-    } catch (error) { openKeyDialog(error.message); }
-  };
-
+  el('manage-key').onclick = openKeyDialog;
   const input = el('sync-token');
   const errorMessage = el('sync-error');
   dialog.addEventListener('close', () => {
@@ -1396,6 +1379,7 @@ function setupHistorySync() {
       }
       if (!token && credential()) {
         forgetCredential();
+        el('manage-key').hidden = true;
         dialog.close();
         announce('Ключ удалён с этого устройства.');
         return;
@@ -1485,18 +1469,13 @@ function showLastUpdate(modified) {
   const published = Date.parse(modified);
   const date = new Date(Number.isFinite(published) ? published : time.dateTime);
   const updateLine = time.closest('.last-update');
-  const button = el('history-sync');
-  if (!Number.isFinite(date.getTime())) {
-    if (button) { button.classList.add('undated'); updateLine.hidden = false; }
-    return;
-  }
+  if (!Number.isFinite(date.getTime())) return;
   const formatter = new Intl.DateTimeFormat('ru-RU', {
     day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit',
     timeZone: 'Europe/Moscow'
   });
   time.dateTime = date.toISOString();
   time.textContent = formatter.format(date) + ' МСК';
-  if (button) button.setAttribute('aria-label', 'Обновлено ' + time.textContent + '. Синхронизация истории');
   updateLine.hidden = false;
   setTimeout(() => updateLine.classList.add('expired'), 5000);
 }
@@ -1515,7 +1494,7 @@ async function start() {
     state.catalog = await response.json();
     modified = response.headers.get('Last-Modified');
   }
-  setupHistorySync();
+  setupKeyDialog();
   showLastUpdate(modified);
   const studios = new Set([...studioChoices, ...state.catalog.flatMap(i => [...i.studios, ...(i.platforms || [])])]);
   for (const studio of studios) el('studio').add(new Option(studio, studio));
@@ -1531,13 +1510,13 @@ async function start() {
   reflectControls();
   wireGroup('list-navigation','list'); wireGroup('types','type');
   for (const id of filterIds) el(id).addEventListener('change', render);
-  el('filters-open').onclick = () => el('filters').showModal();
+  el('filters-open').onclick = showFilters;
   el('clear').onclick = resetFilters;
   el('apply').onclick = () => { el('filters').close(); el('feed').scrollTop = 0; };
   // A restored pair of dialogs can share one native Escape dismissal.
   for (const child of [el('schedule'), el('sync-dialog')]) {
     child.addEventListener('keydown', event => {
-      if (event.key === 'Escape' && (el('film-details').open || el('wish-details').open)) {
+      if (event.key === 'Escape' && (el('film-details').open || el('wish-details').open || el('filters').open)) {
         event.preventDefault();
         child.close();
       }
