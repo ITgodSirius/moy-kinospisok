@@ -918,6 +918,12 @@
       "kind": "favorite",
       "value": true,
       "markedAt": "2026-11-24T00:21:15.285Z"
+    },
+    {
+      "card": "tmdb-movie-1865",
+      "kind": "favorite",
+      "value": true,
+      "markedAt": "2026-11-24T00:21:28.885Z"
     }
   ],
   "removed": [
