@@ -924,6 +924,12 @@
       "kind": "favorite",
       "value": true,
       "markedAt": "2026-11-24T00:21:28.885Z"
+    },
+    {
+      "card": "tmdb-movie-49026",
+      "kind": "favorite",
+      "value": true,
+      "markedAt": "2026-11-24T00:21:43.252Z"
     }
   ],
   "removed": [
