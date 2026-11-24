@@ -2,7 +2,8 @@ import { hosted, shared, historySnapshotKey, credential, connectHistory, marked,
 
 import { KeyError, verifyOwner, openPrivateFile, savePrivateFile } from './private-store.js?v=041c70d8f2eb';
 import { setupNutrition } from './nutrition.js?v=3a2728e6df4c';
-import { setupTraining, emptyTraining } from './training.js?v=0f94bb4c76d8';
+import { setupWorkoutStats } from './training-stats.js?v=b962e5199ec6';
+import { setupTraining, emptyTraining } from './training.js?v=b3edb7b1c270';
 
 const el = id => document.getElementById(id);
 let pendingActions = 0;
@@ -66,6 +67,7 @@ const markActions = {
 };
 const iconPaths = {
   pencil: '<path d="m15 5 4 4M4 20l4.5-1 11-11a2.8 2.8 0 0 0-4-4l-11 11L4 20Z"/>',
+  stats: '<path d="M4 3v17h17M7 15l4-5 4 2 5-7"/>',
   barbell: '<path d="M3 10v4m3-7v10m3-12v14m0-7h6m0-7v14m3-12v10m3-7v4"/>',
   thumb: '<path d="M7 10v10H3V10zm0 0 5-6c1-1.3 3-.8 3 1.1L14 9h5.2a2 2 0 0 1 2 2.4l-1.4 6.8a2.2 2.2 0 0 1-2.2 1.8H7"/>',
   neutral: '<path d="M5 12h14"/>',
@@ -888,7 +890,7 @@ function setupCollections() {
   let current = 'cinema';
   let listScroll = 0;
   const quotes = setupQuotes();
-  const workouts = setupTraining({ setupNutrition, el, node, button, announce, withLoading, credential, openPrivateFile, savePrivateFile });
+  const workouts = setupTraining({ setupWorkoutStats, setupNutrition, el, node, button, announce, withLoading, credential, openPrivateFile, savePrivateFile });
   let navigation = 0;
   let activeKey;
   function isPrivate(name) { return name === 'quotes' || name === 'training'; }

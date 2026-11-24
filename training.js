@@ -240,11 +240,12 @@ function importWeightHistory(announce) {
   }
 }
 
-export function setupTraining({ setupNutrition, el, node, button, announce, withLoading, credential, openPrivateFile, savePrivateFile }) {
+export function setupTraining({ setupWorkoutStats, setupNutrition, el, node, button, announce, withLoading, credential, openPrivateFile, savePrivateFile }) {
   const root = el('training-content');
   const feed = el('training-feed');
   let openImportedWeights = false;
-  let navigationId;
+  let navigationId, recapId;
+  const stats = setupWorkoutStats({ node, seriesChart });
   const pending = new Map();
   let writer, unsentInput;
   let writeQueue = Promise.resolve(), syncTimer, syncDue = Infinity, lastEditTime = 0, retryDelay = 0;
@@ -485,14 +486,16 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
       const program = historyProgram(route.timelineId);
       if (program) programTimeline(program, route.scope === 'day' ? session() : null);
       else render();
-    } else if (route.view === 'start') start();
+    } else if (route.view === 'stats') statisticsPage(route);
+    else if (route.view === 'start') start();
     else if (tab === 'settings') {
       settings = 'programs'; settingsPage();
     } else render();
-    if (route.scroll != null) workoutScrollArea().scrollTop = route.scroll;
-    const focus = (route.focusId && document.getElementById(route.focusId)) || root.querySelector('h2');
+    const recap = root.querySelector('#completed-workout-summary');
+    if (route.scroll != null) workoutScrollArea().scrollTop = recap ? 0 : route.scroll;
+    const focus = recap?.querySelector('h3') || (route.focusId && document.getElementById(route.focusId)) || root.querySelector('h2');
     if (focus) {
-      if (focus.tagName === 'H2') focus.tabIndex = -1;
+      if (/^H[23]$/.test(focus.tagName)) focus.tabIndex = -1;
       focus.focus({ preventScroll: true });
     }
   }
@@ -792,6 +795,15 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
       next();
     }));
   }
+  function statisticsPage(route) {
+    const records = visibleSessions().filter(s => s.gymId === route.gym && s.programId === route.program && s.dayId === route.day);
+    const program = historyProgram(route.program);
+    const gym = db().gyms.find(g => g.id === route.gym);
+    const sample = records.at(-1);
+    const dayName = program?.days.find(d => d.id === route.day)?.name || sample?.day;
+    const heading = section('Статистика', backButton('К истории'));
+    page(heading, hint([dayName, program?.name || sample?.program, gym?.name || sample?.gym].filter(Boolean).join(' · ')), stats.page(records));
+  }
   function home() {
     const { gym, program, options } = defaults(true);
     if (!gym || !program) {
@@ -827,10 +839,18 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     dayOptions.append(dayButtons);
     const copyLabel = 'Копировать историю всех тренировок в JSON';
     const copyButton = button(copyLabel, 'training-copy-workouts', 'copy', () => copyWorkoutJson(sessions, 'История подпрограммы скопирована'), true);
-    copyButton.append(node('span', 'training-wide-label', copyLabel));
+    copyButton.append(node('span', 'training-wide-label', 'Копировать JSON'));
     copyButton.title = 'Скопировать все тренировки выбранной подпрограммы в этом зале';
     copyButton.disabled = !sessions.length;
-    sidebar.append(dayOptions, copyButton);
+    const statsButton = button('Статистика', 'training-open-stats', 'stats', () => {
+      const scope = { program: program.id, day: selectedDay, gym: gym.id };
+      visitWorkout({ ...scope, focusId: 'training-open-stats' }, { ...scope, view: 'stats' });
+    }, true);
+    statsButton.id = 'training-open-stats';
+    statsButton.append(node('span', 'training-wide-label', 'Статистика'));
+    const tools = node('div', 'training-history-tools');
+    tools.append(copyButton, statsButton);
+    sidebar.append(dayOptions, tools);
     const main = node('div', 'training-history');
     const header = section('История тренировок');
     header.firstElementChild.id = 'training-history-title';
@@ -838,6 +858,13 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     cards.setAttribute('aria-labelledby', 'training-history-title');
     cards.tabIndex = 0;
     main.append(header, cards);
+    const completed = sessions.find(s => s.id === recapId && s.finished);
+    if (completed) {
+      const recap = stats.summary(completed);
+      recap.id = 'completed-workout-summary';
+      cards.append(recap);
+      recapId = null;
+    }
     if (!sessions.length) cards.append(hint('Тренировок пока нет.'));
     for (const s of sessions) {
       const sets = s.exercises.flatMap(e => e.sets).filter(recordedSet).length;
@@ -1056,6 +1083,7 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
           }
         }
       }
+      recapId = s.id;
       queueEdit(s.id, { type: 'finish' }, true);
       drafts.clear();
       returnToList(s);
@@ -1176,7 +1204,7 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     body.setAttribute('role', 'region');
     body.setAttribute('aria-label', 'Упражнения и подходы');
     body.append(group);
-    if (!live) body.append(row(backButton('К истории', () => returnToList(s))));
+    if (!live) body.append(stats.summary(s), row(backButton('К истории', () => returnToList(s))));
     page(header, body);
     root.dataset.session = s.id;
     root.dataset.finished = String(s.finished);
@@ -1254,17 +1282,18 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     bodyPage(false, layout);
     if (focusEditor) editor.focus({ preventScroll: true });
   }
-  function weightChart(points) {
+  function seriesChart(points, label, prediction = null) {
     const first = points[0];
     const last = points.at(-1);
-    const weights = points.map(point => point.weight);
+    const weights = points.map(point => point.value);
+    if (prediction) weights.push(prediction.value);
     const min = Math.min(...weights);
     const max = Math.max(...weights);
     const step = Math.max(1, Math.ceil((max - min) / 5));
     const bottom = Math.floor(min / step) * step;
     const top = Math.max(bottom + step, Math.ceil(max / step) * step);
     const chart = node('figure', 'training-weight-chart');
-    chart.setAttribute('aria-label', 'График веса в килограммах');
+    chart.setAttribute('aria-label', label);
     const axis = node('div', 'training-weight-axis');
     const plot = node('div', 'training-weight-plot');
     const grid = node('div', 'training-weight-grid');
@@ -1276,29 +1305,44 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     svg.setAttribute('viewBox', '-4 -4 1008 248');
     svg.setAttribute('preserveAspectRatio', 'none');
     svg.setAttribute('aria-hidden', 'true');
-    const start = Date.parse(first.day);
-    const duration = Date.parse(last.day) - start;
-    const coordinates = points.map(({ day, weight }) => [
-      duration ? (Date.parse(day) - start) / duration * 1000 : 500,
-      (top - weight) / (top - bottom) * 240
-    ]);
+    const duration = (prediction || last).x - first.x;
+    const coordinate = ({ x, value }) => [
+      duration ? (x - first.x) / duration * 1000 : 500,
+      (top - value) / (top - bottom) * 240
+    ];
+    const coordinates = points.map(coordinate);
     const line = document.createElementNS(svg.namespaceURI, 'polyline');
     line.setAttribute('points', coordinates.map(point => point.join(',')).join(' '));
     line.setAttribute('vector-effect', 'non-scaling-stroke');
     svg.append(line);
-    if (points.length === 1) {
-      const point = document.createElementNS(svg.namespaceURI, 'circle');
-      point.setAttribute('cx', String(coordinates[0][0]));
-      point.setAttribute('cy', String(coordinates[0][1]));
-      point.setAttribute('r', '5');
-      svg.append(point);
+    if (prediction) {
+      const projected = line.cloneNode();
+      projected.setAttribute('class', 'workout-projection');
+      projected.setAttribute('points', [coordinates.at(-1), coordinate(prediction)].map(p => p.join(',')).join(' '));
+      svg.append(projected);
     }
+    points.forEach((sample, i) => {
+      if (points.length !== 1 && !sample.tooltip) return;
+      const point = document.createElementNS(svg.namespaceURI, 'circle');
+      point.setAttribute('cx', String(coordinates[i][0]));
+      point.setAttribute('cy', String(coordinates[i][1]));
+      point.setAttribute('r', points.length === 1 ? '5' : '3.5');
+      if (sample.tooltip) {
+        const tooltip = document.createElementNS(svg.namespaceURI, 'title');
+        tooltip.textContent = sample.tooltip;
+        point.append(tooltip);
+      }
+      svg.append(point);
+    });
     plot.append(grid, svg);
     const dates = node('figcaption', 'training-weight-chart-dates');
-    dates.append(node('span', '', dayLabel(first.day)));
-    if (duration) dates.append(node('span', '', dayLabel(last.day)));
+    dates.append(node('span', '', first.label));
+    if (duration) dates.append(node('span', '', (prediction || last).label));
     chart.append(axis, plot, dates);
     return chart;
+  }
+  function weightChart(points) {
+    return seriesChart(points.map(p => ({ x: Date.parse(p.day), value: p.weight, label: dayLabel(p.day) })), 'График веса в килограммах');
   }
   function weightRecords() {
     const sharedHistory = Array.isArray(db().weightHistory) ? db().weightHistory : [];
