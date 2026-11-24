@@ -924,6 +924,12 @@
       "kind": "favorite",
       "value": true,
       "markedAt": "2026-11-24T00:21:43.252Z"
+    },
+    {
+      "card": "tmdb-tv-46648-s4",
+      "kind": "watched",
+      "value": true,
+      "markedAt": "2026-11-24T13:40:43.191Z"
     }
   ],
   "removed": [
