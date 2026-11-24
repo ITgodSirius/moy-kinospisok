@@ -879,10 +879,10 @@ function setupCollections() {
   const wishFeed = el('wish-feed');
   const skip = document.querySelector('.skip');
   const screens = {
-    cinema: { surfaces: [el('cinema-header'), feed], feed, focus: el('open-wishlist'), title: 'Мой киносписок', skipText: 'К фильмам и сериалам' },
-    wishlist: { surfaces: [el('wishlist')], feed: wishFeed, focus: el('open-cinema'), title: 'Мой вишлист', skipText: 'К желаниям' },
-    training: { surfaces: [el('training')], feed: el('training-feed'), focus: el('training-heading'), title: 'Тренировки', skipText: 'К тренировкам' },
-    quotes: { surfaces: [el('quotes')], feed: el('quote-feed'), focus: el('quotes-heading'), title: 'Мои цитаты', skipText: 'К цитатам' }
+    cinema: { surfaces: [el('cinema-header'), feed], feed, heading: el('cinema-heading'), label: 'Киносписок', icon: 'play', skipText: 'К фильмам и сериалам' },
+    wishlist: { surfaces: [el('wishlist')], feed: wishFeed, heading: el('wishlist-heading'), label: 'Вишлист', icon: 'swap', skipText: 'К желаниям' },
+    quotes: { surfaces: [el('quotes')], feed: el('quote-feed'), heading: el('quotes-heading'), label: 'Цитаты', icon: 'quote', skipText: 'К цитатам' },
+    training: { surfaces: [el('training')], feed: el('training-feed'), heading: el('training-heading'), label: 'Тренировки', icon: 'barbell', skipText: 'К тренировкам' }
   };
   const positions = { cinema: 0, wishlist: 0, quotes: 0, training: 0 };
   let current = 'cinema';
@@ -950,13 +950,27 @@ function setupCollections() {
     if (current === 'cinema') lists.scrollLeft = listScroll;
     skip.href = '#' + screen.feed.id;
     skip.textContent = screen.skipText;
-    document.title = screen.title;
-    screen.focus.focus({ preventScroll: true });
+    document.title = screen.heading.textContent;
+    screen.heading.focus({ preventScroll: true });
     if (current === 'wishlist') loadWishlist();
   }
-  for (const button of document.querySelectorAll('[data-collection]')) {
-    const next = button.dataset.collection;
-    button.onclick = () => navigate(next);
+  for (const [section, screen] of Object.entries(screens)) {
+    const nav = node('nav', 'collection-destinations');
+    nav.id = section + '-destinations';
+    nav.setAttribute('aria-label', 'Другие разделы');
+    for (const [next, destination] of Object.entries(screens)) {
+      if (next === section) continue;
+      const control = node('button', 'collection-destination');
+      control.type = 'button';
+      control.dataset.collection = next;
+      control.title = destination.label;
+      control.setAttribute('aria-label', destination.label);
+      control.setAttribute('aria-controls', destination.feed.id);
+      control.append(icon(destination.icon), node('span', 'destination-label', destination.label));
+      control.onclick = () => navigate(next);
+      nav.append(control);
+    }
+    screen.heading.after(nav);
   }
   function hidePrivate() {
     navigation++;

@@ -9,8 +9,8 @@
   <meta name="history-mode" content="local">
   <title>Мой киносписок</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%231443ef'/%3E%3Cpath d='M18 18h28v29L32 38l-14 9z' fill='white'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./style.css?v=ffb2d2e7e825">
-  <script type="module" src="./app.js?v=2413e3417e89"></script>
+  <link rel="stylesheet" href="./style.css?v=c650a76f5d69">
+  <script type="module" src="./app.js?v=8bd5d0dbf19e"></script>
 </head>
 <body>
   <a class="skip" href="#feed">К фильмам и сериалам</a>
@@ -18,9 +18,7 @@
     <div class="wrap">
       <div class="topline" id="list-navigation">
         <div class="collection-brand">
-          <h1><button class="collection-switch" id="open-wishlist" type="button" data-collection="wishlist" aria-label="Мой киносписок. Открыть вишлист" aria-controls="wishlist">Мой киносписок <span class="collection-destination"><span data-icon="swap"></span><span>Вишлист</span></span></button></h1>
-          <button type="button" class="collection-destination open-quotes" data-collection="quotes" aria-label="Цитаты" aria-controls="quotes"><span data-icon="quote"></span><span>Цитаты</span></button>
-          <button type="button" class="collection-destination open-quotes" data-collection="training" aria-label="Тренировки" aria-controls="training"><span data-icon="barbell"></span><span>Тренировки</span></button>
+          <h1 id="cinema-heading" tabindex="-1">Мой киносписок</h1>
         </div>
         <nav class="mobile-lists" aria-label="Личные списки">
           <button type="button" data-list="favorite" aria-pressed="false" aria-label="Любимые" title="Любимые"><span data-icon="heart"></span></button>
@@ -90,9 +88,7 @@
       <div class="wrap">
         <div class="topline wish-top">
           <div class="collection-brand">
-            <h1><button class="collection-switch" id="open-cinema" type="button" data-collection="cinema" aria-label="Мой вишлист. Открыть киносписок" aria-controls="feed">Мой вишлист <span class="collection-destination"><span data-icon="swap"></span><span>Киносписок</span></span></button></h1>
-            <button type="button" class="collection-destination open-quotes" data-collection="quotes" aria-label="Цитаты" aria-controls="quotes"><span data-icon="quote"></span><span>Цитаты</span></button>
-            <button type="button" class="collection-destination open-quotes" data-collection="training" aria-label="Тренировки" aria-controls="training"><span data-icon="barbell"></span><span>Тренировки</span></button>
+            <h1 id="wishlist-heading" tabindex="-1">Мой вишлист</h1>
           </div>
           <nav class="wish-status" id="wish-status" aria-label="Статус желания">
             <button type="button" data-wish-status="wanted" aria-pressed="true">Хочу</button>
@@ -129,13 +125,10 @@
   <section id="quotes" aria-label="Мои цитаты" hidden>
     <header class="masthead">
       <div class="wrap">
-        <div class="topline quote-top">
-          <h1 id="quotes-heading" tabindex="-1">Мои цитаты</h1>
-          <nav class="quote-collections" aria-label="Другие разделы">
-            <button type="button" class="collection-destination" data-collection="cinema" aria-controls="feed"><span data-icon="swap"></span>Киносписок</button>
-            <button type="button" class="collection-destination" data-collection="wishlist" aria-controls="wishlist"><span data-icon="swap"></span>Вишлист</button>
-            <button type="button" class="collection-destination" data-collection="training" aria-controls="training"><span data-icon="barbell"></span>Тренировки</button>
-          </nav>
+        <div class="topline">
+          <div class="collection-brand">
+            <h1 id="quotes-heading" tabindex="-1">Мои цитаты</h1>
+          </div>
         </div>
         <div class="toolbar quote-toolbar">
           <div class="type-switch" id="quote-categories" role="group" aria-label="Категории цитат">
@@ -158,11 +151,6 @@
         <div class="topline training-top">
           <div class="collection-brand">
             <h1 id="training-heading" tabindex="-1">Тренировки</h1>
-            <nav id="training-destinations" class="quote-collections" aria-label="Другие разделы">
-              <button type="button" class="collection-destination" data-collection="cinema" aria-label="Киносписок" title="Киносписок" aria-controls="feed"><span data-icon="play"></span><span>Киносписок</span></button>
-              <button type="button" class="collection-destination" data-collection="wishlist" aria-label="Вишлист" title="Вишлист" aria-controls="wishlist"><span data-icon="swap"></span><span>Вишлист</span></button>
-              <button type="button" class="collection-destination" data-collection="quotes" aria-label="Цитаты" title="Цитаты" aria-controls="quotes"><span data-icon="quote"></span><span>Цитаты</span></button>
-            </nav>
           </div>
           <button class="btn training-primary" id="training-today" type="button" aria-label="Тренировка сегодня"><span class="training-wide-label">Тренировка сегодня</span><span class="training-short-label">＋ Сегодня</span></button>
         </div>
