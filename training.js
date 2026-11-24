@@ -38,6 +38,63 @@ function clearLegacyStartingTargets(sessions) {
     }
   }
 }
+const workoutQueuePrefix = 'moy-kinospisok:workout-edit:';
+function validSetInput(input) {
+  const valid = (value, whole) => value != null && value !== '' && Number.isFinite(+value) && +value >= 0 && (!whole || Number.isInteger(+value));
+  return input?.changed && valid(input.weight, false) && valid(input.reps, true) &&
+    (input.reserve == null || input.reserve === '' || valid(input.reserve, true));
+}
+function recordedSet(set) {
+  return set.input?.changed ? validSetInput(set.input) : set.status === 'done';
+}
+function finishWorkout(record) {
+  if (record.exercises.some(ex => ex.sets.some(set => set.input?.changed && !validSetInput(set.input)))) return false;
+  for (const ex of record.exercises) {
+    for (const set of ex.sets) {
+      const input = set.input;
+      if (input) {
+        set.note = input.note;
+        if (input.changed) {
+          const actual = { ...set.actual, weight: +input.weight, reps: +input.reps, reserve: input.reserve === '' || input.reserve == null ? null : +input.reserve };
+          if (actual.weight !== set.actual?.weight) delete actual.loadLabel;
+          if (actual.reserve !== set.actual?.reserve) delete actual.reserveLabel;
+          set.actual = actual;
+          set.status = 'done';
+        }
+        delete set.input;
+      }
+      if (set.status === 'planned') set.status = 'skipped';
+    }
+  }
+  record.finished = true;
+  delete record.autosaveCursor;
+  return true;
+}
+// Replay only the edited set against the latest file; retries never append a set twice.
+function applyWorkoutEdit(sessions, edit) {
+  const record = sessions.find(s => s.id === edit.sessionId);
+  if (edit.type === 'start') {
+    if (!record) sessions.push(copy(edit.record));
+    return;
+  }
+  if (!record || record.finished || edit.time <= (record.autosaveCursor?.[edit.writer] || 0)) return;
+  if (edit.type === 'finish') return finishWorkout(record);
+  (record.autosaveCursor ||= {})[edit.writer] = edit.time;
+  const exercise = record.exercises.find(ex => ex.id === edit.exerciseId);
+  if (!exercise) return;
+  if (edit.type === 'add') {
+    if (!exercise.sets.some(set => set.id === edit.set.id)) exercise.sets.push(copy(edit.set));
+    return;
+  }
+  const set = edit.setId ? exercise.sets.find(set => set.id === edit.setId) : exercise.sets[edit.index];
+  if (!set) return;
+  if (edit.type === 'input') set.input = { ...(set.input || edit.initial), ...edit.fields };
+  else {
+    delete set.input;
+    if (edit.type === 'skip') Object.assign(set, { actual: null, status: 'skipped', note: edit.note });
+  }
+}
+
 const defaultReserve = 2;
 function setDefaults(day, exercise) {
   return { reserve: exercise.reserve ?? day?.reserve ?? defaultReserve, rest: exercise.rest ?? day?.rest ?? null };
@@ -188,7 +245,10 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
   const feed = el('training-feed');
   let openImportedWeights = false;
   let navigationId;
-  let workoutDraft;
+  const pending = new Map();
+  let writer, unsentInput;
+  let writeQueue = Promise.resolve(), syncTimer, syncDue = Infinity, lastEditTime = 0, retryDelay = 0;
+  let syncError = '', storageFailed = false;
   let snapshot, ownerKey, tab, settings, selectedDay, selectedProgram, activeId, saving = false, generation = 0;
   const training = el('training');
   let openMenu;
@@ -221,6 +281,137 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
   const btn = (label, handler, primary = false) => button(label, primary ? 'training-primary' : '', null, handler);
   const title = text => node('h2', '', text);
   const hint = text => node('p', 'training-hint', text);
+  function serialize(work) {
+    const next = writeQueue.then(work);
+    writeQueue = next.catch(() => {});
+    return next;
+  }
+  function edits() {
+    return [...pending.values()].sort((a, b) => a.time - b.time || a.id.localeCompare(b.id));
+  }
+  function visibleSessions() {
+    if (!pending.size) return db().sessions;
+    const records = db().sessions.slice();
+    const changed = new Set();
+    for (const edit of edits()) {
+      if (!changed.has(edit.sessionId)) {
+        const i = records.findIndex(s => s.id === edit.sessionId);
+        if (i >= 0) records[i] = copy(records[i]);
+        changed.add(edit.sessionId);
+      }
+      applyWorkoutEdit(records, edit);
+    }
+    return records;
+  }
+  function syncStatus() {
+    for (const label of root.querySelectorAll('[data-workout-sync]')) {
+      const waiting = [...pending.values()].some(edit => edit.sessionId === label.dataset.workoutSync);
+      let message = '';
+      if (!waiting) {
+        if (label.dataset.workoutSync === activeId) message = 'Сохранено в GitHub';
+      } else if (storageFailed) message = 'Сохранение на устройстве недоступно. Дождитесь отправки в GitHub.';
+      else if (!navigator.onLine) message = 'Сохранено на устройстве · ожидает подключения';
+      else if (syncError) message = 'Сохранено на устройстве. ' + syncError;
+      else message = 'Сохранено на устройстве · отправка в GitHub…';
+      if (label.textContent !== message) label.textContent = message;
+      label.hidden = !message;
+    }
+  }
+  function statusLabel(id) {
+    const label = hint('');
+    label.dataset.workoutSync = id;
+    label.setAttribute('role', 'status');
+    return label;
+  }
+  function restoreEdits() {
+    try {
+      for (const key of Object.keys(localStorage)) {
+        if (!key.startsWith(workoutQueuePrefix)) continue;
+        const edit = JSON.parse(localStorage.getItem(key));
+        if (edit?.id && edit.sessionId && Number.isFinite(edit.time)) {
+          pending.set(edit.id, edit);
+          lastEditTime = Math.max(lastEditTime, edit.time);
+        }
+      }
+    } catch { storageFailed = true; }
+  }
+  function forget(edit) {
+    try { localStorage.removeItem(workoutQueuePrefix + edit.id); } catch { /* The edit has reached GitHub. */ }
+    pending.delete(edit.id);
+  }
+  function scheduleSync(key, delay = 450) {
+    const due = Date.now() + delay;
+    if (!key || !pending.size || due >= syncDue) return;
+    clearTimeout(syncTimer);
+    syncDue = due;
+    syncTimer = setTimeout(() => {
+      syncDue = Infinity;
+      serialize(() => syncEdits(key));
+    }, delay);
+  }
+  async function syncEdits(key) {
+    const batch = edits();
+    if (!batch.length || credential() !== key) return;
+    unsentInput = null;
+    try {
+      const base = await openPrivateFile(key, 'training.json', emptyTraining);
+      validateTraining(base.data);
+      if (key !== credential()) return;
+      const data = copy(base.data);
+      let rejectedFinish = false;
+      const closed = batch.some(edit => !['start', 'finish'].includes(edit.type) &&
+        base.data.sessions.some(s => s.id === edit.sessionId && s.finished) &&
+        !batch.some(op => op.sessionId === edit.sessionId && op.type === 'finish'));
+      for (const edit of batch) {
+        // A second device may have left a partial set before this finish arrived.
+        if (applyWorkoutEdit(data.sessions, edit) === false) rejectedFinish = true;
+      }
+      const result = JSON.stringify(data.sessions) === JSON.stringify(base.data.sessions) ? base
+        : await savePrivateFile(key, 'training.json', base, data);
+      if (credential() !== key) return;
+      for (const edit of batch) forget(edit);
+      retryDelay = 0; syncError = ''; storageFailed = false;
+      if (snapshot && ownerKey === key) {
+        clearLegacyStartingTargets(result.data.sessions);
+        snapshot = result;
+        if (rejectedFinish) announce('Тренировка ещё в процессе. Проверьте незаполненные подходы.');
+        else if (closed) announce('Эту тренировку уже завершили на другом устройстве. Проверьте последние правки в истории.');
+        if (activeId && root.dataset.session && (!session() || session().finished && root.dataset.finished === 'false')) render();
+        else if (tab === 'sessions' && root.querySelector('.training-history-cards') && (rejectedFinish || closed)) home();
+        syncStatus();
+      }
+      if (pending.size) scheduleSync(key, 0);
+    } catch (error) {
+      syncError = error.message;
+      syncStatus();
+      retryDelay = Math.min(retryDelay ? retryDelay * 2 : 2000, 60000);
+      scheduleSync(key, retryDelay);
+    }
+  }
+  function queueEdit(sessionId, operation, immediate = false) {
+    lastEditTime = Math.max(Date.now(), lastEditTime + 0.01);
+    writer ||= uid();
+    const edit = { ...operation, sessionId, writer, time: lastEditTime, id: uid() };
+    const previous = unsentInput;
+    const combine = edit.type === 'input' && previous?.sessionId === sessionId && previous.exerciseId === edit.exerciseId &&
+      previous.index === edit.index && previous.setId === edit.setId;
+    if (combine) {
+      edit.initial = previous.initial;
+      edit.fields = { ...previous.fields, ...edit.fields };
+    }
+    pending.set(edit.id, edit);
+    try {
+      localStorage.setItem(workoutQueuePrefix + edit.id, JSON.stringify(edit));
+      if (combine) forget(previous);
+    } catch { storageFailed = true; }
+    unsentInput = edit.type === 'input' ? edit : null;
+    syncStatus();
+    scheduleSync(ownerKey, immediate ? 0 : 450);
+  }
+  window.addEventListener('online', () => scheduleSync(ownerKey, 0));
+  document.addEventListener('visibilitychange', () => {
+    if (ownerKey) scheduleSync(ownerKey, 0);
+  });
   function displayDay(day) {
     const date = node('time', 'training-hint', dayLabel(day));
     date.dateTime = day;
@@ -285,13 +476,8 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     const nextId = route.sessionId || null;
     if (activeId !== nextId) { historyEdit = false; drafts.clear(); }
     activeId = nextId;
-    if (workoutDraft && workoutDraft.id !== activeId) workoutDraft = null;
-    if (activeId && !workoutDraft && route.fromStart) {
-      const saved = session();
-      if (saved && !saved.finished) workoutDraft = copy(saved);
-    }
     if (activeId && !session()) {
-      // The browser can revisit an unsaved workout after its form has been closed.
+      // An old history entry can point to a deleted workout.
       activeId = null;
       history.replaceState({ ...history.state, workout: { navigationId, program: selectedProgram, day: selectedDay } }, '');
     }
@@ -342,24 +528,24 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
       b.setAttribute('aria-pressed', String(b.dataset.trainingTab === tab));
     }
   }
-  async function change(edit, after = render, refresh = false) {
+  async function change(edit, after = render, sessionId) {
     if (saving || !snapshot) return;
     const rev = generation;
     saving = true;
     try {
       if (credential() !== ownerKey) throw new Error('Заново откройте раздел с ключом владельца.');
       const key = ownerKey;
-      const result = await withLoading((async () => {
-        const base = refresh ? await openPrivateFile(key, 'training.json', emptyTraining) : snapshot;
+      const result = await withLoading(serialize(async () => {
+        if (sessionId && edits().some(op => op.sessionId === sessionId)) {
+          await syncEdits(key);
+          if (edits().some(op => op.sessionId === sessionId)) throw new Error(syncError || 'Дождитесь отправки тренировки в GitHub.');
+        }
         if (generation !== rev || key !== credential()) return;
-        const next = copy(base.data);
-        if (refresh) validateTraining(next);
-        const changed = edit(next);
-        if (refresh && changed === false) return base;
-        return savePrivateFile(key, 'training.json', base, next);
-      })());
+        const next = copy(snapshot.data);
+        edit(next);
+        return savePrivateFile(key, 'training.json', snapshot, next);
+      }));
       if (result && generation === rev && key === credential()) {
-        if (refresh) clearLegacyStartingTargets(result.data.sessions);
         snapshot = result;
         after();
       }
@@ -588,6 +774,24 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     const program = options.find(p => p.id === selectedProgram) || options.find(p => p.id === db().defaultProgram) || options[0];
     return { gym, program, options };
   }
+  async function withFreshHistory(next) {
+    const key = ownerKey, rev = generation;
+    await withLoading(serialize(async () => {
+      if (rev !== generation || key !== credential()) return;
+      try {
+        const file = await openPrivateFile(key, 'training.json', emptyTraining);
+        validateTraining(file.data);
+        clearLegacyStartingTargets(file.data.sessions);
+        if (rev !== generation || key !== credential()) return;
+        snapshot = file;
+      } catch (error) {
+        if (rev !== generation || key !== credential()) return;
+        // The already opened diary remains usable during a network interruption.
+        syncError = error.message;
+      }
+      next();
+    }));
+  }
   function home() {
     const { gym, program, options } = defaults(true);
     if (!gym || !program) {
@@ -598,7 +802,7 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
       page(panel);
       return;
     }
-    const logged = db().sessions.filter(s => s.programId === program.id && s.gymId === gym.id);
+    const logged = visibleSessions().filter(s => s.programId === program.id && s.gymId === gym.id);
     const days = new Map(program.days.map(day => [day.id, day.name]));
     for (const session of logged) {
       if (!days.has(session.dayId)) days.set(session.dayId, session.day);
@@ -636,7 +840,7 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     main.append(header, cards);
     if (!sessions.length) cards.append(hint('Тренировок пока нет.'));
     for (const s of sessions) {
-      const sets = s.exercises.flatMap(e => e.sets).filter(set => set.status === 'done').length;
+      const sets = s.exercises.flatMap(e => e.sets).filter(recordedSet).length;
       const card = node('article', 'training-line-card training-session-card');
       const caption = node('div');
       const date = node('strong', '', dateLabel(s.date));
@@ -646,16 +850,23 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
       if (s.gym === gym.name && s.program === program.name) context.className = 'training-wide-label';
       if (context.textContent) { context.append(' · '); details.append(context); }
       details.append('Записано подходов: ' + sets);
-      caption.append(date, details);
+      caption.append(date, details, statusLabel(s.id));
       if (!s.finished) date.append(node('span', 'training-default', 'В процессе'));
-      const open = btn(s.finished ? 'Открыть' : 'Продолжить', () => openSession(s));
+      const open = btn(s.finished ? 'Открыть' : 'Продолжить', () => {
+        if (s.finished) return openSession(s);
+        withFreshHistory(() => {
+          const latest = visibleSessions().find(record => record.id === s.id);
+          if (latest) openSession(latest);
+          else { home(); announce('Этой тренировки больше нет в истории.'); }
+        });
+      });
       open.classList.add('training-card-open');
       open.id = 'open-workout-' + s.id;
       open.setAttribute('aria-describedby', date.id);
       card.append(caption, open);
       cards.append(card);
     }
-    const grid = node('div', 'training-layout'); grid.append(sidebar, main); page(grid);
+    const grid = node('div', 'training-layout'); grid.append(sidebar, main); page(grid); syncStatus();
     const selected = dayButtons.querySelector('[aria-pressed=true]');
     if (selected && dayButtons.scrollWidth > dayButtons.clientWidth) {
       dayButtons.scrollLeft = selected.offsetLeft - (dayButtons.clientWidth - selected.offsetWidth) / 2;
@@ -670,11 +881,9 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     for (const day of program.days) choices.append(btn(day.name, () => prepare(gym, program, day)));
     page(section('Выбери подпрограмму'), hint(gym.name + ' · ' + program.name), choices);
   }
-  function prepare(gym, program, day) {
-    const latest = db().sessions.filter(s => s.gymId === gym.id && s.programId === program.id && s.dayId === day.id).sort((a,b) => b.date.localeCompare(a.date));
-    if (workoutDraft?.gymId === gym.id && workoutDraft.programId === program.id && workoutDraft.dayId === day.id) {
-      return openSession(workoutDraft, true);
-    }
+  async function prepare(gym, program, day) {
+    const rev = generation;
+    const latest = visibleSessions().filter(s => s.gymId === gym.id && s.programId === program.id && s.dayId === day.id).sort((a,b) => b.date.localeCompare(a.date));
     const unfinished = latest.find(s => !s.finished);
     if (unfinished) return openSession(unfinished, true);
     const exercises = day.exercises.map(ex => {
@@ -690,9 +899,14 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
       });
       return { ...ex, ...setDefaults(day, ex), name: displayName, machine: gymSettings?.machine || '', technique: gymSettings?.technique || '', sets };
     });
-    const session = { id: uid(), date: new Date().toISOString(), gymId: gym.id, gym: gym.name, programId: program.id, program: program.name, programRevision: db().programHistory?.[program.id]?.at(-1)?.date ?? null,
+    // Two devices starting after the same previous workout identify the same new entry.
+    const seed = JSON.stringify([gym.id, program.id, day.id, latest.map(s => s.id).sort()]);
+    const hash = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(seed));
+    if (rev !== generation || !root.querySelector('.training-choice-list')) return;
+    const id = 'workout-' + Array.from(new Uint8Array(hash), b => b.toString(16).padStart(2, '0')).join('');
+    const session = { id, date: new Date().toISOString(), gymId: gym.id, gym: gym.name, programId: program.id, program: program.name, programRevision: db().programHistory?.[program.id]?.at(-1)?.date ?? null,
       dayId: day.id, day: day.name, finished: false, exercises };
-    workoutDraft = session;
+    queueEdit(id, { type: 'start', record: session }, true);
     openSession(session, true);
   }
   let historyEdit = false;
@@ -713,16 +927,11 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     }
   }
   function session() {
-    return workoutDraft && workoutDraft.id === activeId ? workoutDraft : db().sessions.find(s => s.id === activeId);
+    return visibleSessions().find(s => s.id === activeId);
   }
   function updateSession(edit, after = sessionPage) {
-    if (workoutDraft && workoutDraft.id === activeId) {
-      edit(workoutDraft);
-      after();
-      return;
-    }
     const id = activeId;
-    return change(next => edit(next.sessions.find(s => s.id === id)), after);
+    return change(next => edit(next.sessions.find(s => s.id === id)), after, id);
   }
   async function copyWorkoutJson(records, message = 'JSON скопирован') {
     try {
@@ -730,8 +939,15 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
       announce(message);
     } catch { announce('Браузер не разрешил копирование.'); }
   }
-  function setEditor(ei, set, si, plannedReserve, editable, editors, updateActions) {
+  function setEditor(ei, set, si, plannedReserve, editable, editors, updateActions, live, exerciseId) {
     const key = ei + '/' + si;
+    const location = { exerciseId, index: si, setId: set.id };
+    const sessionId = activeId;
+    function resetInput() {
+      drafts.delete(key);
+      if (live) queueEdit(sessionId, { ...location, type: 'reset' });
+      sessionPage();
+    }
     const item = node('div', 'training-set');
     const caption = node('div', 'training-set-number', (set.extra ? 'Доп. ' : '') + (si + 1));
     caption.setAttribute('aria-label', 'Подход ' + (si + 1));
@@ -739,7 +955,7 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     const last = node('span', 'training-past', previous ? (previous.loadLabel ?? previous.weight ?? '—') + ' × ' + previous.reps + (previous.reserve != null ? ' (' + (previous.reserveLabel ?? previous.reserve) + ')' : '') : '—');
     const edit = () => { drafts.set(key, { ...set.actual, note: set.note }); sessionPage(); };
     item.append(caption, last);
-    if ((set.status !== 'planned' && !drafts.has(key)) || !editable) {
+    if ((set.status !== 'planned' && !drafts.has(key) && !(live && set.input)) || !editable) {
       const a = set.actual;
       item.append(node('span', 'training-stat', a?.loadLabel ?? a?.weight ?? '—'), node('span', 'training-stat', a?.reps ?? '—'), node('span', 'training-stat', a?.reserveLabel ?? a?.reserve ?? '—'));
       const status = row(node('span', set.status === 'done' ? 'training-saved' : '', { done: 'Записано', skipped: 'Пропущено', planned: 'Не выполнено', unrecorded: 'Нет данных' }[set.status]));
@@ -748,7 +964,7 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
       if (set.note) item.append(hint(set.note));
       return item;
     }
-    const draft = drafts.get(key) || {};
+    const draft = (live && set.input) || drafts.get(key) || {};
     const weight = number('Вес, кг', draft.weight ?? set.target.weight, true, 'any');
     const reps = number('Повторы', draft.reps ?? set.target.reps);
     const reserve = number('В запасе', draft.reserve ?? (set.status === 'planned' ? plannedReserve : null), false);
@@ -758,19 +974,25 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     const actions = row();
     const target = node('small', 'training-target', set.target.reps == null ? '' : 'Цель ' + set.target.reps);
     const completed = set.status === 'planned' ? field('Выполнен', '', { type: 'checkbox' }) : null;
+    const readInput = () => ({ weight: weight.input.value, reps: reps.input.value, reserve: reserve.input.value, note: note.input.value, showNote: !note.wrap.hidden });
+    let prior = { ...readInput(), changed: !!draft.changed };
     function remember(changed) {
-      drafts.set(key, { weight: weight.input.value, reps: reps.input.value, reserve: reserve.input.value, note: note.input.value, showNote: !note.wrap.hidden, changed });
+      const values = { ...readInput(), changed };
+      if (live) {
+        const fields = Object.fromEntries(Object.entries(values).filter(([k, v]) => prior[k] !== v));
+        if (Object.keys(fields).length) queueEdit(sessionId, { ...location, type: 'input', initial: prior, fields });
+      } else drafts.set(key, values);
+      prior = values;
       if (completed) completed.input.checked = changed;
       target.hidden = set.target.reps == null || reps.input.valueAsNumber === set.target.reps;
       updateActions();
     }
     const inputs = [weight.input, reps.input, reserve.input, note.input];
     for (const input of inputs) input.oninput = () => {
-      const hasInput = inputs.some(field => {
-        if (field === reserve.input && field.valueAsNumber === plannedReserve) return false;
-        return field.value !== '' || field.validity.badInput;
-      });
-      remember(set.status !== 'planned' || hasInput || !!set.note);
+      const measured = input === weight.input || input === reps.input;
+      const hasResult = [weight.input, reps.input].some(field => field.value !== '' || field.validity.badInput);
+      const changed = set.status !== 'planned' || (measured ? hasResult : prior.changed);
+      remember(changed);
     };
     target.hidden = set.target.reps == null || reps.input.valueAsNumber === set.target.reps;
     reps.wrap.append(target);
@@ -787,15 +1009,19 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
       completed.input.checked = !!draft.changed;
       completed.input.onchange = () => {
         if (completed.input.checked) remember(true);
-        else { drafts.delete(key); sessionPage(); }
+        else resetInput();
       };
       actions.append(completed.wrap);
     }
-    actions.append(btn('Пропустить', () => updateSession(s => {
-      Object.assign(s.exercises[ei].sets[si], { actual: null, status: 'skipped', note: note.input.value });
-    }, () => { drafts.delete(key); sessionPage(); })));
-    if (drafts.has(key) && set.status !== 'planned') actions.append(btn('Отмена', () => { drafts.delete(key); sessionPage(); }));
-    const addNote = btn('+', () => { note.wrap.hidden = false; remember(!!drafts.get(key)?.changed); note.input.focus(); });
+    actions.append(btn('Пропустить', () => {
+      drafts.delete(key);
+      if (live) {
+        queueEdit(sessionId, { ...location, type: 'skip', note: note.input.value }, true);
+        sessionPage();
+      } else updateSession(s => Object.assign(s.exercises[ei].sets[si], { actual: null, status: 'skipped', note: note.input.value }));
+    }));
+    if ((drafts.has(key) || live && set.input) && set.status !== 'planned') actions.append(btn('Отмена', resetInput));
+    const addNote = btn('+', () => { note.wrap.hidden = false; remember(prior.changed); note.input.focus(); });
     addNote.setAttribute('aria-label', 'Заметка к подходу ' + (si+1));
     actions.append(addNote);
     item.append(weight.wrap, reps.wrap, reserve.wrap, actions, note.wrap);
@@ -805,7 +1031,7 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     const s = session();
     if (!s) return home();
     const scroll = root.dataset.session === s.id ? workoutScrollArea().scrollTop : 0;
-    const isDraft = s === workoutDraft;
+    const live = !s.finished;
     const editable = !s.finished || historyEdit;
     const editors = new Map();
     let save, cancel;
@@ -819,7 +1045,22 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
       historyEdit = false;
       sessionPage();
     }
-    function saveSets(completeWorkout) {
+    function finish() {
+      const current = session();
+      for (const [ei, ex] of current.exercises.entries()) {
+        for (const [si, set] of ex.sets.entries()) {
+          if (set.input?.changed && !validSetInput(set.input)) {
+            editors.get(ei + '/' + si)?.();
+            announce('Проверьте вес и повторы в упражнении «' + ex.name + '».');
+            return;
+          }
+        }
+      }
+      queueEdit(s.id, { type: 'finish' }, true);
+      drafts.clear();
+      returnToList(s);
+    }
+    function saveSets() {
       const updates = [];
       for (const [key, read] of editors) {
         if (!drafts.get(key)?.changed) continue;
@@ -827,41 +1068,18 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
         if (!update) return;
         updates.push(update);
       }
-      if (!updates.length && !completeWorkout) return finishEditing();
-      const original = db().sessions.find(record => record.id === s.id);
-      change(next => {
-        const index = next.sessions.findIndex(record => record.id === s.id);
-        const stored = next.sessions[index];
-        const record = isDraft ? copy(s) : stored;
+      if (!updates.length) return finishEditing();
+      updateSession(record => {
         for (const { ei, si, values } of updates) Object.assign(record.exercises[ei].sets[si], values);
-        if (completeWorkout) {
-          for (const exercise of record.exercises) {
-            for (const set of exercise.sets) {
-              if (set.status === 'planned' && set.actual == null) set.status = 'skipped';
-            }
-          }
-          record.finished = true;
-        }
-        if (isDraft) {
-          // A retry after a lost response can find this exact workout already saved.
-          if (stored && JSON.stringify(stored) === JSON.stringify(record)) return false;
-          if (stored) clearLegacyStartingTargets([stored]);
-          if (JSON.stringify(stored) !== JSON.stringify(original)) {
-            throw new Error('Эта тренировка изменилась на другом устройстве. Обновите историю перед редактированием.');
-          }
-          if (index < 0) next.sessions.push(record);
-          else next.sessions[index] = record;
-        }
       }, () => {
-        if (completeWorkout) {
-          returnToList(s);
-          announce('Тренировка сохранена');
-        } else {
-          finishEditing();
-          announce('Изменения сохранены');
-        }
-      }, isDraft);
+        finishEditing();
+        announce('Изменения сохранены');
+      });
     }
+    const ongoingActions = () => [
+      btn('К истории', () => { scheduleSync(ownerKey, 0); returnToList(s); }),
+      btn('Завершить тренировку', finish, true)
+    ];
     function savedActions() {
       const extras = row(btn('Копировать JSON', () => copyWorkoutJson(s)));
       extras.id = 'training-session-extras';
@@ -874,8 +1092,9 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
       controls.classList.add('training-session-actions');
       const definition = historyProgram(s.programId);
       if (definition && s.dayId) extras.append(btn('История подпрограммы', () => openTimeline(definition, 'day')));
-      if (editable) {
-        save = btn('Сохранить', () => saveSets(false), true);
+      if (live) controls.append(...ongoingActions());
+      else if (editable) {
+        save = btn('Сохранить', saveSets, true);
         cancel = btn('Отменить', finishEditing);
         cancel.classList.add('training-cancel');
         updateActions();
@@ -889,16 +1108,13 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
         }, () => {
           returnToList(s);
           announce('Тренировка удалена');
-        });
+        }, s.id);
       });
       remove.classList.add('training-delete');
       extras.append(remove);
       return controls;
     }
-    const controls = isDraft ? row(
-      btn('К истории', () => returnToList(s)),
-      btn('Сохранить тренировку', () => saveSets(true), true)
-    ) : savedActions();
+    const controls = live && history.state?.workout?.fromStart ? row(...ongoingActions()) : savedActions();
     const meta = hint([s.gym, s.program, dateLabel(s.date)].join(' · '));
     const header = node('header', 'training-session-heading');
     const sessionTitle = section(s.day, controls);
@@ -906,6 +1122,7 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     sessionTitle.firstElementChild.append(node('span', s.finished ? '' : 'training-wide-label', suffix));
     sessionTitle.firstElementChild.setAttribute('aria-label', s.day + suffix);
     header.append(sessionTitle, meta);
+    if (live) header.append(statusLabel(s.id));
     const group = node('div', 'training-table');
     const revisions = db().programHistory?.[s.programId] || [];
     const sessionProgram = revisions[workoutRevisionIndex(revisions, s)]?.program;
@@ -913,10 +1130,15 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     for (const [ei, ex] of s.exercises.entries()) {
       const block = node('section', 'training-exercise');
       const planned = ex.sets.filter(set => !set.extra);
-      const extra = ex.sets.filter(set => set.extra && set.status === 'done').length;
-      const done = planned.filter(set => set.status === 'done').length;
+      const count = hint('');
+      function updateCount(current) {
+        const done = current.sets.filter(set => !set.extra && recordedSet(set)).length;
+        const extra = current.sets.filter(set => set.extra && recordedSet(set)).length;
+        count.textContent = done + ' из ' + planned.length + (extra ? ' + ' + extra + ' доп.' : '');
+      }
+      updateCount(ex);
       const head = node('div', 'training-section-head');
-      head.append(node('h3', '', ex.name), hint(done + ' из ' + planned.length + (extra ? ' + ' + extra + ' доп.' : '')));
+      head.append(node('h3', '', ex.name), count);
       block.append(head);
       const settingsText = [ex.machine, ex.technique].filter(Boolean).join(' · ');
       if (settingsText) block.append(hint(settingsText));
@@ -935,11 +1157,18 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
           const pause = rest == null ? 'Не задан' : rest.toLocaleString('ru-RU') + ' мин';
           block.append(node('p', 'training-rest', 'Отдых между подходами · ' + pause));
         }
-        block.append(setEditor(ei, set, si, reserve, editable, editors, updateActions));
+        block.append(setEditor(ei, set, si, reserve, editable, editors, () => {
+          if (live) updateCount(session().exercises[ei]);
+          else updateActions();
+        }, live, ex.id));
       });
-      if (editable) block.append(btn('+ Подход', () => updateSession(record => {
-        record.exercises[ei].sets.push({ ...freshSet(copy(ex.sets.at(-1)?.target)), extra: true });
-      })));
+      if (editable) block.append(btn('+ Подход', () => {
+        const set = { ...freshSet(copy(ex.sets.at(-1)?.target)), extra: true, id: uid() };
+        if (live) {
+          queueEdit(s.id, { type: 'add', exerciseId: ex.id, set }, true);
+          sessionPage();
+        } else updateSession(record => record.exercises[ei].sets.push(set));
+      }));
       group.append(block);
     }
     const body = node('div', 'training-session-body');
@@ -947,13 +1176,11 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     body.setAttribute('role', 'region');
     body.setAttribute('aria-label', 'Упражнения и подходы');
     body.append(group);
-    if (!isDraft) {
-      const footer = row(backButton('К истории', () => returnToList(s)));
-      if (!s.finished) footer.append(btn('Завершить тренировку', () => saveSets(true), true));
-      body.append(footer);
-    }
+    if (!live) body.append(row(backButton('К истории', () => returnToList(s))));
     page(header, body);
     root.dataset.session = s.id;
+    root.dataset.finished = String(s.finished);
+    syncStatus();
     body.scrollTop = scroll;
   }
   function diary(kind, day = today(), focusEditor = false) {
@@ -1199,7 +1426,7 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
   for (const b of document.querySelectorAll('[data-training-tab]')) b.onclick = () => {
     tab = b.dataset.trainingTab; render();
   };
-  el('training-today').onclick = start;
+  el('training-today').onclick = () => withFreshHistory(start);
   return {
     importWeights() {
       if (!importWeightHistory(announce)) return false;
@@ -1211,7 +1438,9 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
       validateTraining(data);
       clearLegacyStartingTargets(data.sessions);
       generation++; snapshot = file; ownerKey = credential(); saving = false; navigationId = route?.navigationId || uid();
-      tab = 'sessions'; settings = 'programs'; selectedDay = null; selectedProgram = null; activeId = null; workoutDraft = null; drafts.clear();
+      tab = 'sessions'; settings = 'programs'; selectedDay = null; selectedProgram = null; activeId = null; drafts.clear();
+      restoreEdits();
+      scheduleSync(ownerKey, 0);
       if (openImportedWeights) {
         openImportedWeights = false;
         tab = 'body';
@@ -1222,7 +1451,8 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
     },
     lock() {
       closeMenu();
-      generation++; snapshot = null; ownerKey = null; activeId = null; workoutDraft = null; drafts.clear(); root.replaceChildren();
+      scheduleSync(ownerKey, 0);
+      generation++; snapshot = null; ownerKey = null; activeId = null; drafts.clear(); root.replaceChildren();
     }
   };
 }
