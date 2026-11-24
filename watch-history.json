@@ -936,6 +936,12 @@
       "kind": "watching",
       "value": true,
       "markedAt": "2026-11-24T13:44:18.673Z"
+    },
+    {
+      "card": "tmdb-tv-300507-s1",
+      "kind": "watching",
+      "value": true,
+      "markedAt": "2026-11-24T13:44:38.556Z"
     }
   ],
   "removed": [
