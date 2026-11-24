@@ -960,6 +960,12 @@
       "kind": "watching",
       "value": true,
       "markedAt": "2026-11-24T13:45:41.556Z"
+    },
+    {
+      "card": "tmdb-movie-995926",
+      "kind": "watched",
+      "value": true,
+      "markedAt": "2026-11-24T14:08:56.182Z"
     }
   ],
   "removed": [
