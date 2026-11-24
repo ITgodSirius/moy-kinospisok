@@ -9,8 +9,8 @@
   <meta name="history-mode" content="local">
   <title>Мой киносписок</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%231443ef'/%3E%3Cpath d='M18 18h28v29L32 38l-14 9z' fill='white'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./style.css?v=a6832f564511">
-  <script type="module" src="./app.js?v=2a406a94f330"></script>
+  <link rel="stylesheet" href="./style.css?v=ffb2d2e7e825">
+  <script type="module" src="./app.js?v=2413e3417e89"></script>
 </head>
 <body>
   <a class="skip" href="#feed">К фильмам и сериалам</a>
@@ -156,13 +156,14 @@
     <header class="masthead">
       <div class="wrap">
         <div class="topline training-top">
-          <h1 id="training-heading" tabindex="-1">Тренировки</h1>
-          <button class="training-menu-toggle training-site-switch" type="button" aria-label="Другие разделы сайта" aria-expanded="false" aria-controls="training-destinations"><span data-icon="grid"></span></button>
-          <nav id="training-destinations" class="quote-collections training-menu-panel" aria-label="Другие разделы">
-            <button type="button" class="collection-destination" data-collection="cinema"><span data-icon="swap"></span>Киносписок</button>
-            <button type="button" class="collection-destination" data-collection="wishlist"><span data-icon="swap"></span>Вишлист</button>
-            <button type="button" class="collection-destination" data-collection="quotes"><span data-icon="quote"></span>Цитаты</button>
-          </nav>
+          <div class="collection-brand">
+            <h1 id="training-heading" tabindex="-1">Тренировки</h1>
+            <nav id="training-destinations" class="quote-collections" aria-label="Другие разделы">
+              <button type="button" class="collection-destination" data-collection="cinema" aria-label="Киносписок" title="Киносписок" aria-controls="feed"><span data-icon="play"></span><span>Киносписок</span></button>
+              <button type="button" class="collection-destination" data-collection="wishlist" aria-label="Вишлист" title="Вишлист" aria-controls="wishlist"><span data-icon="swap"></span><span>Вишлист</span></button>
+              <button type="button" class="collection-destination" data-collection="quotes" aria-label="Цитаты" title="Цитаты" aria-controls="quotes"><span data-icon="quote"></span><span>Цитаты</span></button>
+            </nav>
+          </div>
           <button class="btn training-primary" id="training-today" type="button" aria-label="Тренировка сегодня"><span class="training-wide-label">Тренировка сегодня</span><span class="training-short-label">＋ Сегодня</span></button>
         </div>
         <nav class="type-switch training-tabs" aria-label="Разделы тренировок">

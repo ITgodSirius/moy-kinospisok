@@ -607,20 +607,18 @@ a.quote-source:hover{color:var(--blue)}
 @media(max-width:820px) {
   #training .wrap { padding-inline:clamp(12px,3.8vw,22px) }
   #training-content { gap:12px; padding-top:14px; grid-template-columns:minmax(0,1fr) }
-  #training .btn,#training .collection-destination { min-height:44px }
+  #training .btn { min-height:44px }
   .training-wide-label { display:none }
   .training-short-label { display:inline }
-  .training-top { position:relative; display:flex; align-items:center; min-height:60px; flex-wrap:nowrap; gap:8px; padding-block:6px }
+  .training-top { display:flex; align-items:center; min-height:60px; gap:4px 8px; padding-block:6px }
   .training-top h1 { font-size:1.42rem; line-height:1.15 }
   .training-menu-toggle { display:inline-flex; align-items:center; justify-content:center; min-width:44px; min-height:44px; border-radius:8px }
-  .training-site-switch { order:-1; color:var(--blue); background:var(--surface); border:1px solid var(--line) }
   .training-top .training-primary { white-space:nowrap; padding-inline:12px }
   #training .training-menu-panel {
     position:absolute; z-index:3; display:none; gap:2px; padding:5px; width:max-content;
     max-width:100%; border:1px solid var(--line); border-radius:10px; background:var(--surface); box-shadow:0 8px 24px #0006
   }
   #training .training-menu-toggle[aria-expanded=true] + .training-menu-panel { display:grid }
-  .training-site-switch + nav { left:0; top:calc(100% - 4px) }
   #training .training-menu-panel > button { justify-content:flex-start; background:transparent; border-color:transparent; padding-inline:14px; font-size:.94rem }
   #training .training-menu-panel > button:is(:hover,:focus-visible) { background:var(--tint) }
   .training-tabs { display:flex; flex-wrap:nowrap; gap:3px; min-height:44px; padding:0; overflow-x:auto; scrollbar-width:none }
@@ -689,6 +687,10 @@ a.quote-source:hover{color:var(--blue)}
   .training-history-cards,.training-session-body { overflow:visible }
 }
 @media(max-width:640px) {
+  #training-destinations button { position:relative; justify-content:center; width:clamp(30px,8vw,40px); min-height:30px }
+  #training-destinations button::after { content:''; position:absolute; inset:-7px 0 }
+  #training-destinations .ico,#training-destinations svg { width:16px; height:16px }
+  #training-destinations button > span:not(.ico) { display:none }
   .training-section-head .btn { white-space:normal }
   #cinema-header .collection-brand { flex-wrap:wrap }
   #quotes .quote-top { flex-wrap:wrap }

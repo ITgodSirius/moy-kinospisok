@@ -190,7 +190,6 @@ export function setupTraining({ setupNutrition, el, node, button, announce, with
   let navigationId;
   let workoutDraft;
   let snapshot, ownerKey, tab, settings, selectedDay, selectedProgram, activeId, saving = false, generation = 0;
-  // Both mobile disclosures use the same buttons and actions as the desktop toolbars.
   const training = el('training');
   let openMenu;
   function closeMenu() {
