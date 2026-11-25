@@ -1002,6 +1002,12 @@
       "kind": "watching",
       "value": true,
       "markedAt": "2026-11-24T17:38:24.554Z"
+    },
+    {
+      "card": "tmdb-tv-298852-s1",
+      "kind": "watched",
+      "value": true,
+      "markedAt": "2026-11-25T19:20:36.597Z"
     }
   ],
   "removed": [
