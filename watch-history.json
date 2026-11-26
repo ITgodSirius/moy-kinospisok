@@ -860,12 +860,6 @@
       "markedAt": "2026-11-22T21:31:36.540Z"
     },
     {
-      "card": "tmdb-tv-94605-s2",
-      "kind": "favorite",
-      "value": true,
-      "markedAt": "2026-11-22T21:31:38.806Z"
-    },
-    {
       "card": "tmdb-movie-1568060",
       "kind": "favorite",
       "value": true,
@@ -1044,6 +1038,7 @@
     "tmdb-movie-1700884/watching",
     "tmdb-tv-254630-s1/favorite",
     "tmdb-tv-254630-s1/watching",
-    "tmdb-tv-337738-s1/watching"
+    "tmdb-tv-337738-s1/watching",
+    "tmdb-tv-94605-s2/favorite"
   ]
 }
