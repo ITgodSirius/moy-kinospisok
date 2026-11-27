@@ -1062,10 +1062,15 @@
       "kind": "watched",
       "value": true,
       "markedAt": "2026-11-27T10:30:48.150Z"
+    },
+    {
+      "card": "tmdb-movie-1440098",
+      "kind": "watched",
+      "value": true,
+      "markedAt": "2026-11-27T10:31:16.460Z"
     }
   ],
   "removed": [
-    "tmdb-movie-1440098/watched",
     "tmdb-movie-1700884/watching",
     "tmdb-tv-254630-s1/favorite",
     "tmdb-tv-254630-s1/watching",
